@@ -1,5 +1,5 @@
 # Math Summaries
-[Link to The Site](https://yeahboyyyyy.github.io/math-summaries)
+[Link to The Site](https://goldmanron.github.io/summaries)
 
 Personal summaries from [Tel Aviv University (TLV Uni)](https://english.tau.ac.il/).
 
