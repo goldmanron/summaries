@@ -1,0 +1,7857 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+% Allows fancy stuff in the page header
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+
+%Allows circuit drawing
+\usepackage{circuitikz}
+
+%Allows plotting graphs
+\usepackage{pgfplots}
+
+
+% Necessary Commands:
+\usepackage{autobreak}
+\usepackage[T1]{fontenc}
+\usepackage{relsize}
+% Set vertical space before and after dislpay equations to be longer for better redability:
+\AtBeginDocument{\setlength\abovedisplayskip{12pt}}
+\AtBeginDocument{\setlength\belowdisplayskip{12pt}}
+\AtBeginDocument{\setlength\belowdisplayshortskip{12pt}}
+\AtBeginDocument{\setlength\belowdisplayshortskip{12pt}}
+
+% Set space between words to be wider:
+\spaceskip=1.3\fontdimen2\font plus 1\fontdimen3\font minus 1.5\fontdimen4\font
+
+% Convert the Lyx colors into more pleasent colors:
+\usepackage{xcolor}
+\definecolor{blue}{RGB}{12,97,197}
+\definecolor{green}{RGB}{0,128,40}
+\definecolor{red}{RGB}{235,16,16}
+\definecolor{brown}{RGB}{154,58,0}
+\definecolor{orange}{RGB}{231,135,26}
+\definecolor{purple}{RGB}{94,53,177}
+
+% Convert the QED Symbol at the end of proofs to a solid black square (credit: Yakir Oz):
+\usepackage{amssymb}
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+% Make the layout more similar to Hebrew Article, which I am more used to:
+\renewcommand*{\@seccntformat}[1]{\hspace{0.5cm}\csname the#1\endcsname\hspace{0.5cm}} 
+\usepackage{titlesec}
+\titleformat{\section}{\fontsize{20}{20}\bfseries}{\thesection}{10pt}{}
+\titleformat{\subsection}{\fontsize{15}{15}\bfseries}{\thesubsection}{10pt}{}
+\titleformat{\subsubsection}{\bfseries}{\thesubsubsection}{10pt}{}
+
+% Correct the reversed parentheses in labels:
+\usepackage{polyglossia}
+\setmainlanguage{hebrew}
+\newfontfamily{\hebrewfont}{David}
+\makeatletter
+\def\maketag@@@#1{\hbox{\m@th\normalfont\LRE{#1}}}
+\def\tagform@#1{\maketag@@@{(\ignorespaces#1\unskip)}}
+\makeatother
+
+% Create disjoint union symbols:
+\makeatletter
+\def\moverlay{\mathpalette\mov@rlay}
+\def\mov@rlay#1#2{\leavevmode\vtop{%
+   \baselineskip\z@skip \lineskiplimit-\maxdimen
+   \ialign{\hfil$\m@th#1##$\hfil\cr#2\crcr}}}
+\newcommand{\charfusion}[3][\mathord]{
+    #1{\ifx#1\mathop\vphantom{#2}\fi
+        \mathpalette\mov@rlay{#2\cr#3}
+      }
+    \ifx#1\mathop\expandafter\displaylimits\fi}
+\makeatother
+\newcommand{\cupdot}{\charfusion[\mathbin]{\cup}{\cdot}}
+\newcommand{\bigcupdot}{\charfusion[\mathop]{\bigcup}{\cdot}}
+
+
+
+\newcommand{\kaliLargeLand}{\mathop{\mathlarger{\mathlarger{\mathlarger{\land}}}}}
+\newcommand{\hebtext}[1]{\mbox{\R{\#1}}}
+\end_preamble
+\use_default_options true
+\begin_modules
+customHeadersFooters
+theorems-ams-chap-bytype
+theorems-ams-extended-chap-bytype
+\end_modules
+\maintain_unincluded_children no
+\begin_local_layout
+Style Section
+	Font
+	  Series     Medium
+	  Shape      Smallcaps
+	  Size       Larger
+	  Series     Bold
+	EndFont
+	TocLevel 1
+End
+Style Section*
+	Font
+	  Series     Medium
+	  Shape      Smallcaps
+	  Size      Larger
+	  Series     Bold
+	EndFont
+End
+Style Solution
+	LabelString           "פיתרון: "
+End
+Style Notation
+	LabelString           "סימון  \thetheorem: "
+End
+Style Theorem
+	LabelString           "משפט \thetheorem: "
+End
+Style Property
+	LabelString           "תזכורת: "
+End
+\end_local_layout
+\language hebrew
+\language_package default
+\inputencoding auto-legacy
+\fontencoding auto
+\font_roman "default" "David"
+\font_sans "default" "David"
+\font_typewriter "default" "David"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\float_alignment class
+\paperfontsize 11
+\spacing onehalf
+\use_hyperref true
+\pdf_title "מבוא להסתברות וסטטיסטיקה - סיכום"
+\pdf_author "Ron Goldman"
+\pdf_subject "הסתברות, סטטיסטיקה"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1cm
+\topmargin 2cm
+\rightmargin 1cm
+\bottommargin 3cm
+\headheight 0cm
+\headsep 1cm
+\footskip 2cm
+\secnumdepth -2
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation 0bp
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Title
+\paragraph_spacing double
+
+\series bold
+\size huge
+מבוא להסתברות וסטטיסטיקה (
+\numeric on
+0509-2801
+\numeric off
+)
+\end_layout
+
+\begin_layout Author
+רון גולדמן
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+זהו סיכום חלקי,
+ שאינו מקיף את כל החומר בקורס.
+\end_layout
+
+\begin_layout Center Footer
+
+\color gray
+מבוסס על רשימות של ד
+\begin_inset Quotes erd
+\end_inset
+
+ר אילה משיח
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part
+מבוא להסתברות
+\end_layout
+
+\begin_layout Section
+מושגי יסוד של הסתברות
+\end_layout
+
+\begin_layout Subsection
+מרחבי הסתברות
+\end_layout
+
+\begin_layout Definition*
+
+\series bold
+מרחב מדגם 
+\series default
+
+\begin_inset Formula $\Omega$
+\end_inset
+
+ הוא קבוצת כל התוצאות האפשריות בניסוי.
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+תוצאה כלשהי 
+\series default
+במרחב המדגם נסמן על ידי 
+\begin_inset Formula $\omega\in\Omega$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+קבוצה חלקית של תוצאות ניסוי 
+\begin_inset Formula $A\subseteq\Omega$
+\end_inset
+
+ תיקרא 
+\series bold
+מאורע 
+\series default
+(
+\lang english
+Event
+\lang hebrew
+).
+\begin_inset Newline newline
+\end_inset
+
+אם תוצאת הניסוי היא 
+\begin_inset Formula $\omega\in A$
+\end_inset
+
+,
+ נאמר שהמאורע 
+\begin_inset Formula $A$
+\end_inset
+
+ התרחש.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+מושגים בסיסיים מתורת הקבוצות
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+\begin_inset Formula $e\in A$
+\end_inset
+
+ - האיבר 
+\begin_inset Formula $e$
+\end_inset
+
+ שייך לקבוצה 
+\begin_inset Formula $A$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition*
+\begin_inset Formula $e\notin A$
+\end_inset
+
+ - האיבר 
+\begin_inset Formula $e$
+\end_inset
+
+ אינו שייך לקבוצה 
+\begin_inset Formula $A$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition*
+\begin_inset Formula $A\subseteq B$
+\end_inset
+
+ - הקבוצה 
+\begin_inset Formula $A$
+\end_inset
+
+ מוכלת בקבוצה 
+\begin_inset Formula $B$
+\end_inset
+
+,
+ כלומר לכל 
+\begin_inset Formula $a\in A$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $a\in B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition*
+\begin_inset Formula $A\subset B$
+\end_inset
+
+ - הקבוצה 
+\begin_inset Formula $A$
+\end_inset
+
+ מוכלת חזק בקבוצה 
+\begin_inset Formula $B$
+\end_inset
+
+,
+ כלומר 
+\begin_inset Formula $A\subseteq B$
+\end_inset
+
+ וגם 
+\begin_inset Formula $A\neq B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition*
+\begin_inset Formula $A\cup B$
+\end_inset
+
+ - איחוד,
+ אוסף כל האיברים שנמצאים ב-
+\begin_inset Formula $A$
+\end_inset
+
+ או ב-
+\begin_inset Formula $B$
+\end_inset
+
+ או בשניהם.
+\end_layout
+
+\begin_layout Definition*
+\begin_inset Formula $A\cap B$
+\end_inset
+
+ - חיתוך,
+ אוסף כל האיברים שנמצאים גם ב-
+\begin_inset Formula $A$
+\end_inset
+
+ וגם ב-
+\begin_inset Formula $B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition*
+\begin_inset Formula $A^{c}$
+\end_inset
+
+ (או 
+\begin_inset Formula $\overline{A}$
+\end_inset
+
+) - המשלים של 
+\begin_inset Formula $A$
+\end_inset
+
+,
+ כל האיברים ב-
+\begin_inset Formula $\Omega$
+\end_inset
+
+ שאינם ב-
+\begin_inset Formula $A$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition*
+\begin_inset Formula $A\setminus B=A\cap B^{c}$
+\end_inset
+
+ - כל האיברים ב-
+\begin_inset Formula $A$
+\end_inset
+
+ שאינם ב-
+\begin_inset Formula $B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition*
+קבוצות 
+\begin_inset Formula $A,B$
+\end_inset
+
+ זרות אם 
+\begin_inset Formula $A\cap B=\emptyset$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition*
+מאורעות 
+\begin_inset Formula $A_{1},\ldots,A_{n}$
+\end_inset
+
+ זרים,
+ אם 
+\begin_inset Formula $\bigcap_{i=1}^{n}A_{i}=\emptyset$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition*
+\begin_inset Formula $A_{1},\ldots,A_{n}$
+\end_inset
+
+ זרים בזוגות,
+ אם לכל 
+\begin_inset Formula $i\neq j$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $A_{i}\cap A_{j}=\emptyset$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Claim*
+לכל 
+\begin_inset Formula $A,B,C$
+\end_inset
+
+ קבוצות מתקיים:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+קומוטטיביות:
+\begin_inset Formula 
+\begin{align*}
+A\cup B= & B\cup A\\
+A\cap B= & B\cap A
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+אסוציאטיביות:
+\begin_inset Formula 
+\begin{align*}
+\left(A\cup B\right)\cup C= & A\cup\left(B\cup C\right)\\
+\left(A\cap B\right)\cap C= & A\cap\left(B\cap C\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+דיסטריבוטיביות:
+\begin_inset Formula 
+\begin{align*}
+\left(A\cup B\right)\cap C= & \left(A\cap C\right)\cup\left(B\cap C\right)\\
+\left(A\cap B\right)\cup C= & \left(A\cup C\right)\cap\left(B\cup C\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(A^{c}\right)^{c}=A$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+חוקי דה מורגן:
+ 
+\begin_inset Formula 
+\begin{align*}
+\left(A\cup B\right)^{c}= & A^{c}\cap B^{c}\\
+\left(A\cap B\right)^{c}= & A^{c}\cup B^{c}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Definition*
+יהי 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ מרחב מדגם.
+ קבוצה 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ תיקרא 
+\begin_inset Formula $\boldsymbol{\sigma}$
+\end_inset
+
+
+\series bold
+-אלגברה של 
+\begin_inset Formula $\boldsymbol{\Omega}$
+\end_inset
+
+ 
+\series default
+אם ורק אם:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\Omega\in\mathcal{A}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $A\in\mathcal{A}$
+\end_inset
+
+,
+ אזי גם 
+\begin_inset Formula $A^{c}\in\mathcal{A}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $\left\{ A_{n}\right\} _{n=1}^{\infty}$
+\end_inset
+
+ אוסף בן מניה של מאורעות ב-
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ אזי גם האיחוד 
+\begin_inset Formula $\bigcup_{n=1}^{\infty}A_{n}$
+\end_inset
+
+ נמצא ב-
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Remark*
+כאשר 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ בדיד,
+ 
+\begin_inset Formula $\mathcal{P}\left(\Omega\right)$
+\end_inset
+
+ הוא 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-אלגברה על 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ ולכן ברוב המקרים נשתמש בו כאשר 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ בדיד.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+אקסיומות קולמגורוב
+\end_layout
+
+\end_inset
+
+יהי מרחב מדגם 
+\begin_inset Formula $\Omega$
+\end_inset
+
+,
+ ותהי 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-אלגברה על 
+\begin_inset Formula $\Omega$
+\end_inset
+
+.
+ פונקציה 
+\begin_inset Formula $P:\mathcal{A}\rightarrow\mathbb{R}$
+\end_inset
+
+ נקראת 
+\series bold
+פונקצית הסתברות 
+\series default
+אם היא מקיימת את האקסיומות הבאות:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $P\left(A\right)\geq0$
+\end_inset
+
+ לכל 
+\begin_inset Formula $A\in\Omega$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $P\left(\Omega\right)=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+לכל אוסף בן מניה 
+\begin_inset Formula $\left\{ A_{n}\right\} _{n=1}^{\infty}$
+\end_inset
+
+ ב-
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ של מאורעות הזרים בזוגות מתקיים
+\begin_inset Formula 
+\[
+P\left(\bigcup_{n=1}^{\infty}A_{n}\right)=\sum_{n=1}^{\infty}P\left(A_{n}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Definition*
+מרחב מדגם 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ יחד עם מרחב מאורעות 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ ופונקצית הסתברות 
+\begin_inset Formula $P$
+\end_inset
+
+ נקרא 
+\series bold
+מרחב הסתברות
+\series default
+.
+\end_layout
+
+\begin_layout Theorem*
+לכל פונקצית הסתברות 
+\begin_inset Formula $P$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $P\left(\emptyset\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem*
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\shape italic
+חוק החיבור
+\end_layout
+
+\end_inset
+
+לכל אוסף סופי של מאורעות 
+\begin_inset Formula $\left\{ A_{n}\right\} _{n=1}^{m}$
+\end_inset
+
+ זרים בזוגות מתקיים כי
+\begin_inset Formula 
+\[
+P\left(\bigcup_{n=1}^{m}A_{n}\right)=\sum_{n=1}^{m}P\left(A_{n}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem*
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\shape italic
+חוק המשלים
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $P\left(A^{c}\right)=1-P\left(A\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem*
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\shape italic
+מונוטוניות
+\end_layout
+
+\end_inset
+
+אם 
+\begin_inset Formula $A\subseteq B$
+\end_inset
+
+ אזי 
+\begin_inset Formula $P\left(A\right)\leq P\left(B\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem*
+לכל מאורע 
+\begin_inset Formula $A\in\mathcal{A}$
+\end_inset
+
+ מתקיים כי 
+\begin_inset Formula $P\left(A\right)\leq1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem*
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\shape italic
+עקרון ההכלה וההדחה
+\end_layout
+
+\end_inset
+
+אם 
+\begin_inset Formula $A,B\subseteq\Omega$
+\end_inset
+
+ שני מאורעות אזי
+\begin_inset Formula 
+\[
+P\left(A\cup B\right)=P\left(A\right)+P\left(B\right)-P\left(A\cap B\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+מרחבי הסתברות סימטרים
+\end_layout
+
+\begin_layout Definition*
+מרחב הסתברות 
+\begin_inset Formula $\left(\Omega,\mathcal{A},P\right)$
+\end_inset
+
+ יקרא 
+\series bold
+סימטרי 
+\series default
+אם 
+\begin_inset Formula $\left|\Omega\right|$
+\end_inset
+
+ סופית וגם
+\begin_inset Formula 
+\[
+\forall A\in\mathcal{A}.P\left(A\right)=\frac{\left|A\right|}{\left|\Omega\right|}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem*
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\shape italic
+עקרון הכפל
+\end_layout
+
+\end_inset
+
+אם מבצעים 
+\begin_inset Formula $r$
+\end_inset
+
+ בחירות בלתי תלויות כך שבכל בחירה יש 
+\begin_inset Formula $m_{r}$
+\end_inset
+
+ אפשרויות,
+ 
+\begin_inset Newline newline
+\end_inset
+
+אזי מספר האפשרויות הכולל ל-
+\begin_inset Formula $r$
+\end_inset
+
+ הבחירות הוא 
+\begin_inset Formula $\prod_{k=1}^{r}m_{k}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Corollary*
+מספר הסידורים של 
+\begin_inset Formula $n$
+\end_inset
+
+ פריטים בשורה הוא 
+\begin_inset Formula $n!$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Claim*
+מספר הדרכים לבחור 
+\begin_inset Formula $k$
+\end_inset
+
+ איברים מתוך 
+\begin_inset Formula $n\geq k$
+\end_inset
+
+ הוא
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $^{\text{חזרות}}\slash_{\text{חשיבות לסדר}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+כן
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+לא
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+אסור
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{n!}{\left(n-k\right)!}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula ${n \choose k}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+מותר
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $n^{k}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula ${k+n-1 \choose k}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+התפלגות מותנה ואי תלות
+\end_layout
+
+\begin_layout Definition*
+יהיו 
+\begin_inset Formula $A,B$
+\end_inset
+
+ מאורעות מעל אותו מרחב מדגם כך ש-
+\begin_inset Formula $P\left(B\right)>0$
+\end_inset
+
+.
+ ה
+\series bold
+הסתברות מותנה של מאורע 
+\begin_inset Formula $A$
+\end_inset
+
+ בהינתן מאורע 
+\begin_inset Formula $B$
+\end_inset
+
+ 
+\series default
+תסומן על ידי 
+\begin_inset Formula $\boldsymbol{P\left(A|B\right)}$
+\end_inset
+
+ ומוגדרת על ידי
+\begin_inset Formula 
+\[
+P\left(A|B\right)\triangleq\frac{P\left(A\cap B\right)}{P\left(B\right)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim*
+אם 
+\begin_inset Formula $B$
+\end_inset
+
+ מאורע כך ש-
+\begin_inset Formula $P\left(B\right)>0$
+\end_inset
+
+ אז 
+\begin_inset Formula $P\left(\boldsymbol{\cdot}|B\right)$
+\end_inset
+
+ פונקציית הסתברות.
+\end_layout
+
+\begin_layout Theorem*
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\shape italic
+כלל השרשרת
+\end_layout
+
+\end_inset
+
+ַיהיו 
+\begin_inset Formula $A_{1},\ldots,A_{n}$
+\end_inset
+
+ מאורעות כך שלכל 
+\begin_inset Formula $m\in\left\{ 1,\ldots,n\right\} $
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $P\left(\bigcap_{i=1}^{m}A_{i}\right)>0$
+\end_inset
+
+.
+ אזי
+\begin_inset Formula 
+\[
+P\left(\bigcap_{i=1}^{n}A_{i}\right)=P\left(A_{1}\right)\prod_{i=2}^{n}P\left(A_{i}\left|\bigcap_{j=1}^{i-1}A_{j}\right.\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem*
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\shape italic
+נוסחת ההסתברות השלמה
+\end_layout
+
+\end_inset
+
+יהיו 
+\begin_inset Formula $B_{1},\ldots,B_{n}$
+\end_inset
+
+ מאורעות זרים בזוגות מעל אותו מרחב מדגם כך ש-
+\begin_inset Formula $\biguplus_{i=1}^{n}B_{i}=\Omega$
+\end_inset
+
+ וכן 
+\begin_inset Formula $P\left(B_{i}\right)>0$
+\end_inset
+
+ לכל 
+\begin_inset Formula $i\in\left\{ 1,\ldots,n\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem*
+אז לכל 
+\begin_inset Formula $A\subseteq\Omega$
+\end_inset
+
+ מתקיים
+\begin_inset Formula 
+\[
+P\left(A\right)=\sum_{i=1}^{n}P\left(A|B_{i}\right)P\left(B_{i}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem*
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\shape italic
+כלל בייז
+\end_layout
+
+\end_inset
+
+יהיו 
+\begin_inset Formula $B_{1},\ldots,B_{n}$
+\end_inset
+
+ מאורעות זרים בזוגות מעל אותו מרחב מדגם כך ש-
+\begin_inset Formula $\biguplus_{i=1}^{n}B_{i}=\Omega$
+\end_inset
+
+,
+ וכן לכל 
+\begin_inset Formula $i\in\left\{ 1,\ldots,n\right\} $
+\end_inset
+
+ 
+\begin_inset Formula $P\left(B_{i}\right)>0$
+\end_inset
+
+.
+ אזי לכל 
+\begin_inset Formula $A\subseteq\Omega$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $P\left(A\right)>0$
+\end_inset
+
+ מתקיים
+\begin_inset Formula 
+\[
+P\left(B_{k}|A\right)=\frac{P\left(A|B_{k}\right)P\left(B_{k}\right)}{\sum_{i=1}^{n}P\left(A|B_{i}\right)P\left(B_{i}\right)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+נאמר כי המאורעות 
+\begin_inset Formula $A,B\subseteq\Omega$
+\end_inset
+
+ 
+\series bold
+בלתי תלויים 
+\series default
+אם ורק אם מתקיים אחד מהתנאים הבאים:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $P\left(A\cap B\right)=P\left(A\right)P\left(B\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $P\left(B\right)>0$
+\end_inset
+
+ אז 
+\begin_inset Formula $P\left(A|B\right)=P\left(A\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $P\left(A\right)>0$
+\end_inset
+
+ אז 
+\begin_inset Formula $P\left(B|A\right)=P\left(B\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Theorem*
+אם 
+\begin_inset Formula $A$
+\end_inset
+
+ ו-
+\begin_inset Formula $B$
+\end_inset
+
+ מאורעות בלתי תלויים אזי גם הבאים בלתי תלויים:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $A$
+\end_inset
+
+ ו-
+\begin_inset Formula $B^{c}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $A^{c}$
+\end_inset
+
+ ו-
+\begin_inset Formula $B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $A^{c}$
+\end_inset
+
+ ו-
+\begin_inset Formula $B^{c}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+משתנים מקריים חד-מימדיים
+\end_layout
+
+\begin_layout Definition*
+פונקציה 
+\begin_inset Formula $X:\Omega\rightarrow\mathbb{R}$
+\end_inset
+
+ תיקרא 
+\series bold
+משתנה מקרי חד-מימדי
+\series default
+ אם 
+\begin_inset Formula $\left\{ \omega\in\Omega\left|X\left(\omega\right)\leq k\right.\right\} $
+\end_inset
+
+ הינו מאורע לכל 
+\begin_inset Formula $k\in\mathbb{R}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Notation*
+אחר מעבר למשתנים מקריים,
+ נסמן מאורעות על ידי אילוצים על המשתנים המקריים:
+\begin_inset Formula 
+\[
+\left(X=k\right)\triangleq\left\{ \omega\in\Omega\left|X\left(\omega\right)=k\right.\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+יהי 
+\begin_inset Formula $X$
+\end_inset
+
+ משתנה מקרי.
+ 
+\series bold
+התומך 
+\series default
+של 
+\begin_inset Formula $X$
+\end_inset
+
+ מוגדר להיות
+\begin_inset Formula 
+\[
+\boldsymbol{S_{X}=\text{Supp}_{X}}\triangleq\text{Im}\left(X\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+
+\series bold
+פונקצית התפלגות מצטברת 
+\series default
+של משתנה מקרי 
+\begin_inset Formula $X$
+\end_inset
+
+ היא הפונקציה 
+\begin_inset Formula $F_{X}:\mathbb{R}\rightarrow\left[0,1\right]$
+\end_inset
+
+ כך שלכל 
+\begin_inset Formula $k\in S_{X}$
+\end_inset
+
+ מתקיים
+\begin_inset Formula 
+\[
+F_{X}\left(k\right)=P\left(X\leq k\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim*
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\shape italic
+תכונות של פונקצית התפלגות מצטברת
+\end_layout
+
+\end_inset
+
+תהי 
+\begin_inset Formula $f:\mathbb{R}\rightarrow\left[0,1\right]$
+\end_inset
+
+.
+ קיים משתנה מקרי 
+\begin_inset Formula $X$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $f=F_{X}$
+\end_inset
+
+ אם ורק אם כל הבאים מתקיימים:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\lim_{k\rightarrow-\infty}F_{X}\left(k\right)=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\lim_{k\rightarrow\infty}F_{X}\left(k\right)=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $F_{X}$
+\end_inset
+
+ מונוטונית עולה.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $F_{X}$
+\end_inset
+
+ רציפה מימין,
+ כלומר לכל 
+\begin_inset Formula $k\in\mathbb{R}$
+\end_inset
+
+ 
+\begin_inset Formula $F_{X}\left(k\right)=\lim_{h\rightarrow0^{+}}F_{X}\left(k+h\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+משתנים מקריים בדידים
+\end_layout
+
+\begin_layout Definition*
+משתנה מקרי 
+\begin_inset Formula $X$
+\end_inset
+
+ יקרא 
+\series bold
+בדיד 
+\series default
+אם קיימת 
+\begin_inset Formula $S\subset\mathbb{R}$
+\end_inset
+
+ סופית או בת מניה כך שלכל 
+\begin_inset Formula $k\in S$
+\end_inset
+
+ מתקיים כי 
+\begin_inset Formula $P\left(X=k\right)>0$
+\end_inset
+
+ וגם 
+\begin_inset Formula $\sum_{k\in S}P\left(X=k\right)=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+יהי 
+\begin_inset Formula $X$
+\end_inset
+
+ משתנה מקרי ויהיו 
+\begin_inset Formula $n,m\in\mathbb{Z}$
+\end_inset
+
+.
+ נאמר כי 
+\begin_inset Formula $X$
+\end_inset
+
+ מתפלג
+\series bold
+ אחיד בדיד
+\series default
+ בין 
+\begin_inset Formula $n$
+\end_inset
+
+ ל-
+\begin_inset Formula $m$
+\end_inset
+
+ ונסמן 
+\begin_inset Formula $X\sim U\left[n,m\right]$
+\end_inset
+
+ אם 
+\begin_inset Formula 
+\[
+S_{X}=\left\{ k\in\mathbb{Z}\left|n\leq k\leq m\right.\right\} 
+\]
+
+\end_inset
+
+ולכל 
+\begin_inset Formula $k\in S_{X}$
+\end_inset
+
+ מתקיים
+\begin_inset Formula 
+\[
+P\left(X=k\right)=\frac{1}{m-n+1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+יהיו 
+\begin_inset Formula $X$
+\end_inset
+
+ משתנה מקרי ו-
+\begin_inset Formula $p\in\left[0,1\right]$
+\end_inset
+
+.
+ נאמר כי 
+\begin_inset Formula $X$
+\end_inset
+
+ מתפלג 
+\series bold
+ברנולי
+\series default
+ או 
+\series bold
+אינדיקטור 
+\series default
+עם הסתברות 
+\begin_inset Formula $p$
+\end_inset
+
+ אם
+\begin_inset Formula 
+\[
+S_{X}=\left\{ 0,1\right\} 
+\]
+
+\end_inset
+
+ולכל 
+\begin_inset Formula $k\in S_{X}$
+\end_inset
+
+ מתקיים
+\begin_inset Formula 
+\[
+P\left(X=k\right)=\begin{cases}
+1-p & k=0\\
+p & k=1
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+יהיו 
+\begin_inset Formula $X$
+\end_inset
+
+ משתנה מקרי,
+ 
+\begin_inset Formula $p\in\left[0,1\right]$
+\end_inset
+
+ ו-
+\numeric on
+
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+
+\numeric off
+.
+ נאמר כי 
+\begin_inset Formula $X$
+\end_inset
+
+ מתפלג 
+\series bold
+בינומי 
+\series default
+ונסמן 
+\begin_inset Formula $X\sim\text{Bin}\left(n,p\right)$
+\end_inset
+
+ אם הוא מתאר את מספר ההצלחות ב-
+\begin_inset Formula $n$
+\end_inset
+
+ ניסויי ברנולי עם הסתברות 
+\begin_inset Formula $p$
+\end_inset
+
+ בלתי תלויים.
+\end_layout
+
+\begin_layout Claim*
+יהיו 
+\begin_inset Formula $p\in\left[0,1\right],n\in\mathbb{N}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $X\sim\text{Bin}\left(n,p\right)$
+\end_inset
+
+.
+ אז 
+\begin_inset Formula $S_{X}=\left\{ k\in\mathbb{N}\left|0\leq k\leq n\right.\right\} $
+\end_inset
+
+ ולכל 
+\begin_inset Formula $k\in S_{X}$
+\end_inset
+
+ מתקיים
+\begin_inset Formula 
+\[
+P\left(X=k\right)={n \choose k}p^{k}\left(1-p\right)^{n-k}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+יהיו 
+\begin_inset Formula $X$
+\end_inset
+
+ משתנה מקרי ו-
+\begin_inset Formula $p\in\left[0,1\right]$
+\end_inset
+
+.
+ נאמר כי 
+\begin_inset Formula $X$
+\end_inset
+
+ מתפלג 
+\series bold
+גיאומטרית 
+\series default
+עם הסתברות 
+\begin_inset Formula $p$
+\end_inset
+
+ ונסמן 
+\begin_inset Formula $X\sim\text{Geo}\left(p\right)$
+\end_inset
+
+ אם 
+\begin_inset Formula $X$
+\end_inset
+
+ מונה את מספר ניסויי הברנולי הבלתי תלויים עם הסתברות 
+\begin_inset Formula $p$
+\end_inset
+
+ עד להצלחה הראשונה (כולל) מתוך סדרת ניסויים אינסופית.
+\end_layout
+
+\begin_layout Claim*
+יהיו 
+\begin_inset Formula $p\in\left[0,1\right]$
+\end_inset
+
+ ו-
+\begin_inset Formula $X\sim\text{Geo}\left(p\right)$
+\end_inset
+
+.
+ אז 
+\begin_inset Formula $S_{X}=\mathbb{N}$
+\end_inset
+
+ ולכל 
+\begin_inset Formula $k\in S_{X}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+P\left(X=k\right)=p\left(1-p\right)^{k-1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim*
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+נוסחת הזנב
+\end_layout
+
+\end_inset
+
+יהיו 
+\begin_inset Formula $p\in\left[0,1\right]$
+\end_inset
+
+ ו-
+\begin_inset Formula $X\sim\text{Geo}\left(p\right)$
+\end_inset
+
+.
+ אז לכל 
+\begin_inset Formula $k\in S_{X}$
+\end_inset
+
+ מתקיים:
+\begin_inset Formula 
+\[
+P\left(X>k\right)=\left(1-p\right)^{k}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim*
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+תכונת חוסר הזיכרון
+\end_layout
+
+\end_inset
+
+יהיו 
+\begin_inset Formula $p\in\left[0,1\right]$
+\end_inset
+
+ ו-
+\begin_inset Formula $X\sim\text{Geo}\left(p\right)$
+\end_inset
+
+.
+ אז לכל 
+\begin_inset Formula $k\leq t\in\mathbb{N}$
+\end_inset
+
+ מתקיים
+\begin_inset Formula 
+\[
+P\left(X>t|X>k\right)=P\left(T>t-k\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+יהיו 
+\begin_inset Formula $p\in\left[0,1\right],r\in\mathbb{N}^{+}$
+\end_inset
+
+ ו-
+\begin_inset Formula $X$
+\end_inset
+
+ משתנה מקרי.
+ נאמר כי 
+\begin_inset Formula $X$
+\end_inset
+
+ מתפלג 
+\series bold
+בינומית שלילית 
+\series default
+עם פרמטרים 
+\begin_inset Formula $r,p$
+\end_inset
+
+ ונסמן 
+\begin_inset Formula $X\sim\text{NB}\left(r,p\right)$
+\end_inset
+
+ אם 
+\begin_inset Formula $X$
+\end_inset
+
+ מונה את מספר ניסויי הברנולי עם הסתברות 
+\begin_inset Formula $p$
+\end_inset
+
+ עד ההצלחה ה-
+\begin_inset Formula $r$
+\end_inset
+
+ (כולל) מתוך סדרת ניסויים אינסופית.
+\end_layout
+
+\begin_layout Claim*
+יהיו 
+\begin_inset Formula $p\in\left[0,1\right],r\in\mathbb{N}^{+}$
+\end_inset
+
+ ו-
+\begin_inset Formula $X\sim\text{NB}\left(r,p\right)$
+\end_inset
+
+.
+ אז 
+\begin_inset Formula $S_{X}=\left\{ k\in\mathbb{N}\left|r\leq k\right.\right\} $
+\end_inset
+
+ ולכל 
+\begin_inset Formula $k\in S_{X}$
+\end_inset
+
+ מתקיים:
+\begin_inset Formula 
+\[
+P\left(X=k\right)={k-1 \choose r-1}p^{r}\left(1-p\right)^{k-r}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+יהיו 
+\begin_inset Formula $n\in\mathbb{N}^{+},D\leq N\in\mathbb{N}^{+}$
+\end_inset
+
+ ו-
+\begin_inset Formula $X$
+\end_inset
+
+ משתנה מקרי.
+ נאמר כי 
+\begin_inset Formula $X$
+\end_inset
+
+ מתפלג 
+\series bold
+היפר גאומטרית 
+\series default
+עם פרמטרים 
+\begin_inset Formula $N,D,n$
+\end_inset
+
+ ונסמן 
+\begin_inset Formula $X\sim\text{HG}\left(N,D,n\right)$
+\end_inset
+
+ אם מאוכלוסיה של 
+\begin_inset Formula $N$
+\end_inset
+
+ פריטים שבהם 
+\begin_inset Formula $D$
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+מיוחדים
+\begin_inset Quotes erd
+\end_inset
+
+ ו-
+\begin_inset Formula $N-D$
+\end_inset
+
+ רגילים,
+ מוצאים ללא החזרה 
+\begin_inset Formula $n$
+\end_inset
+
+ פריטים כך ש-
+\begin_inset Formula $X$
+\end_inset
+
+ מספר הפריטים המיוחדים שהתקבלו.
+\end_layout
+
+\begin_layout Claim*
+יהיו 
+\begin_inset Formula $n\in\mathbb{N}^{+},D\leq N\in\mathbb{N}^{+}$
+\end_inset
+
+ ו-
+\begin_inset Formula $X\sim\text{HG}\left(N,D,n\right)$
+\end_inset
+
+.
+ אז 
+\begin_inset Formula $S_{X}=\left\{ k\in\mathbb{N}\left|\max\left\{ 0,n-\left(N-D\right)\right\} \leq k\leq\min\left\{ n,D\right\} \right.\right\} $
+\end_inset
+
+ ולכל 
+\begin_inset Formula $k\in S_{X}$
+\end_inset
+
+ מתקיים:
+\begin_inset Formula 
+\[
+P\left(X=k\right)=\frac{{D \choose k}{N-D \choose n-k}}{{N \choose n}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+יהיו 
+\begin_inset Formula $0<\lambda\in\mathbb{R}$
+\end_inset
+
+ ו-
+\begin_inset Formula $X$
+\end_inset
+
+ משתנה מקרי.
+ נאמר כי 
+\begin_inset Formula $X$
+\end_inset
+
+ הוא 
+\series bold
+משתנה פואסוני 
+\series default
+עם פרמטר 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ ונסמן 
+\begin_inset Formula $X\sim\text{Poi}\left(\lambda\right)$
+\end_inset
+
+ אם 
+\begin_inset Formula $S_{X}=\mathbb{N}$
+\end_inset
+
+ ולכל 
+\begin_inset Formula $k\in S_{X}$
+\end_inset
+
+ מתקיים:
+\begin_inset Formula 
+\[
+P\left(X=k\right)=\frac{\lambda^{k}e^{-\lambda}}{k!}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim*
+יהיו 
+\begin_inset Formula $0<n\in\mathbb{N},\lambda\in\mathbb{R}$
+\end_inset
+
+ ו-
+\begin_inset Formula $X_{n}\sim\text{Bin}\left(n,\frac{\lambda}{n}\right)$
+\end_inset
+
+.
+ אז לכל 
+\begin_inset Formula $k\in S_{X_{n}}$
+\end_inset
+
+ מתקיים
+\begin_inset Formula 
+\[
+\lim_{n\rightarrow\infty}P\left(X_{n}=k\right)=\frac{\lambda e^{-\lambda}}{k!}
+\]
+
+\end_inset
+
+סימבולית:
+\begin_inset Formula 
+\[
+\lim_{n\rightarrow\infty}X_{n}\sim\text{Poi}\left(\lambda\right)
+\]
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim*
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\shape italic
+קירוב להתפלגות פואסונית
+\end_layout
+
+\end_inset
+
+ יהיו 
+\begin_inset Formula $0<n\in\mathbb{N},p\in\left[0,1\right]$
+\end_inset
+
+ ו-
+\begin_inset Formula $X\sim\text{Bin}\left(n,p\right)$
+\end_inset
+
+.
+ אם 
+\begin_inset Formula $n$
+\end_inset
+
+ גדול מאוד ו-
+\begin_inset Formula $p$
+\end_inset
+
+ קטן מאוד אז לכל 
+\begin_inset Formula $k\in S_{X}$
+\end_inset
+
+ מתקיים בקירוב:
+\begin_inset Formula 
+\[
+P\left(X=k\right)={n \choose k}p^{k}\left(1-p\right)^{n-k}\approx\frac{\left(np\right)^{k}e^{-np}}{k!}
+\]
+
+\end_inset
+
+כלל אצבע:
+ 
+\begin_inset Formula $n\geq50$
+\end_inset
+
+ ו-
+\begin_inset Formula $np<5$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+משתנים מקריים רציפים
+\end_layout
+
+\begin_layout Definition*
+משתנה מקרי 
+\begin_inset Formula $X$
+\end_inset
+
+ נקרא 
+\series bold
+רציף 
+\series default
+אם קיימת 
+\series bold
+פונקצית צפיפות
+\series default
+ 
+\begin_inset Formula $f_{X}:\mathbb{R}\rightarrow\left[0,\infty\right)$
+\end_inset
+
+ רציפה למקוטעין כך שלכל 
+\begin_inset Formula $x\in\mathbb{R}$
+\end_inset
+
+ מתקיים
+\begin_inset Formula 
+\[
+F_{X}\left(x\right)\triangleq\intop_{-\infty}^{x}f_{X}\left(t\right)dt
+\]
+
+\end_inset
+
+ במקרה זה פונקציית ההתפלגות המצטברת רציפה ב-
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Claim*
+יהי 
+\begin_inset Formula $X$
+\end_inset
+
+ משתנה מקרי רציף ויהיו 
+\begin_inset Formula $a\leq b\in\mathbb{R}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $P\left(a<X\leq b\right)=F_{X}\left(b\right)-F_{X}\left(a\right)=\intop_{a}^{b}f_{X}\left(x\right)dx$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $P\left(X=a\right)=\intop_{a}^{a}f_{X}\left(x\right)dx=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $P\left(X<a\right)=P\left(X\leq a\right)=\intop_{-\infty}^{a}f_{X}\left(t\right)dt=F_{X}\left(a\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $P\left(a\leq X\leq b\right)=P\left(a<X<b\right)=\intop_{a}^{b}f_{X}\left(x\right)dx=F_{X}\left(b\right)-F_{X}\left(a\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $F_{X}\left(\infty\right)=\intop_{\mathbb{R}}f\left(x\right)dx=1$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Theorem*
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\shape italic
+המשפט היסודי של החשבון הדיפרנציאלי והאינטגרלי
+\end_layout
+
+\end_inset
+
+ יהא 
+\begin_inset Formula $X$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ רציף.
+ אז לכל 
+\begin_inset Formula $x\in\mathbb{R}$
+\end_inset
+
+ מתקיים
+\begin_inset Formula 
+\[
+\frac{d}{dx}F_{X}\left(x\right)=f_{X}\left(x\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+תהא 
+\begin_inset Formula $f:\mathbb{R}\rightarrow\mathbb{R}$
+\end_inset
+
+ רציפה למקוטעין.
+ 
+\begin_inset Formula $f$
+\end_inset
+
+ תיקרא 
+\series bold
+פונקצית צפיפות 
+\series default
+אם מתקיים:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\forall x\in\mathbb{R}.f\left(x\right)\geq0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\intop_{\mathbb{R}}f\left(x\right)dx=1$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+יהיו 
+\begin_inset Formula $a<b\in\mathbb{R}$
+\end_inset
+
+ ו-
+\begin_inset Formula $X$
+\end_inset
+
+ משתנה מקרי רציף.
+ נאמר כי 
+\begin_inset Formula $X$
+\end_inset
+
+ מתפלג 
+\series bold
+אחיד רציף 
+\series default
+בקטע 
+\begin_inset Formula $\left[a,b\right]$
+\end_inset
+
+ ונסמן 
+\begin_inset Formula $X\sim U\left(a,b\right)$
+\end_inset
+
+ אם לכל 
+\begin_inset Formula $x\in\mathbb{R}$
+\end_inset
+
+ מתקיים
+\begin_inset Formula 
+\[
+f_{X}\left(x\right)=\begin{cases}
+\frac{1}{b-a} & x\in\left[a,b\right]\\
+0 & x\in\mathbb{R}\setminus\left[a,b\right]
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim*
+יהיו 
+\begin_inset Formula $a<b\in\mathbb{R}$
+\end_inset
+
+ ו-
+\begin_inset Formula $X\sim U\left(a,b\right)$
+\end_inset
+
+.
+ אז לכל 
+\begin_inset Formula $x\in\mathbb{R}$
+\end_inset
+
+ מתקיים
+\begin_inset Formula 
+\[
+F_{X}\left(x\right)=\begin{cases}
+0 & x\in\left(-\infty,a\right]\\
+\frac{x-a}{b-a} & x\in\left[a,b\right]\\
+1 & x\in\left[b,\infty\right)
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+
+\series bold
+תהליך פואסון 
+\series default
+הינו תהליך אקראי 
+\begin_inset Formula $N\left(t\right)$
+\end_inset
+
+ הסופר את מספר האירועים שקרו עד זמן 
+\begin_inset Formula $t$
+\end_inset
+
+ לכל 
+\begin_inset Formula $t\geq0$
+\end_inset
+
+,
+ כאשר התנאים הבאים מתקיימים:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $N\left(0\right)=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+לכל אינטרוול זמן 
+\begin_inset Formula $\left(s,s+t\right)$
+\end_inset
+
+ מתקיים כי 
+\begin_inset Formula $N\left(s+t\right)-N\left(s\right)\sim\text{Poi}\left(\lambda t\right)$
+\end_inset
+
+ כאשר 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ הינו ממוצע אירועים ליחידת זמן.
+\end_layout
+
+\begin_layout Enumerate
+מספרי האירועים הקטעי זמן זרים הם בלתי תלויים.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+יהיו 
+\begin_inset Formula $0<\lambda\in\mathbb{R}$
+\end_inset
+
+ ו-
+\begin_inset Formula $X$
+\end_inset
+
+ משתנה מקרי רציף.
+ נאמר כי 
+\begin_inset Formula $X$
+\end_inset
+
+ מתפלג 
+\series bold
+מעריכית 
+\series default
+עם פרמטר 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ ונסמן 
+\begin_inset Formula $X\sim\exp\left(\lambda\right)$
+\end_inset
+
+ אם
+\begin_inset Formula 
+\[
+f_{X}\left(x\right)=\begin{cases}
+0 & x<0\\
+\lambda e^{-\lambda x} & x\geq0
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim*
+יהיו 
+\begin_inset Formula $0<\lambda\in\mathbb{R}$
+\end_inset
+
+ ו-
+\begin_inset Formula $X\sim\exp\left(\lambda\right)$
+\end_inset
+
+.
+ אז לכל 
+\begin_inset Formula $x\in\mathbb{R}$
+\end_inset
+
+ מתקיים
+\begin_inset Formula 
+\[
+F_{X}\left(x\right)=\begin{cases}
+0 & x<0\\
+1-e^{-\lambda x} & x\geq0
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem*
+יהי 
+\begin_inset Formula $N\left(t\right)$
+\end_inset
+
+ תהליך פואסון עם פרמטר 
+\begin_inset Formula $0<\lambda\in\mathbb{R}$
+\end_inset
+
+ מופעים ליחידת זמן.
+ אזי הזמן באותן יחידות זמן עד המופע הראשון (וכן הזמן בין שני מופעים 
+\series bold
+עוקבים
+\series default
+) מתפלג מעריכית עם פרמטר 
+\begin_inset Formula $\lambda$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Claim*
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+תכונת חוסרת הזיכרון של התפלגות מעריכית
+\end_layout
+
+\end_inset
+
+יהיו 
+\begin_inset Formula $0<\lambda\in\mathbb{R}$
+\end_inset
+
+ ו-
+\begin_inset Formula $X\sim\exp\left(\lambda\right)$
+\end_inset
+
+.
+ אז לכל 
+\begin_inset Formula $a\leq b\in\mathbb{R}$
+\end_inset
+
+ מתקיים
+\begin_inset Formula 
+\[
+P\left(X>b|X>a\right)=P\left(T>b-a\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+יהיו 
+\begin_inset Formula $0<\sigma\in\mathbb{R},\mu\in\mathbb{R}$
+\end_inset
+
+ ו-
+\begin_inset Formula $X$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ רציף.
+ נאמר כי 
+\begin_inset Formula $X$
+\end_inset
+
+ מתפלג 
+\series bold
+נורמלית 
+\series default
+עם פרמטרים 
+\begin_inset Formula $\mu,\sigma$
+\end_inset
+
+ ונסמן 
+\begin_inset Formula $X\sim N\left(\mu,\sigma^{2}\right)$
+\end_inset
+
+ אם לכל 
+\begin_inset Formula $x\in\mathbb{R}$
+\end_inset
+
+ מתקיים
+\begin_inset Formula 
+\[
+f_{X}\left(x\right)=\frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{\left(x-\mu\right)^{2}}{2\sigma^{2}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+אם 
+\begin_inset Formula $\mu=0,\sigma=1$
+\end_inset
+
+ נאמר כי 
+\begin_inset Formula $X$
+\end_inset
+
+ מתפלג 
+\series bold
+נורמלית סטנדרטית 
+\series default
+ונסמנו ב-
+\begin_inset Formula $Z$
+\end_inset
+
+.
+ נסמן 
+\begin_inset Formula $F_{Z}\triangleq\Phi$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem*
+יהיו 
+\begin_inset Formula $0<\sigma\in\mathbb{R},\mu\in\mathbb{R}$
+\end_inset
+
+ ו-
+\begin_inset Formula $X\sim N\left(\mu,\sigma^{2}\right)$
+\end_inset
+
+.
+ אז לכל 
+\begin_inset Formula $a,b\in\mathbb{R}$
+\end_inset
+
+ מתקיים
+\begin_inset Formula 
+\[
+aX+b\sim N\left(a\mu+b,\left(a\sigma\right)^{2}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Corollary*
+יהיו 
+\begin_inset Formula $0<\sigma\in\mathbb{R},\mu\in\mathbb{R}$
+\end_inset
+
+ ו-
+\begin_inset Formula $X\sim N\left(\mu,\sigma^{2}\right)$
+\end_inset
+
+.
+ אזי 
+\begin_inset Formula $Z=\frac{X-\mu}{\sigma}\sim N\left(0,1\right)$
+\end_inset
+
+,
+ כלומר לכל 
+\begin_inset Formula $x\in\mathbb{R}$
+\end_inset
+
+ מתקיים
+\begin_inset Formula 
+\[
+F_{X}\left(x\right)=\Phi\left(\frac{x-\mu}{\sigma}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark*
+ההגדרה והטענה הבאה הם לשם השלמות ולא נלמדו בכיתה.
+\end_layout
+
+\begin_layout Definition*
+נגדיר את 
+\series bold
+טרנספורמציית התקנון
+\series default
+ 
+\begin_inset Formula $T:\mathbb{R}\times\mathbb{R}^{+}\times\left(\Omega\rightarrow\mathbb{R}\right)\rightarrow\left(\Omega\rightarrow\mathbb{R}\right)$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+T\left(X,\mu,\sigma\right)=\frac{X-\mu}{\sigma}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim*
+יהיו 
+\begin_inset Formula $0<\sigma\in\mathbb{R},\mu\in\mathbb{R}$
+\end_inset
+
+ ו-
+\begin_inset Formula $X\sim N\left(\mu,\sigma^{2}\right)$
+\end_inset
+
+.
+ אזי
+\begin_inset Formula 
+\[
+T\left(X,\mu,\sigma\right)=Z
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark*
+כאשר נתבקש למצוא ערך של התפלגות נורמלית נתקנן את המשתנה ונמצא את ההסתברות מתוך טבלת 
+\begin_inset Formula $Z$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+מומנטים ומדדים מרכזיים
+\end_layout
+
+\begin_layout Definition*
+יהי 
+\begin_inset Formula $X$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ בעל פונקצית התפלגות מצטברת 
+\begin_inset Formula $F_{X}$
+\end_inset
+
+ 
+\series bold
+הפיכה
+\series default
+,
+ ויהא 
+\begin_inset Formula $p\in\left[0,1\right]$
+\end_inset
+
+.
+ 
+\series bold
+האחוזון ה-
+\begin_inset Formula $\boldsymbol{p}$
+\end_inset
+
+ 
+\series default
+של 
+\begin_inset Formula $X$
+\end_inset
+
+ הוא 
+\begin_inset Formula 
+\[
+x_{p}=\sup\left\{ t\in\mathbb{R}\left|F_{X}\left(t\right)\leq p\right.\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim*
+אם 
+\begin_inset Formula $X$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ כך ש-
+\begin_inset Formula $F_{X}$
+\end_inset
+
+ הפיכה אזי האחוזון ה-
+\begin_inset Formula $p$
+\end_inset
+
+ 
+\begin_inset Formula $x_{\left(\cdot\right)}:\left[0,1\right]\rightarrow\mathbb{R}$
+\end_inset
+
+ ההופכית שלה.
+ כלומר לכל 
+\begin_inset Formula $x\in\mathbb{R}$
+\end_inset
+
+ ולכל 
+\begin_inset Formula $p\in\left[0,1\right]$
+\end_inset
+
+ מתקיים:
+\begin_inset Formula 
+\begin{align*}
+F_{X}\left(x_{p}\right) & =p\\
+x_{F_{X}\left(x\right)} & =x
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+אחוזונים מיוחדים
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\series bold
+החציון:
+ 
+\begin_inset Formula $x_{0.5}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+רבעון תחתון:
+ 
+\series default
+
+\begin_inset Formula $x_{0.25}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+רבעון עליון:
+ 
+\begin_inset Formula $x_{0.75}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+עשירון תחתון:
+ 
+\series default
+
+\begin_inset Formula $x_{0.1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+עשירון עליון:
+ 
+\begin_inset Formula $x_{0.9}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+יהי 
+\begin_inset Formula $X$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ בדיד.
+ 
+\series bold
+התוחלת
+\family roman
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+(
+\lang english
+expectation
+\lang hebrew
+) של 
+\begin_inset Formula $X$
+\end_inset
+
+ היא
+\begin_inset Formula 
+\[
+\boldsymbol{E\left[X\right]}\triangleq\sum_{k\in S_{X}}kP\left(X=k\right)
+\]
+
+\end_inset
+
+נאמר כי התוחלת 
+\begin_inset Formula $E\left[X\right]$
+\end_inset
+
+ 
+\series bold
+קיימת
+\series default
+ אם היא מתכנסת בהחלט (כטור).
+ נאמר כי התוחלת
+\series bold
+ 
+\begin_inset Formula $E\left[X\right]$
+\end_inset
+
+ סופית 
+\series default
+(והמ
+\begin_inset Quotes erd
+\end_inset
+
+מ יקרא אינטגרבילי) אם הטור הינו סופי.
+\end_layout
+
+\begin_layout Claim*
+יהי 
+\begin_inset Formula $X$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ בדיד,
+ 
+\begin_inset Formula $p\in\left[0,1\right]$
+\end_inset
+
+,
+ 
+\begin_inset Formula $a\leq b\in\mathbb{Z}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $n,r\in\mathbb{N}^{+}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $D\leq N\in\mathbb{N}^{+}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $0<\lambda\in\mathbb{R}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $X\sim U\left[a,b\right]$
+\end_inset
+
+ אז 
+\begin_inset Formula $E\left[X\right]=\frac{a+b}{2}$
+\end_inset
+
+.
+\series bold
+\color purple
+טעות מסוג 2
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $X\sim\text{Bin}\left(n,p\right)$
+\end_inset
+
+ אז 
+\begin_inset Formula $E\left[X\right]=np$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $X\sim\text{Geo}\left(p\right)$
+\end_inset
+
+ אז 
+\begin_inset Formula $E\left[X\right]=\frac{1}{p}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $X\sim\text{NB}\left(r,p\right)$
+\end_inset
+
+ אז 
+\begin_inset Formula $E\left[X\right]=\frac{r}{p}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $X\sim\text{HG}\left(N,D,n\right)$
+\end_inset
+
+ אז 
+\begin_inset Formula $E\left[X\right]=n\frac{D}{N}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $X\sim\text{Poi}\left(\lambda\right)$
+\end_inset
+
+ אז 
+\begin_inset Formula $E\left[X\right]=\lambda$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Definition*
+יהי 
+\begin_inset Formula $X$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ רציף.
+ 
+\series bold
+התוחלת
+\series default
+ של 
+\begin_inset Formula $X$
+\end_inset
+
+ היא
+\begin_inset Formula 
+\[
+\boldsymbol{E\left[X\right]}\triangleq\intop_{\mathbb{R}}xf_{X}\left(x\right)dx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+נאמר כי התוחלת 
+\begin_inset Formula $E\left[X\right]$
+\end_inset
+
+ 
+\series bold
+קיימת
+\series default
+ אם היא מתכנסת בהחלט (כאינטגרל).
+ נאמר כי התוחלת
+\series bold
+ 
+\begin_inset Formula $E\left[X\right]$
+\end_inset
+
+ סופית 
+\series default
+(והמ
+\begin_inset Quotes erd
+\end_inset
+
+מ יקרא אינטגרבילי) אם האינטגרל הינו סופי.
+\end_layout
+
+\begin_layout Claim*
+יהי 
+\begin_inset Formula $X$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ רציף,
+ 
+\begin_inset Formula $a<b\in\mathbb{R}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $0<\lambda,\sigma\in\mathbb{R}$
+\end_inset
+
+ ו-
+\begin_inset Formula $\mu\in\mathbb{R}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $X\sim U\left(a,b\right)$
+\end_inset
+
+ אז 
+\begin_inset Formula $E\left[X\right]=\frac{a+b}{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $X\sim\exp\left(\lambda\right)$
+\end_inset
+
+ אז 
+\begin_inset Formula $E\left[X\right]=\frac{1}{\lambda}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $X\sim N\left(\mu,\sigma^{2}\right)$
+\end_inset
+
+ אז 
+\begin_inset Formula $E\left[X\right]=\mu$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Remark*
+לא לכל משתנה מקרי קיימת תוחלת.
+\end_layout
+
+\begin_layout Claim*
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\shape italic
+תכונות התוחלת
+\end_layout
+
+\end_inset
+
+ יהיו 
+\begin_inset Formula $X,Y$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\series bold
+ליניאריות:
+ 
+\series default
+\shape italic
+לכל 
+\begin_inset Formula $a,b\in\mathbb{R}$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $E\left[aX+b\right]=aE\left[X\right]+b$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+\shape italic
+סימטריה:
+ 
+\series default
+אם 
+\begin_inset Formula $X$
+\end_inset
+
+ סימטרי סביב 
+\begin_inset Formula $\mu\in\mathbb{R}$
+\end_inset
+
+ (כלומר לכל 
+\begin_inset Formula $\varepsilon\in\mathbb{R}$
+\end_inset
+
+ מתקיים כי 
+\begin_inset Formula $P\left(X\geq\mu+\varepsilon\right)=P\left(X\leq\mu-\varepsilon\right)$
+\end_inset
+
+) אזי 
+\begin_inset Formula $E\left[X\right]=\mu$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+\shape italic
+אדיטיביות:
+ 
+\series default
+לכל 
+\begin_inset Formula $a,b\in\mathbb{R}$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $E\left[X+Y\right]=E\left[X\right]+E\left[Y\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+\shape italic
+תוחלת של פונקציה של משתנה מקרי:
+\series default
+לכל פונקציה 
+\begin_inset Formula $g$
+\end_inset
+
+,
+ אם 
+\begin_inset Formula $X$
+\end_inset
+
+ בדיד אז 
+\begin_inset Formula 
+\[
+E\left[g\left(X\right)\right]=\sum_{x\in S_{X}}g\left(x\right)P\left(X=x\right)
+\]
+
+\end_inset
+
+ואם 
+\begin_inset Formula $X$
+\end_inset
+
+ רציף אז 
+\begin_inset Formula 
+\[
+E\left[g\left(X\right)\right]=\intop_{\mathbb{R}}g\left(x\right)f_{X}\left(x\right)dx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem*
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\shape italic
+אי-שיוויון מרקוב
+\end_layout
+
+\end_inset
+
+ יהי 
+\begin_inset Formula $X$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ אי-שלילי.
+ אז לכל 
+\begin_inset Formula $a>0$
+\end_inset
+
+ מתקיים:
+\begin_inset Formula 
+\[
+P\left(X\geq a\right)\leq\frac{E\left[X\right]}{a}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+יהי 
+\begin_inset Formula $X$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ
+\series bold
+.
+ השונות
+\series default
+ (
+\lang english
+(variance
+\lang hebrew
+ של 
+\begin_inset Formula $X$
+\end_inset
+
+ היא
+\begin_inset Formula 
+\[
+\boldsymbol{\text{Var}\left(X\right)}\triangleq E\left[\left(X-E\left[X\right]\right)^{2}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim*
+יהי 
+\begin_inset Formula $X$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ,
+ 
+\begin_inset Formula $p\in\left[0,1\right]$
+\end_inset
+
+,
+ 
+\begin_inset Formula $a\leq b\in\mathbb{R}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $n,r\in\mathbb{N}^{+}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $D\leq N\in\mathbb{N}^{+}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $0<\lambda,\sigma\in\mathbb{R}$
+\end_inset
+
+ ו-
+\begin_inset Formula $\mu\in\mathbb{R}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $a,b\in\mathbb{Z}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $X\sim U\left[a,b\right]$
+\end_inset
+
+ אז 
+\begin_inset Formula $\text{Var}\left(X\right)=\frac{\left(b-a+1\right)^{2}-1}{12}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $X\sim\text{Bin}\left(n,p\right)$
+\end_inset
+
+ אז 
+\begin_inset Formula $\text{Var}\left(X\right)=np\left(1-p\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $X\sim\text{Geo}\left(p\right)$
+\end_inset
+
+ אז 
+\begin_inset Formula $\text{Var}\left(X\right)=\frac{1-p}{p^{2}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $X\sim\text{NB}\left(r,p\right)$
+\end_inset
+
+ אז 
+\begin_inset Formula $\text{Var}\left(X\right)=\frac{r\left(1-p\right)}{p^{2}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $X\sim\text{HG}\left(N,D,n\right)$
+\end_inset
+
+ אז 
+\begin_inset Formula $\text{Var}\left(X\right)=n\frac{D\left(N-n\right)}{N\left(N-1\right)}\left(1-\frac{D}{N}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $X\sim\text{Poi}\left(\lambda\right)$
+\end_inset
+
+ אז 
+\begin_inset Formula $\text{Var}\left(X\right)=\lambda$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $a<b$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $X\sim U\left(a,b\right)$
+\end_inset
+
+ אז 
+\begin_inset Formula $\text{Var}\left(X\right)=\frac{\left(b-a\right)^{2}}{12}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $X\sim\exp\left(\lambda\right)$
+\end_inset
+
+ אז 
+\begin_inset Formula $\text{Var}\left(X\right)=\frac{1}{\lambda^{2}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $X\sim N\left(\mu,\sigma^{2}\right)$
+\end_inset
+
+ אז 
+\begin_inset Formula $\text{Var}\left(X\right)=\sigma^{2}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Theorem*
+יהי 
+\begin_inset Formula $X$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ חד-מימדי.
+ אם 
+\begin_inset Formula $\left(E\left[X\right]\right)^{2}=E^{2}\left[X\right]$
+\end_inset
+
+ אזי
+\begin_inset Formula 
+\[
+\text{Var}\left(X\right)=E\left[X^{2}\right]-E^{2}\left[X\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+יהי 
+\begin_inset Formula $X$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ בעל שונות סופית.
+ 
+\series bold
+סטיית התקן 
+\series default
+(
+\lang english
+standard deviation
+\lang hebrew
+) של 
+\begin_inset Formula $X$
+\end_inset
+
+ היא
+\begin_inset Formula 
+\[
+\boldsymbol{\sigma_{X}}\triangleq\sqrt{\text{Var}\left(X\right)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem*
+יהי 
+\begin_inset Formula $X$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ בעל שונות סופית.
+ אז לכל 
+\begin_inset Formula $\varepsilon\in\mathbb{R}$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\text{Var}\left(X+\varepsilon\right)=\text{Var}\left(X\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition*
+יהיו 
+\begin_inset Formula $X,Y$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ.
+ נאמר כי 
+\begin_inset Formula $X,Y$
+\end_inset
+
+ 
+\series bold
+בלתי תלויים 
+\series default
+אם לכל 
+\begin_inset Formula $\left(x,y\right)\in S_{X}\times S_{Y}$
+\end_inset
+
+ מתקיים כי המאורעות 
+\begin_inset Formula $\left(X=x\right),\left(Y=y\right)$
+\end_inset
+
+ בלתי תלויים.
+\end_layout
+
+\begin_layout Theorem*
+יהיו 
+\begin_inset Formula $X,Y$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ ב
+\begin_inset Quotes erd
+\end_inset
+
+ת.
+ אזי
+\begin_inset Formula 
+\[
+\text{Var}\left(X+Y\right)=\text{Var}\left(X\right)+\text{Var}\left(Y\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem*
+יהי 
+\begin_inset Formula $X$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ בעל שונות סופית.
+ אז לכל 
+\begin_inset Formula $\alpha\in\mathbb{R}$
+\end_inset
+
+ מתקיים:
+\begin_inset Formula 
+\[
+\text{Var}\left(\alpha X\right)=\alpha^{2}\text{Var}\left(X\right)
+\]
+
+\end_inset
+
+בפרט:
+\begin_inset Formula 
+\[
+\sigma_{\alpha X}=\alpha\sigma_{X}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem*
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\shape italic
+אי-שיוויון צ'בישב
+\end_layout
+
+\end_inset
+
+ יהי 
+\begin_inset Formula $X$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ.
+ אז לכל 
+\begin_inset Formula $0<a\in\mathbb{R}$
+\end_inset
+
+ מתקיים:
+\begin_inset Formula 
+\[
+P\left(\left|X-E\left[X\right]\right|\geq a\right)\leq\frac{\text{Var}\left(X\right)}{a^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+יהי 
+\begin_inset Formula $X$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ ו-
+\begin_inset Formula $k\in\mathbb{N}$
+\end_inset
+
+.
+ 
+\series bold
+המומנט ה-
+\begin_inset Formula $\boldsymbol{k}$
+\end_inset
+
+
+\series default
+ של 
+\begin_inset Formula $X$
+\end_inset
+
+ הוא 
+\begin_inset Formula $m_{k}\triangleq E\left[X^{k}\right]$
+\end_inset
+
+,
+ בתנאי שהתוחלת מתכנסת בהחלט.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+יהי 
+\begin_inset Formula $X$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ.
+ 
+\series bold
+הפונקציה יוצרת מומנטים 
+\series default
+של 
+\begin_inset Formula $X$
+\end_inset
+
+ היא 
+\begin_inset Formula $M_{X}\left(t\right)\triangleq E\left[e^{tX}\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Claim*
+יהי 
+\begin_inset Formula $X$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ,
+ 
+\begin_inset Formula $p\in\left[0,1\right]$
+\end_inset
+
+,
+ 
+\begin_inset Formula $a\leq b\in\mathbb{R}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $n,r\in\mathbb{N}^{+}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $D\leq N\in\mathbb{N}^{+}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $0<\lambda,\sigma\in\mathbb{R}$
+\end_inset
+
+ ו-
+\begin_inset Formula $\mu\in\mathbb{R}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $a,b\in\mathbb{Z}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $X\sim U\left[a,b\right]$
+\end_inset
+
+ אז 
+\begin_inset Formula $M_{X}\left(t\right)=\frac{e^{at}\left(1-e^{\left(b-a+1\right)t}\right)}{\left(b-a+1\right)\left(1-e^{t}\right)}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $X\sim\text{Bin}\left(n,p\right)$
+\end_inset
+
+ אז 
+\begin_inset Formula $M_{X}\left(t\right)=\left(1-p+pe^{t}\right)^{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $X\sim\text{Geo}\left(p\right)$
+\end_inset
+
+ אז 
+\begin_inset Formula $M_{X}\left(t\right)=\frac{pe^{t}}{1-\left(1-p\right)e^{t}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $X\sim\text{Poi}\left(\lambda\right)$
+\end_inset
+
+ אז 
+\begin_inset Formula $M_{X}\left(t\right)=e^{\lambda\left(e^{t}-1\right)}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $a<b$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $X\sim U\left(a,b\right)$
+\end_inset
+
+ אז 
+\begin_inset Formula $M_{X}\left(t\right)=\frac{e^{tb}-e^{ta}}{t\left(b-a\right)}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $X\sim\exp\left(\lambda\right)$
+\end_inset
+
+ אז 
+\begin_inset Formula $M_{X}\left(t\right)=\frac{\lambda}{\lambda-t}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $X\sim N\left(\mu,\sigma^{2}\right)$
+\end_inset
+
+ אז 
+\begin_inset Formula $M_{X}\left(t\right)=e^{\mu t+\frac{1}{2}\sigma^{2}t^{2}}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim*
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+תכונות חשובות של פונקציה יוצרת מומנטים
+\end_layout
+
+\end_inset
+
+יהי 
+\begin_inset Formula $X$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $M_{X}\left(0\right)=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+לכל 
+\begin_inset Formula $k\in\mathbb{N}$
+\end_inset
+
+,
+ אם 
+\begin_inset Formula $M_{X}$
+\end_inset
+
+ גזירה 
+\begin_inset Formula $k$
+\end_inset
+
+ פעמים אז:
+\begin_inset Formula 
+\[
+\frac{d^{k}M_{X}}{dt^{k}}\left(0\right)=m_{k}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+לכל 
+\begin_inset Formula $a,b\in\mathbb{R}$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $M_{aX+b}\left(t\right)=e^{tb}M_{X}\left(at\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+אם קיים 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+ עבורו 
+\begin_inset Formula $M_{X}$
+\end_inset
+
+ קיימת ב-
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+ סביבה של 
+\begin_inset Formula $0$
+\end_inset
+
+ אז כל המומנטים קיימים וסופיים ומתקיים:
+\begin_inset Formula 
+\[
+M_{X}\left(t\right)=\sum_{n=0}^{\infty}\frac{t^{n}E\left[x^{n}\right]}{n!}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Theorem*
+קיימת התאמה חד-חד ערכית בין התפלגות לפונקציה יוצרת מומנטים.
+\end_layout
+
+\begin_layout Section
+משתנים מקריים דו מימדיים
+\end_layout
+
+\begin_layout Subsection
+התפלגות משותפת
+\end_layout
+
+\begin_layout Definition*
+יהיו 
+\begin_inset Formula $X,Y$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ מעל אותו מרחב הסתברות 
+\begin_inset Formula $\left(\Omega,\mathcal{A},P\right)$
+\end_inset
+
+.
+ אזי 
+\begin_inset Formula $\left(X,Y\right)$
+\end_inset
+
+ הוא 
+\series bold
+משתנה מקרי דו מימדי
+\series default
+ 
+\begin_inset Formula $\left(X,Y\right):\Omega\rightarrow\mathbb{R}^{2}$
+\end_inset
+
+ אם לכל 
+\begin_inset Formula $k,l\in\mathbb{R}$
+\end_inset
+
+ מתקיים כי 
+\begin_inset Formula $\left\{ \omega\in\mathbb{R}\left|X\left(\omega\right)\leq k\land Y\left(\omega\right)\leq l\right.\right\} $
+\end_inset
+
+ מאורע.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+יהיו 
+\begin_inset Formula $X,Y$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ בדידים מעל אותו מרחב.
+ 
+\series bold
+פונקצית ההסתברות 
+\series default
+של 
+\begin_inset Formula $\left(X,Y\right)$
+\end_inset
+
+ היא הפונקציה 
+\begin_inset Formula $P_{X,Y}:S_{X,Y}\rightarrow\left[0,1\right]$
+\end_inset
+
+ כך שלכל 
+\begin_inset Formula $\left(k,l\right)\in S_{X,Y}$
+\end_inset
+
+ מתקיים
+\begin_inset Formula 
+\[
+P_{X,Y}\left(k,l\right)\triangleq P\left(X=k,Y=l\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim*
+אם 
+\begin_inset Formula $X,Y$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ בדידים ו-
+\begin_inset Formula $A$
+\end_inset
+
+ מאורע אזי
+\begin_inset Formula 
+\[
+P\left(A\right)=\sum_{\left(x,y\right)\in A}P_{X,Y}\left(x,y\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+יהיו 
+\begin_inset Formula $X,Y$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ בדידים מעל אותו מרחב הסתברות,
+ 
+\series bold
+פונקצית ההסתברות השולית
+\series default
+ של 
+\begin_inset Formula $X$
+\end_inset
+
+ היא 
+\begin_inset Formula $P_{X}:S_{X}\rightarrow\left[0,1\right]$
+\end_inset
+
+ המוגדרת באופן הבא:
+\begin_inset Formula 
+\[
+\forall k\in S_{X}.\ P_{X}\left(k\right)=\sum_{l\in S_{Y}}P_{X,Y}\left(k,l\right)
+\]
+
+\end_inset
+
+באותו אופן מגדירים את 
+\begin_inset Formula $P_{Y}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+יהיו 
+\begin_inset Formula $X,Y$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ מעל אותו מרחב הסתברות.
+ 
+\series bold
+פונקצית הההפלגות המצטברת 
+\series default
+של 
+\begin_inset Formula $\left(X,Y\right)$
+\end_inset
+
+ היא הפונקציה 
+\begin_inset Formula $F_{X,Y}:S_{X,Y}\rightarrow\left[0,1\right]$
+\end_inset
+
+ כך שלכל 
+\begin_inset Formula $\left(x,y\right)\in S_{X,Y}$
+\end_inset
+
+ מתקיים
+\begin_inset Formula 
+\[
+F_{X,Y}\left(x,y\right)\triangleq P\left(X\leq x,Y\leq y\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim*
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+תכונות של פונקציית התפלגות מצטברת של מ
+\begin_inset Quotes erd
+\end_inset
+
+מ דו מימדי
+\end_layout
+
+\end_inset
+
+יהיו 
+\begin_inset Formula $X,Y$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ מעל אותו מרחב הסתברות ויהיו 
+\begin_inset Formula $\left(k,l\right)\in S_{X,Y}$
+\end_inset
+
+.
+ אזי
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\lim_{k\rightarrow\infty}F_{X,Y}\left(k,l\right) & =0\\
+\lim_{l\rightarrow\infty}F_{X,Y}\left(k,l\right) & =0\\
+\lim_{\left(k,l\right)\rightarrow\left(\infty,\infty\right)}F_{X,Y}\left(k,l\right) & =1
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+מונוטוניות:
+
+\series default
+ אם 
+\begin_inset Formula $k_{1}<k_{2}$
+\end_inset
+
+ ו-
+\begin_inset Formula $l_{1}<l_{2}$
+\end_inset
+
+ אזי 
+\begin_inset Formula $F_{X,Y}\left(k_{2},l_{2}\right)\geq F_{X,Y}\left(k_{1},l_{1}\right)$
+\end_inset
+
+ ובפרט מתקיים
+\begin_inset Formula 
+\[
+P\left(k_{1}\leq X\leq k_{2},l_{1}\leq Y\leq l_{2}\right)=F_{X,Y}\left(k_{2},l_{2}\right)-F_{X,Y}\left(k_{1},l_{2}\right)-F_{X,Y}\left(k_{2},l_{1}\right)+F_{X,Y}\left(k_{1},l_{1}\right)\geq0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+\begin_inset Formula $F_{X,Y}$
+\end_inset
+
+ רציפה מימן בשני הרכיבים:
+\begin_inset Formula 
+\[
+\lim_{\left(h_{1},h_{2}\right)\rightarrow\left(0^{+},0^{+}\right)}F_{X,Y}\left(k+h_{1},l+h_{2}\right)=F_{X,Y}\left(k,l\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Definition*
+מ
+\begin_inset Quotes erd
+\end_inset
+
+מ דו מימדי 
+\begin_inset Formula $\left(X,Y\right)$
+\end_inset
+
+ מעל מרחב הסתברות 
+\begin_inset Formula $\left(\Omega,\mathcal{A},P\right)$
+\end_inset
+
+ הוא 
+\series bold
+משנה מקרי דו מימדי רציף 
+\series default
+אם קיימת 
+\series bold
+פונקציית צפיפות משותפת
+\series default
+ 
+\begin_inset Formula $f_{X,Y}:\mathbb{R}^{2}\rightarrow\left[0,\infty\right)$
+\end_inset
+
+
+\series bold
+ 
+\series default
+רציפה למקוטעין (רציפה פרט לקבוצה ממידה אפס) כך שלכל 
+\begin_inset Formula $\left(k,l\right)\in S_{X,Y}$
+\end_inset
+
+ מתקיים:
+\begin_inset Formula 
+\[
+F_{X,Y}\left(k,l\right)=\intop_{-\infty}^{k}\intop_{-\infty}^{l}f_{X,Y}\left(u,v\right)dudv
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim*
+יהי 
+\begin_inset Formula $\left(X,Y\right)$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ דו-מימדי רציף.
+ אז
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\iintop_{\mathbb{R}^{2}}f_{X,Y}\left(u,v\right)dudv=1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+לכל 
+\begin_inset Formula $k,l\in\mathbb{R}$
+\end_inset
+
+ מתקיים:
+\begin_inset Formula 
+\[
+f_{X,Y}\left(k,l\right)=\frac{\partial^{2}F_{X,Y}}{\partial k\partial l}\left(k,l\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Definition*
+יהי 
+\begin_inset Formula $\left(X,Y\right)$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ דו-מימדי רציף.
+ אז 
+\begin_inset Formula $X,Y$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ רציפים יחד עם 
+\series bold
+פונקציית הצפיפות השולית:
+\begin_inset Formula 
+\begin{align*}
+\forall u\in\mathbb{R}. & f_{X}\left(u\right)=\intop_{\mathbb{R}}f_{X,Y}\left(u,v\right)dv\\
+\forall v\in\mathbb{R}. & f_{Y}\left(v\right)=\intop_{\mathbb{R}}f_{X,Y}\left(u,v\right)du
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+מדדים מרכזיים של משתנה מקרי דו-מימדי
+\end_layout
+
+\begin_layout Definition*
+יהי 
+\begin_inset Formula $\left(X,Y\right)$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ דו-מימדי אז 
+\series bold
+התוחלת
+\series default
+ של 
+\begin_inset Formula $g\left(X,Y\right):\mathbb{R}^{2}\rightarrow\mathbb{R}$
+\end_inset
+
+ מוגדרת להיות:
+\end_layout
+
+\begin_layout Definition*
+במקרה הבדיד
+\begin_inset Formula 
+\[
+\boldsymbol{E\left[g\left(X,Y\right)\right]}\triangleq\sum_{x\in S_{X}}\sum_{y\in S_{Y}}g\left(x,y\right)P_{X,Y}\left(x,y\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+במקרה הרציף
+\begin_inset Formula 
+\[
+\boldsymbol{E\left[g\left(X,Y\right)\right]}\triangleq\iintop_{\mathbb{R}^{2}}g\left(x,y\right)f_{X,Y}\left(x,y\right)dxdy
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+יהיו 
+\begin_inset Formula $X,Y$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ מעל אותו מרחב הסתברות.
+ 
+\series bold
+השונות המשותפת 
+\series default
+(
+\lang english
+covariance
+\lang hebrew
+) של 
+\begin_inset Formula $\left(X,Y\right)$
+\end_inset
+
+ מוגדרת להיות
+\series bold
+
+\begin_inset Formula 
+\[
+\text{Cov}\boldsymbol{\left(X,Y\right)}\triangleq E\left[\left(X-E\left[X\right]\right)\left(Y-E\left[Y\right]\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim*
+יהיו 
+\begin_inset Formula $X,Y$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ מעל אותו מרחב הסתברות.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+אם ככל ש-
+\begin_inset Formula $X$
+\end_inset
+
+ גדל 
+\begin_inset Formula $Y$
+\end_inset
+
+ קטן (ולהיפך),
+ אזי 
+\begin_inset Formula $\text{Cov}\left(X,Y\right)<0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+אם ככל ש-
+\begin_inset Formula $X$
+\end_inset
+
+ גדל 
+\begin_inset Formula $Y$
+\end_inset
+
+ גדל (ולהיפך),
+ אזי 
+\begin_inset Formula $\text{Cov}\left(X,Y\right)>0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+אם אף אחד מהקודמים לא מתקיים אז 
+\begin_inset Formula $\text{Cov}\left(X,Y\right)=0$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Definition*
+יהיו 
+\begin_inset Formula $X,Y$
+\end_inset
+
+ מעל אותו מרחב הסתברות.
+ נאמר כי 
+\begin_inset Formula $X,Y$
+\end_inset
+
+ 
+\series bold
+בלתי מתואמים 
+\series default
+אם 
+\begin_inset Formula $\text{Cov}\left(X,Y\right)=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Claim*
+לכל מ
+\begin_inset Quotes erd
+\end_inset
+
+מ 
+\begin_inset Formula $X$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\text{Cov}\left(X,X\right)=\text{Var}\left(X\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem*
+יהיו 
+\begin_inset Formula $X,Y$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ מעל אותו מרחב הסתברות.
+ אזי
+\begin_inset Formula 
+\[
+\text{Cov}\left(X,Y\right)=E\left[XY\right]-E\left[X\right]E\left[Y\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+יהיו 
+\begin_inset Formula $X,Y$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ מעל אותו מרחב הסתברות.
+ 
+\series bold
+מקדם המתאם 
+\series default
+(
+\lang english
+Pearson correlation coefficient
+\lang hebrew
+) של 
+\begin_inset Formula $\left(X,Y\right)$
+\end_inset
+
+ מוגדר להיות
+\begin_inset Formula 
+\[
+\boldsymbol{\rho_{X,Y}}\triangleq\frac{\text{Cov}\left(X,Y\right)}{\sigma_{X}\sigma_{Y}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim*
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+תכונות מקדם המתאם
+\end_layout
+
+\end_inset
+
+יהיו 
+\begin_inset Formula $X,Y$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ מעל אותו מרחב הסתברות.
+ אז
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $-1\leq\rho_{X,Y}\leq1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\rho_{X,Y}=1$
+\end_inset
+
+ אם ורק אם קיימים 
+\begin_inset Formula $a>0,b\in\mathbb{R}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $P\left(Y=aX+b\right)=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\rho_{X,Y}=-1$
+\end_inset
+
+ אם ורק אם קיימים 
+\begin_inset Formula $a<0,b\in\mathbb{R}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $P\left(Y=aX+b\right)=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\text{Cov}\left(X,Y\right)=0\iff\rho_{X,Y}=0$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+התפלגות מותנה ואי תלות של משתנים מקריים
+\end_layout
+
+\begin_layout Definition*
+יהי 
+\begin_inset Formula $\left(X,Y\right)$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ דו-מימדי בדיד מעל מרחב הסתברות 
+\begin_inset Formula $\left(\Omega,\mathcal{A},P\right)$
+\end_inset
+
+,
+ ויהי 
+\begin_inset Formula $u\in S_{X}$
+\end_inset
+
+.
+ אז 
+\series bold
+פונקצית ההסתברות המותנית 
+\series default
+של 
+\begin_inset Formula $Y$
+\end_inset
+
+ בהינתן 
+\begin_inset Formula $X=u$
+\end_inset
+
+ תסומן ע
+\begin_inset Quotes erd
+\end_inset
+
+י 
+\begin_inset Formula $P_{Y|X=u}$
+\end_inset
+
+ כך שלכל 
+\begin_inset Formula $v\in S_{Y}$
+\end_inset
+
+ מתקיים:
+\begin_inset Formula 
+\[
+P_{Y|X=u}\left(v\right)=\frac{P_{X,Y}\left(u,v\right)}{P_{X}\left(u\right)}
+\]
+
+\end_inset
+
+בתנאי ש-
+\begin_inset Formula $P_{X}\left(u\right)>0$
+\end_inset
+
+.
+ באותו אופן מגדירים את 
+\begin_inset Formula $P_{X|Y=v}$
+\end_inset
+
+ עבור 
+\begin_inset Formula $v\in S_{Y}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+יהי 
+\begin_inset Formula $\left(X,Y\right)$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ דו-מימדי רציף מעל מרחב הסתברות 
+\begin_inset Formula $\left(\Omega,\mathcal{A},P\right)$
+\end_inset
+
+,
+ ויהי 
+\begin_inset Formula $u\in\mathbb{R}$
+\end_inset
+
+.
+ אז 
+\series bold
+פונקצית הצפיפות המותנית 
+\series default
+של 
+\begin_inset Formula $Y$
+\end_inset
+
+ בהינתן 
+\begin_inset Formula $X=u$
+\end_inset
+
+ תסומן ע
+\begin_inset Quotes erd
+\end_inset
+
+י 
+\begin_inset Formula $P_{Y|X=u}$
+\end_inset
+
+ כך שלכל 
+\begin_inset Formula $v\in\mathbb{R}$
+\end_inset
+
+ מתקיים:
+\begin_inset Formula 
+\[
+f_{Y|X=u}\left(v\right)=\frac{f_{X,Y}\left(u,v\right)}{f_{X}\left(u\right)}
+\]
+
+\end_inset
+
+בתנאי ש-
+\begin_inset Formula $f_{X}\left(u\right)>0$
+\end_inset
+
+.
+ באותו אופן מגדירים את 
+\begin_inset Formula $f_{X|Y=v}$
+\end_inset
+
+ עבור 
+\begin_inset Formula $v\in\mathbb{R}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+יהי 
+\begin_inset Formula $\left(X,Y\right)$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ רציף דו-מימדי מעל מרחב הסתברות 
+\begin_inset Formula $\left(\Omega,\mathcal{A},P\right)$
+\end_inset
+
+,
+ ויהי 
+\begin_inset Formula $u\in\mathbb{R}$
+\end_inset
+
+.
+ אז 
+\series bold
+פונקצית ההתפלגות המצטברת 
+\series default
+של 
+\begin_inset Formula $Y$
+\end_inset
+
+ בהינתן 
+\begin_inset Formula $X=u$
+\end_inset
+
+ תסומן ע
+\begin_inset Quotes erd
+\end_inset
+
+י 
+\begin_inset Formula $F_{Y|X=u}$
+\end_inset
+
+ כך שלכל 
+\begin_inset Formula $v\in\mathbb{R}$
+\end_inset
+
+ מתקיים:
+\begin_inset Formula 
+\[
+F_{Y|X=u}\left(v\right)=\intop_{-\infty}^{v}f_{Y|X=u}\left(v\right)dv
+\]
+
+\end_inset
+
+בתנאי ש-
+\begin_inset Formula $f_{X}\left(u\right)>0$
+\end_inset
+
+.
+ באותו אופן מגדירים את 
+\begin_inset Formula $F_{X|Y=v}$
+\end_inset
+
+ עבור 
+\begin_inset Formula $v\in\mathbb{R}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+יהי 
+\begin_inset Formula $\left(X,Y\right)$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ דו-מימדי.
+ נאמר כי 
+\begin_inset Formula $X,Y$
+\end_inset
+
+ 
+\series bold
+בלתי תלויים 
+\series default
+(סטוכסטית) אם לכל 
+\begin_inset Formula $\left(u,v\right)\in S_{X,Y}$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $F_{X,Y}\left(u,v\right)=F_{X}\left(u\right)F_{X}\left(v\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Claim*
+יהי 
+\begin_inset Formula $\left(X,Y\right)$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ דו-מימדי.
+ אם קיימות 
+\begin_inset Formula $h,g:\mathbb{R}\rightarrow\left[0,\infty\right)$
+\end_inset
+
+ כך שלכל 
+\begin_inset Formula $x,y\in\mathbb{R}$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $f_{X,Y}\left(x,y\right)=h\left(x\right)g\left(x\right)$
+\end_inset
+
+,
+ אז 
+\begin_inset Formula $X,Y$
+\end_inset
+
+ ב
+\begin_inset Quotes erd
+\end_inset
+
+ת.
+\end_layout
+
+\begin_layout Claim*
+יתרה מזו,
+ 
+\begin_inset Formula $\tilde{h}=\frac{h}{\left\lVert h\right\rVert _{L_{1}}},\tilde{g}=\frac{g}{\left\lVert g\right\rVert _{L_{1}}}$
+\end_inset
+
+ הן פונקציות הצפיפויות השוליות של 
+\begin_inset Formula $X,Y$
+\end_inset
+
+ בהתאמה.
+\end_layout
+
+\begin_layout Theorem*
+יהי 
+\begin_inset Formula $\left(X,Y\right)$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ דו-מימדי.
+ אם 
+\begin_inset Formula $X,Y$
+\end_inset
+
+ ב
+\begin_inset Quotes erd
+\end_inset
+
+ת אז לכל 
+\begin_inset Formula $f,g:\mathbb{R}\rightarrow\mathbb{R}$
+\end_inset
+
+ גם 
+\begin_inset Formula $f\left(X\right),g\left(Y\right)$
+\end_inset
+
+ ב
+\begin_inset Quotes erd
+\end_inset
+
+ת.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem*
+יהיו 
+\begin_inset Formula $X,Y$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ מעל אותו מרחב הסתברות.
+ אם 
+\begin_inset Formula $X,Y$
+\end_inset
+
+ ב
+\begin_inset Quotes erd
+\end_inset
+
+ת אז
+\begin_inset Formula 
+\[
+E\left[XY\right]=E\left[X\right]E\left[Y\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Corollary*
+אם 
+\begin_inset Formula $X,Y$
+\end_inset
+
+ ב
+\begin_inset Quotes erd
+\end_inset
+
+ת אזי 
+\begin_inset Formula $\text{Var}\left(X+Y\right)=\text{Var}\left(X\right)+\text{Var}\left(Y\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Corollary*
+אם 
+\begin_inset Formula $X,Y$
+\end_inset
+
+ ב
+\begin_inset Quotes erd
+\end_inset
+
+ת אז הם ב
+\begin_inset Quotes erd
+\end_inset
+
+מ.
+\end_layout
+
+\begin_layout Definition*
+יהי 
+\begin_inset Formula $\left(X,Y\right)$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ דו-מימדי בדיד ,
+ ויהי 
+\begin_inset Formula $u\in S_{X}$
+\end_inset
+
+.
+ אז 
+\series bold
+התוחלת המותנה
+\series default
+ של 
+\begin_inset Formula $g:\mathbb{R}^{2}\rightarrow\mathbb{R}$
+\end_inset
+
+ בהינתן 
+\begin_inset Formula $X=u$
+\end_inset
+
+ מוגדרת להיות
+\begin_inset Formula 
+\[
+\boldsymbol{E\left[g\left(X,Y\right)|X=u\right]}\triangleq\sum_{v\in S_{Y}}g\left(u,v\right)P_{Y|X=u}\left(v\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+יהי 
+\begin_inset Formula $\left(X,Y\right)$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ דו-מימדי רציף ,
+ ויהי 
+\begin_inset Formula $u\in\mathbb{R}$
+\end_inset
+
+.
+ אז 
+\series bold
+התוחלת המותנה
+\series default
+ של 
+\begin_inset Formula $g\left(X,Y\right):\mathbb{R}^{2}\rightarrow\mathbb{R}$
+\end_inset
+
+ בהינתן 
+\begin_inset Formula $X=u$
+\end_inset
+
+ מוגדרת להיות
+\begin_inset Formula 
+\[
+\boldsymbol{E\left[g\left(X,Y\right)|X=u\right]}\triangleq\intop_{\mathbb{R}}g\left(u,v\right)f_{Y|X=u}\left(v\right)dv
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem*
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\shape italic
+התוחלת השלמה
+\end_layout
+
+\end_inset
+
+יהי 
+\begin_inset Formula $\left(X,Y\right)$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ דו-מימדי.
+ אז לכל 
+\begin_inset Formula $g:\mathbb{R}\rightarrow\mathbb{R}$
+\end_inset
+
+ מתקיים
+\begin_inset Formula 
+\[
+E\left[g\left(Y\right)\right]=E\left[E\left[g\left(Y\right)|X\right]\right]
+\]
+
+\end_inset
+
+בפרט 
+\begin_inset Formula $E\left[Y\right]=E\left[E\left[Y|X\right]\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem*
+יהי 
+\begin_inset Formula $\left(X,Y\right)$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ דו-מימדי.
+ אז לכל 
+\begin_inset Formula $g_{1},g_{2}:\mathbb{R}\rightarrow\mathbb{R}$
+\end_inset
+
+ ו-
+\begin_inset Formula $u\in\mathbb{R}$
+\end_inset
+
+ מתקיים
+\begin_inset Formula 
+\begin{align*}
+E\left[g_{1}\left(Y\right)+g_{2}\left(Y\right)|X=u\right] & =E\left[g_{1}\left(Y\right)|X=u\right]+E\left[g_{2}\left(Y\right)|X=u\right]\\
+E\left[g_{1}\left(Y\right)g_{2}\left(X\right)|X=u\right] & =g_{2}\left(u\right)E\left[g_{1}\left(Y\right)|X=u\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+הסתברות רב-נורמלית
+\end_layout
+
+\begin_layout Definition*
+מ
+\begin_inset Quotes erd
+\end_inset
+
+מ 
+\begin_inset Formula $\left(X,Y\right)$
+\end_inset
+
+ מתפלג 
+\series bold
+דו-נורמלית 
+\series default
+אם קיימים 
+\begin_inset Formula $\mu_{X},\mu_{Y}\in\mathbb{R},\sigma_{X},\sigma_{Y},\rho>0$
+\end_inset
+
+ כך שלכל 
+\begin_inset Formula $x,y\in\mathbb{R}$
+\end_inset
+
+ מתקיים:
+\begin_inset Formula 
+\[
+f_{X,Y}\left(x,y\right)=\frac{1}{2\pi\sigma_{X}\sigma_{Y}\sqrt{1-\rho^{2}}}\exp\left\{ -\frac{1}{2\left(1-\rho^{2}\right)}\left[\left(\frac{X-\mu_{X}}{\sigma_{X}}\right)^{2}-2\rho\left(\frac{X-\mu_{X}}{\sigma_{X}}\right)\left(\frac{Y-\mu_{Y}}{\sigma_{Y}}\right)+\left(\frac{Y-\mu_{Y}}{\sigma_{Y}}\right)^{2}\right]\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim*
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\shape italic
+תכונות של התפלגות דו-נורמלית
+\end_layout
+
+\end_inset
+
+יהי 
+\begin_inset Formula $\left(X,Y\right)$
+\end_inset
+
+ מתפלג דו-נורמלית.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+מתקיים 
+\begin_inset Formula $X\sim N\left(\mu_{X},\sigma_{X}^{2}\right),Y\sim N\left(\mu_{Y},\sigma_{Y}^{2}\right)$
+\end_inset
+
+ ומקדם המתאם 
+\begin_inset Formula $\rho_{X,Y}=\rho$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+לכל 
+\begin_inset Formula $x\in\mathbb{R}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+Y|X=x\sim N\left(\mu_{Y}+\frac{\sigma_{Y}}{\sigma_{X}}\rho\left(x-\mu_{X}\right),\left(1-\rho^{2}\right)\sigma_{Y}^{2}\right)
+\]
+
+\end_inset
+
+לכל 
+\begin_inset Formula $y\in\mathbb{R}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+X|Y=y\sim N\left(\mu_{X}+\frac{\sigma_{X}}{\sigma_{Y}}\rho\left(y-\mu_{Y}\right),\left(1-\rho^{2}\right)\sigma_{X}^{2}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $X\pm Y\sim N\left(\mu_{X}\pm\mu_{Y},\sigma_{X}^{2}\pm2\rho\sigma_{X}\sigma_{Y}+\sigma_{Y}^{2}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $X,Y$
+\end_inset
+
+ ב
+\begin_inset Quotes erd
+\end_inset
+
+ת אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ 
+\begin_inset Formula $X,Y$
+\end_inset
+
+ ב
+\begin_inset Quotes erd
+\end_inset
+
+מ.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+פוקנציות של משתנים מקריים ומשפט הגבול המרכזי
+\end_layout
+
+\begin_layout Subsection
+מינימום ומקסימום של משתנים מקריים
+\end_layout
+
+\begin_layout Definition*
+יהיו 
+\begin_inset Formula $X_{1},\ldots,X_{n}$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ מעל אותו מרחב.
+ נאמר כי 
+\begin_inset Formula $X_{1},\ldots,X_{n}$
+\end_inset
+
+ 
+\series bold
+בלתי תלויים 
+\series default
+אם לכל 
+\begin_inset Formula $i\neq j\in\left[n\right]$
+\end_inset
+
+ 
+\begin_inset Formula $X_{i},X_{j}$
+\end_inset
+
+ בלתי תלויים.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+יהיו 
+\begin_inset Formula $X_{1},\ldots,X_{n}$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ מעל אותו מרחב.
+ נאמר כי 
+\begin_inset Formula $X_{1},\ldots,X_{n}$
+\end_inset
+
+ 
+\series bold
+שווי התפלגות 
+\series default
+אם לכל 
+\begin_inset Formula $i,j\in\left[n\right]$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $F_{X_{i}}=F_{X_{j}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Claim*
+יהיו 
+\begin_inset Formula $X_{1},\ldots,X_{n}$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ ב
+\begin_inset Quotes erd
+\end_inset
+
+ת ש
+\begin_inset Quotes erd
+\end_inset
+
+ה עם פונקציית התפלגות מצטברת 
+\begin_inset Formula $F$
+\end_inset
+
+.
+ אם 
+\begin_inset Formula $M=\max\left\{ X_{1},\ldots,X_{n}\right\} $
+\end_inset
+
+ אז לכל 
+\begin_inset Formula $m\in\text{Dom}F$
+\end_inset
+
+ מתקיים
+\begin_inset Formula 
+\[
+F_{M}\left(m\right)=\left[F\left(m\right)\right]^{n}
+\]
+
+\end_inset
+
+אם 
+\begin_inset Formula $X_{1},\ldots,X_{n}$
+\end_inset
+
+ רציפים עם פ
+\begin_inset Quotes erd
+\end_inset
+
+צ 
+\begin_inset Formula $f$
+\end_inset
+
+ אז:
+\begin_inset Formula 
+\[
+f_{M}\left(m\right)=n\left[F\left(m\right)\right]^{n-1}f\left(m\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim*
+יהיו 
+\begin_inset Formula $X_{1},\ldots,X_{n}$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ ב
+\begin_inset Quotes erd
+\end_inset
+
+ת ש
+\begin_inset Quotes erd
+\end_inset
+
+ה עם פונקציית התפלגות מצטברת 
+\begin_inset Formula $F$
+\end_inset
+
+.
+ אם 
+\begin_inset Formula $Y=\min\left\{ X_{1},\ldots,X_{n}\right\} $
+\end_inset
+
+ אז לכל 
+\begin_inset Formula $y\in\text{Dom}F$
+\end_inset
+
+ מתקיים
+\begin_inset Formula 
+\[
+F_{Y}\left(y\right)=1-\left[1-F\left(y\right)\right]^{n}
+\]
+
+\end_inset
+
+אם 
+\begin_inset Formula $X_{1},\ldots,X_{n}$
+\end_inset
+
+ רציפים עם פ
+\begin_inset Quotes erd
+\end_inset
+
+צ 
+\begin_inset Formula $f$
+\end_inset
+
+ אז:
+\begin_inset Formula 
+\[
+f_{Y}\left(y\right)=n\left[1-F\left(y\right)\right]^{n-1}f\left(y\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+תוחלת וסכום של משתנים מקריים
+\end_layout
+
+\begin_layout Theorem*
+יהיו 
+\begin_inset Formula $X,Y$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ מעל אותו מרחב.
+ אזי:
+\begin_inset Formula 
+\[
+\text{Var}\left(X+Y\right)=\text{Var}\left(X\right)+\text{Var}\left(Y\right)+2\text{Cov}\left(X,Y\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem*
+יהיו 
+\begin_inset Formula $X_{1},\ldots,X_{n}$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ מעל אותו מרחב.
+ אזי:
+\begin_inset Formula 
+\[
+\text{Var}\left(\sum_{i=1}^{n}X_{i}\right)=\sum_{i=1}^{n}\text{Var}\left(X_{i}\right)+2\sum_{i<j}\text{Cov}\left(X_{i},X_{j}\right)=\sum_{i=1}^{n}\text{Var}\left(X_{i}\right)+\sum_{i\neq j}\text{Cov}\left(X_{i},X_{j}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem*
+אם 
+\begin_inset Formula $X,Y$
+\end_inset
+
+ ב
+\begin_inset Quotes erd
+\end_inset
+
+ת,
+ אזי 
+\begin_inset Formula $M_{X+Y}\left(t\right)=M_{X}\left(t\right)M_{Y}\left(t\right)$
+\end_inset
+
+ לכל 
+\begin_inset Formula $t\in\mathbb{R}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem*
+יהיו 
+\begin_inset Formula $X_{1},\ldots,X_{n}$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ ב
+\begin_inset Quotes erd
+\end_inset
+
+ת ו-
+\begin_inset Formula $\lambda_{1},\ldots,\lambda_{n}$
+\end_inset
+
+ כך שלכל 
+\begin_inset Formula $i\in\left[n\right]$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $X_{i}\sim\text{Poi}\left(\lambda_{i}\right)$
+\end_inset
+
+.
+ אזי
+\begin_inset Formula 
+\[
+S_{n}=\sum_{i=1}^{n}X_{i}\sim P\left(\sum_{i=1}^{n}\lambda_{i}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem*
+אם 
+\begin_inset Formula $\left(X,Y\right)$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ דו-מימדי.
+ נסמן 
+\begin_inset Formula $W=X+Y$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $\left(X,Y\right)$
+\end_inset
+
+ בדיד אז לכל 
+\begin_inset Formula $w\in S_{X}+S_{Y}$
+\end_inset
+
+ מתקיי
+\shape italic
+ם
+\shape default
+:
+\begin_inset Formula 
+\[
+P_{W}\left(w\right)=\sum_{x=-\infty}^{\infty}P_{X,Y}\left(x,w-x\right)=\sum_{y=-\infty}^{\infty}P_{X,Y}\left(w-y,y\right)
+\]
+
+\end_inset
+
+אם בנוסף,
+ 
+\begin_inset Formula $X,Y$
+\end_inset
+
+ ב
+\begin_inset Quotes erd
+\end_inset
+
+ת אז נקבל את 
+\series bold
+\shape italic
+נוסחת הקונבולוציה הבדידה:
+\series default
+\shape default
+
+\begin_inset Formula 
+\[
+P_{W}\left(w\right)=\left(P_{X}*P_{Y}\right)\left(w\right)=\left(P_{Y}*P_{X}\right)\left(w\right)=\sum_{x=-\infty}^{\infty}P_{X}\left(x\right)P_{Y}\left(w-x\right)=\sum_{y=-\infty}^{\infty}P_{X}\left(w-y\right)P\left(y\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $\left(X,Y\right)$
+\end_inset
+
+ רציף אז לכל 
+\begin_inset Formula $w\in\mathbb{R}$
+\end_inset
+
+ מתקיים:
+\begin_inset Formula 
+\[
+f_{W}\left(w\right)=\intop_{\mathbb{R}}f\left(x,w-x\right)dx=\intop_{\mathbb{R}}f\left(w-y,y\right)dy
+\]
+
+\end_inset
+
+אם בנוסף,
+ 
+\begin_inset Formula $X,Y$
+\end_inset
+
+ ב
+\begin_inset Quotes erd
+\end_inset
+
+ת אז נקבל את 
+\series bold
+\shape italic
+נוסחת הקונבולוציה הרציפה:
+\begin_inset Formula 
+\[
+f_{W}\left(w\right)=\left(f_{X}*f_{Y}\right)\left(w\right)=\left(f_{Y}*f_{X}\right)\left(w\right)=\intop_{\mathbb{R}}f_{X}\left(x\right)f_{Y}\left(w-x\right)dx=\intop_{\mathbb{R}}f_{X}\left(w-y\right)f_{Y}\left(y\right)dy
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+החוק החלש של המספרים הגדולים ומשפט הגבול המרכזי
+\end_layout
+
+\begin_layout Definition*
+תהי 
+\begin_inset Formula $\left\{ X_{n}\right\} _{n=1}^{\infty}$
+\end_inset
+
+ סדרת תצפיות ב
+\begin_inset Quotes erd
+\end_inset
+
+ת ש
+\begin_inset Quotes erd
+\end_inset
+
+ה עם תוחלת סופית 
+\begin_inset Formula $E\left[X_{n}\right]=\mu\in\mathbb{R}$
+\end_inset
+
+ לכל 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+הסכום
+\series default
+ של 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ תצפיות מוגדר להיות:
+\begin_inset Formula 
+\[
+\boldsymbol{S_{n}}\triangleq\sum_{k=1}^{n}X_{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+הממוצע
+\series default
+ של 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ תצפיות מוגדר להיות:
+\begin_inset Formula 
+\[
+\boldsymbol{\overline{X_{n}}}\triangleq\frac{S_{n}}{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Theorem*
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\shape italic
+החוק החלש של המספרים הגדולים
+\end_layout
+
+\end_inset
+
+תהי 
+\begin_inset Formula $\left\{ X_{n}\right\} _{n=1}^{\infty}$
+\end_inset
+
+ סדרת מ
+\begin_inset Quotes erd
+\end_inset
+
+מ ב
+\begin_inset Quotes erd
+\end_inset
+
+מ ש
+\begin_inset Quotes erd
+\end_inset
+
+ה עם תוחלת סופית 
+\begin_inset Formula $E\left[X_{n}\right]=\mu\in\mathbb{R}$
+\end_inset
+
+ לכל 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+.
+ אזי,
+ הממוצע המדגמי מתכנס בהסתברות לתוחלת,
+ כלומר לכל 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+ מתקיים:
+\begin_inset Formula 
+\[
+P\left(\left|\overline{X_{n}}-\mu\right|>\varepsilon\right)\underset{n\rightarrow\infty}{\longrightarrow}0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem*
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\shape italic
+הגבול המרכזי
+\end_layout
+
+\end_inset
+
+תהי 
+\begin_inset Formula $\left\{ X_{n}\right\} _{n=1}^{\infty}$
+\end_inset
+
+ סדרת מ
+\begin_inset Quotes erd
+\end_inset
+
+מ ב
+\begin_inset Quotes erd
+\end_inset
+
+ת ש
+\begin_inset Quotes erd
+\end_inset
+
+ה כך שלכל 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $E\left[X_{n}\right]=\mu\in\mathbb{R},\text{Var}\left(X_{n}\right)=\sigma^{2}\in\mathbb{R}$
+\end_inset
+
+.
+ אזי לכל 
+\begin_inset Formula $z\in\mathbb{R}$
+\end_inset
+
+ מתקיים:
+\begin_inset Formula 
+\[
+P\left(\frac{S_{n}-n\mu}{\sigma\sqrt{n}}\leq z\right)\underset{n\rightarrow\infty}{\longrightarrow}\Phi\left(z\right)
+\]
+
+\end_inset
+
+באופן מעשי,
+ עבור 
+\begin_inset Formula $n$
+\end_inset
+
+ גדול מספיק ניתן להניח כי 
+\begin_inset Formula $\frac{S_{n}-n\mu}{\sigma\sqrt{n}}\sim N\left(0,1\right)$
+\end_inset
+
+ וכן להניח כי 
+\begin_inset Formula $\overline{X_{n}}\sim N\left(\mu,\frac{\sigma^{2}}{n}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Remark*
+כאשר נרצה לקרה להתפלגות נורמלית:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+עבור התפלגות סימטרית נדרוש 
+\begin_inset Formula $n\geq20$
+\end_inset
+
+,
+ עבור התפלגות מוטה נדרוש 
+\begin_inset Formula $n\geq100$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+היות והתצפיות הן ב
+\begin_inset Quotes erd
+\end_inset
+
+ת אז אם המ
+\begin_inset Quotes erd
+\end_inset
+
+מ מ
+\begin_inset Quotes erd
+\end_inset
+
+נ אז גם סכומן והממוצע שלהם מ
+\begin_inset Quotes erd
+\end_inset
+
+נ.
+\end_layout
+
+\begin_layout Enumerate
+במקרה של משתנים בדידים המקבלים ערכים שלמים ועוקבים יש לבצע 
+\series bold
+תיקון רציפות.
+ 
+\series default
+לכל 
+\begin_inset Formula $a\in\mathbb{Z}$
+\end_inset
+
+
+\series bold
+:
+\begin_inset Formula 
+\begin{align*}
+P\left(S_{n}\leq a\right) & =P\left(S_{n}<a-0.5\right)\\
+P\left(S_{n}<a\right) & =P\left(S_{n}<a+0.5\right)\\
+P\left(S_{n}\geq a\right) & =P\left(S_{n}>a-0.5\right)\\
+P\left(S_{n}>a\right) & =P\left(S_{n}>a+0.5\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark*
+ניתן להציג את המ
+\begin_inset Quotes erd
+\end_inset
+
+מ הבינומי כסכום של מ
+\begin_inset Quotes erd
+\end_inset
+
+מ ברנוליים ב
+\begin_inset Quotes erd
+\end_inset
+
+ת,
+ ולהפעיל את משפט הגבול המרכזי כאשר 
+\begin_inset Formula $np\geq5$
+\end_inset
+
+ וגם 
+\begin_inset Formula $n\left(1-p\right)\geq5$
+\end_inset
+
+,
+ כלומר 
+\begin_inset Formula $n$
+\end_inset
+
+ גדול מספיק ו-
+\begin_inset Formula $p$
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+מרכזי
+\begin_inset Quotes erd
+\end_inset
+
+ מספיק.
+ זהו הקירוב המשלים לקירוב הפואסוני.
+\end_layout
+
+\begin_layout Remark*
+בהתפלגות הבינומית:
+ 
+\begin_inset Formula $X=S_{n}\sim N\left(np,np\left(1-p\right)\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark*
+והממוצע המדגמי:
+ 
+\begin_inset Formula $\overline{X_{n}}=\frac{X}{n}\sim N\left(p,\frac{p\left(1-p\right)}{n}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Part
+מבוא לסטטיסטיקה
+\end_layout
+
+\begin_layout Definition*
+
+\series bold
+מדגם מקרי פשוט 
+\series default
+הינו אוסף סופי של איברים שנבחרים בזה אחר זה מתוך אוכלוסייה באופן אקראי ועם החזרה,
+ כך שכל התצפיות במדגם 
+\begin_inset Formula $X_{1},\ldots,X_{n}$
+\end_inset
+
+ בלתי תלויות ובעלות אותה התפלגות שהיא התפלגות האוכלוסייה.
+\end_layout
+
+\begin_layout Section
+אמידה
+\end_layout
+
+\begin_layout Definition*
+פונקציה של תצפיות המדגם,
+ אשר אינה תלויה בשום פרמטר שאינו ידוע נקראת 
+\series bold
+סטטיסטי
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+סטטיסטי המשמש לאמידת פרמטר 
+\begin_inset Formula $\theta$
+\end_inset
+
+ נקרא 
+\series bold
+אומד 
+\series default
+עבור הפרמטר.
+ הערך שמקבל העומד עבור מדגם ספציפי נקרא 
+\series bold
+אומדן
+\series default
+.
+\end_layout
+
+\begin_layout Subsection
+אמידה נקודתית
+\end_layout
+
+\begin_layout Definition*
+יהי 
+\begin_inset Formula $X_{1},\ldots,X_{n}$
+\end_inset
+
+ מדגם של 
+\begin_inset Formula $n$
+\end_inset
+
+ תצפיות באוכלוסייה בעלת התפלגות בדידה 
+\begin_inset Formula $P_{\theta}$
+\end_inset
+
+,
+ התלויה בפרמטר 
+\begin_inset Formula $\theta$
+\end_inset
+
+ בלתי ידוע.
+ יהיו 
+\begin_inset Formula $x_{1},\ldots,x_{n}$
+\end_inset
+
+ תוצאות המדגם.
+\end_layout
+
+\begin_layout Definition*
+
+\series bold
+פונקצית הנראות 
+\series default
+מוגדרת על ידי:
+\begin_inset Formula 
+\[
+L\left(\theta;x_{1},\ldots,x_{n}\right)=L\left(\theta\right)=P_{\theta}\left(X_{1}=x_{1},\ldots,X_{n}=x_{n}\right)
+\]
+
+\end_inset
+
+לכל ערך אפשרי של הפרמטר 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Claim*
+אם
+\begin_inset Formula $X_{1},\ldots,X_{n}$
+\end_inset
+
+ מדגם של 
+\begin_inset Formula $n$
+\end_inset
+
+ תצפיות ב
+\begin_inset Quotes erd
+\end_inset
+
+ת באוכלוסייה בעלת התפלגות בדידה 
+\begin_inset Formula $P_{\theta}$
+\end_inset
+
+,
+ התלויה בפרמטר 
+\begin_inset Formula $\theta$
+\end_inset
+
+ בלתי ידוע.
+ אז לכל 
+\begin_inset Formula $x_{1},\ldots,x_{n}$
+\end_inset
+
+ תוצאות מדגם מתקיים:
+\begin_inset Formula 
+\[
+L\left(\theta;x_{1},\ldots,x_{n}\right)=\prod_{k=1}^{n}P_{\theta}\left(X_{k}=x_{k}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+יהי 
+\begin_inset Formula $X_{1},\ldots,X_{n}$
+\end_inset
+
+ מדגם של 
+\begin_inset Formula $n$
+\end_inset
+
+ תצפיות באוכלוסייה בעלת התפלגות רציפה עם צפיפות 
+\begin_inset Formula $f_{\theta}$
+\end_inset
+
+,
+ התלויה בפרמטר 
+\begin_inset Formula $\theta$
+\end_inset
+
+ בלתי ידוע.
+ יהיו 
+\begin_inset Formula $x_{1},\ldots,x_{n}$
+\end_inset
+
+ תוצאות המדגם.
+\end_layout
+
+\begin_layout Definition*
+
+\series bold
+פונקצית הנראות 
+\series default
+מוגדרת על ידי:
+\begin_inset Formula 
+\[
+L\left(\theta;x_{1},\ldots,x_{n}\right)=L\left(\theta\right)=f_{\theta}\left(x_{1},\ldots,x_{n}\right)
+\]
+
+\end_inset
+
+לכל ערך אפשרי של הפרמטר 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Claim*
+אם 
+\begin_inset Formula $X_{1},\ldots,X_{n}$
+\end_inset
+
+ מדגם של 
+\begin_inset Formula $n$
+\end_inset
+
+ תצפיות באוכלוסייה בעלת התפלגות רציפה עם צפיפות 
+\begin_inset Formula $f_{\theta}$
+\end_inset
+
+,
+ התלויה בפרמטר 
+\begin_inset Formula $\theta$
+\end_inset
+
+ בלתי ידוע.
+ אז לכל 
+\begin_inset Formula $x_{1},\ldots,x_{n}$
+\end_inset
+
+ תוצאות מדגם מתקיים:
+\begin_inset Formula 
+\[
+L\left(\theta;x_{1},\ldots,x_{n}\right)=\prod_{k=1}^{n}f_{\theta}\left(x_{k}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+יהי 
+\begin_inset Formula $X_{1},\ldots,X_{n}$
+\end_inset
+
+ מדגם של 
+\begin_inset Formula $n$
+\end_inset
+
+ תצפיות באוכלוסייה בעלי התפלגות התלויה בפרמטר 
+\begin_inset Formula $\theta$
+\end_inset
+
+ בלתי ידוע.
+ יהיו 
+\begin_inset Formula $x_{1},\ldots,x_{n}$
+\end_inset
+
+ תוצאות המדגם.
+\end_layout
+
+\begin_layout Definition*
+הערך 
+\begin_inset Formula $\hat{\theta}\left(x_{1},\ldots,x_{n}\right)$
+\end_inset
+
+ נקרא 
+\series bold
+אומד נראות מירבית 
+\series default
+אם 
+\begin_inset Formula $\theta=\hat{\theta}\left(x_{1},\ldots,x_{n}\right)$
+\end_inset
+
+ מקסימום של 
+\begin_inset Formula $L\left(\theta\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim*
+יהי 
+\begin_inset Formula $X\sim\text{Bin}\left(n,p\right)$
+\end_inset
+
+ מדגם.
+ אז לכל תוצאה 
+\begin_inset Formula $x$
+\end_inset
+
+ של המדגם,
+ 
+\begin_inset Formula $\hat{p}\left(x\right)=\frac{x}{n}$
+\end_inset
+
+ הוא אומד נראות מירבית של הפרמטר 
+\begin_inset Formula $p$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim*
+יהי 
+\begin_inset Formula $X_{1},\ldots,X_{n}\sim\exp\left(\lambda\right)$
+\end_inset
+
+ מדגם מקרי ופשוט.
+ אז לכל תוצאה 
+\begin_inset Formula $x_{1},\ldots,x_{n}$
+\end_inset
+
+ של המדגם,
+ 
+\begin_inset Formula $\hat{\lambda}\left(x_{1},\ldots,x_{n}\right)=\frac{1}{\overline{x_{n}}}$
+\end_inset
+
+ (מוגדר היטב כי 
+\begin_inset Formula $P\left(x_{1}=\ldots=x_{n}=0\right)=0$
+\end_inset
+
+) הוא אומד נראות מירבית של הפרמטר 
+\begin_inset Formula $\lambda$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim*
+יהי 
+\begin_inset Formula $X_{1},\ldots,X_{n}\sim U\left(0,\theta\right)$
+\end_inset
+
+ מדגם מקרי ופשוט כאשר 
+\begin_inset Formula $\theta$
+\end_inset
+
+ אינו ידוע.
+ אז לכל תוצאה 
+\begin_inset Formula $x_{1},\ldots,x_{n}$
+\end_inset
+
+ של המדגם,
+ 
+\begin_inset Formula $\hat{\theta}\left(x_{1},\ldots,x_{n}\right)=\max\left\{ x_{1},\ldots,x_{n}\right\} $
+\end_inset
+
+ הוא אומד נראות מירבית של הפרמטר 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition*
+אומד 
+\begin_inset Formula $T$
+\end_inset
+
+ הינו 
+\series bold
+אומד חסר הטיה 
+\series default
+של פרמטר 
+\begin_inset Formula $\theta$
+\end_inset
+
+,
+ אם 
+\begin_inset Formula $E\left[T\right]=\theta$
+\end_inset
+
+ לכל ערך של 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition*
+ההפרש 
+\begin_inset Formula $E\left[T\right]-\theta$
+\end_inset
+
+ נקרא 
+\series bold
+ההטיה של האומד
+\series default
+ 
+\begin_inset Formula $T$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem*
+יהי 
+\begin_inset Formula $X_{1},\ldots,X_{n}$
+\end_inset
+
+ מדגם של 
+\begin_inset Formula $n$
+\end_inset
+
+ תצפיות מאוכלוסייה בעלת תוחלת 
+\begin_inset Formula $\mu$
+\end_inset
+
+,
+ אז לכל תוצאה 
+\begin_inset Formula $x_{1},\ldots,x_{n}$
+\end_inset
+
+ של המדגם,
+ 
+\begin_inset Formula $\hat{\mu}\left(x_{1},\ldots,x_{n}\right)=\overline{x_{n}}$
+\end_inset
+
+ הוא אומד חסר הטיה עבור הפרמטר 
+\begin_inset Formula $\mu$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition*
+את טיב האומד 
+\begin_inset Formula $T$
+\end_inset
+
+ לפרמטר 
+\begin_inset Formula $\theta$
+\end_inset
+
+ נמדוד ע
+\begin_inset Quotes erd
+\end_inset
+
+י 
+\series bold
+תוחלת ריבוע הטעות
+\series default
+:
+\begin_inset Formula 
+\[
+\text{MSE}\left(T\right)=E\left[\left(T-\theta\right)^{2}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem*
+לכל אומד 
+\begin_inset Formula $T$
+\end_inset
+
+ עבור פרמטר 
+\begin_inset Formula $\theta$
+\end_inset
+
+ מתקיים כי 
+\begin_inset Formula 
+\[
+\text{MSE}\left(T\right)=\text{Var}\left(T\right)+\left(E\left[T\right]-\theta\right)^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Corollary*
+אם 
+\begin_inset Formula $T$
+\end_inset
+
+ 
+\series bold
+אומד בלתי מוטה 
+\series default
+עבור פרמטר 
+\begin_inset Formula $\theta$
+\end_inset
+
+ מתקיים כי 
+\begin_inset Formula $\text{MSE}\left(T\right)=\text{Var}\left(T\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+רווח סמך
+\end_layout
+
+\begin_layout Definition*
+יהא 
+\begin_inset Formula $X_{1},\ldots,X_{n}$
+\end_inset
+
+ מדגם מקרי מהתפלגות נורמלית 
+\begin_inset Formula $N\left(\mu,\sigma^{2}\right)$
+\end_inset
+
+ כאשר 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ ידועה בהינתן שהערך הממוצע של מדגם הינו 
+\begin_inset Formula $\overline{x_{n}}$
+\end_inset
+
+,
+ אז 
+\series bold
+רווח סמך 
+\series default
+עבור 
+\begin_inset Formula $\mu$
+\end_inset
+
+ ברמת בטחון 
+\begin_inset Formula $1-\alpha$
+\end_inset
+
+ הוא:
+\begin_inset Formula 
+\[
+\left[\overline{x_{n}}-z_{1-\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}},\overline{x_{n}}+z_{1-\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}}\right]
+\]
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Remark*
+אם 
+\begin_inset Formula $n$
+\end_inset
+
+ מספיק גדול הנוסחה נכונה לכל התפלגות,
+ אם 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ ידועה.
+\end_layout
+
+\begin_layout Claim*
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\shape italic
+תכונות של רווח סמך
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\series bold
+\shape italic
+רמת הסמך:
+ 
+\series default
+
+\begin_inset Formula 
+\[
+P\left(\mu\in\left[\overline{x_{n}}-z_{1-\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}},\overline{x_{n}}+z_{1-\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}}\right]\right)=1-\alpha
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+אורך רווח הסמך 
+\series default
+הוא 
+\begin_inset Formula $L=2z_{1-\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+הסטייה המקסימלית:
+ 
+\begin_inset Formula 
+\[
+P\left(z_{1-\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}}\geq\left|\overline{x_{n}}-\mu\right|\right)=1-\alpha
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim*
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+תכונות אורך הרווח
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+ככל ש-
+\begin_inset Formula $\sigma$
+\end_inset
+
+ קטנה,
+ 
+\begin_inset Formula $L$
+\end_inset
+
+ קטן.
+\end_layout
+
+\begin_layout Enumerate
+ככל ש-
+\begin_inset Formula $n$
+\end_inset
+
+ גדל,
+ 
+\begin_inset Formula $L$
+\end_inset
+
+ קטן.
+\end_layout
+
+\begin_layout Enumerate
+ככל ש-
+\begin_inset Formula $1-\alpha$
+\end_inset
+
+ קטן,
+ 
+\begin_inset Formula $L$
+\end_inset
+
+ קטן.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim*
+נתונה אוכלוסייה המפולגת נורמלית עם סטיית תקן ידועה 
+\begin_inset Formula $\sigma$
+\end_inset
+
+,
+ ותוחלת לא ידועה 
+\begin_inset Formula $\mu$
+\end_inset
+
+.
+ אז בהינתן 
+\begin_inset Formula $d\geq0$
+\end_inset
+
+,
+ אם 
+\begin_inset Formula $n\geq\left(z_{1-\frac{\alpha}{2}}\frac{\sigma}{d}\right)^{2}$
+\end_inset
+
+ אז
+\begin_inset Formula 
+\[
+P\left(d\geq z_{1-\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}}\right)=1-\alpha
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+בדיקת השערות
+\end_layout
+
+\begin_layout Subsection
+מושגים בסיסיים
+\end_layout
+
+\begin_layout Definition*
+בבדיקת השערות מעלים תמיד שתי השערות המסומנות 
+\begin_inset Formula $H_{0}$
+\end_inset
+
+ ו-
+\begin_inset Formula $H_{1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition*
+\begin_inset Formula $H_{0}$
+\end_inset
+
+ היא השערת המחקר
+\series bold
+ 
+\series default
+או 
+\begin_inset Quotes eld
+\end_inset
+
+ההשערה הסקפטית
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition*
+\begin_inset Formula $H_{1}$
+\end_inset
+
+ היא הטענה אותה רוצה הי החוקר להוכיח (ההנחה ה
+\begin_inset Quotes erd
+\end_inset
+
+חדשנית
+\begin_inset Quotes erd
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Definition*
+על סמך נתוני המדגם צריך להחליט אילו מההשערות נכונה.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+בבדיקת השערה ישנן שתי החלטות אפשריות:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+דחיית 
+\begin_inset Formula $H_{0}$
+\end_inset
+
+ - זוהי ההחלטה האומרת שהשערת האפס איננה נכונה,
+ זאת אומרת ש-
+\begin_inset Formula $H_{1}$
+\end_inset
+
+כנראה נכונה.
+\end_layout
+
+\begin_layout Enumerate
+אי דחיית 
+\begin_inset Formula $H_{0}$
+\end_inset
+
+ - זוהי ההחלטה האומרת שלא ניתון לדחות את השערת האפס והיא כנראה נכונה.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+כלל שקובע מתי 
+\begin_inset Formula $H_{0}$
+\end_inset
+
+ נכונה ומתי 
+\begin_inset Formula $H_{1}$
+\end_inset
+
+ נכונה נקרא 
+\series bold
+כלל החלטה 
+\series default
+או 
+\series bold
+מבחן
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+
+\series bold
+אזור הדחייה 
+\series default
+
+\begin_inset Formula $C$
+\end_inset
+
+ הוא התחום של ערכי המדגם בו דוחים את 
+\begin_inset Formula $H_{0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition*
+
+\series bold
+אזור הקבלה/אי הדחייה 
+\begin_inset Formula $\overline{C}$
+\end_inset
+
+ 
+\series default
+הוא התחום שבו אין דוחים את 
+\begin_inset Formula $H_{1}$
+\end_inset
+
+ והוא המשלים של 
+\begin_inset Formula $C$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+בכל מקרה של בדיקת השערות אנו עלולים להגיע להחלטה שגויה.
+ ישנן שתי טעויות אפשריות ונרצה לדעת מה ההסתברות של כל אחת מהן.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $_{\text{החלטה}}\setminus^{\text{מציאות}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $H_{0}$
+\end_inset
+
+ נכונה
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $H_{1}$
+\end_inset
+
+ נכונה
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $H_{0}$
+\end_inset
+
+ נכונה
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\color olive
+רמת ביטחון
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\color purple
+טעות מסוג 2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $H_{1}$
+\end_inset
+
+ נכונה
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\color red
+טעות מסוג 
+\numeric on
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\color green
+עוצמה
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Claim*
+בבדיקת השערות:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+ההסתברות לטעות מסוג ראשון היא 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+ההסתברות לטעות משני היא 
+\begin_inset Formula $\beta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+עוצמת המבחן היא 
+\begin_inset Formula $1-\beta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+רמת הביטחון היא 
+\begin_inset Formula $1-\alpha$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+בדיקת השערות על תוחלת כשהשונות ידועה
+\end_layout
+
+\begin_layout Definition*
+
+\series bold
+מובהקות התוצאה 
+\series default
+
+\begin_inset Formula $p-\text{value}$
+\end_inset
+
+ הינה ההסתברות לקבלת תוצאה קיצונית לפחות כמו זו שהתקבלה בניסוי,
+ בהנחה שהשערת האפס נכונה.
+ נסמן הסתברות זו ב-
+\begin_inset Formula $\text{PV}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition*
+אם 
+\begin_inset Formula $\text{PV}\leq\alpha$
+\end_inset
+
+ דוחים את 
+\begin_inset Formula $H_{0}$
+\end_inset
+
+,
+ אחרת לא דוחים את 
+\begin_inset Formula $H_{0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem*
+כאשר השונות ידועה,
+ ואנו רוצים לבדוק שתי השערות פשוטות על התוחלת 
+\begin_inset Formula $\mu$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+H_{0}:\mu=\mu_{0}\ H_{1}:\mu=\mu_{1}
+\]
+
+\end_inset
+
+אזי מבחן בעל עוצמה מקסימלית הוא המבחן הבא:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $\mu_{1}>\mu_{0}$
+\end_inset
+
+ אז אזור הדחיה הוא מהצורה:
+\begin_inset Formula 
+\[
+C=\left\{ X_{1},\ldots,X_{n}\left|\overline{X}>c\right.\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $\mu_{1}<\mu_{0}$
+\end_inset
+
+ אז אזור הדחיה הוא מהצורה:
+\begin_inset Formula 
+\[
+C=\left\{ X_{1},\ldots,X_{n}\left|\overline{X}<c\right.\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem*
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\shape italic
+בדיקת השערות חד-צדדית
+\end_layout
+
+\end_inset
+
+נתונות 
+\begin_inset Formula $n$
+\end_inset
+
+ תצפיות מהתפלגות נורמלית 
+\begin_inset Formula $X_{1},\ldots,X_{n}\sim N\left(\mu,\sigma^{2}\right)$
+\end_inset
+
+ כאשר 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ ידועה.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+מבחן בעל עוצמה מקסימלית ברמה מובהקות 
+\begin_inset Formula $\alpha$
+\end_inset
+
+,
+ לבדיקת השערת האפס 
+\begin_inset Formula $H_{0}:\mu=\mu_{0}$
+\end_inset
+
+ כנגד האלטרנטיבה 
+\begin_inset Formula $H_{1}:\mu<\mu_{0}$
+\end_inset
+
+,
+ הנו המבחן 
+\begin_inset Formula $C$
+\end_inset
+
+ הדוחה את 
+\begin_inset Formula $H_{0}$
+\end_inset
+
+ כאשר 
+\begin_inset Formula 
+\[
+\overline{X}<\mu_{0}-z_{1-\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+מבחן בעל עוצמה מקסימלית ברמה מובהקות 
+\begin_inset Formula $\alpha$
+\end_inset
+
+,
+ לבדיקת השערת האפס 
+\begin_inset Formula $H_{0}:\mu=\mu_{0}$
+\end_inset
+
+ כנגד האלטרנטיבה 
+\begin_inset Formula $H_{1}:\mu>\mu_{0}$
+\end_inset
+
+,
+ הנו המבחן 
+\begin_inset Formula $C$
+\end_inset
+
+ הדוחה את 
+\begin_inset Formula $H_{0}$
+\end_inset
+
+ כאשר 
+\begin_inset Formula 
+\[
+\overline{X}>\mu_{0}+z_{1-\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem*
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\shape italic
+בדיקת השערות דו-צדדיות
+\end_layout
+
+\end_inset
+
+נתונות 
+\begin_inset Formula $n$
+\end_inset
+
+ תצפיות מהתפלגות נורמלית 
+\begin_inset Formula $X_{1},\ldots,X_{n}\sim N\left(\mu,\sigma^{2}\right)$
+\end_inset
+
+ כאשר 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ ידועה.
+\end_layout
+
+\begin_layout Theorem*
+אם 
+\begin_inset Formula $H_{0}:\mu=\mu_{0}$
+\end_inset
+
+ ו-
+\begin_inset Formula $H_{1}:\mu\neq\mu_{0}$
+\end_inset
+
+ אז לא קיים מבחן בעל עוצמה מקסימלית לכל 
+\begin_inset Formula $\mu$
+\end_inset
+
+.
+ אך נהוג לדחות את 
+\begin_inset Formula $H_{0}$
+\end_inset
+
+ תחת אזור הדחיה:
+\begin_inset Formula 
+\[
+C=\mathbb{R}\setminus\left[\overline{x_{n}}-z_{1-\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}},\overline{x_{n}}+z_{1-\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
