@@ -1,7 +1,7 @@
 {
-    "discrete_math_1_lbl": {
-        "display_name": "מבוא לתקב\"ץ",
-        "URL": "lbl/discrete_math_1_lbl.pdf",
+    "discrete_math_1": {
+        "display_name": "בדידה 1",
+        "URL": "summaries/bdida1/lec_2025_bdida1.pdf",
         "button_color": "gradient-red-discrete_math_1",
         "pdf_info": {
             "course_info": {
@@ -13,9 +13,9 @@
             }
         }
     },
-    "discrete_math_2_lbl": {
-        "display_name": "מבוא לקומבי וגרפים",
-        "URL": "lbl/discrete_math_2_lbl.pdf",
+    "discrete_math_2": {
+        "display_name": "בדידה 2",
+        "URL": "summaries/bdida2/summary.pdf",
         "button_color": "gradient-red-discrete_math_2",
         "pdf_info": {
             "course_info": {
@@ -27,93 +27,9 @@
             }
         }
     },
-    "logic_for_computer_science_lbl": {
-        "display_name": "לוגיקה",
-        "URL": "lbl/logic_for_computer_science_lbl.pdf",
-        "button_color": "gradient-red-logic_for_computer_science",
-        "pdf_info": {
-            "course_info": {
-                "שם קורס מלא": "לוגיקה למדעי המחשב",
-                "מספר קורס": "03682170",
-                "שנה וסמסמטר": "2024 ב'",
-                "מרצה": "פרופ' שפילקה אמיר",
-                "image": "icon/info.png"
-            }
-        }
-    },
-    "set_theory_lbl": {
-        "display_name": "תקב\"ץ",
-        "URL": "lbl/set_theory_lbl.pdf",
-        "button_color": "gradient-red-set_theory",
-        "pdf_info": {
-            "course_info": {
-                "שם קורס מלא": "תורת הקבוצות",
-                "מספר קורס": "03663126",
-                "שנה וסמסמטר": "2025 א'",
-                "מרצה": "פרופ' גיטיק מרדכי",
-                "image": "icon/info.png"
-            }
-        }
-    },
-    "real_analysis_1a_lbl": {
-        "display_name": "חדו\"א1",
-        "URL": "lbl/real_analysis_1a_lbl.pdf",
-        "button_color": "gradient-blue1",
-        "pdf_info": {
-            "course_info": {
-                "שם קורס מלא": "חשבון דיפרנציאלי ואינטגרלי 1א",
-                "מספר קורס": "03661101",
-                "שנה וסמסמטר": "2023 א'",
-                "מרצה": ["ד\"ר פיטן ארז", "פרופ' ארטשטיין שירי"],
-                "image": "icon/info.png"
-            }
-        }
-    },
-    "real_analysis_2a_lbl": {
-        "display_name": "חדו\"א2",
-        "URL": "lbl/real_analysis_2a_lbl.pdf",
-        "button_color": "gradient-blue2",
-        "pdf_info": {
-            "course_info": {
-                "שם קורס מלא": "חשבון דיפרנציאלי ואינטגרלי 2א",
-                "מספר קורס": "03661102",
-                "שנה וסמסמטר": "2024 א'",
-                "מרצה": "פרופ' נשרי אלון",
-                "image": "icon/info.png"
-            }
-        }
-    },
-    "real_analysis_3_lbl": {
-        "display_name": "חדו\"א3",
-        "URL": "lbl/real_analysis_3_lbl.pdf",
-        "button_color": "gradient-blue3",
-        "pdf_info": {
-            "course_info": {
-                "שם קורס מלא": "חשבון דיפרנציאלי ואינטגרלי 3",
-                "מספר קורס": "03662141",
-                "שנה וסמסמטר": "2024 א'",
-                "מרצה": "ד\"ר שצ'רבק אינה",
-                "image": "icon/info.png"
-            }
-        }
-    },
-    "real_analysis_4_lbl": {
-        "display_name": "חדו\"א4",
-        "URL": "lbl/real_analysis_4_lbl.pdf",
-        "button_color": "gradient-blue4",
-        "pdf_info": {
-            "course_info": {
-                "שם קורס מלא": "חשבון דיפרנציאלי ואינטגרלי 4",
-                "מספר קורס": "03662180",
-                "שנה וסמסמטר": "2024 ב'",
-                "מרצה": "ד\"ר פייפמן דמיטרי",
-                "image": "icon/info.png"
-            }
-        }
-    },
-    "complex_functions1_lbl": {
-        "display_name": "מרוכבות1",
-        "URL": "lbl/complex_functions1_lbl.pdf",
+    "complex_functions1": {
+        "display_name": "מרוכבות 1",
+        "URL": "summaries/complex/lectures.pdf",
         "button_color": "gradient-blue6",
         "pdf_info": {
             "course_info": {
@@ -125,112 +41,23 @@
             }
         }
     },
-    "ordinary_differential_equations_1_lbl": {
-        "display_name": "מד\"ר1",
-        "URL": "lbl/ordinary_differential_equations_1_lbl.pdf",
-        "button_color": "gradient-blue5",
-        "pdf_info": {
-            "under_construction": {
-                "": "יש להוסיף חומר העשרה מהמודל",
-                "image": "icon/construction.png"
-            },
-            "course_info": {
-                "שם קורס מלא": "Ordinary Differential Equations 1",
-                "מספר קורס": "03662103",
-                "שנה וסמסמטר": "2024 ב'",
-                "מרצה": "ד\"ר עברי אולג",
-                "image": "icon/info.png"
-            }
-        }
-    },
-    "linear_algebra_1a_lbl": {
-        "display_name": "לינארית1",
-        "URL": "lbl/linear_algebra_1a_lbl.pdf",
-        "button_color": "gradient-green-linear_algebra_1a",
-        "pdf_info": {
-            "repair_needed": {
-                "": "דרוש שכתוב",
-				"יוערך מאוד": "מי שמעוניין לעזור לתקן מוזמן לתקן ולהגיש בקשה לעמוד ה־github!",
-                "image": "icon/repair.png"
-            },
-            "course_info": {
-                "שם קורס מלא": "אלגברה לינארית 1א",
-                "מספר קורס": "03661111",
-                "שנה וסמסמטר": "2022 א'",
-                "מרצה": ["מר בנאמו תום", "פרופ' גינסבורג דוד", "ד\"ר מוזיקנטוב יבגני"],
-                "image": "icon/info.png"
-            }
-        }
-    },
-    "linear_algebra_2a_lbl": {
-        "display_name": "לינארית2",
-        "URL": "lbl/linear_algebra_2a_lbl.pdf",
-        "button_color": "gradient-green-linear_algebra_2a",
-        "pdf_info": {
-            "repair_needed": {
-                "": "דרוש תיקון מינימלי",
-                "יוערך מאוד": "מי שמעוניין לעזור לתקן מוזמן לתקן ולהגיש בקשה לעמוד ה־github!",
-                "image": "icon/repair.png"
-            },
-            "course_info": {
-                "שם קורס מלא": "אלגברה לינארית 2א",
-                "מספר קורס": "03661112",
-                "שנה וסמסמטר": "2023 ב'",
-                "מרצה": "פרופ' שוסטין יבגני",
-                "image": "icon/info.png"
-            }
-        }
-    },
-    "group_theory_lbl": {
-        "display_name": "חבורות",
-        "URL": "lbl/group_theory_lbl.pdf",
-        "button_color": "gradient-green-group_theory",
+    "harmonic_analysis": {
+        "display_name": "אנליזה הרמונית",
+        "URL": "summaries/\"harmonic analysis\"/Summary.pdf",
+        "button_color": "gradient-blue1",
         "pdf_info": {
             "course_info": {
-                "שם קורס מלא": "תורת החבורות",
-                "מספר קורס": "03662132",
-                "שנה וסמסמטר": "2025 א'",
-                "מרצה": "ד\"ר לויט אריה",
-                "image": "icon/info.png"
-            }
-        }
-    },
-    "introduction_to_probability_theory_lbl": {
-        "display_name": "מבוא להסתברות",
-        "URL": "lbl/introduction_to_probability_theory_lbl.pdf",
-        "button_color": "gradient-pink1",
-        "pdf_info": {
-            "repair_needed": {
-                "": "דרוש תיקון מינימלי",
-                "יוערך מאוד": "מי שמעוניין לעזור לתקן מוזמן לתקן ולהגיש בקשה לעמוד ה־github!",
-                "image": "icon/repair.png"
-            },
-            "course_info": {
-                "שם קורס מלא": "מבוא להסתברות",
-                "מספר קורס": "03662010",
-                "שנה וסמסמטר": "2023 ב'",
-                "מרצה": ["מר לוטן רז", "ד\"ר סלומקה בועז אברהם"],
-                "image": "icon/info.png"
-            }
-        }
-    },
-    "probability_for_sciences_lbl": {
-        "display_name": "הסתברות למדעים",
-        "URL": "lbl/probability_for_sciences_lbl.pdf",
-        "button_color": "gradient-pink2",
-        "pdf_info": {
-            "course_info": {
-                "שם קורס מלא": "הסתברות למדעים",
-                "מספר קורס": "03652100",
+                "שם קורס מלא": "תורת הפונקציות המרוכבות 1",
+                "מספר קורס": "03662123",
                 "שנה וסמסמטר": "2024 א'",
-                "מרצה": "ד\"ר משיח אילה",
+                "מרצה": "ד\"ר טוקצ'ינסקי שרה",
                 "image": "icon/info.png"
             }
         }
     },
-    "computational_models_lbl": {
+    "computational_models": {
         "display_name": "מודלים",
-        "URL": "lbl/computational_models_lbl.pdf",
+        "URL": "summaries/models/summary.pdf",
         "button_color": "gradient-red-computational_models",
         "pdf_info": {
             "course_info": {
@@ -242,255 +69,9 @@
             }
         }
     },
-    "algorithms_lbl": {
-        "display_name": "אלגוריתמים",
-        "URL": "lbl/algorithms_lbl.pdf",
-        "button_color": "gradient-teal3",
-        "pdf_info": {
-			"repair_needed": {
-                "": "להשלים את אלגוריתם הסימפלקס מהספר <a href=\"https://enos.itcollege.ee/~japoia/algorithms/GT/Introduction_to_algorithms-3rd%20Edition.pdf#page=885\" target=\"_blank\">הזה</a>",
-                "image": "icon/repair.png"
-            },
-            "course_info": {
-                "שם קורס מלא": "אלגוריתמים",
-                "מספר קורס": "03682160",
-                "שנה וסמסמטר": "2024 ב'",
-                "מרצה": ["פרופ' צוויק אורי", "ד\"ר טלגם-כהן ענבל"],
-                "image": "icon/info.png"
-            }
-        }
-    },
-    "numerical_analysis_lbl": {
-        "display_name": "נומרית",
-        "URL": "lbl/numerical_analysis_lbl.pdf",
-        "button_color": "gradient-purple-numerical_analysis",
-        "pdf_info": {
-            "course_info": {
-                "שם קורס מלא": "אנליזה נומרית",
-                "מספר קורס": "03662105",
-                "שנה וסמסמטר": "2024 ב'",
-                "מרצה": "ד\"ר פרחי אלזה",
-                "image": "icon/info.png"
-            }
-        }
-    },
-    "computational_complexity_lbl": {
-        "display_name": "סיבוכיות",
-        "URL": "lbl/computational_complexity_lbl.pdf",
-        "button_color": "gradient-red-computational_complexity",
-        "pdf_info": {
-            "course_info": {
-                "שם קורס מלא": "סיבוכיות",
-                "מספר קורס": "03683168",
-                "שנה וסמסמטר": "2025 א'",
-                "מרצה": "פרופ' תא שמע אמנון",
-                "image": "icon/info.png"
-            }
-        }
-    },
-    "introduction_to_modern_cryptography_lbl": {
-        "display_name": "מבוא לקריפטו",
-        "URL": "lbl/introduction_to_modern_cryptography_lbl.pdf",
-        "button_color": "gradient-red-introduction_to_modern_cryptography",
-        "pdf_info": {
-            "under_construction": {
-                "": "בבנייה",
-                "יוערך מאוד": "מי שמעוניין לעזור לתקן מוזמן לתקן ולהגיש בקשה לעמוד ה־github!",
-                "image": "icon/construction.png"
-            },
-            "course_info": {
-                "שם קורס מלא": "מבוא לקריפטוגרפיה מודנית",
-                "מספר קורס": "03683049",
-                "שנה וסמסמטר": "2025 א'",
-                "מרצה": "פרופ' אפלבאום בנימין",
-                "image": "icon/info.png"
-            }
-        }
-    },
-    "topology_lbl": {
-        "display_name": "טופולוגיה",
-        "URL": "lbl/topology_lbl.pdf",
-        "button_color": "gradient-orange3",
-        "pdf_info": {
-            "course_info": {
-                "שם קורס מלא": "טופולוגיה",
-                "מספר קורס": "03662115",
-                "שנה וסמסמטר": "2024 ב'",
-                "מרצה": "ד\"ר טוקצ'ינסקי שרה",
-                "image": "icon/info.png"
-            }
-        }
-    },
-    "mathematical_methods_in_game_theory_lbl": {
-        "display_name": "תורת המשחקים",
-        "URL": "lbl/mathematical_methods_in_game_theory_lbl.pdf",
-        "button_color": "gradient-purple-mathematical_methods_in_game_theory",
-        "pdf_info": {
-            "under_construction": {
-                "": "בבנייה",
-                "יוערך מאוד": "מי שמעוניין לעזור לתקן מוזמן לתקן ולהגיש בקשה לעמוד ה־github!",
-                "image": "icon/construction.png"
-            },
-            "course_info": {
-                "שם קורס מלא": "שיטות מתמטיות בתורת המשחקים",
-                "מספר קורס": "03663353",
-                "שנה וסמסמטר": "2025 א'",
-                "מרצה": "פרופ' סולן אילון",
-                "image": "icon/info.png"
-            }
-        }
-    },
-    "discrete_math": {
-        "display_name": "בדידה",
-        "URL": "other/fullSummaries/discrete_math.pdf",
-        "button_color": "gradient-red-discrete_math_1",
-        "pdf_info": {
-            "repair_needed": {
-                "": "דרוש שכתוב",
-                "יוערך מאוד": "מי שמעוניין לעזור לתקן מוזמן לתקן ולהגיש בקשה לעמוד ה־github!",
-                "image": "icon/repair.png"
-            },
-            "course_info": {
-                "שם קורס מלא": "מתמטיקה בדידה",
-                "מספר קורס": "03681118",
-                "שנה וסמסמטר": "2021 ב'",
-                "מרצה": ["מר בנאמו תום", "ד\"ר רובינשטיין אמיר"],
-                "image": "icon/info.png"
-            }
-        }
-    },
-    "number_theory": {
-        "display_name": "תורת המספרים",
-        "URL": "lbl/selfTaught/number_theory.pdf",
-        "button_color": "gradient-green-number_theory",
-        "pdf_info": {
-			"repair_needed": {
-                "": "דרוש תיקון מינימלי",
-                "יוערך מאוד": "מי שמעוניין לעזור לתקן מוזמן לתקן ולהגיש בקשה לעמוד ה־github!",
-                "image": "icon/repair.png"
-            },
-			"book": {
-				"": "קורס זה נלמד עצמאית",
-				"image": "icon/book.png"
-			},
-            "course_info": {
-                "שם קורס מלא": "תורת המספרים",
-                "מספר קורס": "03662140",
-                "שנה וסמסמטר": "2022 א'",
-                "מרצה": "פרופ' דוד סודרי",
-                "image": "icon/info.png"
-            }
-        }
-    },
-    "functions_of_a_real_variable": {
-        "display_name": "ממשיות",
-        "URL": "lbl/selfTaught/functions_of_a_real_variable.pdf",
-        "button_color": "gradient-pink3",
-        "pdf_info": {
-			"book": {
-				"": "קורס זה נלמד עצמאית",
-				"image": "icon/book.png"
-			},
-            "course_info": {
-                "שם קורס מלא": "פונקציות ממשיות",
-                "מספר קורס": "03662106",
-                "image": "icon/info.png"
-            }
-        }
-    },
-    "linear_algebra_2a": {
-        "display_name": "לינארית2",
-        "URL": "lbl/selfTaught/linear_algebra_2a.pdf",
-        "button_color": "gradient-green-linear_algebra_2a",
-        "pdf_info": {
-			"repair_needed": {
-                "": "דרוש תיקון מינימלי",
-                "יוערך מאוד": "מי שמעוניין לעזור לתקן מוזמן לתקן ולהגיש בקשה לעמוד ה־github!",
-                "image": "icon/repair.png"
-            },
-            "course_info": {
-                "שם קורס מלא": "אלגברה לינארית 2א",
-                "מספר קורס": "03661112",
-                "שנה וסמסמטר": "2022 ב'",
-                "מרצה": ["מר בנאמו תום", "פרופ' שלום יהודה", "ד\"ר אמיר ענת"],
-                "image": "icon/info.png"
-            }
-        }
-    },
-    "group_theory": {
-        "display_name": "חבורות",
-        "URL": "lbl/selfTaught/group_theory.pdf",
-        "button_color": "gradient-green-group_theory",
-        "pdf_info": {
-			"book": {
-				"": "קורס זה נלמד עצמאית",
-				"מקור": "\"מבנים אלגבריים: חבורות, חוגים ושדות\"",
-				"image": "icon/book.png"
-			},
-            "course_info": {
-                "שם קורס מלא": "תורת החבורות",
-                "מספר קורס": "03662132",
-                "image": "icon/info.png"
-            }
-        }
-    },
-    "course_A": {
-        "display_name": "קורס A",
-        "URL": "other/bagrut/course_A.pdf",
-        "button_color": "gradient-brown1",
-        "pdf_info": {
-            "course_info": {
-                "": "קורס לנוער באוניברסיטת תל אביב",
-                "שם קורס מלא": "קורס A",
-                "שנה וסמסמטר": "2021 א'",
-                "מרצה": "מר בנאמו תום",
-                "image": "icon/info.png"
-            }
-        }
-    },
-    "course_B": {
-        "display_name": "קורס B",
-        "URL": "other/bagrut/course_B.pdf",
-        "button_color": "gradient-brown2",
-        "pdf_info": {
-            "course_info": {
-                "": "קורס לנוער באוניברסיטת תל אביב",
-                "שם קורס מלא": "קורס B",
-                "שנה וסמסמטר": "2021 ב'",
-                "מרצה": "מר בנאמו תום",
-                "image": "icon/info.png"
-            }
-        }
-    },
-    "physics_bagrut": {
-        "display_name": "פיזיקה",
-        "URL": "other/bagrut/physics_bagrut.pdf",
-        "button_color": "gradient-brown3",
-        "pdf_info": {
-            "course_info": {
-                "בגרות": "פיזיקה - מכניקה",
-                "שנה וסמסמטר": "2023 קיץ",
-                "image": "icon/info.png"
-            }
-        }
-    },
-    "calculus_3_defnos": {
-        "display_name": "חדו\"א3",
-        "URL": "other/cheatsheet/calculus_3_defnos.pdf",
-        "button_color": "gradient-blue3",
-        "pdf_info": {
-            "course_info": {
-                "שם קורס מלא": "חשבון דיפרנציאלי ואינטגרלי 3",
-                "מספר קורס": "03662141",
-                "שנה וסמסמטר": "2024 א'",
-                "מרצה": "ד\"ר שצ'רבק אינה",
-                "image": "icon/info.png"
-            }
-        }
-    },
-    "introduction_to_probability_theory_defnos": {
+    "introduction_to_probability_theory": {
         "display_name": "מבוא להסתברות",
-        "URL": "other/cheatsheet/introduction_to_probability_theory_defnos.pdf",
+        "URL": "summaries/probability/summary.lyx",
         "button_color": "gradient-pink1",
         "pdf_info": {
             "course_info": {
@@ -502,177 +83,16 @@
             }
         }
     },
-    "probability_for_sciences_defnos": {
-        "display_name": "הסתברות למדעים",
-        "URL": "other/cheatsheet/probability_for_sciences_defnos.pdf",
-        "button_color": "gradient-pink2",
+    "signals_and_systems": {
+        "display_name": "אותות ומערכות",
+        "URL": "summaries/signals/Signals_summary.lyx",
+        "button_color": "gradient-pink1",
         "pdf_info": {
             "course_info": {
-                "שם קורס מלא": "הסתברות למדעים",
-                "מספר קורס": "03652100",
-                "שנה וסמסמטר": "2024 א'",
-                "מרצה": "ד\"ר משיח אילה",
-                "image": "icon/info.png"
-            }
-        }
-    },
-    "computational_models_defnos": {
-        "display_name": "מודלים",
-        "URL": "other/cheatsheet/computational_models_defnos.pdf",
-        "button_color": "gradient-red-computational_models",
-        "pdf_info": {
-            "course_info": {
-                "שם קורס מלא": "מודלים חישוביים",
-                "מספר קורס": "03682200",
-                "שנה וסמסמטר": "2024 ב'",
-                "מרצה": ["ד\"ר פנט עמר", "ד\"ר שטמר אורי"],
-                "image": "icon/info.png"
-            }
-        }
-    },
-    "software_project_defnos": {
-        "display_name": "פרוייקט תוכנה",
-        "URL": "other/cheatsheet/software_project_defnos.pdf",
-        "button_color": "gradient-teal3",
-        "pdf_info": {
-            "course_info": {
-                "שם קורס מלא": "Software Project",
-                "מספר קורס": "03682161",
-                "שנה וסמסמטר": "2023 א'",
-                "מרצה": "פרופ' שרן רודד",
-                "image": "icon/info.png"
-            }
-        }
-    },
-    "topology_defnos": {
-        "display_name": "טופולוגיה",
-        "URL": "other/cheatsheet/topology_defnos.pdf",
-        "button_color": "gradient-orange3",
-        "pdf_info": {
-            "course_info": {
-                "שם קורס מלא": "טופולוגיה",
-                "מספר קורס": "03662115",
-                "שנה וסמסמטר": "2024 ב'",
-                "מרצה": "ד\"ר טוקצ'ינסקי שרה",
-                "image": "icon/info.png"
-            }
-        }
-    },
-    "data_structures_lbl": {
-        "display_name": "מבנ\"ת",
-        "URL": "lbl/data_structures_lbl.pdf",
-        "button_color": "gradient-teal1",
-        "pdf_info": {
-            "under_construction": {
-                "": "בבנייה",
-                "יוערך מאוד": "מי שמעוניין לעזור לתקן מוזמן לתקן ולהגיש בקשה לעמוד ה־github!",
-                "image": "icon/construction.png"
-            },
-            "course_info": {
-                "שם קורס מלא": "מבני נתונים",
-                "מספר קורס": "03682158",
+                "שם קורס מלא": "מבוא להסתברות",
+                "מספר קורס": "03662010",
                 "שנה וסמסמטר": "2023 ב'",
-                "מרצה": ["ד\"ר כרמון יאיר", "ד\"ר רובינשטיין אמיר"],
-                "image": "icon/info.png"
-            }
-        }
-    },
-    "number_theory_lbl": {
-        "display_name": "תורת המספרים",
-        "URL": "lbl/number_theory_lbl.pdf",
-        "button_color": "gradient-green-number_theory",
-        "pdf_info": {
-            "course_info": {
-                "שם קורס מלא": "תורת המספרים",
-                "מספר קורס": "03662140",
-                "שנה וסמסמטר": "2025 ב'",
-                "מרצה": "פרופ' אלכסיי אנטין",
-                "image": "icon/info.png"
-            }
-        }
-    },
-    "fields_galois_lbl": {
-        "display_name": "תורת השדות וגלואה",
-        "URL": "lbl/fields_galois_lbl.pdf",
-        "button_color": "gradient-green-fields_galois",
-        "pdf_info": {
-            "course_info": {
-                "שם קורס מלא": "תורת השדות ותורת גלואה",
-                "מספר קורס": "03662133",
-                "שנה וסמסמטר": "2025 ב'",
-                "מרצה": "פרופ' יבגני שוסטין",
-                "image": "icon/info.png"
-            }
-        }
-    },
-    "complex_functions2_lbl": {
-        "display_name": "מרוכבות2",
-        "URL": "lbl/complex_functions2_lbl.pdf",
-        "button_color": "gradient-blue7",
-        "pdf_info": {
-            "under_construction": {
-                "": "בבנייה",
-                "image": "icon/construction.png"
-            },
-            "course_info": {
-                "שם קורס מלא": "תורת הפונקציות המרוכבות 2",
-                "מספר קורס": "03663201",
-                "שנה וסמסמטר": "2025 ב'",
-                "מרצה": "פרופ' מיכאיל סודין",
-                "image": "icon/info.png"
-            }
-        }
-    },
-    "automata_logic_games_lbl": {
-        "display_name": "אוטומטים לוגיקה ומשחקים",
-        "URL": "lbl/automata_logic_games_lbl.pdf",
-        "button_color": "gradient-red-automata_logic_games",
-        "pdf_info": {
-            "under_construction": {
-                "": "בבנייה",
-                "image": "icon/construction.png"
-            },
-            "course_info": {
-                "שם קורס מלא": "נושאים מתקדמים באוטומטים, לוגיקה ומשחקים",
-                "מספר קורס": "03684179",
-                "שנה וסמסמטר": "2025 ב'",
-                "מרצה": "פרופ' אלכסנדר רבינוביץ",
-                "image": "icon/info.png"
-            }
-        }
-    },
-    "introduction_to_machine_learning_lbl": {
-        "display_name": "מבוא ללמידה חישובית",
-        "URL": "lbl/introduction_to_machine_learning_lbl.pdf",
-        "button_color": "gradient-purple-introduction_to_machine_learning",
-        "pdf_info": {
-            "under_construction": {
-                "": "בבנייה",
-                "image": "icon/construction.png"
-            },
-            "course_info": {
-                "שם קורס מלא": "מבוא ללמידה חישובית",
-                "מספר קורס": "03683235",
-                "שנה וסמסמטר": "2025 ב'",
-                "מרצה": "פרופ' נדב כהן",
-                "image": "icon/info.png"
-            }
-        }
-    },
-    "computation_by_linear_algebra_lbl": {
-        "display_name": "חישוביות לפי לינארית",
-        "URL": "lbl/computation_by_linear_algebra_lbl.pdf",
-        "button_color": "gradient-red-computation_by_linear_algebra",
-        "pdf_info": {
-            "under_construction": {
-                "": "בבנייה",
-                "image": "icon/construction.png"
-            },
-            "course_info": {
-                "שם קורס מלא": "מתמטיקה של חישוביות על פי אלגברה ליניארית",
-                "מספר קורס": "03683274",
-                "שנה וסמסמטר": "2025 ב'",
-                "מרצה": "פרופ' ספרא שמואל",
+                "מרצה": ["מר לוטן רז", "ד\"ר סלומקה בועז אברהם"],
                 "image": "icon/info.png"
             }
         }

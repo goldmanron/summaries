@@ -21,7 +21,7 @@ const GENERIC_BUTTON_PREFIX = "generic/";
 async function lastCommitFetch(doc) {
     try {
         const res = await fetch(
-            "https://api.github.com/repos/yeahBOYYYYY/math-summaries/commits?per_page=1"
+            "https://api.github.com/repos/goldmanron/summaries/commits?per_page=1"
         );
         const json = await res.json();
         const commitMsg = json[0]?.commit?.message || "no commit found";
