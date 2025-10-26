@@ -114,7 +114,7 @@
     "algorithms": {
         "display_name": "אלגוריתמים",
         "URL": "summaries/algorithms/algorithms_summary.pdf",
-        "button_color": "gradient-purple1",
+        "button_color": "gradient-teal1",
         "pdf_info": {
             "course_info": {
                 "שם קורס מלא": "אלגוריתמים",
@@ -128,7 +128,7 @@
     "machine_learning": {
         "display_name": "למידה חישובית",
         "URL": "summaries/ml/ml_summary.pdf",
-        "button_color": "gradient-purple2",
+        "button_color": "gradient-teal2",
         "pdf_info": {
             "course_info": {
                 "שם קורס מלא": "מבוא ללמידה חישובית",
