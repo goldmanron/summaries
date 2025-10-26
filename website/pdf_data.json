@@ -43,7 +43,7 @@
     },
     "harmonic_analysis": {
         "display_name": "אנליזה הרמונית",
-        "URL": "summaries/'harmonic analysis'/Summary.pdf",
+        "URL": "summaries/harmonic_analysis/Summary.pdf",
         "button_color": "gradient-blue1",
         "pdf_info": {
             "course_info": {
@@ -82,5 +82,20 @@
                 "image": "icon/info.png"
             }
         }
-    }
+    },
+    "machine_learning": {
+        "display_name": "למידה חישובית",
+        "URL": "summaries/ml/ml_summary.pdf",
+        "button_color": "gradient-purple-introduction_to_machine_learning",
+        "pdf_info": {
+            "course_info": {
+                "שם קורס מלא": "מבוא ללמידה חישובית",
+                "מספר קורס": "0368-3235",
+                "שנה וסמסמטר": "2026א",
+                "מרצה": ["פרופ' נדב כהן"],
+                "image": "icon/info.png"
+            }
+        }
+    },
+
 }

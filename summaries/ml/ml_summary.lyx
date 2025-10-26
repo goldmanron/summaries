@@ -1,0 +1,2196 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\begin_preamble
+% --- Load amsthm package for theorem styles ---
+\usepackage{amsthm}
+
+% --- Shared theoremstyle (one place only!) ---
+\newtheoremstyle{defuprightbrackets}%
+  {3pt}{3pt}% space above/below
+  {\upshape}% body font
+  {}% indent amount
+  {\bfseries}% head font
+  {.}% punctuation after theorem head
+  { }% space after theorem head
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ [\textbf{\itshape #3}]}}%
+
+% --- Apply this style to all environments ---
+\theoremstyle{defuprightbrackets}
+
+% --- Define all environments to use LyX's language macros ---
+\ifx\thechapter\undefined
+  \newtheorem{mytheorem}{\protect\theoremname}
+\else
+  \newtheorem{mytheorem}{\protect\theoremname}[chapter]
+\fi
+
+% --- All other environments share the 'mytheorem' counter ---
+\newtheorem{mydefinition}[mytheorem]{\protect\definitionname}
+\newtheorem{mylemma}[mytheorem]{\protect\lemmaname}
+\newtheorem{myproposition}[mytheorem]{\protect\propositionname}
+\newtheorem{mycorollary}[mytheorem]{\protect\corollaryname}
+\newtheorem{myclaim}[mytheorem]{\protect\claimname}
+\newtheorem{myconjecture}[mytheorem]{\protect\conjecturename}
+\newtheorem{myremark}[mytheorem]{\protect\remarkname}
+\newtheorem{myexample}[mytheorem]{\protect\examplename}
+\newtheorem{myexercise}[mytheorem]{\protect\exercisename}
+\newtheorem{myproblem}[mytheorem]{\protect\problemname}
+\newtheorem{myfact}[mytheorem]{\protect\factname}
+\newtheorem{mynotation}[mytheorem]{\protect\notationname}
+\newtheorem{myassumption}[mytheorem]{\protect\assumptionname}
+\newtheorem{mysummary}[mytheorem]{\protect\summaryname}
+\newtheorem{myconclusion}[mytheorem]{\protect\conclusionname}
+\newtheorem{myalgorithm}[mytheorem]{\protect\algorithmname}
+\newtheorem{myaxiom}[mytheorem]{\protect\axiomname}
+\newtheorem{mycondition}[mytheorem]{\protect\conditionname}
+\newtheorem{myquestion}[mytheorem]{\protect\questionname}
+
+% --- Unnumbered environments ---
+\newtheorem*{mysolution}{\protect\solutionname}
+
+% --- Optional: change QED symbol for proofs ---
+\renewcommand{\qedsymbol}{$\square$}
+
+% Allows fancy stuff in the page header
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\usepackage{enumitem}
+\setlist[itemize,1]{label={\fontfamily{cmr}\fontencoding{T1}\selectfont\textbullet}}
+
+%Allows circuit drawing
+\usepackage{circuitikz}
+
+%Allows plotting graphs
+\usepackage{pgfplots}
+
+\usepackage{mathtools}
+\let\savedleft\left
+  \let\savedright\right
+
+  % Redefine \left and \right to insert the pairing-group hack
+  \renewcommand{\left}{\mathopen{}\mathclose\bgroup\savedleft}
+  \renewcommand{\right}{\aftergroup\egroup\savedright}
+
+% Necessary Commands:
+\usepackage{autobreak}
+\usepackage[T1]{fontenc}
+\usepackage{relsize}
+% Set vertical space before and after dislpay equations to be longer for better redability:
+\AtBeginDocument{\setlength\abovedisplayskip{12pt}}
+\AtBeginDocument{\setlength\belowdisplayskip{12pt}}
+\AtBeginDocument{\setlength\belowdisplayshortskip{12pt}}
+\AtBeginDocument{\setlength\belowdisplayshortskip{12pt}}
+
+% Set space between words to be wider:
+\spaceskip=1.3\fontdimen2\font plus 1\fontdimen3\font minus 1.5\fontdimen4\font
+
+\usepackage{xcolor}
+
+
+% Convert the QED Symbol at the end of proofs to a solid black square (credit: Yakir Oz):
+\usepackage{amssymb}
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+% Make the layout more similar to Hebrew Article, which I am more used to:
+\renewcommand*{\@seccntformat}[1]{\hspace{0.5cm}\csname the#1\endcsname\hspace{0.5cm}} 
+\usepackage{titlesec}
+\titleformat{\section}{\fontsize{20}{20}\bfseries}{\thesection}{10pt}{}
+\titleformat{\subsection}{\fontsize{15}{15}\bfseries}{\thesubsection}{10pt}{}
+\titleformat{\subsubsection}{\bfseries}{\thesubsubsection}{10pt}{}
+
+% Correct the reversed parentheses in labels:
+\usepackage{polyglossia}
+\setmainlanguage{hebrew}
+\newfontfamily{\hebrewfont}{David}
+\makeatletter
+\def\maketag@@@#1{\hbox{\m@th\normalfont\LRE{#1}}}
+\def\tagform@#1{\maketag@@@{(\ignorespaces#1\unskip)}}
+\makeatother
+
+% Create disjoint union symbols:
+\makeatletter
+\def\moverlay{\mathpalette\mov@rlay}
+\def\mov@rlay#1#2{\leavevmode\vtop{%
+   \baselineskip\z@skip \lineskiplimit-\maxdimen
+   \ialign{\hfil$\m@th#1##$\hfil\cr#2\crcr}}}
+\newcommand{\charfusion}[3][\mathord]{
+    #1{\ifx#1\mathop\vphantom{#2}\fi
+        \mathpalette\mov@rlay{#2\cr#3}
+      }
+    \ifx#1\mathop\expandafter\displaylimits\fi}
+\makeatother
+\newcommand{\cupdot}{\charfusion[\mathbin]{\cup}{\cdot}}
+\newcommand{\bigcupdot}{\charfusion[\mathop]{\bigcup}{\cdot}}
+
+
+\newcommand{\kaliLargeLand}{\mathop{\mathlarger{\mathlarger{\mathlarger{\land}}}}}
+\newcommand{\hebtext}[1]{\mbox{\R{\#1}}}
+
+
+% --- Redefine the 'proof' environment to match LyX style ---
+% (Bold, Upright Label; Upright Body; UNIFORM 3pt spacing)
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{\par
+  \pushQED{\qed}%
+  \normalfont \topsep3pt\relax  % <-- THIS IS THE SPACING FIX
+  \trivlist
+  \item[\hskip\labelsep
+        \bfseries
+    #1\@addpunct{.}]\ignorespaces
+}{%
+  \popQED\endtrivlist\@endpefalse
+}
+\makeatother
+
+\usepackage{enumitem}
+\setlist[itemize,1]{label={\fontfamily{cmr}\fontencoding{T1}\selectfont\textbullet}}
+\end_preamble
+\options no-math
+\use_default_options true
+\begin_modules
+customHeadersFooters
+theorems-ams-chap-bytype
+theorems-ams-extended-chap-bytype
+\end_modules
+\maintain_unincluded_children no
+\begin_local_layout
+Format 61
+Input book.layout
+
+# --- LyX Style Definitions using SHARED numbering display (\thetheorem.) ---
+# Corrected based on user's example
+
+Style Theorem
+  Category Reasoning
+  LatexType Environment
+  LatexName mytheorem
+  LabelCounter theorem  # Use 'theorem' counter for LyX display
+  LabelString "Theorem \thetheorem." # Use '\thetheorem' for LyX display
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  LangPreamble
+    \providecommand{\theoremname}{_(Theorem)}
+  EndLangPreamble
+End
+
+Style Claim
+  Category Reasoning
+  LatexType Environment
+  LatexName myclaim
+  LabelCounter theorem  # Use 'theorem' counter for LyX display
+  LabelString "Claim \thetheorem." # Use '\thetheorem' for LyX display
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  LangPreamble
+    \providecommand{\claimname}{_(Claim)}
+  EndLangPreamble
+End
+
+Style Corollary
+  Category Reasoning
+  LatexType Environment
+  LatexName mycorollary
+  LabelCounter theorem  # Use 'theorem' counter for LyX display
+  LabelString "Corollary \thetheorem." # Use '\thetheorem' for LyX display
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  LangPreamble
+    \providecommand{\corname}{_(Corollary)}
+    \providecommand{\corollaryname}{_(Corollary)}
+  EndLangPreamble
+End
+
+Style Lemma
+  Category Reasoning
+  LatexType Environment
+  LatexName mylemma
+  LabelCounter theorem  # Use 'theorem' counter for LyX display
+  LabelString "Lemma \thetheorem." # Use '\thetheorem' for LyX display
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  LangPreamble
+    \providecommand{\lemmaname}{_(Lemma)}
+    \providecommand{\lemmaname}{_(Lemma)}
+  EndLangPreamble
+End
+
+Style Proposition
+  Category Reasoning
+  LatexType Environment
+  LatexName myproposition
+  LabelCounter theorem  # Use 'theorem' counter for LyX display
+  LabelString "Proposition \thetheorem." # Use '\thetheorem' for LyX display
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  LangPreamble
+    \providecommand{\propname}{_(Proposition)}
+    \providecommand{\propositionname}{_(Proposition)}
+  EndLangPreamble
+End
+
+Style Conjecture
+  Category Reasoning
+  LatexType Environment
+  LatexName myconjecture
+  LabelCounter theorem  # Use 'theorem' counter for LyX display
+  LabelString "Conjecture \thetheorem." # Use '\thetheorem' for LyX display
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  LangPreamble
+    \providecommand{\conjname}{_(Conjecture)}
+    \providecommand{\conjecturename}{_(Conjecture)}
+  EndLangPreamble
+End
+
+Style Remark
+  Category Reasoning
+  LatexType Environment
+  LatexName myremark
+  LabelCounter theorem  # Use 'theorem' counter for LyX display
+  LabelString "Remark \thetheorem." # Use '\thetheorem' for LyX display
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  LangPreamble
+    \providecommand{\remname}{_(Remark)}
+    \providecommand{\remarkname}{_(Remark)}
+  EndLangPreamble
+End
+
+Style Proof
+  Category Reasoning
+  LatexType Environment
+  LatexName proof
+  LabelString "Proof."
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  LangPreamble
+    \providecommand{\proofname}{_(Proof)}
+  EndLangPreamble
+End
+
+Style Example
+  Category Reasoning
+  LatexType Environment
+  LatexName myexample
+  LabelCounter theorem  # Use 'theorem' counter for LyX display
+  LabelString "Example \thetheorem." # Use '\thetheorem' for LyX display
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  LangPreamble
+    \providecommand{\examplename}{_(Example)}
+  EndLangPreamble
+End
+
+Style Problem
+  Category Reasoning
+  LatexType Environment
+  LatexName myproblem
+  LabelCounter theorem  # Use 'theorem' counter for LyX display
+  LabelString "Problem \thetheorem." # Use '\thetheorem' for LyX display
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  LangPreamble
+    \providecommand{\problemname}{_(Problem)}
+  EndLangPreamble
+End
+
+Style Exercise
+  Category Reasoning
+  LatexType Environment
+  LatexName myexercise
+  LabelCounter theorem  # Use 'theorem' counter for LyX display
+  LabelString "Exercise \thetheorem." # Use '\thetheorem' for LyX display
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  LangPreamble
+    \providecommand{\exercisename}{_(Exercise)}
+  EndLangPreamble
+End
+
+Style Solution
+  Category Reasoning
+  LatexType Environment
+  LatexName mysolution
+  LabelString "Solution."
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  LangPreamble
+    \providecommand{\solutionname}{_(Solution)}
+  EndLangPreamble
+End
+
+Style Fact
+  Category Reasoning
+  LatexType Environment
+  LatexName myfact
+  LabelCounter theorem  # Use 'theorem' counter for LyX display
+  LabelString "Fact \thetheorem." # Use '\thetheorem' for LyX display
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  LangPreamble
+    \providecommand{\factname}{_(Fact)}
+  EndLangPreamble
+End
+
+Style Criterion
+  Category Reasoning
+  LatexType Environment
+  LatexName mycriterion
+  LabelCounter theorem  # Use 'theorem' counter for LyX display
+  LabelString "Criterion \thetheorem." # Use '\thetheorem' for LyX display
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  LangPreamble
+    \providecommand{\criterionname}{_(Criterion)}
+  EndLangPreamble
+End
+
+Style Algorithm
+  Category Reasoning
+  LatexType Environment
+  LatexName myalgorithm
+  LabelCounter theorem  # Use 'theorem' counter for LyX display
+  LabelString "Algorithm \thetheorem." # Use '\thetheorem' for LyX display
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  LangPreamble
+    \providecommand{\algorithmname}{_(Algorithm)}
+  EndLangPreamble
+End
+
+Style Axiom
+  Category Reasoning
+  LatexType Environment
+  LatexName myaxiom
+  LabelCounter theorem  # Use 'theorem' counter for LyX display
+  LabelString "Axiom \thetheorem." # Use '\thetheorem' for LyX display
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  LangPreamble
+    \providecommand{\axiomname}{_(Axiom)}
+  EndLangPreamble
+End
+
+Style Condition
+  Category Reasoning
+  LatexType Environment
+  LatexName mycondition
+  LabelCounter theorem  # Use 'theorem' counter for LyX display
+  LabelString "Condition \thetheorem." # Use '\thetheorem' for LyX display
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  LangPreamble
+    \providecommand{\conditionname}{_(Condition)}
+  EndLangPreamble
+End
+
+Style Note
+  Category Reasoning
+  LatexType Environment
+  LatexName mynote
+  LabelCounter theorem  # Use 'theorem' counter for LyX display
+  LabelString "Note \thetheorem." # Use '\thetheorem' for LyX display
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  LangPreamble
+    \providecommand{\notename}{_(Note)}
+  EndLangPreamble
+End
+
+Style Notation
+  Category Reasoning
+  LatexType Environment
+  LatexName mynotation
+  LabelCounter theorem  # Use 'theorem' counter for LyX display
+  LabelString "Notation \thetheorem." # Use '\thetheorem' for LyX display
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  LangPreamble
+    \providecommand{\notationname}{_(Notation)}
+  EndLangPreamble
+End
+
+Style Summary
+  Category Reasoning
+  LatexType Environment
+  LatexName mysummary
+  LabelCounter theorem  # Use 'theorem' counter for LyX display
+  LabelString "Summary \thetheorem." # Use '\thetheorem' for LyX display
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  LangPreamble
+    \providecommand{\summaryname}{_(Summary)}
+  EndLangPreamble
+End
+
+Style Conclusion
+  Category Reasoning
+  LatexType Environment
+  LatexName myconclusion
+  LabelCounter theorem  # Use 'theorem' counter for LyX display
+  LabelString "Conclusion \thetheorem." # Use '\thetheorem' for LyX display
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  LangPreamble
+    \providecommand{\conclusionname}{_(Conclusion)}
+  EndLangPreamble
+End
+
+Style Assumption
+  Category Reasoning
+  LatexType Environment
+  LatexName myassumption
+  LabelCounter theorem  # Use 'theorem' counter for LyX display
+  LabelString "Assumption \thetheorem." # Use '\thetheorem' for LyX display
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  LangPreamble
+    \providecommand{\assumptionname}{_(Assumption)}
+  EndLangPreamble
+End
+
+Style Question
+  Category Reasoning
+  LatexType Environment
+  LatexName myquestion
+  LabelCounter theorem  # Use 'theorem' counter for LyX display
+  LabelString "Question \thetheorem." # Use '\thetheorem' for LyX display
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  LangPreamble
+    \providecommand{\questionname}{_(Question)}
+  EndLangPreamble
+End
+
+Style Definition
+  Category Reasoning
+  LatexType Environment
+  LatexName mydefinition
+  LabelCounter theorem  # Use 'theorem' counter for LyX display
+  LabelString "Definition \thetheorem." # Use '\thetheorem' for LyX display
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  LangPreamble
+    \providecommand{\definitionname}{_(Definition)}
+  EndLangPreamble
+End
+\end_local_layout
+\language hebrew
+\language_package default
+\inputencoding auto-legacy
+\fontencoding auto
+\font_roman "default" "David CLM"
+\font_sans "default" "David CLM"
+\font_typewriter "default" "David CLM"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\float_alignment class
+\paperfontsize 11
+\spacing onehalf
+\use_hyperref true
+\pdf_author "Ron Goldman"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle true
+\pdf_quoted_options "linkcolor=blue, urlcolor=marineblue, citecolor=blue, pdfstartview={FitH}, hyperfootnotes=false, unicode=true"
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1cm
+\topmargin 2cm
+\rightmargin 1cm
+\bottommargin 2cm
+\headheight 0cm
+\headsep 1cm
+\footskip 1cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation 0bp
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Title
+\paragraph_spacing double
+
+\series bold
+מבוא ללמידה חישובית (
+\numeric on
+0368-3235
+\numeric off
+)
+\end_layout
+
+\begin_layout Author
+נכתב ע
+\begin_inset Quotes erd
+\end_inset
+
+י רון גולדמן
+\begin_inset Newline newline
+\end_inset
+
+על פי הרצאות של פרופ' נדב כהן
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part
+מבוא
+\end_layout
+
+\begin_layout Chapter
+מה זה למידה?
+\end_layout
+
+\begin_layout Itemize
+שינוי התנהגות עם הזמן במטרה להשיג איזשהו יעד.
+\end_layout
+
+\begin_layout Itemize
+דוגמאות:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+ללמוד ללכת.
+\end_layout
+
+\begin_layout Itemize
+ללמוד לנהוג.
+\end_layout
+
+\begin_layout Itemize
+ללמוד שפה.
+\end_layout
+
+\begin_layout Itemize
+ללמוד מתמטיקה.
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+מה זה למידה חישובית?
+\end_layout
+
+\begin_layout Itemize
+בניית מכונות שיכולות ללמוד.
+\end_layout
+
+\begin_layout Itemize
+בניית תאורייה מתמטית ללמידה.
+\end_layout
+
+\begin_layout Itemize
+בעיקרון,
+ מכונות יכולות ללמוד יותר טוב מבני אדם!
+\end_layout
+
+\begin_layout Subsubsection*
+למה למידה חישובית?
+\end_layout
+
+\begin_layout Itemize
+האם למידה היא הדרך היחידה לבנות 
+\begin_inset Quotes eld
+\end_inset
+
+מכונות חכמות
+\begin_inset Quotes erd
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Itemize
+כנראה שלא.
+\end_layout
+
+\begin_layout Itemize
+למה לא לבנות מכונות שיבצעו פעולות.
+\end_layout
+
+\begin_layout Example
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+מסנן ספאם
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+בגישה של המומחה (לא מלמידת חישובית):
+ נרשום חוקים שקובעים מהו ספאם ומה לא.
+\end_layout
+
+\begin_layout Example
+בעיות עם הגישה של המומחה:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+דורשת בן אדם שיעבוד קשה.
+\end_layout
+
+\begin_layout Itemize
+דורשת עדכון בכל רגע.
+\end_layout
+
+\begin_layout Itemize
+בני אדם לא בהכרח ימצאו את הפתרון האופטימלי.
+\end_layout
+
+\end_deeper
+\begin_layout Example
+סינון באמצעות למידת מכונה:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+נלמד 
+\series default
+מכונה לסנן ספאם מתוך 
+\series bold
+דוגמאות
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+אלגוריתם למידה ישתמש בדוגמאות הללו כדי ללמוד איך נראה ספאם.
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+מבנה הקורס
+\end_layout
+
+\begin_layout Itemize
+למידה מפוקחת - תאוריה
+\end_layout
+
+\begin_layout Itemize
+למידה מפוקחת - אלגוריתמים
+\end_layout
+
+\begin_layout Itemize
+למידה לא מפוקחת
+\end_layout
+
+\begin_layout Subsubsection*
+ייצוג פרדיקטור
+\end_layout
+
+\begin_layout Definition
+
+\series bold
+פרדיקטור 
+\series default
+זו פונקציה 
+\begin_inset Formula $h:\mathcal{X}\xrightarrow{}\mathcal{Y}$
+\end_inset
+
+ כאשר 
+\begin_inset Formula $\mathcal{X}$
+\end_inset
+
+ 
+\series bold
+הקלטים 
+\series default
+ו-
+\begin_inset Formula $\mathcal{Y}$
+\end_inset
+
+ 
+\series bold
+התוויות
+\series default
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+בדרך כלל 
+\begin_inset Formula $\mathcal{X}=\mathbb{R}^{d}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+בבעיית קלאסיפיקציה 
+\begin_inset Formula $\mathcal{Y}=\left\{ 0,1\right\} $
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+למידה מפוקחת
+\end_layout
+
+\begin_layout Itemize
+מטרה:
+ 
+\series bold
+ללמוד פרדיקטורים מדוגמאות.
+\end_layout
+
+\begin_layout Itemize
+נושאים שנכסה:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color red
+מודלים:
+ מסווגים לינאריים,
+ שיטות אנסמבל,
+ עצי החלטה,
+ למידה עמוקה.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+אלגוריתמים:
+
+\family roman
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+ 
+\family default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\lang english
+SVM,
+ SGD,
+ boosting
+\lang hebrew
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color green
+תאוריה:
+ למידת
+\family roman
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+ 
+\family default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\lang english
+PAC
+\lang hebrew
+,
+ מימד
+\family roman
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+ 
+\family default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\lang english
+VC
+\lang hebrew
+.
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+למידה לא מפוקחת
+\end_layout
+
+\begin_layout Itemize
+תוויות קשה לאסוף.
+\end_layout
+
+\begin_layout Itemize
+מידע לא מתויג קל לאסוף.
+\end_layout
+
+\begin_layout Itemize
+מה אפשר לעשות עם מידע לא מתויג.
+\end_layout
+
+\begin_layout Itemize
+אתגרים:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+האם אפשר למצוא או לתאר מבנה במידע.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+נושאים שנכסה:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+ניתוח גורמים עיקריים (
+\lang english
+PCA
+\lang hebrew
+).
+\end_layout
+
+\begin_layout Itemize
+קיבוץ (
+\lang english
+clustering
+\lang hebrew
+).
+\end_layout
+
+\begin_layout Itemize
+מודלים יוצרים (
+\lang english
+Generative models
+\lang hebrew
+).
+\end_layout
+
+\begin_layout Itemize
+אלגוריתם מקסום תוחלת (
+\lang english
+EM
+\lang hebrew
+).
+\end_layout
+
+\end_deeper
+\begin_layout Chapter
+חזרה על הסתברות וצעדים ראשונים בהכללה
+\end_layout
+
+\begin_layout Remark
+אני הולך לספק הגדרות יותר מדויקות ממה שנדב נתן לשם שלמות,
+ אין מה להיבהל.
+\end_layout
+
+\begin_layout Section
+הגדרות בסיסיות בהסתברות
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+מרחב הסתברות
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+
+\series bold
+מרחב הסתברות 
+\series default
+הוא שלשה 
+\begin_inset Formula $\left(\Omega,\mathcal{A},\mathbb{P}\right)$
+\end_inset
+
+ כאשר:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\Omega$
+\end_inset
+
+ היא 
+\series bold
+קבוצת התוצאות
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\mathcal{A}\subseteq\mathcal{P}\left(\Omega\right)$
+\end_inset
+
+ הוא 
+\series bold
+מרחב המאורעות
+\series default
+,
+ 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ הוא 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-אלגברה מעל 
+\begin_inset Formula $\Omega$
+\end_inset
+
+,
+ כלומר:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+לכל 
+\begin_inset Formula $A\in\mathcal{A}$
+\end_inset
+
+ גם 
+\begin_inset Formula $A^{c}\in\mathcal{A}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+לכל 
+\begin_inset Formula $A_{1},A_{2},\ldots\in\mathcal{A}$
+\end_inset
+
+ מתקיים כי 
+\begin_inset Formula $\bigcup_{i=1}^{\infty}A_{i}\in\mathcal{A}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\mathbb{P}:\mathcal{A}\xrightarrow{}\left[0,1\right]$
+\end_inset
+
+ היא 
+\series bold
+פונקציית ההסתברות
+\series default
+,
+ המקיימת:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\mathbb{P}\left(\Omega\right)=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+לכל 
+\begin_inset Formula $A_{1},A_{2},\ldots\in\mathcal{A}$
+\end_inset
+
+ זרים בזוגות מתקיים
+\begin_inset Formula 
+\[
+\mathbb{P}\left(\bigcup_{i=1}^{\infty}A_{i}\right)=\sum_{i=1}^{\infty}\mathbb{P}\left(A_{i}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+משתנה מקרי
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+
+\series bold
+משתנה מקרי 
+\series default
+הוא פונקציה 
+\begin_inset Formula $X:\Omega\xrightarrow{}\mathbb{R}$
+\end_inset
+
+ כך שלכל 
+\begin_inset Formula $a<b\in\mathbb{R}$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\left\{ \left.\omega\in\Omega\left.\colon\right.a<X\left(\omega\right)<b\right.\right\} \in\mathcal{A}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Notation
+יהי 
+\begin_inset Formula $X$
+\end_inset
+
+ משתנה מקרי,
+ אז לכל 
+\begin_inset Formula $a\in\mathbb{R}$
+\end_inset
+
+ נסמן
+\begin_inset Formula 
+\begin{align*}
+\left\{ X=a\right\}  & \triangleq X^{-1}\left(a\right)=\left\{ \left.\omega\in\Omega\left.\colon\right.X\left(\omega\right)=a\right.\right\} \\
+\left\{ X\leq a\right\}  & \triangleq X^{-1}\left(\left(-\infty,a\right]\right)=\left\{ \left.\omega\in\Omega\left.\colon\right.X\left(\omega\right)\leq a\right.\right\} 
+\end{align*}
+
+\end_inset
+
+נרשום
+\begin_inset Formula 
+\begin{align*}
+\mathbb{P}\left(\left\{ X=a\right\} \right) & =\mathbb{P}\left(X=a\right)\\
+\mathbb{P}\left(\left\{ X\leq a\right\} \right) & =\mathbb{P}\left(X\leq a\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+הקשר בין למידה חישובית והסתברות
+\end_layout
+
+\begin_layout Standard
+בלמידה מפוקחת נתון לנו משתנה אחד (למשל תמונה) ואנו מעוניינים במשתנה אחר (תגית).
+ נמדל את הראשון כמשתנה מקרי 
+\begin_inset Formula $X$
+\end_inset
+
+ ואת השני כמשתנה מקרי 
+\begin_inset Formula $Y$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+מטרה:
+ לקבוע את 
+\begin_inset Formula $Y$
+\end_inset
+
+ בהינתן 
+\begin_inset Formula $X$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+נניח התפלגות משותפת 
+\begin_inset Formula $\mathbb{P}\left(X=x,Y=y\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+התפלגות שולית
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+
+\series bold
+ההתפלגות השולית
+\series default
+ של 
+\begin_inset Formula $X$
+\end_inset
+
+ מתוך 
+\begin_inset Formula $\left(X,Y\right)$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\mathbb{P}\left(X=x\right)=\sum_{y\in Y}\mathbb{P}\left(X=x,Y=y\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+התפלגות מותנה
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+
+\series bold
+ההתפלגות המותנה 
+\series default
+של 
+\begin_inset Formula $Y$
+\end_inset
+
+ בהינתן 
+\begin_inset Formula $X$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\mathbb{P}\left(Y=y|X=x\right)=\frac{\mathbb{P}\left(X=x,Y=y\right)}{\mathbb{P}\left(X=x\right)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Assumption
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+רק להיום!
+ לא מציאותית
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Assumption
+אנחנו יודעים את ההתפלגות המשותפת 
+\begin_inset Formula $\mathbb{P}\left(X=x,Y=y\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+נרצה למצוא את הפרדיקטור האופטימלי 
+\begin_inset Formula $h:\mathcal{X}\xrightarrow{}\mathcal{Y}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Remark
+\begin_inset Formula $\hat{Y}=h\left(X\right)$
+\end_inset
+
+ הוא משתנה מקרי.
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+פונקצית הפסד
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+
+\series bold
+פונקצית הפסד 
+\series default
+היא פונקציה 
+\begin_inset Formula $\ell:\mathcal{Y}\times\mathcal{Y}\xrightarrow{\mathbb{}}\mathbb{R}_{\geq0}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $=\ell\left(y,\hat{y}\right)$
+\end_inset
+
+ המחיר לנחש 
+\begin_inset Formula $\hat{y}$
+\end_inset
+
+ כאשר התגית האמיתית היא 
+\begin_inset Formula $y$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+פונקציות הפסד נפוצות
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+פונקצית הפסד 
+\begin_inset Formula $0-1$
+\end_inset
+
+:
+ 
+\begin_inset Formula 
+\[
+\ell\left(y,\hat{y}\right)=\mathds{1}\left\{ y=\hat{y}\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+פונקצית הפסד ריבועית (
+\begin_inset Formula $\ell_{2}$
+\end_inset
+
+):
+ 
+\begin_inset Formula 
+\[
+\ell\left(y,\hat{y}\right)=\left\lVert y-\hat{y}\right\rVert _{2}^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+בהינתן פונקצית הפסד מסוימת,
+ המטרה הטבעית היא למזער את תוחלת ההפסד:
+\begin_inset Formula 
+\begin{equation}
+L\left(h\right)\triangleq\mathbb{E}\left[\ell\left(Y,h\left(X\right)\right)\right]=\sum_{\left(x,y\right)\in\mathcal{X}\times\mathcal{Y}}\mathbb{P}\left(X=x,Y=y\right)\ell\left(y,h\left(x\right)\right)\label{eq:L(h)}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+פרדיקטור אופטימלי
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+
+\series bold
+הפרדיקטור האופטימלי
+\series default
+ הוא 
+\begin_inset Formula $h=\arg\min_{h}L\left(h\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+קלאסיפיקציה בינארית
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+נתבונן במקרה הפשוט של קלאסיפיקציה בינארית,
+ 
+\begin_inset Formula $\mathcal{Y}=\left\{ 0,1\right\} $
+\end_inset
+
+ עם הפסד 
+\begin_inset Formula $0-1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+בהינתן 
+\begin_inset Formula $x$
+\end_inset
+
+,
+ מה הפרדיקציה האופטימלית 
+\begin_inset Formula $h\left(x\right)$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Example
+נחשוב על הגורמים ב-
+\begin_inset Formula $L\left(h\right)$
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:L(h)"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ שתלויים ב-
+\begin_inset Formula $x$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align}
+L\left(h\right)= & \mathbb{P}\left(X=x,Y=1\right)\ell\left(1,h\left(x\right)\right)+\mathbb{P}\left(X=x,Y=0\right)\ell\left(0,h\left(x\right)\right)\nonumber \\
+= & \mathbb{P}\left(X=x\right)\left(\mathbb{P}\left(Y=1|X=x\right)\ell\left(1,h\left(x\right)\right)+\mathbb{P}\left(Y=0|X=x\right)\ell\left(0,h\left(x\right)\right)\right)\label{eq:L(h) binary classification}
+\end{align}
+
+\end_inset
+
+אם 
+\begin_inset Formula $h\left(x\right)=1$
+\end_inset
+
+ אז 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:L(h) binary classification"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ = 
+\begin_inset Formula $\mathbb{P}\left(X=x\right)\mathbb{P}\left(Y=1|X=x\right)$
+\end_inset
+
+,
+ אם 
+\begin_inset Formula $h\left(x\right)=0$
+\end_inset
+
+ אז 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:L(h) binary classification"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ = 
+\begin_inset Formula $\mathbb{P}\left(X=x\right)\mathbb{P}\left(Y=0|X=x\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+אז,
+ האם אנחנו צריכים לבחור ש-
+\begin_inset Formula $h\left(x\right)=1$
+\end_inset
+
+ או 
+\begin_inset Formula $h\left(x\right)=0$
+\end_inset
+
+?
+ נבחר לפי הערך הקטן יותר של 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:L(h) binary classification"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+כלומר:
+\begin_inset Formula 
+\begin{align*}
+h\left(x\right)= & \mathds{1}\left\{ \mathbb{P}\left(X=x\right)\mathbb{P}\left(Y=1|X=x\right)\geq\mathbb{P}\left(X=x\right)\mathbb{P}\left(Y=0|X=x\right)\right\} \\
+= & \mathds{1}\left\{ \mathbb{P}\left(Y=1|X=x\right)\geq\mathbb{P}\left(Y=0|X=x\right)\right\} 
+\end{align*}
+
+\end_inset
+
+במילים אחרות,
+\begin_inset Formula 
+\[
+h\left(x\right)=\arg\max_{y\in\left\{ 0,1\right\} }\mathbb{P}\left(Y=y|X=x\right)
+\]
+
+\end_inset
+
+זה נקרא מסווג א-פוסטריורי מקסימלי (
+\lang english
+MAP
+\lang hebrew
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+סינון ספאם
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+יהי 
+\begin_inset Formula $X$
+\end_inset
+
+ מספר האותיות הגדולות באימייל.
+\end_layout
+
+\begin_layout Example
+נניח ואנו יודעים את 
+\begin_inset Formula $\mathbb{P}\left(X=x,Y=y\right)$
+\end_inset
+
+,
+ וש-
+\begin_inset Formula $\mathbb{P}\left(Y=1\right)=\mathbb{P}\left(Y=0\right)=\frac{1}{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+נניח 
+\begin_inset Formula $\mathbb{P}\left(X=x|Y=y\right)$
+\end_inset
+
+ מקורבת היטב על ידי גאוסיאן עם תוחלת 
+\begin_inset Formula $c_{y}$
+\end_inset
+
+ ושונות 
+\begin_inset Formula $v$
+\end_inset
+
+,
+ כאשר 
+\begin_inset Formula $c_{1}>c_{0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+נרצה לחזות את 
+\begin_inset Formula $h\left(x\right)=1$
+\end_inset
+
+ אם ורק אם 
+\begin_inset Formula $\mathbb{P}\left(Y=1|X=x\right)\geq\mathbb{P}\left(Y=0|X=x\right)$
+\end_inset
+
+:
+ 
+\begin_inset Formula 
+\begin{align*}
+\iff & \frac{\mathbb{P}\left(Y=1,X=x\right)}{\mathbb{P}\left(Y=1\right)}\geq\frac{\mathbb{P}\left(Y=0,X=x\right)}{\mathbb{P}\left(Y=0\right)}\\
+\underset{\mathrm{Baye's}}{\iff} & \mathbb{P}\left(X=x|Y=1\right)\geq\mathbb{P}\left(X=x|Y=0\right)\\
+\iff & x\geq\frac{c_{0}+c_{1}}{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+פונקציות הפסד שונות נותנות פרדיקטור אופטימלי שונה.
+ נניח 
+\begin_inset Formula $\ell\left(y,\hat{y}\right)=\left(y-\hat{y}\right)^{2}$
+\end_inset
+
+,
+ אז:
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}\left[\ell\left(Y,\hat{y}\right)|X=x\right]= & \mathbb{E}\left[\left(Y-\hat{y}\right)^{2}|X=x\right]=\mathbb{E}\left[Y^{2}|X=x\right]-2\hat{y}\mathbb{E}\left[Y|X=x\right]+\hat{y}^{2}
+\end{align*}
+
+\end_inset
+
+גודל זה ממוזער עבור 
+\begin_inset Formula $\hat{y}=\mathbb{E}\left[Y|X=x\right]=\mathbb{P}\left(Y=1|X=x\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Question
+מה קורה אם אנחנו לא יודעים את ההתפלגות המשותפת?
+ זה מה שקורה במציאות.
+\end_layout
+
+\begin_layout Standard
+כעת נדבר בקצרה על למידת תכונות של התפלגות מתוך נתונים.
+\end_layout
+
+\begin_layout Example
+נניח ונרצה למצוא את התוחלת של הטלת מטבע.
+\end_layout
+
+\begin_layout Example
+יש לנו משתנה ברנולי עם פרמטר 
+\begin_inset Formula $p\in\left[0,1\right]$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\mathbb{P}\left(X=1\right)=1-\mathbb{P}\left(X=0\right)=p
+\]
+
+\end_inset
+
+נרצה למצוא את 
+\begin_inset Formula $p$
+\end_inset
+
+,
+ על סמך מ
+\begin_inset Quotes erd
+\end_inset
+
+מ
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset Formula $X_{1},\ldots,X_{m}\overset{\mathrm{iid}}{\sim}\mathrm{Bernoulli}\left(p\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+נתבונן בממוצע:
+\begin_inset Formula 
+\[
+\overline{X}_{m}\triangleq\frac{1}{m}\sum_{i=1}^{m}X_{i}
+\]
+
+\end_inset
+
+מתקיים:
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}\left[\overline{X}_{m}\right] & =\frac{1}{m}\sum_{i=1}^{m}\mathbb{E}\left[X_{i}\right]=p\\
+\text{Var}\left(\overline{X}_{m}\right) & =\text{Var}\left(\frac{1}{m}\sum_{i=1}^{m}X_{i}\right)=\frac{1}{m^{2}}\sum_{i=1}^{m}\text{Var}\left(X_{i}\right)=\frac{mp\left(1-p\right)}{m^{2}}=\frac{p\left(1-p\right)}{m}\xrightarrow{m\xrightarrow{}\infty}0
+\end{align*}
+
+\end_inset
+
+אז,
+ 
+\begin_inset Formula $\overline{X}_{m}$
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+מתכנס
+\begin_inset Quotes erd
+\end_inset
+
+ לערך הנכון (
+\begin_inset Formula $p$
+\end_inset
+
+) כאשר 
+\begin_inset Formula $m\xrightarrow{}\infty$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+מה קורה עבור 
+\begin_inset Formula $m$
+\end_inset
+
+ סופי?
+\end_layout
+
+\begin_deeper
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+אי-שוויון הופדינג
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\forall\varepsilon>0 & . & \mathbb{P}\left(\left|\overline{X}_{m}-p\right|\geq\varepsilon\right)\leq & 2\exp\left(-2m\varepsilon^{2}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Example
+כעת,
+ לכל 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+ ו-
+\begin_inset Formula $\delta\in\left[0,1\right]$
+\end_inset
+
+,
+ כך ש-
+\begin_inset Formula $\overline{X}_{m}$
+\end_inset
+
+ במרחק לכל היותר 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+ מ-
+\begin_inset Formula $p$
+\end_inset
+
+ (
+\begin_inset Quotes eld
+\end_inset
+
+
+\lang english
+approximately correct
+\lang hebrew
+
+\begin_inset Quotes erd
+\end_inset
+
+) בהסתברות 
+\begin_inset Formula $1-\delta\leq$
+\end_inset
+
+ (
+\begin_inset Quotes eld
+\end_inset
+
+
+\lang english
+probably
+\lang hebrew
+
+\begin_inset Quotes erd
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Example
+לכן,
+ כל מה שאנחנו צריכים,
+ זה ש-
+\begin_inset Formula $2\exp\left(-2m\varepsilon^{2}\right)\leq\delta$
+\end_inset
+
+,
+ זה קורה אם ורק אם:
+\begin_inset Formula 
+\[
+m\geq\frac{1}{2\varepsilon^{2}}\log\frac{2}{\delta}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+אנחנו מצאנו 
+\begin_inset Formula $m$
+\end_inset
+
+ שמבטיח משערך
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+probably approximately correct
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+(
+\lang english
+PAC
+\lang hebrew
+).
+\end_layout
+
+\end_body
+\end_document
