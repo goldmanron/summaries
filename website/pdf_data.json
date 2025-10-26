@@ -64,7 +64,7 @@
                 "שם קורס מלא": "מודלים חישוביים",
                 "מספר קורס": "0368-2200",
                 "שנה וסמסמטר": "2025ב",
-                "מרצה": ["ד\"ר שטמר אורי"],
+                "מרצה": ["ד\"ר אורי שטמר"],
                 "image": "icon/info.png"
             }
         }
@@ -111,10 +111,24 @@
             }
         }
     },
+    "algorithms": {
+        "display_name": "אלגוריתמים",
+        "URL": "summaries/algorithms/algorithms_summary.pdf",
+        "button_color": "gradient-purple1",
+        "pdf_info": {
+            "course_info": {
+                "שם קורס מלא": "אלגוריתמים",
+                "מספר קורס": "0368-2160",
+                "שנה וסמסמטר": "2026א",
+                "מרצה": ["ד\"ר רני הוד"],
+                "image": "icon/info.png"
+            }
+        }
+    },
     "machine_learning": {
         "display_name": "למידה חישובית",
         "URL": "summaries/ml/ml_summary.pdf",
-        "button_color": "gradient-purple-introduction_to_machine_learning",
+        "button_color": "gradient-purple2",
         "pdf_info": {
             "course_info": {
                 "שם קורס מלא": "מבוא ללמידה חישובית",
