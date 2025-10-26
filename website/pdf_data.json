@@ -79,7 +79,8 @@
                 "מספר קורס": "0368-3049",
                 "שנה וסמסמטר": "2026א",
                 "מרצה": ["פרופ' בני אפלבאום"],
-                "image": "icon/info.png"
+                "image1": "icon/info.png", 
+                "image2": "icon/construction.png"
             }
         }
     },
@@ -107,7 +108,8 @@
                 "מספר קורס": "0512-2532",
                 "שנה וסמסמטר": "2026א",
                 "מרצה": ["ד\"ר אנטולי חינה", "פרופ' אורי ארז"],
-                "image": "icon/info.png"
+                "image1": "icon/info.png", 
+                "image2": "icon/construction.png"
             }
         }
     },
@@ -121,7 +123,8 @@
                 "מספר קורס": "0368-2160",
                 "שנה וסמסמטר": "2026א",
                 "מרצה": ["ד\"ר רני הוד"],
-                "image": "icon/info.png"
+                "image1": "icon/info.png", 
+                "image2": "icon/construction.png"
             }
         }
     },
@@ -135,7 +138,8 @@
                 "מספר קורס": "0368-3235",
                 "שנה וסמסמטר": "2026א",
                 "מרצה": ["פרופ' נדב כהן"],
-                "image": "icon/info.png"
+                "image1": "icon/info.png", 
+                "image2": "icon/construction.png"
             }
         }
     }
