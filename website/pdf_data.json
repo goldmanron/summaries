@@ -69,6 +69,20 @@
             }
         }
     },
+    "modern_cryptography": {
+        "display_name": "מבוא לקריפטוגרפיה מודרנית",
+        "URL": "summaries/modern_crypto/crypto_summary.pdf",
+        "button_color": "gradient-red-introduction_to_modern_cryptography",
+        "pdf_info": {
+            "course_info": {
+                "שם קורס מלא": "מבוא לקריפטוגרפיה מודרנית",
+                "מספר קורס": "0368-3049",
+                "שנה וסמסמטר": "2026א",
+                "מרצה": ["פרופ' בני אפלבאום"],
+                "image": "icon/info.png"
+            }
+        }
+    },
     "signals_and_systems": {
         "display_name": "אותות ומערכות",
         "URL": "summaries/signals/Signals_summary.pdf",
@@ -79,6 +93,20 @@
                 "מספר קורס": "0512-2835",
                 "שנה וסמסמטר": "2025ב",
                 "מרצה": ["ד\"ר ברכה לאופר", "פרופ' תמיר בן-דורי"],
+                "image": "icon/info.png"
+            }
+        }
+    },
+    "random_signals_and_noises": {
+        "display_name": "אותות אקראיים ורעש",
+        "URL": "summaries/random_signals/Random_signals_and_noises_summary.pdf",
+        "button_color": "gradient-pink2",
+        "pdf_info": {
+            "course_info": {
+                "שם קורס מלא": "אותות אקראיים ורעש",
+                "מספר קורס": "0512-2532",
+                "שנה וסמסמטר": "2026א",
+                "מרצה": ["ד\"ר אנטולי חינה", "פרופ' אורי ארז"],
                 "image": "icon/info.png"
             }
         }
