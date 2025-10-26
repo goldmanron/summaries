@@ -1,26 +1,16 @@
 /* general */
 
 :root {
-    --base-color: #070b1d;
-    --base-variant: #717997;
-    --container-color: #0d1117;
-    --text-color: #ffffff;
-    --secondary-text: #a4a5b8;
-    --primary-color: #3a435d;
-    --tooltip-color: #4b006e;
-    --popup-color: #111a27;
+  --base-color: #121212;   /* default: dark */
+  --text-color: #f6f7f8;
 }
 
 .whitemode {
-    --base-color: #f7f7f7;
-    --base-variant: #e8e9ed;
-    --container-color: #fff;
-    --text-color: #000000;
-    --secondary-text: #232738;
-    --primary-color: #3a435d;
-    --tooltip-color: #ff81df;
-    --popup-color: #d3c7c7;
+  --base-color: #f6f7f8;
+  --text-color: #111;
 }
+
+
 
 @font-face {
   font-family: "David CLM";
@@ -40,17 +30,17 @@ html { box-sizing: border-box; }
 
 /* Reset margins/padding and set base */
 html, body {
+  font-family: "David CLM", serif;
+  background-color: var(--base-color);
+  color: var(--text-color);
   margin: 0;
   padding: 0;
   width: 100%;
-  min-height: 100%;
-  background-color: var(--base-color);
-  color: var(--text-color);
-  font-family: "David Libre", "David CLM", serif; /* fallback order */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden; /* keep if intentional */
+  overflow-x: hidden;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
+
 
 /* Heading style */
 h1 {
