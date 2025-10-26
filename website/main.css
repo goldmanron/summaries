@@ -24,7 +24,7 @@
 
 /* Ensure no unexpected margins or paddings */
 html, body {
-    font-family: Arial, sans-serif;
+    font-family: David CLM;
     background-color: var(--base-color);
     color: var(--text-color);
     margin: 0;
