@@ -73,11 +73,11 @@
         "display_name": "מבוא לקריפטוגרפיה מודרנית",
         "URL": "summaries/modern_crypto/crypto_summary.pdf",
         "button_color": "gradient-red-introduction_to_modern_cryptography",
-        "under_construction": {
+        "pdf_info": {
+            "under_construction": {
                 "": "בבנייה",
                 "image": "icon/construction.png"
             },
-        "pdf_info": {
             "course_info": {
                 "שם קורס מלא": "מבוא לקריפטוגרפיה מודרנית",
                 "מספר קורס": "0368-3049",
@@ -105,11 +105,11 @@
         "display_name": "אותות אקראיים ורעש",
         "URL": "summaries/random_signals/Random_signals_and_noises_summary.pdf",
         "button_color": "gradient-pink2",
-        "under_construction": {
+        "pdf_info": {
+            "under_construction": {
                 "": "בבנייה",
                 "image": "icon/construction.png"
             },
-        "pdf_info": {
             "course_info": {
                 "שם קורס מלא": "אותות אקראיים ורעש",
                 "מספר קורס": "0512-2532",
@@ -123,11 +123,11 @@
         "display_name": "אלגוריתמים",
         "URL": "summaries/algorithms/algorithms_summary.pdf",
         "button_color": "gradient-teal1",
-         "under_construction": {
+        "pdf_info": {
+            "under_construction": {
                 "": "בבנייה",
                 "image": "icon/construction.png"
             },
-        "pdf_info": {
             "course_info": {
                 "שם קורס מלא": "אלגוריתמים",
                 "מספר קורס": "0368-2160",
@@ -141,11 +141,11 @@
         "display_name": "למידה חישובית",
         "URL": "summaries/ml/ml_summary.pdf",
         "button_color": "gradient-teal2",
-         "under_construction": {
+         "pdf_info": {
+            "under_construction": {
                 "": "בבנייה",
                 "image": "icon/construction.png"
             },
-        "pdf_info": {
             "course_info": {
                 "שם קורס מלא": "מבוא ללמידה חישובית",
                 "מספר קורס": "0368-3235",
