@@ -24,7 +24,7 @@
 
 /* Ensure no unexpected margins or paddings */
 html, body {
-    font-family: David CLM;
+    font-family: David CLM, serif;
     background-color: var(--base-color);
     color: var(--text-color);
     margin: 0;
@@ -32,6 +32,11 @@ html, body {
     width: 100%;
     overflow-x: hidden; /* Prevent horizontal scrolling */
     box-sizing: border-box;
+}
+
+h1 {
+  font-family: 'David Libre', serif;
+  font-weight: 700; /* Use a bold weight */
 }
 
 p {
