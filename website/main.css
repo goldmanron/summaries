@@ -1,9 +1,9 @@
-:root {
+[data-theme="dark"] {
   --base-color: #121212; /* dark mode base */
   --text-color: #f6f7f8;
 }
 
-[data-theme="dark"] {
+:root {
   --base-color: #f6f7f8;
   --text-color: #111;
 }
