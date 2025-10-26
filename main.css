@@ -31,28 +31,12 @@
   font-display: swap;
 }
 
-:root {
-  --base-color: #f6f7f8;
-  --text-color: #111;
-}
-
-[data-theme="dark"] {
-  --base-color: #121212;
-  --text-color: #f6f7f8;
-}
-
 /* Example: import David Libre from Google Fonts (only if you want David Libre) */
 @import url('https://fonts.googleapis.com/css2?family=David+Libre:wght@400;700&display=swap');
 
 /* Global box-sizing pattern */
 html { box-sizing: border-box; }
 *, *::before, *::after { box-sizing: inherit; }
-
-/* Root variables (ensure these exist) */
-:root {
-  --base-color: #f6f7f8;
-  --text-color: #111;
-}
 
 /* Reset margins/padding and set base */
 html, body {
