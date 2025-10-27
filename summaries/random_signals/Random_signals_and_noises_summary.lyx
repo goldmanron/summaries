@@ -1,0 +1,772 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\begin_preamble
+% --- Load amsthm package for theorem styles ---
+\usepackage{amsthm}
+
+% --- Shared theoremstyle (one place only!) ---
+\newtheoremstyle{defuprightbrackets}%
+  {3pt}{3pt}% space above/below
+  {\upshape}% body font
+  {}% indent amount
+  {\bfseries}% head font
+  {.}% punctuation after theorem head
+  { }% space after theorem head
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ [\textbf{\itshape #3}]}}%
+
+% --- Apply this style to all environments ---
+\theoremstyle{defuprightbrackets}
+
+% --- Define all environments to use LyX's language macros ---
+\ifx\thechapter\undefined
+  \newtheorem{mytheorem}{\protect\theoremname}
+\else
+  \newtheorem{mytheorem}{\protect\theoremname}[chapter]
+\fi
+
+% --- All other environments share the 'mytheorem' counter ---
+\newtheorem{mydefinition}[mytheorem]{\protect\definitionname}
+\newtheorem{mylemma}[mytheorem]{\protect\lemmaname}
+\newtheorem{myproposition}[mytheorem]{\protect\propositionname}
+\newtheorem{mycorollary}[mytheorem]{\protect\corollaryname}
+\newtheorem{myclaim}[mytheorem]{\protect\claimname}
+\newtheorem{myconjecture}[mytheorem]{\protect\conjecturename}
+\newtheorem{myremark}[mytheorem]{\protect\remarkname}
+\newtheorem{myexample}[mytheorem]{\protect\examplename}
+\newtheorem{myexercise}[mytheorem]{\protect\exercisename}
+\newtheorem{myproblem}[mytheorem]{\protect\problemname}
+\newtheorem{myfact}[mytheorem]{\protect\factname}
+\newtheorem{mynotation}[mytheorem]{\protect\notationname}
+\newtheorem{myassumption}[mytheorem]{\protect\assumptionname}
+\newtheorem{mysummary}[mytheorem]{\protect\summaryname}
+\newtheorem{myconclusion}[mytheorem]{\protect\conclusionname}
+\newtheorem{myalgorithm}[mytheorem]{\protect\algorithmname}
+\newtheorem{myaxiom}[mytheorem]{\protect\axiomname}
+\newtheorem{mycondition}[mytheorem]{\protect\conditionname}
+\newtheorem{myquestion}[mytheorem]{\protect\questionname}
+
+% --- Unnumbered environments ---
+\newtheorem*{mysolution}{\protect\solutionname}
+
+% --- Optional: change QED symbol for proofs ---
+\renewcommand{\qedsymbol}{$\square$}
+
+% Allows fancy stuff in the page header
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\usepackage{enumitem}
+\setlist[itemize,1]{label={\fontfamily{cmr}\fontencoding{T1}\selectfont\textbullet}}
+
+%Allows circuit drawing
+\usepackage{circuitikz}
+
+%Allows plotting graphs
+\usepackage{pgfplots}
+
+\usepackage{mathtools}
+\let\savedleft\left
+  \let\savedright\right
+
+  % Redefine \left and \right to insert the pairing-group hack
+  \renewcommand{\left}{\mathopen{}\mathclose\bgroup\savedleft}
+  \renewcommand{\right}{\aftergroup\egroup\savedright}
+
+% Necessary Commands:
+\usepackage{autobreak}
+\usepackage[T1]{fontenc}
+\usepackage{relsize}
+% Set vertical space before and after dislpay equations to be longer for better redability:
+\AtBeginDocument{\setlength\abovedisplayskip{12pt}}
+\AtBeginDocument{\setlength\belowdisplayskip{12pt}}
+\AtBeginDocument{\setlength\belowdisplayshortskip{12pt}}
+\AtBeginDocument{\setlength\belowdisplayshortskip{12pt}}
+
+% Set space between words to be wider:
+\spaceskip=1.3\fontdimen2\font plus 1\fontdimen3\font minus 1.5\fontdimen4\font
+
+\usepackage{xcolor}
+
+
+% Convert the QED Symbol at the end of proofs to a solid black square (credit: Yakir Oz):
+\usepackage{amssymb}
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+% Make the layout more similar to Hebrew Article, which I am more used to:
+\renewcommand*{\@seccntformat}[1]{\hspace{0.5cm}\csname the#1\endcsname\hspace{0.5cm}} 
+\usepackage{titlesec}
+\titleformat{\section}{\fontsize{20}{20}\bfseries}{\thesection}{10pt}{}
+\titleformat{\subsection}{\fontsize{15}{15}\bfseries}{\thesubsection}{10pt}{}
+\titleformat{\subsubsection}{\bfseries}{\thesubsubsection}{10pt}{}
+
+% Correct the reversed parentheses in labels:
+\usepackage{polyglossia}
+\setmainlanguage{hebrew}
+\newfontfamily{\hebrewfont}{David}
+\makeatletter
+\def\maketag@@@#1{\hbox{\m@th\normalfont\LRE{#1}}}
+\def\tagform@#1{\maketag@@@{(\ignorespaces#1\unskip)}}
+\makeatother
+
+% Create disjoint union symbols:
+\makeatletter
+\def\moverlay{\mathpalette\mov@rlay}
+\def\mov@rlay#1#2{\leavevmode\vtop{%
+   \baselineskip\z@skip \lineskiplimit-\maxdimen
+   \ialign{\hfil$\m@th#1##$\hfil\cr#2\crcr}}}
+\newcommand{\charfusion}[3][\mathord]{
+    #1{\ifx#1\mathop\vphantom{#2}\fi
+        \mathpalette\mov@rlay{#2\cr#3}
+      }
+    \ifx#1\mathop\expandafter\displaylimits\fi}
+\makeatother
+\newcommand{\cupdot}{\charfusion[\mathbin]{\cup}{\cdot}}
+\newcommand{\bigcupdot}{\charfusion[\mathop]{\bigcup}{\cdot}}
+
+
+\newcommand{\kaliLargeLand}{\mathop{\mathlarger{\mathlarger{\mathlarger{\land}}}}}
+\newcommand{\hebtext}[1]{\mbox{\R{\#1}}}
+
+
+% --- Redefine the 'proof' environment to match LyX style ---
+% (Bold, Upright Label; Upright Body; UNIFORM 3pt spacing)
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{\par
+  \pushQED{\qed}%
+  \normalfont \topsep3pt\relax  % <-- THIS IS THE SPACING FIX
+  \trivlist
+  \item[\hskip\labelsep
+        \bfseries
+    #1\@addpunct{.}]\ignorespaces
+}{%
+  \popQED\endtrivlist\@endpefalse
+}
+\makeatother
+
+\usepackage{enumitem}
+\setlist[itemize,1]{label={\fontfamily{cmr}\fontencoding{T1}\selectfont\textbullet}}
+\end_preamble
+\options no-math
+\use_default_options true
+\begin_modules
+customHeadersFooters
+theorems-ams-chap-bytype
+theorems-ams-extended-chap-bytype
+\end_modules
+\maintain_unincluded_children no
+\begin_local_layout
+Format 61
+Input book.layout
+
+# --- LyX Style Definitions using SHARED numbering display (\thetheorem.) ---
+# Corrected based on user's example
+
+Style Theorem
+  Category Reasoning
+  LatexType Environment
+  LatexName mytheorem
+  LabelCounter theorem  # Use 'theorem' counter for LyX display
+  LabelString "Theorem \thetheorem." # Use '\thetheorem' for LyX display
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  LangPreamble
+    \providecommand{\theoremname}{_(Theorem)}
+  EndLangPreamble
+End
+
+Style Claim
+  Category Reasoning
+  LatexType Environment
+  LatexName myclaim
+  LabelCounter theorem  # Use 'theorem' counter for LyX display
+  LabelString "Claim \thetheorem." # Use '\thetheorem' for LyX display
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  LangPreamble
+    \providecommand{\claimname}{_(Claim)}
+  EndLangPreamble
+End
+
+Style Corollary
+  Category Reasoning
+  LatexType Environment
+  LatexName mycorollary
+  LabelCounter theorem  # Use 'theorem' counter for LyX display
+  LabelString "Corollary \thetheorem." # Use '\thetheorem' for LyX display
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  LangPreamble
+    \providecommand{\corname}{_(Corollary)}
+    \providecommand{\corollaryname}{_(Corollary)}
+  EndLangPreamble
+End
+
+Style Lemma
+  Category Reasoning
+  LatexType Environment
+  LatexName mylemma
+  LabelCounter theorem  # Use 'theorem' counter for LyX display
+  LabelString "Lemma \thetheorem." # Use '\thetheorem' for LyX display
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  LangPreamble
+    \providecommand{\lemmaname}{_(Lemma)}
+    \providecommand{\lemmaname}{_(Lemma)}
+  EndLangPreamble
+End
+
+Style Proposition
+  Category Reasoning
+  LatexType Environment
+  LatexName myproposition
+  LabelCounter theorem  # Use 'theorem' counter for LyX display
+  LabelString "Proposition \thetheorem." # Use '\thetheorem' for LyX display
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  LangPreamble
+    \providecommand{\propname}{_(Proposition)}
+    \providecommand{\propositionname}{_(Proposition)}
+  EndLangPreamble
+End
+
+Style Conjecture
+  Category Reasoning
+  LatexType Environment
+  LatexName myconjecture
+  LabelCounter theorem  # Use 'theorem' counter for LyX display
+  LabelString "Conjecture \thetheorem." # Use '\thetheorem' for LyX display
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  LangPreamble
+    \providecommand{\conjname}{_(Conjecture)}
+    \providecommand{\conjecturename}{_(Conjecture)}
+  EndLangPreamble
+End
+
+Style Remark
+  Category Reasoning
+  LatexType Environment
+  LatexName myremark
+  LabelCounter theorem  # Use 'theorem' counter for LyX display
+  LabelString "Remark \thetheorem." # Use '\thetheorem' for LyX display
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  LangPreamble
+    \providecommand{\remname}{_(Remark)}
+    \providecommand{\remarkname}{_(Remark)}
+  EndLangPreamble
+End
+
+Style Proof
+  Category Reasoning
+  LatexType Environment
+  LatexName proof
+  LabelString "Proof."
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  LangPreamble
+    \providecommand{\proofname}{_(Proof)}
+  EndLangPreamble
+End
+
+Style Example
+  Category Reasoning
+  LatexType Environment
+  LatexName myexample
+  LabelCounter theorem  # Use 'theorem' counter for LyX display
+  LabelString "Example \thetheorem." # Use '\thetheorem' for LyX display
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  LangPreamble
+    \providecommand{\examplename}{_(Example)}
+  EndLangPreamble
+End
+
+Style Problem
+  Category Reasoning
+  LatexType Environment
+  LatexName myproblem
+  LabelCounter theorem  # Use 'theorem' counter for LyX display
+  LabelString "Problem \thetheorem." # Use '\thetheorem' for LyX display
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  LangPreamble
+    \providecommand{\problemname}{_(Problem)}
+  EndLangPreamble
+End
+
+Style Exercise
+  Category Reasoning
+  LatexType Environment
+  LatexName myexercise
+  LabelCounter theorem  # Use 'theorem' counter for LyX display
+  LabelString "Exercise \thetheorem." # Use '\thetheorem' for LyX display
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  LangPreamble
+    \providecommand{\exercisename}{_(Exercise)}
+  EndLangPreamble
+End
+
+Style Solution
+  Category Reasoning
+  LatexType Environment
+  LatexName mysolution
+  LabelString "Solution."
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  LangPreamble
+    \providecommand{\solutionname}{_(Solution)}
+  EndLangPreamble
+End
+
+Style Fact
+  Category Reasoning
+  LatexType Environment
+  LatexName myfact
+  LabelCounter theorem  # Use 'theorem' counter for LyX display
+  LabelString "Fact \thetheorem." # Use '\thetheorem' for LyX display
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  LangPreamble
+    \providecommand{\factname}{_(Fact)}
+  EndLangPreamble
+End
+
+Style Criterion
+  Category Reasoning
+  LatexType Environment
+  LatexName mycriterion
+  LabelCounter theorem  # Use 'theorem' counter for LyX display
+  LabelString "Criterion \thetheorem." # Use '\thetheorem' for LyX display
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  LangPreamble
+    \providecommand{\criterionname}{_(Criterion)}
+  EndLangPreamble
+End
+
+Style Algorithm
+  Category Reasoning
+  LatexType Environment
+  LatexName myalgorithm
+  LabelCounter theorem  # Use 'theorem' counter for LyX display
+  LabelString "Algorithm \thetheorem." # Use '\thetheorem' for LyX display
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  LangPreamble
+    \providecommand{\algorithmname}{_(Algorithm)}
+  EndLangPreamble
+End
+
+Style Axiom
+  Category Reasoning
+  LatexType Environment
+  LatexName myaxiom
+  LabelCounter theorem  # Use 'theorem' counter for LyX display
+  LabelString "Axiom \thetheorem." # Use '\thetheorem' for LyX display
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  LangPreamble
+    \providecommand{\axiomname}{_(Axiom)}
+  EndLangPreamble
+End
+
+Style Condition
+  Category Reasoning
+  LatexType Environment
+  LatexName mycondition
+  LabelCounter theorem  # Use 'theorem' counter for LyX display
+  LabelString "Condition \thetheorem." # Use '\thetheorem' for LyX display
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  LangPreamble
+    \providecommand{\conditionname}{_(Condition)}
+  EndLangPreamble
+End
+
+Style Note
+  Category Reasoning
+  LatexType Environment
+  LatexName mynote
+  LabelCounter theorem  # Use 'theorem' counter for LyX display
+  LabelString "Note \thetheorem." # Use '\thetheorem' for LyX display
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  LangPreamble
+    \providecommand{\notename}{_(Note)}
+  EndLangPreamble
+End
+
+Style Notation
+  Category Reasoning
+  LatexType Environment
+  LatexName mynotation
+  LabelCounter theorem  # Use 'theorem' counter for LyX display
+  LabelString "Notation \thetheorem." # Use '\thetheorem' for LyX display
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  LangPreamble
+    \providecommand{\notationname}{_(Notation)}
+  EndLangPreamble
+End
+
+Style Summary
+  Category Reasoning
+  LatexType Environment
+  LatexName mysummary
+  LabelCounter theorem  # Use 'theorem' counter for LyX display
+  LabelString "Summary \thetheorem." # Use '\thetheorem' for LyX display
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  LangPreamble
+    \providecommand{\summaryname}{_(Summary)}
+  EndLangPreamble
+End
+
+Style Conclusion
+  Category Reasoning
+  LatexType Environment
+  LatexName myconclusion
+  LabelCounter theorem  # Use 'theorem' counter for LyX display
+  LabelString "Conclusion \thetheorem." # Use '\thetheorem' for LyX display
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  LangPreamble
+    \providecommand{\conclusionname}{_(Conclusion)}
+  EndLangPreamble
+End
+
+Style Assumption
+  Category Reasoning
+  LatexType Environment
+  LatexName myassumption
+  LabelCounter theorem  # Use 'theorem' counter for LyX display
+  LabelString "Assumption \thetheorem." # Use '\thetheorem' for LyX display
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  LangPreamble
+    \providecommand{\assumptionname}{_(Assumption)}
+  EndLangPreamble
+End
+
+Style Question
+  Category Reasoning
+  LatexType Environment
+  LatexName myquestion
+  LabelCounter theorem  # Use 'theorem' counter for LyX display
+  LabelString "Question \thetheorem." # Use '\thetheorem' for LyX display
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  LangPreamble
+    \providecommand{\questionname}{_(Question)}
+  EndLangPreamble
+End
+
+Style Definition
+  Category Reasoning
+  LatexType Environment
+  LatexName mydefinition
+  LabelCounter theorem  # Use 'theorem' counter for LyX display
+  LabelString "Definition \thetheorem." # Use '\thetheorem' for LyX display
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  LangPreamble
+    \providecommand{\definitionname}{_(Definition)}
+  EndLangPreamble
+End
+\end_local_layout
+\language hebrew
+\language_package default
+\inputencoding auto-legacy
+\fontencoding auto
+\font_roman "default" "David CLM"
+\font_sans "default" "David CLM"
+\font_typewriter "default" "David CLM"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\float_alignment class
+\paperfontsize 11
+\spacing onehalf
+\use_hyperref true
+\pdf_author "Ron Goldman"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle true
+\pdf_quoted_options "linkcolor=blue, urlcolor=marineblue, citecolor=blue, pdfstartview={FitH}, hyperfootnotes=false, unicode=true"
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1cm
+\topmargin 2cm
+\rightmargin 1cm
+\bottommargin 2cm
+\headheight 0cm
+\headsep 1cm
+\footskip 1cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation 0bp
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Title
+\paragraph_spacing double
+
+\series bold
+\size huge
+אותות אקראיים ורעש (
+\numeric on
+0512-2532
+\numeric off
+)
+\end_layout
+
+\begin_layout Author
+נכתב ע
+\begin_inset Quotes erd
+\end_inset
+
+י רון גולדמן
+\begin_inset Newline newline
+\end_inset
+
+מתוך הרצאות של פרופ' אורי ארז וד
+\begin_inset Quotes erd
+\end_inset
+
+ר אנטולי חינה
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
