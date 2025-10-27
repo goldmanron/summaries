@@ -1,54 +1,38 @@
-[data-theme="dark"] {
-  --base-color: #121212; /* dark mode base */
-  --text-color: #f6f7f8;
-}
+/* general */
 
 :root {
-  --base-color: #f6f7f8;
-  --text-color: #111;
+    --base-color: #070b1d;
+    --base-variant: #717997;
+    --container-color: #0d1117;
+    --text-color: #ffffff;
+    --secondary-text: #a4a5b8;
+    --primary-color: #3a435d;
+    --tooltip-color: #4b006e;
+    --popup-color: #111a27;
 }
 
-
-
-
-@font-face {
-  font-family: "David CLM";
-  src: url("/fonts/DavidCLM.woff2") format("woff2"),
-       url("/fonts/DavidCLM.woff") format("woff");
-  font-weight: 400 700; /* supported weights */
-  font-style: normal;
-  font-display: swap;
+.whitemode {
+    --base-color: #f7f7f7;
+    --base-variant: #e8e9ed;
+    --container-color: #fff;
+    --text-color: #000000;
+    --secondary-text: #232738;
+    --primary-color: #3a435d;
+    --tooltip-color: #ff81df;
+    --popup-color: #d3c7c7;
 }
 
-/* Example: import David Libre from Google Fonts (only if you want David Libre) */
-@import url('https://fonts.googleapis.com/css2?family=David+Libre:wght@400;700&display=swap');
-
-/* Global box-sizing pattern */
-html { box-sizing: border-box; }
-*, *::before, *::after { box-sizing: inherit; }
-
-/* Reset margins/padding and set base */
+/* Ensure no unexpected margins or paddings */
 html, body {
-  font-family: "David CLM", serif;
-  background-color: var(--base-color);
-  color: var(--text-color);
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  overflow-x: hidden;
-  box-sizing: border-box;
-  transition: background-color 0.3s ease, color 0.3s ease;
+    font-family: Arial, sans-serif;
+    background-color: var(--base-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    box-sizing: border-box;
 }
-
-
-/* Heading style */
-h1 {
-  font-family: "David Libre", "David CLM", serif;
-  font-weight: 700; /* ensure the font weight is available */
-  line-height: 1.12;
-  margin: 0 0 0.5em 0;
-}
-
 
 p {
     color: var(--secondary-text);
