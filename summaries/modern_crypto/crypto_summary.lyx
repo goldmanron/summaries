@@ -688,16 +688,6 @@ End
 \use_formatted_ref 0
 \use_minted 0
 \use_lineno 0
-\branch random vectors
-\selected 1
-\filename_suffix 0
-\color background background
-\end_branch
-\branch random variables
-\selected 1
-\filename_suffix 0
-\color background background
-\end_branch
 \index Index
 \shortcut idx
 \color #008000
@@ -739,9 +729,9 @@ End
 
 \series bold
 \size huge
-אותות אקראיים ורעש (
+מבוא לקריפטוגרפיה מודרנית (
 \numeric on
-0512-2532
+0368-3049
 \numeric off
 )
 \end_layout
@@ -755,11 +745,11 @@ End
 \begin_inset Newline newline
 \end_inset
 
-מתוך הרצאות של פרופ' אורי ארז וד
+ע
 \begin_inset Quotes erd
 \end_inset
 
-ר אנטולי חינה
+פ הרצאות של פרופ' בני אפלבאום
 \end_layout
 
 \begin_layout Standard
@@ -776,20 +766,15 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Section
-היכן פוגשים תהליכים אקראיים?
+הצפנה
 \end_layout
 
-\begin_layout Standard
-בכל מקום,
- ניתן שתי דוגמאות לכך.
-\end_layout
-
-\begin_layout Example
+\begin_layout Definition
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-מעט אקראיות
+פונקצית הצפנה
 \end_layout
 
 \end_inset
@@ -797,41 +782,8 @@ status open
 
 \end_layout
 
-\begin_layout Example
-נניח ו-
-\begin_inset Formula $V\left(t\right)=A\sin\left(2\pi ft+\Theta\right)$
-\end_inset
-
- המתח בשקע חשמל בזמן 
-\begin_inset Formula $t$
-\end_inset
-
-.
- איננו יודעים מה הפאזה 
-\begin_inset Formula $\Theta$
-\end_inset
-
-,
- לכן נניח 
-\begin_inset Formula $\Theta\sim\mathrm{Unif}\left(-\pi,\pi\right)$
-\end_inset
-
- כי הרי אין שום סיבה שלפאזות שונות יהיו הסתברויות שונות.
-\end_layout
-
-\begin_layout Example
-שאלה הסתברותית:
- 
-\begin_inset Formula $\mathbb{P}\left(V\left(t_{0}\right)\in\left[a,b\right]\right)$
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Example
-נגדיר משתנה מקרי 
-\begin_inset Formula $Y\triangleq V\left(t_{0}\right)$
+\begin_layout Definition
+\begin_inset Formula $E:\mathcal{K}\times\mathcal{M}\xrightarrow{}\mathcal{C}$
 \end_inset
 
 .
@@ -844,12 +796,12 @@ status open
 
 \end_layout
 
-\begin_layout Example
+\begin_layout Definition
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-הרבה אקראיות
+פונקצית פיענוח
 \end_layout
 
 \end_inset
@@ -857,526 +809,174 @@ status open
 
 \end_layout
 
-\begin_layout Example
-דובר
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\nospellcheck off
-\bar no
-\strikeout off
-\xout off
-\uuline off
-\uwave off
-\noun off
-\color none
- 
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\numeric on
-\nospellcheck default
-\bar default
-\strikeout default
-\xout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
-1
-\numeric off
-:
- ילד 
-\begin_inset Formula $X_{1}\left(t\right)$
-\end_inset
-
- 
-\begin_inset Formula $\longleftarrow$
-\end_inset
-
- אות אקראי לא רצוי = 
-\begin_inset Quotes eld
-\end_inset
-
-רעש
-\begin_inset Quotes erd
-\end_inset
-
-
-\end_layout
-
-\begin_layout Example
-דובר
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\nospellcheck off
-\bar no
-\strikeout off
-\xout off
-\uuline off
-\uwave off
-\noun off
-\color none
- 
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\numeric on
-\nospellcheck default
-\bar default
-\strikeout default
-\xout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
-2
-\numeric off
-:
- מבוגר 
-\begin_inset Formula $X_{2}\left(t\right)$
-\end_inset
-
- 
-\begin_inset Formula $\longleftarrow$
-\end_inset
-
- אות אקראי רצוי 
-\end_layout
-
-\begin_layout Example
-מאזין:
- 
-\begin_inset Formula $Y\left(t\right)=h_{1}\left(t\right)*X_{1}\left(t\right)+h_{2}\left(t\right)*X_{2}\left(t\right)$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Example
-\begin_inset Formula 
-\[
-\underset{\mathrm{signal}}{X_{2}\left(t\right)}\longrightarrow\overset{\mathrm{deterministic}}{\boxed{h_{2}\left(t\right)}}\begin{array}{c}
-\\\\\xrightarrow{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\\
-\\\underset{\mathrm{noise}}{X_{2}\left(t\right)}\longrightarrow
-\end{array}\begin{array}{c}
-\\\\\oplus\\
-\uparrow\\
-\underset{\mathrm{deterministic}}{\boxed{h_{2}\left(t\right)}}
-\end{array}\longrightarrow Y\left(t\right)\longrightarrow\boxed{{\color{red}g\left(t\right)}}\longrightarrow\hat{X}_{2}\left(t\right)
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection*
-מטרות
-\end_layout
-
-\begin_layout Itemize
-כיצד נאפיין ת
-\begin_inset Quotes erd
-\end_inset
-
-א בתדר (
-\lang english
-power spectral density
-\lang hebrew
-)
-\end_layout
-
-\begin_layout Itemize
-כיצד נגדיר מרחק בין 
-\begin_inset Formula $\hat{X}_{2}\left(t\right)$
-\end_inset
-
- לבין 
-\begin_inset Formula $X_{2}\left(t\right)$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-כיצד נתכנן מסנן שיביא למינ' את המרחק
-\end_layout
-
-\begin_layout Part
-משתנים אקראיים
-\end_layout
-
-\begin_layout Standard
-\begin_inset Branch random variables
-inverted 0
-status open
-
-\begin_layout Subsubsection*
-אפיון סטטיסטי מלא
-\end_layout
-
-\begin_layout Standard
-נוכל לענות על השאלה 
-\begin_inset Formula $\mathbb{P}\left(X\in S\right)$
-\end_inset
-
- לכל 
-\begin_inset Formula $S\subset\mathbb{R}$
+\begin_layout Definition
+\begin_inset Formula $D:\mathcal{K}\times\mathcal{C}\xrightarrow{}\mathcal{M}$
 \end_inset
 
 .
 \end_layout
 
 \begin_layout Standard
-נתון ע
-\begin_inset Quotes erd
+נניח והמפתח 
+\begin_inset Formula $k\sim\mathrm{Unif}\left(\mathcal{K}\right)$
 \end_inset
 
-י:
-\begin_inset Formula 
-\begin{align*}
-\mathrm{CDF} & F_{X}\left(x\right)\\
-\mathrm{PDF} & f_{X}\left(x\right)\\
-\mathrm{MGF} & M_{X}\left(t\right)=\mathbb{E}\left[e^{tX}\right]\\
-\mathrm{CF} & \phi_{X}\left(\omega\right)=\mathbb{E}\left[e^{j\omega X}\right]\\
-\mathrm{Moments} & m_{k}=\mathbb{E}\left[X^{k}\right]
-\end{align*}
-
-\end_inset
-
-
+.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Branch random vectors
-inverted 0
-status open
+מרחב ההודעות 
+\begin_inset Formula $\mathcal{M}=\left\{ 0,1\right\} ^{*}$
+\end_inset
 
-\begin_layout Chapter
-וקטורים אקראיים
+.
+\end_layout
+
+\begin_layout Standard
+הרבה פעמים אורך ההודעות קשור למרחב המפתחות.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+נכונות
+\series default
+:
+ לכל 
+\begin_inset Formula $m\in\mathcal{M},k\in\mathcal{K}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+D_{k}\left(E_{k}\left(m\right)\right)=m
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
-הגדרות ודוגמאות ראשונות
+מודל התקשורת
+\end_layout
+
+\begin_layout Itemize
+שתי צדדים - אליס ובוב
+\end_layout
+
+\begin_layout Itemize
+קו תקשורת אמין
+\end_layout
+
+\begin_layout Itemize
+סכמת הצפנה משותפת:
+ 
+\begin_inset Formula $E,D,k$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+מטרה:
+ לשלוח בבטיחות הודעה 
+\begin_inset Formula $m$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+מטרות אבטחה
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $\left(\Omega,\mathcal{F},\mathbb{P}\right)$
-\end_inset
-
- מרחב הסתברות המקיים את אקסיומת קולמגורוב.
+יש מספר מטרות שנרצה להשיג
 \end_layout
 
-\begin_layout Definition
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-וקטור אקראי
-\end_layout
-
+\begin_layout Itemize
+אף יריב לא יכול לקבוע את 
+\begin_inset Formula $m$
 \end_inset
 
 
 \end_layout
 
-\begin_layout Definition
-פונקציה 
-\begin_inset Formula $\underline{X}=\left(X_{1},\ldots,X_{N}\right)^{T}:\Omega\xrightarrow{}\mathbb{R}^{N}$
-\end_inset
-
- נקראת 
-\series bold
-וקטור אקראי 
-\series default
-אם לכל 
-\begin_inset Formula $\underline{x}=\left(x_{1},\ldots,x_{N}\right)^{T}\in\mathbb{R}^{N}$
-\end_inset
-
- מתקיים כי
-\begin_inset Formula 
-\[
-\left\{ \left.\omega\in\Omega\left.\colon\right.X_{1}\left(\omega\right)\leq x_{1},\ldots,X_{N}\left(\omega\right)\leq x_{N}\right.\right\} \in\mathcal{F}
-\]
-
+\begin_layout Itemize
+אף יריב לא יכול לקבוע אף אינפורציה לגבי 
+\begin_inset Formula $m$
 \end_inset
 
 
 \end_layout
 
-\begin_layout Example
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-ו
-\begin_inset Quotes erd
-\end_inset
-
-א
-\end_layout
-
+\begin_layout Itemize
+אף יריב לא יכול לקבוע אינפורציה משמעותית לגבי 
+\begin_inset Formula $m$
 \end_inset
 
 
 \end_layout
 
-\begin_layout Example
-הטלת קוביה הוגנת:
-\begin_inset Formula 
-\begin{align*}
-\Omega=\left[6\right]=\left\{ 1,\ldots,6\right\}  & , & X_{1}\left(\omega\right)=\begin{cases}
-1 & \omega\ \mathrm{is\ odd}\\
-0 & \omega\mathrm{\ is\ even}
-\end{cases} & , & X_{2}\left(\omega\right)=\begin{cases}
-1 & \omega>1\\
-0 & \omega=1
-\end{cases}
-\end{align*}
-
-\end_inset
-
-המשתנים הללו תלויים כי 
-\begin_inset Formula $\mathbb{P}\left(X_{1}=0,X_{2}=0\right)\neq\frac{1}{2}\cdot\frac{1}{6}$
-\end_inset
-
-.
+\begin_layout Standard
+שאלות חשובות:
 \end_layout
 
-\begin_layout Definition
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-
-\lang english
-jCDF
+\begin_layout Itemize
+מה היריב יודע מראש?
 \end_layout
 
-\end_inset
+\begin_layout Itemize
+מה המגבלות החישוביות של היריב?
+\end_layout
 
-יהי 
-\begin_inset Formula $\underline{X}:\Omega\xrightarrow{}\mathbb{R}^{N}$
-\end_inset
-
- ו
-\begin_inset Quotes erd
-\end_inset
-
-א,
- אזי 
-\series bold
-פונקציית ההתפלגות המצטברת
-\series default
- של 
-\begin_inset Formula $\underline{X}$
-\end_inset
-
+\begin_layout Standard
 
 \series bold
- 
-\series default
+האם בכלל אפשר לפרמל מתמטית את מושג הסודיות?
+\end_layout
 
-\begin_inset Formula $F_{\underline{X}}:\mathbb{R}^{N}\xrightarrow{}\mathbb{R}$
-\end_inset
+\begin_layout Section
+מודל היריב:
+ מאזין פאסיבי
+\end_layout
 
- מוגדרת לכל 
-\begin_inset Formula $\underline{x}\in\mathbb{R}^{N}$
-\end_inset
+\begin_layout Standard
+איב מאזינה לערוץ התקשורת.
+\end_layout
 
- על ידי:
-\begin_inset Formula 
-\[
-F_{\underline{X}}\left(\underline{x}\right)\triangleq\mathbb{P}\left(\bigcap_{i=1}^{N}\left\{ \omega\in\Omega:X_{1}\left(\omega\right)\leq x_{1}\right\} \right)=\mathbb{P}\left(X_{1}\leq x_{1},\ldots,X_{N}\leq x_{N}\right)
-\]
-
+\begin_layout Itemize
+איב מנסה לגלות אינפורציה לגבי 
+\begin_inset Formula $m$
 \end_inset
 
 
 \end_layout
 
-\begin_layout Claim
-\begin_inset Argument 1
-status open
+\begin_layout Itemize
+איב יודעת את האלגוריתמים 
+\begin_inset Formula $E,D$
+\end_inset
 
-\begin_layout Plain Layout
-תכונות
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\nospellcheck off
-\bar no
-\strikeout off
-\xout off
-\uuline off
-\uwave off
-\noun off
-\color none
- 
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\nospellcheck default
-\bar default
-\strikeout default
-\xout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
-\lang english
-jCDF
+ (עיקרון קרכהוף)
 \end_layout
 
-\end_inset
-
- יהי 
-\begin_inset Formula $\underline{X}:\Omega\xrightarrow{}\mathbb{R}^{N}$
-\end_inset
-
- ו
-\begin_inset Quotes erd
-\end_inset
-
-א,
- 
-\begin_inset Formula $F_{\underline{X}}:\mathbb{R}^{N}\xrightarrow{}\mathbb{R}$
-\end_inset
-
- ה-
-\lang english
-jCDF
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\nospellcheck off
-\bar no
-\strikeout off
-\xout off
-\uuline off
-\uwave off
-\noun off
-\color none
-\lang hebrew
- 
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\nospellcheck default
-\bar default
-\strikeout default
-\xout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
-של 
-\begin_inset Formula $\underline{X}$
-\end_inset
-
-.
- אזי:
+\begin_layout Itemize
+איב יודעת את מרחב ההודעות
 \end_layout
 
-\begin_deeper
-\begin_layout Enumerate
-לכל 
-\begin_inset Formula $\underline{x}\in\mathbb{R}^{N}$
-\end_inset
-
- מתקיים 
-\begin_inset Formula $F_{\underline{X}}\left(\underline{x}\right)\in\left[0,1\right]$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Formula $F_{\underline{X}}$
-\end_inset
-
- מונטונית לא יורדת ורציפה מימין בכל משתנה 
-\begin_inset Formula $x_{1},\ldots,x_{N}$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Formula $F_{\underline{X}}\left(\underline{\infty}\right)=1$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Enumerate
-ה-
-\lang english
-CDF
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\nospellcheck off
-\bar no
-\strikeout off
-\xout off
-\uuline off
-\uwave off
-\noun off
-\color none
-\lang hebrew
- 
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\nospellcheck default
-\bar default
-\strikeout default
-\xout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
-השולי:
- 
-\begin_inset Formula 
-\[
-F_{X_{k}}\left(x_{k}\right)=F_{\underline{X}}\left(\infty,\ldots,\infty,x_{k},\infty,\ldots,\infty\right)
-\]
-
+\begin_layout Itemize
+איב תפסה את 
+\begin_inset Formula $E_{k}\left(m\right)$
 \end_inset
 
 
 \end_layout
 
-\end_deeper
-\end_inset
-
-
-\end_layout
-
+\begin_layout Itemize
+איב לא יודעת את 
+\begin_inset Formula $k$
 \end_inset
 
 
