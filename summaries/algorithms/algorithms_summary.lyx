@@ -688,6 +688,21 @@ End
 \use_formatted_ref 0
 \use_minted 0
 \use_lineno 0
+\branch intro
+\selected 1
+\filename_suffix 0
+\color background background
+\end_branch
+\branch graph algos
+\selected 1
+\filename_suffix 0
+\color background background
+\end_branch
+\branch search in graphs
+\selected 1
+\filename_suffix 0
+\color background background
+\end_branch
 \index Index
 \shortcut idx
 \color #008000
@@ -728,23 +743,16 @@ End
 \paragraph_spacing double
 
 \series bold
-מבוא ללמידה חישובית (
+\size huge
+אלגוריתמים (
 \numeric on
-0368-3235
+0368-2160
 \numeric off
 )
 \end_layout
 
 \begin_layout Author
-נכתב ע
-\begin_inset Quotes erd
-\end_inset
-
-י רון גולדמן
-\begin_inset Newline newline
-\end_inset
-
-על פי הרצאות של פרופ' נדב כהן
+רון גולדמן
 \end_layout
 
 \begin_layout Standard
@@ -756,239 +764,56 @@ LatexCommand tableofcontents
 
 \end_layout
 
-\begin_layout Part
-מבוא
-\end_layout
-
-\begin_layout Chapter
-מה זה למידה?
-\end_layout
-
-\begin_layout Itemize
-שינוי התנהגות עם הזמן במטרה להשיג איזשהו יעד.
-\end_layout
-
-\begin_layout Itemize
-דוגמאות:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-ללמוד ללכת.
-\end_layout
-
-\begin_layout Itemize
-ללמוד לנהוג.
-\end_layout
-
-\begin_layout Itemize
-ללמוד שפה.
-\end_layout
-
-\begin_layout Itemize
-ללמוד מתמטיקה.
-\end_layout
-
-\end_deeper
-\begin_layout Subsubsection*
-מה זה למידה חישובית?
-\end_layout
-
-\begin_layout Itemize
-בניית מכונות שיכולות ללמוד.
-\end_layout
-
-\begin_layout Itemize
-בניית תאורייה מתמטית ללמידה.
-\end_layout
-
-\begin_layout Itemize
-בעיקרון,
- מכונות יכולות ללמוד יותר טוב מבני אדם!
-\end_layout
-
-\begin_layout Subsubsection*
-למה למידה חישובית?
-\end_layout
-
-\begin_layout Itemize
-האם למידה היא הדרך היחידה לבנות 
-\begin_inset Quotes eld
-\end_inset
-
-מכונות חכמות
-\begin_inset Quotes erd
-\end_inset
-
-?
-\end_layout
-
-\begin_layout Itemize
-כנראה שלא.
-\end_layout
-
-\begin_layout Itemize
-למה לא לבנות מכונות שיבצעו פעולות.
-\end_layout
-
-\begin_layout Example
-\begin_inset Argument 1
+\begin_layout Standard
+\begin_inset Branch intro
+inverted 0
 status open
 
-\begin_layout Plain Layout
-מסנן ספאם
+\begin_layout Subsection*
+נושאי הקורס:
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Example
-בגישה של המומחה (לא מלמידת חישובית):
- נרשום חוקים שקובעים מהו ספאם ומה לא.
-\end_layout
-
-\begin_layout Example
-בעיות עם הגישה של המומחה:
+\begin_layout Itemize
+אלגוריתמים בגרפים:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-דורשת בן אדם שיעבוד קשה.
+חיפוש בגרפים
 \end_layout
 
 \begin_layout Itemize
-דורשת עדכון בכל רגע.
+עצים פורשים מינימליים
 \end_layout
 
 \begin_layout Itemize
-בני אדם לא בהכרח ימצאו את הפתרון האופטימלי.
+מסלולים קצרים ביותר
+\end_layout
+
+\begin_layout Itemize
+זרימה ברשתות
 \end_layout
 
 \end_deeper
-\begin_layout Example
-סינון באמצעות למידת מכונה:
+\begin_layout Itemize
+טכניקות אלגוריתמיות:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-
-\series bold
-נלמד 
-\series default
-מכונה לסנן ספאם מתוך 
-\series bold
-דוגמאות
-\series default
-.
+תכנות דינאמי
 \end_layout
 
 \begin_layout Itemize
-אלגוריתם למידה ישתמש בדוגמאות הללו כדי ללמוד איך נראה ספאם.
+תכנות לינארי
 \end_layout
 
 \end_deeper
-\begin_layout Subsubsection*
-מבנה הקורס
-\end_layout
-
-\begin_layout Itemize
-למידה מפוקחת - תאוריה
-\end_layout
-
-\begin_layout Itemize
-למידה מפוקחת - אלגוריתמים
-\end_layout
-
-\begin_layout Itemize
-למידה לא מפוקחת
-\end_layout
-
-\begin_layout Subsubsection*
-ייצוג פרדיקטור
-\end_layout
-
-\begin_layout Definition
-
-\series bold
-פרדיקטור 
-\series default
-זו פונקציה 
-\begin_inset Formula $h:\mathcal{X}\xrightarrow{}\mathcal{Y}$
-\end_inset
-
- כאשר 
-\begin_inset Formula $\mathcal{X}$
-\end_inset
-
- 
-\series bold
-הקלטים 
-\series default
-ו-
-\begin_inset Formula $\mathcal{Y}$
-\end_inset
-
- 
-\series bold
-התוויות
-\series default
-.
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-בדרך כלל 
-\begin_inset Formula $\mathcal{X}=\mathbb{R}^{d}$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Itemize
-בבעיית קלאסיפיקציה 
-\begin_inset Formula $\mathcal{Y}=\left\{ 0,1\right\} $
-\end_inset
-
-.
-\end_layout
-
-\end_deeper
-\begin_layout Subsubsection*
-למידה מפוקחת
-\end_layout
-
-\begin_layout Itemize
-מטרה:
- 
-\series bold
-ללמוד פרדיקטורים מדוגמאות.
-\end_layout
-
-\begin_layout Itemize
-נושאים שנכסה:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\series bold
-\color red
-מודלים:
- מסווגים לינאריים,
- שיטות אנסמבל,
- עצי החלטה,
- למידה עמוקה.
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-\color blue
-אלגוריתמים:
+\begin_layout Standard
+ספר הקורס:
 
 \family roman
+\series bold
 \shape up
 \size normal
 \emph off
@@ -999,8 +824,10 @@ status open
 \uuline off
 \uwave off
 \noun off
+\color none
  
 \family default
+\series default
 \shape default
 \size default
 \emph default
@@ -1011,21 +838,11 @@ status open
 \uuline default
 \uwave default
 \noun default
+\color inherit
 \lang english
-SVM,
- SGD,
- boosting
-\lang hebrew
-.
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-\color green
-תאוריה:
- למידת
+CLRS
 \family roman
+\series bold
 \shape up
 \size normal
 \emph off
@@ -1036,8 +853,11 @@ SVM,
 \uuline off
 \uwave off
 \noun off
+\color none
+\lang hebrew
  
 \family default
+\series default
 \shape default
 \size default
 \emph default
@@ -1048,617 +868,42 @@ SVM,
 \uuline default
 \uwave default
 \noun default
-\lang english
-PAC
-\lang hebrew
-,
- מימד
-\family roman
-\shape up
-\size normal
-\emph off
-\nospellcheck off
-\bar no
-\strikeout off
-\xout off
-\uuline off
-\uwave off
-\noun off
- 
-\family default
-\shape default
-\size default
-\emph default
-\nospellcheck default
-\bar default
-\strikeout default
-\xout default
-\uuline default
-\uwave default
-\noun default
-\lang english
-VC
-\lang hebrew
-.
+\color inherit
+(לא הכל שם).
 \end_layout
 
-\end_deeper
-\begin_layout Subsubsection*
-למידה לא מפוקחת
-\end_layout
-
-\begin_layout Itemize
-תוויות קשה לאסוף.
-\end_layout
-
-\begin_layout Itemize
-מידע לא מתויג קל לאסוף.
-\end_layout
-
-\begin_layout Itemize
-מה אפשר לעשות עם מידע לא מתויג.
-\end_layout
-
-\begin_layout Itemize
-אתגרים:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-האם אפשר למצוא או לתאר מבנה במידע.
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-נושאים שנכסה:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-ניתוח גורמים עיקריים (
-\lang english
-PCA
-\lang hebrew
-).
-\end_layout
-
-\begin_layout Itemize
-קיבוץ (
-\lang english
-clustering
-\lang hebrew
-).
-\end_layout
-
-\begin_layout Itemize
-מודלים יוצרים (
-\lang english
-Generative models
-\lang hebrew
-).
-\end_layout
-
-\begin_layout Itemize
-אלגוריתם מקסום תוחלת (
-\lang english
-EM
-\lang hebrew
-).
-\end_layout
-
-\end_deeper
-\begin_layout Chapter
-חזרה על הסתברות וצעדים ראשונים בהכללה
-\end_layout
-
-\begin_layout Remark
-אני הולך לספק הגדרות יותר מדויקות ממה שנדב נתן לשם שלמות,
- אין מה להיבהל.
-\end_layout
-
-\begin_layout Section
-הגדרות בסיסיות בהסתברות
-\end_layout
-
-\begin_layout Definition
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-מרחב הסתברות
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Definition
-
+\begin_layout Standard
+מהו אלגוריתם?
+ פרוצדורה חישובית לפתרון בעיה.
+ בהינתן איזשהו 
 \series bold
-מרחב הסתברות 
-\series default
-הוא שלשה 
-\begin_inset Formula $\left(\Omega,\mathcal{A},\mathbb{P}\right)$
-\end_inset
-
- כאשר:
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-\begin_inset Formula $\Omega$
-\end_inset
-
- היא 
-\series bold
-קבוצת התוצאות
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Formula $\mathcal{A}\subseteq\mathcal{P}\left(\Omega\right)$
-\end_inset
-
- הוא 
-\series bold
-מרחב המאורעות
+קלט
 \series default
 ,
- 
-\begin_inset Formula $\mathcal{A}$
-\end_inset
-
- הוא 
-\begin_inset Formula $\sigma$
-\end_inset
-
--אלגברה מעל 
-\begin_inset Formula $\Omega$
-\end_inset
-
-,
- כלומר:
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-לכל 
-\begin_inset Formula $A\in\mathcal{A}$
-\end_inset
-
- גם 
-\begin_inset Formula $A^{c}\in\mathcal{A}$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Enumerate
-לכל 
-\begin_inset Formula $A_{1},A_{2},\ldots\in\mathcal{A}$
-\end_inset
-
- מתקיים כי 
-\begin_inset Formula $\bigcup_{i=1}^{\infty}A_{i}\in\mathcal{A}$
-\end_inset
-
-.
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-\begin_inset Formula $\mathbb{P}:\mathcal{A}\xrightarrow{}\left[0,1\right]$
-\end_inset
-
- היא 
+ מבצעים סדרת פעולות ומחזירים 
 \series bold
-פונקציית ההסתברות
+פלט
+\series default
+.
+ נתאר את האלגוריתם בפסאודו-קוד דמוי פייתון.
+ האלגוריתם 
+\series bold
+נכון 
+\series default
+אם 
+\series bold
+לכל
+\series default
+ קלט מוחזר הפלט המתאים.
+ פרט להוכחת נכונות,
+ נמדוד לכל אלגוריתם בכמה משאבים הוא משתמש (בעיקר 
+\series bold
+זמן
 \series default
 ,
- המקיימת:
-\end_layout
+ כלומר מס' פעולות בסיסיות שנדרשות לחישוב,
+ כפונקציה של גודל הקלט,
 
-\begin_deeper
-\begin_layout Enumerate
-\begin_inset Formula $\mathbb{P}\left(\Omega\right)=1$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Enumerate
-לכל 
-\begin_inset Formula $A_{1},A_{2},\ldots\in\mathcal{A}$
-\end_inset
-
- זרים בזוגות מתקיים
-\begin_inset Formula 
-\[
-\mathbb{P}\left(\bigcup_{i=1}^{\infty}A_{i}\right)=\sum_{i=1}^{\infty}\mathbb{P}\left(A_{i}\right)
-\]
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Definition
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-משתנה מקרי
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Definition
-
-\series bold
-משתנה מקרי 
-\series default
-הוא פונקציה 
-\begin_inset Formula $X:\Omega\xrightarrow{}\mathbb{R}$
-\end_inset
-
- כך שלכל 
-\begin_inset Formula $a<b\in\mathbb{R}$
-\end_inset
-
- מתקיים 
-\begin_inset Formula $\left\{ \left.\omega\in\Omega\left.\colon\right.a<X\left(\omega\right)<b\right.\right\} \in\mathcal{A}$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Notation
-יהי 
-\begin_inset Formula $X$
-\end_inset
-
- משתנה מקרי,
- אז לכל 
-\begin_inset Formula $a\in\mathbb{R}$
-\end_inset
-
- נסמן
-\begin_inset Formula 
-\begin{align*}
-\left\{ X=a\right\}  & \triangleq X^{-1}\left(a\right)=\left\{ \left.\omega\in\Omega\left.\colon\right.X\left(\omega\right)=a\right.\right\} \\
-\left\{ X\leq a\right\}  & \triangleq X^{-1}\left(\left(-\infty,a\right]\right)=\left\{ \left.\omega\in\Omega\left.\colon\right.X\left(\omega\right)\leq a\right.\right\} 
-\end{align*}
-
-\end_inset
-
-נרשום
-\begin_inset Formula 
-\begin{align*}
-\mathbb{P}\left(\left\{ X=a\right\} \right) & =\mathbb{P}\left(X=a\right)\\
-\mathbb{P}\left(\left\{ X\leq a\right\} \right) & =\mathbb{P}\left(X\leq a\right)
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-הקשר בין למידה חישובית והסתברות
-\end_layout
-
-\begin_layout Standard
-בלמידה מפוקחת נתון לנו משתנה אחד (למשל תמונה) ואנו מעוניינים במשתנה אחר (תגית).
- נמדל את הראשון כמשתנה מקרי 
-\begin_inset Formula $X$
-\end_inset
-
- ואת השני כמשתנה מקרי 
-\begin_inset Formula $Y$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-מטרה:
- לקבוע את 
-\begin_inset Formula $Y$
-\end_inset
-
- בהינתן 
-\begin_inset Formula $X$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-נניח התפלגות משותפת 
-\begin_inset Formula $\mathbb{P}\left(X=x,Y=y\right)$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Definition
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-התפלגות שולית
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Definition
-
-\series bold
-ההתפלגות השולית
-\series default
- של 
-\begin_inset Formula $X$
-\end_inset
-
- מתוך 
-\begin_inset Formula $\left(X,Y\right)$
-\end_inset
-
-:
-\begin_inset Formula 
-\[
-\mathbb{P}\left(X=x\right)=\sum_{y\in Y}\mathbb{P}\left(X=x,Y=y\right)
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Definition
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-התפלגות מותנה
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Definition
-
-\series bold
-ההתפלגות המותנה 
-\series default
-של 
-\begin_inset Formula $Y$
-\end_inset
-
- בהינתן 
-\begin_inset Formula $X$
-\end_inset
-
-:
-\begin_inset Formula 
-\[
-\mathbb{P}\left(Y=y|X=x\right)=\frac{\mathbb{P}\left(X=x,Y=y\right)}{\mathbb{P}\left(X=x\right)}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Assumption
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-רק להיום!
- לא מציאותית
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Assumption
-אנחנו יודעים את ההתפלגות המשותפת 
-\begin_inset Formula $\mathbb{P}\left(X=x,Y=y\right)$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-נרצה למצוא את הפרדיקטור האופטימלי 
-\begin_inset Formula $h:\mathcal{X}\xrightarrow{}\mathcal{Y}$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Remark
-\begin_inset Formula $\hat{Y}=h\left(X\right)$
-\end_inset
-
- הוא משתנה מקרי.
-\end_layout
-
-\begin_layout Definition
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-פונקצית הפסד
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Definition
-
-\series bold
-פונקצית הפסד 
-\series default
-היא פונקציה 
-\begin_inset Formula $\ell:\mathcal{Y}\times\mathcal{Y}\xrightarrow{\mathbb{}}\mathbb{R}_{\geq0}$
-\end_inset
-
- כך ש-
-\begin_inset Formula $=\ell\left(y,\hat{y}\right)$
-\end_inset
-
- המחיר לנחש 
-\begin_inset Formula $\hat{y}$
-\end_inset
-
- כאשר התגית האמיתית היא 
-\begin_inset Formula $y$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Example
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-פונקציות הפסד נפוצות
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \space{}
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-פונקצית הפסד 
-\begin_inset Formula $0-1$
-\end_inset
-
-:
- 
-\begin_inset Formula 
-\[
-\ell\left(y,\hat{y}\right)=\mathds{1}\left\{ y\neq\hat{y}\right\} 
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-פונקצית הפסד ריבועית (
-\begin_inset Formula $\ell_{2}$
-\end_inset
-
-):
- 
-\begin_inset Formula 
-\[
-\ell\left(y,\hat{y}\right)=\left\lVert y-\hat{y}\right\rVert _{2}^{2}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-בהינתן פונקצית הפסד מסוימת,
- המטרה הטבעית היא למזער את תוחלת ההפסד:
-\begin_inset Formula 
-\begin{equation}
-L\left(h\right)\triangleq\mathbb{E}\left[\ell\left(Y,h\left(X\right)\right)\right]=\sum_{\left(x,y\right)\in\mathcal{X}\times\mathcal{Y}}\mathbb{P}\left(X=x,Y=y\right)\ell\left(y,h\left(x\right)\right)\label{eq:L(h)}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Definition
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-פרדיקטור אופטימלי
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Definition
-
-\series bold
-הפרדיקטור האופטימלי
-\series default
- הוא 
-\begin_inset Formula $h=\arg\min_{h}L\left(h\right)$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Example
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-קלאסיפיקציה בינארית
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Example
-נתבונן במקרה הפשוט של קלאסיפיקציה בינארית,
- 
-\begin_inset Formula $\mathcal{Y}=\left\{ 0,1\right\} $
-\end_inset
-
- עם הפסד
 \family roman
 \series medium
 \shape up
@@ -1678,7 +923,6 @@ status open
 \shape default
 \size default
 \emph default
-\numeric on
 \nospellcheck default
 \bar default
 \strikeout default
@@ -1687,143 +931,262 @@ status open
 \uwave default
 \noun default
 \color inherit
-0-1
-\numeric off
-.
-\end_layout
-
-\begin_layout Example
-בהינתן 
-\begin_inset Formula $x$
-\end_inset
-
-,
- מה הפרדיקציה האופטימלית 
-\begin_inset Formula $h\left(x\right)$
-\end_inset
-
-?
-\end_layout
-
-\begin_layout Example
-נחשוב על הגורמים ב-
-\begin_inset Formula $L\left(h\right)$
-\end_inset
-
- 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:L(h)"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- שתלויים ב-
-\begin_inset Formula $x\in\mathcal{X}$
-\end_inset
-
-:
-\begin_inset Formula 
-\begin{align}
- & \mathbb{P}\left(X=x,Y=1\right)\ell\left(1,h\left(x\right)\right)+\mathbb{P}\left(X=x,Y=0\right)\ell\left(0,h\left(x\right)\right)\nonumber \\
-= & \mathbb{P}\left(X=x\right)\left(\mathbb{P}\left(Y=1|X=x\right)\ell\left(1,h\left(x\right)\right)+\mathbb{P}\left(Y=0|X=x\right)\ell\left(0,h\left(x\right)\right)\right)\label{eq:L(h) binary classification}
-\end{align}
-
-\end_inset
-
-אם 
-\begin_inset Formula $h\left(x\right)=1$
-\end_inset
-
- אז 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:L(h) binary classification"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- = 
-\begin_inset Formula $\mathbb{P}\left(X=x\right)\mathbb{P}\left(Y=0|X=x\right)$
-\end_inset
-
-,
- אם 
-\begin_inset Formula $h\left(x\right)=0$
-\end_inset
-
- אז 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:L(h) binary classification"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- = 
-\begin_inset Formula $\mathbb{P}\left(X=x\right)\mathbb{P}\left(Y=1|X=x\right)$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Example
-אז,
- האם אנחנו צריכים לבחור ש-
-\begin_inset Formula $h\left(x\right)=1$
-\end_inset
-
- או 
-\begin_inset Formula $h\left(x\right)=0$
-\end_inset
-
-?
- נבחר לפי הערך הקטן יותר של 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:L(h) binary classification"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Example
-כלומר:
-\begin_inset Formula 
-\begin{align*}
-h\left(x\right)= & \mathds{1}\left\{ \mathbb{P}\left(X=x\right)\mathbb{P}\left(Y=1|X=x\right)\geq\mathbb{P}\left(X=x\right)\mathbb{P}\left(Y=0|X=x\right)\right\} \\
-= & \mathds{1}\left\{ \mathbb{P}\left(Y=1|X=x\right)\geq\mathbb{P}\left(Y=0|X=x\right)\right\} 
-\end{align*}
-
-\end_inset
-
-במילים אחרות,
-\begin_inset Formula 
-\[
-h\left(x\right)=\arg\max_{y\in\left\{ 0,1\right\} }\mathbb{P}\left(Y=y|X=x\right)
-\]
-
-\end_inset
-
-זה נקרא מסווג א-פוסטריורי מקסימלי (
 \lang english
-MAP
+worst-case
 \lang hebrew
 ).
+\end_layout
+
+\begin_layout Standard
+במקרה של גרף 
+\begin_inset Formula $G=\left(V,E\right)$
+\end_inset
+
+,
+ הגודל נמדד ע
+\begin_inset Quotes erd
+\end_inset
+
+י הפרמטרים 
+\begin_inset Formula $n=\left|V\right|$
+\end_inset
+
+ מס' הצמתים,
+ 
+\begin_inset Formula $m=\left|E\right|$
+\end_inset
+
+ מס' הקשתות.
+\end_layout
+
+\begin_layout Standard
+האלגוריתמים בקורס יהיו דטרמיניסטיים (אין
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+random
+\lang hebrew
+) וסדרתיים (אין אפשרות לעשות דברים במקביל).
+\end_layout
+
+\begin_layout Subsubsection*
+ייצוג גרפים
+\end_layout
+
+\begin_layout Standard
+איך מייצגים גרף עבור האלגוריתם?
+ 
+\begin_inset Formula $G=\left(V,E\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\numeric on
+0
+\numeric off
+.
+ רשימת צמתים ורשימת קשתות.
+ 
+\begin_inset Newline newline
+\end_inset
+
+לא יעיל לצורך חישובים:
+ 
+\color blue
+לא בשימוש
+\end_layout
+
+\begin_layout Enumerate
+מטריצת שכנויות.
+ נניח 
+\begin_inset Formula $V=\left\{ 1,2,3,\ldots,n\right\} =\left[n\right]$
+\end_inset
+
+,
+ המטריצה 
+\begin_inset Formula $A=A\left(G\right)\in\left\{ 0,1\right\} ^{n\times n}$
+\end_inset
+
+,
+ מוגדרת לכל 
+\begin_inset Formula $i,j\in\left[n\right]$
+\end_inset
+
+ ע
+\begin_inset Quotes erd
+\end_inset
+
+י 
+\begin_inset Formula $a_{ij}=\mathds{1}\left\{ \left(i,j\right)\in E\right\} $
+\end_inset
+
+.
+ יעיל מאוד לבדוק האם,
+ בהינתן 
+\begin_inset Formula $i,j\in\left[n\right]$
+\end_inset
+
+,
+ הקשת 
+\begin_inset Formula $\left(i,j\right)$
+\end_inset
+
+ בגרף.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+חסרונות:
+ גודל הייצוג = 
+\begin_inset Formula $\Theta\left(n^{2}\right)$
+\end_inset
+
+.
+ לכן גם (כמעט) כל אלגוריתם נכון רץ בזמן ריבועי.
+ כמו כן,
+ כדי לבדוק מהן הקשתות שיוצאות מצומת נתון 
+\begin_inset Formula $i$
+\end_inset
+
+ צריך לעבור על שורה שלמה במט' 
+\begin_inset Formula $A$
+\end_inset
+
+ כדי למצוא אותן.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+הייצוג הדיפולטי:
+
+\series default
+ רשימות שכנויות
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+adjacency list
+\lang hebrew
+.
+ שומרים מערך 
+\begin_inset Formula $\mathrm{Adj}$
+\end_inset
+
+ באורך 
+\begin_inset Formula $n=\left|V\right|$
+\end_inset
+
+,
+ כאשר בתא 
+\begin_inset Formula $i$
+\end_inset
+
+ במערך יש רשימה מקושרת של כל 
+\begin_inset Formula $j$
+\end_inset
+
+ עבורו 
+\begin_inset Formula $\left(i,j\right)\in E$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+יתרון:
+ גודל הייצוג לינארי בגודל הקלט = 
+\begin_inset Formula $\Theta\left(n+\sum_{i\in V}\deg^{+}\left(i\right)\right)=\Theta\left(n+m\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+חסרון:
+ לא יעיל לבדוק בזמן קבוע אם 
+\begin_inset Formula $\left(i,j\right)\in E$
+\end_inset
+
+ עבור 
+\begin_inset Formula $i,j$
+\end_inset
+
+ נתונים.
+\end_layout
+
+\end_deeper
+\begin_layout Remark
+סדר הצמתים בתוך 
+\begin_inset Formula $\mathrm{Adj}\left[i\right]$
+\end_inset
+
+ לא נתון.
+ בפרט,
+ אי אפשר להניח שהרשימה ממוינת.
+\end_layout
+
+\begin_layout Remark
+יעיל לעבור על כל הקשתות שיוצאות מצומת נתון 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ (לוקח זמן קבוע פר קשת).
 \end_layout
 
 \begin_layout Standard
@@ -1833,142 +1196,264 @@ MAP
 
 \end_layout
 
-\begin_layout Example
+\begin_layout Remark
+בשני הייצוגים אפשר לעבוד עם גרפים ממושקלים,
+ כלומר פונ' 
+\begin_inset Formula $w:E\xrightarrow{}\mathbb{R}$
+\end_inset
+
+.
+ ואז נייצג את המבנים השונים באופן דומה בהתאם.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+לאותו גרף ייתכנו מספר ייצוגים (שקולים) ע
+\begin_inset Quotes erd
+\end_inset
+
+י רשימות שכנויות.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part
+אלגוריתמים בגרפים
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch graph algos
+inverted 0
+status open
+
+\begin_layout Chapter
+חיפוש בגרפים
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch search in graphs
+inverted 0
+status open
+
+\begin_layout Standard
+נראה שני אלגוריתמים לבעיה:
+\end_layout
+
+\begin_layout Enumerate
+חיפוש לרוחב
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+BFS = Breadth First Search
+\lang hebrew
+.
+\end_layout
+
+\begin_layout Enumerate
+חיפוש לעומק
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+DFS = Depth First Search
+\lang hebrew
+.
+\end_layout
+
+\begin_layout Standard
+ההבדל הוא בסדר בו עוברים על הצמתים.
+ ב-
+\lang english
+BFS
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+עוברים ראשית על שכניו של צומת המקור,
+ ואז על שכניהם וכן הלאה.
+\end_layout
+
+\begin_layout Problem
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-סינון ספאם
+חיפוש בגרפים
 \end_layout
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Example
-יהי 
-\begin_inset Formula $X$
+נתון גרף (מכוון או לא) 
+\begin_inset Formula $G=\left(V,E\right)$
 \end_inset
 
- מספר האותיות הגדולות באימייל.
+ וצומת מקור 
+\begin_inset Formula $s\in V$
+\end_inset
+
+.
+ 
 \end_layout
 
-\begin_layout Example
-נניח ואנו יודעים את 
-\begin_inset Formula $\mathbb{P}\left(X=x,Y=y\right)$
+\begin_layout Problem
+מטרות:
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+למצוא אילו צמתיפ בְ-
+\begin_inset Formula $V$
+\end_inset
+
+ נגישים מ-
+\begin_inset Formula $s$
 \end_inset
 
 ,
- וש-
-\begin_inset Formula $\mathbb{P}\left(Y=1\right)=\mathbb{P}\left(Y=0\right)=\frac{1}{2}$
+ כלומר יש מסלול 
+\begin_inset Formula $s\rightsquigarrow v$
 \end_inset
 
 .
 \end_layout
 
-\begin_layout Example
-נניח 
-\begin_inset Formula $\mathbb{P}\left(X=x|Y=y\right)$
-\end_inset
-
- מקורבת היטב על ידי גאוסיאן עם תוחלת 
-\begin_inset Formula $c_{y}$
-\end_inset
-
- ושונות 
+\begin_layout Enumerate
+עבור צומת 
 \begin_inset Formula $v$
 \end_inset
 
+ שנגיש מ-
+\begin_inset Formula $s$
+\end_inset
+
 ,
- כאשר 
-\begin_inset Formula $c_{1}>c_{0}$
+ למצוא מסלול קצר ביותר 
+\begin_inset Formula $s\rightsquigarrow v$
 \end_inset
 
 .
 \end_layout
 
-\begin_layout Example
-נרצה לחזות את 
-\begin_inset Formula $h\left(x\right)=1$
-\end_inset
-
- אם ורק אם 
-\begin_inset Formula $\mathbb{P}\left(Y=1|X=x\right)\geq\mathbb{P}\left(Y=0|X=x\right)$
-\end_inset
-
-:
+\end_deeper
+\begin_layout Section
+אלגוריתם
+\family roman
+\series bold
+\shape up
+\size larger
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
  
-\begin_inset Formula 
-\begin{align*}
-\iff & \frac{\mathbb{P}\left(Y=1,X=x\right)}{\mathbb{P}\left(Y=1\right)}\geq\frac{\mathbb{P}\left(Y=0,X=x\right)}{\mathbb{P}\left(Y=0\right)}\\
-\underset{\mathrm{Baye's}}{\iff} & \mathbb{P}\left(X=x|Y=1\right)\geq\mathbb{P}\left(X=x|Y=0\right)\\
-\iff & x\geq\frac{c_{0}+c_{1}}{2}
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Example
-פונקציות הפסד שונות נותנות פרדיקטור אופטימלי שונה.
- נניח 
-\begin_inset Formula $\ell\left(y,\hat{y}\right)=\left(y-\hat{y}\right)^{2}$
-\end_inset
-
-,
- אז:
-\begin_inset Formula 
-\begin{align*}
-\mathbb{E}\left[\ell\left(Y,\hat{y}\right)|X=x\right]= & \mathbb{E}\left[\left(Y-\hat{y}\right)^{2}|X=x\right]=\mathbb{E}\left[Y^{2}|X=x\right]-2\hat{y}\mathbb{E}\left[Y|X=x\right]+\hat{y}^{2}
-\end{align*}
-
-\end_inset
-
-גודל זה ממוזער עבור 
-\begin_inset Formula $\hat{y}=\mathbb{E}\left[Y|X=x\right]=\mathbb{P}\left(Y=1|X=x\right)$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Question
-מה קורה אם אנחנו לא יודעים את ההתפלגות המשותפת?
- זה מה שקורה במציאות.
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+BFS
 \end_layout
 
 \begin_layout Standard
-כעת נדבר בקצרה על למידת תכונות של התפלגות מתוך נתונים.
-\end_layout
-
-\begin_layout Example
-נניח ונרצה למצוא את התוחלת של הטלת מטבע.
-\end_layout
-
-\begin_layout Example
-יש לנו משתנה ברנולי עם פרמטר 
-\begin_inset Formula $p\in\left[0,1\right]$
-\end_inset
-
-:
-\begin_inset Formula 
-\[
-\mathbb{P}\left(X=1\right)=1-\mathbb{P}\left(X=0\right)=p
-\]
-
-\end_inset
-
-נרצה למצוא את 
-\begin_inset Formula $p$
-\end_inset
-
-,
- על סמך מ
-\begin_inset Quotes erd
-\end_inset
-
-מ
+במהלך הריצה,
+ אלג'
 \family roman
 \series medium
 \shape up
@@ -1996,227 +1481,351 @@ status open
 \uwave default
 \noun default
 \color inherit
-
-\begin_inset Formula $X_{1},\ldots,X_{m}\overset{\mathrm{iid}}{\sim}\mathrm{Bernoulli}\left(p\right)$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Example
-נתבונן בממוצע:
-\begin_inset Formula 
-\[
-\overline{X}_{m}\triangleq\frac{1}{m}\sum_{i=1}^{m}X_{i}
-\]
-
-\end_inset
-
-מתקיים:
-\begin_inset Formula 
-\begin{align*}
-\mathbb{E}\left[\overline{X}_{m}\right] & =\frac{1}{m}\sum_{i=1}^{m}\mathbb{E}\left[X_{i}\right]=p\\
-\text{Var}\left(\overline{X}_{m}\right) & =\text{Var}\left(\frac{1}{m}\sum_{i=1}^{m}X_{i}\right)=\frac{1}{m^{2}}\sum_{i=1}^{m}\text{Var}\left(X_{i}\right)=\frac{mp\left(1-p\right)}{m^{2}}=\frac{p\left(1-p\right)}{m}\xrightarrow{m\xrightarrow{}\infty}0
-\end{align*}
-
-\end_inset
-
-אז,
+\lang english
+BFS
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
  
-\begin_inset Formula $\overline{X}_{m}$
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+מתחזק לכל צומת 
+\begin_inset Formula $v\in V$
 \end_inset
 
+ את:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mathrm{color}\left[v\right]$
+\end_inset
+
+ = צבע מבין:
+ לבן,
+ אפור,
+ שחור
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mathrm{d}\left[v\right]$
+\end_inset
+
+ = אורך מסלול מ-
+\begin_inset Formula $s$
+\end_inset
+
+ לְ-
+\begin_inset Formula $v$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\pi\left[v\right]$
+\end_inset
+
+ = מקודד מסלול קצר ביותר מ-
+\begin_inset Formula $s$
+\end_inset
+
+ לְ-
+\begin_inset Formula $v$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+וכן יתחזק תור
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
  
-\begin_inset Quotes eld
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+FIFO
+\lang hebrew
+,
+ 
+\begin_inset Formula $Q$
 \end_inset
 
-מתכנס
-\begin_inset Quotes erd
-\end_inset
-
- לערך הנכון (
-\begin_inset Formula $p$
-\end_inset
-
-) כאשר 
-\begin_inset Formula $m\xrightarrow{}\infty$
-\end_inset
-
-.
+,
+ של צמתים שמחכים לסריקת קשתות יוצאות מהם.
 \end_layout
 
-\begin_layout Example
-מה קורה עבור 
-\begin_inset Formula $m$
-\end_inset
+\begin_layout Standard
 
- סופי?
-\end_layout
-
-\begin_deeper
-\begin_layout Theorem
-\begin_inset Argument 1
+\lang english
+\begin_inset Float algorithm
+placement document
+alignment document
+wide false
+sideways false
 status open
 
 \begin_layout Plain Layout
-אי-שוויון הופדינג
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mathrm{BFS}\left(G,s\right)$
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
 
-\begin_inset Formula 
-\begin{align*}
-\forall\varepsilon>0 & . & \mathbb{P}\left(\left|\overline{X}_{m}-p\right|\geq\varepsilon\right)\leq & 2\exp\left(-2m\varepsilon^{2}\right)
-\end{align*}
+\end_layout
 
+\begin_layout Enumerate
+
+\lang english
+For 
+\begin_inset Formula $u\in V$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\lang english
+\begin_inset Formula $\mathrm{d}\left[u\right]\xleftarrow{}\infty$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+\begin_inset Formula $\mathrm{color}\left[u\right]\xleftarrow{}\mathrm{white}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+\begin_inset Formula $\pi\left[u\right]\xleftarrow{}\mathrm{NULL}$
 \end_inset
 
 
 \end_layout
 
 \end_deeper
-\begin_layout Example
-כעת,
- לכל 
-\begin_inset Formula $\varepsilon>0$
-\end_inset
-
- ו-
-\begin_inset Formula $\delta\in\left[0,1\right]$
-\end_inset
-
-,
- כך ש-
-\begin_inset Formula $\overline{X}_{m}$
-\end_inset
-
- במרחק לכל היותר 
-\begin_inset Formula $\varepsilon$
-\end_inset
-
- מ-
-\begin_inset Formula $p$
-\end_inset
-
- (
-\begin_inset Quotes eld
-\end_inset
-
+\begin_layout Enumerate
 
 \lang english
-approximately correct
-\lang hebrew
-
-\begin_inset Quotes erd
-\end_inset
-
-) בהסתברות 
-\begin_inset Formula $1-\delta\leq$
-\end_inset
-
- (
-\begin_inset Quotes eld
-\end_inset
-
-
-\lang english
-probably
-\lang hebrew
-
-\begin_inset Quotes erd
-\end_inset
-
-).
-\end_layout
-
-\begin_layout Example
-לכן,
- כל מה שאנחנו צריכים,
- זה ש-
-\begin_inset Formula $2\exp\left(-2m\varepsilon^{2}\right)\leq\delta$
-\end_inset
-
-,
- זה קורה אם ורק אם:
-\begin_inset Formula 
-\[
-m\geq\frac{1}{2\varepsilon^{2}}\log\frac{2}{\delta}
-\]
-
+\begin_inset Formula $\mathrm{color}\left[s\right]\xleftarrow{}\mathrm{gray}$
 \end_inset
 
 
 \end_layout
 
-\begin_layout Example
-אנחנו מצאנו 
-\begin_inset Formula $m$
+\begin_layout Enumerate
+
+\lang english
+\begin_inset Formula $\mathrm{d}\left[s\right]\xleftarrow{}0$
 \end_inset
 
- שמבטיח משערך
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\nospellcheck off
-\bar no
-\strikeout off
-\xout off
-\uuline off
-\uwave off
-\noun off
-\color none
- 
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\nospellcheck default
-\bar default
-\strikeout default
-\xout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
+
+\end_layout
+
+\begin_layout Enumerate
+
 \lang english
-probably approximately correct
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\nospellcheck off
-\bar no
-\strikeout off
-\xout off
-\uuline off
-\uwave off
-\noun off
-\color none
-\lang hebrew
- 
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\nospellcheck default
-\bar default
-\strikeout default
-\xout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
-(
+\begin_inset Formula $Q=\left(s\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
 \lang english
-PAC
-\lang hebrew
-).
+while 
+\begin_inset Formula $Q$
+\end_inset
+
+ is not empty:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\lang english
+\begin_inset Formula $u\xleftarrow{}$
+\end_inset
+
+head of 
+\begin_inset Formula $Q$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+delete 
+\begin_inset Formula $u$
+\end_inset
+
+ from 
+\begin_inset Formula $Q$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+for 
+\begin_inset Formula $v\in\mathrm{Adj}\left[u\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\lang english
+if 
+\begin_inset Formula $\mathrm{color}\left[v\right]=\mathrm{white}$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\lang english
+\begin_inset Formula $\mathrm{color}\left[v\right]\xleftarrow{}\mathrm{gray}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+\begin_inset Formula $\mathrm{d}\left[v\right]\xleftarrow{}\mathrm{d}\left[u\right]+1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+\begin_inset Formula $\pi\left[v\right]\xleftarrow{}u$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+add 
+\begin_inset Formula $v$
+\end_inset
+
+ to 
+\begin_inset Formula $Q$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+
+\lang english
+\begin_inset Formula $\mathrm{color}\left[u\right]\xleftarrow{}\mathrm{black}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body

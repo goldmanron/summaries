@@ -8,6 +8,7 @@
 \begin_preamble
 % --- Load amsthm package for theorem styles ---
 \usepackage{amsthm}
+\usepackage[RGB]{xcolor}
 
 % --- Shared theoremstyle (one place only!) ---
 \newtheoremstyle{defuprightbrackets}%
@@ -90,8 +91,6 @@
 % Set space between words to be wider:
 \spaceskip=1.3\fontdimen2\font plus 1\fontdimen3\font minus 1.5\fontdimen4\font
 
-\usepackage{xcolor}
-
 
 % Convert the QED Symbol at the end of proofs to a solid black square (credit: Yakir Oz):
 \usepackage{amssymb}
@@ -157,6 +156,8 @@
 customHeadersFooters
 theorems-ams-chap-bytype
 theorems-ams-extended-chap-bytype
+algorithm2e
+tcolorbox
 \end_modules
 \maintain_unincluded_children no
 \begin_local_layout
@@ -688,6 +689,11 @@ End
 \use_formatted_ref 0
 \use_minted 0
 \use_lineno 0
+\branch Introduction
+\selected 1
+\filename_suffix 0
+\color background background
+\end_branch
 \index Index
 \shortcut idx
 \color #008000
@@ -700,7 +706,7 @@ End
 \headsep 1cm
 \footskip 1cm
 \secnumdepth 3
-\tocdepth 3
+\tocdepth 1
 \paragraph_separation indent
 \paragraph_indentation 0bp
 \is_math_indent 0
@@ -765,8 +771,17 @@ LatexCommand tableofcontents
 מבוא
 \end_layout
 
+\begin_layout Standard
+\begin_inset Branch Introduction
+inverted 0
+status open
+
 \begin_layout Section
-הצפנה
+הגדרות ומושגים ראשונים
+\end_layout
+
+\begin_layout Subsection
+מערכת הצפנה
 \end_layout
 
 \begin_layout Definition
@@ -786,6 +801,22 @@ status open
 \begin_inset Formula $E:\mathcal{K}\times\mathcal{M}\xrightarrow{}\mathcal{C}$
 \end_inset
 
+,
+ לכל 
+\begin_inset Formula $k\in\mathcal{K},m\in\mathcal{M}$
+\end_inset
+
+ נסמן 
+\begin_inset Formula $E_{k}\left(m\right)=E\left(k,m\right)=c\in\mathcal{C}$
+\end_inset
+
+ ה
+\series bold
+\lang english
+ciphertext
+\series default
+-
+\lang hebrew
 .
 \end_layout
 
@@ -813,18 +844,101 @@ status open
 \begin_inset Formula $D:\mathcal{K}\times\mathcal{C}\xrightarrow{}\mathcal{M}$
 \end_inset
 
+,
+ לכל 
+\begin_inset Formula $k\in\mathcal{K},c\in\mathcal{C}$
+\end_inset
+
+ נסמן 
+\begin_inset Formula $D_{k}\left(c\right)=D\left(k,c\right)=m\in\mathcal{M}$
+\end_inset
+
+ ה-
+\series bold
+\lang english
+plaintext
+\series default
+\lang hebrew
 .
 \end_layout
 
 \begin_layout Standard
-נניח והמפתח 
-\begin_inset Formula $k\sim\mathrm{Unif}\left(\mathcal{K}\right)$
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+נכונות
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+לכל הודעה 
+\begin_inset Formula $m\in\mathcal{M}$
+\end_inset
+
+ ומפתח 
+\begin_inset Formula $k\in\mathcal{K}$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $D_{k}\left(E_{k}\left(m\right)\right)=m$
 \end_inset
 
 .
 \end_layout
 
 \begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+מערכת הצפנה סימטרית
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+מערכת הצפנה שבה משתמשים במפתח יחיד לצורך הצפנה ופיענוח.
+\end_layout
+
+\begin_layout Remark
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+המפתח 
+\begin_inset Formula $k\sim\mathrm{Unif}\left(\mathcal{K}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
 מרחב ההודעות 
 \begin_inset Formula $\mathcal{M}=\left\{ 0,1\right\} ^{*}$
 \end_inset
@@ -832,32 +946,12 @@ status open
 .
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 הרבה פעמים אורך ההודעות קשור למרחב המפתחות.
 \end_layout
 
-\begin_layout Standard
-
-\series bold
-נכונות
-\series default
-:
- לכל 
-\begin_inset Formula $m\in\mathcal{M},k\in\mathcal{K}$
-\end_inset
-
-
-\begin_inset Formula 
-\[
-D_{k}\left(E_{k}\left(m\right)\right)=m
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
+\end_deeper
+\begin_layout Subsection
 מודל התקשורת
 \end_layout
 
@@ -887,7 +981,7 @@ D_{k}\left(E_{k}\left(m\right)\right)=m
 .
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 מטרות אבטחה
 \end_layout
 
@@ -937,7 +1031,7 @@ D_{k}\left(E_{k}\left(m\right)\right)=m
 האם בכלל אפשר לפרמל מתמטית את מושג הסודיות?
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 מודל היריב:
  מאזין פאסיבי
 \end_layout
@@ -977,6 +1071,1614 @@ D_{k}\left(E_{k}\left(m\right)\right)=m
 \begin_layout Itemize
 איב לא יודעת את 
 \begin_inset Formula $k$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+דוגמאות
+\end_layout
+
+\begin_layout Example
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+צופן קיסר
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+מפתח:
+ 
+\begin_inset Formula $k\in\left\{ 0,1,\ldots,25\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+כל אות מיוצגת כמספר 
+\begin_inset Formula $p\in\left\{ 0,1,\ldots,25\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\color red
+הצפנה:
+ 
+\color inherit
+
+\begin_inset Formula $E_{k}\left(p\right)=p+k\bmod26$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\color red
+פיענוח:
+
+\color inherit
+ 
+\begin_inset Formula $D_{k}\left(p\right)=p-k\bmod26$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\color red
+פתרון:
+
+\color inherit
+ חיפוש ממצה.
+\end_layout
+
+\begin_layout Itemize
+
+\color red
+מסקנה:
+
+\color inherit
+ דרוש מרחב מפתחות גדול.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+צופן החלפה
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+מפתח:
+ תמורה 
+\begin_inset Formula $\sigma:\left[26\right]\hookrightarrow\left[26\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+כל אות מיוצגת כמספר 
+\begin_inset Formula $p\in\left\{ 0,1,\ldots,25\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\color red
+הצפנה:
+
+\color inherit
+ 
+\begin_inset Formula $E_{\sigma}\left(p\right)=\sigma\left(p\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\color red
+פיענוח:
+
+\color inherit
+ 
+\begin_inset Formula $D_{\sigma}\left(p\right)=\sigma^{-1}\left(p\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+יש 
+\begin_inset Formula $26!\approx4\cdot10^{27}$
+\end_inset
+
+ מפתחות ולכן חיפוש ממצה לא יעבוד.
+\end_layout
+
+\begin_layout Itemize
+ניתן לשבור את ההצפנה באמצעות סטטיסטיקות של שפה טבעית,
+ שכן התדירות שימוש לא אחידה.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+הצפנת ויז'נר
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+המפתח הוא
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color red
+\lang english
+beads
+\color inherit
+\lang hebrew
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="21">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+t
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+h
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+e
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+m
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+a
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+n
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+a
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+n
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+d
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+t
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+h
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+e
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+w
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+o
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+m
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+a
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+n
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+b
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+e
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+a
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+d
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+s
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+b
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+e
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+a
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+d
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+s
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+b
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+e
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+a
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+d
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+s
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+b
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+e
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+V
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+M
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+Q
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+T
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+P
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+O
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+H
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+M
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+J
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+J
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+X
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+S
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+C
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+S
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+האם הוא מאובטח?
+\end_layout
+
+\begin_layout Itemize
+ויז'נר:
+ אני לא מצליח לשבור אותו אז הוא מאובטח.
+\end_layout
+
+\begin_layout Itemize
+קסיסיקי (
+\numeric on
+1863
+\numeric off
+):
+ שבר אותו.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+התקפה כללית (נראות מירבית)
+\end_layout
+
+\begin_layout Standard
+ליריב יש מידע מקדים על ההודעות,
+ הנתונה כהתפלגות 
+\begin_inset Formula $M$
+\end_inset
+
+ על מרחב ההודעות 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+בהינתן סייפרטקסט 
+\begin_inset Formula $C=E_{k}\left(M\right)\xleftarrow{R}\mathcal{K}$
+\end_inset
+
+,
+ עשה:
+\end_layout
+
+\begin_layout Itemize
+פענח לכל מפתח אפשרי:
+\begin_inset Formula 
+\[
+D_{000}\left(C\right)=\mathrm{blabla},D_{001}\left(C\right)=\mathrm{lunch},\ldots,D_{111}\left(C\right)=\mathrm{attack}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+בהתבסס על ההתפלגות 
+\begin_inset Formula $M$
+\end_inset
+
+ בחר את ההודעה הכי סבירה
+\end_layout
+
+\begin_layout Standard
+שאלה:
+ האם ניתן להביס כזה יריב?
+\end_layout
+
+\begin_layout Subsection
+בטיחות מושלמת
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+פילוגים שווים
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $X\equiv Y$
+\end_inset
+
+ עבור התפלגויות מעל 
+\begin_inset Formula $\mathcal{D}$
+\end_inset
+
+ אם
+\begin_inset Formula 
+\[
+\forall d\in\mathcal{D}.\ \Pr\left[X=d\right]=\Pr\left[Y=d\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+arc=2mm,colback=blue!10!white,colframe=blue!75!black,fonttitle=
+\backslash
+bfseries
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+בטיחות מושלמת (שאנון
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+1949
+\numeric off
+)
+\end_layout
+
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $M|C\equiv M$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+arc=2mm,colback=blue!10!white,colframe=blue!75!black,fonttitle=
+\backslash
+bfseries
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+בטיחות - הגדרה אלטרנטיבית
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+מתקיים כי לכל 
+\begin_inset Formula $m_{0},m_{1}\in\mathcal{M}$
+\end_inset
+
+ באורך זהה,
+ לכל 
+\begin_inset Formula $c\in\mathcal{C}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Pr_{k\xleftarrow{R}\mathcal{K}}\left[E_{k}\left(m_{0}\right)=c\right]=\Pr_{k\xleftarrow{R}\mathcal{K}}\left[E_{k}\left(m_{1}\right)=c\right]
+\]
+
+\end_inset
+
+כלומר 
+\begin_inset Formula $C|M\equiv C$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+פנקס חד-פעמי
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+מרחב ההודעות 
+\begin_inset Formula $\mathcal{M}=\left\{ 0,1\right\} ^{n}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+מרחב המפתחות 
+\begin_inset Formula $\mathcal{K}=\left\{ 0,1\right\} ^{n}$
+\end_inset
+
+.
+ המפתח נבחר באקראי.
+\end_layout
+
+\begin_layout Itemize
+כדי להצפין/לפענח נחשב
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+XOR
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+של ההודעה/הטקסט המצופן עם המפתח:
+\begin_inset Formula 
+\begin{align*}
+E_{k}\left(m\right)= & m\oplus k\\
+D_{k}\left(c\right)= & c\oplus k
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+להשתמש במפתח רק פעם אחת!
+ אחרת נקבל ויז'נר.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+arc=2mm,colback=red!10!white,colframe=red!75!black,fonttitle=
+\backslash
+bfseries
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+לפנקס חד-פעמי יש בטיחות מושלמת.
+ כלומר,
+ לכל 
+\begin_inset Formula $m_{0},m_{1}\in\left\{ 0,1\right\} ^{n}$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $E_{k}\left(m_{0}\right)\equiv E_{k}\left(m_{1}\right)$
+\end_inset
+
+,
+ כאשר 
+\begin_inset Formula $k\xleftarrow{R}\mathcal{K}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Proof
+מספיק להוכיח את הטענה הבאה:
+\end_layout
+
+\begin_deeper
+\begin_layout Claim
+לכל 
+\begin_inset Formula $m,c\in\left\{ 0,1\right\} ^{n}$
+\end_inset
+
+ מתקיים
+\begin_inset Formula 
+\[
+\Pr_{k\xleftarrow{R}\mathcal{K}}\left[E_{k}\left(m\right)=c\right]=\frac{1}{2^{n}}\iff E_{k}\left(m\right)\sim U_{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+הטענה גוררת את המשפט כי מטרנזטיביות שוויון ההתפלגות לכל 
+\begin_inset Formula $m_{0},m_{1}\in\left\{ 0,1\right\} ^{n}$
+\end_inset
+
+ מתקיים
+\begin_inset Formula 
+\[
+E_{k}\left(m_{0}\right)\equiv U_{n}\equiv E_{k}\left(m_{1}\right)
+\]
+
+\end_inset
+
+כעת נוכיח את הטענה.
+\end_layout
+
+\end_deeper
+\begin_layout Proof
+נקבע 
+\begin_inset Formula $m,c\in\left\{ 0,1\right\} ^{n}$
+\end_inset
+
+,
+ אזי:
+\begin_inset Formula 
+\[
+\Pr_{k}\left[E_{k}\left(m\right)=c\right]=\Pr_{k}\left[m\oplus k=c\right]=\Pr_{k}\left[k=m\oplus c\right]=\frac{1}{2^{n}}
+\]
+
+\end_inset
+
+כי 
+\begin_inset Formula $m\oplus c$
+\end_inset
+
+ קבוע ו-
+\begin_inset Formula $k\sim U_{n}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+יתרונות וחסרונות של פנקס חד-פעמי
+\end_layout
+
+\begin_layout Itemize
+
+\color red
+יתרון:
+
+\color inherit
+ בטיחות מושלמת.
+\end_layout
+
+\begin_layout Itemize
+
+\color red
+בעיה:
+
+\color inherit
+ גודל מרחב המפתחות.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+arc=2mm,colback=red!10!white,colframe=red!75!black,fonttitle=
+\backslash
+bfseries
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+שאנון
+\end_layout
+
+\end_inset
+
+ אם מערכת הצפנה 
+\begin_inset Formula $E:\mathcal{K}\times\mathcal{M}\xrightarrow{}\mathcal{C},D:\mathcal{K}\times\mathcal{C}\xrightarrow{}\mathcal{M}$
+\end_inset
+
+ בעלת בטיחות מושלמת,
+ אזי 
+\begin_inset Formula $\left|\mathcal{K}\right|\geq\left|\mathcal{M}\right|$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Proof
+נגדיר גרף דו-צדדי 
+\begin_inset Formula $G=\left(V,E\right)$
+\end_inset
+
+ כאשר 
+\begin_inset Formula $V=\mathcal{M}\uplus\mathcal{C}$
+\end_inset
+
+ (בה
+\begin_inset Quotes erd
+\end_inset
+
+כ נזהה אותם כמרחבים שונים) ו-
+\begin_inset Formula $\left\{ m,c\right\} \in E$
+\end_inset
+
+ אם ורק אם קייים 
+\begin_inset Formula $k\in\mathcal{K}$
+\end_inset
+
+ כך ש- 
+\begin_inset Formula $E_{k}\left(m\right)=c$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+נניח בשלילה כי 
+\begin_inset Formula $\left|\mathcal{K}\right|<\left|\mathcal{M}\right|$
+\end_inset
+
+,
+ נקבע 
+\begin_inset Formula $\left\{ m,c\right\} \in E$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Claim
+\begin_inset Formula $c$
+\end_inset
+
+ יכול להיות מחובר לכל היותר ל-
+\begin_inset Formula $\left|\mathcal{K}\right|$
+\end_inset
+
+ הודעות,
+ כלומר 
+\begin_inset Formula $\deg\left(c\right)\leq\left|\mathcal{K}\right|$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+הוכחת הטענה.
+
+\series default
+ נניח בשלילה כי 
+\begin_inset Formula $\deg\left(c\right)>\left|\mathcal{K}\right|$
+\end_inset
+
+,
+ אז מעיקרון שובך היונים יש מפתח 
+\begin_inset Formula $k$
+\end_inset
+
+ ו-
+\begin_inset Formula $m_{0}\neq m_{1}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $c=E_{k}\left(m_{0}\right)=E_{k}\left(m_{1}\right)$
+\end_inset
+
+ וזו סתירה לנכונות ההצפנה.
+\end_layout
+
+\begin_layout Corollary
+קיימת הודעה 
+\begin_inset Formula $m^{*}$
+\end_inset
+
+ כך שאינה שכנה של 
+\begin_inset Formula $c$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Proof
+לכל 
+\begin_inset Formula $k\in\mathcal{K}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $E_{k}\left(m^{*}\right)\neq c$
+\end_inset
+
+,
+ ולכן 
+\begin_inset Formula $\Pr_{k}\left[E_{k}\left(m^{*}\right)=c\right]=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+משום ש-
+\begin_inset Formula $\left\{ m,c\right\} \in E$
+\end_inset
+
+ אזי יש 
+\begin_inset Formula $k^{'}\in\mathcal{K}$
+\end_inset
+
+ עבורו 
+\begin_inset Formula $E_{k^{'}}\left(m\right)=c$
+\end_inset
+
+ ולכן 
+\begin_inset Formula $\Pr_{k}\left[E_{k}\left(m\right)=c\right]\geq\frac{1}{\left|\mathcal{K}\right|}>0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+בפרט מתקיים כי 
+\begin_inset Formula $E_{k}\left(m^{*}\right)\not\equiv E_{k}\left(m\right)$
+\end_inset
+
+ וזו סתירה לבטיחות המושלמת.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 
