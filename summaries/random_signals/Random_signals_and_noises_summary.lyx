@@ -157,6 +157,8 @@
 customHeadersFooters
 theorems-ams-chap-bytype
 theorems-ams-extended-chap-bytype
+tcolorbox
+algorithm2e
 \end_modules
 \maintain_unincluded_children no
 \begin_local_layout
@@ -689,11 +691,16 @@ End
 \use_minted 0
 \use_lineno 0
 \branch random vectors
-\selected 1
+\selected 0
 \filename_suffix 0
 \color background background
 \end_branch
 \branch random variables
+\selected 1
+\filename_suffix 0
+\color background background
+\end_branch
+\branch probability review
 \selected 1
 \filename_suffix 0
 \color background background
@@ -710,7 +717,7 @@ End
 \headsep 1cm
 \footskip 1cm
 \secnumdepth 3
-\tocdepth 3
+\tocdepth 1
 \paragraph_separation indent
 \paragraph_indentation 0bp
 \is_math_indent 0
@@ -1013,13 +1020,48 @@ power spectral density
 \end_layout
 
 \begin_layout Part
-משתנים אקראיים
+משתנים אקראיים ופעולות עליהם
 \end_layout
 
 \begin_layout Standard
 \begin_inset Branch random variables
 inverted 0
 status open
+
+\begin_layout Chapter
+הסתברות ומשתנים אקראיים
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch probability review
+inverted 0
+status open
+
+\begin_layout Section
+חזרה על מושגי יסוד בהסתברות
+\end_layout
+
+\begin_layout Subsection
+מרחב הסתברות
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \begin_layout Subsubsection*
 אפיון סטטיסטי מלא
@@ -1057,14 +1099,14 @@ status open
 
 \end_layout
 
+\begin_layout Chapter
+וקטורים אקראיים
+\end_layout
+
 \begin_layout Standard
 \begin_inset Branch random vectors
 inverted 0
 status open
-
-\begin_layout Chapter
-וקטורים אקראיים
-\end_layout
 
 \begin_layout Section
 הגדרות ודוגמאות ראשונות

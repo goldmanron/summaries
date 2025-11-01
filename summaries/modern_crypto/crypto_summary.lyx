@@ -780,8 +780,25 @@ status open
 הגדרות ומושגים ראשונים
 \end_layout
 
-\begin_layout Subsection
-מערכת הצפנה
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+arc=2mm,colback=blue!10!white,colframe=blue!75!black,fonttitle=
+\backslash
+bfseries,title={{
+\backslash
+Large מערכת הצפנה}},
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Definition
@@ -820,7 +837,7 @@ ciphertext
 .
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Separator plain
 \end_inset
 
@@ -862,7 +879,7 @@ plaintext
 .
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Separator plain
 \end_inset
 
@@ -898,7 +915,7 @@ status open
 .
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Separator plain
 \end_inset
 
@@ -922,8 +939,19 @@ status open
 מערכת הצפנה שבה משתמשים במפתח יחיד לצורך הצפנה ופיענוח.
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Remark
-\begin_inset space \space{}
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+כמה הערות
+\end_layout
+
 \end_inset
 
 
@@ -951,7 +979,7 @@ status open
 \end_layout
 
 \end_deeper
-\begin_layout Subsection
+\begin_layout Subsection*
 מודל התקשורת
 \end_layout
 
@@ -981,12 +1009,8 @@ status open
 .
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsection*
 מטרות אבטחה
-\end_layout
-
-\begin_layout Standard
-יש מספר מטרות שנרצה להשיג
 \end_layout
 
 \begin_layout Itemize
@@ -1013,8 +1037,8 @@ status open
 
 \end_layout
 
-\begin_layout Standard
-שאלות חשובות:
+\begin_layout Subsection*
+שאלות חשובות
 \end_layout
 
 \begin_layout Itemize
@@ -1025,19 +1049,15 @@ status open
 מה המגבלות החישוביות של היריב?
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 
 \series bold
 האם בכלל אפשר לפרמל מתמטית את מושג הסודיות?
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsection*
 מודל היריב:
  מאזין פאסיבי
-\end_layout
-
-\begin_layout Standard
-איב מאזינה לערוץ התקשורת.
 \end_layout
 
 \begin_layout Itemize
@@ -1230,7 +1250,7 @@ status open
 
 \begin_layout Itemize
 ניתן לשבור את ההצפנה באמצעות סטטיסטיקות של שפה טבעית,
- שכן התדירות שימוש לא אחידה.
+ שכן התדירות שימוש במילים לא אחידה.
 \end_layout
 
 \end_deeper
@@ -1246,15 +1266,11 @@ status open
 status open
 
 \begin_layout Plain Layout
-הצפנת ויז'נר
+צופן ויז'נר
 \end_layout
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Example
 המפתח הוא
 \family roman
 \series medium
@@ -2019,12 +2035,16 @@ S
 
 \end_deeper
 \begin_layout Section
+בטיחות מושלמת
+\end_layout
+
+\begin_layout Subsection*
 התקפה כללית (נראות מירבית)
 \end_layout
 
 \begin_layout Standard
-ליריב יש מידע מקדים על ההודעות,
- הנתונה כהתפלגות 
+נניח וליריב יש מידע מקדים על ההודעות,
+ הנתון כהתפלגות 
 \begin_inset Formula $M$
 \end_inset
 
@@ -2069,10 +2089,6 @@ D_{000}\left(C\right)=\mathrm{blabla},D_{001}\left(C\right)=\mathrm{lunch},\ldot
  האם ניתן להביס כזה יריב?
 \end_layout
 
-\begin_layout Subsection
-בטיחות מושלמת
-\end_layout
-
 \begin_layout Definition
 \begin_inset Argument 1
 status open
@@ -2091,15 +2107,11 @@ status open
 \begin_inset Formula $\mathcal{D}$
 \end_inset
 
- אם
-\begin_inset Formula 
-\[
-\forall d\in\mathcal{D}.\ \Pr\left[X=d\right]=\Pr\left[Y=d\right]
-\]
-
+ אם 
+\begin_inset Formula $\forall d\in\mathcal{D}.\ \Pr\left[X=d\right]=\Pr\left[Y=d\right]$
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
@@ -2113,7 +2125,9 @@ status open
 \begin_layout Plain Layout
 arc=2mm,colback=blue!10!white,colframe=blue!75!black,fonttitle=
 \backslash
-bfseries
+bfseries,title={{
+\backslash
+Large בטיחות מושלמת}}
 \end_layout
 
 \end_inset
@@ -2169,25 +2183,8 @@ status open
 .
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Flex Color Box
-status open
-
 \begin_layout Plain Layout
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-arc=2mm,colback=blue!10!white,colframe=blue!75!black,fonttitle=
-\backslash
-bfseries
-\end_layout
-
+\begin_inset Separator plain
 \end_inset
 
 
@@ -2219,16 +2216,12 @@ status open
 
 \begin_inset Formula 
 \[
-\Pr_{k\xleftarrow{R}\mathcal{K}}\left[E_{k}\left(m_{0}\right)=c\right]=\Pr_{k\xleftarrow{R}\mathcal{K}}\left[E_{k}\left(m_{1}\right)=c\right]
+.\Pr_{k\xleftarrow{R}\mathcal{K}}\left[E_{k}\left(m_{0}\right)=c\right]=\Pr_{k\xleftarrow{R}\mathcal{K}}\left[E_{k}\left(m_{1}\right)=c\right]
 \]
 
 \end_inset
 
-כלומר 
-\begin_inset Formula $C|M\equiv C$
-\end_inset
 
-.
 \end_layout
 
 \end_inset
@@ -2236,7 +2229,11 @@ status open
 
 \end_layout
 
-\begin_layout Example
+\begin_layout Claim
+ההגדרות שקולות.
+\end_layout
+
+\begin_layout Definition
 \begin_inset Argument 1
 status open
 
@@ -2338,11 +2335,6 @@ D_{k}\left(c\right)= & c\oplus k
 
 \end_layout
 
-\begin_layout Remark
-להשתמש במפתח רק פעם אחת!
- אחרת נקבל ויז'נר.
-\end_layout
-
 \end_deeper
 \begin_layout Standard
 \begin_inset Flex Color Box
@@ -2355,7 +2347,9 @@ status open
 \begin_layout Plain Layout
 arc=2mm,colback=red!10!white,colframe=red!75!black,fonttitle=
 \backslash
-bfseries
+bfseries,title={{
+\backslash
+Large בטיחות פנקס חד-פעמי}}
 \end_layout
 
 \end_inset
@@ -2364,7 +2358,77 @@ bfseries
 \end_layout
 
 \begin_layout Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:one time pad is secure"
+
+\end_inset
+
 לפנקס חד-פעמי יש בטיחות מושלמת.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\color red
+יתרון:
+
+\color inherit
+ בטיחות מושלמת.
+\end_layout
+
+\begin_layout Itemize
+
+\color red
+בעיה:
+
+\color inherit
+ גודל מרחב המפתחות.
+\end_layout
+
+\begin_layout Remark
+להשתמש במפתח רק פעם אחת!
+ אחרת נקבל ויז'נר.
+\end_layout
+
+\begin_layout Remark
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+arc=2mm,colback=teal!10!white,colframe=teal!75!black,fonttitle=
+\backslash
+bfseries,title={{
+\backslash
+Large הוכחת בטיחות פנקס חד-פעמי}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+נוכיח את משפט 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:one time pad is secure"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
  כלומר,
  לכל 
 \begin_inset Formula $m_{0},m_{1}\in\left\{ 0,1\right\} ^{n}$
@@ -2381,15 +2445,6 @@ bfseries
 
 .
 \end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Flex Color Box
-status open
 
 \begin_layout Proof
 מספיק להוכיח את הטענה הבאה:
@@ -2459,26 +2514,10 @@ E_{k}\left(m_{0}\right)\equiv U_{n}\equiv E_{k}\left(m_{1}\right)
 
 \end_layout
 
-\begin_layout Subsection
-יתרונות וחסרונות של פנקס חד-פעמי
-\end_layout
-
-\begin_layout Itemize
-
-\color red
-יתרון:
-
-\color inherit
- בטיחות מושלמת.
-\end_layout
-
-\begin_layout Itemize
-
-\color red
-בעיה:
-
-\color inherit
- גודל מרחב המפתחות.
+\begin_layout Standard
+נשים לב שלפנקס חד-פעמי יש מפתחות בגודל הקלט,
+ שזה נראה מאוד בזבזני,
+ אך כעת נראה שזה הכרחי לבטיחות.
 \end_layout
 
 \begin_layout Standard
@@ -2492,7 +2531,9 @@ status open
 \begin_layout Plain Layout
 arc=2mm,colback=red!10!white,colframe=red!75!black,fonttitle=
 \backslash
-bfseries
+bfseries,title={{
+\backslash
+Large משפט שאנון}}
 \end_layout
 
 \end_inset
@@ -2501,16 +2542,7 @@ bfseries
 \end_layout
 
 \begin_layout Theorem
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-שאנון
-\end_layout
-
-\end_inset
-
- אם מערכת הצפנה 
+אם מערכת הצפנה 
 \begin_inset Formula $E:\mathcal{K}\times\mathcal{M}\xrightarrow{}\mathcal{C},D:\mathcal{K}\times\mathcal{C}\xrightarrow{}\mathcal{M}$
 \end_inset
 
@@ -2530,6 +2562,23 @@ status open
 \begin_layout Standard
 \begin_inset Flex Color Box
 status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+arc=2mm,colback=teal!10!white,colframe=teal!75!black,fonttitle=
+\backslash
+bfseries,title={{
+\backslash
+Large הוכחת משפט שאנון}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \begin_layout Proof
 נגדיר גרף דו-צדדי 
