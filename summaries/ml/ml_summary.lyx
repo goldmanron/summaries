@@ -756,11 +756,11 @@ LatexCommand tableofcontents
 
 \end_layout
 
-\begin_layout Part
+\begin_layout Chapter
 מבוא
 \end_layout
 
-\begin_layout Chapter
+\begin_layout Section
 מה זה למידה?
 \end_layout
 
@@ -1147,7 +1147,7 @@ EM
 \end_layout
 
 \end_deeper
-\begin_layout Chapter
+\begin_layout Section
 חזרה על הסתברות וצעדים ראשונים בהכללה
 \end_layout
 
@@ -1156,7 +1156,7 @@ EM
  אין מה להיבהל.
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 הגדרות בסיסיות בהסתברות
 \end_layout
 
@@ -1355,7 +1355,7 @@ status open
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 הקשר בין למידה חישובית והסתברות
 \end_layout
 
@@ -2219,5 +2219,1475 @@ PAC
 ).
 \end_layout
 
+\begin_layout Chapter
+למידה מפוקחת
+\end_layout
+
+\begin_layout Section
+פורמלזיציה הסתברותית
+\end_layout
+
+\begin_layout Standard
+המטרה:
+ ללמוד מיפוי מתוך מרחב המופעים 
+\begin_inset Formula $\mathcal{X}$
+\end_inset
+
+ אל מרחב התגיות 
+\begin_inset Formula $\mathcal{Y}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+הרעיון:
+ ללמוד מיפוי על סמך דוגמאות.
+\end_layout
+
+\begin_layout Standard
+נמדל מופע 
+\begin_inset Formula $X$
+\end_inset
+
+ ותגית 
+\begin_inset Formula $Y$
+\end_inset
+
+ בתור משתנים מקריים הבאים מהתפלגות משותפת 
+\begin_inset Formula $P$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsection*
+נתוני אימון
+\end_layout
+
+\begin_layout Standard
+עבור אימון יהיו לנו 
+\begin_inset Formula $n$
+\end_inset
+
+ דוגמאות אימון (זוגות של מופע ותגית).
+\begin_inset Newline newline
+\end_inset
+
+אנחנו מניחים ש-
+\begin_inset Formula $n$
+\end_inset
+
+ הדוגמאות הן זוגות של משתנים מקריים 
+\begin_inset Formula $\left(X_{1},Y_{1}\right),\ldots,\left(X_{n},Y_{n}\right)\overset{\mathrm{iid}}{\sim}P$
+\end_inset
+
+,
+ נסמן 
+\begin_inset Formula 
+\[
+.S\coloneqq\left(\left(X_{1},Y_{1}\right),\ldots,\left(X_{n},Y_{n}\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+מחלקת השערות
+\end_layout
+
+\begin_layout Standard
+נרצה ללמוד מיפוי מ-
+\begin_inset Formula $\mathcal{X}$
+\end_inset
+
+ אל 
+\begin_inset Formula $\mathcal{Y}$
+\end_inset
+
+,
+ לרוב נקרא 
+\series bold
+השערה
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+נרשה לעצמנו ללמוד מתוך איזושהי קבוצה של השערות 
+\begin_inset Formula $\mathcal{H}\subseteq\mathcal{X}\xrightarrow{}\mathcal{Y}$
+\end_inset
+
+,
+ הנקראת 
+\series bold
+מחלקת ההשערות
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+נניח לכן ש-
+\begin_inset Formula $\mathcal{Y}=\left\{ 0,1\right\} $
+\end_inset
+
+ (סיווג בינארי).
+\end_layout
+
+\begin_layout Example
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\mathcal{X}=\mathbb{R}^{2}$
+\end_inset
+
+,
+ 
+\begin_inset Formula 
+\[
+\mathcal{H}=\left\{ h\left(x;R\right)=\mathds{1}_{R}\left(x\right):\ R\ \mathrm{is\ a\ rectangle}\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+מסווגים לינאריים:
+
+\series default
+ 
+\begin_inset Formula $\mathcal{X}=\mathbb{R}^{d}$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+\mathcal{H}=\left\{ h\left(x;w,b\right)=\mathrm{sign}\left(x\cdot w-b\right):w\in\mathbb{R}^{d},b\in\mathbb{R}\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+רשת נוירונים:
+
+\series default
+ 
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+ היא קבוצת המיפויים שמתקבלים מרשתות נוירונים עם משקלים שולים,
+ המלווים בפונקציית סימן.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mathcal{X}=\left\{ 0,1\right\} ^{d}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+ היא קבוצת המיפויים המוגדרים על ידי נוסחאות 
+\begin_inset Formula $\mathrm{3\text{-}CNF}$
+\end_inset
+
+ בוליאניות.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mathcal{X}=\mathbb{R}^{d}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\mathcal{H}=\mathcal{X}\xrightarrow{}\mathcal{Y}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection*
+שגיאה אמפירית
+\end_layout
+
+\begin_layout Standard
+השגיאה האמפירית של 
+\begin_inset Formula $h$
+\end_inset
+
+ מודדת את ההתאמה שלה לקבוצת האימון 
+\begin_inset Formula $S$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+היא מוגדרת לפי הפסד נתון 
+\begin_inset Formula $\ell:\mathcal{Y}\times\mathcal{Y}\xrightarrow{}\mathbb{R}_{\geq0}$
+\end_inset
+
+,
+ נתמקד בהפסד 
+\begin_inset Formula $0\text{-}1$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\Delta_{\mathrm{zo}}\left(\hat{y},y\right)=\mathds{1}\left\{ y\neq\hat{y}\right\} 
+\]
+
+\end_inset
+
+הנותנת שגיאה אמפירית:
+\begin_inset Formula 
+\[
+e_{S}\left(h\right)=\frac{1}{n}\sum_{i=1}^{n}\Delta_{\mathrm{zo}}\left(h\left(X_{i}\right),Y_{i}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+שגיאה אמיתית (שגיאת בדיקה/אוכלוסייה)
+\end_layout
+
+\begin_layout Standard
+בהינתן השערה 
+\begin_inset Formula $h$
+\end_inset
+
+,
+ השגיאה האמיתית שלה מוגדרת על ידי:
+\begin_inset Formula 
+\[
+e_{P}\left(h\right)=\mathbb{E}_{\left(X,Y\right)\sim P}\left[\Delta_{\mathrm{zo}}\left(h\left(X\right),Y\right)\right]=\mathbb{P}\left[h\left(X\right)\neq Y\right]
+\]
+
+\end_inset
+
+נרצה למצוא השערה 
+\begin_inset Formula $h$
+\end_inset
+
+ שממזערת את השגיאה האמיתית 
+\begin_inset Formula $e_{P}\left(\cdot\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\color red
+בעיה:
+ אנחנו לא יודעים את 
+\begin_inset Formula $P$
+\end_inset
+
+!!!
+\end_layout
+
+\begin_layout Standard
+הדבר הכי טוב שנוכל לקבל:
+\begin_inset Formula 
+\[
+e_{P}^{*}=\min_{h\in\mathcal{H}}e_{P}\left(h\right)
+\]
+
+\end_inset
+
+
+\series bold
+שגיאת הקירוב
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+סיכום ביניים של סכימת למידה:
+\end_layout
+
+\begin_layout Enumerate
+נבחר מחלקת השערות 
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+נקבל דגימה 
+\begin_inset Formula $S\xleftarrow{\mathrm{iid}}P$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+נשתמש באיזשהו אלגוריתם 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ שמקבל כקלט את 
+\begin_inset Formula $S$
+\end_inset
+
+ ומחזיר השערה 
+\begin_inset Formula $\mathcal{A}\left(S\right)\in\mathcal{H}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+השגיאה האמיתית של ההשערה שמדנו תהיה 
+\begin_inset Formula $e_{P}\left(\mathcal{A}\left(S\right)\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+מזעור שגיאה אמפירית -
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+Empirical Risk Minimization (ERM)
+\lang hebrew
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+Empirical Risk Minimization (ERM)
+\series bold
+\size larger
+\lang hebrew
+
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+האלגוריתם יקיים 
+\begin_inset Formula $\mathrm{ERM}\left(S\right)\in\arg\min_{h\in\mathcal{H}}e_{S}\left(h\right)$
+\end_inset
+
+,
+ השייכות היא כי ייתכן ויש יותר מממזער יחיד,
+ ו-
+\begin_inset Formula $\mathrm{ERM}$
+\end_inset
+
+ בוחר אחד באופן דטרמיניסטי.
+\end_layout
+
+\begin_layout Remark
+\begin_inset Formula $\mathrm{ERM}\left(S\right)$
+\end_inset
+
+ הוא משתנה מקרי,
+ כי הדגימות אקראיות.
+\end_layout
+
+\begin_layout Subsection
+נתוני אימון אינסופיים
+\end_layout
+
+\begin_layout Standard
+לכל 
+\begin_inset Formula $h\in\mathcal{H}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}_{P}\left[e_{S}\left(h\right)\right]= & \mathbb{E}_{P}\left[\frac{1}{n}\sum_{i=1}^{n}\Delta_{\mathrm{zo}}\left(h\left(X_{i}\right),Y_{i}\right)\right]\\
+= & \frac{1}{n}\sum_{i=1}^{n}\mathbb{E}_{P}\left[\Delta_{\mathrm{zo}}\left(h\left(X_{i}\right),Y_{i}\right)\right]\\
+= & \frac{1}{n}\sum_{i=1}^{n}e_{P}\left(h\right)=e_{P}\left(h\right)
+\end{align*}
+
+\end_inset
+
+בצורה לא פורמלית,
+ 
+\begin_inset Formula $e_{S}\left(h\right)\xrightarrow{n\xrightarrow{}\infty}e_{P}\left(h\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+מה לגבי השונות של 
+\begin_inset Formula $e_{S}\left(h\right)$
+\end_inset
+
+?
+\begin_inset Formula 
+\begin{align*}
+\text{Var}_{P}\left[e_{S}\left(h\right)\right]= & \text{Var}_{P}\left[\frac{1}{n}\sum_{i=1}^{n}\Delta_{\mathrm{zo}}\left(h\left(X_{i}\right),Y_{i}\right)\right]\\
+= & \frac{1}{n^{2}}\sum_{i=1}^{n}\underbrace{\text{Var}\left[\Delta_{\mathrm{zo}}\left(h\left(X_{i}\right),Y_{i}\right)\right]}_{\mathrm{const}}\\
+= & \frac{\mathrm{const}}{n}\xrightarrow{n\xrightarrow{}\infty}0
+\end{align*}
+
+\end_inset
+
+ולכן 
+\begin_inset Formula $\mathbb{E}_{P}\left[e_{S}\left(h\right)\right]=e_{P}\left(h\right)$
+\end_inset
+
+ וכן 
+\begin_inset Formula $\text{Var}\left[e_{S}\left(h\right)\right]$
+\end_inset
+
+ שואף ל-
+\begin_inset Formula $0$
+\end_inset
+
+ כאשר 
+\begin_inset Formula $n$
+\end_inset
+
+ גדל.
+\end_layout
+
+\begin_layout Standard
+לכן,
+ כאשר 
+\begin_inset Formula $n$
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+גדול
+\begin_inset Quotes erd
+\end_inset
+
+,
+ הגיוני להשתמש ב-
+\begin_inset Formula $e_{S}\left(\cdot\right)$
+\end_inset
+
+ כתחליף ל-
+\begin_inset Formula $e_{P}\left(\cdot\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Remark
+הטיעון לעיל לא מספיק:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+לא מתאר כמה גדול 
+\begin_inset Formula $n$
+\end_inset
+
+ צריך להיות
+\end_layout
+
+\begin_layout Itemize
+לא גורר ש-
+\begin_inset Formula $e_{S}\left(h\right)$
+\end_inset
+
+ קרוב ל-
+\begin_inset Formula $e_{P}\left(h\right)$
+\end_inset
+
+ לכל 
+\begin_inset Formula $h$
+\end_inset
+
+ 
+\series bold
+ביחד
+\series default
+.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+נתוני אימון סופיים
+\end_layout
+
+\begin_layout Subsection
+למידה במקרה הניתן למימוש:
+
+\family roman
+\series bold
+\shape up
+\size large
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+PAC
+\end_layout
+
+\begin_layout Standard
+כעת,
+ נניח משהו לגבי העולם של ההתפלגות 
+\begin_inset Formula $P$
+\end_inset
+
+,
+ בפרט 
+\begin_inset Formula $\exists h_{0}\in\mathcal{H}$
+\end_inset
+
+ כך שאם 
+\begin_inset Formula $\left(X,Y\right)\sim P$
+\end_inset
+
+ אז 
+\begin_inset Formula $Y=h_{0}\left(X\right)$
+\end_inset
+
+ בהסתברות 
+\begin_inset Formula $1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+במקרה הזה,
+ שגיאת הקירוב היא
+\begin_inset Formula 
+\[
+e_{P}^{*}=\min_{h\in\mathcal{H}}e_{P}\left(h\right)\leq e_{P}\left(h_{0}\right)=0
+\]
+
+\end_inset
+
+המקרה הזה הוא 
+\series bold
+המקרה הניתן למימוש
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+נשים לב שלכל 
+\begin_inset Formula $S\sim P$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+e_{S}\left(h_{0}\right)=\frac{1}{n}\sum_{i=1}^{n}\Delta_{\mathrm{zo}}\left(h_{0}\left(X_{i}\right),Y_{i}\right)=0
+\]
+
+\end_inset
+
+בפרט 
+\begin_inset Formula 
+\[
+.0\leq e_{S}\left(\mathrm{ERM}\left(S\right)\right)\leq e_{S}\left(h_{0}\right)=0\Longrightarrow e_{S}\left(\mathrm{ERM}\left(S\right)\right)=0
+\]
+
+\end_inset
+
+נרצה ללמוד את 
+\begin_inset Formula $h\in\mathcal{H}$
+\end_inset
+
+ שתניב לנו שגיאה אמיתית נמוכה.
+ באופן ספציפי נרצה
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $e_{P}\left(\hat{h}\right)\leq\varepsilon$
+\end_inset
+
+ (=
+\lang english
+
+\begin_inset Quotes erd
+\end_inset
+
+approximately correct
+\begin_inset Quotes erd
+\end_inset
+
+
+\lang hebrew
+)
+\end_layout
+
+\begin_layout Itemize
+שזה יתקיים בהסתברות של לפחות 
+\begin_inset Formula $1-\delta$
+\end_inset
+
+ על פני 
+\begin_inset Formula $S$
+\end_inset
+
+ (=
+\lang english
+
+\begin_inset Quotes erd
+\end_inset
+
+probably
+\begin_inset Quotes erd
+\end_inset
+
+
+\lang hebrew
+)
+\end_layout
+
+\begin_layout Standard
+האם אפשר למצוא,
+ 
+\begin_inset Formula $\forall\varepsilon,\delta\in\left(0,1\right)$
+\end_inset
+
+,
+ מספר דגימות 
+\begin_inset Formula $N\left(\varepsilon,\delta\right)\in\mathbb{N}$
+\end_inset
+
+,
+ כך שלכל 
+\begin_inset Formula $P$
+\end_inset
+
+ ניתן למימוש וקבוצת אימון 
+\begin_inset Formula $S$
+\end_inset
+
+ בגודל 
+\begin_inset Formula $n\geq N\left(\varepsilon,\delta\right)$
+\end_inset
+
+ הנדגמת מתוך 
+\begin_inset Formula $P$
+\end_inset
+
+,
+ יתקיים
+\begin_inset Formula 
+\[
+.\mathbb{P}\left[e_{P}\left(\mathrm{ERM}\left(S\right)\right)\leq\varepsilon\right]\geq1-\delta
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+אם כזה 
+\begin_inset Formula $N\left(\varepsilon,\delta\right)$
+\end_inset
+
+ קיים נגיד ש-
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+ הוא
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series bold
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+Probably Approximately Correct (PAC)
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+למיד על ידי 
+\begin_inset Formula $\mathrm{ERM}$
+\end_inset
+
+.
+ אם זה מתקיים על ידי איזשהו אלגוריתם 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ שאינו בהכרח 
+\begin_inset Formula $\mathrm{ERM}$
+\end_inset
+
+,
+ נגיד ש-
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+ הוא רק
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series bold
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+PAC
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+למיד.
+ 
+\begin_inset Formula $N\left(\varepsilon,\delta\right)$
+\end_inset
+
+ המינימלי שיקיים את הדרישות נקרא 
+\series bold
+סיבוכיות המדגם
+\series default
+.
+ 
+\end_layout
+
+\begin_layout Theorem
+תהא 
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+ מחלקת השערות סופית.
+ אזי לכל 
+\begin_inset Formula $\varepsilon,\delta\in\left(0,1\right)$
+\end_inset
+
+ ו-
+\begin_inset Formula $P$
+\end_inset
+
+ ניתנת למימוש,
+ אם 
+\begin_inset Formula $n\geq\frac{1}{\varepsilon}\ln\left(\frac{\left|\mathcal{H}\right|}{\delta}\right)$
+\end_inset
+
+ אזי 
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+ היא
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+PAC
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+למידה על ידי 
+\begin_inset Formula $\mathrm{ERM}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+נקרא להשערה 
+\begin_inset Formula $h$
+\end_inset
+
+ עקבית עם המדגם 
+\begin_inset Formula $S$
+\end_inset
+
+ אם 
+\begin_inset Formula $e_{S}\left(h\right)=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+נקרא להשערה 
+\begin_inset Formula $h$
+\end_inset
+
+ רעה אם 
+\begin_inset Formula $e_{P}\left(h\right)>\varepsilon$
+\end_inset
+
+.
+ קבוצת ההשערות הרעות תסומן באמצעות 
+\begin_inset Formula $\mathcal{H}_{\mathrm{bad}}^{\varepsilon}\left(P\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+לפי ההגדרה:
+\begin_inset Formula 
+\[
+.\mathbb{P}\left[e_{P}\left(\mathrm{ERM}\left(S\right)\right)>\varepsilon\right]=\mathbb{P}\left[\mathrm{ERM}\left(S\right)\in\mathcal{H}_{\mathrm{bad}}^{\varepsilon}\left(P\right)\right]
+\]
+
+\end_inset
+
+הדרך היחידה ש-
+\begin_inset Formula $\mathrm{ERM}$
+\end_inset
+
+ יכול להחזיר השערה רעה היא אם קיימת כזו שעקבית עם 
+\begin_inset Formula $S$
+\end_inset
+
+.
+ כלומר
+\begin_inset Formula 
+\begin{align*}
+\mathbb{P}\left[\mathrm{ERM}\left(S\right)\in\mathcal{H}_{\mathrm{bad}}^{\varepsilon}\left(P\right)\right]\leq & \mathbb{P}\left[\bigcup_{h\in\mathcal{H}_{\mathrm{bad}}^{\varepsilon}\left(P\right)}\left\{ e_{s}\left(h\right)=0\right\} \right]\\
+\overset{\mathrm{Union\ Bound}}{\leq} & \sum_{h\in\mathcal{H}_{\mathrm{bad}}^{\varepsilon}\left(P\right)}\mathbb{P}\left[e_{S}\left(h\right)=0\right]
+\end{align*}
+
+\end_inset
+
+תהא 
+\begin_inset Formula $h$
+\end_inset
+
+ השערה רעה,
+ כלומר 
+\begin_inset Formula $e_{P}\left(h\right)>\varepsilon$
+\end_inset
+
+.
+ נרצה לחסום את 
+\begin_inset Formula $\mathbb{P}\left[e_{S}\left(h\right)=0\right]$
+\end_inset
+
+,
+ מתקיים:
+\begin_inset Formula 
+\begin{align}
+\mathbb{P}\left[e_{S}\left(h\right)=0\right]= & \mathbb{P}\left[h\left(X_{1}\right)=Y_{1},\ldots,h\left(X_{n}\right)=Y_{n}\right]\\
+= & \prod_{i=1}^{n}\mathbb{P}\left[h\left(X_{i}\right)=Y_{i}\right]\\
+= & \prod_{i=1}^{n}\mathbb{P}_{\left(X,Y\right)\sim P}\left[h\left(X\right)=Y\right]\\
+= & \prod_{i=1}^{n}\left(1-\mathbb{P}_{\left(X,Y\right)\sim P}\left[h\left(X\right)\neq Y\right]\right)\\
+= & \prod_{i=1}^{n}\left(1-e_{P}\left(h\right)\right)=\left(1-e_{P}\left(h\right)\right)^{n}\leq\left(1-\varepsilon\right)^{n}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+ולכן:
+\begin_inset Formula 
+\begin{align*}
+\mathbb{P}\left[\mathrm{ERM}\left(S\right)\in\mathcal{H}_{\mathrm{bad}}^{\varepsilon}\left(P\right)\right]\leq & \sum_{h\in\mathcal{H}_{\mathrm{bad}}^{\varepsilon}\left(P\right)}\mathbb{P}\left[e_{S}\left(h\right)=0\right]\\
+\leq & \sum_{h\in\mathcal{H}_{\mathrm{bad}}^{\varepsilon}\left(P\right)}\left(1-\varepsilon\right)^{n}\\
+\leq & \left|\mathcal{H}\right|\left(1-\varepsilon\right)^{n}\\
+\underset{\left(1-x\leq e^{-x}\right)}{\leq} & \left|\mathcal{H}\right|e^{-n\varepsilon}
+\end{align*}
+
+\end_inset
+
+סך הכל
+\begin_inset Formula 
+\[
+\mathbb{P}\left[e_{P}\left(\mathrm{ERM}\left(S\right)\right)<\varepsilon\right]\leq\left|\mathcal{H}\right|e^{-n\varepsilon}
+\]
+
+\end_inset
+
+
+\begin_inset Formula $\left|\mathcal{H}\right|e^{-n\varepsilon}\leq\delta$
+\end_inset
+
+ אם ורק אם 
+\begin_inset Formula $n\geq\frac{1}{\varepsilon}\ln\left(\frac{\left|\mathcal{H}\right|}{\delta}\right)$
+\end_inset
+
+ ולכן סיימנו.
+\end_layout
+
+\end_deeper
+\begin_layout Exercise
+לנסות להכליל ל-
+\begin_inset Formula $\mathcal{Y}$
+\end_inset
+
+ והפסד כללי.
+\end_layout
+
+\begin_layout Subsection
+למידה במקרה שלא ניתן למימוש:
+
+\family roman
+\series bold
+\shape up
+\size large
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+PAC
+\family roman
+\series bold
+\shape up
+\size large
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+אגנוסטי
+\end_layout
+
+\begin_layout Standard
+כעת אנחנו לא מניחים כלום על 
+\begin_inset Formula $P$
+\end_inset
+
+.
+ הכי טוב שנוכל לקוות אליו זה 
+\begin_inset Formula $e_{P}^{*}=\min_{h\in\mathcal{H}}e_{P}\left(h\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Lemma
+לכל התפלגות 
+\begin_inset Formula $P$
+\end_inset
+
+ ומדגם 
+\begin_inset Formula $S$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+e_{P}\left(\mathrm{ERM}\left(S\right)\right)-e_{P}^{*}\leq2\max_{h\in\mathcal{H}}\left|e_{S}\left(h\right)-e_{P}\left(h\right)\right|
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+מתקיים:
+\begin_inset Formula 
+\begin{align*}
+e_{P}\left(\mathrm{ERM}\left(S\right)\right)-e_{P}^{*}= & e_{P}\left(\mathrm{ERM}\left(S\right)\right)-e_{P}\left(h_{P}^{*}\right)\\
+= & e_{P}\left(\mathrm{ERM}\left(S\right)\right)-e_{S}\left(\mathrm{ERM}\left(S\right)\right)+e_{S}\left(\mathrm{ERM}\left(S\right)\right)-e_{P}\left(h_{P}^{*}\right)\\
+\leq & \left(e_{P}\left(\mathrm{ERM}\left(S\right)\right)-e_{S}\left(\mathrm{ERM}\left(S\right)\right)\right)+\left(e_{S}\left(h_{P}^{*}\right)-e_{P}\left(h_{P}^{*}\right)\right)\\
+\leq & 2\max_{h\in\mathcal{H}}\left|e_{S}\left(h\right)-e_{P}\left(h\right)\right|.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+נשים לב:
+\begin_inset Formula 
+\begin{equation}
+\mathbb{P}\left[\max_{h\in\mathcal{H}}\left|e_{S}\left(h\right)-e_{P}\left(h\right)\right|>\varepsilon\right]=\mathbb{P}\left[\bigcup_{h\in\mathcal{H}}\left\{ \left|e_{S}\left(h\right)-e_{P}\left(h\right)\right|>\varepsilon\right\} \right]
+\end{equation}
+
+\end_inset
+
+נקבע 
+\begin_inset Formula $h\in\mathcal{H}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $e_{S}\left(h\right)$
+\end_inset
+
+ היא ממוצע של 
+\begin_inset Formula $n$
+\end_inset
+
+ דגימות
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+iid
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+של המ
+\begin_inset Quotes erd
+\end_inset
+
+מ 
+\begin_inset Formula $Z\coloneqq\Delta_{\mathrm{zo}}\left(h\left(X\right),Y\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $Z$
+\end_inset
+
+ מקבל ערכים ב-
+\begin_inset Formula $\left[0,1\right]$
+\end_inset
+
+ ו-
+\begin_inset Formula $\mathbb{E}\left[Z\right]=e_{P}\left(h\right)$
+\end_inset
+
+,
+ מאי-שוויון הופדינג:
+\begin_inset Formula 
+\[
+\mathbb{P}\left[\left|e_{S}\left(h\right)-e_{P}\left(h\right)\right|>\varepsilon\right]\leq2e^{-2n\varepsilon^{2}}
+\]
+
+\end_inset
+
+בהצבה ל-
+\begin_inset Formula $\left(8\right)$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\mathbb{P}\left[\max_{h\in\mathcal{H}}\left|e_{S}\left(h\right)-e_{P}\left(h\right)\right|>\varepsilon\right] & =\mathbb{P}\left[\bigcup_{h\in\mathcal{H}}\left\{ \left|e_{S}\left(h\right)-e_{P}\left(h\right)\right|>\varepsilon\right\} \right]\\
+\underset{****}{\leq}\sum_{h\in\mathcal{H}}\mathbb{P}\left[\left|e_{S}\left(h\right)-e_{P}\left(h\right)\right|>\varepsilon\right] & \leq\left|\mathcal{H}\right|\cdot2e^{-2n\varepsilon^{2}}.
+\end{align*}
+
+\end_inset
+
+כעת אנו מוכנים להוכיח
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+PAC
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+למידה אגנוסטית:
+\end_layout
+
+\begin_layout Theorem
+לכל התפלגות 
+\begin_inset Formula $P$
+\end_inset
+
+ ו-
+\begin_inset Formula $\varepsilon,\delta\in\left(0,1\right)$
+\end_inset
+
+,
+ אם 
+\begin_inset Formula $n\geq\frac{2}{\varepsilon^{2}}\ln\left(\frac{2\left|\mathcal{H}\right|}{\delta}\right)$
+\end_inset
+
+ אז:
+\begin_inset Formula 
+\[
+\mathbb{P}\left[e_{P}\left(\mathrm{ERM}\left(S\right)\right)-e_{p}^{*}>\varepsilon\right]\leq\delta.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+לפי הלמה:
+\begin_inset Formula 
+\begin{align*}
+\mathbb{P}\left[e_{P}\left(\mathrm{ERM}\left(S\right)\right)-e_{p}^{*}>\varepsilon\right] & \leq\mathbb{P}\left[2\max_{h\in\mathcal{H}}\left|e_{S}\left(h\right)-e_{P}\left(h\right)\right|>\varepsilon\right]\\
+=\mathbb{P}\left[\max_{h\in\mathcal{H}}\left|e_{S}\left(h\right)-e_{P}\left(h\right)\right|>\frac{\varepsilon}{2}\right] & \leq\left|\mathcal{H}\right|\cdot2e^{-\frac{n\varepsilon^{2}}{2}}
+\end{align*}
+
+\end_inset
+
+מתקיים 
+\begin_inset Formula $\left|\mathcal{H}\right|\cdot2e^{-\frac{n\varepsilon^{2}}{2}}\leq\delta$
+\end_inset
+
+ אם ורק אם
+\begin_inset Formula 
+\[
+n\geq\frac{2}{\varepsilon^{2}}\ln\left(\frac{2\left|\mathcal{H}\right|}{\delta}\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
 \end_body
 \end_document

@@ -694,6 +694,16 @@ End
 \filename_suffix 0
 \color background background
 \end_branch
+\branch Psuedo Randomness
+\selected 1
+\filename_suffix 0
+\color background background
+\end_branch
+\branch number-group theory
+\selected 1
+\filename_suffix 0
+\color background background
+\end_branch
 \index Index
 \shortcut idx
 \color #008000
@@ -767,6 +777,14 @@ LatexCommand tableofcontents
 
 \end_layout
 
+\begin_layout Color Box Setup
+
+arc=2mm,fonttitle=
+\backslash
+bfseries,
+ 
+\end_layout
+
 \begin_layout Chapter
 מבוא
 \end_layout
@@ -774,7 +792,7 @@ LatexCommand tableofcontents
 \begin_layout Standard
 \begin_inset Branch Introduction
 inverted 0
-status open
+status collapsed
 
 \begin_layout Section
 הגדרות ומושגים ראשונים
@@ -789,16 +807,22 @@ status open
 status open
 
 \begin_layout Plain Layout
-arc=2mm,colback=blue!10!white,colframe=blue!75!black,fonttitle=
+colback=blue!10!white,colframe=blue!75!black,title={{
 \backslash
-bfseries,title={{
-\backslash
-Large מערכת הצפנה}},
+Large מערכת הצפנה סימטרית}},
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Plain Layout
+תהינא קבוצות 
+\begin_inset Formula $\mathcal{K},\mathcal{M},\mathcal{C}$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Definition
@@ -823,11 +847,11 @@ status open
 \begin_inset Formula $k\in\mathcal{K},m\in\mathcal{M}$
 \end_inset
 
- נסמן 
-\begin_inset Formula $E_{k}\left(m\right)=E\left(k,m\right)=c\in\mathcal{C}$
+ נסמן ב-
+\begin_inset Formula $E_{k}\left(m\right)=E\left(k,m\right)=c$
 \end_inset
 
- ה
+ את ה
 \series bold
 \lang english
 ciphertext
@@ -866,11 +890,11 @@ status open
 \begin_inset Formula $k\in\mathcal{K},c\in\mathcal{C}$
 \end_inset
 
- נסמן 
-\begin_inset Formula $D_{k}\left(c\right)=D\left(k,c\right)=m\in\mathcal{M}$
+ נסמן ב-
+\begin_inset Formula $D_{k}\left(c\right)=D\left(k,c\right)=m$
 \end_inset
 
- ה-
+ את ה-
 \series bold
 \lang english
 plaintext
@@ -915,71 +939,12 @@ status open
 .
 \end_layout
 
-\begin_layout Plain Layout
-\begin_inset Separator plain
 \end_inset
 
 
 \end_layout
 
-\begin_layout Definition
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-מערכת הצפנה סימטרית
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Definition
-מערכת הצפנה שבה משתמשים במפתח יחיד לצורך הצפנה ופיענוח.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Remark
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-כמה הערות
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-המפתח 
-\begin_inset Formula $k\sim\mathrm{Unif}\left(\mathcal{K}\right)$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Itemize
-מרחב ההודעות 
-\begin_inset Formula $\mathcal{M}=\left\{ 0,1\right\} ^{*}$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Itemize
-הרבה פעמים אורך ההודעות קשור למרחב המפתחות.
-\end_layout
-
-\end_deeper
-\begin_layout Subsection*
+\begin_layout Subsection
 מודל התקשורת
 \end_layout
 
@@ -1009,7 +974,7 @@ status open
 .
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Subsection
 מטרות אבטחה
 \end_layout
 
@@ -1037,7 +1002,7 @@ status open
 
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Subsection
 שאלות חשובות
 \end_layout
 
@@ -1055,7 +1020,7 @@ status open
 האם בכלל אפשר לפרמל מתמטית את מושג הסודיות?
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Subsection
 מודל היריב:
  מאזין פאסיבי
 \end_layout
@@ -2038,7 +2003,7 @@ S
 בטיחות מושלמת
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Subsection
 התקפה כללית (נראות מירבית)
 \end_layout
 
@@ -2089,6 +2054,10 @@ D_{000}\left(C\right)=\mathrm{blabla},D_{001}\left(C\right)=\mathrm{lunch},\ldot
  האם ניתן להביס כזה יריב?
 \end_layout
 
+\begin_layout Subsection
+הגדרה מתמטית של בטיחות
+\end_layout
+
 \begin_layout Definition
 \begin_inset Argument 1
 status open
@@ -2123,9 +2092,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-arc=2mm,colback=blue!10!white,colframe=blue!75!black,fonttitle=
-\backslash
-bfseries,title={{
+colback=blue!10!white,colframe=blue!75!black,title={{
 \backslash
 Large בטיחות מושלמת}}
 \end_layout
@@ -2231,6 +2198,10 @@ status open
 
 \begin_layout Claim
 ההגדרות שקולות.
+\end_layout
+
+\begin_layout Subsection
+דוגמא למערכת בטוחה
 \end_layout
 
 \begin_layout Definition
@@ -2345,9 +2316,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-arc=2mm,colback=red!10!white,colframe=red!75!black,fonttitle=
-\backslash
-bfseries,title={{
+colback=red!10!white,colframe=red!75!black,title={{
 \backslash
 Large בטיחות פנקס חד-פעמי}}
 \end_layout
@@ -2404,11 +2373,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-arc=2mm,colback=teal!10!white,colframe=teal!75!black,fonttitle=
-\backslash
-bfseries,title={{
-\backslash
-Large הוכחת בטיחות פנקס חד-פעמי}}
+colback=red!10!white,colframe=red!75!black,
 \end_layout
 
 \end_inset
@@ -2520,6 +2485,10 @@ E_{k}\left(m_{0}\right)\equiv U_{n}\equiv E_{k}\left(m_{1}\right)
  אך כעת נראה שזה הכרחי לבטיחות.
 \end_layout
 
+\begin_layout Subsection
+מגבלות של מערכות בטוחות מושלם
+\end_layout
+
 \begin_layout Standard
 \begin_inset Flex Color Box
 status open
@@ -2529,9 +2498,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-arc=2mm,colback=red!10!white,colframe=red!75!black,fonttitle=
-\backslash
-bfseries,title={{
+colback=red!10!white,colframe=red!75!black,title={{
 \backslash
 Large משפט שאנון}}
 \end_layout
@@ -2561,18 +2528,14 @@ Large משפט שאנון}}
 
 \begin_layout Standard
 \begin_inset Flex Color Box
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-arc=2mm,colback=teal!10!white,colframe=teal!75!black,fonttitle=
-\backslash
-bfseries,title={{
-\backslash
-Large הוכחת משפט שאנון}}
+colback=red!10!white,colframe=red!75!black,
 \end_layout
 
 \end_inset
@@ -2728,6 +2691,3155 @@ Large הוכחת משפט שאנון}}
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+פסאודו-אקראיות וצפני זרם
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch Psuedo Randomness
+inverted 0
+status collapsed
+
+\begin_layout Section
+בטיחות חישובית 
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+בטיחות מושלמת כמשחק
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+לכל יריב 
+\begin_inset Formula $\mathcal{A}:\mathcal{C}\xrightarrow{}\left\{ 0,1\right\} $
+\end_inset
+
+,
+ ולכל 
+\begin_inset Formula $m_{0},m_{1}\in\mathcal{M}$
+\end_inset
+
+ ו-
+\begin_inset Formula $k\sim\mathrm{Un}\left(\mathcal{K}\right)$
+\end_inset
+
+ כאשר
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset Formula $c_{0}=E_{k}\left(m_{0}\right),c_{1}=E_{k}\left(m_{1}\right)$
+\end_inset
+
+ מתקיים:
+\begin_inset Formula 
+\[
+\Pr\left[\mathcal{A}\left(c_{0}\right)=1\right]=\Pr\left[\mathcal{A}\left(c_{1}\right)=1\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+colback=blue!10!white,colframe=blue!75!black,title={{
+\backslash
+Large בטיחות חישובית (גולדווסר ומיקלי
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+1982
+\numeric off
+)}},
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+בטיחות חישובית
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+המערכת 
+\begin_inset Formula $\left(E,D\right)$
+\end_inset
+
+ 
+\series bold
+בטוחה חישובית
+\series default
+ 
+\begin_inset Formula $\left(t,\varepsilon\right)$
+\end_inset
+
+ אם לכל זוג של הודעות שונות 
+\begin_inset Formula $m_{0},m_{1}\in\mathcal{M}$
+\end_inset
+
+ באורך שווה,
+ ה
+\lang english
+ciphertexts-
+\lang hebrew
+ 
+\begin_inset Formula $c_{0},c_{1}$
+\end_inset
+
+ צריכית להיות 
+\color red
+לא
+\color inherit
+ 
+\color red
+ניתנים להבחנה
+\color inherit
+ עבור 
+\color red
+יריב
+\color inherit
+ עם
+\color red
+ כוח חישובי חסום
+\color inherit
+.
+\end_layout
+
+\begin_layout Definition
+כלומר,
+ עבור 
+\begin_inset Formula $k\xleftarrow{R}\mathcal{K}$
+\end_inset
+
+ ו-
+\begin_inset Formula $c_{0}=E_{k}\left(m_{0}\right),c_{1}=E_{k}\left(m_{1}\right)$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\left|\Pr\left[\mathcal{A}\left(c_{0}\right)=1\right]-\Pr\left[\mathcal{A}\left(c_{1}\right)=1\right]\right|<\varepsilon
+\]
+
+\end_inset
+
+לכל יריב 
+\begin_inset Formula $\mathcal{A}:\mathcal{C}\xrightarrow{}\left\{ 0,1\right\} $
+\end_inset
+
+ בסיבוכיות לכל היותר 
+\begin_inset Formula $t$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+סיבוכיות יריב
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+גודל המעגל הקטן ביותר שמחשב את היריב 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Remark
+זהו מודל לא יוניפורמי.
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+יתרון האבחנה של 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ בין 
+\begin_inset Formula $X$
+\end_inset
+
+ ל-
+\begin_inset Formula $Y$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+עבור זוג פילוגים 
+\begin_inset Formula $X,Y$
+\end_inset
+
+ מעל תחום 
+\begin_inset Formula $\mathcal{D}$
+\end_inset
+
+ ויריב 
+\begin_inset Formula $\mathcal{A}:\mathcal{D}\xrightarrow{}\left\{ 0,1\right\} $
+\end_inset
+
+ נגדיר
+\begin_inset Formula 
+\[
+\Delta_{\mathcal{A}}\left(X,Y\right)=\left|\Pr\left[\mathcal{A}\left(X\right)=1\right]-\Pr\left[\mathcal{A}\left(Y\right)=1\right]\right|
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $X,Y$
+\end_inset
+
+ הם 
+\begin_inset Formula $\left(t,\varepsilon\right)$
+\end_inset
+
+ לא ניתנים להבחנה
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $X\approx_{t,\varepsilon}Y$
+\end_inset
+
+ אם 
+\begin_inset Formula $\forall\left|\mathcal{A}\right|=t$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\Delta_{\mathcal{A}}\left(X,Y\right)\leq\varepsilon$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Remark
+\begin_inset Formula $X\approx_{\infty,0}Y\iff X\equiv Y$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+בטיחות סמנטית - לא פורמלי
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Quotes eld
+\end_inset
+
+כל מה שאתה יכול לחשב בצורה יעילה בהינתן ה
+\lang english
+ciphertext-
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+אתה יכול גם בלי
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem
+בטיחות סמנטית שקולה לבטיחות חישובית.
+\end_layout
+
+\begin_layout Section
+פסאודו-אקראיות
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+פנקס חד-פעמי חישובי
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+נבחר מפתח אקראי קצר 
+\begin_inset Formula $k\xleftarrow{R}\mathcal{K}$
+\end_inset
+
+ (זרע)
+\end_layout
+
+\begin_layout Itemize
+נרחיב למפתח ארוך עם זרם מפתח 
+\begin_inset Formula $G\left(k\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+נצפין את 
+\begin_inset Formula $m$
+\end_inset
+
+ עם 
+\begin_inset Formula $c=G\left(k\right)\oplus m$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+נפענח את 
+\begin_inset Formula $c$
+\end_inset
+
+ ל-
+\begin_inset Formula $m=c\oplus G\left(k\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\color red
+מה צריך 
+\begin_inset Formula ${\color{blue}G}$
+\end_inset
+
+ לקיים כדי שנקבל בטיחות חישובית?
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+מחולל פסאודו-אקראיות
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+פונקציה חשיבה פולינומית 
+\begin_inset Formula $G:\left\{ 0,1\right\} ^{n}\xrightarrow{}\left\{ 0,1\right\} ^{\ell}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\ell\gg n$
+\end_inset
+
+,
+ אשר מקיימת עבור 
+\begin_inset Formula $k\xleftarrow{R}\left\{ 0,1\right\} ^{n}$
+\end_inset
+
+ ו-
+\begin_inset Formula $y_{1}\xleftarrow{R}\left\{ 0,1\right\} ^{\ell}$
+\end_inset
+
+,
+ כי אם 
+\begin_inset Formula $y_{0}=G\left(k\right)$
+\end_inset
+
+ אז 
+\begin_inset Formula $y_{0}\approx_{t,\varepsilon}y_{1}$
+\end_inset
+
+.
+ נאמר כי 
+\begin_inset Formula $G$
+\end_inset
+
+ היא 
+\begin_inset Formula $\left(t,\varepsilon\right)$
+\end_inset
+
+ 
+\series bold
+פסאודו-אקראית
+\series default
+.
+\end_layout
+
+\begin_layout Remark
+הפלט של 
+\begin_inset Formula $G$
+\end_inset
+
+ לא יכול להיות 
+\color blue
+אקראי לחלוטין!
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+colback=red!10!white,colframe=red!75!black,title={{
+\backslash
+Large בטיחות פנקס חד-פעמי חישובי}},
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+אם 
+\begin_inset Formula $\mathrm{PRG}:\left\{ 0,1\right\} ^{n}\xrightarrow{}\left\{ 0,1\right\} ^{\ell}$
+\end_inset
+
+ 
+\begin_inset Formula $\left(t,\varepsilon\right)$
+\end_inset
+
+ פסאודו-אקראי,
+ אז 
+\begin_inset Quotes erd
+\end_inset
+
+הפנקס חד-פעמי החישובי
+\begin_inset Quotes erd
+\end_inset
+
+ הוא 
+\begin_inset Formula $\left(t-\ell,2\varepsilon\right)$
+\end_inset
+
+ בטוח.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim
+אם 
+\begin_inset Formula $X\approx_{t,\varepsilon}Y$
+\end_inset
+
+ ו-
+\begin_inset Formula $f$
+\end_inset
+
+ פונק' בסיבוכיות 
+\begin_inset Formula $\ell$
+\end_inset
+
+ אז 
+\begin_inset Formula $f\left(X\right)\approx_{t-\ell+\varepsilon}f\left(Y\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim
+אם 
+\begin_inset Formula $X\approx_{t,\varepsilon_{1}}Y\approx_{t,\varepsilon_{2}}Z$
+\end_inset
+
+ אז 
+\begin_inset Formula $X\approx_{t,\varepsilon_{1}+\varepsilon_{2}}Z$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+colback=red!10!white,colframe=red!75!black,
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+הוכחת המשפט
+\end_layout
+
+\end_inset
+
+יהיו 
+\begin_inset Formula $m_{0},m_{1}\in\mathcal{M}$
+\end_inset
+
+,
+ צריך להוכיח כי 
+\begin_inset Formula $\left(\mathrm{PRG}\left(\mathcal{U}_{n}\right)\oplus m_{0}\right)\approx_{t^{'},\varepsilon^{'}}\left(\mathrm{PRG}\left(\mathcal{U}_{n}\right)\oplus m_{1}\right)$
+\end_inset
+
+.
+ 
+\begin_inset Formula $t^{'}=t-\ell,\varepsilon^{'}=2\varepsilon$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Claim
+\begin_inset Formula $\mathrm{PRG}\left(\mathcal{U}_{n}\right)\oplus m\approx_{t^{'},\varepsilon}\mathcal{U}_{\ell}\oplus m{\color{blue}\equiv\mathcal{U}_{\ell}}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Proof
+מטרנזטיביות נסיק כי 
+\begin_inset Formula $\left(\mathrm{PRG}\left(\mathcal{U}_{n}\right)\oplus m_{0}\right)\approx_{t^{'},\varepsilon^{'}}\left(\mathrm{PRG}\left(\mathcal{U}_{n}\right)\oplus m_{1}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+הוכחת הטענה.
+ 
+\series default
+נב
+\begin_inset Quotes erd
+\end_inset
+
+ש כי קיים יריב 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ בסיבוכיות 
+\begin_inset Formula $t^{'}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\Delta_{\mathcal{A}}\left(\mathrm{PRG}\left(\mathcal{U}_{n}\right)\oplus m_{0},\mathcal{U}_{\ell}\oplus m\right)>\varepsilon$
+\end_inset
+
+,
+ נתאר יריב 
+\begin_inset Formula $\mathcal{A}^{'}$
+\end_inset
+
+ ששובר את ה-
+\begin_inset Formula $\mathrm{PRG}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mathcal{A}^{'}\left(z\right)=\mathcal{A}\left(z\oplus m\right)$
+\end_inset
+
+,
+ וקל לראות (הוכחה לבית) כי 
+\begin_inset Formula $\Delta_{\mathcal{A}^{'}}\left(\mathrm{PRG}\left(\mathcal{U}_{n}\right),\mathcal{U}_{\ell}\right)=\Delta_{\mathcal{A}}\left(\mathrm{PRG}\left(\mathcal{U}_{n}\right)\oplus m,\mathcal{U}_{\ell}\oplus m\right)>\varepsilon$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+הסיבוכיות של 
+\begin_inset Formula $\mathcal{A}^{'}$
+\end_inset
+
+ היא לכל היותר 
+\begin_inset Formula $t^{'}+\ell=t$
+\end_inset
+
+ ולכן קיבלנו סתירה.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+האובייקט של
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+PRGs
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+הוא מרכזי בתורת הקריפטוגרפיה.
+\end_layout
+
+\begin_layout Standard
+נשים לב שאם 
+\begin_inset Formula $\mathrm{P}=\mathrm{NP}$
+\end_inset
+
+ אז אין
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+PRGs
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+(עבור יריבים בזמן פולי'):
+\begin_inset Formula 
+\[
+L=\left\{ \left.z\left.\colon\right.\exists x\ \mathrm{PRG}\left(x\right)=z\right.\right\} \in\mathrm{NP}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+אז הקיום של
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+PRGs
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+יכול רק להיות משוער עד ש- 
+\begin_inset Formula $\mathrm{P}\mathrm{vs.}\mathrm{NP}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+יש לנו סיבות טובות להאמין שכן.
+\end_layout
+
+\begin_layout Standard
+להרבה מועמדים ידועים הבטיחות מתקבלת מרדוקציה של בעיות קשות.
+\end_layout
+
+\begin_layout Standard
+יתרה מכך,
+ אפשר לבסס ש-
+\lang english
+PRGs
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ניתן לבנות מפונקציות חד כיווניות.
+\end_layout
+
+\begin_layout Section
+בטיחות למספר הודעות
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+colback=blue!10!white,colframe=blue!75!black,title={{
+\backslash
+Large בטיחות חישובית למספר הודעות}},
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+בטיחות חישובית 
+\begin_inset Formula $\left(t,\varepsilon\right)$
+\end_inset
+
+ למספר הודעות
+\end_layout
+
+\end_inset
+
+לכל זוג וקטורים 
+\begin_inset Formula $\vec{x},\vec{y}\in\mathcal{M}^{n}$
+\end_inset
+
+ של הודעות באורך שווה 
+\begin_inset Formula $\left|x_{i}\right|=\left|y_{i}\right|$
+\end_inset
+
+,
+ עבור 
+\begin_inset Formula $k\xleftarrow{R}\mathcal{K}$
+\end_inset
+
+,
+ אזי
+\begin_inset Formula 
+\begin{align*}
+.\vec{c}_{0}=\left(E_{k}\left(x_{1}\right),\ldots E_{k}\left(x_{n}\right)\right)\approx_{t,\varepsilon}\left(E_{k}\left(y_{1}\right),\ldots E_{k}\left(y_{n}\right)\right)=\vec{c}_{1}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+ראינו סכמות הצפנה שבטוחות להודעות בודדות,
+ מסתבר שזה הכרחי.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+colback=red!10!white,colframe=red!75!black,title={{
+\backslash
+Large אין בטיחות למספר הודעות בהצפנה דטרמיניסטית}},
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+אם אלגוריתם הצפנה הוא פונקציה דטרמיניסטית אשר תלויה בהודעה 
+\begin_inset Formula $m$
+\end_inset
+
+ ובמפתח 
+\begin_inset Formula $k$
+\end_inset
+
+ בלבד,
+ אזי הוא לא בטוח למספר הודעות (אפילו שתיים).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+colback=red!10!white,colframe=red!75!black,
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+יהיו 
+\begin_inset Formula $a,b\in\mathcal{M}$
+\end_inset
+
+ שונים ובאורך זהה.
+ אזי עבור 
+\begin_inset Formula 
+\begin{align*}
+\vec{x} & =\left(a,a\right)\\
+\vec{y} & =\left(a,b\right)
+\end{align*}
+
+\end_inset
+
+מתקיים לכל 
+\begin_inset Formula $k\in\mathcal{K}$
+\end_inset
+
+ כי 
+\begin_inset Formula $\vec{c}_{0}=\left(E_{k}\left(a\right),E_{k}\left(a\right)\right)$
+\end_inset
+
+ וכן 
+\begin_inset Formula $\vec{c}_{1}=\left(E_{k}\left(a\right),E_{k}\left(b\right)\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+יהי 
+\begin_inset Formula $\mathcal{A}:\mathcal{C}\xrightarrow{}\left\{ 0,1\right\} $
+\end_inset
+
+ יריב שבודק שוויון בין האיברים בטקטסט המוצפן,
+ אזי:
+\begin_inset Formula 
+\[
+\Pr_{k}\left[\mathcal{A}\left(\vec{c}_{0}\right)=1\right]=1\neq0=\Pr_{k}\left[\mathcal{A}\left(\vec{c}_{1}\right)=1\right]
+\]
+
+\end_inset
+
+ולכן בפרט הם ניתנים להבדלה לכל 
+\begin_inset Formula $\varepsilon\in\left[0,1\right]$
+\end_inset
+
+,
+ ולכן המערכת לא בטוחה חישובית למספר הודעות.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+צפני זרם
+\end_layout
+
+\begin_layout Subsection
+הצפנה בטוחה למספר הודעות
+\end_layout
+
+\begin_layout Standard
+תהא 
+\begin_inset Formula $\left(E,D\right)$
+\end_inset
+
+ מערכת הצפנה בטוחה להודעה אחת.
+ נבנה סכמה חדשה:
+\end_layout
+
+\begin_layout Itemize
+אתחול 
+\begin_inset Formula $S\xleftarrow{R}\mathcal{K}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+נצפין הודעה 
+\begin_inset Formula $m$
+\end_inset
+
+ עם מצב 
+\begin_inset Formula $S$
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+נבחר מפתח חדש 
+\begin_inset Formula $S^{'}\xleftarrow{R}\mathcal{K}$
+\end_inset
+
+,
+ נשלח 
+\begin_inset Formula $E_{S}\left(m,S^{'}\right)$
+\end_inset
+
+.
+ 
+\begin_inset Newline newline
+\end_inset
+
+נעדכן את המצב ל-
+\begin_inset Formula $S^{'}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+נפענח את הטקסט המוצפן עם מצב 
+\begin_inset Formula $S$
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+נחשב 
+\begin_inset Formula $D_{S}\left(c\right)=\left(m,S^{'}\right)$
+\end_inset
+
+ ונפלוט 
+\begin_inset Formula $m$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+נעדכן את המצב החדש ל-
+\begin_inset Formula $S^{'}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+צפני זרם סינכרוניים
+\end_layout
+
+\begin_layout Itemize
+נניח 
+\begin_inset Formula $S_{0}\xleftarrow{R}\mathcal{K}$
+\end_inset
+
+ מצב התחלתי.
+\end_layout
+
+\begin_layout Itemize
+כדי להצפין את הביט ה-
+\begin_inset Formula $i$
+\end_inset
+
+ בהודעה 
+\begin_inset Formula $m_{i}$
+\end_inset
+
+ נבצע:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\left(b_{i},S_{i+1}\right)\xleftarrow{}\mathrm{PRG}\left(S_{i}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+נוציא 
+\begin_inset Formula $c_{i}=m_{i}\oplus b_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\color red
+בעיה:
+
+\color inherit
+ מה קורה אם ביט אחד נעלם בהעברת ההודעה?
+\end_layout
+
+\begin_layout Itemize
+אידיאלית נרצה רובסטיות כנגד איבוד מידע.
+\end_layout
+
+\begin_layout Subsection
+צפני זרם א-סינכרוניים
+\end_layout
+
+\begin_layout Itemize
+נתחיל ממפתח אקראי 
+\begin_inset Formula $k\xleftarrow{R}\mathcal{K}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+נייצר זרם מפתח על הקו
+\end_layout
+
+\begin_layout Itemize
+הביט ה-
+\begin_inset Formula $i$
+\end_inset
+
+ הוא פונקציה של המפתח הסודי ושל 
+\begin_inset Formula $t$
+\end_inset
+
+ הביטים האחרונים של הצופן,
+ 
+\begin_inset Formula $\left(c_{i-t},\ldots,c_{i-1}\right)=\mathrm{public\ state}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+בפרט,
+ ההצפנה היא 
+\begin_inset Formula ${\color{red}c_{i}=m_{i}\oplus h}{\color{blue}\left(k,c_{i-t},\ldots,c_{i-1}\right)}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+באשר הפענוח הוא 
+\begin_inset Formula ${\color{red}m_{i}=c_{i}\oplus h}{\color{blue}\left(k,c_{i-t},\ldots,c_{i-1}\right)}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Chapter
+נושאים מתורת המספרים והחבורות
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch number-group theory
+inverted 0
+status open
+
+\begin_layout Section
+נושאים מתורת המספרים
+\end_layout
+
+\begin_layout Subsection
+חילוק
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+חלוקה
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+יהיו 
+\begin_inset Formula $a\in\mathbb{Z}\setminus\left\{ 0\right\} ,b\in\mathbb{Z}$
+\end_inset
+
+,
+ נאמר כי 
+\begin_inset Formula $a$
+\end_inset
+
+ 
+\series bold
+מחלק את
+\series default
+\color red
+ 
+\color inherit
+
+\begin_inset Formula $b$
+\end_inset
+
+ 
+\series bold
+(
+\series default
+סימון 
+\begin_inset Formula $a|b$
+\end_inset
+
+) אם קיים 
+\begin_inset Formula $d\in\mathbb{Z}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $b=da$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Claim
+\begin_inset CommandInset label
+LatexCommand label
+name "claim:יהיו--כך"
+
+\end_inset
+
+יהיו 
+\begin_inset Formula $a,b\in\mathbb{Z},m\in\mathbb{Z}\setminus\left\{ 0\right\} $
+\end_inset
+
+ כך ש-
+\begin_inset Formula $m|a,m|b$
+\end_inset
+
+.
+ אז לכל 
+\begin_inset Formula $\alpha,\beta\in\mathbb{Z}$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $m|\alpha a+\beta b$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+החלוקה
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+לכל 
+\begin_inset Formula $a,n\in\mathbb{Z}$
+\end_inset
+
+ קיימים ויחידים 
+\series bold
+מנה
+\series default
+ 
+\begin_inset Formula $q\in\mathbb{Z}$
+\end_inset
+
+ ו
+\series bold
+שארית
+\series default
+ 
+\begin_inset Formula $r\in\mathbb{Z}\cap\left[0,n\right)$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $a=nq+r$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+מודולו
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+לכל 
+\begin_inset Formula $a,n\in\mathbb{Z}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $a\bmod n=r$
+\end_inset
+
+ כאשר 
+\begin_inset Formula $r$
+\end_inset
+
+ השארית ממשפט החלוקה.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+יחס השקילות המודולרי
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+עבור 
+\begin_inset Formula $a,b\in\mathbb{Z}$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $a\equiv b$
+\end_inset
+
+ (
+\begin_inset Formula $\bmod n$
+\end_inset
+
+ או 
+\begin_inset Formula $a=_{n}b$
+\end_inset
+
+) אם 
+\begin_inset Formula $a\bmod n=b\bmod n$
+\end_inset
+
+ או באופן שקול 
+\begin_inset Formula $n|a-b$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsection
+מחלק משותף גדול ביותר 
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\size large
+\lang english
+GCD
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+GCD
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+
+\series bold
+המחלק המשותף הגדול ביותר 
+\series default
+של 
+\begin_inset Formula $a,b\in\mathbb{Z}$
+\end_inset
+
+ הוא 
+\begin_inset Formula 
+\[
+\gcd\left(a,b\right)=\max\left\{ \left.d\in\mathbb{N}\left.\colon\right.d|a\land d|b\right.\right\} 
+\]
+
+\end_inset
+
+לפי הקונבנציה 
+\begin_inset Formula $\gcd\left(a,0\right)=a$
+\end_inset
+
+ עבור 
+\begin_inset Formula $a\geq0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Algorithm
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+אלגוריתם אוקלידס לחישוב 
+\begin_inset Formula $\gcd\left(a,b\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+עבור 
+\begin_inset Formula $a\geq b$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+אם 
+\begin_inset Formula $b=0$
+\end_inset
+
+ אז תוציא 
+\begin_inset Formula $a$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+אחרת,
+ תוציא 
+\begin_inset Formula $\gcd\left(b,a\bmod b\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+נכונות
+\end_layout
+
+\end_inset
+
+ נסמן 
+\begin_inset Formula $r=a\bmod b$
+\end_inset
+
+,
+ נוכיח כי המחלקים המשותפים של 
+\begin_inset Formula $\left(a,b\right)$
+\end_inset
+
+ ושל 
+\begin_inset Formula $\left(b,r\right)$
+\end_inset
+
+ זהים ולכן גם הגדול ביותר,
+ כלומר 
+\begin_inset Formula $\gcd\left(b,a\bmod b\right)=\gcd\left(a,b\right)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $\underline{:d|r\land d|b\Longleftarrow d|a\land d|b}$
+\end_inset
+
+ יהי 
+\begin_inset Formula $d$
+\end_inset
+
+ מחלק משותף של 
+\begin_inset Formula $a$
+\end_inset
+
+ ו-
+\begin_inset Formula $b$
+\end_inset
+
+,
+ צריך להראות כי 
+\begin_inset Formula $d|r$
+\end_inset
+
+.
+ ממשפט החלוקה 
+\begin_inset Formula $r=a-bq$
+\end_inset
+
+,
+ כלומר 
+\begin_inset Formula $r=\alpha a+\beta b$
+\end_inset
+
+ עבור 
+\begin_inset Formula $\alpha=1,\beta=-q$
+\end_inset
+
+ ולכן מטענה 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "claim:יהיו--כך"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ מתקיים כי 
+\begin_inset Formula $d|r$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $\underline{:d|r\land d|b\Longrightarrow d|a\land d|b}$
+\end_inset
+
+ יהי 
+\begin_inset Formula $d$
+\end_inset
+
+ מחלק משותף של 
+\begin_inset Formula $b$
+\end_inset
+
+ ו-
+\begin_inset Formula $r$
+\end_inset
+
+,
+ צריך להראות 
+\begin_inset Formula $d|a$
+\end_inset
+
+.
+ ממשפט החלוקה 
+\begin_inset Formula $a=bq+r$
+\end_inset
+
+,
+ ולכן עבור 
+\begin_inset Formula $\alpha=q,\beta=1$
+\end_inset
+
+ מטענה 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "claim:יהיו--כך"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ מתקיים כי 
+\begin_inset Formula $d|a$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+סיבוכיות
+\end_layout
+
+\end_inset
+
+ מבצעים 
+\begin_inset Formula $O\left(\log\left(a+b\right)\right)$
+\end_inset
+
+ רדוקציות מודולריות.
+\end_layout
+
+\end_deeper
+\begin_layout Theorem
+יהיו 
+\begin_inset Formula $a,b\in\mathbb{Z}$
+\end_inset
+
+ ונגדיר 
+\begin_inset Formula $S_{a,b}=\left\{ \left.\alpha a+\beta b\left.\colon\right.\alpha,\beta\in\mathbb{Z}\right.\right\} $
+\end_inset
+
+.
+ אז:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:לכל--מתקיים"
+
+\end_inset
+
+לכל 
+\begin_inset Formula $x,y\in S_{a,b}$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $x\bmod y\in S_{a,b}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\min\left(S_{a,b}\cap\mathbb{N}_{>0}\right)=\gcd\left(a,b\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+נוכיח:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+יהיו 
+\begin_inset Formula $x,y\in S_{a,b}$
+\end_inset
+
+,
+ אזי יש 
+\begin_inset Formula $\alpha_{1},\alpha_{2},\beta_{1},\beta_{2}\in\mathbb{Z}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $x=\alpha_{1}a+\beta_{1}b,y=\alpha_{2}a+\beta_{2}b$
+\end_inset
+
+.
+ לכן ממשפט החלוקה:
+\begin_inset Formula 
+\begin{align*}
+\alpha_{1}a+\beta_{1}b= & q\left(\alpha_{2}a+\beta_{2}b\right)+x\bmod y\\
+\iff x\bmod y= & \left(\alpha_{1}-q\alpha_{2}\right)a+\left(\beta_{1}-q\beta_{2}\right)b\in S_{a,b}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+נסמן 
+\begin_inset Formula $s=\min\left(S_{a,b}\cap\mathbb{N}_{>0}\right)$
+\end_inset
+
+,
+ נראה כי זהו ה-
+\lang english
+GCD
+\lang hebrew
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\bar under
+\begin_inset Formula $s$
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+הוא
+\begin_inset space \space{}
+\end_inset
+
+מחלק
+\begin_inset space \space{}
+\end_inset
+
+משותף:
+
+\bar default
+ מהגדרת 
+\begin_inset Formula $S_{a,b}$
+\end_inset
+
+ 
+\begin_inset Formula $a\in S_{a,b}$
+\end_inset
+
+,
+ לכן לפי סעיף 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "claim:יהיו--כך"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
+ 
+\begin_inset Formula $a\bmod s\in S_{a,b}$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+ממשפט החלוקה 
+\begin_inset Formula $0\leq a\bmod s<s$
+\end_inset
+
+ ולכן 
+\begin_inset Formula $a\bmod s$
+\end_inset
+
+ הוא אי שלילי וקטן ממש מ-
+\begin_inset Formula $s$
+\end_inset
+
+,
+ לכן מהגדרת 
+\begin_inset Formula $s$
+\end_inset
+
+ נקבל כי 
+\begin_inset Formula $a\bmod s=0$
+\end_inset
+
+,
+ כלומר 
+\begin_inset Formula $s|a$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+אותו טיעון תקף גם על 
+\begin_inset Formula $b$
+\end_inset
+
+ ולכן 
+\begin_inset Formula $s|a\land s|b$
+\end_inset
+
+,
+ בפרט הוא מחלק משותף.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\bar under
+\begin_inset Formula $s$
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+הוא
+\begin_inset space \space{}
+\end_inset
+
+הגדול
+\begin_inset space \space{}
+\end_inset
+
+ביותר:
+
+\bar default
+ יהי 
+\begin_inset Formula $0<d\in\mathbb{Z}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $d|a\land d|b$
+\end_inset
+
+,
+ 
+\begin_inset Formula $s\in S_{a,b}$
+\end_inset
+
+ ולכן מטענה 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "claim:יהיו--כך"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ מתקיים כי 
+\begin_inset Formula $d|s$
+\end_inset
+
+,
+ משום ש-
+\begin_inset Formula $d,s>0$
+\end_inset
+
+ אזי 
+\begin_inset Formula $d\leq s$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+זרות
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+נאמר כי 
+\begin_inset Formula $a,b\in\mathbb{Z}$
+\end_inset
+
+ הם 
+\series bold
+זרים 
+\series default
+אם 
+\begin_inset Formula $\gcd\left(a,b\right)=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Corollary
+מספר מסקנות:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $d|a\land d|b$
+\end_inset
+
+ אז 
+\begin_inset Formula $d|\gcd\left(a,b\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+לכל 
+\begin_inset Formula $m\in\mathbb{Z}\setminus\left\{ 0\right\} $
+\end_inset
+
+,
+ 
+\begin_inset Formula $\gcd\left(ma,mb\right)=\left|m\right|\gcd\left(a,b\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $a$
+\end_inset
+
+ ו-
+\begin_inset Formula $b$
+\end_inset
+
+ הם זרים אם ורק אם קיימים 
+\begin_inset Formula $a,b\in\mathbb{Z}$
+\end_inset
+
+ עבורם 
+\begin_inset Formula $xa+yb=1$
+\end_inset
+
+.
+ ניתן למצוא את 
+\begin_inset Formula $x,y$
+\end_inset
+
+ מתוך הרחבה של אלגוריתם אוקלידס.
+\end_layout
+
+\end_deeper
+\begin_layout Lemma
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+הלמה של אוקלידס
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Lemma
+אם 
+\begin_inset Formula $a|cb$
+\end_inset
+
+ וגם 
+\begin_inset Formula $\gcd\left(b,c\right)=1$
+\end_inset
+
+ אז 
+\begin_inset Formula $c|a$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+מספרים ראשוניים ופירוק
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+מספר ראשוני
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+מספר שלם 
+\begin_inset Formula $1<P\in\mathbb{Z}$
+\end_inset
+
+ הוא 
+\series bold
+ראשוני 
+\series default
+אם לכל 
+\begin_inset Formula $a\in\mathbb{Z}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $a|P$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $a\in\left\{ 1,P\right\} $
+\end_inset
+
+.
+ אם מספר הוא לא ראשוניף אזי הוא 
+\series bold
+פריק
+\series default
+.
+\end_layout
+
+\begin_layout Definition
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+colback=red!10!white,colframe=red!75!black,title={{
+\backslash
+Large המשפט היסודי של האריתמטיקה}},
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+פירוק יחיד
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+יהי 
+\begin_inset Formula $1<X\in\mathbb{Z}$
+\end_inset
+
+,
+ אזי קיימים ויחידים ראשוניים 
+\begin_inset Formula $P_{1}\leq P_{2}\leq\ldots\leq P_{k}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula 
+\[
+.X=P_{1}\cdots P_{k}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+נושאים מתורת החבורות
+\end_layout
+
+\begin_layout Subsection
+חבורות
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+חבורה
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+קבוצה לא ריקה 
+\begin_inset Formula $G$
+\end_inset
+
+ יחד עם פעולה בינארית 
+\begin_inset Formula $\oplus$
+\end_inset
+
+
+\color red
+ 
+\color inherit
+נקראת 
+\series bold
+חבורה 
+\series default
+אם
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\series bold
+סגירות תחת 
+\begin_inset Formula $\boldsymbol{\oplus}$
+\end_inset
+
+:
+
+\series default
+ לכל 
+\begin_inset Formula $a,b\in G$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $a\oplus b\in G$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+אסוציאטיביות:
+
+\series default
+ לכל 
+\begin_inset Formula $a,b,c\in G$
+\end_inset
+
+ 
+\begin_inset Formula $\left(a\oplus b\right)\oplus c=a\oplus\left(b\oplus c\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+קיום איבר ניטרלי:
+
+\series default
+ קיים 
+\begin_inset Formula $e\in G$
+\end_inset
+
+ כך שלכל 
+\begin_inset Formula $a\in G$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $a\oplus e=a$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+קיום הופכי:
+
+\series default
+ לכל 
+\begin_inset Formula $a\in G$
+\end_inset
+
+ קיים 
+\begin_inset Formula $a^{-1}\in G$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $a\oplus a^{-1}=a^{-1}\oplus a=e$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+חבורה נקראת 
+\series bold
+קומוטטיבית 
+\series default
+או 
+\series bold
+אבלית 
+\series default
+אם לכל 
+\begin_inset Formula $a,b\in G$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $a\oplus b=b\oplus a$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+עבור חבורה סופית 
+\begin_inset Formula $G$
+\end_inset
+
+,
+ גודל החבורה 
+\begin_inset Formula $\left|G\right|$
+\end_inset
+
+ נקרא 
+\series bold
+הסדר 
+\series default
+של החבורה.
+\end_layout
+
+\end_deeper
+\begin_layout Example
+\begin_inset Formula $\mathbb{Z}_{n}=\left\{ 0,\ldots,n-1\right\} $
+\end_inset
+
+ היא חבורה חיבורית ביחס לחיבור מודלו 
+\begin_inset Formula $n$
+\end_inset
+
+ (מסומן 
+\begin_inset Formula $+_{n}$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Claim
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+היה חסר בתרגול
+\end_layout
+
+\end_inset
+
+לכל חבורה 
+\begin_inset Formula $\left(G,\oplus\right)$
+\end_inset
+
+ קיים איבר ניטרלי יחיד 
+\begin_inset Formula $e\in G$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+יהיו 
+\begin_inset Formula $e_{1},e_{2}\in G$
+\end_inset
+
+ איברים ניטרליים,
+ מכך ש-
+\begin_inset Formula $e_{2}$
+\end_inset
+
+ ניטרלי אז 
+\begin_inset Formula $e_{1}\oplus e_{2}=e_{1}$
+\end_inset
+
+ ולכן 
+\begin_inset Formula $e_{2}$
+\end_inset
+
+ הופכי של 
+\begin_inset Formula $e_{1}$
+\end_inset
+
+ כי 
+\begin_inset Formula $e_{1}$
+\end_inset
+
+ניטרלי,
+ מכאן כי 
+\begin_inset Formula $e_{2}\oplus e_{1}=e_{1}$
+\end_inset
+
+,
+ אך מכך ש-
+\begin_inset Formula $e_{1}$
+\end_inset
+
+ ניטרלי 
+\begin_inset Formula $e_{2}\oplus e_{1}=e_{2}$
+\end_inset
+
+ ולכן 
+\begin_inset Formula $e_{1}=e_{2}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Corollary
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+גם לא היה
+\end_layout
+
+\end_inset
+
+לכל 
+\begin_inset Formula $a\in G$
+\end_inset
+
+,
+ 
+\begin_inset Formula $a\oplus e=e\oplus a=a$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+תתי-חבורות
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+תת-חבורה
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+תהא 
+\begin_inset Formula $\left(G,\oplus\right)$
+\end_inset
+
+ חבורה.
+ 
+\begin_inset Formula $\left(H,\oplus\right)$
+\end_inset
+
+ היא 
+\series bold
+תת-חבורה 
+\series default
+של 
+\begin_inset Formula $\left(G,\oplus\right)$
+\end_inset
+
+ אם היא חבורה וגם 
+\begin_inset Formula $H\subseteq G$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Claim
+תהא 
+\begin_inset Formula $\left(G,\oplus\right)$
+\end_inset
+
+ חבורה סופית,
+ ותהא 
+\begin_inset Formula $\emptyset\neq H\subseteq G$
+\end_inset
+
+.
+ אזי אם 
+\begin_inset Formula $H$
+\end_inset
+
+ סגורה תחת 
+\begin_inset Formula $\oplus$
+\end_inset
+
+,
+ אז 
+\begin_inset Formula $\left(H,\oplus\right)$
+\end_inset
+
+ היא תת-חבורה של 
+\begin_inset Formula $\left(G,\oplus\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+\begin_inset Formula $\left(\left\{ 0,2,4,6\right\} ,+_{8}\right)$
+\end_inset
+
+ היא תת חבורה של 
+\begin_inset Formula $\left(\mathbb{Z}_{8},+_{8}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Claim
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+תכונות של תתי-חבורות
+\end_layout
+
+\end_inset
+
+תהא 
+\begin_inset Formula $\left(G,\oplus\right)$
+\end_inset
+
+ חבורה ו-
+\begin_inset Formula $\left(H,\oplus\right)$
+\end_inset
+
+ תת-חבורה שלה.
+ אזי:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+אם 
+\begin_inset Formula $e$
+\end_inset
+
+ איבר ניטרלי ב-
+\begin_inset Formula $G$
+\end_inset
+
+ אזי הוא גם ניטרלי ב-
+\begin_inset Formula $H$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $a^{-1}$
+\end_inset
+
+ ההופכי של 
+\begin_inset Formula $a$
+\end_inset
+
+ ב-
+\begin_inset Formula $H$
+\end_inset
+
+ אם ורק אם הוא ההופכי של 
+\begin_inset Formula $a$
+\end_inset
+
+ ב-
+\begin_inset Formula $G$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+colback=red!10!white,colframe=red!75!black,title={{
+\backslash
+Large משפט לגראנז'}},
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+לגראנז'
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Theorem
+אם 
+\begin_inset Formula $\left(G,\oplus\right)$
+\end_inset
+
+ חבורה סופית ו-
+\begin_inset Formula $\left(H,\oplus\right)$
+\end_inset
+
+ תת-חבורה שלה,
+ אזי 
+\begin_inset Formula $\left|H\right|$
+\end_inset
+
+ מחלק את 
+\begin_inset Formula $\left|G\right|$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+העלאה בחזקה
+\end_layout
+
+\begin_layout Definition
+לכל 
+\begin_inset Formula $k\in\mathbb{Z}$
+\end_inset
+
+,
+ ו-
+\begin_inset Formula $a\in G$
+\end_inset
+
+ נגדיר:
+\begin_inset Formula 
+\[
+.a^{k}\triangleq\begin{cases}
+\bigoplus_{i=1}^{k}a, & k>0\\
+e, & k=0\\
+\left(a^{-1}\right)^{-k}, & k<0
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+תכונות
+\end_layout
+
+\end_inset
+
+ לכל 
+\begin_inset Formula $k,m\in\mathbb{Z}$
+\end_inset
+
+ ו-
+\begin_inset Formula $a\in G$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $a^{k}\oplus a^{m}=a^{k+m}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\left(a^{k}\right)^{m}=a^{km}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Question
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+סיבוכיות
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Question
+בהינתן 
+\begin_inset Formula $a\in G$
+\end_inset
+
+ ו-
+\begin_inset Formula $k\in\mathbb{Z}$
+\end_inset
+
+,
+ כמה פעולות כפל דרושות כדי לחשב את 
+\begin_inset Formula $a^{k}$
+\end_inset
+
+?
+ 
+\begin_inset Formula $O\left(\log k\right)$
+\end_inset
+
+ באמצעות העלאה חוזרת בריבוע.
+\end_layout
+
+\begin_layout Problem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+בעית הלוג הדיסקרטי
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Problem
+בהינתן 
+\begin_inset Formula $a,y\in G$
+\end_inset
+
+,
+ צריך למצוא 
+\begin_inset Formula $k\in\mathbb{Z}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $y=a^{k}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Problem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+חילוץ שורש 
+\begin_inset Formula $k$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Problem
+בהינתן 
+\begin_inset Formula $k\in\mathbb{Z},y\in G$
+\end_inset
+
+,
+ צריך למצוא 
+\begin_inset Formula $a\in G$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $y=a^{k}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+עבור חבורות מסוימות מאמינים שהבעיות הללו קשות.
+\end_layout
+
+\begin_layout Subsection
+הסדר של איברים בחבורה וחבורות ציקליות
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+חבורות ציקליות
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+סדר של איבר
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+
+\series bold
+הסדר 
+\series default
+של איבר 
+\begin_inset Formula $a$
+\end_inset
+
+ בחבורה 
+\begin_inset Formula $G$
+\end_inset
+
+ הוא 
+\begin_inset Formula $n\in\mathbb{Z}^{+}$
+\end_inset
+
+ המינימלי עבורו 
+\begin_inset Formula $a^{n}=e$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Claim
+הקבוצה 
+\begin_inset Formula $\left\langle a\right\rangle =\left\{ \left.a^{i}\left.\colon\right.i\in\mathbb{Z}\right.\right\} $
+\end_inset
+
+ היא תת-חבורה של 
+\begin_inset Formula $G$
+\end_inset
+
+ עם 
+\begin_inset Formula $\mathrm{order}\left(a\right)$
+\end_inset
+
+ איברים שונים 
+\begin_inset Formula $a^{1},\ldots,a^{\mathrm{order}\left(a\right)}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+חבורה ציקלית
+\end_layout
+
+\end_inset
+
+חבורה 
+\begin_inset Formula $G$
+\end_inset
+
+ נקראת 
+\series bold
+ציקלית 
+\series default
+אם קיים 
+\begin_inset Formula $a\in G$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $G=\left\langle a\right\rangle $
+\end_inset
+
+,
+ ו-
+\begin_inset Formula $a$
+\end_inset
+
+ נקרא 
+\series bold
+יוצר 
+\series default
+של החבורה.
+\end_layout
+
+\begin_layout Corollary
+תהא 
+\begin_inset Formula $\left(G,\oplus\right)$
+\end_inset
+
+ חבורה סופית.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+לכל 
+\begin_inset Formula $a\in G$
+\end_inset
+
+ מתקיים כי 
+\begin_inset Formula $\mathrm{order}\left(a\right)$
+\end_inset
+
+ מחלק את 
+\begin_inset Formula $\left|G\right|$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+אם 
+\begin_inset Formula $\left|G\right|$
+\end_inset
+
+ ראשוני אזי 
+\begin_inset Formula $G$
+\end_inset
+
+ ציקלית,
+ וכן כל 
+\begin_inset Formula $a\in G\setminus\left\{ e\right\} $
+\end_inset
+
+ יוצר שלה.
+\end_layout
+
+\begin_layout Itemize
+לכל 
+\begin_inset Formula $a\in G$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $a^{\left|G\right|}=e$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+לכל 
+\begin_inset Formula $a\in G$
+\end_inset
+
+ ו-
+\begin_inset Formula $k\in\mathbb{Z}$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $a^{k}=a^{k\bmod\left|G\right|}=a^{k\bmod\mathrm{order}\left(a\right)}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+לכל 
+\begin_inset Formula $k\in\mathbb{Z}$
+\end_inset
+
+,
+ עלות החישוב של 
+\begin_inset Formula $a^{k}$
+\end_inset
+
+ היא 
+\begin_inset Formula $O\left(\log\left|G\right|\right)$
+\end_inset
+
+ מכפלות.
+\end_layout
+
+\end_deeper
 \end_inset
 
 

@@ -128,6 +128,10 @@
 \newcommand{\cupdot}{\charfusion[\mathbin]{\cup}{\cdot}}
 \newcommand{\bigcupdot}{\charfusion[\mathop]{\bigcup}{\cdot}}
 
+% --- Packages for the "algorithmic" style ---
+\usepackage{algorithm}     % Provides the 'algorithm' float
+\usepackage{algorithmic}   % Provides the pseudocode commands
+
 
 \newcommand{\kaliLargeLand}{\mathop{\mathlarger{\mathlarger{\mathlarger{\land}}}}}
 \newcommand{\hebtext}[1]{\mbox{\R{\#1}}}
@@ -157,6 +161,8 @@
 customHeadersFooters
 theorems-ams-chap-bytype
 theorems-ams-extended-chap-bytype
+tcolorbox
+multicol
 \end_modules
 \maintain_unincluded_children no
 \begin_local_layout
@@ -689,7 +695,7 @@ End
 \use_minted 0
 \use_lineno 0
 \branch intro
-\selected 1
+\selected 0
 \filename_suffix 0
 \color background background
 \end_branch
@@ -699,6 +705,16 @@ End
 \color background background
 \end_branch
 \branch search in graphs
+\selected 1
+\filename_suffix 0
+\color background background
+\end_branch
+\branch bfs
+\selected 0
+\filename_suffix 0
+\color background background
+\end_branch
+\branch dfs
 \selected 1
 \filename_suffix 0
 \color background background
@@ -752,7 +768,23 @@ End
 \end_layout
 
 \begin_layout Author
-רון גולדמן
+נכתב ע
+\begin_inset Quotes erd
+\end_inset
+
+י רון גולדמן
+\begin_inset Newline newline
+\end_inset
+
+ע
+\begin_inset Quotes erd
+\end_inset
+
+פ הרצאות של ד
+\begin_inset Quotes erd
+\end_inset
+
+ר רני הוד ותרגולים של מר עמרי פורת
 \end_layout
 
 \begin_layout Standard
@@ -764,10 +796,59 @@ LatexCommand tableofcontents
 
 \end_layout
 
+\begin_layout Color Box Setup
+arc=2mm,fonttitle=
+\backslash
+bfseries,
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\dist}{\mathrm{d}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\varcolor}{\mathrm{color}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\varwhite}{\mathrm{white}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\varblack}{\mathrm{black}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\vargray}{\mathrm{gray}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\varadj}{\mathrm{Adj}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\varnull}{\mathrm{NULL}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+מבוא
+\end_layout
+
 \begin_layout Standard
 \begin_inset Branch intro
 inverted 0
-status open
+status collapsed
 
 \begin_layout Subsection*
 נושאי הקורס:
@@ -1119,11 +1200,11 @@ random
 \noun default
 \color inherit
 \lang english
-adjacency list
+adjacency lists
 \lang hebrew
 .
  שומרים מערך 
-\begin_inset Formula $\mathrm{Adj}$
+\begin_inset Formula $\varadj$
 \end_inset
 
  באורך 
@@ -1172,7 +1253,7 @@ adjacency list
 \end_deeper
 \begin_layout Remark
 סדר הצמתים בתוך 
-\begin_inset Formula $\mathrm{Adj}\left[i\right]$
+\begin_inset Formula $\varadj\left[i\right]$
 \end_inset
 
  לא נתון.
@@ -1355,69 +1436,11 @@ BFS
  ואז על שכניהם וכן הלאה.
 \end_layout
 
-\begin_layout Problem
-\begin_inset Argument 1
-status open
+\begin_layout Standard
+\begin_inset Branch bfs
+inverted 0
+status collapsed
 
-\begin_layout Plain Layout
-חיפוש בגרפים
-\end_layout
-
-\end_inset
-
-נתון גרף (מכוון או לא) 
-\begin_inset Formula $G=\left(V,E\right)$
-\end_inset
-
- וצומת מקור 
-\begin_inset Formula $s\in V$
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Problem
-מטרות:
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-למצוא אילו צמתיפ בְ-
-\begin_inset Formula $V$
-\end_inset
-
- נגישים מ-
-\begin_inset Formula $s$
-\end_inset
-
-,
- כלומר יש מסלול 
-\begin_inset Formula $s\rightsquigarrow v$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Enumerate
-עבור צומת 
-\begin_inset Formula $v$
-\end_inset
-
- שנגיש מ-
-\begin_inset Formula $s$
-\end_inset
-
-,
- למצוא מסלול קצר ביותר 
-\begin_inset Formula $s\rightsquigarrow v$
-\end_inset
-
-.
-\end_layout
-
-\end_deeper
 \begin_layout Section
 אלגוריתם
 \family roman
@@ -1449,6 +1472,94 @@ status open
 \color inherit
 \lang english
 BFS
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+colback=green!10!white,colframe=green!75!black,title={{
+\backslash
+Large בעיית החיפוש בגרפים}},
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Problem
+נתון גרף (מכוון או לא) 
+\begin_inset Formula $G=\left(V,E\right)$
+\end_inset
+
+ וצומת מקור 
+\begin_inset Formula $s\in V$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Problem
+מטרות:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:למצוא-אילו-צמתים"
+
+\end_inset
+
+למצוא אילו צמתים בְ-
+\begin_inset Formula $V$
+\end_inset
+
+ נגישים מ-
+\begin_inset Formula $s$
+\end_inset
+
+,
+ כלומר יש מסלול 
+\begin_inset Formula $s\rightsquigarrow v$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:עבור-צומת-"
+
+\end_inset
+
+עבור צומת 
+\begin_inset Formula $v$
+\end_inset
+
+ שנגיש מ-
+\begin_inset Formula $s$
+\end_inset
+
+,
+ למצוא מסלול קצר ביותר 
+\begin_inset Formula $s\rightsquigarrow v$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1519,7 +1630,7 @@ BFS
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $\mathrm{color}\left[v\right]$
+\begin_inset Formula $\varcolor\left[v\right]$
 \end_inset
 
  = צבע מבין:
@@ -1529,7 +1640,7 @@ BFS
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $\mathrm{d}\left[v\right]$
+\begin_inset Formula $\dist\left[v\right]$
 \end_inset
 
  = אורך מסלול מ-
@@ -1559,7 +1670,7 @@ BFS
 \end_layout
 
 \begin_layout Standard
-וכן יתחזק תור
+תור
 \family roman
 \series medium
 \shape up
@@ -1602,27 +1713,300 @@ FIFO
 \begin_layout Standard
 
 \lang english
-\begin_inset Float algorithm
-placement document
-alignment document
-wide false
-sideways false
+\begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
+
+\backslash
+begin{algorithm}[H]
 \end_layout
 
 \begin_layout Plain Layout
 
-\lang english
-\begin_inset Caption Standard
+  
+\backslash
+caption{BFS$(G,
+ s)$}
+\backslash
+label{alg:bfs_algorithmic}
+\end_layout
 
 \begin_layout Plain Layout
-\begin_inset Formula $\mathrm{BFS}\left(G,s\right)$
-\end_inset
+
+  
+\end_layout
+
+\begin_layout Plain Layout
+
+  % [1] enables line numbering
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+begin{algorithmic}[1]
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+FOR{$u 
+\backslash
+in V$}
+\end_layout
+
+\begin_layout Plain Layout
+
+        
+\backslash
+STATE $
+\backslash
+dist[u] 
+\backslash
+leftarrow 
+\backslash
+infty$
+\end_layout
+
+\begin_layout Plain Layout
+
+        
+\backslash
+STATE $
+\backslash
+varcolor[u] 
+\backslash
+leftarrow 
+\backslash
+varwhite$
+\end_layout
+
+\begin_layout Plain Layout
+
+        
+\backslash
+STATE $
+\backslash
+pi[u] 
+\backslash
+leftarrow 
+\backslash
+varnull$
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+ENDFOR
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+STATE $
+\backslash
+varcolor[s] 
+\backslash
+leftarrow 
+\backslash
+vargray$
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+STATE $
+\backslash
+dist[s] 
+\backslash
+leftarrow 0$
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+STATE $Q 
+\backslash
+leftarrow (s)$
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+WHILE{$Q$ is not empty}
+\end_layout
+
+\begin_layout Plain Layout
+
+        
+\backslash
+STATE $u 
+\backslash
+leftarrow Q.
+\backslash
+text{Head}$
+\end_layout
+
+\begin_layout Plain Layout
+
+        
+\backslash
+FOR{$v 
+\backslash
+in 
+\backslash
+varadj
+\backslash
+left[u
+\backslash
+right]$}
+\end_layout
+
+\begin_layout Plain Layout
+
+            
+\backslash
+IF{$
+\backslash
+varcolor[v] = 
+\backslash
+varwhite$}
+\end_layout
+
+\begin_layout Plain Layout
+
+                
+\backslash
+STATE $
+\backslash
+varcolor[v] 
+\backslash
+leftarrow 
+\backslash
+vargray$
+\end_layout
+
+\begin_layout Plain Layout
+
+                
+\backslash
+STATE $
+\backslash
+dist[v] 
+\backslash
+leftarrow 
+\backslash
+dist[u] + 1$
+\end_layout
+
+\begin_layout Plain Layout
+
+                
+\backslash
+STATE $
+\backslash
+pi[v] 
+\backslash
+leftarrow u$
+\end_layout
+
+\begin_layout Plain Layout
+
+                
+\backslash
+STATE $
+\backslash
+text{Add } v 
+\backslash
+text{ to } Q$
+\end_layout
+
+\begin_layout Plain Layout
+
+            
+\backslash
+ENDIF
+\end_layout
+
+\begin_layout Plain Layout
+
+        
+\backslash
+ENDFOR
+\end_layout
+
+\begin_layout Plain Layout
+
+        
+\backslash
+STATE $
+\backslash
+text{Delete } u 
+\backslash
+text{ from } Q$
+\end_layout
+
+\begin_layout Plain Layout
+
+        
+\backslash
+STATE $
+\backslash
+varcolor[u] 
+\backslash
+leftarrow 
+\backslash
+varblack$
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+ENDWHILE
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+end{algorithmic}
+\end_layout
+
+\begin_layout Plain Layout
 
 
+\backslash
+end{algorithm}
 \end_layout
 
 \end_inset
@@ -1630,191 +2014,1716 @@ status open
 
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout Proof
+\begin_inset Argument 1
+status open
 
-\lang english
-For 
-\begin_inset Formula $u\in V$
-\end_inset
-
-:
+\begin_layout Plain Layout
+סיבוכיות
 \end_layout
 
-\begin_deeper
-\begin_layout Enumerate
+\end_inset
 
-\lang english
-\begin_inset Formula $\mathrm{d}\left[u\right]\xleftarrow{}\infty$
+ שלב האתחול
+\series bold
+ 
+\series default
+(שורות
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+1-8
+\numeric off
+) הוא 
+\begin_inset Formula $O\left(n\right)$
+\end_inset
+
+,
+ שורות
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+9-10,13-16,19-20
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ במצטבר הן 
+\begin_inset Formula $O\left(n\right)$
 \end_inset
 
 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+,
+ הלולאה בשורה
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+11
+\numeric off
+ עוברת לכל היותר על כל קשת ב-
+\begin_inset Formula $E$
+\end_inset
+
+,
+ לכן שורות
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+11-12
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ במצטבר הן 
+\begin_inset Formula $O\left(m\right)$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+.
+ סה
+\begin_inset Quotes erd
+\end_inset
+
+כ,
+ האלגוריתם לוקח 
+\begin_inset Formula $\boxed{O\left(n+m\right)}$
+\end_inset
+
+.
 \end_layout
 
-\begin_layout Enumerate
-
-\lang english
-\begin_inset Formula $\mathrm{color}\left[u\right]\xleftarrow{}\mathrm{white}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-
-\lang english
-\begin_inset Formula $\pi\left[u\right]\xleftarrow{}\mathrm{NULL}$
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-
-\lang english
-\begin_inset Formula $\mathrm{color}\left[s\right]\xleftarrow{}\mathrm{gray}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-
-\lang english
-\begin_inset Formula $\mathrm{d}\left[s\right]\xleftarrow{}0$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-
-\lang english
-\begin_inset Formula $Q=\left(s\right)$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-
-\lang english
-while 
-\begin_inset Formula $Q$
-\end_inset
-
- is not empty:
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-
-\lang english
-\begin_inset Formula $u\xleftarrow{}$
-\end_inset
-
-head of 
-\begin_inset Formula $Q$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-
-\lang english
-delete 
-\begin_inset Formula $u$
-\end_inset
-
- from 
-\begin_inset Formula $Q$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-
-\lang english
-for 
-\begin_inset Formula $v\in\mathrm{Adj}\left[u\right]$
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-
-\lang english
-if 
-\begin_inset Formula $\mathrm{color}\left[v\right]=\mathrm{white}$
-\end_inset
-
-:
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-
-\lang english
-\begin_inset Formula $\mathrm{color}\left[v\right]\xleftarrow{}\mathrm{gray}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-
-\lang english
-\begin_inset Formula $\mathrm{d}\left[v\right]\xleftarrow{}\mathrm{d}\left[u\right]+1$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-
-\lang english
-\begin_inset Formula $\pi\left[v\right]\xleftarrow{}u$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-
-\lang english
-add 
+\begin_layout Fact
 \begin_inset Formula $v$
 \end_inset
 
- to 
+ בתור 
+\begin_inset Formula $\iff$
+\end_inset
+
+ 
+\begin_inset Formula $\varcolor\left[v\right]=\vargray$
+\end_inset
+
+ (בגלל שורות
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+6,13,20
+\numeric off
+).
+\end_layout
+
+\begin_layout Corollary
+בסיום האלגוריתם הצבעים הם שחור או לבן 
+\emph on
+(האם זה קשור למטרה 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:למצוא-אילו-צמתים"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ ?).
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+מרחק בגרף
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+לכל 
+\begin_inset Formula $u,v\in V$
+\end_inset
+
+ נסמן את המרחק בין 
+\begin_inset Formula $u,v$
+\end_inset
+
+ בגרף ב-
+\begin_inset Formula $\delta\left(u,v\right)$
+\end_inset
+
+,
+ כלומר מספר הקשתות במסלול המינימלי 
+\begin_inset Formula $u\rightsquigarrow v$
+\end_inset
+
+.
+ אם 
+\begin_inset Formula $u\not\rightsquigarrow v$
+\end_inset
+
+ אזי 
+\begin_inset Formula $\delta\left(u,v\right)=\infty$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+colback=red!10!white,colframe=red!75!black,title={{
+\backslash
+Large נכונות
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+BFS
+\lang hebrew
+}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+בסיום ריצת 
+\begin_inset Formula $\mathrm{BFS}\left(G,s\right)$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+התגלו כל הצמתים שנגישים מ-
+\begin_inset Formula $s$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+לכל 
+\begin_inset Formula $v\in V$
+\end_inset
+
+ מתקיים כי 
+\begin_inset Formula $\dist\left[v\right]=\delta\left(s,v\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+לכל 
+\begin_inset Formula $v\neq s$
+\end_inset
+
+ שנגיש מ-
+\begin_inset Formula $s$
+\end_inset
+
+ יש מסלול באורך 
+\begin_inset Formula $\delta\left(s,v\right)$
+\end_inset
+
+ 
+\begin_inset Formula $s\rightsquigarrow v$
+\end_inset
+
+ שמסתיים בקשת 
+\begin_inset Formula $\left(\pi\left[v\right],v\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_inset
+
+
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:אם--אז"
+
+\end_inset
+
+אם 
+\begin_inset Formula $\left(u,v\right)\in E$
+\end_inset
+
+ אז 
+\begin_inset Formula $\delta\left(s,v\right)\leq1+\delta\left(s,u\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+colback=orange!10!white,colframe=orange!75!black
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+אם 
+\begin_inset Formula $u$
+\end_inset
+
+ לא נגיש מ-
+\begin_inset Formula $s$
+\end_inset
+
+,
+ אגף שמאל הוא 
+\begin_inset Formula $\infty$
+\end_inset
+
+ ואין מה להוכיח.
+ אחרת,
+ מסלול 
+\begin_inset Formula $s\rightsquigarrow u$
+\end_inset
+
+ באורך 
+\begin_inset Formula $\delta\left(s,u\right)$
+\end_inset
+
+ בצירוף הקשת 
+\begin_inset Formula $\left(v,u\right)$
+\end_inset
+
+ הוא מסלול אפשרי מ-
+\begin_inset Formula $s$
+\end_inset
+
+ ל-
+\begin_inset Formula $v$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:במהלך-ריצת-BFS,"
+
+\end_inset
+
+במהלך ריצת
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+BFS
+\lang hebrew
+,
+ לכל 
+\begin_inset Formula $v\in V$
+\end_inset
+
+,
+ בכל רגע נתון,
+ 
+\begin_inset Formula $\dist\left[v\right]\geq\delta\left(s,v\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+colback=orange!10!white,colframe=orange!75!black
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+באינדקוציה על מספר הביקורים בשורה
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+14
+\numeric off
+.
+\end_layout
+
+\begin_layout Proof
+
+\series bold
+בסיס האינדוקציה:
+ 
+\series default
+מיד לאחר האתחול 
+\begin_inset Formula $\dist\left[v\right]=\infty\geq\delta\left(s,v\right)$
+\end_inset
+
+ לכל 
+\begin_inset Formula $v\neq s$
+\end_inset
+
+ וכן 
+\begin_inset Formula $\dist\left[s\right]=0=\delta\left(s,s\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+
+\series bold
+צעד האינדוקציה:
+ 
+\series default
+נניח שזה מתקיים לפני ביקור בשורה
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+14
+\numeric off
+,
+ ונראה שמתקיים גם אחרי:
+\begin_inset Newline newline
+\end_inset
+
+בשורה
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+14
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+קבענו 
+\begin_inset Formula $\dist\left[v\right]=\dist\left[u\right]+1$
+\end_inset
+
+,
+ משום ש-
+\begin_inset Formula $u$
+\end_inset
+
+ נסרקה לפני הביקור אזי מהנחת האינדוקציה 
+\begin_inset Formula $\dist\left[u\right]\geq\delta\left(s,u\right)$
+\end_inset
+
+ ולכן מלמה 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:אם--אז"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ נקבל כי 
+\begin_inset Formula $\dist\left[v\right]=\dist\left[u\right]+1\geq\delta\left(s,u\right)+1\geq\delta\left(s,v\right)$
+\end_inset
+
+,
+ משום ש-
+\begin_inset Formula $\left(u,v\right)\in E$
+\end_inset
+
+ נסרקה בשורה
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+11
+\numeric off
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:נמספר-את-הצמתים"
+
+\end_inset
+
+נמספר את הצמתים לפי סדר כניסתם לתור:
+ 
+\begin_inset Formula $S=v_{0},v_{1},\ldots,v_{k}$
+\end_inset
+
+ עבור 
+\begin_inset Formula $k\leq n$
+\end_inset
+
+.
+ נניח שברגע מסוים במהלך ריצת
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+BFS
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ראש התור הוא 
+\begin_inset Formula $v_{i}$
+\end_inset
+
+ וזנב התור הוא 
+\begin_inset Formula $v_{j}$
+\end_inset
+
+ עבור 
+\begin_inset Formula $0\leq i\leq j\leq k$
+\end_inset
+
+.
+ אז,
+ 
+\begin_inset Formula $\dist\left[v_{i}\right]\leq\dist\left[v_{i+1}\right]\leq\cdots\leq\dist\left[v_{j}\right]\leq\dist\left[v_{i}\right]+1$
+\end_inset
+
+,
+ בפרט,
+ הסדרה 
+\begin_inset Formula $\left\{ \dist\left[v_{i}\right]\right\} _{i=1}^{k}$
+\end_inset
+
+ עולה (חלש).
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+colback=orange!10!white,colframe=orange!75!black
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+באינדוקציה על הפעולות על התור 
 \begin_inset Formula $Q$
 \end_inset
 
+.
+\end_layout
+
+\begin_layout Proof
+
+\series bold
+בסיס האינדוקציה:
+
+\series default
+ בהתחלה 
+\begin_inset Formula $Q=\left(s\right)$
+\end_inset
+
+,
+ כלומר 
+\begin_inset Formula $i=j=0$
+\end_inset
+
+ ואין מה להוכיח.
+\end_layout
+
+\begin_layout Proof
+
+\series bold
+צעד האינדוקציה:
+
+\series default
+ יש הכנסות בשורה
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+16
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ והוצאות בשורה 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+19
+\numeric off
+.
+ לפני הפעולה 
+\begin_inset Formula $Q=\left(v_{i},\ldots,v_{j}\right)$
+\end_inset
+
+ ומהנחת האינדוקציה
+\begin_inset Formula 
+\begin{equation}
+\dist\left[v_{i}\right]\leq\dist\left[v_{i+1}\right]\leq\cdots\leq\dist\left[v_{j}\right]\leq\dist\left[v_{i}\right]+1\label{eq:bfs lemma 3 induction hypothesis}
+\end{equation}
+
+\end_inset
+
 
 \end_layout
 
-\end_deeper
-\end_deeper
-\begin_layout Enumerate
+\begin_deeper
+\begin_layout Plain Layout
+\begin_inset Flex Multiple Columns
+status open
 
-\lang english
-\begin_inset Formula $\mathrm{color}\left[u\right]\xleftarrow{}\mathrm{black}$
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+הכנסה
+\begin_inset Newline newline
+\end_inset
+
+
+\series default
+אחרי הפעולה
+\series bold
+:
+ 
+\begin_inset Formula $Q=\left(u=v_{i},\ldots,v_{j},v_{j+1}=v\right)$
+\end_inset
+
+ 
+\series default
+ו-:
+\series bold
+
+\begin_inset Formula 
+\[
+\dist\left[v_{i}\right]\overset{\eqref{eq:bfs lemma 3 induction hypothesis}}{\leq}\dist\left[v_{i+1}\right]\overset{\eqref{eq:bfs lemma 3 induction hypothesis}}{\leq}\cdots\overset{\eqref{eq:bfs lemma 3 induction hypothesis}}{\leq}\dist\left[v_{i}\right]+1\overset{\mathrm{L14}}{=}\dist\left[v_{j}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+הוצאה
+\begin_inset Newline newline
+\end_inset
+
+
+\series default
+אחרי הפעולה:
+ 
+\begin_inset Formula $Q=\left(v_{i+1},\ldots,v_{j}\right)$
+\end_inset
+
+ ומתקיים:
+\begin_inset Formula 
+\[
+\dist\left[v_{i+1}\right]\overset{\eqref{eq:bfs lemma 3 induction hypothesis}}{\leq}\cdots\overset{\eqref{eq:bfs lemma 3 induction hypothesis}}{\leq}\dist\left[v_{j}\right]\overset{\eqref{eq:bfs lemma 3 induction hypothesis}}{\leq}\dist\left[v_{i}\right]+1\leq\dist\left[v_{i+1}\right]+1
+\]
+
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 
 \end_layout
 
 \end_deeper
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Corollary
+אם 
+\begin_inset Formula $\dist\left[x\right]<\dist\left[y\right]$
+\end_inset
+
+ אז 
+\begin_inset Formula $x$
+\end_inset
+
+ נכנס לתור לפני 
+\begin_inset Formula $y$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+colback=red!10!white,colframe=red!75!black
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+הוכחת המשפט
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+לכל צומת 
+\begin_inset Formula $v$
+\end_inset
+
+ שאינו נגיש מ-
+\begin_inset Formula $s$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\delta\left(s,v\right)=\infty$
+\end_inset
+
+ ובאתחול קבענו 
+\begin_inset Formula $\dist\left[v\right]=\infty$
+\end_inset
+
+.
+ לא ייתכן ש-
+\begin_inset Formula $v$
+\end_inset
+
+ זה יתגלה במהלך האלגוריתם כי זה יוריד את 
+\begin_inset Formula $\dist$
+\end_inset
+
+ שלו בסתירה ללמה 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:במהלך-ריצת-BFS,"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+.
+ נסמן לכל 
+\begin_inset Formula $k=0,1,2,\ldots$
+\end_inset
+
+ את 
+\begin_inset Formula $V_{k}=\left\{ \left.v\in V\left.\colon\right.\delta\left(s,v\right)=k\right.\right\} $
+\end_inset
+
+,
+ ובפרט 
+\begin_inset Formula $V_{0}=\left\{ s\right\} $
+\end_inset
+
+.
+ נוכיח באינדוקציה על 
+\begin_inset Formula $k$
+\end_inset
+
+ שמתקיימים תנאי המשפט,
+ כלומר לכל 
+\begin_inset Formula $v\in V_{k}$
+\end_inset
+
+ יתקיים 
+\begin_inset Formula $\dist\left[v\right]=k$
+\end_inset
+
+ בסיום האלגוריתם,
+ ויש מסלול באורך 
+\begin_inset Formula $k$
+\end_inset
+
+ אל 
+\begin_inset Formula $v$
+\end_inset
+
+ שמסתיים בקשת 
+\begin_inset Formula $\left(\pi\left[v\right],v\right)$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Proof
+
+\series bold
+בסיס האינדוקציה:
+
+\series default
+ (
+\begin_inset Formula $k=0$
+\end_inset
+
+):
+ 
+\begin_inset Formula $\dist\left[s\right]=0$
+\end_inset
+
+ מהאתחול.
+\end_layout
+
+\begin_layout Proof
+
+\series bold
+צעד האינדוקציה:
+ 
+\series default
+נניח לכל 
+\begin_inset Formula $\left(\Delta\right)\ u\in V_{k-1}$
+\end_inset
+
+ ונוכיח לכל 
+\begin_inset Formula $u\in V_{k}$
+\end_inset
+
+:
+ מתקיים 
+\begin_inset Formula $\delta\left(s,v\right)=k$
+\end_inset
+
+ ולכן יש 
+\begin_inset Formula $u$
+\end_inset
+
+ עבורו יש מסלול מאורך 
+\begin_inset Formula $k$
+\end_inset
+
+ שמסתיים בקשת 
+\begin_inset Formula $\left(u,v\right)$
+\end_inset
+
+.
+ כיוון שניתן להגיע ל-
+\begin_inset Formula $u$
+\end_inset
+
+ ב-
+\begin_inset Formula $k-1$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\delta\left(s,u\right)=k-1$
+\end_inset
+
+ ולכן 
+\begin_inset Formula $u\in V_{k-1}$
+\end_inset
+
+.
+ לפי 
+\begin_inset Formula $\Delta$
+\end_inset
+
+,
+ 
+\begin_inset Formula $u$
+\end_inset
+
+ מתגלה,
+ נקבע לו 
+\begin_inset Formula $\dist\left[u\right]=k-1$
+\end_inset
+
+ והוא נכנס לתור.
+ מאוחר יותר,
+ 
+\begin_inset Formula $u$
+\end_inset
+
+ מגיע לראש התור ונסרקת הקשת 
+\begin_inset Formula $\left(u,v\right)$
+\end_inset
+
+.
+ אם כעת 
+\begin_inset Formula $v$
+\end_inset
+
+ לבן,
+ אז נקבע בשורה
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+14
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+כי 
+\begin_inset Formula $\dist\left[v\right]=\dist\left[u\right]+1$
+\end_inset
+
+ ו-
+\begin_inset Formula $\pi\left[v\right]=u$
+\end_inset
+
+ וסיימנו.
+ לא ייתכן ש-
+\begin_inset Formula $v$
+\end_inset
+
+ שחור,
+ כי אז 
+\begin_inset Formula $v$
+\end_inset
+
+ יצא מהתור לפני 
+\begin_inset Formula $u$
+\end_inset
+
+,
+ כלומר מתקיים 
+\begin_inset Formula $k\overset{\mathrm{Lemma}\ \ref{lem:במהלך-ריצת-BFS,}}{=}\delta\left(s,v\right)\leq\dist\left[v\right]\leq\dist\left[u\right]=k-1$
+\end_inset
+
+.
+ אחרת 
+\begin_inset Formula $v$
+\end_inset
+
+ אפור,
+ כלומר בתור.
+ מלמה 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:נמספר-את-הצמתים"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
+ 
+\begin_inset Formula $k-1=\dist\left[u\right]\leq\dist\left[v\right]\leq\dist\left[u\right]+1=k$
+\end_inset
+
+.
+ כיוון ש-
+\begin_inset Formula $\dist\left[v\right]\geq k$
+\end_inset
+
+ מלמה 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:במהלך-ריצת-BFS,"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
+ קיבלנו שוויון.
+ מתקיים 
+\begin_inset Formula $\dist\left[\pi\left[v\right]\right]=k-1$
+\end_inset
+
+ ולכן 
+\begin_inset Formula $\pi\left[v\right]\in V_{k-1}$
+\end_inset
+
+ ואכן יש מסלול 
+\begin_inset Formula $s\rightsquigarrow\pi\left[v\right]\xrightarrow{}v$
+\end_inset
+
+ באורך 
+\begin_inset Formula $k$
+\end_inset
+
+.
+\end_layout
+
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+עץ המק
+\begin_inset Quotes erd
+\end_inset
+
+בים
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+בזמן
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+BFS
+\lang hebrew
+ חישבנו לכל צומת 
+\begin_inset Formula $v\in V$
+\end_inset
+
+ את 
+\begin_inset Formula $\dist\left[v\right]$
+\end_inset
+
+ ואת 
+\begin_inset Formula $\pi\left[v\right]$
+\end_inset
+
+,
+ נסמן 
+\begin_inset Formula $V_{\pi}=\left\{ \left.v\in V\left.\colon\right.\dist\left[v\right]<\infty\right.\right\} $
+\end_inset
+
+,
+ וכן 
+\begin_inset Formula $E_{\pi}=\left\{ \left.\left(\pi\left[v\right],v\right)\left.\colon\right.v\in V\land\pi\left[v\right]\neq\varnull\right.\right\} $
+\end_inset
+
+,
+ אזי 
+\series bold
+עץ המסלולים הקצרים ביותר 
+\series default
+הוא 
+\begin_inset Formula $G_{\pi}=\left(V_{\pi},E_{\pi}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Claim
+עץ המק
+\begin_inset Quotes erd
+\end_inset
+
+בים הוא עץ מכוון ששורשו 
+\begin_inset Formula $s$
+\end_inset
+
+,
+ יש בו 
+\begin_inset Formula $\left|E_{\pi}\right|=\left|V_{\pi}\right|-1$
+\end_inset
+
+ קשתות,
+ וכל צומת ב-
+\begin_inset Formula $V_{\pi}$
+\end_inset
+
+ נגיש מ-
+\begin_inset Formula $s$
+\end_inset
+
+ באמצעות המסלול 
+\begin_inset Formula $s\rightsquigarrow v$
+\end_inset
+
+ ב-
+\begin_inset Formula $G_{\pi}$
+\end_inset
+
+,
+ שהוא מסלול באורך הקצר ביותר ביניהם.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch dfs
+inverted 0
+status open
+
+\begin_layout Section
+אלגוריתם
+\family roman
+\series bold
+\shape up
+\size larger
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+DFS
+\end_layout
+
+\begin_layout Standard
+הרעיון:
+ 
+\begin_inset Quotes eld
+\end_inset
+
+למצות
+\begin_inset Quotes erd
+\end_inset
+
+ כיוון מסוים לפני שעוברים לאחרים.
+ כלומר,
+ אם גילינו
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
