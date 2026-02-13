@@ -778,11 +778,9 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Color Box Setup
-
 arc=2mm,fonttitle=
 \backslash
-bfseries,
- 
+bfseries,colback=white 
 \end_layout
 
 \begin_layout Chapter
@@ -807,7 +805,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-colback=blue!10!white,colframe=blue!75!black,title={{
+colframe=blue!75!black,title={{
 \backslash
 Large מערכת הצפנה סימטרית}},
 \end_layout
@@ -2092,7 +2090,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-colback=blue!10!white,colframe=blue!75!black,title={{
+colframe=blue!75!black,title={{
 \backslash
 Large בטיחות מושלמת}}
 \end_layout
@@ -2316,7 +2314,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-colback=red!10!white,colframe=red!75!black,title={{
+colframe=red!75!black,title={{
 \backslash
 Large בטיחות פנקס חד-פעמי}}
 \end_layout
@@ -2373,7 +2371,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-colback=red!10!white,colframe=red!75!black,
+colframe=red!75!black,
 \end_layout
 
 \end_inset
@@ -2491,14 +2489,14 @@ E_{k}\left(m_{0}\right)\equiv U_{n}\equiv E_{k}\left(m_{1}\right)
 
 \begin_layout Standard
 \begin_inset Flex Color Box
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-colback=red!10!white,colframe=red!75!black,title={{
+colframe=red!75!black,title={{
 \backslash
 Large משפט שאנון}}
 \end_layout
@@ -2535,7 +2533,7 @@ status collapsed
 status open
 
 \begin_layout Plain Layout
-colback=red!10!white,colframe=red!75!black,
+colframe=red!75!black,
 \end_layout
 
 \end_inset
@@ -2764,7 +2762,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-colback=blue!10!white,colframe=blue!75!black,title={{
+colframe=blue!75!black,title={{
 \backslash
 Large בטיחות חישובית (גולדווסר ומיקלי
 \family roman
@@ -3221,7 +3219,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-colback=red!10!white,colframe=red!75!black,title={{
+colframe=red!75!black,title={{
 \backslash
 Large בטיחות פנקס חד-פעמי חישובי}},
 \end_layout
@@ -3309,7 +3307,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-colback=red!10!white,colframe=red!75!black,
+colframe=red!75!black,
 \end_layout
 
 \end_inset
@@ -3683,7 +3681,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-colback=blue!10!white,colframe=blue!75!black,title={{
+colframe=blue!75!black,title={{
 \backslash
 Large בטיחות חישובית למספר הודעות}},
 \end_layout
@@ -3751,7 +3749,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-colback=red!10!white,colframe=red!75!black,title={{
+colframe=red!75!black,title={{
 \backslash
 Large אין בטיחות למספר הודעות בהצפנה דטרמיניסטית}},
 \end_layout
@@ -3788,7 +3786,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-colback=red!10!white,colframe=red!75!black,
+colframe=red!75!black,
 \end_layout
 
 \end_inset
@@ -4056,7 +4054,7 @@ colback=red!10!white,colframe=red!75!black,
 \begin_layout Standard
 \begin_inset Branch number-group theory
 inverted 0
-status open
+status collapsed
 
 \begin_layout Section
 נושאים מתורת המספרים
@@ -4929,7 +4927,7 @@ status open
 \end_inset
 
 .
- אם מספר הוא לא ראשוניף אזי הוא 
+ אם מספר הוא לא ראשוני אזי הוא 
 \series bold
 פריק
 \series default
@@ -4945,22 +4943,9 @@ status open
 status open
 
 \begin_layout Plain Layout
-colback=red!10!white,colframe=red!75!black,title={{
+colframe=red!75!black,title={{
 \backslash
 Large המשפט היסודי של האריתמטיקה}},
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Theorem
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-פירוק יחיד
 \end_layout
 
 \end_inset
@@ -5417,7 +5402,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-colback=red!10!white,colframe=red!75!black,title={{
+colframe=red!75!black,title={{
 \backslash
 Large משפט לגראנז'}},
 \end_layout
@@ -5425,19 +5410,6 @@ Large משפט לגראנז'}},
 \end_inset
 
 
-\end_layout
-
-\begin_layout Theorem
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-לגראנז'
-\end_layout
-
-\end_inset
-
- 
 \end_layout
 
 \begin_layout Theorem

@@ -130,7 +130,7 @@
 
 % --- Packages for the "algorithmic" style ---
 \usepackage{algorithm}     % Provides the 'algorithm' float
-\usepackage{algorithmic}   % Provides the pseudocode commands
+\usepackage[noend]{algorithmic}  % Provides the pseudocode commands
 
 
 \newcommand{\kaliLargeLand}{\mathop{\mathlarger{\mathlarger{\mathlarger{\land}}}}}
@@ -710,7 +710,7 @@ End
 \color background background
 \end_branch
 \branch bfs
-\selected 0
+\selected 1
 \filename_suffix 0
 \color background background
 \end_branch
@@ -1439,7 +1439,7 @@ BFS
 \begin_layout Standard
 \begin_inset Branch bfs
 inverted 0
-status collapsed
+status open
 
 \begin_layout Section
 אלגוריתם
