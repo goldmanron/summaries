@@ -106,10 +106,6 @@
         "URL": "summaries/random_signals/Random_signals_and_noises_summary.pdf",
         "button_color": "gradient-pink2",
         "pdf_info": {
-            "under_construction": {
-                "": "בבנייה",
-                "image": "icon/construction.png"
-            },
             "course_info": {
                 "שם קורס מלא": "אותות אקראיים ורעש",
                 "מספר קורס": "0512-2532",
