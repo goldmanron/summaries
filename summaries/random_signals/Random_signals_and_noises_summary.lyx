@@ -1993,7 +1993,7 @@ LatexCommand tableofcontents
 \begin_layout Standard
 \begin_inset Branch random variables
 inverted 0
-status collapsed
+status open
 
 \begin_layout Chapter
 הסתברות ומשתנים אקראיים
@@ -4945,7 +4945,7 @@ status open
 \begin_layout Standard
 \begin_inset Branch random vectors
 inverted 0
-status collapsed
+status open
 
 \begin_layout Section
 מושגי יסוד
@@ -8081,7 +8081,7 @@ PSD
 \noun default
 \color inherit
 \lang english
-PSD
+PD
 \family roman
 \series medium
 \shape up
@@ -12720,7 +12720,7 @@ MSE
 \begin_layout Standard
 \begin_inset Branch processes
 inverted 0
-status open
+status collapsed
 
 \begin_layout Chapter
 מבוא לתהליכים אקראיים
