@@ -9,7 +9,7 @@
 % --- Load amsthm package for theorem styles ---
 \usepackage{amsthm}
 
-
+\usepackage[most]{tcolorbox}
 
 % --- Shared theoremstyle (one place only!) ---
 \newtheoremstyle{defuprightbrackets}%
@@ -73,6 +73,55 @@
 
 \usetikzlibrary{svg.path,decorations.pathmorphing, backgrounds,decorations.pathreplacing, automata, shapes.geometric, arrows.meta, positioning, calc}
 
+% =========================================================
+% GLOBAL TIKZ SETTINGS (For White/Print Backgrounds)
+% =========================================================
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, calc, shapes.geometric}
+
+\tikzset{
+    % Standard 'person' nodes (Alice, Bob, Eve)
+    person/.style={
+        circle, 
+        draw, 
+        minimum size=1cm, 
+        line width=1.5pt, 
+        fill=white,           % Clean white fill for standard pages
+        font=\bfseries\sffamily
+    },
+    % Experiment Boxes (Challenger/Adversary)
+    box/.style={
+        draw, 
+        thick, 
+        rounded corners, 
+        minimum width=2.5cm, 
+        minimum height=1.5cm, 
+        align=center,
+        font=\sffamily
+    },
+    % Challenger: Light blue tint from lecture
+    chalbox/.style={
+        box, 
+        fill=blue!20, 
+        draw=blue!50!black
+    },
+    % Adversary: Light red tint from lecture
+    advbox/.style={
+        box, 
+        fill=red!20, 
+        draw=red!50!black
+    },
+    % Default arrow style
+    arrow/.style={
+        ->, 
+        >=Stealth, 
+        thick,
+        line width=1pt
+    },
+    % Distance between nodes
+    node distance=1.5cm
+}
+
 \usepackage{mathtools}
 \let\savedleft\left
   \let\savedright\right
@@ -134,6 +183,35 @@
 \definecolor{cyanpath}{RGB}{0, 255, 255}    % Bright Cyan for Gaussian paths
 \definecolor{poissonorange}{RGB}{255, 165, 0} % Orange for Poisson steps
 \definecolor{textwhite}{RGB}{240, 240, 240}
+
+% =========================================================
+% BOXED PROOF REDEFINITION (English Overriding)
+% =========================================================
+% 1. Define the English Proof Style
+\tcbset{
+  engproofstyle/.style={
+    enhanced,
+    breakable,
+    width=\textwidth,
+    colback=white,
+    colframe=black!75, 
+    colbacktitle=black!5!white, 
+    coltitle=black, 
+    fonttitle=\bfseries,
+    % Anchored to top-left for English context
+    attach boxed title to top left={yshift=-2mm, xshift=5mm}, 
+    boxed title style={boxrule=0.4pt, colframe=black!75},
+    separator sign none,
+    after upper={\par\hfill\qedsymbol} % Auto-QED
+  }
+}
+
+% 2. Override the standard 'proof' environment
+\renewenvironment{proof}[1][Proof]{%
+  \begin{tcolorbox}[engproofstyle, title=#1]
+}{%
+  \end{tcolorbox}
+}
 \end_preamble
 \options no-math
 \use_default_options true
@@ -879,12 +957,17 @@ End
 \use_formatted_ref 0
 \use_minted 0
 \use_lineno 0
-\branch symmetric
+\branch private
 \selected 1
 \filename_suffix 0
 \color background background
 \end_branch
-\branch private
+\branch intro
+\selected 1
+\filename_suffix 0
+\color background background
+\end_branch
+\branch computesecrecy
 \selected 1
 \filename_suffix 0
 \color background background
@@ -896,7 +979,7 @@ End
 \leftmargin 2cm
 \topmargin 2cm
 \rightmargin 2cm
-\bottommargin 3cm
+\bottommargin 2cm
 \headheight 0cm
 \headsep 1cm
 \footskip 1cm
@@ -906,7 +989,7 @@ End
 \paragraph_indentation 0bp
 \is_math_indent 0
 \math_numbering_side default
-\quotes_style english
+\quotes_style plain
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 1
@@ -1256,6 +1339,41 @@ LatexCommand tableofcontents
 \end_inset
 
 
+\begin_inset FormulaMacro
+\newcommand{\ind}[2]{\approx_{#1,#2}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\r}{\xleftarrow{R}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\prg}{\mathrm{PRG}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\binary}{\left\{  0,1\right\}  }
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\str}[1]{\binary^{#1}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\P}{\boldsymbol{\mathrm{P}}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\NP}{\boldsymbol{\mathrm{NP}}}
+\end_inset
+
+
 \end_layout
 
 \begin_layout Part
@@ -1272,27 +1390,28 @@ Introduction
 \end_layout
 
 \begin_layout Standard
+\begin_inset Branch intro
+inverted 0
+status open
+
+\begin_layout Standard
 Let 
 \begin_inset Formula $\KK,\MM,\CC$
 \end_inset
 
- be sets (usually finite).
+ be finite sets.
 \end_layout
 
 \begin_layout Section
 Notations and Definitions
 \end_layout
 
-\begin_layout Subsection
-Encryption
-\end_layout
-
-\begin_layout Notation
+\begin_layout Definition
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-Encryption Function
+Encryption
 \end_layout
 
 \end_inset
@@ -1301,16 +1420,19 @@ Encryption Function
 \begin_inset Formula $\enc:\KK\times\MM\xrightarrow{}\CC$
 \end_inset
 
-,
- such that
-\begin_inset Formula 
-\begin{align*}
-\forall k & \in\KK,m\in\MM. & c=\enc\left(k,m\right)\triangleq\enc_{k}\left(m\right)
-\end{align*}
-
+.
+ For all 
+\begin_inset Formula $k\in\KK,m\in\MM$
 \end_inset
 
-is the 
+,
+ the message after the encryption,
+ 
+\begin_inset Formula $c=\enc\left(k,m\right)\triangleq\enc_{k}\left(m\right)$
+\end_inset
+
+,
+ is the 
 \series bold
 ciphertext
 \series default
@@ -1324,12 +1446,12 @@ ciphertext
 
 \end_layout
 
-\begin_layout Notation
+\begin_layout Definition
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-Decryption Function
+Decryption
 \end_layout
 
 \end_inset
@@ -1338,20 +1460,31 @@ Decryption Function
 \begin_inset Formula $\dec:\KK\times\CC\xrightarrow{}\MM$
 \end_inset
 
-,
- such that
-\begin_inset Formula 
-\begin{align*}
-\forall k & \in\KK,c\in\CC. & m=\dec\left(k,c\right)\triangleq\dec_{k}\left(c\right)
-\end{align*}
-
+.
+ For all 
+\begin_inset Formula $k\in\KK,c\in\CC$
 \end_inset
 
-is the 
+,
+ the message before the encryption,
+ 
+\begin_inset Formula $m=\dec\left(k,c\right)\triangleq\dec_{k}\left(c\right)$
+\end_inset
+
+,
+ is the 
 \series bold
 plaintext
 \series default
 .
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
 \end_layout
 
 \begin_layout Definition
@@ -1364,18 +1497,690 @@ Correctness
 
 \end_inset
 
+ For all 
+\begin_inset Formula $m\in\MM$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\dec_{k}\left(\enc_{k}\left(m\right)\right)=m$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Communication Model
+\end_layout
+
+\begin_layout Standard
+Let us welcome the three major players in this field,
+ 
+\color blue
+Alice
+\color inherit
+,
+ 
+\color blue
+Bob
+\color inherit
+,
+ and 
+\color red
+Eve
+\color inherit
+ (claps!).
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+    % Parties
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+node[person,
+ color=blue] (A) at (0,0) {
+\backslash
+textcolor{white}{
+\backslash
+textbf{A}}};
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+node[person,
+ color=blue,
+ right=5cm of A] (B) {
+\backslash
+textcolor{white}{
+\backslash
+textbf{B}}};
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+node[person,
+ color=red,
+ dashed] (E) at (2.5,-1.5) {
+\backslash
+textcolor{white}{
+\backslash
+textbf{E}}};
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\end_layout
+
+\begin_layout Plain Layout
+
+    % Labels (Explicitly white for visibility)
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+node[below=0.2cm of A,
+ color=blue,
+ font=
+\backslash
+sffamily
+\backslash
+small] {Alice};
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+node[below=0.2cm of B,
+ color=blue,
+ font=
+\backslash
+sffamily
+\backslash
+small] {Bob};
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+node[below=0.2cm of E,
+ color=red,
+ font=
+\backslash
+sffamily
+\backslash
+small] {Eve};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    % Communication channel
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+draw[->,
+ >=Stealth,
+ line width=1.2pt] 
+\end_layout
+
+\begin_layout Plain Layout
+
+        (A.east) -- node[above,
+ pos=0.5] {$c = 
+\backslash
+enc_k(m)$} (B.west);
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\end_layout
+
+\begin_layout Plain Layout
+
+    % Eavesdropping intercept
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+draw[->,
+ >=Stealth,
+ red,
+ dashed,
+ thick] (2.5,0) -- (E.north);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In our model,
+ the "major players" interact as follows:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Parties:
+
+\series default
+ Alice and Bob are the legitimate participants.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Adversary:
+
+\series default
+ Eve is the eavesdropper monitoring the line.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Channel:
+ 
+\series default
+A reliable communication line exists between Alice and Bob.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+The Shared Secret:
+
+\series default
+ They utilize an encryption scheme 
+\begin_inset Formula $\left(\enc,\dec\right)$
+\end_inset
+
+ that is 
+\emph on
+known 
+\emph default
+to Eve,
+ and a 
+\emph on
+secret 
+\emph default
+key 
+\begin_inset Formula $k$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+The Goal:
+
+\series default
+ Alice wants to send a message 
+\begin_inset Formula $m$
+\end_inset
+
+ to Bob such that it remains 
+\emph on
+confidential
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Perfect Secrecy
+\end_layout
+
+\begin_layout Definition
+Two distributions 
+\begin_inset Formula $X,Y$
+\end_inset
+
+ over 
+\begin_inset Formula $\mathcal{D}$
+\end_inset
+
+ are 
+\series bold
+equal
+\series default
+,
+ denoted by 
+\begin_inset Formula $X\equiv Y$
+\end_inset
+
+,
+ if 
+\begin_inset Formula $\forall d\in\mathcal{D}.\ \Pr\left[X=d\right]=\Pr\left[Y=d\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Perfect Secrecy (Shannon 1949)
+\end_layout
+
+\end_inset
+
  We say 
 \begin_inset Formula $\left(\enc,\dec\right)$
 \end_inset
 
- is a correct 
+ is 
 \series bold
-encryption scheme 
+perfectly secret 
 \series default
-if 
+if for any a priori distribution 
+\begin_inset Formula $M$
+\end_inset
+
+ of messages,
+ and 
+\begin_inset Formula $k\r\KK$
+\end_inset
+
+,
+ 
+\begin_inset Formula $M|\enc_{k}\left(M\right)\equiv M$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Perfect Indistinguishability
+\end_layout
+
+\end_inset
+
+We say 
+\begin_inset Formula $\left(\enc,\dec\right)$
+\end_inset
+
+ is 
+\series bold
+perfectly
+\series default
+ 
+\series bold
+indistinguishable
+\series default
+ if for any 
+\begin_inset Formula $m_{0},m_{1}\in\mathcal{M}$
+\end_inset
+
+ of equal length,
+ if 
+\begin_inset Formula $k\r\KK$
+\end_inset
+
+,
+ then 
+\begin_inset Formula $\enc_{k}\left(m_{0}\right)\equiv\enc_{k}\left(m_{1}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Indistinguishability Game
+\end_layout
+
+\end_inset
+
+ For an 
+\emph on
+adversary 
+\emph default
+
+\begin_inset Formula $\mathcal{A}:\CC\xrightarrow{}\binary$
+\end_inset
+
+ we define the following game:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ chooses messages 
+\begin_inset Formula $m_{0},m_{1}\in\MM$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+We sample a key 
+\begin_inset Formula $k\r\KK$
+\end_inset
+
+ and a bit 
+\begin_inset Formula $b\xleftarrow{}\binary$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+We send 
+\begin_inset Formula $\enc_{k}\left(m_{b}\right)$
+\end_inset
+
+ to 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+,
+ called the 
+\emph on
+challenge
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ outputs a bit 
+\begin_inset Formula $b'$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Definition
+We say that 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ 
+\series bold
+wins
+\series default
+ if 
+\begin_inset Formula $b'=b$
+\end_inset
+
+,
+ and we denote 
+\begin_inset Formula $\Pr\left[\mathcal{A}\text{ wins}\right]\triangleq\Pr\left[b=b'\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem
+Let 
+\begin_inset Formula $\left(\enc,\dec\right)$
+\end_inset
+
+ be a symmetric encryption scheme.
+ Then,
+ the following are equivalent:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\left(\enc,\dec\right)$
+\end_inset
+
+ is 
+\emph on
+perfectly secret
+\emph default
+.
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:th1ps"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(\enc,\dec\right)$
+\end_inset
+
+ is 
+\emph on
+perfectly indistinguishable
+\emph default
+.
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:th1pi"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+For any adversary 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\Pr\left[\mathcal{A}\text{ wins}\right]=\frac{1}{2}$
+\end_inset
+
+.
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:th1ig"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula $\eqref{enu:th1ps}\iff\eqref{enu:th1pi}$
+\end_inset
+
+ was left to HW1,
+ Q1.
+ 
+\begin_inset Formula $\underline{\eqref{enu:th1pi}\Longrightarrow\eqref{enu:th1ig}:}$
+\end_inset
+
+ Let 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ be an adversary,
+ w.l.o.g deterministic,
+ and let 
+\begin_inset Formula $m_{0},m_{1}\in\MM$
+\end_inset
+
+.
+ Define 
+\begin_inset Formula $S_{b}\triangleq\mathcal{A}^{-1}\left(\left\{ b\right\} \right)$
+\end_inset
+
+ for 
+\begin_inset Formula $b\in\binary$
+\end_inset
+
+,
+ then 
+\begin_inset Formula $S_{0}\uplus S_{1}=\CC$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $b'=\mathcal{A}\left(m_{b}\right)$
+\end_inset
+
+,
+ where 
+\begin_inset Formula $b\xleftarrow{}\binary$
+\end_inset
+
+,
+ since 
+\begin_inset Formula $\left(\enc,\dec\right)$
+\end_inset
+
+ is p.i.,
+ then by total probability
 \begin_inset Formula 
 \begin{align*}
-\forall m\in\MM & . & \dec_{k}\left(\enc_{k}\left(m\right)\right)=m
+\Pr\left[\mathcal{A}\text{ wins}\right] & =\Pr\left[b'=b|b=0\right]\Pr\left[b=0\right]+\Pr\left[b'=b|b=1\right]\Pr\left[b=1\right]\\
+ & =\frac{1}{2}\left(\Pr\left[\enc_{k}\left(m_{0}\right)\in S_{0}\right]+\Pr\left[\enc_{k}\left(m_{1}\right)\in S_{1}\right]\right)\\
+ & =\frac{1}{2}\left(\Pr\left[\enc_{k}\left(m_{0}\right)\in S_{0}\right]+\Pr\left[\enc_{k}\left(m_{0}\right)\in S_{1}\right]\right)\\
+ & =\frac{1}{2}\Pr\left[\enc_{k}\left(m_{0}\right)\in S_{0}\uplus S_{1}\right]=\frac{1}{2}.
+\end{align*}
+
+\end_inset
+
+ 
+\begin_inset Formula $\underline{\eqref{enu:th1ig}\Longrightarrow\eqref{enu:th1pi}:}$
+\end_inset
+
+ Suppose 
+\begin_inset Formula $\left(\enc,\dec\right)$
+\end_inset
+
+ is not p.i.,
+ then there must be some 
+\begin_inset Formula $m_{0},m_{1}\in\MM,c^{*}\in\CC$
+\end_inset
+
+ s.t.
+\begin_inset Formula 
+\[
+\alpha=\Pr\left[\enc_{k}\left(m_{0}\right)=c^{*}\right]>\Pr\left[\enc_{k}\left(m_{1}\right)=c^{*}\right]=\beta.
+\]
+
+\end_inset
+
+Consider the adversary 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ that selects the messages 
+\begin_inset Formula $m_{0},m_{1}$
+\end_inset
+
+,
+ and on input 
+\begin_inset Formula $c\in\CC$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\mathcal{A}\left(c\right)=\mathds{1}\left[c\neq c^{*}\right]$
+\end_inset
+
+.
+ Then by total probability
+\begin_inset Formula 
+\begin{align*}
+\Pr\left[\mathcal{A}\text{ wins}\right] & =\Pr\left[b'=b|b=0\right]\Pr\left[b=0\right]+\Pr\left[b'=b|b=1\right]\Pr\left[b=1\right]\\
+ & =\frac{1}{2}\left(\Pr\left[\enc_{k}\left(m_{0}\right)=c^{*}\right]+\Pr\left[\enc_{k}\left(m_{1}\right)\neq c^{*}\right]\right)\\
+ & =\frac{1}{2}\left(\alpha+\left(1-\beta\right)\right)=\frac{1}{2}+\frac{1}{2}\left(\alpha-\beta\right)>\frac{1}{2}.
 \end{align*}
 
 \end_inset
@@ -1383,15 +2188,2147 @@ if
 
 \end_layout
 
+\end_deeper
+\begin_layout Section
+One-Time Pad
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+One-Time Pad
+\end_layout
+
+\end_inset
+
+ Let 
+\begin_inset Formula $\MM=\KK=\CC=\str n$
+\end_inset
+
+,
+ then for any 
+\begin_inset Formula $m,k,c\in\str n$
+\end_inset
+
+ (where 
+\begin_inset Formula $\oplus$
+\end_inset
+
+ is bitwise XOR),
+ we define the 
+\series bold
+one-time pad 
+\series default
+scheme:
+\begin_inset Formula 
+\begin{align*}
+\enc_{k}\left(m\right)=m\oplus k & , & \dec_{k}\left(c\right)=c\oplus k & .
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+One-Time Pad is 
+\emph on
+perfectly secret
+\emph default
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+It is suffice to show the following claim:
+\end_layout
+
+\begin_deeper
+\begin_layout Claim
+For any 
+\begin_inset Formula $m,c\in\str n$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Pr_{k\r\str n}\left[\enc_{k}\left(m\right)=c\right]=\frac{1}{2^{n}}\iff\enc_{k}\left(m\right)\sim\mathcal{U}_{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The claim implies the theorem from transitivity,
+ for any 
+\begin_inset Formula $m_{0},m_{1}\in\str n$
+\end_inset
+
+,
+ where 
+\begin_inset Formula $k\r\str n$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\enc_{k}\left(m_{0}\right)\equiv\mathcal{U}_{n}\equiv\enc_{k}\left(m_{1}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Proof of the claim.
+
+\series default
+ Let 
+\begin_inset Formula $m,c\in\str n$
+\end_inset
+
+,
+ then:
+\begin_inset Formula 
+\[
+\Pr_{k}\left[\enc_{k}\left(m\right)=c\right]=\Pr_{k}\left[m\oplus k=c\right]=\Pr_{k}\left[k=m\oplus c\right]=\frac{1}{2^{n}}
+\]
+
+\end_inset
+
+ since 
+\begin_inset Formula $m\oplus c$
+\end_inset
+
+ is a constant and 
+\begin_inset Formula $k\sim\mathcal{U}_{n}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Section
+Shannon's Theorem
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Shannon
+\end_layout
+
+\end_inset
+
+ If 
+\begin_inset Formula $\left(\enc,\dec\right)$
+\end_inset
+
+ is perfectly secret,
+ then 
+\begin_inset Formula $\left|\KK\right|\geq\left|\MM\right|$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+Define a two-sided graph 
+\begin_inset Formula $G=\left(V,E\right)$
+\end_inset
+
+ where 
+\begin_inset Formula $V=\MM\uplus\CC$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\left\{ m,c\right\} \in E$
+\end_inset
+
+ if and only if there exists 
+\begin_inset Formula $k\in\KK$
+\end_inset
+
+ s.t.
+ 
+\begin_inset Formula $\enc_{k}\left(m\right)=c$
+\end_inset
+
+.
+ Assume for sake of contradiction that 
+\begin_inset Formula $\left|\KK\right|<\left|\MM\right|$
+\end_inset
+
+,
+ and let 
+\begin_inset Formula $\left\{ m,c\right\} \in E$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Claim
+\begin_inset Formula $c$
+\end_inset
+
+ is connected to at most 
+\begin_inset Formula $\left|\KK\right|$
+\end_inset
+
+ messages,
+ i.e.
+ 
+\begin_inset Formula $\deg\left(c\right)\leq\left|\KK\right|$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Proof of the claim.
+
+\series default
+ Assume for sake of contradiction that 
+\begin_inset Formula $\deg\left(c\right)>\left|\KK\right|$
+\end_inset
+
+.
+ By the pidgeonhole principle,
+ there exists a key 
+\begin_inset Formula $k\in\KK$
+\end_inset
+
+ and two messages 
+\begin_inset Formula $m_{0},m_{1}\in\MM$
+\end_inset
+
+ s.t.
+ 
+\begin_inset Formula $c=\enc_{k}\left(m_{0}\right)=\enc_{k}\left(m_{1}\right)$
+\end_inset
+
+ and that is a contradiction to the correctness of 
+\begin_inset Formula $\left(\enc,\dec\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Corollary
+There exists a message 
+\begin_inset Formula $m^{*}\in\MM$
+\end_inset
+
+ that isn't a neighbor of 
+\begin_inset Formula $c$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Proof
+For any key 
+\begin_inset Formula $k\in\KK$
+\end_inset
+
+,
+ it holds that 
+\begin_inset Formula $\enc_{k}\left(m^{*}\right)\neq c$
+\end_inset
+
+,
+ and thus 
+\begin_inset Formula ${\displaystyle \Pr_{k}\left[\enc_{k}\left(m^{*}\right)=c\right]=0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Since 
+\begin_inset Formula $\left\{ m,c\right\} \in E$
+\end_inset
+
+,
+ there exists a key 
+\begin_inset Formula $k'\in\KK$
+\end_inset
+
+ s.t.
+ 
+\begin_inset Formula $\enc_{k'}\left(m\right)=c$
+\end_inset
+
+,
+ and thus 
+\begin_inset Formula ${\displaystyle \Pr_{k}\left[\enc_{k}\left(m\right)=c\right]\geq\frac{1}{\left|\KK\right|}}>0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+We then conclude 
+\begin_inset Formula $\enc_{k}\left(m^{*}\right)\not\equiv\enc_{k}\left(m\right)$
+\end_inset
+
+,
+ where 
+\begin_inset Formula $k\xleftarrow{}\KK$
+\end_inset
+
+,
+ which is a contradiction.
+\end_layout
+
+\end_deeper
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Computational Secrecy & Pseudorandomness
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch computesecrecy
+inverted 0
+status open
+
+\begin_layout Section
+Computational Secrecy
+\end_layout
+
+\begin_layout Claim
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Perfect Secrecy Revisited
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\left(\enc,\dec\right)$
+\end_inset
+
+ has perfect secrecy if and only if for any 
+\begin_inset Formula $m_{0},m_{1}\in\MM$
+\end_inset
+
+ of equal length,
+ if we denote 
+\begin_inset Formula $c_{0}=\enc_{k}\left(m_{0}\right),c_{1}=\enc_{k}\left(m_{1}\right)$
+\end_inset
+
+ for all 
+\begin_inset Formula $k\in\KK$
+\end_inset
+
+,
+ then for any adversary 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+,
+ 
+\begin_inset Formula 
+\[
+{\displaystyle {\displaystyle \Pr_{k\r\KK}\left[\mathcal{A}\left(c_{0}\right)=1\right]=\Pr_{k\r\KK}\left[\mathcal{A}\left(c_{1}\right)=1\right]}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Adversary Complexity
+\end_layout
+
+\end_inset
+
+ We say 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ is of 
+\series bold
+complexity
+\series default
+ 
+\begin_inset Formula $t$
+\end_inset
+
+,
+ if it's computable by a circuit of size 
+\begin_inset Formula $t$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Distinguishing Advantage
+\end_layout
+
+\end_inset
+
+ Let 
+\begin_inset Formula $X,Y$
+\end_inset
+
+ be two distributions over 
+\begin_inset Formula $\mathcal{D}$
+\end_inset
+
+,
+ and let 
+\begin_inset Formula $\mathcal{A}:\mathcal{D}\xrightarrow{}\binary$
+\end_inset
+
+ be an adversary,
+ we define 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+'s 
+\series bold
+distinguishing advantage 
+\series default
+as 
+\begin_inset Formula 
+\[
+{\displaystyle \Delta_{\mathcal{A}}\left(X,Y\right)\triangleq\left|\Pr\left[\mathcal{A}\left(X\right)=1\right]-\Pr\left[\mathcal{A}\left(Y\right)=1\right]\right|}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left(t,\varepsilon\right)$
+\end_inset
+
+-indistinguishability
+\end_layout
+
+\end_inset
+
+ We say 
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+ are 
+\begin_inset Formula $\left(t,\varepsilon\right)$
+\end_inset
+
+-
+\series bold
+indistinguishable
+\series default
+ and denote 
+\begin_inset Formula $X\ind t{\varepsilon}Y$
+\end_inset
+
+,
+ if for all adversaries 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ of complexity at most 
+\begin_inset Formula $t$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\Delta_{\mathcal{A}}\left(X,Y\right)\leq\varepsilon$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Remark
+\begin_inset Formula $X\equiv Y\iff X\ind{\infty}0Y$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Claim
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+Properties of Indistinguishability
+\end_layout
+
+\end_inset
+
+ Let 
+\begin_inset Formula $X,Y,Z$
+\end_inset
+
+ be distributions over 
+\begin_inset Formula $\mathcal{D}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\varepsilon,\varepsilon_{1},\varepsilon_{2},t$
+\end_inset
+
+ and 
+\begin_inset Formula $f:\mathcal{D}\xrightarrow{}\mathcal{D}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+If 
+\begin_inset Formula $X\ind t{\varepsilon}Y$
+\end_inset
+
+ and 
+\begin_inset Formula $f$
+\end_inset
+
+ is of complexity at most 
+\begin_inset Formula $\ell$
+\end_inset
+
+,
+ then 
+\begin_inset Formula $f\left(X\right)\ind{t-\ell}{\varepsilon}f\left(Y\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+If 
+\begin_inset Formula $X\ind t{\varepsilon_{1}}Y\ind t{\varepsilon_{2}}Z$
+\end_inset
+
+ then 
+\begin_inset Formula $X\ind t{\varepsilon_{1}+\varepsilon_{2}}Z$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Computational Secrecy (Goldwasser & Micali '82)
+\end_layout
+
+\end_inset
+
+ We say 
+\begin_inset Formula $\left(\enc,\dec\right)$
+\end_inset
+
+ is 
+\begin_inset Formula $\left(t,\varepsilon\right)$
+\end_inset
+
+-
+\series bold
+computationaly
+\series default
+ 
+\series bold
+secret 
+\series default
+if for any 
+\begin_inset Formula $m_{0},m_{1}\in\MM$
+\end_inset
+
+ of equal length,
+ if we denote 
+\begin_inset Formula $c_{0}=\enc_{k}\left(m_{0}\right),c_{1}=\enc_{k}\left(m_{1}\right)$
+\end_inset
+
+ for any 
+\begin_inset Formula $k\in\KK$
+\end_inset
+
+,
+ then for any adversary 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ of complexity at most 
+\begin_inset Formula $t$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+{\displaystyle \Pr_{k\r\KK}\left[\mathcal{A}\left(c_{0}\right)=1\right]-\Pr_{k\r\KK}\left[\mathcal{A}\left(c_{1}\right)=1\right]<\varepsilon,}
+\]
+
+\end_inset
+
+i.e.
+ 
+\begin_inset Formula $c_{0}\ind t{\varepsilon}c_{1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Remark
+Perfect secrecy is 
+\begin_inset Formula $\left(\infty,0\right)$
+\end_inset
+
+-computational secrecy.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Pseudo Ranom Generators 
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+PRG
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+PRG
+\end_layout
+
+\end_inset
+
+A 
+\begin_inset Formula $\left(t,\varepsilon\right)$
+\end_inset
+
+-
+\series bold
+pseudo random generator 
+\series default
+is a polynomial time computable function 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $G:\str n\xrightarrow{}\str{\ell},\ell\gg n$
+\end_inset
+
+,
+ if we denote 
+\begin_inset Formula $y_{0}=G\left(k\right)$
+\end_inset
+
+ for any 
+\begin_inset Formula $k\in\str n$
+\end_inset
+
+,
+ that for any adversary 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ of complexity at most 
+\begin_inset Formula $t$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\Pr_{k\r\str n}\left[\mathcal{A}\left(y_{0}\right)=1\right]-\Pr_{y_{1}\r\str{\ell}}\left[\mathcal{A}\left(y_{1}\right)=1\right]<\varepsilon,
+\]
+
+\end_inset
+
+i.e.
+ 
+\begin_inset Formula $y_{0}\ind t{\varepsilon}y_{1}$
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Subsection
-The Communication Model
+Computational One-Time Pad
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename pasted1.png
-	width 54page%
+	filename figures/prg.emf
+	width 70text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Computational One-Time Pad
+\end_layout
+
+\end_inset
+
+ Let 
+\begin_inset Formula $G:\str n\xrightarrow{}\str{\ell},\ell\gg n$
+\end_inset
+
+ be a PRG,
+ then we define a scheme 
+\begin_inset Formula $\left(\enc,\dec\right)$
+\end_inset
+
+ for 
+\begin_inset Formula $\KK=\str n,\MM=\CC=\str{\ell}$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Choose a secret random short key 
+\begin_inset Formula $k\r\str n$
+\end_inset
+
+ (
+\begin_inset Quotes qld
+\end_inset
+
+seed
+\begin_inset Quotes qrd
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+Expand the seed into a long 
+\emph on
+keying stream 
+\emph default
+
+\begin_inset Formula $G\left(k\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Encrypt 
+\begin_inset Formula $m$
+\end_inset
+
+ by 
+\begin_inset Formula $\enc_{k}\left(m\right)=G\left(k\right)\oplus m$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Decrypt 
+\begin_inset Formula $c$
+\end_inset
+
+ by 
+\begin_inset Formula $\dec_{k}\left(c\right)=c\oplus G\left(k\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Theorem
+Assume that 
+\begin_inset Formula $\prg:\str n\xrightarrow{}\str{\ell}$
+\end_inset
+
+ is 
+\begin_inset Formula $\left(t,\varepsilon\right)$
+\end_inset
+
+-pseudorandom.
+ Then the 
+\begin_inset Quotes qld
+\end_inset
+
+computational OTP
+\begin_inset Quotes qrd
+\end_inset
+
+ is 
+\begin_inset Formula $\left(t-\ell,2\varepsilon\right)$
+\end_inset
+
+-secure.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+Let 
+\begin_inset Formula $m_{0},m_{1}\in\MM$
+\end_inset
+
+,
+ we need to show 
+\begin_inset Formula $\left(\prg\left(\mathcal{U}_{n}\right)\oplus m_{0}\right)\ind{t'}{\varepsilon'}\left(\prg\left(\mathcal{U}_{n}\right)\oplus m_{1}\right)$
+\end_inset
+
+,
+ where 
+\begin_inset Formula $t'=t-\ell,\varepsilon'=2\varepsilon$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Claim
+\begin_inset Formula $\left(\prg\left(\mathcal{U}_{n}\right)\oplus m\right)\ind{t'}{\varepsilon}\left(\mathcal{U}_{\ell}\oplus m\right)\equiv\mathcal{U}_{\ell}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+From transitivity we conclude 
+\begin_inset Formula $\left(\prg\left(\mathcal{U}_{n}\right)\oplus m_{0}\right)\ind{t'}{\varepsilon'}\left(\prg\left(\mathcal{U}_{n}\right)\oplus m_{1}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Proof of the claim.
+ 
+\series default
+Assume for sake of contradiction there exists an adversary 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ of complexity 
+\begin_inset Formula $t'$
+\end_inset
+
+ such that 
+\begin_inset Formula $\Delta_{\mathcal{A}}\left(\prg\left(\mathcal{U}_{n}\right)\oplus m_{0},\mathcal{U}_{\ell}\oplus m\right)>\varepsilon$
+\end_inset
+
+,
+ we will describe an adversary breaking the PRG.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\mathcal{A}'\left(z\right)=\mathcal{A}\left(z\oplus m\right)$
+\end_inset
+
+,
+ and it's easy to see that 
+\begin_inset Formula $\Delta_{\mathcal{A}'}\left(\prg\left(\mathcal{U}_{n}\right),\mathcal{U}_{\ell}\right)=\Delta_{\mathcal{A}}\left(\prg\left(\mathcal{U}_{n}\right)\oplus m,\mathcal{U}_{\ell}\oplus m\right)>\varepsilon$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The complexity of 
+\begin_inset Formula $\mathcal{A}'$
+\end_inset
+
+ is at most 
+\begin_inset Formula $t'+\ell=t$
+\end_inset
+
+ and thus we've reached a contradiction.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Remark
+PRGs are central primitives in theory of cryptography.
+ If 
+\begin_inset Formula $\P=\NP$
+\end_inset
+
+ then there are no (polynomial) PRGs,
+ 
+\begin_inset Formula ${\displaystyle L=\left\{ \left.z\left.\colon\right.\exists x.\ \prg\left(x\right)=z\right.\right\} \in\NP}$
+\end_inset
+
+,
+ so the existence of PRGs can only be conjectured until 
+\begin_inset Formula $\P\text{ vs }\NP$
+\end_inset
+
+ is resolved,
+ but we have good reasons to believe they do exist.
+ However there are good reasons to believe that PRGs do exist.
+ Many candidates are known whose security can be reduced to seemingly hard problems.
+ Furthermore,
+ it was shown that PRGs can be constructed based on any 
+\emph on
+One-way function
+\emph default
+.
+\end_layout
+
+\begin_layout Section
+Multiple Messages
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Computational Secrecy for Multiple Messages
+\end_layout
+
+\end_inset
+
+ We say 
+\begin_inset Formula $\left(\enc,\dec\right)$
+\end_inset
+
+ is 
+\begin_inset Formula $\left(t,\varepsilon\right)$
+\end_inset
+
+-
+\series bold
+computationaly secrect for multiple messages 
+\series default
+if for any 
+\begin_inset Formula $\vec{x}=\left(x_{1},\ldots,x_{n}\right),\vec{y}=\left(y_{1},\ldots,y_{n}\right)\in\MM^{n}$
+\end_inset
+
+,
+ s.t.
+ 
+\begin_inset Formula $\left\{ \left(x_{i},y_{i}\right)\right\} _{i=1}^{n}$
+\end_inset
+
+ are pairs of equal length messages,
+ if we denote 
+\begin_inset Formula $\vec{c}_{0}=\left(\enc_{k}\left(x_{1}\right),\ldots,\enc_{k}\left(x_{n}\right)\right),c_{1}=\left(\enc_{k}\left(y_{1}\right),\ldots,\enc_{k}\left(y_{n}\right)\right)$
+\end_inset
+
+ for any 
+\begin_inset Formula $k\in\KK$
+\end_inset
+
+,
+ then for any adversary 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ of complexity at most 
+\begin_inset Formula $t$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\Pr_{k\r\KK}\left[\mathcal{A}\left(\vec{c}_{0}\right)=1\right]-\Pr_{k\r\KK}\left[\mathcal{A}\left(\vec{c}_{1}\right)=1\right]<\varepsilon,
+\]
+
+\end_inset
+
+i.e.
+ 
+\begin_inset Formula $\vec{c}_{0}\ind t{\varepsilon}\vec{c}_{1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Insecurity
+\end_layout
+
+\begin_layout Theorem
+If 
+\begin_inset Formula $\left(\enc,\dec\right)$
+\end_inset
+
+ is deterministic and dependent on the key and message 
+\begin_inset Formula $k,m$
+\end_inset
+
+ only,
+ then it is 
+\emph on
+insecure for multiple messages
+\emph default
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+Let 
+\begin_inset Formula $a,b\in\MM$
+\end_inset
+
+ be two different messages of the same length.
+ Then for
+\begin_inset Formula 
+\begin{align*}
+\vec{x} & =\left(a,a\right)\\
+\vec{y} & =\left(a,b\right)
+\end{align*}
+
+\end_inset
+
+we denote where 
+\begin_inset Formula $k\r\KK$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\vec{c}_{0}=\left(\enc_{k}\left(a\right),\enc_{k}\left(a\right)\right),\vec{c}_{1}=\left(\enc_{k}\left(a\right),\enc_{k}\left(b\right)\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Let 
+\begin_inset Formula $\mathcal{A}:\mathcal{C}\xrightarrow{}\left\{ 0,1\right\} $
+\end_inset
+
+ be defined by 
+\begin_inset Formula $\mathcal{A}\left(z_{1},z_{2}\right)=\mathds{1}\left[z_{1}=z_{2}\right]$
+\end_inset
+
+,
+ then
+\begin_inset Formula 
+\[
+\Pr_{k}\left[\mathcal{A}\left(\vec{c}_{0}\right)=1\right]=1\neq0=\Pr_{k}\left[\mathcal{A}\left(\vec{c}_{1}\right)=1\right]
+\]
+
+\end_inset
+
+and thus for any 
+\begin_inset Formula $\varepsilon\in\left[0,1\right]$
+\end_inset
+
+ one can distinguish between the distributions,
+ so the scheme is insecure for multiple messages.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Stream Ciphers
+\end_layout
+
+\begin_layout Algorithm
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+From 1-Message Security to Multiple Message Security
+\end_layout
+
+\end_inset
+
+ Let 
+\begin_inset Formula $\left(\enc,\dec\right)$
+\end_inset
+
+ be secure for single message.
+\end_layout
+
+\begin_layout Algorithm
+Construct a new scheme with multiple messages security:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Initialization:
+ Let 
+\begin_inset Formula $S\r\KK$
+\end_inset
+
+ be a fresh random key.
+\end_layout
+
+\begin_layout Itemize
+Encrypt a message 
+\begin_inset Formula $m$
+\end_inset
+
+ with state 
+\begin_inset Formula $S$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Choose a new random key 
+\begin_inset Formula $S'\r\KK$
+\end_inset
+
+,
+ send 
+\begin_inset Formula $\enc_{S}\left(m,S'\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Update the state to 
+\begin_inset Formula $S'$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+To decrypt a ciphertext 
+\begin_inset Formula $c$
+\end_inset
+
+ with state 
+\begin_inset Formula $S$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Compute 
+\begin_inset Formula $\dec_{S}\left(c\right)=\left(m,S'\right)$
+\end_inset
+
+,
+ output 
+\begin_inset Formula $m$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Update the new state to 
+\begin_inset Formula $S'$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+Alternatively,
+ use a 
+\series bold
+stateful PRG
+\series default
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\mathrm{PRG}\left(\text{current-state}\right)$
+\end_inset
+
+ outputs 
+\begin_inset Formula $\left(\text{new-state},\text{pseudorandom-block}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Algorithm
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Stream Cipher (Synchronous)
+\end_layout
+
+\end_inset
+
+ Stateful PRGs are the basis for 
+\series bold
+stream ciphers:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Let 
+\begin_inset Formula $S_{0}\r\KK$
+\end_inset
+
+ be the random secrect key,
+ used as the initial state.
+\end_layout
+
+\begin_layout Itemize
+To encrypt the 
+\begin_inset Formula $i$
+\end_inset
+
+-th bit of the message 
+\begin_inset Formula $m_{i}$
+\end_inset
+
+ do:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\left(b_{i},S_{i+1}\right)\xleftarrow{}\prg\left(S_{i}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Output 
+\begin_inset Formula $c_{i}=m_{i}\oplus b_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Problem
+What happens if one bit of the transmission is lost ?
+ 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figures/synchronous stream cipher.emf
+	width 45text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Algorithm
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Asynchronous (Self Synchronizing) Stream Ciphers
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Start with a secret,
+ random key (
+\begin_inset Quotes qld
+\end_inset
+
+seed
+\begin_inset Quotes qrd
+\end_inset
+
+),
+ 
+\begin_inset Formula $k$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Generate online a keying stream.
+\end_layout
+
+\begin_layout Itemize
+The 
+\begin_inset Formula $i$
+\end_inset
+
+-th bit is a function of the seed and the recent 
+\begin_inset Formula $t$
+\end_inset
+
+ bits of the ciphertext,
+ 
+\begin_inset Formula $\left(c_{i-t},\ldots,c_{i-1}\right)=\text{public state}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Specifically,
+ encryption is 
+\begin_inset Formula $c_{i}=m_{i}\oplus h\left(k,c_{i-t},\ldots,c_{i-1}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+While decryption is 
+\begin_inset Formula $m_{i}=c_{i}\oplus h\left(k,c_{i-t},\ldots,c_{i-1}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Linear Feedback Shift Registers
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figures/lfsr.emf
+	width 70text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Linear Feedback Shift Register
+\end_layout
+
+\end_inset
+
+An 
+\series bold
+LFSR
+\series default
+ consists of 
+\begin_inset Formula $L$
+\end_inset
+
+ stages (or delay elements) that store bits.
+ The device's hardwiring is defined by coefficients 
+\begin_inset Formula $c_{i}\in\{0,1\}$
+\end_inset
+
+,
+ with 
+\begin_inset Formula $c_{L}$
+\end_inset
+
+ always set to
+\begin_inset Formula $1$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Initialization:
+
+\series default
+ The process begins with an initial state 
+\begin_inset Formula $\left[s_{L-1},\dots,s_{1},s_{0}\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Feedback and Output:
+
+\series default
+ The output sequence 
+\begin_inset Formula $s_{0},s_{1},s_{2},\dots$
+\end_inset
+
+ is determined by a recursion:
+\begin_inset Formula 
+\[
+s_{j}=\sum_{i=1}^{L}c_{i}s_{j-i}\mod 2
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Remark
+With a precise choice of wiring and initialization,
+ the resulting stream can achieve a very long period.
+\end_layout
+
+\begin_layout Subsection
+RC4 (Ron's Code 4) 
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+RC4
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Algorithm
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+RC4
+\end_layout
+
+\end_inset
+
+ Operates on a state consisting of a permutation 
+\begin_inset Formula $S$
+\end_inset
+
+ of 
+\begin_inset Formula $\mathbb{Z}_{256}$
+\end_inset
+
+ and two-8bit index-pointers 
+\begin_inset Formula $i,j$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Algorithm
+
+\series bold
+Initialization:
+
+\series default
+ (Shuffling 
+\begin_inset Formula $S$
+\end_inset
+
+)
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $j=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $S_{0}=0,S_{1}=1,\ldots,S_{255}=255$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Let the key be 
+\begin_inset Formula $k_{0},\ldots,k_{255}$
+\end_inset
+
+ (repeating bits if key has fewer bits)
+\end_layout
+
+\begin_layout Enumerate
+For 
+\begin_inset Formula $i=0$
+\end_inset
+
+ to 
+\begin_inset Formula $255$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $j=\left(j+S_{i}+k_{i}\right)\mod{256}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Swap 
+\begin_inset Formula $S_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $S_{j}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Algorithm
+An output byte 
+\begin_inset Formula $B$
+\end_inset
+
+ is generated as follows:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $i=i+1\mod{256}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $j=j+S_{i}\mod{256}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Swap 
+\emph default
+
+\begin_inset Formula $S_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $S_{j}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $r=S_{i}+S_{j}\mod{256}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $B=S_{r}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Algorithm
+\begin_inset Formula $B$
+\end_inset
+
+ is the next keying stream byte,
+ and is XORed with the next plaintext byte to produce ciphertext byte.
+\end_layout
+
+\begin_layout Section
+Indistinguishability under Chosen Plaintext Attack
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+CPA Security
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Ciphertext Indistinguishability:
+ Alternative Definition
+\end_layout
+
+\end_inset
+
+ Consider the following game:
+\end_layout
+
+\begin_layout Theorem
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    % --- Challenger ---
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+node[chalbox] (C) at (-2.5,0) {
+\end_layout
+
+\begin_layout Plain Layout
+
+        
+\backslash
+textbf{Challenger}
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+        $k 
+\backslash
+r 
+\backslash
+KK$
+\backslash
+
+\backslash
+[0.25em]
+\end_layout
+
+\begin_layout Plain Layout
+
+        $b 
+\backslash
+r 
+\backslash
+binary$
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    };
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    % --- Adversary ---
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+node[advbox] (A) at (2.5,0) {
+\end_layout
+
+\begin_layout Plain Layout
+
+        
+\backslash
+textbf{Adversary $
+\backslash
+mathcal{A}$}
+\backslash
+
+\backslash
+[3em]
+\end_layout
+
+\begin_layout Plain Layout
+
+        
+\backslash
+textcolor{red}{Output $b'$}
+\end_layout
+
+\begin_layout Plain Layout
+
+    };
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    % --- Communication ---
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+draw[arrow] ([yshift=1em]A.west) -- node[above] {$(m_0,
+ m_1)$} ([yshift=1em]C.east);
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+draw[arrow] ([yshift=-1em]C.east) -- node[below] {$
+\backslash
+enc_k(m_b)$} ([yshift=-1em]A.west);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+Then,
+ 
+\begin_inset Formula $\left(\enc,\dec\right)$
+\end_inset
+
+ has 
+\begin_inset Formula $\left(t,\varepsilon\right)$
+\end_inset
+
+-computational secrecy if and only for every 
+\begin_inset Formula $t$
+\end_inset
+
+-time adversary 
+\begin_inset Formula $\Pr\left[b'=b\right]\leq\frac{1}{2}+\frac{1}{2}\varepsilon$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Proof was left to HW1,
+ Q2.
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Indistinguishability under Chosen Plaintext Attack
+\end_layout
+
+\end_inset
+
+ Consider the following game:
+\end_layout
+
+\begin_layout Definition
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    % --- Challenger ---
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+node[chalbox] (C) at (-2.5,0) {
+\end_layout
+
+\begin_layout Plain Layout
+
+        
+\backslash
+textbf{Challenger}
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+        $k 
+\backslash
+r 
+\backslash
+KK$
+\backslash
+
+\backslash
+[3.25em]
+\end_layout
+
+\begin_layout Plain Layout
+
+        $b 
+\backslash
+r 
+\backslash
+binary$
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    };
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    % --- Adversary ---
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+node[advbox] (A) at (2.5,0) {
+\end_layout
+
+\begin_layout Plain Layout
+
+        
+\backslash
+textbf{Adversary $
+\backslash
+mathcal{A}$}
+\backslash
+
+\backslash
+[6em]
+\end_layout
+
+\begin_layout Plain Layout
+
+        
+\backslash
+textcolor{red}{Output $b'$}
+\end_layout
+
+\begin_layout Plain Layout
+
+    };
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[color=blue] at (0,0) {$
+\backslash
+vdots$};
+\end_layout
+
+\begin_layout Plain Layout
+
+    % --- Communication ---
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+draw[arrow,
+ color=blue] ([yshift=2.5em]A.west) -- node[above] {$x_1$} ([yshift=2.5em]C.east);
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+draw[arrow,
+ color=blue] ([yshift=2em]C.east) -- node[below] {$
+\backslash
+enc_k(x_1)$} ([yshift=2em]A.west);
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+draw[arrow,
+ color=red] ([yshift=-2.5em]A.west) -- node[above] {$
+\backslash
+left(m_0,m_1
+\backslash
+right)$} ([yshift=-2.5em]C.east);
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+draw[arrow,
+ color=red] ([yshift=-3em]C.east) -- node[below] {$
+\backslash
+enc_k(m_b)$} ([yshift=-3em]A.west);
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+The game has two phases:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ is allowed to 
+\color blue
+adaptively choose many encryptions
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ chooses a test 
+\begin_inset Formula $m_{0},m_{1}\in\MM$
+\end_inset
+
+ and tries to 
+\color red
+distinguish 
+\color inherit
+
+\begin_inset Formula $\enc_{k}\left(m_{0}\right)$
+\end_inset
+
+ from 
+\begin_inset Formula $\enc_{k}\left(m_{1}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Definition
+We then say,
+ 
+\begin_inset Formula $\left(\enc,\dec\right)$
+\end_inset
+
+ is 
+\begin_inset Formula $\left(t,\varepsilon\right)$
+\end_inset
+
+-
+\series bold
+CPA secure 
+\series default
+if for every 
+\begin_inset Formula $t$
+\end_inset
+
+-time adversary 
+\begin_inset Formula $\Pr\left[b'=b\right]\leq\frac{1}{2}+\varepsilon$
+\end_inset
+
+.
+\end_layout
 
 \end_inset
 
