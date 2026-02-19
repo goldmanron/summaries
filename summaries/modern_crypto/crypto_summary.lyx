@@ -11,6 +11,7 @@
 
 \usepackage[most]{tcolorbox}
 
+
 % --- Shared theoremstyle (one place only!) ---
 \newtheoremstyle{defuprightbrackets}%
   {3pt}{3pt}% space above/below
@@ -87,7 +88,7 @@
         minimum size=1cm, 
         line width=1.5pt, 
         fill=white,           % Clean white fill for standard pages
-        font=\bfseries\sffamily
+        font=\bfseries
     },
     % Experiment Boxes (Challenger/Adversary)
     box/.style={
@@ -96,8 +97,7 @@
         rounded corners, 
         minimum width=2.5cm, 
         minimum height=1.5cm, 
-        align=center,
-        font=\sffamily
+        align=left,
     },
     % Challenger: Light blue tint from lecture
     chalbox/.style={
@@ -903,7 +903,7 @@ End
 \font_sans "default" "default"
 \font_typewriter "default" "default"
 \font_math "auto" "auto"
-\font_default_family default
+\font_default_family sfdefault
 \use_non_tex_fonts true
 \font_sc false
 \font_roman_osf false
@@ -1010,7 +1010,7 @@ End
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -1147,7 +1147,19 @@ par}
 
 \begin_layout Plain Layout
 
-                
+				
+\backslash
+vspace{0.3cm}
+\end_layout
+
+\begin_layout Plain Layout
+
+             
+\end_layout
+
+\begin_layout Plain Layout
+
+	
 \end_layout
 
 \begin_layout Plain Layout
@@ -1266,6 +1278,19 @@ vspace{0.6cm}
 
 \begin_layout Plain Layout
 
+ 				{
+\backslash
+sffamily
+\backslash
+Large 
+\backslash
+textbf{2025-2026} 
+\backslash
+par}
+\end_layout
+
+\begin_layout Plain Layout
+
             
 \backslash
 end{minipage}
@@ -1330,12 +1355,12 @@ LatexCommand tableofcontents
 
 
 \begin_inset FormulaMacro
-\newcommand{\enc}{\mathsf{Enc}}
+\newcommand{\enc}{\mathrm{Enc}}
 \end_inset
 
 
 \begin_inset FormulaMacro
-\newcommand{\dec}{\mathsf{Dec}}
+\newcommand{\dec}{\mathrm{Dec}}
 \end_inset
 
 
@@ -1365,12 +1390,17 @@ LatexCommand tableofcontents
 
 
 \begin_inset FormulaMacro
-\newcommand{\P}{\boldsymbol{\mathrm{P}}}
+\newcommand{\P}{\mathcal{P}}
 \end_inset
 
 
 \begin_inset FormulaMacro
-\newcommand{\NP}{\boldsymbol{\mathrm{NP}}}
+\newcommand{\NP}{\mathcal{NP}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\prf}{\mathrm{PRF}}
 \end_inset
 
 
@@ -2089,7 +2119,7 @@ name "enu:th1ig"
 \end_inset
 
  be an adversary,
- w.l.o.g deterministic,
+ WLOG deterministic,
  and let 
 \begin_inset Formula $m_{0},m_{1}\in\MM$
 \end_inset
@@ -2510,7 +2540,7 @@ Computational Secrecy & Pseudorandomness
 \begin_layout Standard
 \begin_inset Branch computesecrecy
 inverted 0
-status open
+status collapsed
 
 \begin_layout Section
 Computational Secrecy
@@ -2850,12 +2880,12 @@ Perfect secrecy is
 \end_layout
 
 \begin_layout Section
-Pseudo Ranom Generators 
+Pseudorandom Generators 
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-PRG
+PRGs
 \end_layout
 
 \end_inset
@@ -2879,7 +2909,7 @@ A
 
 -
 \series bold
-pseudo random generator 
+pseudorandom generator 
 \series default
 is a polynomial time computable function 
 \begin_inset Newline newline
@@ -4051,7 +4081,8 @@ Then,
 \end_layout
 
 \begin_layout Standard
-Proof was left to HW1,
+Proof:
+ HW1,
  Q2.
 \end_layout
 
@@ -4328,6 +4359,3106 @@ if for every
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Subsection
+Random Encryption
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Random Function
+\end_layout
+
+\end_inset
+
+ We say 
+\begin_inset Formula $R:\Omega\times\mathcal{X}\xrightarrow{}\mathcal{Y}$
+\end_inset
+
+ is a 
+\series bold
+random function
+\series default
+,
+ if for any 
+\begin_inset Formula $x\in\mathcal{X}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $R\left(x\right)\coloneqq R\left(\cdot,x\right):\Omega\xrightarrow{}\mathcal{Y}$
+\end_inset
+
+ is a uniform RV.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Random Permutation
+\end_layout
+
+\end_inset
+
+ We say 
+\begin_inset Formula $R:\Omega\times\mathcal{X}\xrightarrow{}\mathcal{X}$
+\end_inset
+
+ is a 
+\series bold
+random permutation 
+\series default
+if it is uniformly distributed over all permutations on 
+\begin_inset Formula $\mathcal{X}$
+\end_inset
+
+.
+ (i.e.
+ a random function conditioned on it being a permutation.)
+\end_layout
+
+\begin_layout Algorithm
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Encryption From Permutation
+\end_layout
+
+\end_inset
+
+ Let 
+\begin_inset Formula $F:\str n\xrightarrow{}\str n$
+\end_inset
+
+ be a permutation (maybe random) on 
+\begin_inset Formula $\str n$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Encrypt 
+\begin_inset Formula $m$
+\end_inset
+
+:
+ choose 
+\begin_inset Formula $r\r\str n$
+\end_inset
+
+ and output 
+\begin_inset Formula $\enc\left(m\right)=\left(r,F\left(r\oplus m\right)\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Decrypt 
+\begin_inset Formula $\left(r,c\right)$
+\end_inset
+
+:
+ compute 
+\begin_inset Formula $\dec\left(c\right)=r\oplus F^{-1}\left(c\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Theorem
+If 
+\begin_inset Formula $F$
+\end_inset
+
+ is random,
+ then the scheme above is 
+\begin_inset Formula $\left(t,\varepsilon\right)$
+\end_inset
+
+-CPA secure where 
+\begin_inset Formula $\varepsilon=O\left(t/2^{n}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+For 
+\begin_inset Formula $i\in\left[t\right]$
+\end_inset
+
+:
+ Adversary 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ sends 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ and gets 
+\begin_inset Formula $\left(r_{i},c_{i}=F\left(x_{i}\oplus r_{i}\right)\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+The challenge 
+\begin_inset Formula $m_{b}$
+\end_inset
+
+ is encrypted by 
+\begin_inset Formula $\left(r_{*},c_{*}=F\left(m_{b}\oplus r_{*}\right)\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Call 
+\begin_inset Formula $r_{*}$
+\end_inset
+
+ 
+\emph on
+good 
+\emph default
+if 
+\begin_inset Formula $m_{0}\oplus r_{*}$
+\end_inset
+
+ and 
+\begin_inset Formula $m_{1}\oplus r_{*}$
+\end_inset
+
+ are not in 
+\begin_inset Formula $\left\{ x_{i}\oplus r_{i}\right\} _{i\in\left[t\right]}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Pr\left[r_{*}\text{ is good}\right]\geq1-2t/2^{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Conditioned on being good,
+ 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ can't win with prob.
+ larger than 
+\begin_inset Formula $1/2$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Since 
+\begin_inset Formula $r_{*}$
+\end_inset
+
+ is uniform over good & 
+\begin_inset Formula $c_{*}$
+\end_inset
+
+ is uniform over 
+\begin_inset Formula $\str n\setminus\left\{ c_{i}\right\} _{i\in\left[t\right]}$
+\end_inset
+
+,
+ regardless of the value of 
+\begin_inset Formula $b$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Problem
+Alice and Bob can't share a random function (too expensive).
+\end_layout
+
+\begin_layout Section
+Pseudorandom Functions and Permutations 
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+PRFs and PRPs 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Collection of Functions
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $F:\KK\times\mathcal{X}\xrightarrow{}\mathcal{X}$
+\end_inset
+
+,we denote for each 
+\begin_inset Formula $k\in\KK$
+\end_inset
+
+,
+ 
+\begin_inset Formula $F\left(k,\cdot\right)=F_{k}:\mathcal{X}\xrightarrow{}\mathcal{X}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Collection of Permutations
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $F:\KK\times\mathcal{X}\xrightarrow{}\mathcal{X}$
+\end_inset
+
+ where for all 
+\begin_inset Formula $k\in\KK$
+\end_inset
+
+,
+ 
+\begin_inset Formula $F_{k}$
+\end_inset
+
+ is a 
+\emph on
+permutation
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Pseudorandom Functions (GoldreichGoldwasserMicali84)
+\end_layout
+
+\end_inset
+
+ We say 
+\begin_inset Formula $F:\KK\times\mathcal{X}\xrightarrow{}\mathcal{X}$
+\end_inset
+
+ is a 
+\begin_inset Formula $\left(t,\varepsilon\right)$
+\end_inset
+
+-
+\series bold
+pseudorandom function 
+\series default
+if for any 
+\begin_inset Formula $x\in\mathcal{X}$
+\end_inset
+
+,
+ if 
+\begin_inset Formula $k\r\KK$
+\end_inset
+
+ and 
+\begin_inset Formula $R:\mathcal{X}\xrightarrow{}\mathcal{X}$
+\end_inset
+
+ is random,
+ then 
+\begin_inset Formula $F_{k}\left(x\right)\ind t{\varepsilon}R\left(x\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+PRFs:
+ Equivalent Definition
+\end_layout
+
+\end_inset
+
+ Let 
+\begin_inset Formula $F:\KK\times\mathcal{X}\xrightarrow{}\mathcal{X}$
+\end_inset
+
+,
+ and consider the following game:
+\end_layout
+
+\begin_layout Theorem
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    % --- Challenger ---
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+node[chalbox] (C) at (-2.5,0) {
+\end_layout
+
+\begin_layout Plain Layout
+
+        
+\backslash
+textbf{Challenger}
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+        $k 
+\backslash
+r 
+\backslash
+KK$
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+        $b 
+\backslash
+r 
+\backslash
+binary$
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+		If $b=0$:
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+		set $R
+\backslash
+coloneqq F_k$
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+		Else:
+ sample
+\backslash
+
+\backslash
+ random $R$
+\end_layout
+
+\begin_layout Plain Layout
+
+    };
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    % --- Adversary ---
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+node[advbox] (A) at (2.5,0) {
+\end_layout
+
+\begin_layout Plain Layout
+
+        
+\backslash
+textbf{Adversary $
+\backslash
+mathcal{A}$}
+\backslash
+
+\backslash
+[7.25em]
+\end_layout
+
+\begin_layout Plain Layout
+
+        
+\backslash
+textcolor{red}{Output $b'$}
+\end_layout
+
+\begin_layout Plain Layout
+
+    };
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node at (0,-3em) {$
+\backslash
+vdots$};
+\end_layout
+
+\begin_layout Plain Layout
+
+    % --- Communication ---
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+draw[arrow] ([yshift=3.5em]A.west) -- node[above] {$x_1$} ([yshift=3.5em]C.east);
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+draw[arrow] ([yshift=3em]C.east) -- node[below] {$R(x_1)$} ([yshift=3em]A.west);
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+draw[arrow] ([yshift=0.25em]A.west) -- node[above] {$x_2$} ([yshift=0.25em]C.east);
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+draw[arrow] ([yshift=-0.25em]C.east) -- node[below] {$R(x_2)$} ([yshift=-0.25em]A.west);
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+Then 
+\begin_inset Formula $F$
+\end_inset
+
+ is 
+\begin_inset Formula $\left(t,\varepsilon\right)$
+\end_inset
+
+-pseudorandom if and only if for any 
+\begin_inset Formula $t$
+\end_inset
+
+-timed adversary 
+\begin_inset Formula $\Pr\left[b'=b\right]\leq\frac{1}{2}+\varepsilon$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+PRP
+\end_layout
+
+\end_inset
+
+ A collection of permutations 
+\begin_inset Formula $F$
+\end_inset
+
+ is a 
+\begin_inset Formula $\left(t,\varepsilon\right)$
+\end_inset
+
+-
+\series bold
+pseudorandom permutation 
+\series default
+if the above holds where we sample a random permutation 
+\begin_inset Formula $R$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Strong PRP
+\end_layout
+
+\end_inset
+
+A collection of permutations 
+\begin_inset Formula $F$
+\end_inset
+
+ is a 
+\begin_inset Formula $\left(t,\varepsilon\right)$
+\end_inset
+
+-
+\series bold
+strong pseudorandom permutation 
+\series default
+if the above holds where we sample a random permutation 
+\begin_inset Formula $R$
+\end_inset
+
+,
+ and the adversary can also query 
+\begin_inset Formula $R^{-1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+CPA Security from Pseudorandom Permutation
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+CPA Security from PRP
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Algorithm
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Encryption from PRP
+\end_layout
+
+\end_inset
+
+ Let 
+\begin_inset Formula $F:\KK\times\str n\xrightarrow{}\str n$
+\end_inset
+
+ be a PRP on 
+\begin_inset Formula $\str n$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Encrypt 
+\begin_inset Formula $m$
+\end_inset
+
+:
+ choose 
+\begin_inset Formula $r\r\str n$
+\end_inset
+
+ and output 
+\begin_inset Formula $\enc_{k}\left(m\right)=\left(r,F_{k}\left(r\oplus m\right)\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Decrypt 
+\begin_inset Formula $\left(r,c\right)$
+\end_inset
+
+:
+ compute 
+\begin_inset Formula $\dec_{k}\left(c\right)=r\oplus F_{k}^{-1}\left(c\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Theorem
+If 
+\begin_inset Formula $F$
+\end_inset
+
+ is 
+\begin_inset Formula $\left(t,\varepsilon\right)$
+\end_inset
+
+-pseudorandom the scheme above is 
+\begin_inset Formula $\left(\Omega\left(t/n\right),2\varepsilon+t/2^{n}\right)$
+\end_inset
+
+-CPA secure.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+The proof proceeds by 
+\emph on
+reduction
+\emph default
+.
+ We assume towards contradiction that there exists an adversary 
+\begin_inset Formula $\mathcal{A}_{\enc}$
+\end_inset
+
+ that wins the CPA game with prob.
+ 
+\begin_inset Formula $0.5+\delta$
+\end_inset
+
+.
+ We construct an adversary 
+\begin_inset Formula $\mathcal{A}_{\prf}$
+\end_inset
+
+ that wins the PRF game.
+\end_layout
+
+\begin_layout Proof
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[node distance=2.5cm]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    % --- 1.
+ PRF Challenger (The Oracle) ---
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+node[chalbox,
+ minimum height=4.5cm] (C) at (-6,0) {
+\end_layout
+
+\begin_layout Plain Layout
+
+        
+\backslash
+textbf{PRF Challenger}
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+        $k 
+\backslash
+leftarrow 
+\backslash
+mathcal{K},
+ b 
+\backslash
+leftarrow 
+\backslash
+{0,1
+\backslash
+}$
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+        $R
+\backslash
+gets
+\backslash
+begin{cases}F_{k},
+ & b=0
+\backslash
+
+\backslash
+
+\backslash
+text{random},
+ & b=1
+\backslash
+end{cases}$
+\end_layout
+
+\begin_layout Plain Layout
+
+    };
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    % --- 2.
+ PRF Adversary (The Simulator) ---
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+node[box,
+ fill=gray!5,
+ draw=black,
+ minimum height=5.5cm,
+ minimum width=3.5cm] (PRF) at (0,0) {
+\end_layout
+
+\begin_layout Plain Layout
+
+		$r_i 
+\backslash
+r 
+\backslash
+str{n}$
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+        
+\backslash
+textbf{PRF Adversary}
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+        $
+\backslash
+mathcal{A}_{
+\backslash
+prf}$
+\end_layout
+
+\begin_layout Plain Layout
+
+    };
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    % --- 3.
+ Enc Adversary (The Target) ---
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+node[advbox,
+ minimum height=4.5cm] (Enc) at (5.5,0) {
+\end_layout
+
+\begin_layout Plain Layout
+
+        
+\backslash
+textbf{Enc Adversary}
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+        $
+\backslash
+mathcal{A}_{
+\backslash
+enc}$
+\end_layout
+
+\begin_layout Plain Layout
+
+    };
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    % --- Interaction 1:
+ Queries (Top) ---
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+draw[arrow] ([yshift=1.375cm]Enc.west) -- node[above] {$x_i$} ([yshift=1.375cm]PRF.east);
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+draw[arrow] ([yshift=1.375cm]PRF.west) -- node[above] {$a_i=r_i 
+\backslash
+oplus x_i$} ([yshift=1.375cm]C.east);
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+draw[arrow] ([yshift=1.125cm]C.east) -- node[below] {$y_i=R(a_i)$} ([yshift=1.125cm]PRF.west);
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+draw[arrow] ([yshift=1.125cm]PRF.east) -- node[below] {$(r_i,
+ y_i)$} ([yshift=1.125cm]Enc.west);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+node at (3,
+ 0) {$
+\backslash
+vdots$};
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+node at (-3,
+ 0) {$
+\backslash
+vdots$};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    % --- Interaction 2:
+ Challenge (Bottom) ---
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+draw[arrow] ([yshift=-1.125cm]Enc.west) -- node[above] {$m_0,
+ m_1$} ([yshift=-1.125cm]PRF.east);
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+draw[arrow] ([yshift=-1.125cm]PRF.west) -- node[above] {$r^* 
+\backslash
+oplus m_{b^*}$} ([yshift=-1.125cm]C.east);
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+draw[arrow] ([yshift=-1.375cm]C.east) -- node[below] {$y^*$} ([yshift=-1.375cm]PRF.west);
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+draw[arrow] ([yshift=-1.375cm]PRF.east) -- node[below] {$(r^*,
+ y^*)$} ([yshift=-1.375cm]Enc.west);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    % --- Final Outputs ---
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+draw[arrow] (Enc.south) -- ++(0,-0.5) node[below] {Output $
+\backslash
+tilde{b}$};
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+draw[arrow] (PRF.south) -- ++(0,-0.5) node[below,
+ color=red] {Output $b' = (b^* 
+\backslash
+neq 
+\backslash
+tilde{b})$};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+If 
+\begin_inset Formula $b=0$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\Pr\left[b'=0\right]=\Pr\left[\mathcal{A}_{\enc}\text{ wins}\right]=0.5+\delta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+If 
+\begin_inset Formula $b=1$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\Pr\left[b'=0\right]=\Pr\left[\mathcal{A}_{\enc}\text{ wins against random function}\right]=0.5+t2^{-n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+All in all,
+ 
+\begin_inset Formula $\Pr\left[b'=b\right]\geq0.5+0.5\left(\delta-t2^{-n}\right)$
+\end_inset
+
+,
+ and thus for 
+\begin_inset Formula $\delta=2\varepsilon+t/2^{n}$
+\end_inset
+
+ we get a contradiction,
+ since the complexity of 
+\begin_inset Formula $\mathcal{A}_{\prf}$
+\end_inset
+
+ is that of 
+\begin_inset Formula $\mathcal{A}_{\enc}$
+\end_inset
+
+ times 
+\begin_inset Formula $n$
+\end_inset
+
+ because XORing a string takes 
+\begin_inset Formula $O\left(n\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+PRPs in Practice:
+ Block Ciphers
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Block Ciphers
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Block Cipher
+\end_layout
+
+\end_inset
+
+ A 
+\series bold
+block cipher 
+\series default
+is a implementation of a keyed pseudorandom permutation,
+ with 
+\begin_inset Formula $\KK=\str n$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Remark
+To encrypt messages longer than 
+\begin_inset Formula $n$
+\end_inset
+
+,
+ you divide the message to 
+\begin_inset Formula $n$
+\end_inset
+
+-bit blocks (maybe expand the last),
+ and then encrypt as
+\begin_inset Formula 
+\[
+\enc_{k}\left(m\right)=\left(\left(r_{1},F_{k}\left(r_{1}\oplus m_{1}\right)\right),\ldots,\left(r_{t},F_{k}\left(r_{t}\oplus m_{t}\right)\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+A block cipher is 
+\series bold
+not 
+\series default
+an encryption scheme,
+ modes of operations are 
+\begin_inset Quotes qld
+\end_inset
+
+wrappers
+\begin_inset Quotes qrd
+\end_inset
+
+ that turns a block cipher into a full-fledged encryption scheme.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Modes of Operation
+\end_layout
+
+\begin_layout Subsubsection
+Cipher Block Chaining
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+CBC
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Algorithm
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+CBC
+\end_layout
+
+\end_inset
+
+In CBC mode (Cipher Block Chaining),
+ previous ciphertext is XORed with current plaintext before encrypting current block.
+\end_layout
+
+\begin_layout Algorithm
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figures/cbc.emf
+	width 45text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $S_{0}$
+\end_inset
+
+ is an 
+\emph on
+initialization vector 
+\emph default
+(IV) used as a 
+\begin_inset Quotes qld
+\end_inset
+
+seed
+\begin_inset Quotes qrd
+\end_inset
+
+ for the process which is openly transmitted
+\end_layout
+
+\begin_layout Itemize
+To ensure security,
+ each message should have a new random vector as a seed
+\end_layout
+
+\end_deeper
+\begin_layout Claim
+If 
+\begin_inset Formula $E$
+\end_inset
+
+ is a PRP then CBC is CPA-secure.
+\end_layout
+
+\begin_layout Subsubsection
+Output Feedback
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+OFB
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Algorithm
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+OFB
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+An initialization vector 
+\begin_inset Formula $S_{0}$
+\end_inset
+
+ is use as a 
+\begin_inset Quotes qld
+\end_inset
+
+seed
+\begin_inset Quotes qrd
+\end_inset
+
+ for a sequence of pseudorandom blocks 
+\begin_inset Formula $S_{1},S_{2},\ldots$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Each 
+\begin_inset Formula $S_{i}$
+\end_inset
+
+ is XORed with the 
+\begin_inset Formula $i$
+\end_inset
+
+-th plaintext block 
+\begin_inset Formula $P_{i}$
+\end_inset
+
+ to produce the 
+\begin_inset Formula $i$
+\end_inset
+
+-th ciphertext block 
+\begin_inset Formula $C_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+It is important to use a new random seed for each message.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figures/OFB.emf
+	width 45text%
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Claim
+If 
+\begin_inset Formula $E$
+\end_inset
+
+ is a PRF then OFB is CPA-secure.
+\end_layout
+
+\begin_layout Subsubsection
+Electronic Code Book
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+ECB
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Algorithm
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+ECB
+\end_layout
+
+\end_inset
+
+Simplest mode is to encrypt each plaintext block separately.
+ This is known as ECB mode encryption (Electronic Code Book).
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figures/ecb.emf
+	width 35text%
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Claim
+ECB is not CPA-secure (even if 
+\begin_inset Formula $E$
+\end_inset
+
+ is pseudorandom).
+\end_layout
+
+\begin_layout Subsection
+Feistel Networks:
+ Important Building Block in DES
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Feistel Networks
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[node distance=1.5cm,
+ >=Stealth]
+\end_layout
+
+\begin_layout Plain Layout
+
+    % Coordinates for the round
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+node (Li_prev) at (-2,
+ 1.5) {$L_{i-1}$};
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+node (Ri_prev) at (2,
+ 1.5) {$R_{i-1}$};
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\end_layout
+
+\begin_layout Plain Layout
+
+    % XOR and Function nodes
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+node[draw,
+ minimum width=1.2cm,
+ fill=blue!5] (f) at (0,
+ 0.5) {$f$};
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+node[circle,
+ draw,
+ inner sep=0pt,
+ minimum size=0.4cm] (xor) at (-2,
+ 0.5) {};
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+draw (-2,
+ 0.5) -- ++(0,
+ 0.2) -- ++(0,
+ -0.4);
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+draw (-2,
+ 0.5) -- ++(0.2,
+ 0) -- ++(-0.4,
+ 0);
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+node (ki) at (0,
+ 1.5) {$k_i$};
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\end_layout
+
+\begin_layout Plain Layout
+
+    % Outputs
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+node (Li) at (-2,
+ -1) {$L_i$};
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+node (Ri) at (2,
+ -1) {$R_i$};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    % Connections
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+draw[->] (Ri_prev.south) -- (2,
+ 0.5) -- (f.east);
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+draw[->] (f.west) -- (xor.east);
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+draw[->] (Li_prev) -- (xor.north);
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+draw[->] (ki) -- (f.north);
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\end_layout
+
+\begin_layout Plain Layout
+
+    % The Feistel Swap logic
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+draw[->] (xor.south) -- (-2,
+ 0) -- (2,
+ -0.2) -- (Ri.north);
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+draw[->] (2,
+ 0.5) -- (2,
+ 0) -- (-2,
+ -0.2) -- (Li.north);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Algorithm
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Feistel Round Function
+\end_layout
+
+\end_inset
+
+ To compute the 
+\begin_inset Formula $i$
+\end_inset
+
+-th Feistel round on an input 
+\begin_inset Formula $\left(L_{0},R_{0}\right)\in\str{2n}$
+\end_inset
+
+ for a function collection 
+\begin_inset Formula $f:\KK\times\str n\xrightarrow{}\str n$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\series bold
+Recursion:
+ 
+\series default
+Compute 
+\begin_inset Formula $\left(L_{i-1},R_{i-1}\right)\in\str{2n}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Function Application:
+ 
+\series default
+Compute 
+\begin_inset Formula $f\left(k_{i},R_{i-1}\right)$
+\end_inset
+
+ using the 
+\begin_inset Formula $i$
+\end_inset
+
+-th part of the key 
+\begin_inset Formula $k_{i}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+XOR & Swap:
+ 
+\series default
+
+\begin_inset Formula $L_{i}\xleftarrow{}R_{i-1},R_{i}\xleftarrow{}L_{i-1}\oplus f\left(k_{i},R_{i-1}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Return 
+\begin_inset Formula $F_{i}\left(L_{0},R_{0}\right)=\left(L_{i},R_{i}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Claim
+For any 
+\begin_inset Formula $f:\KK\times\str n\xrightarrow{}\str n$
+\end_inset
+
+,
+ and any 
+\begin_inset Formula $i\in\mathbb{N}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $F_{i}:\str{2n}\xrightarrow{}\str{2n}$
+\end_inset
+
+ is a permutation on 
+\begin_inset Formula $\str{2n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Luby-Rackoff '88
+\end_layout
+
+\end_inset
+
+ If 
+\begin_inset Formula $f$
+\end_inset
+
+ is a PRF then a 
+\emph on
+four-round
+\emph default
+ Feistel network using independent keys for each round yields a PRP.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Failure of 2-Round Feistel
+\end_layout
+
+\end_inset
+
+ A two-round Feistel network 
+\begin_inset Formula $G:\str{2n}\rightarrow\str{2n}$
+\end_inset
+
+ constructed from secure PRFs 
+\begin_inset Formula $F_{1},F_{2}$
+\end_inset
+
+ is not a PRF.
+\end_layout
+
+\begin_layout Standard
+Proof:
+ HW2,
+ Q4.
+\end_layout
+
+\begin_layout Subsection
+AES Encryption/Decryption:
+ Carried out in Ten Rounds
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+AES
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Advanced Encryption Standard (AES) operates by the following:
+\end_layout
+
+\begin_layout Itemize
+Input & output block length:
+ 128 bits.
+\end_layout
+
+\begin_layout Itemize
+State:
+ 128 bits,
+ arranged in a 4-by-4 matrix of bytes.
+\end_layout
+
+\begin_layout Itemize
+Each byte is viewed as an element in 
+\begin_inset Formula $GF\left(2^{8}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $S_{0,0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $S_{0,1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $S_{0,2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $S_{0,3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $S_{1,0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $S_{1,1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $S_{1,2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $S_{1,3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $S_{2,0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $S_{2,1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $S_{2,2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $S_{2,3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $S_{3,0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $S_{3,1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $S_{3,2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $S_{3,3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+128 bits AES uses 10 rounds.
+ These are not Feistel rounds.
+\end_layout
+
+\begin_layout Itemize
+The secret key is expanded from 128 bits to 10 round keys,
+ 128 bits each.
+\end_layout
+
+\begin_layout Itemize
+Each round changes the state,
+ then XORS the round key.
+\end_layout
+
+\begin_layout Standard
+Each rounds complicates things a little.
+ Overall it seems infeasible to invert without the secret key (but easy given the key).
+\end_layout
+
+\begin_layout Subsubsection
+AES Specifications:
+ One Round
+\end_layout
+
+\begin_layout Standard
+Transform the state by applying:
+\end_layout
+
+\begin_layout Enumerate
+Substitution:
+ operates on every byte separately:
+ 
+\begin_inset Formula $S_{i,j}\xleftarrow{}S_{i,j}^{-1}$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+(multiplicative inverse in
+\begin_inset Formula $GF\left(2^{8}\right)$
+\end_inset
+
+,
+ which is highly non-linear).
+\begin_inset Newline newline
+\end_inset
+
+If 
+\begin_inset Formula $S_{i,j}=0$
+\end_inset
+
+,
+ don't change it.
+\begin_inset Newline newline
+\end_inset
+
+Clearly,
+ the substitution is invertible.
+\end_layout
+
+\begin_layout Enumerate
+Cyclic Shift inside Rows:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $S_{0,0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $S_{0,1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $S_{0,2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $S_{0,3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(no shift)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $S_{1,3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $S_{1,0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $S_{1,1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $S_{1,2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(shift one position)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $S_{2,2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $S_{2,3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $S_{2,0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $S_{2,1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(shift two positions)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $S_{3,1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $S_{3,2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $S_{3,3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $S_{3,0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(shift three positions)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Clearly,
+ the shift is invertible.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+MixCol:
+ maps the state to a new one.
+\begin_inset Newline newline
+\end_inset
+
+It multiplies each column of state by the polynomial 
+\begin_inset Formula $c\left(x\right)\mod{\left(x^{4}+1\right)}$
+\end_inset
+
+,
+ where
+\begin_inset Formula 
+\[
+c\left(x\right)=\texttt{0x03}x^{3}+\texttt{0x01}x^{2}+\texttt{0x01}x+\texttt{0x02}.
+\]
+
+\end_inset
+
+Specifically,
+ for the first column,
+\begin_inset Formula 
+\[
+S_{0,0}'x^{3}+S_{1,0}'x^{2}+S_{2,0}'x+S_{3,0}'=\left(\texttt{0x03}x^{3}+\texttt{0x01}x^{2}+\texttt{0x01}x+\texttt{0x02}\right)\cdot\left(S_{0,0}x^{3}+S_{1,0}x^{2}+S_{2,0}x+S_{3,0}\right)\mod{\left(x^{4}+1\right).}
+\]
+
+\end_inset
+
+The inverse operation is InvMixCol:
+ It multiplies each column of state by the polynomial 
+\begin_inset Formula $d\left(x\right)\mod{\left(x^{4}+1\right)}$
+\end_inset
+
+,
+ where
+\begin_inset Formula 
+\[
+d\left(x\right)=\texttt{0x0b}x^{3}+\texttt{0x0d}x^{2}+\texttt{0x09}x+\texttt{0x0e}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Remark
+All these coefficients from 
+\begin_inset Formula $c(x)$
+\end_inset
+
+ and 
+\begin_inset Formula $d(x)$
+\end_inset
+
+ (
+\begin_inset Formula $\texttt{0x03,0x01,0x02,0x0b,0x0d,0x09,0x0e}$
+\end_inset
+
+) are hexadecimal constants from 
+\begin_inset Formula $GF\left(2^{8}\right)$
+\end_inset
+
+ (which are low degree polynomials,
+ e.g.
+ 
+\begin_inset Formula $\texttt{0x0e}$
+\end_inset
+
+ in hex is 14 in decimal,
+ 1110 in binary,
+ and 
+\begin_inset Formula $x^{3}+x^{2}+x$
+\end_inset
+
+ as a polynomial).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+These 
+\begin_inset Formula $c(x)$
+\end_inset
+
+ and 
+\begin_inset Formula $d(x)$
+\end_inset
+
+ correspond to the first (left most) column.
+ The other columns have different but similar coefficients/polynomials.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figures/mixcol.emf
+	width 40text%
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+XOR round key:
+ not discussed.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figures/aes.png
+	width 50text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figures/aes.emf
+	width 30text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Strengthening a Given Block Cipher
+\end_layout
+
+\begin_layout Subsubsection
+Double Ciphers
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Idea:
+
+\series default
+ Double-encryption.
+ Instead of using a single key,
+ 
+\begin_inset Formula $k$
+\end_inset
+
+,
+ use two keys,
+ 
+\begin_inset Formula $k_{1},k_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figures/itciph.emf
+	width 50text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Hope:
+
+\series default
+ Complexity of exhaustive attack grow from
+\begin_inset Formula $O\left(2^{n}\right)$
+\end_inset
+
+ to 
+\begin_inset Formula $O\left(2^{2^{n}}\right)$
+\end_inset
+
+,
+ where 
+\begin_inset Formula $n$
+\end_inset
+
+ is the original key-length.
+\end_layout
+
+\begin_layout Remark
+If an encryption is closed under composition then iterating it for any number of times is pointless.
+\end_layout
+
+\begin_layout Remark
+That is,
+ if for all 
+\begin_inset Formula $k_{1},k_{2}$
+\end_inset
+
+ there is 
+\begin_inset Formula $k_{3}$
+\end_inset
+
+ such that 
+\begin_inset Formula $\enc_{k_{2}}\left(\enc_{k_{1}}\left(x\right)\right)=\enc_{k_{3}}\left(x\right)$
+\end_inset
+
+,
+ then we could just exhaustively search for such 
+\begin_inset Formula $k_{3}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Remark
+then we could just exhaustively search for such k3.
+\end_layout
+
+\begin_layout Paragraph
+Ideal Ciphers
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figures/itciph.emf
+	width 50text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The 
+\emph on
+ideal cipher model
+\emph default
+:
+\end_layout
+
+\begin_layout Itemize
+For every 
+\begin_inset Formula $k\in\str n$
+\end_inset
+
+ sample a random permutation 
+\begin_inset Formula $\enc_{k}$
+\end_inset
+
+ on 
+\begin_inset Formula $\str n$
+\end_inset
+
+ and let 
+\begin_inset Formula $\dec_{k}$
+\end_inset
+
+ denote its inverse.
+\end_layout
+
+\begin_layout Itemize
+Evaluating 
+\begin_inset Formula $\enc_{k},\dec_{k}$
+\end_inset
+
+ for any given key 
+\begin_inset Formula $k$
+\end_inset
+
+ is a unit-cost operation.
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+The attack model:
+ 
+\emph default
+A pair 
+\begin_inset Formula $\left(k_{1},k_{2}\right)$
+\end_inset
+
+ of random keys is sampled uniformly.
+ Our goal is to recover the keys given oracle access to the encryption scheme.
+\end_layout
+
+\begin_layout Paragraph
+Meet in the Middle Attack
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figures/meetinthemiddle.emf
+	width 50text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Goal:
+ 
+\series default
+Recover the two keys 
+\begin_inset Formula $k_{1},k_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Ask for a pair of plaintext/ciphertext 
+\begin_inset Formula $\left(x,y\right)$
+\end_inset
+
+ for the new scheme,
+ i.e.,
+ 
+\begin_inset Formula $\left(\enc_{k_{2}}\circ\enc_{k_{1}}\right)\left(x\right)=y$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Find all candidates 
+\begin_inset Formula $\left(k,k'\right)$
+\end_inset
+
+ for which 
+\begin_inset Formula $\enc_{k}\left(x\right)=\dec_{k'}\left(y\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+How many such pairs exist?
+ 
+\begin_inset Formula $O\left(2^{n}\right)$
+\end_inset
+
+ in expectation.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Use another plaintext/ciphertext pair 
+\begin_inset Formula $\left(x',y'\right)$
+\end_inset
+
+ to filter out inconsistent candidates.
+ Whp,
+ only the right key survives.
+ (If not,
+ use another pair).
+\end_layout
+
+\begin_layout Algorithm
+For each key 
+\begin_inset Formula $k$
+\end_inset
+
+ store 
+\begin_inset Formula $\enc_{k}\left(x\right)$
+\end_inset
+
+ in list 
+\begin_inset Formula $L_{1}$
+\end_inset
+
+ and store 
+\begin_inset Formula $D_{k}\left(y\right)$
+\end_inset
+
+ in 
+\begin_inset Formula $L_{2}$
+\end_inset
+
+,
+ sort lists in time 
+\begin_inset Formula $O\left(n2^{n}\right)$
+\end_inset
+
+ and find intersection in time 
+\begin_inset Formula $O\left(2^{n}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subparagraph
+Meet in the Middle Attack:
+ Performance
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Time:
+ 
+\series default
+
+\begin_inset Formula $O\left(n2^{n}\right)$
+\end_inset
+
+,
+ 
+\series bold
+Space:
+ 
+\series default
+
+\begin_inset Formula $O\left(2^{n}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Compare this to exhaustive search over the space of a
+\emph on
+ single
+\emph default
+ key:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Time:
+ 
+\series default
+
+\begin_inset Formula $O\left(n2^{n}\right)$
+\end_inset
+
+,
+ 
+\series bold
+Space:
+ 
+\series default
+
+\begin_inset Formula $O\left(1\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Conclusion
+Double cipher (two iterations) does not add much to security (though it adds some,
+ esp.
+ if fast memory is expensive).
+\end_layout
+
+\begin_layout Subsubsection
+Triple Cipher
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figures/tcip1.emf
+	width 50text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figures/tcip2.emf
+	width 50text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The first version utilizes three independent keys 
+\begin_inset Formula $k_{1},k_{2},k_{3}$
+\end_inset
+
+.
+ The second,
+ just two - 
+\begin_inset Formula $k_{1},k_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+The 
+\begin_inset Quotes qld
+\end_inset
+
+middle box
+\begin_inset Quotes qrd
+\end_inset
+
+ employs decryption rather than encryption.
+ This results in backward compatibility:
+ Taking 
+\begin_inset Formula $k_{1},k_{2},k_{3}=k$
+\end_inset
+
+,
+ this is identical to a single encryption using 
+\begin_inset Formula $k$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+When the key is unknown,
+ decryption (should) also be a pseudorandom function,
+ so using 
+\begin_inset Formula $D_{k_{2}}$
+\end_inset
+
+ does not reduce security.
+\end_layout
+
+\begin_layout Itemize
+Both versions are susceptible to a meet in the middle attack,
+ albeit one that uses a list of size 
+\begin_inset Formula $2^{2n}$
+\end_inset
+
+ (where 
+\begin_inset Formula $n$
+\end_inset
+
+ is length of keys).
+\begin_inset Newline newline
+\end_inset
+
+This is the best attack known for version (1).
+\end_layout
+
+\begin_layout Itemize
+For version (2),
+ there is a 
+\begin_inset Formula $O\left(n2^{n}\right)$
+\end_inset
+
+ attack using 
+\begin_inset Formula $O\left(2^{n}\right)$
+\end_inset
+
+ chosen input/output pairs.
+ This substantially reduces the practical risk of such attack.
+ 
+\end_layout
+
+\begin_layout Conclusion
+Security is a subtle issue - Best to have a proof of security.
 \end_layout
 
 \end_inset
