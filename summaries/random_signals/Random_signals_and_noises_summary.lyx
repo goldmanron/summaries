@@ -1993,7 +1993,7 @@ LatexCommand tableofcontents
 \begin_layout Standard
 \begin_inset Branch random variables
 inverted 0
-status open
+status collapsed
 
 \begin_layout Chapter
 הסתברות ומשתנים אקראיים
@@ -12720,7 +12720,7 @@ MSE
 \begin_layout Standard
 \begin_inset Branch processes
 inverted 0
-status collapsed
+status open
 
 \begin_layout Chapter
 מבוא לתהליכים אקראיים
@@ -28625,7 +28625,7 @@ end{center}
 \begin_layout Standard
 \begin_inset Branch addition processes
 inverted 0
-status collapsed
+status open
 
 \begin_layout Section
 תהליך עם תוספות בזמן בדיד
@@ -34646,7 +34646,7 @@ status open
  אם
 \begin_inset Formula 
 \begin{align*}
-f_{D}\left(t\right)=\frac{\lambda^{\alpha}t^{\alpha-1}e^{-\lambda t}}{\left(k-1\right)!} & , & t\geq0
+f_{D}\left(t\right)=\frac{\lambda^{k}t^{k-1}e^{-\lambda t}}{\left(k-1\right)!} & , & t\geq0
 \end{align*}
 
 \end_inset

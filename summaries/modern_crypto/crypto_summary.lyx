@@ -97,7 +97,7 @@
         rounded corners, 
         minimum width=2.5cm, 
         minimum height=1.5cm, 
-        align=left,
+        align=center,
     },
     % Challenger: Light blue tint from lecture
     chalbox/.style={
@@ -972,6 +972,16 @@ End
 \filename_suffix 0
 \color background background
 \end_branch
+\branch block
+\selected 1
+\filename_suffix 0
+\color background background
+\end_branch
+\branch auth
+\selected 1
+\filename_suffix 0
+\color background background
+\end_branch
 \index Index
 \shortcut idx
 \color #008000
@@ -1355,12 +1365,12 @@ LatexCommand tableofcontents
 
 
 \begin_inset FormulaMacro
-\newcommand{\enc}{\mathrm{Enc}}
+\newcommand{\enc}{\mathsf{Enc}}
 \end_inset
 
 
 \begin_inset FormulaMacro
-\newcommand{\dec}{\mathrm{Dec}}
+\newcommand{\dec}{\mathsf{Dec}}
 \end_inset
 
 
@@ -1370,12 +1380,12 @@ LatexCommand tableofcontents
 
 
 \begin_inset FormulaMacro
-\newcommand{\r}{\xleftarrow{R}}
+\newcommand{\r}{\xleftarrow{\mathsf{R}}}
 \end_inset
 
 
 \begin_inset FormulaMacro
-\newcommand{\prg}{\mathrm{PRG}}
+\newcommand{\prg}{\mathsf{PRG}}
 \end_inset
 
 
@@ -1390,17 +1400,32 @@ LatexCommand tableofcontents
 
 
 \begin_inset FormulaMacro
-\newcommand{\P}{\mathcal{P}}
+\newcommand{\P}{\boldsymbol{\mathsf{P}}}
 \end_inset
 
 
 \begin_inset FormulaMacro
-\newcommand{\NP}{\mathcal{NP}}
+\newcommand{\NP}{\boldsymbol{\mathsf{NP}}}
 \end_inset
 
 
 \begin_inset FormulaMacro
-\newcommand{\prf}{\mathrm{PRF}}
+\newcommand{\prf}{\mathsf{PRF}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\mac}{\mathsf{MAC}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\tg}{\mathsf{tag}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\TT}{\mathcal{T}}
 \end_inset
 
 
@@ -1564,7 +1589,7 @@ Eve
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -1854,6 +1879,13 @@ equal
 .
 \end_layout
 
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
 \begin_layout Definition
 \begin_inset Argument 1
 status open
@@ -1981,7 +2013,7 @@ We sample a key
 \end_inset
 
  and a bit 
-\begin_inset Formula $b\xleftarrow{}\binary$
+\begin_inset Formula $b\r\binary$
 \end_inset
 
 .
@@ -3895,7 +3927,7 @@ Ciphertext Indistinguishability:
 
 \begin_layout Theorem
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -5585,6 +5617,20 @@ All in all,
 \end_layout
 
 \end_deeper
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Block Ciphers
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch block
+inverted 0
+status collapsed
+
 \begin_layout Section
 PRPs in Practice:
  Block Ciphers
@@ -5668,18 +5714,11 @@ wrappers
  that turns a block cipher into a full-fledged encryption scheme.
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage pagebreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
+\begin_layout Section
 Modes of Operation
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Cipher Block Chaining
 \begin_inset Argument 1
 status open
@@ -5716,7 +5755,7 @@ In CBC mode (Cipher Block Chaining),
 \align center
 \begin_inset Graphics
 	filename figures/cbc.emf
-	width 45text%
+	width 60text%
 
 \end_inset
 
@@ -5756,7 +5795,7 @@ If
  is a PRP then CBC is CPA-secure.
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Output Feedback
 \begin_inset Argument 1
 status open
@@ -5840,7 +5879,7 @@ It is important to use a new random seed for each message.
 \align center
 \begin_inset Graphics
 	filename figures/OFB.emf
-	width 45text%
+	width 70text%
 
 \end_inset
 
@@ -5856,7 +5895,7 @@ If
  is a PRF then OFB is CPA-secure.
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Electronic Code Book
 \begin_inset Argument 1
 status open
@@ -5889,7 +5928,7 @@ Simplest mode is to encrypt each plaintext block separately.
 \align center
 \begin_inset Graphics
 	filename figures/ecb.emf
-	width 35text%
+	width 50text%
 
 \end_inset
 
@@ -5905,7 +5944,7 @@ ECB is not CPA-secure (even if
  is pseudorandom).
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 Feistel Networks:
  Important Building Block in DES
 \begin_inset Argument 1
@@ -6297,7 +6336,7 @@ Proof:
  Q4.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 AES Encryption/Decryption:
  Carried out in Ten Rounds
 \begin_inset Argument 1
@@ -6315,6 +6354,18 @@ AES
 \begin_layout Standard
 Advanced Encryption Standard (AES) operates by the following:
 \end_layout
+
+\begin_layout Standard
+\align left
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="3">
+<features tabularvalignment="bottom">
+<column alignment="left" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
 
 \begin_layout Itemize
 Input & output block length:
@@ -6335,9 +6386,12 @@ Each byte is viewed as an element in
 .
 \end_layout
 
-\begin_deeper
-\begin_layout Standard
-\align center
+\end_inset
+</cell>
+<cell multirow="3" alignment="center" valignment="middle" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="4">
 <features tabularvalignment="middle">
@@ -6552,7 +6606,25 @@ Each byte is viewed as an element in
 
 \end_layout
 
-\end_deeper
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 128 bits AES uses 10 rounds.
  These are not Feistel rounds.
@@ -6573,7 +6645,7 @@ Each rounds complicates things a little.
  Overall it seems infeasible to invert without the secret key (but easy given the key).
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 AES Specifications:
  One Round
 \end_layout
@@ -6617,6 +6689,8 @@ Clearly,
 
 \begin_layout Enumerate
 Cyclic Shift inside Rows:
+ Clearly,
+ the shift is invertible,
 \end_layout
 
 \begin_deeper
@@ -6873,11 +6947,6 @@ Cyclic Shift inside Rows:
 
 \end_layout
 
-\begin_layout Standard
-Clearly,
- the shift is invertible.
-\end_layout
-
 \end_deeper
 \begin_layout Enumerate
 MixCol:
@@ -6981,7 +7050,7 @@ These
 \align center
 \begin_inset Graphics
 	filename figures/mixcol.emf
-	width 40text%
+	width 70text%
 
 \end_inset
 
@@ -6997,7 +7066,7 @@ XOR round key:
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename figures/aes.png
+	filename figures/aes.emf
 	width 50text%
 
 \end_inset
@@ -7008,19 +7077,19 @@ XOR round key:
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename figures/aes.emf
-	width 30text%
+	filename figures/aes.png
+	width 70text%
 
 \end_inset
 
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 Strengthening a Given Block Cipher
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Double Ciphers
 \end_layout
 
@@ -7108,7 +7177,7 @@ That is,
 then we could just exhaustively search for such k3.
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsubsection
 Ideal Ciphers
 \end_layout
 
@@ -7177,7 +7246,7 @@ A pair
  Our goal is to recover the keys given oracle access to the encryption scheme.
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsubsection
 Meet in the Middle Attack
 \end_layout
 
@@ -7287,7 +7356,7 @@ For each key
 .
 \end_layout
 
-\begin_layout Subparagraph
+\begin_layout Paragraph
 Meet in the Middle Attack:
  Performance
 \end_layout
@@ -7352,7 +7421,7 @@ Double cipher (two iterations) does not add much to security (though it adds som
  if fast memory is expensive).
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Triple Cipher
 \end_layout
 
@@ -7461,6 +7530,676 @@ For version (2),
 Security is a subtle issue - Best to have a proof of security.
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Authentication
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch auth
+inverted 0
+status collapsed
+
+\begin_layout Standard
+While encryption focuses on secrecy (privacy),
+ Message Authentication Codes focus on
+\series bold
+ 
+\series default
+\emph on
+integrity
+\emph default
+ (ensuring the message wasn't changed) and 
+\emph on
+authenticity
+\emph default
+ (ensuring it really came from Alice).
+ These goals are 
+\emph on
+orthogonal
+\emph default
+;
+ secrecy alone does not guarantee integrity.
+\end_layout
+
+\begin_layout Section
+The Authentication Model
+\end_layout
+
+\begin_layout Standard
+The goal is to ensure integrity even in the presence of an 
+\emph on
+active adversary
+\emph default
+ (Fran the Forger) who can hear genuine messages,
+ possibly choose messages to be signed,
+ and then send her own forged messages.
+ Bob must be able to distinguish genuine messages from forged ones.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[node distance=1.5cm]
+\end_layout
+
+\begin_layout Plain Layout
+
+    % Defined Colors to match slides
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+definecolor{slideyellow}{RGB}{218,218,0}
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+definecolor{slidegreen}{RGB}{0,180,0}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    % Parties
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+node[person,
+ draw=black,
+ fill=slideyellow] (A) at (0,0) {
+\backslash
+textbf{A}};
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+node[person,
+ draw=black,
+ fill=slideyellow,
+ right=5cm of A] (B) {
+\backslash
+textbf{B}};
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+node[person,
+ draw=black,
+ fill=slidegreen,
+ dashed] (F) at (2.5,-1.8) {
+\backslash
+textbf{F}};
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\end_layout
+
+\begin_layout Plain Layout
+
+    % Labels (Black writing globally)
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+node[below=0.2cm of A,
+ align=center,
+ font=
+\backslash
+sffamily
+\backslash
+small] {Alice
+\backslash
+
+\backslash
+(sender)};
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+node[below=0.2cm of B,
+ align=center,
+ font=
+\backslash
+sffamily
+\backslash
+small] {Bob
+\backslash
+
+\backslash
+(receiver)};
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+node[below=0.2cm of F,
+ align=center,
+ font=
+\backslash
+sffamily
+\backslash
+small] {Fran
+\backslash
+
+\backslash
+(forger)};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    % Communication channel (Alice to Bob)
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+draw[->,
+ >=Stealth,
+ line width=1.5pt] 
+\end_layout
+
+\begin_layout Plain Layout
+
+        (A.east) -- node[above,
+ pos=0.5,
+ font=
+\backslash
+sffamily] {$(m,
+ 
+\backslash
+tg)$} (B.west);
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\end_layout
+
+\begin_layout Plain Layout
+
+    % Active Adversary Intercept/Forgery
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+draw[<->,
+ >=Stealth,
+ red,
+ dashed,
+ thick] (2.5,-0.1) -- (F.north);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In our model,
+ the "major players" interact as follows:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Parties:
+
+\series default
+ Alice and Bob are the legitimate participants.
+ In authentication contexts,
+ Alice is the 
+\emph on
+sender
+\emph default
+ and Bob is the 
+\emph on
+receiver
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Adversary:
+
+\series default
+ Fran is the active adversary who tampers with the message to compromise integrity.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Channel:
+ 
+\series default
+A reliable communication line exists between Alice and Bob.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+The Shared Secret:
+
+\series default
+ They utilize an 
+\emph on
+authentication
+\emph default
+ scheme 
+\begin_inset Formula $\mac$
+\end_inset
+
+ that is 
+\emph on
+known 
+\emph default
+to Fran,
+ and a 
+\emph on
+secret 
+\emph default
+key 
+\begin_inset Formula $k$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+The Goal:
+
+\series default
+ Alice wants to send a message 
+\begin_inset Formula $m$
+\end_inset
+
+ to Bob such that it remains untampered with.
+ Bob must be able to tell genuine messages from forged ones.
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+MAC
+\end_layout
+
+\end_inset
+
+ A 
+\series bold
+Message Authentication Code
+\series default
+ is 
+\begin_inset Formula $\mac:\KK\times\MM\xrightarrow{}\TT$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\tg=\mac_{k}\left(m\right)$
+\end_inset
+
+ is called a 
+\series bold
+tag
+\series default
+.
+\end_layout
+
+\begin_layout Section
+Security
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+EU-CPA
+\end_layout
+
+\end_inset
+
+ Consider the following game:
+\end_layout
+
+\begin_layout Definition
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    % --- Challenger ---
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+node[chalbox] (C) at (-2.5,0) {
+\end_layout
+
+\begin_layout Plain Layout
+
+        
+\backslash
+textbf{Challenger}
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+        $k 
+\backslash
+r 
+\backslash
+KK$
+\backslash
+
+\backslash
+[6em]
+\end_layout
+
+\begin_layout Plain Layout
+
+    };
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    % --- Adversary ---
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+node[advbox] (A) at (2.5,0) {
+\end_layout
+
+\begin_layout Plain Layout
+
+        
+\backslash
+textbf{Adversary $
+\backslash
+mathcal{A}$}
+\backslash
+
+\backslash
+[7em]
+\end_layout
+
+\begin_layout Plain Layout
+
+        
+\backslash
+textcolor{red}{Output $(m,
+\backslash
+tg)$}
+\end_layout
+
+\begin_layout Plain Layout
+
+    };
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node at (0,-3em) {$
+\backslash
+vdots$};
+\end_layout
+
+\begin_layout Plain Layout
+
+    % --- Communication ---
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+draw[arrow] ([yshift=3.5em]A.west) -- node[above] {$m_1$} ([yshift=3.5em]C.east);
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+draw[arrow] ([yshift=3em]C.east) -- node[below] {$
+\backslash
+mac_k(m_1)$} ([yshift=3em]A.west);
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+draw[arrow] ([yshift=0.25em]A.west) -- node[above] {$m_2$} ([yshift=0.25em]C.east);
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+draw[arrow] ([yshift=-0.25em]C.east) -- node[below] {$
+\backslash
+mac_k(m_2)$} ([yshift=-0.25em]A.west);
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+The adversary wins if 
+\begin_inset Formula $m\neq m_{i}$
+\end_inset
+
+ (for all 
+\begin_inset Formula $i$
+\end_inset
+
+) and 
+\begin_inset Formula $\tg=\mac_{k}\left(m\right)$
+\end_inset
+
+.
+ Then MAC has 
+\begin_inset Formula $\left(t,\varepsilon\right)$
+\end_inset
+
+ 
+\series bold
+Existential Unforgeability under Chosen Plaintext Attack 
+\series default
+if for every 
+\begin_inset Formula $t$
+\end_inset
+
+-bounded adversary 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ which is allowed to ask for 
+\begin_inset Formula $t$
+\end_inset
+
+ legal pairs,
+ 
+\begin_inset Formula $\Pr\left[\mathcal{A}\text{ wins}\right]\leq\varepsilon$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem
+If 
+\begin_inset Formula $\mac:\str n\xrightarrow{}\str{\ell}$
+\end_inset
+
+ is a random function then it's 
+\begin_inset Formula $\left(\infty,2^{-\ell}\right)$
+\end_inset
+
+-secure.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+A 
+\begin_inset Formula $\left(t,\varepsilon\right)$
+\end_inset
+
+-secure PRF is 
+\begin_inset Formula $\left(t'\approx t,\varepsilon'=\varepsilon+2^{-\ell}\right)$
+\end_inset
+
+-MAC.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Proof idea
+\end_layout
+
+\end_inset
+
+If the PRF was truly random function then hard to forge,
+ hence an adversary that breaks the MAC can distinguis the PRF from truly random function.
+\end_layout
+
+\end_deeper
 \end_inset
 
 
