@@ -759,7 +759,7 @@ q, & \varphi=q\in\left\{ p_{i}\right\} _{i\in\mathbb{N}}\setminus\left\{ p_{1},\
 \begin_layout Standard
 \begin_inset Branch semantics_zo
 inverted 0
-status collapsed
+status open
 
 \begin_layout Section
 סמנטיקה
@@ -2386,13 +2386,6 @@ status open
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage pagebreak
-\end_inset
-
-
 \end_layout
 
 \begin_layout Claim
@@ -5780,7 +5773,7 @@ F, & \cc\left(v\right)\neq i
 \begin_layout Standard
 \begin_inset Branch first_order
 inverted 0
-status open
+status collapsed
 
 \begin_layout Chapter
 לוגיקה מסדר ראשון

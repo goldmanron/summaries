@@ -136,10 +136,6 @@
         "URL": "https://drive.google.com/file/d/1Bfq6icB_oE0vs6WssDGOHA0KDYTAtbsA/view?usp=drive_link",
         "button_color": "gradient-teal1",
         "pdf_info": {
-            "under_construction": {
-                "": "בבנייה",
-                "image": "icon/construction.png"
-            },
             "course_info": {
                 "שם קורס מלא": "אלגוריתמים",
                 "מספר קורס": "0368-2160",
