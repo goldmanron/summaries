@@ -10,8 +10,10 @@
                 "שנה וסמסמטר": "2025א",
                 "מרצה": ["ד\"ר מיכל קליינבורט", "פרופ' אמיר שפילקה"],
                 "image": "icon/info.png"
+                }
             }
-        }
+        },
+        "complex_functions1": {
     },
     "discrete_math_2": {
         "display_name": "בדידה 2",
@@ -39,7 +41,8 @@
                 "מרצה": ["פרופ' אלכסנדר רבינוביץ'"],
                 "image": "icon/info.png"
             }
-    },
+    }
+},
     "complex_functions1": {
         "display_name": "מרוכבות 1",
         "URL": "summaries/complex/lectures.pdf",
