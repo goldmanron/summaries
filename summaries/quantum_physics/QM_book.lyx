@@ -1,0 +1,2433 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\begin_preamble
+% --- Load amsthm package for theorem styles ---
+\usepackage{amsthm}
+
+
+
+% Allows fancy stuff in the page header
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\usepackage{enumitem}
+\setlist[itemize,1]{label={\fontfamily{cmr}\fontencoding{T1}\selectfont\textbullet}}
+
+%Allows circuit drawing
+\usepackage{circuitikz}
+
+%Allows plotting graphs
+\usepackage{pgfplots}
+
+\usetikzlibrary{svg.path,decorations.pathmorphing, backgrounds,decorations.pathreplacing, automata, shapes.geometric, arrows.meta, positioning, calc}
+
+\usepackage{mathtools}
+\let\savedleft\left
+  \let\savedright\right
+
+  % Redefine \left and \right to insert the pairing-group hack
+  \renewcommand{\left}{\mathopen{}\mathclose\bgroup\savedleft}
+  \renewcommand{\right}{\aftergroup\egroup\savedright}
+
+% Necessary Commands:
+\usepackage{autobreak}
+\usepackage[T1]{fontenc}
+\usepackage{relsize}
+
+% Convert the QED Symbol at the end of proofs to a solid black square (credit: Yakir Oz):
+\usepackage{amssymb}
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+% Correct the reversed parentheses in labels:
+\usepackage{polyglossia}
+\setmainlanguage{hebrew}
+\newfontfamily{\hebrewfont}{David}
+\makeatletter
+\def\maketag@@@#1{\hbox{\m@th\normalfont\LRE{#1}}}
+\def\tagform@#1{\maketag@@@{(\ignorespaces#1\unskip)}}
+\makeatother
+
+% Create disjoint union symbols:
+\makeatletter
+\def\moverlay{\mathpalette\mov@rlay}
+\def\mov@rlay#1#2{\leavevmode\vtop{%
+   \baselineskip\z@skip \lineskiplimit-\maxdimen
+   \ialign{\hfil$\m@th#1##$\hfil\cr#2\crcr}}}
+\newcommand{\charfusion}[3][\mathord]{
+    #1{\ifx#1\mathop\vphantom{#2}\fi
+        \mathpalette\mov@rlay{#2\cr#3}
+      }
+    \ifx#1\mathop\expandafter\displaylimits\fi}
+\makeatother
+\newcommand{\cupdot}{\charfusion[\mathbin]{\cup}{\cdot}}
+\newcommand{\bigcupdot}{\charfusion[\mathop]{\bigcup}{\cdot}}
+
+
+\newcommand{\kaliLargeLand}{\mathop{\mathlarger{\mathlarger{\mathlarger{\land}}}}}
+\newcommand{\hebtext}[1]{\mbox{\R{\#1}}}
+\end_preamble
+\options no-math
+\use_default_options true
+\begin_modules
+customHeadersFooters
+theorems-ams-chap-bytype
+theorems-ams-extended-chap-bytype
+tcolorbox
+algorithm2e
+enumitem
+\end_modules
+\maintain_unincluded_children no
+\language hebrew
+\language_package default
+\inputencoding auto-legacy
+\fontencoding auto
+\font_roman "default" "David CLM"
+\font_sans "default" "David CLM"
+\font_typewriter "default" "David CLM"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\float_alignment class
+\paperfontsize 11
+\spacing onehalf
+\use_hyperref true
+\pdf_author "Ron Goldman"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle true
+\pdf_quoted_options "linkcolor=blue, urlcolor=marineblue, citecolor=blue, pdfstartview={FitH}, hyperfootnotes=false, unicode=true"
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\branch mathematical foundations
+\selected 1
+\filename_suffix 0
+\color background background
+\end_branch
+\branch linear algebra
+\selected 0
+\filename_suffix 0
+\color background background
+\end_branch
+\branch continous linear algebra
+\selected 1
+\filename_suffix 0
+\color background background
+\end_branch
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1cm
+\topmargin 2cm
+\rightmargin 1cm
+\bottommargin 3cm
+\headheight 0cm
+\headsep 1cm
+\footskip 1cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation 0bp
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Title
+\paragraph_spacing double
+
+\series bold
+\size huge
+פיזיקה קוואנטית ומצב מוצק
+\family roman
+\shape up
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\shape default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+(
+\numeric on
+0512-2830
+\numeric off
+)
+\end_layout
+
+\begin_layout Author
+רון גולדמן
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\braket}[2]{\left\langle #1\middle|#2\right\rangle }
+{\left\langle #1|#2\right\rangle }
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part
+מבוא מתמטי
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch mathematical foundations
+inverted 0
+status open
+
+\begin_layout Standard
+\begin_inset Branch linear algebra
+inverted 0
+status collapsed
+
+\begin_layout Chapter
+אלגברה לינארית במימד בן מנייה
+\end_layout
+
+\begin_layout Standard
+משוואת שרדינגר:
+\begin_inset Formula 
+\begin{align*}
+i\hbar\frac{\partial}{\partial t}\psi & =\left(-\frac{\hbar^{2}}{2m}\nabla^{2}+V\right)\psi\\
+i\hbar\frac{\mathrm{d}}{\mathrm{d}t}\left|\psi\left(t\right)\right\rangle  & =\widehat{H}\left|\psi\left(t\right)\right\rangle 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+מרחב וקטורי
+\end_layout
+
+\begin_layout Subsection
+הגדרה ותכונות בסיסיות
+\end_layout
+
+\begin_layout Definition
+תהא 
+\begin_inset Formula $V$
+\end_inset
+
+ קבוצה ו-
+\begin_inset Formula $\mathbb{F}$
+\end_inset
+
+ שדה.
+ 
+\begin_inset Formula $\left(V,\cdot,+\right)$
+\end_inset
+
+ הוא 
+\series bold
+מרחב וקטורי 
+\series default
+מעל 
+\begin_inset Formula $\mathbb{F}$
+\end_inset
+
+ אם:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\series bold
+סגירות:
+
+\series default
+ 
+\begin_inset Formula 
+\begin{align*}
+\forall\left|\alpha\right\rangle ,\left|\beta\right\rangle \in V,a,b\in\mathbb{F}. & \  & a\left|\alpha\right\rangle +b\left|\beta\right\rangle \in V
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+קומוטטיביות:
+
+\series default
+ 
+\begin_inset Formula 
+\begin{align*}
+\forall\left|\alpha\right\rangle ,\left|\beta\right\rangle \in V. & \  & \left|\alpha\right\rangle +\left|\beta\right\rangle =\left|\beta\right\rangle +\left|\alpha\right\rangle 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+אסוציאטיביות:
+
+\series default
+ 
+\begin_inset Formula 
+\begin{align*}
+\forall\left|\alpha\right\rangle ,\left|\beta\right\rangle ,\left|\gamma\right\rangle \in V. & \  & \left|\alpha\right\rangle +\left(\left|\beta\right\rangle +\left|\gamma\right\rangle \right) & =\left(\left|\alpha\right\rangle +\left|\beta\right\rangle \right)+\left|\gamma\right\rangle \\
+\forall\left|\alpha\right\rangle \in V,a,b\in\mathbb{F}. & \  & a\left(b\left|\alpha\right\rangle \right) & =\left(ab\right)\left|\alpha\right\rangle 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+דיסטריבוטיביות:
+
+\series default
+ 
+\begin_inset Formula 
+\begin{align*}
+\forall\left|\alpha\right\rangle ,\left|\beta\right\rangle \in V,a\in\mathbb{F}. & \  & \alpha\left(\left|\alpha\right\rangle +\left|\beta\right\rangle \right) & =\alpha\left|\alpha\right\rangle +\alpha\left|\beta\right\rangle \\
+\forall\left|\alpha\right\rangle ,\in V,a,b\in\mathbb{F}. & \  & \left(a+b\right)\left|\alpha\right\rangle  & =a\left|\alpha\right\rangle +b\left|\alpha\right\rangle 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:vec_zero"
+
+\end_inset
+
+קיים אפס:
+\series default
+
+\begin_inset Formula 
+\begin{align*}
+\exists\left|0\right\rangle \in V\forall\left|\alpha\right\rangle \in V. & \  & \left|\alpha\right\rangle +\left|0\right\rangle =\left|\alpha\right\rangle 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+קיום נגדי:
+\series default
+
+\begin_inset Formula 
+\begin{align*}
+\forall\left|\alpha\right\rangle \in V\exists\left|-\alpha\right\rangle \in V. & \  & \left|\alpha\right\rangle +\left|-\alpha\right\rangle =\left|0\right\rangle 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Claim
+יהי 
+\begin_inset Formula $V$
+\end_inset
+
+ מרחב וקטורי מעל שדה 
+\begin_inset Formula $\mathbb{F}$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+קיים 
+\begin_inset Formula $\left|0\right\rangle \in V$
+\end_inset
+
+ יחיד שמקיים את 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "enu:vec_zero"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+עבור 
+\begin_inset Formula $0\in\mathbb{F}$
+\end_inset
+
+,
+ לכל 
+\begin_inset Formula $\left|\alpha\right\rangle \in V$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $0\left|\alpha\right\rangle =\left|0\right\rangle $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+עבור 
+\begin_inset Formula $1\in\mathbb{F}$
+\end_inset
+
+,
+ לכל 
+\begin_inset Formula $\left|\alpha\right\rangle \in V$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $1\left|\alpha\right\rangle =\left|\alpha\right\rangle $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+לכל 
+\begin_inset Formula $\left|\alpha\right\rangle \in V$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\left|-\alpha\right\rangle =\left(-1\right)\left|\alpha\right\rangle =-\left|\alpha\right\rangle $
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+בסיס ומימד
+\end_layout
+
+\begin_layout Definition
+קבוצה 
+\begin_inset Formula $\left\{ \left|i\right\rangle \right\} _{i}\subseteq V$
+\end_inset
+
+ היא 
+\series bold
+בלתי תלויה לינארית 
+\series default
+אם 
+\begin_inset Formula $\sum_{i}a_{i}\left|i\right\rangle =\left|0\right\rangle $
+\end_inset
+
+ אם ורק אם 
+\begin_inset Formula $a_{i}=0,\forall i\in I$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+נאמר כי 
+\begin_inset Formula $V$
+\end_inset
+
+ הוא 
+\series bold
+ממימד 
+\series default
+
+\begin_inset Formula $n$
+\end_inset
+
+ אם קיימת קבוצה 
+\begin_inset Formula $\left\{ \left|i\right\rangle \right\} _{i=1}^{n}\subseteq V$
+\end_inset
+
+ בלתי תלויה לינארית כך שלכל 
+\begin_inset Formula $\left|\alpha\right\rangle \in V$
+\end_inset
+
+ קיים 
+\begin_inset Formula $a\in\mathbb{F}^{n}$
+\end_inset
+
+ 
+\begin_inset Formula $\left|\alpha\right\rangle =\sum_{i=1}^{n}a_{i}\left|i\right\rangle $
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+קבוצה כנ
+\begin_inset Quotes erd
+\end_inset
+
+ל נקראת 
+\series bold
+בסיס 
+\series default
+של 
+\begin_inset Formula $V$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $a=\left\{ a_{i}\right\} _{i=1}^{n}$
+\end_inset
+
+ הם הרכיבים של 
+\begin_inset Formula $\left|\alpha\right\rangle $
+\end_inset
+
+ והם שונים לכל בסיס.
+\end_layout
+
+\end_deeper
+\begin_layout Claim
+אם 
+\begin_inset Formula $\left|\alpha\right\rangle =\sum_{i}a_{i}\left|i\right\rangle ,\left|\beta\right\rangle =\sum_{i}b_{i}\left|i\right\rangle \in V,c\in\mathbb{F}$
+\end_inset
+
+ אזי
+\begin_inset Formula 
+\begin{align*}
+\left|\alpha\right\rangle +\left|\beta\right\rangle  & =\sum_{i}\left(a_{i}+b_{i}\right)\left|i\right\rangle \\
+c\left|\alpha\right\rangle  & =\sum_{i}ca_{i}\left|i\right\rangle 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+מרחבי מכפלה פנימית
+\end_layout
+
+\begin_layout Subsection
+מכפלה פנימית
+\end_layout
+
+\begin_layout Notation
+נסמן
+\begin_inset Formula 
+\begin{align*}
+\forall\left|\alpha\right\rangle ,\left|\beta\right\rangle \in V. & \  & \braket{\left|\alpha\right\rangle }{\left|\beta\right\rangle }\coloneqq\braket{\alpha}{\beta}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+יהי 
+\begin_inset Formula $V$
+\end_inset
+
+ מרחב וקטורי מעל שדה 
+\begin_inset Formula $\mathbb{F}\in\left\{ \mathbb{R},\mathbb{C}\right\} $
+\end_inset
+
+.
+ נאמר כי 
+\begin_inset Formula $\braket{\cdot}{\cdot}$
+\end_inset
+
+
+\series bold
+ מכפלה פנימית 
+\series default
+מעל 
+\begin_inset Formula $V$
+\end_inset
+
+ אם מתקיים:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\series bold
+חיוביות:
+\series default
+
+\begin_inset Formula 
+\begin{align*}
+\forall\left|\alpha\right\rangle \in V. & \  & \braket{\alpha}{\alpha}\geq0 & \land\left(\braket{\alpha}{\alpha}=0\leftrightarrow\left|\alpha\right\rangle =\left|0\right\rangle \right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+הרמיטיות:
+\series default
+
+\begin_inset Formula 
+\begin{align*}
+\forall\left|\alpha\right\rangle ,\left|\beta\right\rangle \in V. & \  & \braket{\beta}{\alpha}^{*}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+לינאריות במשתנה השני:
+\series default
+
+\begin_inset Formula 
+\begin{align*}
+\forall\left|\alpha\right\rangle ,\left|\beta\right\rangle ,\left|\gamma\right\rangle \in V,b,c\in\mathbb{F}. & \  & \left\langle \alpha\right|\left(b\left|\beta\right\rangle +c\left|\gamma\right\rangle \right)=b\braket{\alpha}{\beta}+c\braket{\alpha}{\gamma}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Definition
+אם 
+\begin_inset Formula $\braket{\cdot}{\cdot}$
+\end_inset
+
+ מכפלה פנימית מעל 
+\begin_inset Formula $V$
+\end_inset
+
+ נאמר כי 
+\begin_inset Formula $\left(V,\braket{\cdot}{\cdot}\right)$
+\end_inset
+
+ 
+\series bold
+מרחב מכפלה פנימית
+\series default
+.
+\end_layout
+
+\begin_layout Claim
+לכל 
+\begin_inset Formula $\left|\alpha\right\rangle ,\left|\beta\right\rangle ,\left|\gamma\right\rangle \in V,a,b\in\mathbb{F}$
+\end_inset
+
+,
+ אם 
+\begin_inset Formula $\left|\delta\right\rangle =a\left|\alpha\right\rangle +b\left|\beta\right\rangle $
+\end_inset
+
+ אזי 
+\begin_inset Formula $\braket{\delta}{\gamma}=a^{*}\braket{\alpha}{\gamma}+b^{*}\braket{\beta}{\gamma}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+גאומטריה במרחבי מכפלה פנימית
+\end_layout
+
+\begin_layout Definition
+נאמר כי 
+\begin_inset Formula $\left|\alpha\right\rangle ,\left|\beta\right\rangle \in V$
+\end_inset
+
+ הם 
+\series bold
+אורתוגונליים 
+\series default
+ונסמן 
+\begin_inset Formula $\left|\alpha\right\rangle \perp\left|\beta\right\rangle $
+\end_inset
+
+ אם 
+\begin_inset Formula $\braket{\alpha}{\beta}=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+עבור 
+\begin_inset Formula $\left|\alpha\right\rangle \in V$
+\end_inset
+
+ נגדיר את 
+\series bold
+הנורמה 
+\series default
+שלו להיות 
+\begin_inset Formula $\left\lVert \alpha\right\rVert =\sqrt{\braket{\alpha}{\alpha}}$
+\end_inset
+
+.
+ אם 
+\begin_inset Formula $\left\lVert \alpha\right\rVert =1$
+\end_inset
+
+ נאמר כי 
+\begin_inset Formula $\left|\alpha\right\rangle $
+\end_inset
+
+ 
+\series bold
+מנורמל
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+נאמר כי 
+\begin_inset Formula $\left\{ \left|\alpha_{i}\right\rangle \right\} $
+\end_inset
+
+ 
+\series bold
+בסיס אורתונורמלי 
+\series default
+אם:
+\begin_inset Formula 
+\[
+\braket{\alpha_{i}}{\alpha_{j}}=\delta_{ij}=\begin{cases}
+1, & i=j\\
+0, & i\neq j
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim
+אם 
+\begin_inset Formula $\left\{ \left|i\right\rangle \right\} $
+\end_inset
+
+ בסיס א
+\begin_inset Quotes erd
+\end_inset
+
+נ ו-
+\begin_inset Formula $\left|\alpha\right\rangle =\sum_{i}a_{i}\left|i\right\rangle ,\left|\beta\right\rangle =\sum_{i}b_{i}\left|i\right\rangle $
+\end_inset
+
+ ,
+ אזי:
+\begin_inset Formula 
+\[
+\braket{\alpha}{\beta}=\sum_{i}\sum_{j}a_{i}^{*}b_{j}\braket ij=\sum_{i}a_{i}^{*}b_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim
+בפרט:
+\begin_inset Formula 
+\[
+\left\lVert \alpha\right\rVert ^{2}=\braket{\alpha}{\alpha}=\sum_{i}\left|a_{i}\right|^{2}\geq0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+אי-שוויון קושי-שוורץ
+\end_layout
+
+\end_inset
+
+ לכל 
+\begin_inset Formula $\left|\alpha\right\rangle ,\left|\beta\right\rangle \in V$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\left|\braket{\alpha}{\beta}\right|\leq\left\lVert \alpha\right\rVert \left\lVert \beta\right\rVert $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+אי-שוויון המשולש
+\end_layout
+
+\end_inset
+
+ לכל 
+\begin_inset Formula $\left|\alpha\right\rangle ,\left|\beta\right\rangle \in V$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\left\lVert \alpha+\beta\right\rVert \leq\left\lVert \alpha\right\rVert +\left\lVert \beta\right\rVert $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+ייצוג וקטורי
+\end_layout
+
+\begin_layout Theorem
+בהינתן בסיס 
+\begin_inset Formula $\left\{ \left|i\right\rangle \right\} $
+\end_inset
+
+ ניתן לייצג כל וקטור 
+\begin_inset Formula $\left|\alpha\right\rangle \in V$
+\end_inset
+
+ באופן יחיד עם איזומורפיזם הקואורדינטות
+\begin_inset Formula 
+\begin{align*}
+\left|\alpha\right\rangle =\sum_{i=1}^{n}a_{i}\left|i\right\rangle \mapsto\begin{pmatrix}a_{1}\\
+\vdots\\
+a_{n}
+\end{pmatrix} & , & V\cong\mathbb{F}^{n}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+עבור 
+\begin_inset Formula $\left|\alpha\right\rangle =\sum_{i=1}^{n}a_{i}\left|i\right\rangle \in V$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+הוקטור 
+\begin_inset Formula $\left|\alpha\right\rangle \in V\sim\begin{pmatrix}a_{1}\\
+\vdots\\
+a_{n}
+\end{pmatrix}\in\mathbb{F}^{n}$
+\end_inset
+
+ נקרא ה-
+\series bold
+\lang english
+bra
+\series default
+\lang hebrew
+.
+\end_layout
+
+\begin_layout Itemize
+הוקטור 
+\begin_inset Formula $\left\langle \alpha\right|\in V^{*}\sim\begin{pmatrix}a_{1} & \cdots & a_{n}\end{pmatrix}^{*}\in\mathbb{F}^{1\times n}$
+\end_inset
+
+ נקרא ה-
+\series bold
+\lang english
+ket
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+והוא חי במרחב הדואלי
+\begin_inset Formula 
+\[
+V^{*}=\mathcal{L}\left(V,\mathbb{F}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Definition
+אומרים כי 
+\begin_inset Formula $\left|\alpha\right\rangle $
+\end_inset
+
+ הוא ה-
+\lang english
+bra
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+של ה-
+\lang english
+ket
+\lang hebrew
+ 
+\begin_inset Formula $\left\langle \alpha\right|$
+\end_inset
+
+ ונאמר כי 
+\begin_inset Formula $\left\langle \alpha\right|,\left|\alpha\right\rangle $
+\end_inset
+
+ צמודים אחד לשני.
+\end_layout
+
+\begin_layout Claim
+אם 
+\begin_inset Formula $\left|\alpha\right\rangle =\sum_{i}a_{i}\left|i\right\rangle $
+\end_inset
+
+ אזי 
+\begin_inset Formula $\left\langle \alpha\right|=\sum_{i}a_{i}^{*}\left\langle i\right|$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+הייצוג הוקטורי של בסיס א
+\begin_inset Quotes erd
+\end_inset
+
+נ
+\end_layout
+
+\end_inset
+
+ יהי 
+\begin_inset Formula $B=\left\{ \left|i\right\rangle \right\} _{i}$
+\end_inset
+
+ בסיס א
+\begin_inset Quotes erd
+\end_inset
+
+נ,
+ אזי לכל 
+\begin_inset Formula $\left|\alpha\right\rangle \in V$
+\end_inset
+
+ מתקיים
+\begin_inset Formula 
+\[
+\left|\alpha\right\rangle =\sum_{i}\braket i{\alpha}\left|i\right\rangle 
+\]
+
+\end_inset
+
+ובפרט לכל 
+\begin_inset Formula $\left|j\right\rangle \in B$
+\end_inset
+
+ מתקיים
+\begin_inset Formula 
+\[
+\left|j\right\rangle =\sum_{i}\braket ij\left|i\right\rangle =\sum_{i}\delta_{ij}\left|i\right\rangle 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Corollary
+לכל 
+\begin_inset Formula $\left|\alpha\right\rangle \in V,c\in\mathbb{F}$
+\end_inset
+
+ נסמן 
+\begin_inset Formula $c\left|\alpha\right\rangle \coloneqq\left|c\alpha\right\rangle $
+\end_inset
+
+,
+ אזי 
+\begin_inset Formula $\left\langle c\alpha\right|=c^{*}\left\langle \alpha\right|$
+\end_inset
+
+ ולכל 
+\begin_inset Formula $B=\left\{ \left|i\right\rangle \right\} _{i}$
+\end_inset
+
+ בסיס א
+\begin_inset Quotes erd
+\end_inset
+
+נ:
+\begin_inset Formula 
+\[
+\left\langle \alpha\right|=\sum_{i}\braket{\alpha}i\left\langle i\right|
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+אופרטורים לינאריים
+\end_layout
+
+\begin_layout Subsection
+הגדרה כללית
+\end_layout
+
+\begin_layout Definition
+פונקציה 
+\begin_inset Formula $\Lambda:V\rightarrow V,\left|\alpha\right\rangle \mapsto\Lambda\left|\alpha\right\rangle $
+\end_inset
+
+ נקראת 
+\series bold
+אופרטור לינארי 
+\series default
+(או טרנספורמציה לינארית) אם לכל 
+\begin_inset Formula $\left|\alpha\right\rangle ,\left|\beta\right\rangle \in V$
+\end_inset
+
+ ולכל 
+\begin_inset Formula $a,b\in\mathbb{F}$
+\end_inset
+
+,
+ 
+\begin_inset Formula 
+\[
+\Lambda\left(a\left|\alpha\right\rangle +b\left|\beta\right\rangle \right)=a\Lambda\left|\alpha\right\rangle +b\Lambda\left|\beta\right\rangle 
+\]
+
+\end_inset
+
+ניתן לייצג גם אופרטור במרחב הדואלי 
+\begin_inset Formula $\Lambda:V^{*}\rightarrow V^{*},\left\langle \alpha\right|\mapsto\left\langle \alpha\right|\Lambda$
+\end_inset
+
+,
+ לכל 
+\begin_inset Formula $\left\langle \alpha\right|,\left\langle \beta\right|\in V^{*}$
+\end_inset
+
+ ולכל 
+\begin_inset Formula $a,b\in\mathbb{F}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\left(a\left\langle \alpha\right|+b\left\langle \beta\right|\right)\Lambda=a\left\langle \alpha\right|\Lambda+b\left\langle \beta\right|\Lambda
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Notation
+תהינא 
+\begin_inset Formula $A,B$
+\end_inset
+
+ אופרטורים לינאריים,
+ אזי 
+\begin_inset Formula $AB\coloneqq A\circ B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+תהינא 
+\begin_inset Formula $A,B$
+\end_inset
+
+ אופרטורים לינאריים,
+ נגדיר את
+\series bold
+ יחס החילוף 
+\series default
+(
+\emph on
+\lang english
+commutator
+\emph default
+\lang hebrew
+) שלהם:
+\begin_inset Formula 
+\[
+\left[A,B\right]\triangleq AB-BA
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Corollary
+אם 
+\begin_inset Formula $\left[A,B\right]=0$
+\end_inset
+
+ אזי 
+\begin_inset Formula $A$
+\end_inset
+
+ ו-
+\begin_inset Formula $B$
+\end_inset
+
+ הם קומוטטיביים.
+\end_layout
+
+\begin_layout Definition
+
+\series bold
+אופרטור הזהות
+\series default
+ 
+\begin_inset Formula $I$
+\end_inset
+
+ הוא האופטור שנתון על ידי 
+\begin_inset Formula $I\left|\alpha\right\rangle =\left|\alpha\right\rangle $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+יהי 
+\begin_inset Formula $\Lambda$
+\end_inset
+
+ אופרטור לינארי,
+ נאמר כי 
+\begin_inset Formula $\Lambda$
+\end_inset
+
+ 
+\series bold
+הפיך 
+\series default
+אם קיים אופרטור לינארי 
+\begin_inset Formula $\Lambda^{-1}$
+\end_inset
+
+ עבורו
+\begin_inset Formula 
+\[
+\Lambda\Lambda^{-1}=\Lambda^{-1}\Lambda=I
+\]
+
+\end_inset
+
+ובמקרה זה 
+\begin_inset Formula $\Lambda^{-1}$
+\end_inset
+
+ ייקרא 
+\series bold
+האופרטור ההופכי 
+\series default
+ל-
+\begin_inset Formula $\Lambda$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Claim
+אם 
+\begin_inset Formula $A,B$
+\end_inset
+
+ אופרטורים לינאריים הפיכים,
+ אזי 
+\begin_inset Formula $AB$
+\end_inset
+
+ הפיך,
+ וכן 
+\begin_inset Formula $\left(AB\right)^{-1}=B^{-1}A^{-1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+ייצוג מטריצי של אופרטורים
+\end_layout
+
+\begin_layout Definition
+יהי 
+\begin_inset Formula $\left\{ \left|i\right\rangle \right\} _{i}$
+\end_inset
+
+ בסיס ויהי 
+\begin_inset Formula $\hat{\Lambda}$
+\end_inset
+
+ אופרטור לינארי כך שלכל 
+\begin_inset Formula $i$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\Lambda\left|i\right\rangle =\left|i'\right\rangle $
+\end_inset
+
+.
+ אזי 
+\series bold
+הייצוג המטריצי 
+\series default
+של 
+\begin_inset Formula $\hat{\Lambda}$
+\end_inset
+
+ לפי הבסיס הינו
+\begin_inset Formula 
+\[
+\Lambda_{ji}\triangleq\braket j{i'}=\left\langle j\right|\hat{\Lambda}\left|i\right\rangle 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+לכל 
+\begin_inset Formula $\left\{ \left|i\right\rangle \right\} _{i}$
+\end_inset
+
+ בסיס ו-
+\begin_inset Formula $\Lambda$
+\end_inset
+
+ ייצוג מטריצי של אופרטור 
+\begin_inset Formula $\hat{\Lambda}$
+\end_inset
+
+ מתקיים לכל 
+\begin_inset Formula $\left|\alpha\right\rangle =\sum_{i}a_{i}\left|i\right\rangle $
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Lambda\left|\alpha\right\rangle =\sum_{j}\sum_{i}a_{i}\Lambda_{ji}\left|j\right\rangle 
+\]
+
+\end_inset
+
+כלומר ניתן לייצג את הפעולה של 
+\begin_inset Formula $\hat{\Lambda}$
+\end_inset
+
+ על וקטורים באמצעות הייצוג המטריצי בלבד.
+\end_layout
+
+\begin_layout Claim
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+יחס השלמות
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $I=\sum_{i}\left|i\right\rangle \left\langle i\right|$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+אופרטור היטל
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\mathbb{P}_{i}=\left|i\right\rangle \left\langle i\right|$
+\end_inset
+
+ נקרא 
+\series bold
+אופרטור היטל
+\series default
+,
+ הפעולה שלו על וקטור 
+\begin_inset Formula $\left|\alpha\right\rangle =\sum_{j}a_{j}\left|j\right\rangle $
+\end_inset
+
+ הינה 
+\begin_inset Formula $\mathbb{P}_{i}\left|\alpha\right\rangle =a_{i}\left|i\right\rangle $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Claim
+הייצוג המטריצי של אופרטור היטל 
+\begin_inset Formula $\mathbb{P}_{i}$
+\end_inset
+
+ הינו 
+\begin_inset Formula $\left(\mathbb{P}_{i}\right)_{jk}=\delta_{ji}\delta_{ik}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim
+אם 
+\begin_inset Formula $\hat{A},\hat{B}$
+\end_inset
+
+ מיוצגות על ידי 
+\begin_inset Formula $A,B$
+\end_inset
+
+ אזי הייצוג של 
+\begin_inset Formula $\hat{A}\hat{B}$
+\end_inset
+
+ הינו 
+\begin_inset Formula $AB$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+אופרטורים מיוחדים
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+אופרטור צמוד
+\end_layout
+
+\end_inset
+
+יהי 
+\begin_inset Formula $\Lambda$
+\end_inset
+
+ אופרטור,
+ אזי 
+\series bold
+האופרטור הצמוד 
+\series default
+
+\begin_inset Formula $\Lambda^{\dagger}$
+\end_inset
+
+ מוגדר על ידי 
+\begin_inset Formula $\left\langle \Lambda\alpha\right|\triangleq\left\langle \alpha\right|\Lambda^{\dagger}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Claim
+הייצוג המטריצי של 
+\begin_inset Formula $\Lambda^{\dagger}$
+\end_inset
+
+ הינו
+\begin_inset Formula 
+\[
+\left(\Lambda^{\dagger}\right)_{ij}=\left\langle i\right|\Lambda^{\dagger}\left|j\right\rangle =\braket{\Lambda i}j=\braket j{\Lambda i}^{*}=\left(\left\langle j\right|\Lambda\left|i\right\rangle \right)^{*}
+\]
+
+\end_inset
+
+כלומר 
+\begin_inset Formula $\Lambda^{\dagger}=\left(\Lambda^{T}\right)^{*}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Corollary
+\begin_inset Formula $\left(AB\right)^{\dagger}=B^{\dagger}A^{\dagger}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+אופרטור הרמיטי
+\end_layout
+
+\end_inset
+
+אופרטור 
+\begin_inset Formula $\Lambda$
+\end_inset
+
+ הוא 
+\series bold
+הרמיטי 
+\series default
+אם 
+\begin_inset Formula $\Lambda^{\dagger}=\Lambda$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Claim
+\begin_inset Formula $\Lambda$
+\end_inset
+
+ הרמיטי אם ורק אם לכל 
+\begin_inset Formula $\left|\alpha\right\rangle ,\left|\beta\right\rangle \in V$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\braket{\Lambda\alpha}{\beta}=\braket{\alpha}{\Lambda\beta}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+אופרטור אוניטרי
+\end_layout
+
+\end_inset
+
+ אופרטור 
+\begin_inset Formula $\Lambda$
+\end_inset
+
+ הוא 
+\series bold
+אוניטרי 
+\series default
+אם 
+\begin_inset Formula $\Lambda\Lambda^{\dagger}=\Lambda^{\dagger}\Lambda=I$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Claim
+\begin_inset Formula $\Lambda$
+\end_inset
+
+ אוניטרי אם ורק אם 
+\begin_inset Formula $\Lambda^{\dagger}=\Lambda^{-1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Corollary
+\begin_inset Formula $U$
+\end_inset
+
+ אוניטרי אם ורק אם לכל 
+\begin_inset Formula $\left|\alpha\right\rangle ,\left|\beta\right\rangle \in V$
+\end_inset
+
+ מתקיים כי 
+\begin_inset Formula $\braket{U\beta}{U\alpha}=\braket{\alpha}{\beta}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+טרנספורמציה אוניטרית
+\end_layout
+
+\end_inset
+
+אם מחליפים בסיס מ-
+\begin_inset Formula $\left\{ \left|i\right\rangle \right\} $
+\end_inset
+
+ ל-
+\begin_inset Formula $\left\{ \left|i'\right\rangle \right\} $
+\end_inset
+
+ על ידי אופרטור אוניטרי 
+\begin_inset Formula $U$
+\end_inset
+
+ אזי הייצוג המטריצי של אופרטור 
+\begin_inset Formula $\Lambda$
+\end_inset
+
+ כלשהו משתנה להיות 
+\begin_inset Formula $U^{\dagger}\Lambda U$
+\end_inset
+
+ בבסיס החדש.
+\end_layout
+
+\begin_layout Claim
+אם 
+\begin_inset Formula $U$
+\end_inset
+
+ אוניטרית אזי קיים 
+\begin_inset Formula $\theta\in\mathbb{R}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\left|U\right|=e^{i\theta},\left|U^{\dagger}\right|=e^{-i\theta}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Corollary
+לכל 
+\begin_inset Formula $U$
+\end_inset
+
+ אוניטרית ואופרטור 
+\begin_inset Formula $\Lambda$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\left|U^{\dagger}\Lambda U\right|=\left|\Lambda\right|$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+לכסון של אופרטור
+\end_layout
+
+\begin_layout Subsection
+ערכים עצמיים ווקטורים עצמיים
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+ערך עצמי ווקטור עצמי
+\end_layout
+
+\end_inset
+
+ עבור אופרטור 
+\begin_inset Formula $\Lambda$
+\end_inset
+
+ נאמר כי 
+\begin_inset Formula $\left|\alpha\right\rangle \neq0$
+\end_inset
+
+ 
+\series bold
+וקטור עצמי המתאים לערך עצמי
+\series default
+ 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ של 
+\begin_inset Formula $\Lambda$
+\end_inset
+
+ אם 
+\begin_inset Formula 
+\[
+\Lambda\left|\alpha\right\rangle =\lambda\left|\alpha\right\rangle 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+קבוצת הערכים העצמיים של 
+\begin_inset Formula $\Lambda$
+\end_inset
+
+ נקראים 
+\series bold
+הספקטרום 
+\series default
+של 
+\begin_inset Formula $\Lambda$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+פולינום אופייני
+\end_layout
+
+\end_inset
+
+יהי 
+\begin_inset Formula $\Lambda$
+\end_inset
+
+ אופרטור לינארי,
+ אזי 
+\series bold
+הפולינום האופיייני 
+\series default
+שלו הינו 
+\begin_inset Formula $p_{\Lambda}\in\mathbb{F}\left[x\right]$
+\end_inset
+
+ המוגדר על ידי
+\begin_inset Formula 
+\[
+p_{\Lambda}\left(\lambda\right)=\left|\lambda I-\Lambda\right|
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim
+לכל אופרטור 
+\begin_inset Formula $\Lambda$
+\end_inset
+
+,
+ הפולינום האופייני 
+\begin_inset Formula $p_{\Lambda}$
+\end_inset
+
+ הוא מתוקן.
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Formula $\lambda$
+\end_inset
+
+ הוא ערך עצמי של 
+\begin_inset Formula $\Lambda$
+\end_inset
+
+ אם ורק אם 
+\begin_inset Formula $p_{\Lambda}\left(\lambda\right)=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+ריבוי אלגברי
+\end_layout
+
+\end_inset
+
+ עבור ערך עצמי 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ של 
+\begin_inset Formula $\Lambda$
+\end_inset
+
+ נגדיר את 
+\series bold
+הריבוי האלגברי 
+\series default
+שלו 
+\begin_inset Formula $\mu_{\Lambda}\left(\lambda\right)$
+\end_inset
+
+ להיות סדר האפס של 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ ב-
+\begin_inset Formula $p_{\Lambda}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+ריבוי גאומטרי
+\end_layout
+
+\end_inset
+
+ עבור ערך עצמי 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ של 
+\begin_inset Formula $\Lambda$
+\end_inset
+
+ נגדיר את 
+\series bold
+הריבוי הגאומטרי 
+\series default
+שלו 
+\begin_inset Formula $\gamma_{\Lambda}\left(\lambda\right)$
+\end_inset
+
+ להיות מימד מרחב הפתרונות למשוואה 
+\begin_inset Formula 
+\[
+\left(\lambda I-\Lambda\right)\left|\alpha\right\rangle =0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+לכסון
+\end_layout
+
+\end_inset
+
+ נאמר כי 
+\begin_inset Formula $A$
+\end_inset
+
+ הוא 
+\series bold
+לכסין 
+\series default
+אם קיים בסיס שבו ההצגה המטריצית שלו היא אלכסונית.
+\end_layout
+
+\begin_layout Theorem
+אופרטור הוא לכסין מעל 
+\begin_inset Formula $\mathbb{C}$
+\end_inset
+
+ אם ורק אם 
+\begin_inset Formula $\mu_{\Lambda}\equiv\gamma_{\Lambda}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+ע
+\begin_inset Quotes erd
+\end_inset
+
+ע של אופרטור הרמיטי הם ממשיים.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+ע
+\begin_inset Quotes erd
+\end_inset
+
+ע של אופרטור אוניטרי נמצאים על מעגל היחידה,
+ כלומר מהצורה 
+\begin_inset Formula $e^{i\theta}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+הו
+\begin_inset Quotes erd
+\end_inset
+
+ע של אופרטור אוניטרי הם א
+\begin_inset Quotes erd
+\end_inset
+
+ג אחד לשני.
+\end_layout
+
+\begin_layout Subsection
+לכסון של אופרטור הרמיטי
+\end_layout
+
+\begin_layout Theorem
+הו
+\begin_inset Quotes erd
+\end_inset
+
+ע של אופרטור הרמיטי השייכים לע
+\begin_inset Quotes erd
+\end_inset
+
+ע שונים הם א
+\begin_inset Quotes erd
+\end_inset
+
+ג אחד לשני.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+הו
+\begin_inset Quotes erd
+\end_inset
+
+ע של אופרטור הרמיטי מהווים בסיס של המרחב הוקטורי.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+הייצוג המטריצי של אופרטור הרמיטי 
+\begin_inset Formula $\Lambda$
+\end_inset
+
+ בבסיס של ו
+\begin_inset Quotes erd
+\end_inset
+
+ע שלו הוא מטריצה אלכסונית שאיברי האלכסון שלה הם הע
+\begin_inset Quotes erd
+\end_inset
+
+ע של 
+\begin_inset Formula $\Lambda$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+הייצוג המטריצי של אופרטור הרמיטי 
+\begin_inset Formula $\Lambda$
+\end_inset
+
+ בבסיס א
+\begin_inset Quotes erd
+\end_inset
+
+נ כלשהו 
+\begin_inset Formula $\left\{ \left|i\right\rangle \right\} $
+\end_inset
+
+ ניתן ללכסון ע
+\begin_inset Quotes erd
+\end_inset
+
+י מעבר לבסיס 
+\begin_inset Formula $\left\{ \left|\lambda_{i}\right\rangle \right\} $
+\end_inset
+
+ בעזרת טרנספורמציה יוניטרית שייצוג המטריצי מכיל בעמודותיו את הו
+\begin_inset Quotes erd
+\end_inset
+
+ע של 
+\begin_inset Formula $\Lambda$
+\end_inset
+
+ בבסיס 
+\begin_inset Formula $\left\{ \left|i\right\rangle \right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+אם 
+\begin_inset Formula $A,B$
+\end_inset
+
+ קומוטטיביים,
+ אזי יש להם אותם ו
+\begin_inset Quotes erd
+\end_inset
+
+ע.
+ בפרט,
+ אם גם הרמיטיים,
+ ניתן ללכסן אותם סימולטנית.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch continous linear algebra
+inverted 0
+status open
+
+\begin_layout Chapter
+הרחבה לרצף ומרחב פונקציות וקטורי לינארי
+\end_layout
+
+\begin_layout Section
+הפורמליזם של מכניקת הקוונטים
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+מרחב הילברט פיזיקלי
+\end_layout
+
+\end_inset
+
+ מרחב מכפלה פנימית מרוכב 
+\begin_inset Formula $\left(\mathcal{H},\braket{\cdot}{\cdot}\right)$
+\end_inset
+
+ ייקרא 
+\series bold
+מרחב הילברט פיזיקלי 
+\series default
+אם קיימת מערכת מצבים 
+\begin_inset Formula $\left\{ \left|x\right\rangle \right\} _{x\in\mathbb{R}}\subseteq\mathcal{H}^{*}$
+\end_inset
+
+ המקיימת את התכונות הבאות:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\series bold
+נרמול:
+
+\series default
+ 
+\begin_inset Formula $\braket x{x'}=\delta\left(x-x'\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+שלמות:
+
+\series default
+ 
+\begin_inset Formula $\intop_{\mathbb{R}}\left|x\right\rangle \left\langle x\right|dx=I$
+\end_inset
+
+,
+ כאשר 
+\begin_inset Formula $I$
+\end_inset
+
+ הוא אופרטור הזהות על 
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Definition
+לכל 
+\begin_inset Formula $\left|\psi\right\rangle \in\mathcal{H}$
+\end_inset
+
+ נגדיר את 
+\series bold
+פונקציית הגל שלו
+\series default
+ 
+\begin_inset Formula $\psi:\mathbb{R}\rightarrow\mathbb{C}$
+\end_inset
+
+ על ידי הטלה של המצב 
+\begin_inset Formula $\left|\psi\right\rangle $
+\end_inset
+
+ על הבסיס הרציף:
+\begin_inset Formula 
+\[
+\psi\left(x\right)\triangleq\braket x{\psi}
+\]
+
+\end_inset
+
+
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim
+לכל וקטור 
+\begin_inset Formula $\left|\psi\right\rangle $
+\end_inset
+
+ מתקיים
+\begin_inset Formula 
+\[
+\left|\psi\right\rangle =\intop_{\mathbb{R}}\psi\left(x\right)\left|x\right\rangle dx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim
+לכל 
+\begin_inset Formula $\left|f\right\rangle ,\left|g\right\rangle \in\mathcal{H}$
+\end_inset
+
+ המכפלה פנימית נתונה על ידי
+\begin_inset Formula 
+\[
+\braket fg=\intop_{\mathbb{R}}f^{*}\left(x\right)g\left(x\right)dx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+אופרטורים לינאריים במרחב עם בסיס רציף
+\end_layout
+
+\begin_layout Definition
+
+\series bold
+ייצוג של אופרטור 
+\series default
+
+\begin_inset Formula $\hat{\Lambda}:\mathcal{H}\rightarrow\mathcal{H}$
+\end_inset
+
+ הינו פונקציה 
+\begin_inset Formula $\hat{\Lambda}:\mathbb{R}^{2}\rightarrow\mathbb{C},\left(x,x'\right)\rightarrow\hat{\Lambda}_{xx'}$
+\end_inset
+
+ כך שמתקיים:
+\begin_inset Formula 
+\[
+\hat{\Lambda}_{xx'}\triangleq\left\langle x\right|\hat{\Lambda}\left|x'\right\rangle 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim
+יהי 
+\begin_inset Formula $\hat{D}$
+\end_inset
+
+ 
+\series bold
+אופרטור הגזירה
+\series default
+
+\begin_inset Formula 
+\[
+\hat{D}\left|f\right\rangle =\left|\frac{df}{dx}\right\rangle 
+\]
+
+\end_inset
+
+אזי ניתן לייצגו באמצעות 
+\begin_inset Formula $\hat{D}_{xx'}=\delta'\left(x-x'\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+נגדיר את האופרטור 
+\begin_inset Formula $\hat{K}=-i\hat{D}$
+\end_inset
+
+,
+ אזי
+\begin_inset Formula 
+\[
+\left\langle \right|
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_body
+\end_document

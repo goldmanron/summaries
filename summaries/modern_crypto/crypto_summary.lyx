@@ -1447,7 +1447,7 @@ Introduction
 \begin_layout Standard
 \begin_inset Branch intro
 inverted 0
-status open
+status collapsed
 
 \begin_layout Standard
 Let 
@@ -2572,7 +2572,7 @@ Computational Secrecy & Pseudorandomness
 \begin_layout Standard
 \begin_inset Branch computesecrecy
 inverted 0
-status collapsed
+status open
 
 \begin_layout Section
 Computational Secrecy
@@ -2768,7 +2768,7 @@ indistinguishable
 
 \begin_layout Claim
 \begin_inset Argument 1
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Properties of Indistinguishability

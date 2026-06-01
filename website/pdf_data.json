@@ -27,6 +27,19 @@
             }
         }
     },
+    "logic_cs":{
+        "display_name": "לוגיקה",
+        "URL": "summaries/logic/logic_book.pdf",
+        "button_color": "gradient-blue5",
+        "pdf_info": {
+            "course_info": {
+                "שם קורס מלא": "לוגיקה למדעי המחשב",
+                "מספר קורס": "0368-2170",
+                "שנה וסמסמטר": "2026ב",
+                "מרצה": ["פרופ' אלכסנדר רבינוביץ'"],
+                "image": "icon/info.png"
+            }
+    },
     "complex_functions1": {
         "display_name": "מרוכבות 1",
         "URL": "summaries/complex/lectures.pdf",
@@ -117,7 +130,7 @@
     },
     "algorithms": {
         "display_name": "אלגוריתמים",
-        "URL": "summaries/algorithms/algorithms_summary.pdf",
+        "URL": "https://drive.google.com/file/d/1Bfq6icB_oE0vs6WssDGOHA0KDYTAtbsA/view?usp=drive_link",
         "button_color": "gradient-teal1",
         "pdf_info": {
             "under_construction": {

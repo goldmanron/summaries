@@ -1,0 +1,954 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\begin_preamble
+% --- Load amsthm package for theorem styles ---
+\usepackage{amsthm}
+
+
+
+% --- Shared theoremstyle (one place only!) ---
+\newtheoremstyle{defuprightbrackets}%
+  {3pt}{3pt}% space above/below
+  {\upshape}% body font
+  {}% indent amount
+  {\bfseries}% head font
+  {}
+  { }% space after theorem head
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ [\textbf{#3}]}}%
+
+% --- Apply this style to all environments ---
+\theoremstyle{defuprightbrackets}
+
+% --- Define all environments to use LyX's language macros ---
+\ifx\thechapter\undefined
+  \newtheorem{mytheorem}{\protect\theoremname}
+\else
+  \newtheorem{mytheorem}{\protect\theoremname}[chapter]
+\fi
+
+% --- All other environments share the 'mytheorem' counter ---
+\newtheorem{mydefinition}[mytheorem]{\protect\definitionname}
+\newtheorem{mylemma}[mytheorem]{\protect\lemmaname}
+\newtheorem{myproposition}[mytheorem]{\protect\propositionname}
+\newtheorem{mycorollary}[mytheorem]{\protect\corollaryname}
+\newtheorem{myclaim}[mytheorem]{\protect\claimname}
+\newtheorem{myconjecture}[mytheorem]{\protect\conjecturename}
+\newtheorem{myremark}[mytheorem]{\protect\remarkname}
+\newtheorem{myexample}[mytheorem]{\protect\examplename}
+\newtheorem{myexercise}[mytheorem]{\protect\exercisename}
+\newtheorem{myproblem}[mytheorem]{\protect\problemname}
+\newtheorem{myfact}[mytheorem]{\protect\factname}
+\newtheorem{mynotation}[mytheorem]{\protect\notationname}
+\newtheorem{myassumption}[mytheorem]{\protect\assumptionname}
+\newtheorem{mysummary}[mytheorem]{\protect\summaryname}
+\newtheorem{myconclusion}[mytheorem]{\protect\conclusionname}
+\newtheorem{myalgorithm}[mytheorem]{\protect\algorithmname}
+\newtheorem{myaxiom}[mytheorem]{\protect\axiomname}
+\newtheorem{mycondition}[mytheorem]{\protect\conditionname}
+\newtheorem{myquestion}[mytheorem]{\protect\questionname}
+
+% --- Unnumbered environments ---
+\newtheorem*{mysolution}{\protect\solutionname}
+
+% --- Optional: change QED symbol for proofs ---
+\renewcommand{\qedsymbol}{$\square$}
+
+% Allows fancy stuff in the page header
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\usepackage{enumitem}
+\setlist[itemize,1]{label={\fontfamily{cmr}\fontencoding{T1}\selectfont\textbullet}}
+
+%Allows circuit drawing
+\usepackage{circuitikz}
+
+%Allows plotting graphs
+\usepackage{pgfplots}
+
+\usetikzlibrary{svg.path,decorations.pathmorphing, backgrounds,decorations.pathreplacing, automata, shapes.geometric, arrows.meta, positioning, calc}
+
+\usepackage{mathtools}
+\let\savedleft\left
+  \let\savedright\right
+
+  % Redefine \left and \right to insert the pairing-group hack
+  \renewcommand{\left}{\mathopen{}\mathclose\bgroup\savedleft}
+  \renewcommand{\right}{\aftergroup\egroup\savedright}
+
+% Necessary Commands:
+\usepackage{autobreak}
+\usepackage[T1]{fontenc}
+\usepackage{relsize}
+
+% Convert the QED Symbol at the end of proofs to a solid black square (credit: Yakir Oz):
+\usepackage{amssymb}
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+% Correct the reversed parentheses in labels:
+\usepackage{polyglossia}
+\setmainlanguage{hebrew}
+\newfontfamily{\hebrewfont}{David}
+\makeatletter
+\def\maketag@@@#1{\hbox{\m@th\normalfont\LRE{#1}}}
+\def\tagform@#1{\maketag@@@{(\ignorespaces#1\unskip)}}
+\makeatother
+
+% Create disjoint union symbols:
+\makeatletter
+\def\moverlay{\mathpalette\mov@rlay}
+\def\mov@rlay#1#2{\leavevmode\vtop{%
+   \baselineskip\z@skip \lineskiplimit-\maxdimen
+   \ialign{\hfil$\m@th#1##$\hfil\cr#2\crcr}}}
+\newcommand{\charfusion}[3][\mathord]{
+    #1{\ifx#1\mathop\vphantom{#2}\fi
+        \mathpalette\mov@rlay{#2\cr#3}
+      }
+    \ifx#1\mathop\expandafter\displaylimits\fi}
+\makeatother
+\newcommand{\cupdot}{\charfusion[\mathbin]{\cup}{\cdot}}
+\newcommand{\bigcupdot}{\charfusion[\mathop]{\bigcup}{\cdot}}
+
+
+\newcommand{\kaliLargeLand}{\mathop{\mathlarger{\mathlarger{\mathlarger{\land}}}}}
+\newcommand{\hebtext}[1]{\mbox{\R{\#1}}}
+
+
+% Or if you have EB Garamond:
+% \newfontfamily\erlangfont{EB Garamond}[Style=Italic]
+
+% --- Redefine the 'proof' environment to match LyX style ---
+% (Bold, Upright Label; Upright Body; UNIFORM 3pt spacing)
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{\par
+  \pushQED{\qed}%
+  \normalfont \topsep3pt\relax  % <-- THIS IS THE SPACING FIX
+  \trivlist
+  \item[\hskip\labelsep
+        \bfseries
+    #1\@addpunct{.}]\ignorespaces
+}{%
+  \popQED\endtrivlist\@endpefalse
+}
+\makeatother
+
+% Define colors for the dark theme
+\definecolor{deepbg}{RGB}{22, 33, 62}       % Dark Navy Background
+\definecolor{cyanpath}{RGB}{0, 255, 255}    % Bright Cyan for Gaussian paths
+\definecolor{poissonorange}{RGB}{255, 165, 0} % Orange for Poisson steps
+\definecolor{textwhite}{RGB}{240, 240, 240}
+\end_preamble
+\options no-math
+\use_default_options true
+\begin_modules
+eqs-within-sections
+figs-within-sections
+theorems-ams-chap-bytype
+theorems-ams-extended-chap-bytype
+tcolorbox
+algorithm2e
+\end_modules
+\maintain_unincluded_children no
+\begin_local_layout
+Format 104
+
+# --- Shared theoremstyle (one place only!) ---
+Preamble
+  \newtheoremstyle{defuprightbrackets}%
+    {3pt}{3pt}%
+    {\upshape}%
+    {}%
+    {\bfseries}%
+    {.}% no punctuation
+    { }%
+    {\thmname{#1}\thmnumber{ #2}\thmnote{ [\textbf{\itshape #3}]}}%
+  \theoremstyle{defuprightbrackets}
+EndPreamble
+
+
+# --- Theorem ---
+Style Theorem
+  Category Reasoning
+  LatexType Environment
+  LatexName thm
+  LabelCounter theorem
+  LabelString "Theorem \thetheorem."
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  Preamble
+    \theoremstyle{defuprightbrackets}
+    \ifx\thechapter\undefined
+      \newtheorem{thm}{\protect\theoremname}
+    \else
+      \newtheorem{thm}{\protect\theoremname}[chapter]
+    \fi
+  EndPreamble
+  LangPreamble
+    \providecommand{\theoremname}{_(Theorem)}
+  EndLangPreamble
+End
+
+# --- Claim ---
+Style Claim
+  Category Reasoning
+  LatexType Environment
+  LatexName claim
+  LabelCounter claim
+  LabelString "Claim \theclaim."
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  Preamble
+    \theoremstyle{defuprightbrackets}
+    \ifx\thechapter\undefined
+      \newtheorem{claim}{\protect\claimname}
+    \else
+      \newtheorem{claim}{\protect\claimname}[chapter]
+    \fi
+  EndPreamble
+  LangPreamble
+    \providecommand{\claimname}{_(Claim)}
+  EndLangPreamble
+End
+
+# --- Corollary ---
+Style Corollary
+  Category Reasoning
+  LatexType Environment
+  LatexName cor
+  LabelCounter cor
+  LabelString "Corollary \thetheorem."
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  Preamble
+    \theoremstyle{defuprightbrackets}
+    \ifx\thechapter\undefined
+      \newtheorem{cor}{\protect\corname}
+    \else
+      \newtheorem{cor}{\protect\corname}[chapter]
+    \fi
+  EndPreamble
+  LangPreamble
+    \providecommand{\corname}{_(Corollary)}
+    \providecommand{\corollaryname}{_(Corollary)}
+  EndLangPreamble
+End
+
+# --- Lemma ---
+Style Lemma
+  Category Reasoning
+  LatexType Environment
+  LatexName lem
+  LabelCounter lem
+  LabelString "Lemma \thetheorem."
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  Preamble
+    \theoremstyle{defuprightbrackets}
+    \ifx\thechapter\undefined
+      \newtheorem{lem}{\protect\lemname}
+    \else
+      \newtheorem{lem}{\protect\lemname}[chapter]
+    \fi
+  EndPreamble
+  LangPreamble
+    \providecommand{\lemname}{_(Lemma)}
+    \providecommand{\lemmaname}{_(Lemma)}
+  EndLangPreamble
+End
+
+# --- Proposition ---
+Style Proposition
+  Category Reasoning
+  LatexType Environment
+  LatexName prop
+  LabelCounter prop
+  LabelString "Proposition \thetheorem."
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  Preamble
+    \theoremstyle{defuprightbrackets}
+    \ifx\thechapter\undefined
+      \newtheorem{prop}{\protect\propname}
+    \else
+      \newtheorem{prop}{\protect\propname}[chapter]
+    \fi
+  EndPreamble
+  LangPreamble
+    \providecommand{\propname}{_(Proposition)}
+    \providecommand{\propositionname}{_(Proposition)}
+  EndLangPreamble
+End
+
+# --- Conjecture ---
+Style Conjecture
+  Category Reasoning
+  LatexType Environment
+  LatexName conj
+  LabelCounter conj
+  LabelString "Conjecture \thetheorem."
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  Preamble
+    \theoremstyle{defuprightbrackets}
+    \ifx\thechapter\undefined
+      \newtheorem{conj}{\protect\conjname}
+    \else
+      \newtheorem{conj}{\protect\conjname}[chapter]
+    \fi
+  EndPreamble
+  LangPreamble
+    \providecommand{\conjname}{_(Conjecture)}
+    \providecommand{\conjecturename}{_(Conjecture)}
+  EndLangPreamble
+End
+
+# --- Remark ---
+Style Remark
+  Category Reasoning
+  LatexType Environment
+  LatexName rem
+  LabelCounter rem
+  LabelString "Remark \thetheorem."
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  Preamble
+    \theoremstyle{defuprightbrackets}
+    \ifx\thechapter\undefined
+      \newtheorem{rem}{\protect\remname}
+    \else
+      \newtheorem{rem}{\protect\remname}[chapter]
+    \fi
+  EndPreamble
+  LangPreamble
+    \providecommand{\remname}{_(Remark)}
+    \providecommand{\remarkname}{_(Remark)}
+  EndLangPreamble
+End
+
+# --- Proof (unnumbered, bold label only) ---
+Style Proof
+  Category Reasoning
+  LatexType Environment
+  LatexName proof
+  LabelString "Proof."
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  Preamble
+    % Do nothing special here
+  EndPreamble
+  LangPreamble
+    \providecommand{\proofname}{_(Proof)}
+  EndLangPreamble
+End
+
+# --- Example ---
+Style Example
+  Category Reasoning
+  LatexType Environment
+  LatexName exa
+  LabelCounter exa
+  LabelString "Example \thetheorem."
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  Preamble
+    \theoremstyle{defuprightbrackets}
+    \ifx\thechapter\undefined
+      \newtheorem{exa}{\protect\examplename}
+    \else
+      \newtheorem{exa}{\protect\examplename}[chapter]
+    \fi
+  EndPreamble
+  LangPreamble
+    \providecommand{\examplename}{_(Example)}
+  EndLangPreamble
+End
+
+# --- Problem ---
+Style Problem
+  Category Reasoning
+  LatexType Environment
+  LatexName prob
+  LabelCounter prob
+  LabelString "Problem \thetheorem."
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  Preamble
+    \theoremstyle{defuprightbrackets}
+    \ifx\thechapter\undefined
+      \newtheorem{prob}{\protect\problemname}
+    \else
+      \newtheorem{prob}{\protect\problemname}[chapter]
+    \fi
+  EndPreamble
+  LangPreamble
+    \providecommand{\problemname}{_(Problem)}
+  EndLangPreamble
+End
+
+# --- Exercise ---
+Style Exercise
+  Category Reasoning
+  LatexType Environment
+  LatexName exr
+  LabelCounter exr
+  LabelString "Exercise \thetheorem."
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  Preamble
+    \theoremstyle{defuprightbrackets}
+    \ifx\thechapter\undefined
+      \newtheorem{exr}{\protect\exercisename}
+    \else
+      \newtheorem{exr}{\protect\exercisename}[chapter]
+    \fi
+  EndPreamble
+  LangPreamble
+    \providecommand{\exercisename}{_(Exercise)}
+  EndLangPreamble
+End
+
+# --- Solution ---
+Style Solution
+  Category Reasoning
+  LatexType Environment
+  LatexName sol
+  LabelCounter sol
+  LabelString "Solution \thetheorem."
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  LangPreamble
+    \providecommand{\solutionname}{_(Solution)}
+  EndLangPreamble
+End
+
+# --- Fact ---
+Style Fact
+  Category Reasoning
+  LatexType Environment
+  LatexName fact
+  LabelCounter fact
+  LabelString "Fact \thetheorem."
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  Preamble
+    \theoremstyle{defuprightbrackets}
+    \ifx\thechapter\undefined
+      \newtheorem{fact}{\protect\factname}
+    \else
+      \newtheorem{fact}{\protect\factname}[chapter]
+    \fi
+  EndPreamble
+  LangPreamble
+    \providecommand{\factname}{_(Fact)}
+  EndLangPreamble
+End
+
+# --- Criterion ---
+Style Criterion
+  Category Reasoning
+  LatexType Environment
+  LatexName cri
+  LabelCounter cri
+  LabelString "Criterion \thetheorem."
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  Preamble
+    \theoremstyle{defuprightbrackets}
+    \ifx\thechapter\undefined
+      \newtheorem{cri}{\protect\criterionname}
+    \else
+      \newtheorem{cri}{\protect\criterionname}[chapter]
+    \fi
+  EndPreamble
+  LangPreamble
+    \providecommand{\criterionname}{_(Criterion)}
+  EndLangPreamble
+End
+
+# --- Algorithm ---
+Style Algorithm
+  Category Reasoning
+  LatexType Environment
+  LatexName alg
+  LabelCounter alg
+  LabelString "Algorithm \thetheorem."
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  Preamble
+    \theoremstyle{defuprightbrackets}
+    \ifx\thechapter\undefined
+      \newtheorem{alg}{\protect\algorithmname}
+    \else
+      \newtheorem{alg}{\protect\algorithmname}[chapter]
+    \fi
+  EndPreamble
+  LangPreamble
+    \providecommand{\algorithmname}{_(Algorithm)}
+  EndLangPreamble
+End
+
+# --- Axiom ---
+Style Axiom
+  Category Reasoning
+  LatexType Environment
+  LatexName axm
+  LabelCounter axm
+  LabelString "Axiom \thetheorem."
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  Preamble
+    \theoremstyle{defuprightbrackets}
+    \ifx\thechapter\undefined
+      \newtheorem{axm}{\protect\axiomname}
+    \else
+      \newtheorem{axm}{\protect\axiomname}[chapter]
+    \fi
+  EndPreamble
+  LangPreamble
+    \providecommand{\axiomname}{_(Axiom)}
+  EndLangPreamble
+End
+
+# --- Condition ---
+Style Condition
+  Category Reasoning
+  LatexType Environment
+  LatexName cond
+  LabelCounter cond
+  LabelString "Condition \thetheorem."
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  Preamble
+    \theoremstyle{defuprightbrackets}
+    \ifx\thechapter\undefined
+      \newtheorem{cond}{\protect\conditionname}
+    \else
+      \newtheorem{cond}{\protect\conditionname}[chapter]
+    \fi
+  EndPreamble
+  LangPreamble
+    \providecommand{\conditionname}{_(Condition)}
+  EndLangPreamble
+End
+
+# --- Note ---
+Style Note
+  Category Reasoning
+  LatexType Environment
+  LatexName note
+  LabelCounter note
+  LabelString "Note \thetheorem."
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  Preamble
+    \theoremstyle{defuprightbrackets}
+    \ifx\thechapter\undefined
+      \newtheorem{note}{\protect\notename}
+    \else
+      \newtheorem{note}{\protect\notename}[chapter]
+    \fi
+  EndPreamble
+  LangPreamble
+    \providecommand{\notename}{_(Note)}
+  EndLangPreamble
+End
+
+# --- Notation ---
+Style Notation
+  Category Reasoning
+  LatexType Environment
+  LatexName nota
+  LabelCounter nota
+  LabelString "Notation \thetheorem."
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  Preamble
+    \theoremstyle{defuprightbrackets}
+    \ifx\thechapter\undefined
+      \newtheorem{nota}{\protect\notationname}
+    \else
+      \newtheorem{nota}{\protect\notationname}[chapter]
+    \fi
+  EndPreamble
+  LangPreamble
+    \providecommand{\notationname}{_(Notation)}
+  EndLangPreamble
+End
+
+# --- Summary ---
+Style Summary
+  Category Reasoning
+  LatexType Environment
+  LatexName summ
+  LabelCounter summ
+  LabelString "Summary \thetheorem."
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  Preamble
+    \theoremstyle{defuprightbrackets}
+    \ifx\thechapter\undefined
+      \newtheorem{summ}{\protect\summaryname}
+    \else
+      \newtheorem{summ}{\protect\summaryname}[chapter]
+    \fi
+  EndPreamble
+  LangPreamble
+    \providecommand{\summaryname}{_(Summary)}
+  EndLangPreamble
+End
+
+# --- Conclusion ---
+Style Conclusion
+  Category Reasoning
+  LatexType Environment
+  LatexName conc
+  LabelCounter conc
+  LabelString "Conclusion \thetheorem."
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  Preamble
+    \theoremstyle{defuprightbrackets}
+    \ifx\thechapter\undefined
+      \newtheorem{conc}{\protect\conclusionname}
+    \else
+      \newtheorem{conc}{\protect\conclusionname}[chapter]
+    \fi
+  EndPreamble
+  LangPreamble
+    \providecommand{\conclusionname}{_(Conclusion)}
+  EndLangPreamble
+End
+
+# --- Assumption ---
+Style Assumption
+  Category Reasoning
+  LatexType Environment
+  LatexName assu
+  LabelCounter assu
+  LabelString "Assumption \thetheorem."
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  Preamble
+    \theoremstyle{defuprightbrackets}
+    \ifx\thechapter\undefined
+      \newtheorem{assu}{\protect\assumptionname}
+    \else
+      \newtheorem{assu}{\protect\assumptionname}[chapter]
+    \fi
+  EndPreamble
+  LangPreamble
+    \providecommand{\assumptionname}{_(Assumption)}
+  EndLangPreamble
+End
+
+# --- Question ---
+Style Question
+  Category Reasoning
+  LatexType Environment
+  LatexName que
+  LabelCounter que
+  LabelString "Question \thetheorem."
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  Preamble
+    \theoremstyle{defuprightbrackets}
+    \ifx\thechapter\undefined
+      \newtheorem{que}{\protect\questionname}
+    \else
+      \newtheorem{que}{\protect\questionname}[chapter]
+    \fi
+  EndPreamble
+  LangPreamble
+    \providecommand{\questionname}{_(Question)}
+  EndLangPreamble
+End
+
+Style Definition
+  Category Reasoning
+  LatexType Environment
+  LatexName mydefinition
+  LabelCounter definition
+  LabelString "Definition \thedefinition." 
+  Font
+    Shape Up
+    Size Normal
+  EndFont
+  LabelFont
+    Shape Up
+    Series Bold
+  EndFont
+  LangPreamble
+    \providecommand{\definitionname}{_(Definition)}
+  EndLangPreamble
+End
+\end_local_layout
+\language english
+\language_package default
+\inputencoding auto-legacy
+\fontencoding auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\float_alignment class
+\paperfontsize 11
+\spacing onehalf
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle true
+\pdf_quoted_options "linkcolor=blue, urlcolor=marineblue, citecolor=blue, pdfstartview={FitH}, hyperfootnotes=false, unicode=true"
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1cm
+\topmargin 2cm
+\rightmargin 1cm
+\bottommargin 3cm
+\headheight 0cm
+\headsep 1cm
+\footskip 1cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation 0bp
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Title
+\paragraph_spacing double
+
+\series bold
+Title
+\end_layout
+
+\begin_layout Author
+Ron Goldman
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
