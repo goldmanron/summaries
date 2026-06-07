@@ -32,8 +32,12 @@
     "logic_cs":{
         "display_name": "לוגיקה",
         "URL": "summaries/logic/logic_book.pdf",
-        "button_color": "gradient-blue5",
+        "button_color": "gradient-red-logic_for_computer_science",
         "pdf_info": {
+            "under_construction": {
+                "": "בבנייה",
+                "image": "icon/book.png"
+            },
             "course_info": {
                 "שם קורס מלא": "לוגיקה למדעי המחשב",
                 "מספר קורס": "0368-2170",
