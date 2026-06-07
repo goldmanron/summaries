@@ -165,6 +165,11 @@ enumitem
 \filename_suffix 0
 \color background background
 \end_branch
+\branch lec7
+\selected 1
+\filename_suffix 0
+\color background background
+\end_branch
 \index Index
 \shortcut idx
 \color #008000
@@ -759,7 +764,7 @@ q, & \varphi=q\in\left\{ p_{i}\right\} _{i\in\mathbb{N}}\setminus\left\{ p_{1},\
 \begin_layout Standard
 \begin_inset Branch semantics_zo
 inverted 0
-status open
+status collapsed
 
 \begin_layout Section
 סמנטיקה
@@ -3066,7 +3071,7 @@ status open
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 מערכת ההוכחות של הילברט
 \end_layout
 
@@ -3294,7 +3299,7 @@ HPC
 .
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 כוחם של משפטים
 \end_layout
 
@@ -3840,7 +3845,7 @@ name "claim:c1"
 4. & \left(\lnot A\rightarrow\left(\lnot B\rightarrow\lnot A\right)\right) &  & \text{Ax1}\\
 5. & \lnot B\rightarrow A &  & \text{2,3 MP}\\
 6. & \lnot B\rightarrow\lnot A &  & \text{1,4 MP}\\
-7. & \left(\lnot B\rightarrow\lnot A\right)\rightarrow\left(\left(\lnot B\rightarrow A\right)\rightarrow B\right) &  & \text{Ax4}\\
+7. & \left(\lnot B\rightarrow\lnot A\right)\rightarrow\left(\left(\lnot B\rightarrow A\right)\rightarrow B\right) &  & \text{Ax3}\\
 8. & \left(\left(\lnot B\rightarrow A\right)\rightarrow B\right) &  & \text{6,7 MP}\\
 9. & B &  & \text{5,8 MP}
 \end{align*}
@@ -3917,7 +3922,7 @@ HPC
 2. & \lnot A\rightarrow B &  & \text{Deduction}\\
 3. & \left(A\rightarrow B\right)\rightarrow\left(\left(\lnot A\rightarrow B\right)\rightarrow B\right) &  & \text{8 from the Page on Moodle}\\
 4. & \left(\lnot A\rightarrow B\right)\rightarrow B &  & \text{MP 1,8}\\
-5. & B &  & \text{MP 1,4}
+5. & B &  & \text{MP 2,4}
 \end{align*}
 
 \end_inset
@@ -5773,7 +5778,7 @@ F, & \cc\left(v\right)\neq i
 \begin_layout Standard
 \begin_inset Branch first_order
 inverted 0
-status collapsed
+status open
 
 \begin_layout Chapter
 לוגיקה מסדר ראשון
@@ -7278,8 +7283,31 @@ status open
 .
 \end_layout
 
-\begin_layout Section
-איזומורפיזם
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+אם 
+\begin_inset Formula $\varphi_{1},\varphi_{2}$
+\end_inset
+
+ שקולות שלד אזי לכל סביבה 
+\begin_inset Formula $\rho$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\left\llbracket \varphi_{1}\right\rrbracket _{\rho}^{\mathcal{M}}=\left\llbracket \varphi_{2}\right\rrbracket _{\rho}^{\mathcal{M}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+איזומורפיזם של מבנים
 \end_layout
 
 \begin_layout Definition
@@ -7383,7 +7411,7 @@ F\left(f^{\mathcal{A}}\left(d_{1},\ldots,d_{k}\right)\right)=f^{\mathcal{B}}\lef
 
  נאמר כי הם 
 \series bold
-איזמורפיים
+איזומורפיים
 \series default
 .
 \end_layout
@@ -7442,7 +7470,15 @@ F\left(f^{\mathcal{A}}\left(d_{1},\ldots,d_{k}\right)\right)=f^{\mathcal{B}}\lef
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset Formula $\rho_{2}=F\circ\rho_{1}$
+\begin_inset Formula $\rho_{2}\left(x\right)=F\left(\rho_{1}\left(x\right)\right)$
+\end_inset
+
+ לכל 
+\begin_inset Formula $x$
+\end_inset
+
+ שמופיע חופשי ב-
+\begin_inset Formula $\varphi$
 \end_inset
 
 .
@@ -7455,6 +7491,967 @@ F\left(f^{\mathcal{A}}\left(d_{1},\ldots,d_{k}\right)\right)=f^{\mathcal{B}}\lef
 \end_inset
 
 .
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch lec7
+inverted 0
+status open
+
+\begin_layout Section
+הצרנות ומידול 
+\end_layout
+
+\begin_layout Example
+מילון עבור גרפים 
+\begin_inset Formula $\Sigma=\left(\emptyset,\left\{ \left(2,=\right),\left(2,E\right)\right\} ,\emptyset\right)$
+\end_inset
+
+.
+ עבור גרף 
+\begin_inset Formula $G=\left(V,E\right)$
+\end_inset
+
+ נגדיר מבנה עם פירושים 
+\begin_inset Formula $D^{\mathcal{M}}=V,=^{\mathcal{M}}=Id$
+\end_inset
+
+,
+ וכן:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+בגרף מכוון,
+ 
+\begin_inset Formula $E^{\mathcal{M}}=E$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+בגרף לא מכוון,
+ 
+\begin_inset Formula $E^{\mathcal{M}}=\sset{\left(u,v\right)\in V\times V}{\left\{ u,v\right\} \in E}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Example
+בגרף עם קשתות מקבילות,
+ ניתן להשתמש במילונים הבאים:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\Sigma=\left(\emptyset,\left\{ \left(2,=\right),\left(3,E\right)\right\} ,\emptyset\right)$
+\end_inset
+
+,
+ עבור גרף 
+\begin_inset Formula $G=\left(V,E\right)$
+\end_inset
+
+ כאשר 
+\begin_inset Formula $E$
+\end_inset
+
+ מולטיסט,
+ נגדיר מבנה עם פירושים 
+\begin_inset Formula $D^{\mathcal{M}}=V\uplus E,=^{\mathcal{M}}=Id$
+\end_inset
+
+ וכן
+\begin_inset Formula 
+\[
+E^{\mathcal{M}}=\sset{\left(a,b,c\right)\in V\times E\times V}{b\ \text{is}\ \text{an}\ \text{edge}\ \text{from}\ a\ \text{to}\ c}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\Sigma=\left(\emptyset,\left\{ \left(2,=\right),\left(1,E\right),\left(1,V\right)\left(2,\mathrm{Adj}_{L}\right),\left(2,\mathrm{Adj}_{R}\right)\right\} \right)$
+\end_inset
+
+,
+ עבור גרף 
+\begin_inset Formula $G=\left(V,E\right)$
+\end_inset
+
+,
+ נגדיר מבנה עם פירושים 
+\begin_inset Formula $D^{\mathcal{M}}=V\uplus E,=^{\mathcal{M}}=Id,E^{\mathcal{M}}=E,V^{\mathcal{M}}=V$
+\end_inset
+
+ וכן
+\begin_inset Formula 
+\begin{align*}
+\mathrm{Adj}_{L}^{\mathcal{M}}=\sset{\left(x,z\right)\in V\times E}{z\ \text{is}\ \text{an}\ \text{edge}\ \text{out}\ \text{of}\ x} & , & \mathrm{Adj}_{R}^{\mathcal{M}}=\sset{\left(x,z\right)\in V\times E}{z\ \text{is}\ \text{an}\ \text{edge}\ \text{in}\ \text{to}\ x} & .
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Example
+נצרין את הפסוק 
+\begin_inset Quotes eld
+\end_inset
+
+בין כל שתי צמתים יש לכל היותר שתי קשתות
+\begin_inset Quotes erd
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula 
+\[
+\forall x\forall y\forall z_{1}\forall z_{2}\forall z_{3}\left(E\left(x,z_{1},y\right)\land E\left(x,z_{2},y\right)\land E\left(x,z_{3},y\right)\right)\rightarrow\left(=\left(z_{1},z_{2}\right)\lor=\left(z_{1},z_{3}\right)\lor=\left(z_{2},z_{3}\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula 
+\begin{align*}
+\forall x\forall y\forall z_{1}\forall z_{2}\forall z_{3}(\mathrm{Adj}_{L}\left(x,z_{1}\right)\land\mathrm{Adj}_{R}\left(y,z_{1}\right) & \land\mathrm{Adj}_{L}\left(x,z_{2}\right)\land\mathrm{Adj}_{R}\left(y,z_{2}\right)\\
+\land\mathrm{Adj}_{L}\left(x,z_{3}\right)\land\mathrm{Adj}_{R}\left(y,z_{3}\right)) & \rightarrow\left(=\left(z_{1},z_{2}\right)\lor=\left(z_{1},z_{3}\right)\lor=\left(z_{2},z_{3}\right)\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Question
+האם לכל נוסחה 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ במילון 
+\begin_inset Formula 
+\[
+\Sigma_{1}=\left(\emptyset,\left\{ \left(2,=\right),\left(2,E\right)\right\} ,\emptyset\right),
+\]
+
+\end_inset
+
+ קיימת נוסחה 
+\begin_inset Formula $\psi$
+\end_inset
+
+ במילון 
+\begin_inset Formula 
+\[
+\Sigma_{2}=\left(\emptyset,\left\{ \left(1,V\right),\left(1,E\right),\left(2,=\right),\left(2,\mathrm{Adj}_{L}\right),\left(2,\mathrm{Adj}_{R}\right)\right\} ,\emptyset\right),
+\]
+
+\end_inset
+
+כך שלכל גרף לא מכוון 
+\begin_inset Formula $G=\left(V,E\right)$
+\end_inset
+
+,
+ כאשר 
+\emph on
+
+\begin_inset Formula $\mathcal{M}_{1}\left(G\right)$
+\end_inset
+
+ מבנה מתאים ל-
+\begin_inset Formula $\Sigma_{1}$
+\end_inset
+
+,
+ ו-
+\begin_inset Formula $\mathcal{M}_{2}\left(G\right)$
+\end_inset
+
+ מבנה מתאים ל-
+\begin_inset Formula $\Sigma_{2}$
+\end_inset
+
+,
+ 
+\begin_inset Formula 
+\[
+\left\llbracket \varphi\right\rrbracket ^{\mathcal{M}_{1}\left(G\right)}=\left\llbracket \psi\right\rrbracket ^{\mathcal{M}_{2}\left(G\right)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+הצרנה של מחרוזות
+\end_layout
+
+\end_inset
+
+ נצרין את המחרוזת 
+\begin_inset Formula $s=aabacb$
+\end_inset
+
+,
+ נגדיר מילון 
+\begin_inset Formula $\Sigma=\left\{ \emptyset,\left\{ P_{a},P_{b},P_{c},<\right\} ,\emptyset\right\} $
+\end_inset
+
+ עבור מחרוזות 
+\begin_inset Formula $w\in\left\{ a,b,c\right\} ^{6}$
+\end_inset
+
+,
+ נגדיר מבנה 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+ עם תחום 
+\begin_inset Formula $D^{\mathcal{M}}=\left\{ 1,2,3,4,5,6\right\} $
+\end_inset
+
+,
+ ופירושים
+\begin_inset Formula 
+\begin{align*}
+P_{a}^{\mathcal{M}} & =\left\{ 1,2,4\right\} \\
+P_{b}^{\mathcal{M}} & =\left\{ 3,6\right\} \\
+P_{c}^{\mathcal{M}} & =\left\{ 5\right\} \\
+<^{\mathcal{M}} & =\sset{\left(a,b\right)}{a<b}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+אזי מחרוזת מכילה 
+\begin_inset Formula $a$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+\exists xP_{a}\left(x\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+מחרוזת מכילה גם 
+\begin_inset Formula $a$
+\end_inset
+
+ וגם 
+\begin_inset Formula $b$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+\exists xP_{a}\left(x\right)\land\exists yP_{b}\left(y\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+מחרוזת מכילה מופע של 
+\begin_inset Formula $a$
+\end_inset
+
+ לפני מופע של 
+\begin_inset Formula $b$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+\exists x\exists y\left(x<y\land P_{a}\left(x\right)\land P_{b}\left(y\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+מופיע 
+\begin_inset Formula $ab$
+\end_inset
+
+ במחרוזת,
+\begin_inset Formula 
+\[
+\exists x\exists yP_{a}\left(x\right)\land P_{b}\left(y\right)\land\lnot\left(\exists z\left(x<z\land z<y\land P_{a}\left(z\right)\right)\right)\land\left(x<y\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+גדירות והרחבת מבנים
+\end_layout
+
+\begin_layout Definition
+יהי 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ מילון ו-
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+ מבנה מעליו עם תחום 
+\begin_inset Formula $D=\mathcal{D}^{\mathcal{M}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+נאמר כי יחס 
+\begin_inset Formula $R\subseteq D^{k}$
+\end_inset
+
+ 
+\series bold
+גדיר
+\series default
+ אם קיימת נוסחה 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ בעלת לכל היותר 
+\begin_inset Formula $k$
+\end_inset
+
+ משתנים חופשיים 
+\begin_inset Formula $x_{1},\ldots,x_{k}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula 
+\[
+R=\sset{\left(a_{1},\ldots,a_{k}\right)\in D^{k}}{\forall\rho.\left\llbracket \varphi\right\rrbracket _{\rho\left[\frac{a_{1}}{x_{1}},\ldots,\frac{a_{k}}{x_{k}}\right]}^{\mathcal{M}}=T}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+נאמר כי פונקציה 
+\begin_inset Formula $f:D^{k}\rightarrow D$
+\end_inset
+
+ היא גדירה אם היא גדירה כיחס 
+\begin_inset Formula $\sset{\left(x,y\right)\in D^{k}\times D}{y=f\left(x\right)}\subseteq D^{k+1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+נאמר כי איבר 
+\begin_inset Formula $d\in D$
+\end_inset
+
+ הוא גדיר אם הוא גדיר כיחס 
+\begin_inset Formula $\left\{ d\right\} \subseteq D$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+יהיו 
+\begin_inset Formula $\left(\Sigma,\mathcal{M}\right),\left(\Sigma',\mathcal{M}'\right)$
+\end_inset
+
+ מילונים עם מבנים מעליהם.
+ 
+\end_layout
+
+\begin_layout Definition
+נאמר כי 
+\begin_inset Formula $\left(\Sigma',\mathcal{M}'\right)$
+\end_inset
+
+ 
+\series bold
+מבנה הרחבה 
+\series default
+של 
+\begin_inset Formula $\left(\Sigma,\mathcal{M}\right)$
+\end_inset
+
+ אם:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\mathcal{D}^{\mathcal{M}}=\mathcal{D}^{\mathcal{M}'}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\Sigma\subseteq\Sigma'$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+לכל 
+\begin_inset Formula $\sigma\in\Sigma$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\sigma^{\mathcal{M}}=\sigma^{\mathcal{M}'}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Definition
+נאמר כי 
+\begin_inset Formula $\left(\Sigma',\mathcal{M}'\right)$
+\end_inset
+
+ היא הרחבה
+\series bold
+ גדירה 
+\series default
+אם כל סימן 
+\begin_inset Formula $\sigma\in\Sigma'\setminus\Sigma$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\sigma^{\mathcal{M}'}$
+\end_inset
+
+ הוא גדיר מעל 
+\begin_inset Formula $\left(\Sigma,\mathcal{M}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem
+אם 
+\begin_inset Formula $\left(\Sigma',\mathcal{M}'\right)$
+\end_inset
+
+ הרחבה גדירה של 
+\begin_inset Formula $\left(\Sigma,\mathcal{M}\right)$
+\end_inset
+
+ אזי לכל נוסחה 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ ב-
+\begin_inset Formula $\Sigma'$
+\end_inset
+
+ קיימת נוסחה 
+\begin_inset Formula $\psi$
+\end_inset
+
+ ב-
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\left\llbracket \varphi\right\rrbracket ^{\mathcal{M}'}=\left\llbracket \psi\right\rrbracket ^{\mathcal{M}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+מושגים סמנטייים בסיסיים
+\end_layout
+
+\begin_layout Definition
+יהי 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ מילון,
+ נגדיר:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\rho$
+\end_inset
+
+ 
+\series bold
+מספקת
+\series default
+ את 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ במבנה 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+ אם 
+\begin_inset Formula $\left\llbracket \varphi\right\rrbracket _{\rho}^{\mathcal{M}}=T$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\varphi$
+\end_inset
+
+ 
+\series bold
+ספיקה במבנה
+\series default
+ 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+ אם קיימת 
+\begin_inset Formula $\rho$
+\end_inset
+
+ המספקת את 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ במבנה 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\varphi$
+\end_inset
+
+ 
+\series bold
+ספיקה
+\series default
+ אם קיים מבנה כך ש-
+\begin_inset Formula $\varphi$
+\end_inset
+
+ ספיקה בו.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\varphi$
+\end_inset
+
+ 
+\series bold
+נכונה
+\series default
+ במבנה 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+ אם כל סביבה 
+\begin_inset Formula $\rho$
+\end_inset
+
+ במבנה 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+ מספקת את 
+\begin_inset Formula $\varphi$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\varphi$
+\end_inset
+
+ 
+\series bold
+תקיפה 
+\series default
+אם 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ 
+\series bold
+נכונה 
+\series default
+בכל מבנה.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\varphi$
+\end_inset
+
+ 
+\series bold
+שקולה 
+\series default
+ל-
+\begin_inset Formula $\psi$
+\end_inset
+
+ ונסמן 
+\begin_inset Formula $\varphi\equiv\psi$
+\end_inset
+
+ אם לכל מבנה 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+ ולכל סביבה 
+\begin_inset Formula $\rho$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\left\llbracket \varphi\right\rrbracket _{\rho}^{\mathcal{M}}=\left\llbracket \psi\right\rrbracket _{\rho}^{\mathcal{M}}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Claim
+יהי 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ מילון,
+ אזי:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\varphi$
+\end_inset
+
+ ספיקה אממ 
+\begin_inset Formula $\exists x\varphi$
+\end_inset
+
+ ספיקה.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $\forall x\varphi$
+\end_inset
+
+ ספיקה אזי 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ ספיקה.
+\end_layout
+
+\begin_layout Enumerate
+לכל קבוצת משתנים סופית 
+\begin_inset Formula $x_{1},\ldots,x_{k}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ נכונה אם ורק אם 
+\begin_inset Formula $\forall x_{1}\ldots\forall x_{k}\varphi$
+\end_inset
+
+ נכונה.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+חישוביות של לוגיקה מסדר ראשון
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+צ'רץ'
+\end_layout
+
+\end_inset
+
+ אין אלגוריתם שבודק האם נוסחא תקיפה.
+\end_layout
+
+\begin_layout Problem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+Model Checking
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Problem
+
+\series bold
+קלט:
+
+\series default
+ מילון סופי 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+,
+ מבנה סופי 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+,
+ ונוסחה 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ מעל 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Problem
+
+\series bold
+שאלה:
+
+\series default
+ האם 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ ספיקה במבנה 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Problem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+Model Evaluation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Problem
+
+\series bold
+קלט:
+
+\series default
+ מילון סופי 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+,
+ מבנה סופי 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+,
+ שם עצם 
+\begin_inset Formula $t$
+\end_inset
+
+ מעל 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+,
+ סביבה 
+\begin_inset Formula $\rho$
+\end_inset
+
+ ב-
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Problem
+
+\series bold
+שאלה:
+
+\series default
+ האם 
+\begin_inset Formula $\rho$
+\end_inset
+
+ מספקת את 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ במבנה 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Problem
+
+\series bold
+קלט:
+
+\series default
+ מילון סופי 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+,
+ מבנה סופי 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+,
+ שם עצם 
+\begin_inset Formula $t$
+\end_inset
+
+ מעל 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+,
+ 
+\begin_inset Formula $d_{1},\ldots,d_{k}\in\mathcal{D}^{\mathcal{M}}$
+\end_inset
+
+ השמה למשתנים של 
+\begin_inset Formula $t$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Problem
+
+\series bold
+שאלה:
+
+\series default
+ האם 
+\begin_inset Formula $d_{1},\ldots,d_{k}$
+\end_inset
+
+ השמה המספקת את 
+\begin_inset Formula $t$
+\end_inset
+
+ במבנה 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+?
 \end_layout
 
 \end_inset
