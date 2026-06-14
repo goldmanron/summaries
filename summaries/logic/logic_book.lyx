@@ -9451,7 +9451,7 @@ status open
 ,
  משום שאין בה משתנים אזי היא תקיפה,
  נגדיר סביבה 
-\begin_inset Formula $\rho:\left\{ p_{i}\right\} \rightarrow\left\{ T,F\right\} $
+\begin_inset Formula $\rho$
 \end_inset
 
  שמספקת את 
@@ -9555,14 +9555,11 @@ T, & i\notin\left[k\right]
 \end_inset
 
 ,
-\begin_inset Formula 
-\[
-R_{i}^{\mathcal{M}}=\bigcup_{j\in\left[k\right]:\ R_{i}=R_{j}}\sset{\left(t_{1}^{\left(j\right)},\ldots,t_{n_{j}}^{\left(j\right)}\right)}{\rho\left(p_{j}\right)=T}
-\]
-
+ 
+\begin_inset Formula ${\displaystyle R_{i}^{\mathcal{M}}=\bigcup_{j\in\left[k\right]:\ R_{i}=R_{j}}\sset{\left(t_{1}^{\left(j\right)},\ldots,t_{n_{j}}^{\left(j\right)}\right)}{\rho\left(p_{j}\right)=T}}$
 \end_inset
 
-
+.
 \end_layout
 
 \begin_deeper
@@ -9754,7 +9751,7 @@ f^{\mathcal{M}}\left(t_{1},\ldots,t_{k}\right)=f\left(t_{1},\ldots,t_{k}\right)
 
 \end_inset
 
-ספיקב ב-
+ספיקה ב-
 \begin_inset Formula $\mathcal{H}$
 \end_inset
 
