@@ -9472,7 +9472,6 @@ T, & i\notin\left[k\right]
 
 \end_layout
 
-\begin_deeper
 \begin_layout Proof
 \begin_inset Formula $\boldsymbol{\underline{:\Longrightarrow}}$
 \end_inset
@@ -9574,7 +9573,6 @@ R_{i}^{\mathcal{M}}=\bigcup_{j\in\left[k\right]:\ R_{i}=R_{j}}\sset{\left(t_{1}^
 .
 \end_layout
 
-\end_deeper
 \end_deeper
 \end_deeper
 \begin_layout Section
