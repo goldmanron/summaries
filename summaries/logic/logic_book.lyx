@@ -170,6 +170,11 @@ enumitem
 \filename_suffix 0
 \color background background
 \end_branch
+\branch lec8
+\selected 1
+\filename_suffix 0
+\color background background
+\end_branch
 \index Index
 \shortcut idx
 \color #008000
@@ -5778,7 +5783,7 @@ F, & \cc\left(v\right)\neq i
 \begin_layout Standard
 \begin_inset Branch first_order
 inverted 0
-status open
+status collapsed
 
 \begin_layout Chapter
 לוגיקה מסדר ראשון
@@ -7501,7 +7506,7 @@ F\left(f^{\mathcal{A}}\left(d_{1},\ldots,d_{k}\right)\right)=f^{\mathcal{B}}\lef
 \begin_layout Standard
 \begin_inset Branch lec7
 inverted 0
-status open
+status collapsed
 
 \begin_layout Section
 הצרנות ומידול 
@@ -8457,6 +8462,1310 @@ Model Evaluation
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch lec8
+inverted 0
+status open
+
+\begin_layout Section
+שקילויות הזזת כמתים
+\end_layout
+
+\begin_layout Claim
+תהינא 
+\begin_inset Formula $\varphi,\psi$
+\end_inset
+
+ נוסחאות כך ש-
+\begin_inset Formula $x$
+\end_inset
+
+ לא חופשי ב-
+\begin_inset Formula $\varphi$
+\end_inset
+
+.
+ אזי:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\varphi\land\exists x\psi$
+\end_inset
+
+ שקולה ל-
+\begin_inset Formula $\exists x\left(\varphi\land\psi\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\varphi\lor\exists x\psi$
+\end_inset
+
+ שקולה ל-
+\begin_inset Formula $\exists x\left(\varphi\lor\psi\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\varphi\land\forall x\psi$
+\end_inset
+
+ שקולה ל-
+\begin_inset Formula $\forall x\left(\varphi\land\psi\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\varphi\lor\forall x\psi$
+\end_inset
+
+ שקולה ל-
+\begin_inset Formula $\forall x\left(\varphi\lor\psi\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\lnot\exists x\psi$
+\end_inset
+
+ שקולה ל-
+\begin_inset Formula $\forall x\lnot\psi$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\lnot\forall x\psi$
+\end_inset
+
+ שקולה ל-
+\begin_inset Formula $\exists x\lnot\psi$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+צורת
+\family roman
+\series bold
+\shape up
+\size large
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+PNF
+\end_layout
+
+\begin_layout Definition
+נוסחה 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ היא בצורת
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series bold
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+Prenix Normal Form
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+אם קיימת 
+\begin_inset Formula $\psi$
+\end_inset
+
+ ללא כמתים,
+ משתנים 
+\begin_inset Formula $x_{1},\ldots,x_{k}$
+\end_inset
+
+,וכמתים 
+\begin_inset Formula $\circledast_{1},\ldots,\circledast_{k}\in\left\{ \forall,\exists\right\} $
+\end_inset
+
+ כך ש-
+\begin_inset Formula 
+\[
+\varphi=\circledast_{1}x_{1}\ldots\circledast_{k}x_{k}\psi
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+לכל 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ קיימת 
+\begin_inset Formula $\psi$
+\end_inset
+
+ ב-
+\lang english
+PNF
+\lang hebrew
+.
+ בפרט,
+ יש אלגוריתם שעבור כל 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ בונה 
+\begin_inset Formula $\psi$
+\end_inset
+
+ ב-
+\lang english
+PNF
+\family roman
+\series medium
+\shape italic
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ששקולה ל-
+\begin_inset Formula $\varphi$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+נפעיל טרנספורמציות הזזת כמתים.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+נסלק 
+\begin_inset Formula $\leftrightarrow,\rightarrow$
+\end_inset
+
+ ונשאר רק עם 
+\begin_inset Formula $\land,\lor,\lnot$
+\end_inset
+
+,
+ נסמן את הנוסחה החדשה ב-
+\begin_inset Formula $\varphi_{0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+נפעיל טרנספורמציות הזזת כמתים איטרטיבית:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $\varphi_{i}=\left(\circledast x\alpha\right)*\beta$
+\end_inset
+
+ כאשר 
+\begin_inset Formula $\circledast\in\left\{ \exists,\forall\right\} $
+\end_inset
+
+ הכמת הראשון ב-
+\begin_inset Formula $\varphi_{i}$
+\end_inset
+
+ ו-
+\begin_inset Formula $*\in\left\{ \lor,\land\right\} $
+\end_inset
+
+,
+ אזי עבור 
+\begin_inset Formula $y$
+\end_inset
+
+ שלא מופיע ב-
+\begin_inset Formula $\alpha,\beta$
+\end_inset
+
+,
+ נגדיר 
+\begin_inset Formula $\varphi_{i+1}=\circledast y\left(\alpha\left\{ \frac{y}{x}\right\} *\beta\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $\varphi_{i}=\alpha*\circledast x\beta$
+\end_inset
+
+ כאשר 
+\begin_inset Formula $\circledast\in\left\{ \exists,\forall\right\} $
+\end_inset
+
+ הכמת הראשון ב-
+\begin_inset Formula $\varphi_{i}$
+\end_inset
+
+ ו-
+\begin_inset Formula $*\in\left\{ \lor,\land\right\} $
+\end_inset
+
+,
+ אזי עבור 
+\begin_inset Formula $y$
+\end_inset
+
+ שלא מופיע ב-
+\begin_inset Formula $\alpha,\beta$
+\end_inset
+
+,
+ נגדיר 
+\begin_inset Formula $\varphi_{i+1}=\circledast y\left(\alpha*\beta\left\{ \frac{y}{x}\right\} \right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $\varphi_{i}=\lnot\exists x\psi$
+\end_inset
+
+ אזי 
+\begin_inset Formula $\varphi_{i+1}=\forall x\lnot\psi$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $\varphi_{i}=\lnot\forall x\psi$
+\end_inset
+
+ אזי 
+\begin_inset Formula $\varphi_{i+1}=\exists x\lnot\psi$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Subsection
+בחזרה לבעיות חישוביות על נוסחאות
+\end_layout
+
+\begin_layout Problem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+ספיקות
+\end_layout
+
+\end_inset
+
+
+\series bold
+קלט:
+
+\series default
+ נוסחא 
+\begin_inset Formula $\varphi$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Problem
+
+\series bold
+פלט:
+
+\series default
+ האם 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ ספיקה
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Problem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+תקיפות
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+קלט:
+
+\series default
+ נוסחא 
+\begin_inset Formula $\varphi$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Problem
+
+\series bold
+פלט:
+
+\series default
+ האם 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ תקיפה
+\end_layout
+
+\begin_layout Claim
+אלגוריתם 
+\begin_inset Formula $\mathcal{A}\left(\cdot\right)$
+\end_inset
+
+ פותר את בעיית הספיקות אם ורק אם 
+\begin_inset Formula $1-\mathcal{A}\left(\lnot\cdot\right)$
+\end_inset
+
+ אלגוריתם פותר את בעיית התקיפות.
+\end_layout
+
+\begin_layout Definition
+נוסחה 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ היא 
+\series bold
+אוניברסלית
+\series default
+ אם קיימת 
+\begin_inset Formula $\psi$
+\end_inset
+
+ ללא כמתים ומשתנים 
+\begin_inset Formula $x_{1},\ldots,x_{k}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula 
+\[
+\varphi=\forall x_{1}\ldots\forall x_{k}\psi
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+נוסחה 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ היא 
+\series bold
+ישית 
+\series default
+(
+\emph on
+\lang english
+existential
+\emph default
+\lang hebrew
+) אם קיימת 
+\begin_inset Formula $\psi$
+\end_inset
+
+ ללא כמתים ומשתנים 
+\begin_inset Formula $x_{1},\ldots,x_{k}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula 
+\[
+\varphi=\exists x_{1}\ldots\exists x_{k}\psi
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:lemc"
+
+\end_inset
+
+יהי 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ מילון ו-
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+ מבנה מעליו,
+ אזי לכל נוסחה 
+\begin_inset Formula $\varphi$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\exists x\varphi$
+\end_inset
+
+ ספיקה במבנה 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+ אם ורק אם קיימים 
+\begin_inset Formula $c\notin\Sigma$
+\end_inset
+
+ ומבנה הרחבה 
+\begin_inset Formula $\left(\Sigma'=\Sigma\uplus\left\{ c\right\} ,\mathcal{M}'\right)$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\varphi\left\{ \frac{c}{x}\right\} $
+\end_inset
+
+ ספיקה ב-
+\begin_inset Formula $\mathcal{M}'$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+\begin_inset Formula $\boldsymbol{\underline{:\Longleftarrow}}$
+\end_inset
+
+ נניח כי 
+\begin_inset Formula $\exists x\varphi$
+\end_inset
+
+ ספיקה ב-
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+,
+ אזי קיימת 
+\begin_inset Formula $\rho:\left\{ x_{i}\right\} \rightarrow\mathcal{D}^{\mathcal{M}}$
+\end_inset
+
+ ו-
+\begin_inset Formula $a\in\mathcal{D}^{\mathcal{M}}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\left\llbracket \varphi\right\rrbracket _{\rho\left[\frac{a}{x}\right]}^{\mathcal{M}}=T$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+נגדיר את 
+\begin_inset Formula $c^{\mathcal{M}'}=a$
+\end_inset
+
+,
+ ואז 
+\begin_inset Formula 
+\[
+\left\llbracket \varphi\left\{ \frac{c}{x}\right\} \right\rrbracket _{\rho}^{\mathcal{M}'}=\left\llbracket \varphi\right\rrbracket _{\rho\left[\frac{a}{x}\right]}^{\mathcal{M}'}=\left\llbracket \varphi\right\rrbracket _{\rho\left[\frac{a}{x}\right]}^{\mathcal{M}}=T
+\]
+
+\end_inset
+
+כי 
+\begin_inset Formula $\left(\Sigma',\mathcal{M}'\right)$
+\end_inset
+
+ מבנה הרחבה של 
+\begin_inset Formula $\left(\Sigma,\mathcal{M}\right)$
+\end_inset
+
+ ו-
+\begin_inset Formula $\varphi$
+\end_inset
+
+ נוסחה מעל 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:lemf"
+
+\end_inset
+
+יהי 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ מילון ו-
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+ מבנה מעליו,
+ ותהינא 
+\begin_inset Formula $x_{1},\ldots,x_{k},y$
+\end_inset
+
+ משתנים שונים.
+\end_layout
+
+\begin_layout Lemma
+אזי לכל נוסחה 
+\begin_inset Formula $\varphi$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\forall x_{1}\ldots\forall x_{k}\exists y\varphi$
+\end_inset
+
+ ספיקה במבנה 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+ אם ורק אם קיימים סימן פונקציה 
+\begin_inset Formula $k$
+\end_inset
+
+-מקומית 
+\begin_inset Formula $f\notin\Sigma$
+\end_inset
+
+ ומבנה הרחבה 
+\begin_inset Formula $\left(\Sigma'=\Sigma\uplus\left\{ f\right\} ,\mathcal{M}'\right)$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\forall x_{1}\ldots\forall x_{k}\varphi\left\{ \frac{f\left(x_{1},\ldots,x_{k}\right)}{y}\right\} $
+\end_inset
+
+ ספיקה ב-
+\begin_inset Formula $\mathcal{M}'$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+\begin_inset Formula $\boldsymbol{\underline{:\Longleftarrow}}$
+\end_inset
+
+ נניח כי 
+\begin_inset Formula $\forall x_{1}\ldots\forall x_{k}\exists y\varphi$
+\end_inset
+
+ ספיקה ב-
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+.
+ אזי לכל 
+\begin_inset Formula $a_{1},\ldots,a_{k}\in\mathcal{D}^{\mathcal{M}}$
+\end_inset
+
+ קיים 
+\begin_inset Formula $b\in\mathcal{D}^{\mathcal{M}}$
+\end_inset
+
+ וסביבה 
+\begin_inset Formula $\rho$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\left\llbracket \varphi\right\rrbracket _{\rho\left[\frac{a_{1}}{x_{1}},\ldots,\frac{a_{k}}{x_{k}},\frac{b}{y}\right]}^{\mathcal{M}}=T$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+נגדיר 
+\begin_inset Formula $f^{\mathcal{M}}\left(a_{1},\ldots,a_{k}\right)=b$
+\end_inset
+
+ כנ
+\begin_inset Quotes erd
+\end_inset
+
+ל,
+ עבור 
+\begin_inset Formula $b$
+\end_inset
+
+ יחיד כלשהו לכל 
+\begin_inset Formula $a_{1},\ldots,a_{k}\in\mathcal{D}^{\mathcal{M}}$
+\end_inset
+
+.
+ (משתמשים באקסיומת הבחירה על קבוצת ה-
+\begin_inset Formula $b$
+\end_inset
+
+-ים האפשריים לכל 
+\begin_inset Formula $a_{1},\ldots,a_{k}$
+\end_inset
+
+).
+\end_layout
+
+\end_deeper
+\begin_layout Theorem
+קיים אלגוריתם כך שלכל נוסחה 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ בונה נוסחא 
+\begin_inset Formula $\psi$
+\end_inset
+
+ אוניברסלית ב-
+\begin_inset Formula $\Sigma'\supseteq\Sigma$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\varphi$
+\end_inset
+
+ ספיקה מעל 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ אם ורק אם 
+\begin_inset Formula $\psi$
+\end_inset
+
+ ספיקה מעל 
+\begin_inset Formula $\Sigma'$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Algorithm
+עבור נוסחה 
+\begin_inset Formula $\varphi$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+נמיר לצורת
+\family roman
+\series medium
+\shape italic
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+PNF
+\lang hebrew
+.
+\end_layout
+
+\begin_layout Enumerate
+נסלק כמתי 
+\begin_inset Formula $\exists$
+\end_inset
+
+ לפי למות 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:lemf"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:lemc"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+ספיקות של נוסחאות אוניברסליות
+\end_layout
+
+\begin_layout Algorithm
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+בדיקת ספיקות ללא משתנים וללא כמתים
+\end_layout
+
+\end_inset
+
+תהינא 
+\begin_inset Formula $P_{1},\ldots,P_{k}$
+\end_inset
+
+ הנוסחאות האטומיות המופיעות ב-
+\begin_inset Formula $\varphi$
+\end_inset
+
+,
+ נגדיר את 
+\begin_inset Formula $T\left(\varphi\right)$
+\end_inset
+
+ להיות 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ כאשר 
+\begin_inset Formula $p_{1},\ldots,p_{k}$
+\end_inset
+
+ מחליפים את 
+\begin_inset Formula $P_{1},\ldots,P_{k}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem
+אם 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ לא כמתים וללא משתנים,
+ אזי 
+\begin_inset Formula $T\left(\varphi\right)\in\wff$
+\end_inset
+
+ ו-
+\begin_inset Formula $\varphi$
+\end_inset
+
+ ספיקה אם ורק אם 
+\begin_inset Formula $T\left(\varphi\right)$
+\end_inset
+
+ ספיקה.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+\begin_inset Formula $\boldsymbol{\underline{:\Longleftarrow}}$
+\end_inset
+
+ נניח כי 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ ספיקה במבנה 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+,
+ משום שאין בה משתנים אזי היא תקיפה,
+ נגדיר סביבה 
+\begin_inset Formula $\rho:\left\{ p_{i}\right\} \rightarrow\left\{ T,F\right\} $
+\end_inset
+
+ שמספקת את 
+\begin_inset Formula $T\left(\varphi\right)$
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+\rho\left(p_{i}\right)\triangleq\begin{cases}
+\left\llbracket P_{i}\right\rrbracket ^{\mathcal{M}}, & i\in\left[k\right]\\
+T, & i\notin\left[k\right]
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+\begin_inset Formula $\boldsymbol{\underline{:\Longrightarrow}}$
+\end_inset
+
+ נניח כי 
+\begin_inset Formula $T\left(\varphi\right)$
+\end_inset
+
+ ספיקה על ידי סביבה 
+\begin_inset Formula $\rho:\left\{ p_{i}\right\} \rightarrow\left\{ T,F\right\} $
+\end_inset
+
+,
+ נגדיר את 
+\begin_inset Formula $\mathcal{D}^{\mathcal{M}}$
+\end_inset
+
+ להיות כל שמות העצם שמופיעים ב-
+\begin_inset Formula $\varphi$
+\end_inset
+
+,
+ ונגדיר פירושים ליחסים,
+ כאשר 
+\begin_inset Formula $P_{i}=R_{i}\left(t_{1}^{\left(i\right)},\ldots,t_{n_{i}}^{\left(i\right)}\right)$
+\end_inset
+
+.
+ לכל קבוע 
+\begin_inset Formula $c$
+\end_inset
+
+ שמופיע ב-
+\begin_inset Formula $\varphi$
+\end_inset
+
+,
+ 
+\begin_inset Formula $c^{\mathcal{M}}=c$
+\end_inset
+
+,
+ ליתר הקבועים נקבע פירוש שרירותי.
+ לכל פונקציה 
+\begin_inset Formula $f$
+\end_inset
+
+ שמופיעה ב-
+\begin_inset Formula $\varphi$
+\end_inset
+
+,
+ לכל ארגומנטים 
+\begin_inset Formula $t_{1},\ldots,t_{m}$
+\end_inset
+
+ שהם שמות עצם שמופיעים כ-
+\begin_inset Formula $f\left(t_{1},\ldots,t_{m}\right)$
+\end_inset
+
+ ב-
+\begin_inset Formula $\varphi$
+\end_inset
+
+,
+ 
+\begin_inset Formula $f^{\mathcal{M}}\left(t_{1},\ldots,t_{m}\right)=f\left(t_{1},\ldots,t_{m}\right)$
+\end_inset
+
+,
+ וליתר הערכים שלא מופיעים ב-
+\begin_inset Formula $\varphi$
+\end_inset
+
+ נבחר שרירותית פירוש.
+\end_layout
+
+\begin_layout Proof
+נגדיר פירושים ליחסים 
+\begin_inset Formula $R_{1},\ldots,R_{k}$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+R_{i}^{\mathcal{M}}=\bigcup_{j\in\left[k\right]:\ R_{i}=R_{j}}\sset{\left(t_{1}^{\left(j\right)},\ldots,t_{n_{j}}^{\left(j\right)}\right)}{\rho\left(p_{j}\right)=T}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Claim
+\begin_inset Formula $\left\llbracket \varphi\right\rrbracket ^{\mathcal{M}}=\left\llbracket T\left(\varphi\right)\right\rrbracket _{\rho}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Section
+מבנה הרברנד (
+\lang english
+Herbrand
+\lang hebrew
+)
+\end_layout
+
+\begin_layout Definition
+יהי מילון 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+,
+ נאמר כי מבנה 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+ הוא 
+\series bold
+הרברנד
+\series default
+ מעל 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ אם לכל 
+\begin_inset Formula $a\in\mathcal{D}^{\mathcal{M}}$
+\end_inset
+
+ קיים שם עצם יחיד 
+\begin_inset Formula $t_{a}$
+\end_inset
+
+ ללא משתנים כך ש-
+\begin_inset Formula $\left\llbracket t_{a}\right\rrbracket ^{\mathcal{M}}=a$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+\begin_inset Formula $\Sigma=\left\{ \mathrm{Succ},c_{0},\leq\right\} $
+\end_inset
+
+ עם המבנה 
+\begin_inset Formula 
+\[
+\mathcal{D}^{\mathcal{M}}=\mathbb{N},\mathrm{Succ}^{\mathcal{M}}\left(x\right)=x+1,c_{0}^{\mathcal{M}}=0,\leq^{M}=\sset{\left(a,b\right)\in\mathbb{N}}{a\leq b}
+\]
+
+\end_inset
+
+אזי 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+ הוא מבנה הרברנד.
+\end_layout
+
+\begin_layout Theorem
+אם קיים סימן קבוע 
+\begin_inset Formula $c\in\Sigma$
+\end_inset
+
+ אזי קיים 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+ מבנה הרברנד מעל 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+נגדיר את 
+\begin_inset Formula $\mathcal{D}^{\mathcal{M}}$
+\end_inset
+
+ להיות שמות העצם ללא משתנים מעל 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Proof
+לכל קבוע 
+\begin_inset Formula $c\in\Sigma$
+\end_inset
+
+ נגדיר 
+\begin_inset Formula $c^{\mathcal{M}}=c$
+\end_inset
+
+.
+ לכל 
+\begin_inset Formula $\left(k,f\right)\in\Sigma$
+\end_inset
+
+ נגדיר לכל 
+\begin_inset Formula $t_{1},\ldots,t_{k}$
+\end_inset
+
+ שמות עצם ללא משתנים
+\begin_inset Formula 
+\[
+f^{\mathcal{M}}\left(t_{1},\ldots,t_{k}\right)=f\left(t_{1},\ldots,t_{k}\right)
+\]
+
+\end_inset
+
+יחסים יוגדרו בדרך כלשהי (לא משנה).
+\end_layout
+
+\end_deeper
+\begin_layout Lemma
+לכל נוסחה 
+\begin_inset Formula $\varphi$
+\end_inset
+
+,
+ קיים מבנה הרברנד 
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\exists x\varphi$
+\end_inset
+
+ ספיקה ב-
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+ אם ורק אם יש שם עצם ללא משתנים 
+\begin_inset Formula $t$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\varphi\left\{ \frac{t}{x}\right\} $
+\end_inset
+
+ ספיקה ב-
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Claim
+לכל נוסחה 
+\begin_inset Formula $\varphi$
+\end_inset
+
+,
+ קיים מבנה הרברנד 
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\forall x\varphi$
+\end_inset
+
+ ספיקה ב-
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+ אם ורק אם 
+\begin_inset Formula 
+\[
+\Gamma_{\varphi}=\sset{\varphi\left\{ \frac{t}{x}\right\} }{t\text{ שם עצם ללא משתנים}}
+\]
+
+\end_inset
+
+ספיקב ב-
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ 
 \end_layout
 
 \end_body
