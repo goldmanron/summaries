@@ -175,6 +175,11 @@ enumitem
 \filename_suffix 0
 \color background background
 \end_branch
+\branch lec9
+\selected 1
+\filename_suffix 0
+\color background background
+\end_branch
 \index Index
 \shortcut idx
 \color #008000
@@ -2620,7 +2625,7 @@ Boolean Satisfiability Problem - SAT
 \begin_layout Standard
 \begin_inset Branch proofs_zo
 inverted 0
-status collapsed
+status open
 
 \begin_layout Chapter
 תורת ההוכחות
@@ -5302,6 +5307,13 @@ status open
 \end_layout
 
 \begin_layout Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:thmcompzo"
+
+\end_inset
+
+
 \begin_inset Argument 1
 status open
 
@@ -7506,7 +7518,7 @@ F\left(f^{\mathcal{A}}\left(d_{1},\ldots,d_{k}\right)\right)=f^{\mathcal{B}}\lef
 \begin_layout Standard
 \begin_inset Branch lec7
 inverted 0
-status collapsed
+status open
 
 \begin_layout Section
 הצרנות ומידול 
@@ -9267,6 +9279,12 @@ name "lem:lemf"
 
 \end_deeper
 \begin_layout Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:thmpnf"
+
+\end_inset
+
 קיים אלגוריתם כך שלכל נוסחה 
 \begin_inset Formula $\varphi$
 \end_inset
@@ -9415,6 +9433,12 @@ status open
 \end_layout
 
 \begin_layout Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:thmpcrc"
+
+\end_inset
+
 אם 
 \begin_inset Formula $\varphi$
 \end_inset
@@ -9692,7 +9716,7 @@ f^{\mathcal{M}}\left(t_{1},\ldots,t_{k}\right)=f\left(t_{1},\ldots,t_{k}\right)
 \end_layout
 
 \end_deeper
-\begin_layout Lemma
+\begin_layout Claim
 לכל נוסחה 
 \begin_inset Formula $\varphi$
 \end_inset
@@ -9725,6 +9749,13 @@ f^{\mathcal{M}}\left(t_{1},\ldots,t_{k}\right)=f\left(t_{1},\ldots,t_{k}\right)
 .
 \end_layout
 
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
 \begin_layout Claim
 לכל נוסחה 
 \begin_inset Formula $\varphi$
@@ -9746,7 +9777,7 @@ f^{\mathcal{M}}\left(t_{1},\ldots,t_{k}\right)=f\left(t_{1},\ldots,t_{k}\right)
  אם ורק אם 
 \begin_inset Formula 
 \[
-\Gamma_{\varphi}=\sset{\varphi\left\{ \frac{t}{x}\right\} }{t\text{ שם עצם ללא משתנים}}
+\Gamma_{\varphi}=\sset{\varphi\left\{ \frac{t}{x}\right\} }{\text{ שם עצם ללא משתנים}t}
 \]
 
 \end_inset
@@ -9763,5 +9794,1005 @@ f^{\mathcal{M}}\left(t_{1},\ldots,t_{k}\right)=f\left(t_{1},\ldots,t_{k}\right)
  
 \end_layout
 
+\begin_layout Claim
+לכל מילון 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ סופי קיים מבנה הרברנד 
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+ עם תחום 
+\begin_inset Formula $\mathcal{D}^{\mathcal{H}}=\mathbb{N}$
+\end_inset
+
+ ופירושים של סימני פונקציה כפונקציות 
+\emph on
+רקורסיביות
+\emph default
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+נניח כי 
+\begin_inset Formula $\left\{ t_{i}\right\} _{i\in\mathbb{N}}$
+\end_inset
+
+ שמות העצם ללא משתנים,
+ מסודרות לפי אורך ובסדר לקסיקוגרפי,
+ כך שאם 
+\begin_inset Formula $t_{i}=f\left(t_{i_{1}},\ldots,t_{i_{k}}\right)$
+\end_inset
+
+ אזי 
+\begin_inset Formula $i_{1},\ldots,i_{k}<i$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+לכל 
+\begin_inset Formula $i\in\mathbb{N}$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $t_{i}$
+\end_inset
+
+ קבוע אזי 
+\begin_inset Formula $t_{i}^{\mathcal{H}}\coloneqq i$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+לכל 
+\begin_inset Formula $f\in\Sigma$
+\end_inset
+
+ 
+\begin_inset Formula $k$
+\end_inset
+
+-מקומית נגדיר
+\begin_inset Formula 
+\[
+f^{\mathcal{H}}\left(i_{1},\ldots,i_{k}\right)\coloneqq\iota\sset{i\in\mathbb{N}}{t_{i}=f\left(t_{i_{1}},\ldots,t_{i_{k}}\right)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+עבור כל סימן יחס נבחר יחס שרירותי (אפשר אפילו 
+\begin_inset Formula $\emptyset$
+\end_inset
+
+).
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Subsection
+תכונות של מבנה הרברנד
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+הרברנד
+\end_layout
+
+\end_inset
+
+ נוסחה אוניברסלית במילון 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ היא ספיקה אם ורק אם קיים מבנה הרברנד 
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+ בו היא ספיקה.
+\end_layout
+
+\begin_layout Corollary
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+ממשפט 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:thmpnf"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ נוסחה במילון 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ היא ספיקה אם ורק אם קיים מבנה הרברנד 
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+ בו היא ספיקה.
+\end_layout
+
+\begin_layout Definition
+נניח כי 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ פסוק אוניברסלי,
+ 
+\begin_inset Formula $\alpha\coloneqq\forall x_{1}\ldots\forall x_{n}\varphi\left(x_{1},\ldots,x_{n}\right)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Definition
+נאמר כי 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ 
+\series bold
+מקרה פרטי 
+\series default
+(
+\lang english
+ground instance
+\lang hebrew
+) של הנוסחא 
+\begin_inset Formula $\varphi\left\{ \frac{t_{1}}{x_{1}},\ldots,\frac{t_{n}}{x_{n}}\right\} $
+\end_inset
+
+ כאשר 
+\begin_inset Formula $t_{1},\ldots,t_{n}$
+\end_inset
+
+ שמות עצם ללא משתנים.
+\end_layout
+
+\begin_layout Definition
+\begin_inset FormulaMacro
+\newcommand{\grins}[1]{\mathrm{GrIns}\left(#1\right)}
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Notation
+\begin_inset Formula $\grins{\alpha}\coloneqq\sset{\varphi\left\{ \frac{t_{1}}{x_{1}},\ldots,\frac{t_{n}}{x_{n}}\right\} }{\text{ שמות עצם ללא משתנים}t_{1},\ldots,t_{n}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Notation
+אם 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ אוסף של פסוקים אוניברסליים,
+ 
+\begin_inset Formula ${\displaystyle \grins{\Gamma}\coloneqq\bigcup_{\alpha\in\Gamma}\grins{\alpha}}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:thmherb"
+
+\end_inset
+
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+הרבנד
+\end_layout
+
+\end_inset
+
+ יהי 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ אוסף של פסוקים אוניברסליים במילון 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ ללא שוויון עם סימן קבוע אחד לפחות.
+ אזי הבאים שקולים:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ ספיקה
+\end_layout
+
+\begin_layout Enumerate
+קיים מבנה הרבנד 
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ ספיקה ב-
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\grins{\Gamma}$
+\end_inset
+
+ ספיקה
+\end_layout
+
+\begin_layout Enumerate
+קיים מבנה הרבנד 
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\grins{\Gamma}$
+\end_inset
+
+ ספיקה ב-
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+הכיוונים 
+\begin_inset Formula $2\rightarrow1\rightarrow4,2\rightarrow4\rightarrow3,4\rightarrow2$
+\end_inset
+
+ טריוויאלים,
+ נוכיח רק 
+\begin_inset Formula $3\rightarrow4$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+נניח כי 
+\begin_inset Formula $\grins{\Gamma}$
+\end_inset
+
+ ספיקה במבנה 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+,
+ נראה כי היא ספיקה במבנה הרברנד של שמות עצם 
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+נגדיר לכל 
+\begin_inset Formula $t_{1},\ldots,t_{k}$
+\end_inset
+
+ שמות עצם ללא משתנים ויחס 
+\begin_inset Formula $k$
+\end_inset
+
+-מקומי 
+\begin_inset Formula $R\in\Sigma$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\left(t_{1},\ldots,t_{k}\right)\in R^{\mathcal{H}}\iff\left(\left\llbracket t_{1}\right\rrbracket ^{\mathcal{M}},\ldots,\left\llbracket t_{k}\right\rrbracket ^{\mathcal{M}}\right)\in R^{\mathcal{M}}
+\]
+
+\end_inset
+
+נוכיח כי לכל נוסחה 
+\begin_inset Formula $\psi$
+\end_inset
+
+ ללא משתנים,
+ 
+\begin_inset Formula $\left\llbracket \psi\right\rrbracket ^{\mathcal{M}}=\left\llbracket \psi\right\rrbracket ^{\mathcal{H}}$
+\end_inset
+
+,
+ באינדוקציה מבנית (קל לראות).
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+מסקנות של משפט הרברנד
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+קומפקטיות
+\end_layout
+
+\end_inset
+
+ יהי 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ קבוצת נוסחאות,
+ אזי 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ ספיקה אם ורק אם כל 
+\begin_inset Formula $\Delta\subseteq\Gamma$
+\end_inset
+
+ סופית היא ספיקה.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+\begin_inset Formula $\boldsymbol{\underline{:\Longleftarrow}}$
+\end_inset
+
+ טריוויאלי.
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula $\boldsymbol{\underline{:\Longrightarrow}}$
+\end_inset
+
+ נניח כי כל 
+\begin_inset Formula $\Delta\subseteq\Gamma$
+\end_inset
+
+ סופית היא ספיקה.
+ 
+\end_layout
+
+\begin_layout Proof
+ראשית נוכיח עבור 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ 
+\emph on
+נוסחאות ללא משתנים
+\emph default
+,
+ ממשפט 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:thmpcrc"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ ומשפט 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:thmcompzo"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
+ 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ ספיקה.
+\end_layout
+
+\begin_layout Proof
+אם 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ 
+\emph on
+אוסף פסוקים אוניברסליים
+\emph default
+,
+ מספיק להראות שלכל תת-קבוצה סופית של 
+\begin_inset Formula $\grins{\Gamma}$
+\end_inset
+
+ היא ספיקה.
+\end_layout
+
+\begin_layout Proof
+תהינא 
+\begin_inset Formula $\beta_{1},\ldots,\beta_{k}\in\grins{\Gamma}$
+\end_inset
+
+,
+ בפרט קיימות 
+\begin_inset Formula $\alpha_{1},\ldots,\alpha_{k}\in\Gamma$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\beta_{1}\in\grins{\alpha_{1}},\ldots,\beta_{k}\in\grins{\alpha_{k}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+נתבונן בקבוצה 
+\begin_inset Formula $\left\{ \alpha_{1},\ldots,\alpha_{k}\right\} \subseteq\Gamma$
+\end_inset
+
+,
+ היא סופית ולכן מההנחה ספיקה,
+ ולכן לפי משפט 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:thmherb"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
+ 
+\begin_inset Formula $\grins{\alpha_{1},\ldots,\alpha_{k}}$
+\end_inset
+
+ ספיקה.
+\end_layout
+
+\begin_layout Proof
+מתקיים כי 
+\begin_inset Formula $\left\{ \beta_{1},\ldots,\beta_{k}\right\} \subseteq\grins{\alpha_{1},\ldots,\alpha_{k}}$
+\end_inset
+
+ ולכן גם 
+\begin_inset Formula $\beta_{1},\ldots,\beta_{k}$
+\end_inset
+
+ ספיקה.
+\end_layout
+
+\begin_layout Proof
+עבור
+\emph on
+ קבוצת פסוקים
+\emph default
+ 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+,
+ נמיר לצורה אוניברסלית את כל הפסוקים לקבלת 
+\begin_inset Formula $U\left(\Gamma\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+נניח שכל 
+\begin_inset Formula $\Delta\subseteq\Gamma$
+\end_inset
+
+ סופית ספיקה,
+ נוכיח שכל 
+\begin_inset Formula $\Delta'\subseteq U\left(\Gamma\right)$
+\end_inset
+
+ סופית ספיקה,
+ ואז מהמקרה הקודם נקבל את הדרוש (
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ ספיקה אם ורק אם 
+\begin_inset Formula $U\left(\Gamma\right)$
+\end_inset
+
+ ספיקה).
+\end_layout
+
+\begin_layout Proof
+תהא 
+\begin_inset Formula $\Delta'\coloneqq\left\{ \beta_{1},\ldots,\beta_{k}\right\} \subseteq U\left(\Gamma\right)$
+\end_inset
+
+ סופית,
+ אזי קיימות 
+\begin_inset Formula $\alpha_{1},\ldots,\alpha_{k}\in\Gamma$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\beta_{i}=U\left(\alpha_{i}\right)$
+\end_inset
+
+ לכל 
+\begin_inset Formula $i\in\left[k\right]$
+\end_inset
+
+,
+ כלומר 
+\begin_inset Formula $\Delta=U\left(\alpha_{1},\ldots,\alpha_{k}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+מההנחה,
+ 
+\begin_inset Formula $\left\{ \alpha_{1},\ldots,\alpha_{k}\right\} \subseteq\Gamma$
+\end_inset
+
+סופית ולכן ספיקה,
+ ולכן 
+\begin_inset Formula $\Delta'$
+\end_inset
+
+ ספיקה.
+\end_layout
+
+\begin_layout Proof
+עבור 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ 
+\emph on
+קבוצת נוסחאות
+\emph default
+,
+ לכל תת קבוצה סופית 
+\begin_inset Formula $\Delta\subseteq\Gamma$
+\end_inset
+
+ נמיר לקבוצת פסוקים מעל מבנה הרחבה על ידי המרת השמות מספקות לקבועים,
+ ואז מהמקרה הקודם זה ספיק,
+ ונבחר הרחבת מבנה ככה שהאוסף יהיה ספיק אם ורק אם 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ ספיקה.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+תורת ההוכחות בלוגיקה מסדר ראשון
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\tru}{\mathrm{truth}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\vali}{\mathrm{valid}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+נביעה
+\end_layout
+
+\end_inset
+
+תהינא 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ קבוצת נוסחאות ו-
+\begin_inset Formula $\varphi$
+\end_inset
+
+ נוסחה מעל מילון 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\Gamma\models_{\tru}\varphi$
+\end_inset
+
+ אם לכל מבנה 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+ וסביבה 
+\begin_inset Formula $\rho$
+\end_inset
+
+,
+ אם 
+\begin_inset Formula $\rho$
+\end_inset
+
+ מספקת את 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ ב-
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+,
+ אזי 
+\begin_inset Formula $\rho$
+\end_inset
+
+ מספקת את 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ ב-
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\Gamma\models_{\vali}\varphi$
+\end_inset
+
+ אם לכל מבנה 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+,
+ אם 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ נכונה ב-
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+,
+ אזי 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ נכונה ב-
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Claim
+אם 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ ו-
+\begin_inset Formula $\varphi$
+\end_inset
+
+ פסוקים אזי 
+\begin_inset Formula $\Gamma\models_{\tru}\varphi$
+\end_inset
+
+ אם ורק אם 
+\begin_inset Formula $\Gamma\models_{\vali}\varphi$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim
+אם 
+\begin_inset Formula $\Gamma\models_{\vali}\varphi$
+\end_inset
+
+ אזי 
+\begin_inset Formula $\Gamma\models_{\tru}\varphi$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+נאמר כי 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ 
+\series bold
+ספיקה בסדר שלם סופי לינארי
+\series default
+ מעל המילון 
+\begin_inset Formula $\Sigma=\left\{ R_{<},R_{=}\right\} $
+\end_inset
+
+ אם
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+קיים איבר מקסימלי:
+ 
+\begin_inset Formula $\exists x\left(\forall y\left(R_{=}\left(x,y\right)\lor\left(R_{<}\left(y,x\right)\right)\right)\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+קיים איבר מינימלי:
+ 
+\begin_inset Formula $\exists x\left(\forall y\left(R_{=}\left(x,y\right)\lor\left(R_{<}\left(x,y\right)\right)\right)\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+לכל איבר לא מקסימלי יש עוקב:
+\begin_inset Formula 
+\[
+\forall x\lnot\left(\forall y\left(R_{=}\left(x,y\right)\lor\left(R_{<}\left(y,x\right)\right)\right)\right)\rightarrow\left(\exists y\left(R_{<}\left(x,y\right)\land\lnot\exists z\left(R_{<}\left(x,z\right)\land R_{<}\left(z,y\right)\right)\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:linordfin"
+
+\end_inset
+
+לא קיימת נוסחה 
+\begin_inset Formula $\psi_{\varphi}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\varphi$
+\end_inset
+
+ ספיקה בסדר שלם סופי לינארי אם ורק אם 
+\begin_inset Formula $\psi_{\varphi}$
+\end_inset
+
+ ספיקה.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+יהי 
+\begin_inset Formula $\varphi_{n}$
+\end_inset
+
+ פסוק שנכון בסדר שלם עם לפחות 
+\begin_inset Formula $n$
+\end_inset
+
+ איברים,
+ ונניח שיש 
+\begin_inset Formula $\psi_{\mathrm{fin}}$
+\end_inset
+
+ שמבטא סדר שלם סופי,
+\begin_inset Formula 
+\[
+\Gamma\coloneqq\left\{ \varphi_{n}\right\} _{n\in\mathbb{N}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+האם כל תת קבוצה סופית של 
+\begin_inset Formula $\Gamma\cup\left\{ \psi_{\mathrm{fin}}\right\} $
+\end_inset
+
+ ספיקה?
+ כן
+\end_layout
+
+\begin_layout Proof
+האם 
+\begin_inset Formula $\Gamma\cup\left\{ \psi_{\mathrm{fin}}\right\} $
+\end_inset
+
+ ספיקה?
+ נניח בשלילה שהיא ספיקה,
+ אזי לכל מספר איברים 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+,
+ יש סדר שלם סופי,
+ ולכן יש סדר שלם סופי על מספר בן מנייה של איברים ולכן 
+\begin_inset Formula $\psi_{\mathrm{fin}}$
+\end_inset
+
+ לא ספיקה וזו סתירה להנחה כי 
+\begin_inset Formula $\Gamma\cup\left\{ \psi_{\mathrm{fin}}\right\} $
+\end_inset
+
+ מסתפקת.
+\end_layout
+
+\end_deeper
+\begin_layout Claim
+לא קיימת נוסחה 
+\begin_inset Formula $\psi_{\mathrm{path}}\left(x,y\right)$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\psi_{\mathrm{path}}\left(x,y\right)$
+\end_inset
+
+ מסתפקת אם ורק אם 
+\begin_inset Formula $x\rightsquigarrow y$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+נגדיר 
+\begin_inset Formula $\Gamma=\left\{ \varphi_{i}\left(x,y\right)\right\} _{i\in\mathbb{N}}$
+\end_inset
+
+ כאשר 
+\begin_inset Formula $\varphi_{i}\left(x,y\right)$
+\end_inset
+
+ מסתפק אם ורק אם 
+\begin_inset Formula $\delta\left(x,y\right)\leq i$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+כעת ממשפט 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:linordfin"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ נקבל סתירה.
+\end_layout
+
+\end_deeper
+\begin_layout Algorithm
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+שיטה להוכחת אי-גדירות
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Algorithm
+נניח ואנו רוצים להוכיח שאין נוסחה 
+\begin_inset Formula $\psi_{P}\left(x_{1},\ldots,x_{k}\right)$
+\end_inset
+
+ שמבטאת תכונה 
+\begin_inset Formula $P\left(x_{1},\ldots,x_{k}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+נבנה קבוצה 
+\begin_inset Formula $\Delta$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\Delta$
+\end_inset
+
+ לא ספיקה אבל כל תת-קבוצה שלה ספיקה.
+\end_layout
+
+\begin_layout Enumerate
+נקבל מקומפקטיות ש-
+\begin_inset Formula $\Delta$
+\end_inset
+
+ לא מגדירה נוסחה.
+\end_layout
+
+\end_deeper
 \end_body
 \end_document
