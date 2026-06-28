@@ -1,5 +1,5 @@
-#LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 620
+#LyX 2.5 created this file. For more info see https://www.lyx.org/
+\lyxformat 643
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -8,41 +8,29 @@
 \begin_preamble
 % --- Load amsthm package for theorem styles ---
 \usepackage{amsthm}
-
-
-
 % Allows fancy stuff in the page header
 \usepackage{fancyhdr}
 \pagestyle{fancy}
-
 \usepackage{enumitem}
 \setlist[itemize,1]{label={\fontfamily{cmr}\fontencoding{T1}\selectfont\textbullet}}
-
 %Allows circuit drawing
 \usepackage{circuitikz}
-
 %Allows plotting graphs
 \usepackage{pgfplots}
-
 \usetikzlibrary{svg.path,decorations.pathmorphing, backgrounds,decorations.pathreplacing, automata, shapes.geometric, arrows.meta, positioning, calc}
-
 \usepackage{mathtools}
 \let\savedleft\left
   \let\savedright\right
-
   % Redefine \left and \right to insert the pairing-group hack
   \renewcommand{\left}{\mathopen{}\mathclose\bgroup\savedleft}
   \renewcommand{\right}{\aftergroup\egroup\savedright}
-
 % Necessary Commands:
 \usepackage{autobreak}
 \usepackage[T1]{fontenc}
 \usepackage{relsize}
-
 % Convert the QED Symbol at the end of proofs to a solid black square (credit: Yakir Oz):
 \usepackage{amssymb}
 \renewcommand{\qedsymbol}{$\blacksquare$}
-
 % Correct the reversed parentheses in labels:
 \usepackage{polyglossia}
 \setmainlanguage{hebrew}
@@ -51,7 +39,6 @@
 \def\maketag@@@#1{\hbox{\m@th\normalfont\LRE{#1}}}
 \def\tagform@#1{\maketag@@@{(\ignorespaces#1\unskip)}}
 \makeatother
-
 % Create disjoint union symbols:
 \makeatletter
 \def\moverlay{\mathpalette\mov@rlay}
@@ -66,8 +53,6 @@
 \makeatother
 \newcommand{\cupdot}{\charfusion[\mathbin]{\cup}{\cdot}}
 \newcommand{\bigcupdot}{\charfusion[\mathop]{\bigcup}{\cdot}}
-
-
 \newcommand{\kaliLargeLand}{\mathop{\mathlarger{\mathlarger{\mathlarger{\land}}}}}
 \newcommand{\hebtext}[1]{\mbox{\R{\#1}}}
 \end_preamble
@@ -140,11 +125,19 @@ enumitem
 \use_indices false
 \paperorientation portrait
 \suppress_date false
-\justification true
-\use_refstyle 1
+\justification default
+\crossref_package refstyle
 \use_formatted_ref 0
 \use_minted 0
 \use_lineno 0
+\backgroundcolor none
+\fontcolor none
+\notefontcolor lightgray
+\boxbgcolor red
+\table_border_color default
+\table_odd_row_color default
+\table_even_row_color default
+\table_alt_row_colors_start 1
 \branch lec1
 \selected 1
 \filename_suffix 0
@@ -176,6 +169,11 @@ enumitem
 \color background background
 \end_branch
 \branch lec9
+\selected 1
+\filename_suffix 0
+\color background background
+\end_branch
+\branch lec10
 \selected 1
 \filename_suffix 0
 \color background background
@@ -212,6 +210,7 @@ enumitem
 \html_be_strict false
 \docbook_table_output 0
 \docbook_mathml_prefix 1
+\docbook_mathml_version 0
 \end_header
 
 \begin_body
@@ -2625,7 +2624,7 @@ Boolean Satisfiability Problem - SAT
 \begin_layout Standard
 \begin_inset Branch proofs_zo
 inverted 0
-status open
+status collapsed
 
 \begin_layout Chapter
 תורת ההוכחות
@@ -5536,7 +5535,7 @@ status open
  נגדיר
 \begin_inset Formula 
 \[
-\psi_{v}=\left(\bigvee_{i=1}^{k}p_{v,i}\right)\land\bigwedge_{i=1}^{k}\left(p_{v,i}\rightarrow\lnot\left(\bigvee_{j\in\left[k\right]\setminus\left\{ i\right\} }p_{v,j}\right)\right)
+\psi_{v}=\left(\bigvee^{k}_{i=1}p_{v,i}\right)\land\bigwedge^{k}_{i=1}\left(p_{v,i}\rightarrow\lnot\left(\bigvee_{j\in\left[k\right]\setminus\left\{ i\right\} }p_{v,j}\right)\right)
 \]
 
 \end_inset
@@ -5588,7 +5587,7 @@ status open
  נגדיר
 \begin_inset Formula 
 \[
-\varphi_{e}=\bigwedge_{i=1}^{k}\left(p_{v,i}\rightarrow\lnot p_{u,i}\right)\land\bigwedge_{i=1}^{k}\left(p_{u,i}\rightarrow\lnot p_{v,i}\right)
+\varphi_{e}=\bigwedge^{k}_{i=1}\left(p_{v,i}\rightarrow\lnot p_{u,i}\right)\land\bigwedge^{k}_{i=1}\left(p_{u,i}\rightarrow\lnot p_{v,i}\right)
 \]
 
 \end_inset
@@ -7005,7 +7004,7 @@ status open
 
 :
  
-\begin_inset Formula $\left\llbracket c\right\rrbracket _{\rho}^{\mathcal{M}}=c^{\mathcal{M}}$
+\begin_inset Formula $\left\llbracket c\right\rrbracket ^{\mathcal{M}}_{\rho}=c^{\mathcal{M}}$
 \end_inset
 
 .
@@ -7018,7 +7017,7 @@ status open
 
 :
  
-\begin_inset Formula $\left\llbracket x\right\rrbracket _{\rho}^{\mathcal{M}}=\rho\left(x\right)$
+\begin_inset Formula $\left\llbracket x\right\rrbracket ^{\mathcal{M}}_{\rho}=\rho\left(x\right)$
 \end_inset
 
 .
@@ -7035,7 +7034,7 @@ status open
 
 :
  
-\begin_inset Formula $\left\llbracket f\left(t_{1},\ldots,t_{k}\right)\right\rrbracket _{\rho}^{\mathcal{M}}=f^{\mathcal{M}}\left(\left\llbracket t_{1}\right\rrbracket _{\rho}^{\mathcal{M}},\ldots,\left\llbracket t_{k}\right\rrbracket _{\rho}^{\mathcal{M}}\right)$
+\begin_inset Formula $\left\llbracket f\left(t_{1},\ldots,t_{k}\right)\right\rrbracket ^{\mathcal{M}}_{\rho}=f^{\mathcal{M}}\left(\left\llbracket t_{1}\right\rrbracket ^{\mathcal{M}}_{\rho},\ldots,\left\llbracket t_{k}\right\rrbracket ^{\mathcal{M}}_{\rho}\right)$
 \end_inset
 
 .
@@ -7077,7 +7076,7 @@ status open
 \end_inset
 
  מתקיים כי 
-\begin_inset Formula $\left\llbracket t\right\rrbracket _{\rho_{1}}^{\mathcal{M}}=\left\llbracket t\right\rrbracket _{\rho_{2}}^{\mathcal{M}}$
+\begin_inset Formula $\left\llbracket t\right\rrbracket ^{\mathcal{M}}_{\rho_{1}}=\left\llbracket t\right\rrbracket ^{\mathcal{M}}_{\rho_{2}}$
 \end_inset
 
 .
@@ -7143,7 +7142,7 @@ status open
 
 \begin_inset Formula 
 \[
-\left\llbracket t\left\{ \frac{t_{1}}{x_{1}},\ldots,\frac{t_{n}}{x_{n}}\right\} \right\rrbracket _{\rho}^{\mathcal{M}}=\left\llbracket t\right\rrbracket _{\rho\left[\frac{\left\llbracket t_{1}\right\rrbracket _{\rho}^{\mathcal{M}}}{x_{1}},\ldots,\frac{\left\llbracket t_{n}\right\rrbracket _{\rho}^{\mathcal{M}}}{x_{n}}\right]}^{\mathcal{M}}
+\left\llbracket t\left\{ \frac{t_{1}}{x_{1}},\ldots,\frac{t_{n}}{x_{n}}\right\} \right\rrbracket ^{\mathcal{M}}_{\rho}=\left\llbracket t\right\rrbracket ^{\mathcal{M}}_{\rho\left[\frac{\left\llbracket t_{1}\right\rrbracket ^{\mathcal{M}}_{\rho}}{x_{1}},\ldots,\frac{\left\llbracket t_{n}\right\rrbracket ^{\mathcal{M}}_{\rho}}{x_{n}}\right]}
 \]
 
 \end_inset
@@ -7166,7 +7165,7 @@ status open
 
 ,
  
-\begin_inset Formula $\left\llbracket \varphi\right\rrbracket _{\rho}^{\mathcal{M}}\in\left\{ T,F\right\} $
+\begin_inset Formula $\left\llbracket \varphi\right\rrbracket ^{\mathcal{M}}_{\rho}\in\left\{ T,F\right\} $
 \end_inset
 
  מוגדר באינדוקציה מבנית:
@@ -7189,7 +7188,7 @@ status open
 ,
 \begin_inset Formula 
 \[
-\left\llbracket R\left(t_{1},\ldots,t_{k}\right)\right\rrbracket _{\rho}^{\mathcal{M}}=T\iff\left(\left\llbracket t_{1}\right\rrbracket _{\rho}^{\mathcal{M}},\ldots,\left\llbracket t_{k}\right\rrbracket _{\rho}^{\mathcal{M}}\right)\in R^{\mathcal{M}}
+\left\llbracket R\left(t_{1},\ldots,t_{k}\right)\right\rrbracket ^{\mathcal{M}}_{\rho}=T\iff\left(\left\llbracket t_{1}\right\rrbracket ^{\mathcal{M}}_{\rho},\ldots,\left\llbracket t_{k}\right\rrbracket ^{\mathcal{M}}_{\rho}\right)\in R^{\mathcal{M}}
 \]
 
 \end_inset
@@ -7210,7 +7209,7 @@ status open
 ,
 \begin_inset Formula 
 \[
-\left\llbracket \varphi_{1}*\varphi_{2}\right\rrbracket _{\rho}^{\mathcal{M}}\triangleq\TT *\left(\left\llbracket \varphi_{1}\right\rrbracket _{\rho}^{\mathcal{M}},\left\llbracket \varphi_{2}\right\rrbracket _{\rho}^{\mathcal{M}}\right)
+\left\llbracket \varphi_{1}*\varphi_{2}\right\rrbracket ^{\mathcal{M}}_{\rho}\triangleq\TT *\left(\left\llbracket \varphi_{1}\right\rrbracket ^{\mathcal{M}}_{\rho},\left\llbracket \varphi_{2}\right\rrbracket ^{\mathcal{M}}_{\rho}\right)
 \]
 
 \end_inset
@@ -7230,7 +7229,7 @@ status open
 \begin_layout Enumerate
 \begin_inset Formula 
 \[
-\left\llbracket \lnot\varphi\right\rrbracket _{\rho}^{\mathcal{M}}\triangleq\TT{\lnot}\left(\left\llbracket \varphi\right\rrbracket _{\rho}^{\mathcal{M}}\right)
+\left\llbracket \lnot\varphi\right\rrbracket ^{\mathcal{M}}_{\rho}\triangleq\TT{\lnot}\left(\left\llbracket \varphi\right\rrbracket ^{\mathcal{M}}_{\rho}\right)
 \]
 
 \end_inset
@@ -7241,7 +7240,7 @@ status open
 \begin_layout Enumerate
 \begin_inset Formula 
 \[
-\left\llbracket \exists x\varphi\right\rrbracket _{\rho}^{\mathcal{M}}=T\iff\exists d\in D.\ \left\llbracket \varphi\right\rrbracket _{\rho\left[\frac{d}{x}\right]}^{\mathcal{M}}=T
+\left\llbracket \exists x\varphi\right\rrbracket ^{\mathcal{M}}_{\rho}=T\iff\exists d\in D.\ \left\llbracket \varphi\right\rrbracket ^{\mathcal{M}}_{\rho\left[\frac{d}{x}\right]}=T
 \]
 
 \end_inset
@@ -7252,7 +7251,7 @@ status open
 \begin_layout Enumerate
 \begin_inset Formula 
 \[
-\left\llbracket \forall x\varphi\right\rrbracket _{\rho}^{\mathcal{M}}=T\iff\forall d\in D.\ \left\llbracket \varphi\right\rrbracket _{\rho\left[\frac{d}{x}\right]}^{\mathcal{M}}=T
+\left\llbracket \forall x\varphi\right\rrbracket ^{\mathcal{M}}_{\rho}=T\iff\forall d\in D.\ \left\llbracket \varphi\right\rrbracket ^{\mathcal{M}}_{\rho\left[\frac{d}{x}\right]}=T
 \]
 
 \end_inset
@@ -7294,7 +7293,7 @@ status open
 \end_inset
 
  מתקיים כי 
-\begin_inset Formula $\left\llbracket \varphi\right\rrbracket _{\rho_{1}}^{\mathcal{M}}=\left\llbracket \varphi\right\rrbracket _{\rho_{2}}^{\mathcal{M}}$
+\begin_inset Formula $\left\llbracket \varphi\right\rrbracket ^{\mathcal{M}}_{\rho_{1}}=\left\llbracket \varphi\right\rrbracket ^{\mathcal{M}}_{\rho_{2}}$
 \end_inset
 
 .
@@ -7317,7 +7316,7 @@ status open
 \end_inset
 
  מתקיים 
-\begin_inset Formula $\left\llbracket \varphi_{1}\right\rrbracket _{\rho}^{\mathcal{M}}=\left\llbracket \varphi_{2}\right\rrbracket _{\rho}^{\mathcal{M}}$
+\begin_inset Formula $\left\llbracket \varphi_{1}\right\rrbracket ^{\mathcal{M}}_{\rho}=\left\llbracket \varphi_{2}\right\rrbracket ^{\mathcal{M}}_{\rho}$
 \end_inset
 
 .
@@ -7504,7 +7503,7 @@ F\left(f^{\mathcal{A}}\left(d_{1},\ldots,d_{k}\right)\right)=f^{\mathcal{B}}\lef
 \end_deeper
 \begin_layout Theorem
 אזי 
-\begin_inset Formula $\left\llbracket \varphi\right\rrbracket _{\rho_{1}}^{\mathcal{M}_{1}}=\left\llbracket \varphi\right\rrbracket _{\rho_{2}}^{\mathcal{M}_{2}}$
+\begin_inset Formula $\left\llbracket \varphi\right\rrbracket ^{\mathcal{M}_{1}}_{\rho_{1}}=\left\llbracket \varphi\right\rrbracket ^{\mathcal{M}_{2}}_{\rho_{2}}$
 \end_inset
 
 .
@@ -7518,7 +7517,7 @@ F\left(f^{\mathcal{A}}\left(d_{1},\ldots,d_{k}\right)\right)=f^{\mathcal{B}}\lef
 \begin_layout Standard
 \begin_inset Branch lec7
 inverted 0
-status open
+status collapsed
 
 \begin_layout Section
 הצרנות ומידול 
@@ -7614,7 +7613,7 @@ E^{\mathcal{M}}=\sset{\left(a,b,c\right)\in V\times E\times V}{b\ \text{is}\ \te
  וכן
 \begin_inset Formula 
 \begin{align*}
-\mathrm{Adj}_{L}^{\mathcal{M}}=\sset{\left(x,z\right)\in V\times E}{z\ \text{is}\ \text{an}\ \text{edge}\ \text{out}\ \text{of}\ x} & , & \mathrm{Adj}_{R}^{\mathcal{M}}=\sset{\left(x,z\right)\in V\times E}{z\ \text{is}\ \text{an}\ \text{edge}\ \text{in}\ \text{to}\ x} & .
+\mathrm{Adj}^{\mathcal{M}}_{L}=\sset{\left(x,z\right)\in V\times E}{z\ \text{is}\ \text{an}\ \text{edge}\ \text{out}\ \text{of}\ x} & , & \mathrm{Adj}^{\mathcal{M}}_{R}=\sset{\left(x,z\right)\in V\times E}{z\ \text{is}\ \text{an}\ \text{edge}\ \text{in}\ \text{to}\ x} & .
 \end{align*}
 
 \end_inset
@@ -7764,9 +7763,9 @@ status open
  ופירושים
 \begin_inset Formula 
 \begin{align*}
-P_{a}^{\mathcal{M}} & =\left\{ 1,2,4\right\} \\
-P_{b}^{\mathcal{M}} & =\left\{ 3,6\right\} \\
-P_{c}^{\mathcal{M}} & =\left\{ 5\right\} \\
+P^{\mathcal{M}}_{a} & =\left\{ 1,2,4\right\} \\
+P^{\mathcal{M}}_{b} & =\left\{ 3,6\right\} \\
+P^{\mathcal{M}}_{c} & =\left\{ 5\right\} \\
 <^{\mathcal{M}} & =\sset{\left(a,b\right)}{a<b}
 \end{align*}
 
@@ -7892,7 +7891,7 @@ P_{c}^{\mathcal{M}} & =\left\{ 5\right\} \\
  כך ש-
 \begin_inset Formula 
 \[
-R=\sset{\left(a_{1},\ldots,a_{k}\right)\in D^{k}}{\forall\rho.\left\llbracket \varphi\right\rrbracket _{\rho\left[\frac{a_{1}}{x_{1}},\ldots,\frac{a_{k}}{x_{k}}\right]}^{\mathcal{M}}=T}
+R=\sset{\left(a_{1},\ldots,a_{k}\right)\in D^{k}}{\forall\rho.\left\llbracket \varphi\right\rrbracket ^{\mathcal{M}}_{\rho\left[\frac{a_{1}}{x_{1}},\ldots,\frac{a_{k}}{x_{k}}\right]}=T}
 \]
 
 \end_inset
@@ -8074,7 +8073,7 @@ R=\sset{\left(a_{1},\ldots,a_{k}\right)\in D^{k}}{\forall\rho.\left\llbracket \v
 \end_inset
 
  אם 
-\begin_inset Formula $\left\llbracket \varphi\right\rrbracket _{\rho}^{\mathcal{M}}=T$
+\begin_inset Formula $\left\llbracket \varphi\right\rrbracket ^{\mathcal{M}}_{\rho}=T$
 \end_inset
 
 .
@@ -8194,7 +8193,7 @@ R=\sset{\left(a_{1},\ldots,a_{k}\right)\in D^{k}}{\forall\rho.\left\llbracket \v
 
 ,
  
-\begin_inset Formula $\left\llbracket \varphi\right\rrbracket _{\rho}^{\mathcal{M}}=\left\llbracket \psi\right\rrbracket _{\rho}^{\mathcal{M}}$
+\begin_inset Formula $\left\llbracket \varphi\right\rrbracket ^{\mathcal{M}}_{\rho}=\left\llbracket \psi\right\rrbracket ^{\mathcal{M}}_{\rho}$
 \end_inset
 
 .
@@ -8479,7 +8478,7 @@ Model Evaluation
 \begin_layout Standard
 \begin_inset Branch lec8
 inverted 0
-status open
+status collapsed
 
 \begin_layout Section
 שקילויות הזזת כמתים
@@ -9107,7 +9106,7 @@ name "lem:lemc"
 \end_inset
 
  כך ש-
-\begin_inset Formula $\left\llbracket \varphi\right\rrbracket _{\rho\left[\frac{a}{x}\right]}^{\mathcal{M}}=T$
+\begin_inset Formula $\left\llbracket \varphi\right\rrbracket ^{\mathcal{M}}_{\rho\left[\frac{a}{x}\right]}=T$
 \end_inset
 
 .
@@ -9122,7 +9121,7 @@ name "lem:lemc"
  ואז 
 \begin_inset Formula 
 \[
-\left\llbracket \varphi\left\{ \frac{c}{x}\right\} \right\rrbracket _{\rho}^{\mathcal{M}'}=\left\llbracket \varphi\right\rrbracket _{\rho\left[\frac{a}{x}\right]}^{\mathcal{M}'}=\left\llbracket \varphi\right\rrbracket _{\rho\left[\frac{a}{x}\right]}^{\mathcal{M}}=T
+\left\llbracket \varphi\left\{ \frac{c}{x}\right\} \right\rrbracket ^{\mathcal{M}'}_{\rho}=\left\llbracket \varphi\right\rrbracket ^{\mathcal{M}'}_{\rho\left[\frac{a}{x}\right]}=\left\llbracket \varphi\right\rrbracket ^{\mathcal{M}}_{\rho\left[\frac{a}{x}\right]}=T
 \]
 
 \end_inset
@@ -9241,7 +9240,7 @@ name "lem:lemf"
 \end_inset
 
  כך ש-
-\begin_inset Formula $\left\llbracket \varphi\right\rrbracket _{\rho\left[\frac{a_{1}}{x_{1}},\ldots,\frac{a_{k}}{x_{k}},\frac{b}{y}\right]}^{\mathcal{M}}=T$
+\begin_inset Formula $\left\llbracket \varphi\right\rrbracket ^{\mathcal{M}}_{\rho\left[\frac{a_{1}}{x_{1}},\ldots,\frac{a_{k}}{x_{k}},\frac{b}{y}\right]}=T$
 \end_inset
 
 .
@@ -9520,7 +9519,7 @@ T, & i\notin\left[k\right]
 ,
  ונגדיר פירושים ליחסים,
  כאשר 
-\begin_inset Formula $P_{i}=R_{i}\left(t_{1}^{\left(i\right)},\ldots,t_{n_{i}}^{\left(i\right)}\right)$
+\begin_inset Formula $P_{i}=R_{i}\left(t^{\left(i\right)}_{1},\ldots,t^{\left(i\right)}_{n_{i}}\right)$
 \end_inset
 
 .
@@ -9580,7 +9579,7 @@ T, & i\notin\left[k\right]
 
 ,
  
-\begin_inset Formula ${\displaystyle R_{i}^{\mathcal{M}}=\bigcup_{j\in\left[k\right]:\ R_{i}=R_{j}}\sset{\left(t_{1}^{\left(j\right)},\ldots,t_{n_{j}}^{\left(j\right)}\right)}{\rho\left(p_{j}\right)=T}}$
+\begin_inset Formula ${\displaystyle R^{\mathcal{M}}_{i}=\bigcup_{j\in\left[k\right]:\ R_{i}=R_{j}}\sset{\left(t^{\left(j\right)}_{1},\ldots,t^{\left(j\right)}_{n_{j}}\right)}{\rho\left(p_{j}\right)=T}}$
 \end_inset
 
 .
@@ -9644,7 +9643,7 @@ Herbrand
  עם המבנה 
 \begin_inset Formula 
 \[
-\mathcal{D}^{\mathcal{M}}=\mathbb{N},\mathrm{Succ}^{\mathcal{M}}\left(x\right)=x+1,c_{0}^{\mathcal{M}}=0,\leq^{M}=\sset{\left(a,b\right)\in\mathbb{N}}{a\leq b}
+\mathcal{D}^{\mathcal{M}}=\mathbb{N},\mathrm{Succ}^{\mathcal{M}}\left(x\right)=x+1,c^{\mathcal{M}}_{0}=0,\leq^{M}=\sset{\left(a,b\right)\in\mathbb{N}}{a\leq b}
 \]
 
 \end_inset
@@ -9794,6 +9793,11 @@ f^{\mathcal{M}}\left(t_{1},\ldots,t_{k}\right)=f\left(t_{1},\ldots,t_{k}\right)
  
 \end_layout
 
+\begin_layout Standard
+\begin_inset Branch lec9
+inverted 0
+status open
+
 \begin_layout Claim
 לכל מילון 
 \begin_inset Formula $\Sigma$
@@ -9848,7 +9852,7 @@ f^{\mathcal{M}}\left(t_{1},\ldots,t_{k}\right)=f\left(t_{1},\ldots,t_{k}\right)
 \end_inset
 
  קבוע אזי 
-\begin_inset Formula $t_{i}^{\mathcal{H}}\coloneqq i$
+\begin_inset Formula $t^{\mathcal{H}}_{i}\coloneqq i$
 \end_inset
 
 .
@@ -10531,14 +10535,10 @@ status open
 \end_deeper
 \begin_layout Claim
 אם 
-\begin_inset Formula $\Gamma$
+\begin_inset Formula $\Gamma\cup\left\{ \varphi\right\} $
 \end_inset
 
- ו-
-\begin_inset Formula $\varphi$
-\end_inset
-
- פסוקים אזי 
+ קבוצת פסוקים אזי 
 \begin_inset Formula $\Gamma\models_{\tru}\varphi$
 \end_inset
 
@@ -10794,5 +10794,281 @@ status open
 \end_layout
 
 \end_deeper
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch lec10
+inverted 0
+status open
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\shape italic
+\lang english
+Skolem downward
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ ספיקה אם ורק אם ספיקה במבנה לכל היותר בן מניה.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+ראשית נוכיח עבור 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ נוסחא.
+\end_layout
+
+\begin_layout Proof
+יהי 
+\begin_inset Formula $\varphi^{\exists}$
+\end_inset
+
+ הסגור הישי של 
+\begin_inset Formula $\varphi$
+\end_inset
+
+,
+ אזי 
+\begin_inset Formula $\varphi^{\exists}$
+\end_inset
+
+ פסוק ספיק אם ורק אם 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ ספיק.
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula $\mathrm{Skol}\left(\varphi^{\exists}\right)$
+\end_inset
+
+ מסלק כמתי קיים לפי משפט
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+Skolem
+\lang hebrew
+.
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula $\mathrm{Skol}\left(\varphi^{\exists}\right)$
+\end_inset
+
+ פסוק אוניברסלי ספיק ב-
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+ אם ורק אם 
+\begin_inset Formula $\varphi^{\exists}$
+\end_inset
+
+ ספיק בצמצום של 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+לפי משפט הרברנד פסוק אוניברסלי ספיק אממ ספיק במבנה הרבנד של המילון 
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+ אשר לכל היותר בן מניה.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\shape italic
+\lang english
+Skolem upward
+\end_layout
+
+\end_inset
+
+ אם 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ ספיקה במבנה אינסופי אזי עבור כל עוצמה אינסופית 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ יש מבנה 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+ בעוצמה 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ שמספקת את 
+\begin_inset Formula $\varphi$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+קיימת פרוצדורה לבעיית התקיפות.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+לא קיים אלגוריתם לבעיית התקיפות.
+\end_layout
+
+\begin_layout Corollary
+\begin_inset Formula $\mathrm{Validity}\in\mathcal{RE}\setminus co\mathcal{RE}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Chapter
+לוגיקה מונאדית
+\end_layout
+
+\begin_layout Section
+מושגים בסיסיים
+\end_layout
+
+\begin_layout Definition
+מילון 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ מגדיר 
+\series bold
+לוגיקה מונאדית 
+\series default
+אם 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ מכיל פרדיקטים חד-מקומיים וקבועים בלבד.
+\end_layout
+
+\begin_layout Theorem
+בעית הספיקות כריעה בלוגיקה מונאדית.
+\end_layout
+
+\begin_layout Lemma
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+תכונת המודל הקטן
+\end_layout
+
+\end_inset
+
+ אם נוסחא מונאדית 
+\begin_inset Formula $\psi$
+\end_inset
+
+ עם 
+\begin_inset Formula $k$
+\end_inset
+
+ פרדיקטים ספיקה אזי ספיקה במבנה עם לכל היותר 
+\begin_inset Formula $2^{k}$
+\end_inset
+
+ איברים.
+\end_layout
+
+\begin_layout Theorem
+קיים אלגוריתם כך שעבור נוסחא 
+\begin_inset Formula $\phi$
+\end_inset
+
+ מעל מבנה סופי 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+ בודקת אם 
+\begin_inset Formula $\phi$
+\end_inset
+
+ ספיקה ב-
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \end_body
 \end_document
