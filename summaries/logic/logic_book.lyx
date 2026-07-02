@@ -9796,7 +9796,7 @@ f^{\mathcal{M}}\left(t_{1},\ldots,t_{k}\right)=f\left(t_{1},\ldots,t_{k}\right)
 \begin_layout Standard
 \begin_inset Branch lec9
 inverted 0
-status open
+status collapsed
 
 \begin_layout Claim
 לכל מילון 
@@ -10963,11 +10963,8 @@ Skolem upward
 .
 \end_layout
 
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
+\begin_layout Subsection
+משפט צ'ארץ'
 \end_layout
 
 \begin_layout Theorem
@@ -10982,6 +10979,18 @@ Skolem upward
 \end_layout
 
 \begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\shape italic
+\lang english
+Church
+\end_layout
+
+\end_inset
+
 לא קיים אלגוריתם לבעיית התקיפות.
 \end_layout
 
@@ -10992,12 +11001,360 @@ Skolem upward
 .
 \end_layout
 
-\begin_layout Chapter
-לוגיקה מונאדית
+\begin_layout Subsubsection
+מושג הרדוקציה
 \end_layout
 
+\begin_layout Standard
+תהינא 
+\begin_inset Formula $P_{1},P_{2}$
+\end_inset
+
+ בעיות הכרעה.
+\end_layout
+
+\begin_layout Definition
+אלגוריתם 
+\begin_inset Formula $f$
+\end_inset
+
+ הוא 
+\series bold
+רדוקציה
+\series default
+ מבעיה 
+\begin_inset Formula $P_{1}$
+\end_inset
+
+ לבעיה 
+\begin_inset Formula $P_{2}$
+\end_inset
+
+ אם לכל קלט 
+\begin_inset Formula $x$
+\end_inset
+
+ של 
+\begin_inset Formula $P_{1}$
+\end_inset
+
+ מתקיים כי 
+\begin_inset Formula $x\in P_{1}$
+\end_inset
+
+ אם ורק אם 
+\begin_inset Formula $f\left(x\right)\in P_{2}$
+\end_inset
+
+.
+ נסמן 
+\begin_inset Formula $P_{1}\leq_{M}P_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem
+נניח כי 
+\begin_inset Formula $P_{1}\leq_{M}P_{2}$
+\end_inset
+
+,
+ אזי
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $P_{2}$
+\end_inset
+
+ כריעה אזי גם 
+\begin_inset Formula $P_{1}$
+\end_inset
+
+ כריעה.
+ (אם 
+\begin_inset Formula $P_{2}\in\mathcal{R}$
+\end_inset
+
+ אזי 
+\begin_inset Formula $P_{1}\in\mathcal{R}$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $P_{1}$
+\end_inset
+
+ לא כריעה אזי גם 
+\begin_inset Formula $P_{2}$
+\end_inset
+
+ לא כריעה.
+ (אם 
+\begin_inset Formula $P_{1}\notin\mathcal{R}$
+\end_inset
+
+ אזי 
+\begin_inset Formula $P_{2}\notin\mathcal{R}$
+\end_inset
+
+)
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+בעיית הריצוף
+\end_layout
+
+\begin_layout Definition
+ריצוף של רביע של המישור על ידי ריצופים מ-
+\begin_inset Formula $T$
+\end_inset
+
+ מוגדר באופן הבא:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+כל ריצוף יכול להיות משומש מספר פעמים.
+\end_layout
+
+\begin_layout Enumerate
+כל סידור של ריצופים צריך לכבד צבעים,
+ כלומר רק קצוות עם צבעים זהים יכולות לגעת.
+\end_layout
+
+\begin_layout Enumerate
+אסור לסובב ריצופים.
+\end_layout
+
+\end_deeper
+\begin_layout Problem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+בעיית הריצוף
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Problem
+
+\series bold
+קלט:
+
+\series default
+ קבוצה 
+\begin_inset Formula $T$
+\end_inset
+
+ של ריצופים מגודל אחיד.
+\end_layout
+
+\begin_layout Problem
+
+\series bold
+פלט:
+
+\series default
+ האם ניתן לרצף את הרביע הראשון של המישור על ידי ריצופים מ-
+\begin_inset Formula $T$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem
+בעיית הריצוף לא קריאה.
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+רדוקציה מריצוף לספיקות
+\end_layout
+
+\end_inset
+
+נגדיר מילון 
+\begin_inset Formula $\Sigma^{T}\triangleq\left(\left\{ c\right\} ,\left\{ \left(1,suc\right)\right\} ,\left\{ \left(2,R_{t}\right)\right\} _{t\in T}\right)$
+\end_inset
+
+ לכל ריצופים 
+\begin_inset Formula $T$
+\end_inset
+
+.
+ לכל קלט 
+\begin_inset Formula $T$
+\end_inset
+
+ של בעיית הריצוף נגדיר נוסחה 
+\begin_inset Formula $\psi^{T}$
+\end_inset
+
+ מעל המילון 
+\begin_inset Formula $\Sigma^{T}$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+תהא 
+\begin_inset Formula $\phi^{T}_{1}$
+\end_inset
+
+ הנוסחה שמצרינה את 
+\begin_inset Quotes eld
+\end_inset
+
+כל מקום מכוסה על ידי ריצוף יחיד
+\begin_inset Quotes erd
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\phi^{T}_{1}\triangleq\left(\forall x\forall y\bigvee_{t\in T}R_{t}\left(x,y\right)\right)\land\left(\forall x\forall y\bigwedge_{t_{1}\neq t_{2}}R_{t_{1}}\left(x,y\right)\rightarrow\lnot R_{t_{2}}\left(x,y\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+תהא 
+\begin_inset Formula $\phi^{T}_{2}$
+\end_inset
+
+ הנוסחה שמצרינה את 
+\begin_inset Quotes eld
+\end_inset
+
+כל ריצוף מכבד צביעה
+\begin_inset Quotes erd
+\end_inset
+
+,
+ לכל ריצוף 
+\begin_inset Formula $t\in T$
+\end_inset
+
+ תהא 
+\begin_inset Formula $Upper_{t}\subseteq T$
+\end_inset
+
+ קבוצת הריצופים שניתן להניח מעל 
+\begin_inset Formula $t$
+\end_inset
+
+,
+ ותהא 
+\begin_inset Formula $Right_{t}\subseteq T$
+\end_inset
+
+ קבוצת הריצופי שניתן להניח מימין ל-
+\begin_inset Formula $t$
+\end_inset
+
+.
+ אזי
+\begin_inset Formula 
+\[
+\phi^{T}_{2}\triangleq\bigwedge_{t\in T}\left(\forall x\forall yR_{t}\left(x,y\right)\rightarrow\left(\bigvee_{t'\in Upper_{t}}R_{t'}\left(x,suc\left(y\right)\right)\land\bigvee_{t'\in Right_{t}}R_{t'}\left(suc\left(x\right),y\right)\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Definition
+אזי 
+\begin_inset Formula $\psi^{T}\triangleq\phi^{T}_{1}\land\phi^{T}_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+נכונות הרדוקציה
+\end_layout
+
+\end_inset
+
+ לכל קלט 
+\begin_inset Formula $T$
+\end_inset
+
+ לבעיית הריצוף,
+ יש פתרון לבעיית הריצוף אם ורק אם 
+\begin_inset Formula $\psi^{T}$
+\end_inset
+
+ ספיקה מעל 
+\begin_inset Formula $\Sigma^{T}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+הכיוון 
+\begin_inset Formula $\Longleftarrow$
+\end_inset
+
+ מיידי.
+\end_layout
+
+\begin_layout Proof
+הכיוון 
+\begin_inset Formula $\Longrightarrow$
+\end_inset
+
+ נובע ממשפט הרברנד.
+ אם נוסחה אוניברסלית היא ספיקה אזי גם במבנה הרברנד.
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula $\psi^{T}$
+\end_inset
+
+ אוניברסלית,
+ התחום של 
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+ יהיה איזומורפי ל-
+\begin_inset Formula $\left\{ Nat,suc,0\right\} $
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
 \begin_layout Section
-מושגים בסיסיים
+לוגיקה מונאדית
 \end_layout
 
 \begin_layout Definition
@@ -11013,7 +11370,7 @@ Skolem upward
 \begin_inset Formula $\Sigma$
 \end_inset
 
- מכיל פרדיקטים חד-מקומיים וקבועים בלבד.
+ מכיל פרדיקטים חד-מקומיים בלבד.
 \end_layout
 
 \begin_layout Theorem
@@ -11045,6 +11402,164 @@ status open
  איברים.
 \end_layout
 
+\begin_deeper
+\begin_layout Proof
+יהי 
+\begin_inset Formula $M$
+\end_inset
+
+ מבנה עבור המילון 
+\begin_inset Formula $\left\{ P_{1},\ldots,P_{k}\right\} $
+\end_inset
+
+ המונאדי.
+\end_layout
+
+\begin_layout Proof
+נגדיר יחס שקילות 
+\begin_inset Formula $\sim$
+\end_inset
+
+ על העולם 
+\begin_inset Formula $\mathcal{D}^{M}$
+\end_inset
+
+של 
+\begin_inset Formula $M$
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+a\sim b\iff\forall i\in\left[k\right].\ a\in P^{M}_{i}\iff b\in P^{M}_{i}
+\]
+
+\end_inset
+
+מחלקת השקילות של 
+\begin_inset Formula $a$
+\end_inset
+
+ היא הקבוצה 
+\begin_inset Formula $\hat{a}=\sset{b\in\mathcal{D}^{M}}{b\sim a}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+מספר מחלקות השקילות של 
+\begin_inset Formula $\sim$
+\end_inset
+
+ הוא סופי,
+ בפרט 
+\begin_inset Formula $\left|\mathcal{D}^{M}/\sim\right|\leq2^{k}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+נגדיר מבנה מעל קבוצת המנה 
+\begin_inset Formula $\hat{M}$
+\end_inset
+
+ עם 
+\begin_inset Formula $\mathcal{D}^{\hat{M}}=\mathcal{D}^{M}/\sim$
+\end_inset
+
+ וכן פירושים
+\begin_inset Formula 
+\[
+\hat{a}\in P^{\hat{M}}_{i}\iff a\in P^{M}_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Lemma
+תהינא 
+\begin_inset Formula $\rho,\hat{\rho}$
+\end_inset
+
+ סביבות של 
+\begin_inset Formula $M,\hat{M}$
+\end_inset
+
+ בהתאמה ככה שלכל משתנה 
+\begin_inset Formula $x$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\rho\left(x\right)\in\hat{\rho}\left(x\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Lemma
+אזי לכל נוסחה 
+\begin_inset Formula $\psi$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+\left\llbracket \psi\right\rrbracket ^{M}_{\rho}=\left\llbracket \psi\right\rrbracket ^{\hat{M}}_{\hat{\rho}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+באינדוקציה מבנית.
+\end_layout
+
+\end_deeper
+\begin_layout Corollary
+\begin_inset Formula $\psi$
+\end_inset
+
+ ספיקה ב-
+\begin_inset Formula $M$
+\end_inset
+
+ אם ורק אם ספיקה ב-
+\begin_inset Formula $\hat{M}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Corollary
+אם 
+\begin_inset Formula $\psi$
+\end_inset
+
+ ספיקה אזי היא ספיקה במבנה עם לכל היותר 
+\begin_inset Formula $2^{k}$
+\end_inset
+
+ איברים.
+\end_layout
+
+\end_deeper
+\end_deeper
 \begin_layout Theorem
 קיים אלגוריתם כך שעבור נוסחא 
 \begin_inset Formula $\phi$
