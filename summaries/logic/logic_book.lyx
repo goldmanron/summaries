@@ -178,6 +178,16 @@ enumitem
 \filename_suffix 0
 \color background background
 \end_branch
+\branch lec11
+\selected 1
+\filename_suffix 0
+\color background background
+\end_branch
+\branch type_theory
+\selected 1
+\filename_suffix 0
+\color background background
+\end_branch
 \index Index
 \shortcut idx
 \color #008000
@@ -252,6 +262,41 @@ LatexCommand tableofcontents
 
 \end_layout
 
+\begin_layout Remark
+אם מצאתם טעויות / יש לכם הערות ניתן לפנות אליי במייל
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+rongoldman3@mail.tau.ac.il
+\lang hebrew
+.
+\end_layout
+
 \begin_layout Standard
 \begin_inset FormulaMacro
 \newcommand{\sset}[2]{\left\{  #1\middle|#2\right\}  }
@@ -284,7 +329,7 @@ LatexCommand tableofcontents
 \begin_layout Standard
 \begin_inset Branch lec1
 inverted 0
-status collapsed
+status open
 
 \begin_layout Chapter
 תורת הפסוקים
@@ -9906,7 +9951,7 @@ status open
 \begin_inset Formula $\Sigma$
 \end_inset
 
- היא ספיקה אם ורק אם קיים מבנה הרברנד 
+ ללא שוויון היא ספיקה אם ורק אם קיים מבנה הרברנד 
 \begin_inset Formula $\mathcal{H}$
 \end_inset
 
@@ -9938,7 +9983,7 @@ nolink "false"
 \begin_inset Formula $\Sigma$
 \end_inset
 
- היא ספיקה אם ורק אם קיים מבנה הרברנד 
+ ללא שוויון היא ספיקה אם ורק אם קיים מבנה הרברנד 
 \begin_inset Formula $\mathcal{H}$
 \end_inset
 
@@ -10802,7 +10847,7 @@ status open
 \begin_layout Standard
 \begin_inset Branch lec10
 inverted 0
-status open
+status collapsed
 
 \begin_layout Theorem
 \begin_inset Argument 1
@@ -11174,7 +11219,7 @@ status open
 \end_layout
 
 \begin_layout Theorem
-בעיית הריצוף לא קריאה.
+בעיית הריצוף לא כריעה.
 \end_layout
 
 \begin_layout Definition
@@ -11353,7 +11398,7 @@ status open
 \end_layout
 
 \end_deeper
-\begin_layout Section
+\begin_layout Subsection
 לוגיקה מונאדית
 \end_layout
 
@@ -11578,6 +11623,3121 @@ a\sim b\iff\forall i\in\left[k\right].\ a\in P^{M}_{i}\iff b\in P^{M}_{i}
 \end_inset
 
 .
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch lec11
+inverted 0
+status collapsed
+
+\begin_layout Subsection
+תחשיב הילברט
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\hc}{\mathrm{HC}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+Hilbert Calculus
+\end_layout
+
+\end_inset
+
+ נגדיר את
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+HC
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+להיות מערכת ההוכחה מעל הנוסחאות בלוגיקה מסדר ראשון שמשתמשות בכמת 
+\begin_inset Formula $\forall$
+\end_inset
+
+ בלבד ובקשרים 
+\begin_inset Formula $\left\{ \lnot,\rightarrow\right\} $
+\end_inset
+
+ בלבד,
+ יחד עם האקסיומות:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $A\rightarrow\left(B\rightarrow A\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(A\rightarrow\left(B\rightarrow C\right)\right)\rightarrow\left(\left(A\rightarrow B\right)\rightarrow\left(A\rightarrow C\right)\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(\lnot B\rightarrow\lnot A\right)\rightarrow\left(\left(\lnot B\rightarrow A\right)\rightarrow B\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(\forall xA\right)\rightarrow A\left\{ \frac{t}{x}\right\} $
+\end_inset
+
+ כאשר 
+\begin_inset Formula $t$
+\end_inset
+
+ שם עצם.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(\forall x\left(A\rightarrow B\right)\right)\rightarrow\left(A\rightarrow\forall xB\right)$
+\end_inset
+
+ כאשר 
+\begin_inset Formula $x$
+\end_inset
+
+ לא חופשי ב-
+\begin_inset Formula $A$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Definition
+וכללי היסק:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $MP=\frac{A,A\rightarrow B}{B}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $Gen=\frac{A}{\forall xA}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+משפט השלמות
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+שלמות
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\Gamma\models_{\vali}A$
+\end_inset
+
+ אם ורק אם 
+\begin_inset Formula $\Gamma\vdash_{\hc}A$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+עקביות
+\end_layout
+
+\end_inset
+
+ נאמר כי 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ 
+\series bold
+עקבית
+\series default
+ ב-
+\lang english
+HC
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+אם קיימת נוסחה 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ כך שלא מתקיים 
+\begin_inset Formula $\Gamma\vdash_{\hc}\varphi$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+שלמות - גרסאת עקביות
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ עקבית ב-
+\lang english
+HC
+\lang hebrew
+ אם ורק אם 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ נכונה במבנה 
+\begin_inset Formula $M$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+קבוצת נוסחאות 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ מעל מילון 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ היא 
+\begin_inset Formula $\Sigma'\subseteq\Sigma$
+\end_inset
+
+-
+\series bold
+שלמה
+\series default
+ אם לכל פסוק 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ מעל 
+\begin_inset Formula $\Sigma'$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\varphi\in\Gamma$
+\end_inset
+
+ או 
+\begin_inset Formula $\lnot\varphi\in\Gamma$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem
+אם 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ היא עקבית מעל 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ אז קיימת 
+\begin_inset Formula $\Gamma'\supseteq\Gamma$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\Gamma'$
+\end_inset
+
+ עקבית ו-
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ שלמה.
+\end_layout
+
+\begin_layout Definition
+קבוצת נוסחאות 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ מעל 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ היא בעלת 
+\series bold
+תכונת הנקין 
+\series default
+עבור 
+\begin_inset Formula $\Sigma'\subseteq\Sigma$
+\end_inset
+
+ אם לכל פסוק 
+\begin_inset Formula $\psi\in\Gamma$
+\end_inset
+
+ מהצורה 
+\begin_inset Formula $\lnot\forall x\varphi$
+\end_inset
+
+ במילון 
+\begin_inset Formula $\Sigma'$
+\end_inset
+
+ יש קבוע 
+\begin_inset Formula $c$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\lnot\varphi\left\{ \frac{c}{x}\right\} \in\Gamma$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem
+אם 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ מעל 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ עקבית אז יש 
+\begin_inset Formula $\Gamma'\supseteq\Gamma$
+\end_inset
+
+ עקבית ובעלת תכונת הנקין עבור 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Lemma
+אם 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ עקבית ו-
+\begin_inset Formula $\lnot\forall x\varphi\in\Gamma$
+\end_inset
+
+ ו-
+\begin_inset Formula $c\notin\Sigma$
+\end_inset
+
+ קבוע חדש,
+ אזי 
+\begin_inset Formula $\Gamma\cup\lnot\varphi\left\{ \frac{c}{x}\right\} $
+\end_inset
+
+ עקבית.
+\end_layout
+
+\begin_layout Theorem
+אם 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ עקבית אזי יש 
+\begin_inset Formula $\Sigma'$
+\end_inset
+
+ וקבוצת נוסחאות 
+\begin_inset Formula $\Gamma'$
+\end_inset
+
+ מעל 
+\begin_inset Formula $\Sigma'$
+\end_inset
+
+ כך ש-
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\Gamma\subseteq\Gamma'$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\Gamma'$
+\end_inset
+
+ היא עקבית,
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\Gamma'$
+\end_inset
+
+ היא 
+\begin_inset Formula $\Sigma'$
+\end_inset
+
+-שלמה ובעלת תכונת הנקין עבור 
+\begin_inset Formula $\Sigma'$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+נגדיר 
+\begin_inset Formula $\Gamma_{0}=\Gamma$
+\end_inset
+
+ ו-
+\begin_inset Formula $\Sigma_{n}$
+\end_inset
+
+ המילון של 
+\begin_inset Formula $\Gamma_{n}$
+\end_inset
+
+,
+ כאשר 
+\begin_inset Formula $\Delta_{n}\supseteq\Gamma_{n}$
+\end_inset
+
+ היא קבוצה 
+\begin_inset Formula $\Sigma_{n}$
+\end_inset
+
+-שלמה שמכילה את 
+\begin_inset Formula $\Gamma_{n}$
+\end_inset
+
+,
+ נגדיר את 
+\begin_inset Formula $\Gamma_{n+1}\supseteq\Delta_{n}$
+\end_inset
+
+ להיות קבוצה שבעלת תכונת הנקין עבור 
+\begin_inset Formula $\Sigma_{n}$
+\end_inset
+
+.
+ נגדיר
+\begin_inset Formula 
+\[
+\Gamma=\bigcup\Gamma_{n}=\bigcup\Delta_{n},\Sigma'=\bigcup\Sigma_{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+אם 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ קבוצה עקבית של פסוקים ב-
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ שהיא 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+-שלמה ובעלת תכונת הנקין עבור 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ אזי 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ נכונה במבנה הרברנד עבור 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+יהי 
+\begin_inset Formula $M$
+\end_inset
+
+ מבנה הרברנד של 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ עם
+\begin_inset Formula 
+\[
+\left(t^{M}_{1},\ldots,t^{M}_{k}\right)\in R^{M}\iff R\left(t_{1},\ldots,t_{k}\right)\in\gamma
+\]
+
+\end_inset
+
+לכל 
+\begin_inset Formula $t_{1},\ldots,t_{k}$
+\end_inset
+
+ ש
+\begin_inset Quotes erd
+\end_inset
+
+ע ללא משתנים.
+ נראה באינדוקציה מבנית כי 
+\begin_inset Formula 
+\[
+\varphi\in\Gamma\iff\left\llbracket \varphi\right\rrbracket ^{M}=T
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Section
+ביטול סימנים
+\end_layout
+
+\begin_layout Subsection
+ביטול סימני פונקציה
+\end_layout
+
+\begin_layout Theorem
+קיים אלגוריתם 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ כך שלכל נוסחה 
+\begin_inset Formula $\varphi$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\mathcal{A}\left(\varphi\right)=\hat{\varphi}$
+\end_inset
+
+ היא נוסחה ללא סימני פונקציה כך ש-
+\begin_inset Formula $\varphi$
+\end_inset
+
+ ספיקה אם ורק אם 
+\begin_inset Formula $\hat{\varphi}$
+\end_inset
+
+ ספיקה.
+\end_layout
+
+\begin_layout Definition
+נוסחה 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ היא 
+\series bold
+לא-מכוננת
+\series default
+ אם כל הנוסחאות האטומיות המופיעות בה הם בדיוק מאחת מהצורות הבאות:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $R\left(x_{1},\ldots,x_{k}\right)$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $f\left(x_{1},\ldots,x_{k}\right)=y$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $c=y$
+\end_inset
+
+,
+\end_layout
+
+\end_deeper
+\begin_layout Definition
+כאשר 
+\begin_inset Formula $\left(k,R\right)\in\mathcal{R},\left(k,f\right)\in\mathcal{F},c\in\mathcal{C}$
+\end_inset
+
+ ו-
+\begin_inset Formula $x_{1},\ldots,x_{k},y$
+\end_inset
+
+ משתנים.
+\end_layout
+
+\begin_layout Theorem
+קיים אלגוריתם בזמן לינארי 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ כך שלכל נוסחה 
+\begin_inset Formula $\varphi$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\mathcal{A}\left(\varphi\right)=\hat{\varphi}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\hat{\varphi}\equiv\varphi$
+\end_inset
+
+ ולא מקוננת.
+\end_layout
+
+\begin_layout Definition
+יחס 
+\begin_inset Formula $k+1$
+\end_inset
+
+-מקומי 
+\begin_inset Formula $R$
+\end_inset
+
+ הוא 
+\series bold
+גרף של פונקציה
+\series default
+ 
+\begin_inset Formula $k$
+\end_inset
+
+-מקומית 
+\begin_inset Formula $f$
+\end_inset
+
+ אם לכל 
+\begin_inset Formula $a_{1},\ldots,a_{k},b$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\left(a_{1},\ldots,a_{k},b\right)\in R\iff b=f\left(a_{1},\ldots,a_{k}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim
+\begin_inset Formula $R$
+\end_inset
+
+ הוא גרף של פונקציה אם ורק אם הפסוק הבא נכון:
+\begin_inset Formula 
+\[
+FUN\left(R\right)\coloneqq\forall x_{1}\ldots\forall x_{k}\exists y\left(R\left(x_{1},\ldots,x_{k},y\right)\land\forall y_{1}\left(R\left(x_{1},\ldots,x_{k},y_{1}\right)\rightarrow y_{1}=y\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Lemma
+תהא 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ נוסחה לא-מכוננת עם סימן פונקציה 
+\begin_inset Formula $k$
+\end_inset
+
+-מקומי 
+\begin_inset Formula $f$
+\end_inset
+
+.
+ נניח כי 
+\begin_inset Formula $\varphi_{1}$
+\end_inset
+
+ מתקבלת מ-
+\begin_inset Formula $\varphi$
+\end_inset
+
+ על ידי החלפת תתי-נוסחאות 
+\begin_inset Formula $f\left(x_{1},\ldots,x_{k}\right)=y$
+\end_inset
+
+ ב-
+\begin_inset Formula $R\left(x_{1},\ldots,x_{k},y\right)$
+\end_inset
+
+,
+ כאשר 
+\begin_inset Formula $R$
+\end_inset
+
+ סימן יחס 
+\begin_inset Formula $k+1$
+\end_inset
+
+-מקומי חדש.
+\end_layout
+
+\begin_layout Lemma
+אזי 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ ספיקה אם ורק אם 
+\begin_inset Formula $FUN\left(R\right)\land\varphi_{1}$
+\end_inset
+
+ ספיקה.
+\end_layout
+
+\begin_layout Subsection
+ביטול סימוני שוויון
+\end_layout
+
+\begin_layout Theorem
+קיים אלגוריתם 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ כך שלכל נוסחה 
+\begin_inset Formula $\varphi$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\mathcal{A}\left(\varphi\right)=\hat{\varphi}$
+\end_inset
+
+ היא נוסחה ללא סימני שוויון כך ש-
+\begin_inset Formula $\varphi$
+\end_inset
+
+ ספיקה אם ורק אם 
+\begin_inset Formula $\hat{\varphi}$
+\end_inset
+
+ ספיקה.
+\end_layout
+
+\begin_layout Claim
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+תכונות של שוויון
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\emph on
+יחס שקילות
+\emph default
+:
+ רפלקסיבי,
+ סימטרי וטרנזיטיבי.
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+קונגרואנציה
+\emph default
+:
+\begin_inset Formula 
+\[
+\forall x_{1}\ldots\forall x_{n}\forall y_{1}\ldots\forall y_{n}\left(\bigwedge^{n}_{i=1}\left(x_{i}=y_{i}\right)\rightarrow\left(R\left(x_{1},\ldots,x_{n}\right)\leftrightarrow R\left(y_{1},\ldots,y_{n}\right)\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Definition
+יחס בינארי 
+\begin_inset Formula $E$
+\end_inset
+
+ הוא 
+\series bold
+יחס שקילות
+\series default
+ אם
+\begin_inset Formula 
+\[
+EQ\left(E\right)\triangleq\forall xE\left(x,x\right)\land\forall x\forall y\left(E\left(x,y\right)\rightarrow E\left(y,x\right)\right)\land\left(\forall x\forall y\forall z\left(E\left(x,y\right)\land E\left(y,z\right)\right)\rightarrow E\left(x,z\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+יחס שקילות 
+\begin_inset Formula $E$
+\end_inset
+
+ הוא
+\series bold
+ קונגראנציה 
+\series default
+עבור יחס 
+\begin_inset Formula $R$
+\end_inset
+
+ אם
+\begin_inset Formula 
+\[
+CONG\left(E,R\right)\triangleq\forall x_{1}\ldots\forall x_{n}\forall y_{1}\ldots\forall y_{n}\left(\bigwedge^{n}_{i=1}E\left(x_{i},y_{i}\right)\rightarrow\left(R\left(x_{1},\ldots,x_{n}\right)\leftrightarrow R\left(y_{1},\ldots,y_{n}\right)\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+יחס שקילות 
+\begin_inset Formula $E$
+\end_inset
+
+ הוא 
+\series bold
+קונגרואנציה 
+\series default
+עבור קבוצת יחסים 
+\begin_inset Formula $S$
+\end_inset
+
+ אם הוא קונגרואנציה לכל 
+\begin_inset Formula $R\in S$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+תהא 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ נוסחה ללא סימני פונקציה וקבועים.
+ תהא 
+\begin_inset Formula $\varphi_{1}$
+\end_inset
+
+ הנוסחה המתקבלת מ-
+\begin_inset Formula $\varphi$
+\end_inset
+
+ על ידי החלפת תתי-נוסחאות מהצורה 
+\begin_inset Formula $x=y$
+\end_inset
+
+ על ידי 
+\begin_inset Formula $E\left(x,y\right)$
+\end_inset
+
+,
+ כאשר 
+\begin_inset Formula $E$
+\end_inset
+
+ סימן יחס חדש.
+\end_layout
+
+\begin_layout Standard
+תהא 
+\begin_inset Formula 
+\[
+\hat{\varphi}=\varphi_{1}\land EQ\left(E\right)\land\bigwedge^{n}_{i=1}CONG\left(E,R_{i}\right)
+\]
+
+\end_inset
+
+כאשר 
+\begin_inset Formula $R_{1},\ldots,R_{n}$
+\end_inset
+
+ סימני היחסים שמופיעים ב-
+\begin_inset Formula $\varphi$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+נכונות התרגום
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ ספיקה אם ורק אם 
+\begin_inset Formula $\hat{\varphi}$
+\end_inset
+
+ ספיקה.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+\begin_inset Formula $\boldsymbol{\underline{:\Longleftarrow}}$
+\end_inset
+
+ נניח כי 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ ספיקה ב-
+\begin_inset Formula $M$
+\end_inset
+
+.
+ ותהא 
+\begin_inset Formula $M'$
+\end_inset
+
+ הרחבה של 
+\begin_inset Formula $M$
+\end_inset
+
+,
+ כאשר 
+\begin_inset Formula $E$
+\end_inset
+
+ תפורש כשוויון.
+ לכל סביבה 
+\begin_inset Formula $\rho$
+\end_inset
+
+ ב-
+\begin_inset Formula $M$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\left\llbracket \varphi\right\rrbracket ^{M}_{\rho}=\left\llbracket \hat{\varphi}\right\rrbracket ^{M'}_{\rho}$
+\end_inset
+
+,
+ ולכן 
+\begin_inset Formula $\hat{\varphi}$
+\end_inset
+
+ ספיקה ב-
+\begin_inset Formula $M'$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula $\boldsymbol{\underline{:\Longrightarrow}}$
+\end_inset
+
+ יהי 
+\begin_inset Formula $M$
+\end_inset
+
+ מבנה ויהי 
+\begin_inset Formula $E$
+\end_inset
+
+ יחס שקילות על 
+\begin_inset Formula $M$
+\end_inset
+
+ שהוא קונגרואנציה לכל היחסים של 
+\begin_inset Formula $M$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+מחלקת 
+\begin_inset Formula $E$
+\end_inset
+
+-
+\series bold
+שקילות 
+\series default
+של איבר 
+\begin_inset Formula $b\in\mathcal{D}^{M}$
+\end_inset
+
+ היא הקבוצה 
+\begin_inset Formula $b/E\triangleq\sset{c\in\mathcal{D}^{M}}{\left(c,b\right)\in E}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+
+\series bold
+המנה
+\series default
+ 
+\begin_inset Formula $M/E$
+\end_inset
+
+ הוא המבנה הבא:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\mathcal{D}^{M/E}\triangleq\sset{b/E}{b\in\mathcal{D}^{M}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $R^{M/E}=\sset{\left(a_{1}/E,\ldots,a_{n}/E\right)}{\left(a_{1},\ldots,a_{n}\right)\in R^{M}}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Proof
+נשים לב כי 
+\begin_inset Formula $E^{M/E}$
+\end_inset
+
+ הוא שוויון ב-
+\begin_inset Formula $M/E$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Claim
+אם 
+\begin_inset Formula $\hat{\varphi}$
+\end_inset
+
+ ספיקה ב-
+\begin_inset Formula $M$
+\end_inset
+
+ אזי 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ ספיקה ב-
+\begin_inset Formula $M/E$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+נניח כי 
+\begin_inset Formula $\hat{\varphi}$
+\end_inset
+
+ ספיקה ב-
+\begin_inset Formula $M$
+\end_inset
+
+.
+ אזי 
+\begin_inset Formula $E$
+\end_inset
+
+ חס שקילות וקונגרואנציה לכל סימן יחס ב-
+\begin_inset Formula $M$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Lemma
+תהא 
+\begin_inset Formula $\rho$
+\end_inset
+
+ סביבה של 
+\begin_inset Formula $M$
+\end_inset
+
+ ותהא 
+\begin_inset Formula $\rho'$
+\end_inset
+
+ סביבה של 
+\begin_inset Formula $M/E$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\rho'\left(x\right)=\rho\left(x\right)/E$
+\end_inset
+
+.
+ אזי 
+\begin_inset Formula $\left\llbracket \hat{\varphi}\right\rrbracket ^{M}_{\rho}=\left\llbracket \varphi\right\rrbracket ^{M/E}_{\rho'}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Subsubsection
+משפט הקומפקטיות עם שוויון
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ היא ספיקה אם ורק כל תת קבוצה סופית 
+\begin_inset Formula $\Delta\subseteq\Gamma$
+\end_inset
+
+ היא ספיקה.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch type_theory
+inverted 0
+status collapsed
+
+\begin_layout Chapter
+סוגי לוגיקה נוספים
+\end_layout
+
+\begin_layout Section
+לוגיקה רב-סוגית
+\end_layout
+
+\begin_layout Subsection
+סינטקס
+\end_layout
+
+\begin_layout Subsubsection
+מילון ושמות עצם
+\end_layout
+
+\begin_layout Standard
+תהא 
+\begin_inset Formula $\mathcal{T}=\left\{ \tau_{i}\right\} _{i\in\mathbb{N}}$
+\end_inset
+
+ קבוצת הטיפוסים.
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+מילון
+\end_layout
+
+\end_inset
+
+ נגדיר
+\series bold
+ מילון
+\series default
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+לכל סימן יחס מתאים מספר סופי של טיפוסים 
+\begin_inset Formula $R:\tau_{1},\ldots,\tau_{k}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+לכל סימן פונקציה מתאים מספר סופי של טיפוסים 
+\begin_inset Formula $f:\tau_{1},\ldots,\tau_{k}\rightarrow\tau$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+לכל קבוע מתאים טיפוס.
+\end_layout
+
+\end_deeper
+\begin_layout Definition
+
+\series bold
+משתנים:
+
+\series default
+ יש מספר אינסופי של משתנים לכל טיפוס 
+\begin_inset Formula $\tau$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\left\{ x^{\tau}_{i}\right\} _{i\in\mathbb{N}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+שמות עצם והטיפוסים שלהם
+\end_layout
+
+\end_inset
+
+ יהי 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ מילון.
+ נגדיר 
+\series bold
+שמות עצם
+\series default
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+כל משתנה מטיפוס 
+\begin_inset Formula $\tau$
+\end_inset
+
+ הוא שם עצם מטיפוס 
+\begin_inset Formula $\tau$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+כל קבוע מטיפוס 
+\begin_inset Formula $\tau$
+\end_inset
+
+ הוא שם עצם מטיפוס 
+\begin_inset Formula $\tau$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $f:\tau_{1},\ldots,\tau_{k}\rightarrow\tau$
+\end_inset
+
+ ו-
+\begin_inset Formula $t_{1},\ldots,t_{k}$
+\end_inset
+
+ שמות עצם מטיפוס 
+\begin_inset Formula $\tau_{1},\ldots,\tau_{k}$
+\end_inset
+
+,
+ אזי 
+\begin_inset Formula $f\left(t_{1},\ldots,t_{k}\right)$
+\end_inset
+
+ שם עצם מטיפוס 
+\begin_inset Formula $\tau$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Theorem
+קריאות יחידה.
+\end_layout
+
+\begin_layout Subsubsection
+נוסחאות
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+נוסחה אטומית
+\end_layout
+
+\end_inset
+
+ אם 
+\begin_inset Formula $R:\tau_{1},\ldots,\tau_{k}$
+\end_inset
+
+ ו-
+\begin_inset Formula $t_{1},\ldots,t_{k}$
+\end_inset
+
+ שמות עצם מטיפוסים 
+\begin_inset Formula $\tau_{1},\ldots,\tau_{k}$
+\end_inset
+
+,
+ אזי 
+\begin_inset Formula $R\left(t_{1},\ldots,t_{k}\right)$
+\end_inset
+
+ היא 
+\series bold
+נוסחה אטומית
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+נוסחה
+\end_layout
+
+\end_inset
+
+ נגדיר 
+\series bold
+נוסחאות 
+\series default
+בלוגיקה רב-סוגית:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+נוסחאות אטומיות הן נוסחאות.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $\varphi,\psi$
+\end_inset
+
+ נוסחאות אזי 
+\begin_inset Formula $\left\{ \left(\varphi*\psi\right)\right\} _{*\in\left\{ \lor,\land,\rightarrow,\leftrightarrow,\rightarrow\right\} }\uplus\left\{ \left(\lnot\varphi\right)\right\} $
+\end_inset
+
+ נוסחאות.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ נוסחה אזי לכל משתנה 
+\begin_inset Formula $x^{\tau}$
+\end_inset
+
+,
+ אזי 
+\begin_inset Formula $\left(\exists x^{\tau}\varphi\right),\left(\forall x^{\tau}\varphi\right)$
+\end_inset
+
+ נוסחאות.
+\end_layout
+
+\end_deeper
+\begin_layout Theorem
+קריאות יחידה.
+\end_layout
+
+\begin_layout Subsection
+סמנטיקה
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+מבנה
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+מבנה 
+\series default
+(עם טיפוסים) 
+\begin_inset Formula $M$
+\end_inset
+
+ עבור מילון 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+לכל טיפוס 
+\begin_inset Formula $\tau$
+\end_inset
+
+ מתאימה קבוצה לא ריקה 
+\begin_inset Formula $A^{\tau}$
+\end_inset
+
+.
+ הקבוצות 
+\begin_inset Formula $A^{\tau},A^{\tau'}$
+\end_inset
+
+ זרות אם 
+\begin_inset Formula $\tau\neq\tau'$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+לכל קבוע 
+\begin_inset Formula $c$
+\end_inset
+
+ מטיפוס 
+\begin_inset Formula $\tau$
+\end_inset
+
+ מתאים איבר ב-
+\begin_inset Formula $c^{M}\in A^{\tau}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+לכל סימן יחס 
+\begin_inset Formula $R:\tau_{1},\ldots,\tau_{k}$
+\end_inset
+
+ מתאים יחס 
+\begin_inset Formula $R^{M}\subseteq A^{\tau_{1}}\times\cdots\times A^{\tau_{k}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+לכל סימן פונקציה 
+\begin_inset Formula $f:\tau_{1},\ldots,\tau_{k}\rightarrow\tau$
+\end_inset
+
+ מתאימה פונקציה 
+\begin_inset Formula $f^{M}:A^{\tau_{1}}\times\cdots\times A^{\tau_{k}}\rightarrow A^{\tau}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+סביבה
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+סביבה 
+\series default
+
+\begin_inset Formula $\rho$
+\end_inset
+
+ מתאימה לכל משתנה מטיפוס 
+\begin_inset Formula $\tau$
+\end_inset
+
+ איבר ב-
+\begin_inset Formula $A^{\tau}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\rho\left(x^{\tau}\right)\in A^{\tau}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Remark
+הסמנטיקה של שמות עצם ונוסחאות מוגדרות כצפוי באינדוקציה.
+\end_layout
+
+\begin_layout Theorem
+נניח כי 
+\begin_inset Formula $M_{1},M_{2}$
+\end_inset
+
+ מבנים בלוגיקה רב-סוגית כך שהפירושים של הסימנים בפסוק 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ מפורשים אותו דבר בשניהם.
+ אזי 
+\begin_inset Formula $\left\llbracket \varphi\right\rrbracket ^{M_{1}}=\left\llbracket \varphi\right\rrbracket ^{M_{2}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+תרגום משמר ספיקות
+\end_layout
+
+\begin_layout Theorem
+קיים אלגוריתם 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ כך שלכל נוסחה 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ בלוגיקה רב-סוגית,
+ 
+\begin_inset Formula $\mathcal{A}\left(\varphi\right)=\hat{\varphi}$
+\end_inset
+
+ נוסחה בלוגיקה מסדר ראשון כך ש-
+\begin_inset Formula $\varphi$
+\end_inset
+
+ ספיקה אם ורק אם 
+\begin_inset Formula $\hat{\varphi}$
+\end_inset
+
+ ספיקה.
+\end_layout
+
+\begin_layout Algorithm
+תהא 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ נוסחה בלוגיקה רב-סוגית.
+\end_layout
+
+\begin_layout Algorithm
+נניח כי אין סימני פונקציה ב-
+\begin_inset Formula $\varphi$
+\end_inset
+
+ (אחרת נבצע ביטול סימני פונקציה כפי שעשינו בלוגיקה מסדר ראשון).
+\end_layout
+
+\begin_layout Algorithm
+לכל טיפוס 
+\begin_inset Formula $\tau$
+\end_inset
+
+ שמופיע ב-
+\begin_inset Formula $\varphi$
+\end_inset
+
+ נוסיף סימן-יחס אונארי 
+\begin_inset Formula $P_{\tau}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Algorithm
+המילון של 
+\begin_inset Formula $\hat{\varphi}$
+\end_inset
+
+ יהיה המילון 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ בתוספת הפרדיקטים 
+\begin_inset Formula $P_{\tau}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Algorithm
+נגדיר תרגום 
+\begin_inset Formula $Tr_{1}$
+\end_inset
+
+ מלוגיקה רב-סוגית לסדר ראשון:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $Tr_{1}\left(R\left(x_{1},\ldots,x_{k}\right)\right)\triangleq R\left(x_{1},\ldots,x_{k}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $Tr_{1}\left(\psi_{1}*\psi_{2}\right)\triangleq Tr_{1}\left(\psi_{1}\right)*Tr_{1}\left(\psi_{2}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $Tr_{1}\left(\exists x^{\tau}\psi\right)\triangleq\exists x\left(P_{\tau}\left(x^{\tau}\right)\land Tr_{1}\left(\psi\right)\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $Tr_{1}\left(\forall x^{\tau}\psi\right)\triangleq\forall x\left(P_{\tau}\left(x^{\tau}\right)\rightarrow Tr_{1}\left(\psi\right)\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Theorem
+אם 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ ספיקה אזי 
+\begin_inset Formula $Tr_{1}\left(\varphi\right)$
+\end_inset
+
+ ספיקה.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+נניח כי 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ ספיקה ב-
+\begin_inset Formula $M$
+\end_inset
+
+.
+ משום ש-
+\begin_inset Formula $A^{\tau}$
+\end_inset
+
+ זרות,
+ נגדיר 
+\begin_inset Formula $\hat{M}$
+\end_inset
+
+ באופן הבא:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\mathcal{D}^{\hat{M}}\triangleq\biguplus_{\tau\in\mathcal{T}}A^{\tau}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $P^{\hat{M}}_{\tau}\triangleq A^{\tau}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $R^{\hat{M}}\triangleq R^{M}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Lemma
+\begin_inset Formula $\varphi$
+\end_inset
+
+ ספיקה ב-
+\begin_inset Formula $M,\rho$
+\end_inset
+
+ אם ורק אם 
+\begin_inset Formula $Tr_{1}\left(\varphi\right)$
+\end_inset
+
+ ספיקה ב-
+\begin_inset Formula $\hat{M},\rho$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Definition
+נגדיר את 
+\begin_inset Formula $\hat{\varphi}$
+\end_inset
+
+ להיות הקוניונקציה של הנוסחאות הבאות עם 
+\begin_inset Formula $Tr_{1}\left(\varphi\right)$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\exists xP_{\tau}\left(x\right)$
+\end_inset
+
+ לכל 
+\begin_inset Formula $\tau$
+\end_inset
+
+ שמופיעה ב-
+\begin_inset Formula $\varphi$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\forall x\left(P_{\tau}\left(x\right)\rightarrow\lnot P_{\tau'}\left(x\right)\right)$
+\end_inset
+
+ לכל 
+\begin_inset Formula $\tau\neq\tau'$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\forall x\bigvee_{i}P_{\tau_{i}}\left(x\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\forall x_{1}\ldots x_{k}\left(R\left(x_{1},\ldots,x_{k}\right)\rightarrow\left(P_{\tau_{1}}\left(x_{1}\right)\land\cdots\land P_{\tau_{k}}\left(x_{k}\right)\right)\right)$
+\end_inset
+
+ לכל 
+\begin_inset Formula $R:\tau_{1},\ldots,\tau_{k}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $P_{\tau}\left(x\right)$
+\end_inset
+
+ לכל 
+\begin_inset Formula $x$
+\end_inset
+
+ חופשי ב-
+\begin_inset Formula $\varphi$
+\end_inset
+
+ מטיפוס 
+\begin_inset Formula $\tau$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Lemma
+אם 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ ספיקה אזי 
+\begin_inset Formula $\hat{\varphi}$
+\end_inset
+
+ ספיקה.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+אם 
+\begin_inset Formula $\hat{\varphi}$
+\end_inset
+
+ ספיקה אזי 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ ספיקה.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+נניח כי 
+\begin_inset Formula $\hat{\varphi}$
+\end_inset
+
+ ספיקה במבנה 
+\begin_inset Formula $M$
+\end_inset
+
+.
+ נגדיר מבנה רב-סוגי 
+\begin_inset Formula $M'$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $A^{\tau}\triangleq P^{M}_{\tau}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $R^{M'}\triangleq R^{M}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Lemma
+\begin_inset Formula $\hat{\varphi}$
+\end_inset
+
+ ספיקה ב-
+\begin_inset Formula $M,\rho$
+\end_inset
+
+ אם ורק אם 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ ספיקה ב-
+\begin_inset Formula $M',\rho$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Section
+לוגיקה מסדר שני
+\end_layout
+
+\begin_layout Subsection
+סינטקס
+\end_layout
+
+\begin_layout Subsubsection
+מילון ושמות עצם
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+מילון
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\Sigma=\left(\mathcal{C},\mathcal{F},\mathcal{R}\right)$
+\end_inset
+
+ כך שמתקיים:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\mathcal{C}$
+\end_inset
+
+ קבועים,
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mathcal{F}$
+\end_inset
+
+ סימני פונקציה - 
+\begin_inset Formula $\left(k,f\right)\in\mathcal{F}$
+\end_inset
+
+ סימן פונקציה 
+\begin_inset Formula $k$
+\end_inset
+
+-מקומית,
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mathcal{F}$
+\end_inset
+
+ סימני יחס - 
+\begin_inset Formula $\left(k,R\right)\in\mathcal{R}$
+\end_inset
+
+ סימן יחס 
+\begin_inset Formula $k$
+\end_inset
+
+-מקומי.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+משתנים
+\end_layout
+
+\end_inset
+
+ נגדיר 
+\series bold
+משתנים בלוגיקה מסדר שני
+\series default
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+משתני סדר ראשון 
+\series default
+- 
+\begin_inset Formula $\left\{ x_{i}\right\} _{i\in\mathbb{N}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+משתני סדר שני:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+יחסים 
+\series default
+- לכל 
+\begin_inset Formula $k\in\mathbb{N}$
+\end_inset
+
+ יש אינסוף משתני יחסים 
+\begin_inset Formula $\left\{ X_{i}\right\} _{i\in\mathbb{N}}$
+\end_inset
+
+ 
+\begin_inset Formula $k$
+\end_inset
+
+-מקומיים.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+פונקציות
+\series default
+ - לכל 
+\begin_inset Formula $k\in\mathbb{N}$
+\end_inset
+
+ יש אינסוף משתני פונקציות 
+\begin_inset Formula $\left\{ F_{i}\right\} _{i\in\mathbb{N}}$
+\end_inset
+
+ 
+\begin_inset Formula $k$
+\end_inset
+
+-מקומיים.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+שמות עצם
+\end_layout
+
+\end_inset
+
+ נגדיר 
+\series bold
+שמות עצם
+\series default
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+כל משתנה מסדר ראשון הוא שם עצם.
+\end_layout
+
+\begin_layout Enumerate
+כל קבוע הוא שם עצם.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $f$
+\end_inset
+
+ סימן פונקציה 
+\begin_inset Formula $k$
+\end_inset
+
+-מקומית ו-
+\begin_inset Formula $t_{1},\ldots,t_{k}$
+\end_inset
+
+ שמות עצם אזי 
+\begin_inset Formula $f\left(t_{1},\ldots,t_{k}\right)$
+\end_inset
+
+ שם עצם.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $F$
+\end_inset
+
+ משתנה פונקציה 
+\begin_inset Formula $k$
+\end_inset
+
+-מקומית ו-
+\begin_inset Formula $t_{1},\ldots,t_{k}$
+\end_inset
+
+ שמות עצם אזי 
+\begin_inset Formula $F\left(t_{1},\ldots,t_{k}\right)$
+\end_inset
+
+ שם עצם.
+\end_layout
+
+\end_deeper
+\begin_layout Theorem
+קריאות יחידה.
+\end_layout
+
+\begin_layout Subsubsection
+נוסחאות
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+נוסחאות אטומיות
+\end_layout
+
+\end_inset
+
+ נגדיר 
+\series bold
+נוסחאות אטומיות
+\series default
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $R$
+\end_inset
+
+ סימן יחס 
+\begin_inset Formula $k$
+\end_inset
+
+-מקומי ו-
+\begin_inset Formula $t_{1},\ldots,t_{k}$
+\end_inset
+
+ שמות עצם אזי 
+\begin_inset Formula $R\left(t_{1},\ldots,t_{k}\right)$
+\end_inset
+
+ נוסחה אטומית.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $X$
+\end_inset
+
+ משתנה יחס 
+\begin_inset Formula $k$
+\end_inset
+
+-מקומי ו-
+\begin_inset Formula $t_{1},\ldots,t_{k}$
+\end_inset
+
+ שמות עצם אזי 
+\begin_inset Formula $X\left(t_{1},\ldots,t_{k}\right)$
+\end_inset
+
+ נוסחה אטומית.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+נוסחאות
+\end_layout
+
+\end_inset
+
+ נגדיר 
+\series bold
+נוסחאות
+\series default
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+כל נוסחה אטומית היא נוסחה.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $\varphi,\psi$
+\end_inset
+
+ נוסחאות אזי 
+\begin_inset Formula $\left\{ \left(\lnot\varphi\right)\right\} \uplus\left\{ \left(\varphi*\psi\right)\right\} _{*\in\left\{ \lor,\land,\rightarrow,\leftrightarrow\right\} }$
+\end_inset
+
+ נוסחאות.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ נוסחה ו-
+\begin_inset Formula $\circledast\in\left\{ \forall,\exists\right\} $
+\end_inset
+
+ אזי הבאים נוסחאות:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+לכל משתנה 
+\begin_inset Formula $x$
+\end_inset
+
+ מסדר ראשון,
+ 
+\begin_inset Formula $\circledast x\varphi$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+לכל משתנה יחס 
+\begin_inset Formula $X$
+\end_inset
+
+ מסדר שני,
+ 
+\begin_inset Formula $\circledast X\varphi$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+לכל משתנה פונקציה 
+\begin_inset Formula $F$
+\end_inset
+
+ מסדר שני,
+ 
+\begin_inset Formula $\circledast F\varphi$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Theorem
+קריאות יחידה.
+\end_layout
+
+\begin_layout Subsection
+סמנטיקה
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+מבנה
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+מבנה 
+\series default
+
+\begin_inset Formula $M$
+\end_inset
+
+ עבור מילון 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ בלוגיקה מסדר שני מגדיר פירושים:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\mathcal{D}^{M}\neq\emptyset$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Enumerate
+לכל 
+\begin_inset Formula $c\in\mathcal{C}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $c^{M}\in\mathcal{D}^{M}$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Enumerate
+לכל 
+\begin_inset Formula $\left(k,f\right)\in\mathcal{F}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $f^{M}:\left(\mathcal{D}^{M}\right)^{k}\rightarrow\mathcal{D}^{M}$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Enumerate
+לכל 
+\begin_inset Formula $\left(k,R\right)\in\mathcal{R}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $R^{M}\subseteq\left(\mathcal{D}^{M}\right)^{k}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+סביבה
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+סביבה 
+\series default
+
+\begin_inset Formula $\rho$
+\end_inset
+
+ עבור מבנה 
+\begin_inset Formula $M$
+\end_inset
+
+ בלוגיקה מסדר שני מגדירה:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+לכל משתנה מסדר ראשון 
+\begin_inset Formula $x$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\rho\left(x\right)\in\mathcal{D}^{M}$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Enumerate
+לכל משתנה יחס 
+\begin_inset Formula $k$
+\end_inset
+
+-מקומי 
+\begin_inset Formula $X$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\rho\left(X\right)\subseteq\left(\mathcal{D}^{M}\right)^{k}$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Enumerate
+לכל משתנה פונקציה 
+\begin_inset Formula $k$
+\end_inset
+
+-מקומית 
+\begin_inset Formula $F$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\rho\left(F\right):\left(\mathcal{D}^{M}\right)^{k}\rightarrow\mathcal{D}^{M}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Remark
+הסמנטיקה של שמות עצם ונוסחאות מוגדרות כצפוי באינדוקציה.
+\end_layout
+
+\begin_layout Subsection
+הצרנות בלוגיקה מסדר שני
+\end_layout
+
+\begin_layout Claim
+קיימת נוסחה 
+\begin_inset Formula $\varphi\left(x,y\right)$
+\end_inset
+
+ שמצרינה שוויון,
+ כלומר לכל מבנה 
+\begin_inset Formula $M$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\left\llbracket \varphi\right\rrbracket ^{M}_{\rho}=T$
+\end_inset
+
+ אם ורק אם 
+\begin_inset Formula $\rho\left(x\right)=\rho\left(y\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+נגדיר את 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ (כאשר 
+\begin_inset Formula $Z$
+\end_inset
+
+ משתנה יחס אונארי):
+\begin_inset Formula 
+\[
+\varphi\left(x,y\right)\triangleq\forall Z\left(Z\left(x\right)\leftrightarrow Z\left(y\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim
+\begin_inset CommandInset label
+LatexCommand label
+name "claim:c2ndfin"
+
+\end_inset
+
+קיים פסוק 
+\begin_inset Formula $\varphi_{finite}$
+\end_inset
+
+ התקף במבנה 
+\begin_inset Formula $M$
+\end_inset
+
+ אם ורק אם 
+\begin_inset Formula $\mathcal{D}^{M}$
+\end_inset
+
+ סופי.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+ניזכר בתכונה הבאה:
+\end_layout
+
+\begin_deeper
+\begin_layout Lemma
+קבוצה 
+\begin_inset Formula $D$
+\end_inset
+
+ היא סופית אם ורק אם כל פונקציה חד-חד ערכית 
+\begin_inset Formula $f:D\rightarrow D$
+\end_inset
+
+ היא על 
+\begin_inset Formula $D$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Proof
+כעת ניתן להגדיר (כאשר 
+\begin_inset Formula $F$
+\end_inset
+
+ משתנה פונקציה אונארית):
+\begin_inset Formula 
+\[
+\varphi_{finite}\triangleq\forall F\left(\psi_{one-one}\rightarrow\psi_{onto}\right),
+\]
+
+\end_inset
+
+כאשר
+\begin_inset Formula 
+\begin{align*}
+\psi_{one-one}\triangleq\forall x\forall y\left(\left(F\left(x\right)=F\left(y\right)\right)\rightarrow\left(x=y\right)\right) & , & \psi_{onto}\triangleq\forall y\exists x\left(y=F\left(x\right)\right) & .
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim
+קיים פסוק 
+\begin_inset Formula $\varphi_{count}$
+\end_inset
+
+ התקף במבנה 
+\begin_inset Formula $M$
+\end_inset
+
+ אם ורק אם 
+\begin_inset Formula $\mathcal{D}^{M}$
+\end_inset
+
+ לכל היותר בן-מנייה.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+ניזכר בתכונה הבאה:
+\end_layout
+
+\begin_deeper
+\begin_layout Lemma
+קבוצה 
+\begin_inset Formula $D$
+\end_inset
+
+ היא לכל היותר בת-מנייה אם ורק אם לכל 
+\begin_inset Formula $S\subseteq D$
+\end_inset
+
+ מתקיים כי 
+\begin_inset Formula $S$
+\end_inset
+
+ סופי או שיש פונקציה חד-חד ערכית 
+\begin_inset Formula $f:D\rightarrow S$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Proof
+כעת נגדיר את הפסוק (כאשר 
+\begin_inset Formula $F$
+\end_inset
+
+ משתנה פונקציה אונארית ו-
+\begin_inset Formula $S$
+\end_inset
+
+ משתנה יחס אונארי):
+\begin_inset Formula 
+\[
+\varphi_{count}\triangleq\forall S\left(\psi_{finite}\lor\psi_{one-one}\right),
+\]
+
+\end_inset
+
+כאשר
+\begin_inset Formula 
+\[
+\psi_{one-one}\triangleq\exists F\forall y\left(S\left(y\right)\rightarrow\exists x\left(y=F\left(x\right)\right)\right),
+\]
+
+\end_inset
+
+ו-
+\begin_inset Formula $\psi_{finite}$
+\end_inset
+
+ צמצום של הפסוק מטענה 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "claim:c2ndfin"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+tuple "list"
+
+\end_inset
+
+ לקבוצה 
+\begin_inset Formula $S$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+הגדרת הטבעיים
+\end_layout
+
+\begin_layout Standard
+נתבונן במילון 
+\begin_inset Formula $\Sigma=\left(\left\{ c\right\} ,\left\{ \left(1,f\right)\right\} ,\emptyset\right)$
+\end_inset
+
+ ובמבנים מהצורה 
+\begin_inset Formula $M=\left(\mathcal{D}^{M},c^{M},f^{M}\right)$
+\end_inset
+
+ יחד עם שוויון.
+\end_layout
+
+\begin_layout Standard
+נסמן ב-
+\begin_inset Formula $\left(Nat,0,succ\right)$
+\end_inset
+
+ את המבנה של המספריים הטבעיים עם 
+\begin_inset Formula $0$
+\end_inset
+
+ ועוקב.
+\end_layout
+
+\begin_layout Theorem
+לא קיימת קבוצה נוסחאות מסדר ראשון 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ ככה ש-
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ תקפה ב-
+\begin_inset Formula $M$
+\end_inset
+
+ אם ורק אם 
+\begin_inset Formula $M$
+\end_inset
+
+ איזומורפי ל-
+\begin_inset Formula $\left(Nat,0,succ\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+קיים פסוק מסדר שני 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\varphi$
+\end_inset
+
+ תקף במבנה 
+\begin_inset Formula $M$
+\end_inset
+
+ אם ורק אם 
+\begin_inset Formula $M$
+\end_inset
+
+ איזומורפי ל-
+\begin_inset Formula $\left(Nat,0,succ\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+נצרין את הפסוק בחלקים:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $0$
+\end_inset
+
+ לא בטווח של העוקב - 
+\begin_inset Formula $\forall xf\left(x\right)\neq0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+העוקב היא פונקציה חד-חד ערכית - 
+\begin_inset Formula $\forall x\forall y\left(\left(f\left(x\right)=f\left(y\right)\right)\rightarrow\left(x=y\right)\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+אקסיומת פאנו - 
+\begin_inset Formula $\forall X\left(\left(X\left(0\right)\land\forall y\left(X\left(y\right)\rightarrow X\left(f\left(y\right)\right)\right)\right)\rightarrow\forall yX\left(y\right)\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Subsection
+כשל של משפטים מלוגיקה מסדר ראשון
+\end_layout
+
+\begin_layout Claim
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+אין משפט קומפקטיות
+\end_layout
+
+\end_inset
+
+ קיימת קבוצת נוסחאות 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ שאינה ספיקה אך כל תת-קבוצה סופית שלה ספיקה.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+לכל 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ נגדיר
+\begin_inset Formula 
+\[
+\varphi_{n}\triangleq\bigwedge_{i<j\leq n}x_{i}\neq x_{j},
+\]
+
+\end_inset
+
+כעת נגדיר
+\begin_inset Formula 
+\[
+\Gamma\triangleq\left\{ \varphi_{n}\right\} _{n\geq2}\uplus\left\{ \varphi_{finite}\right\} .
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+אין משפטי סקולם
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\lnot\left(\varphi_{finite}\lor\varphi_{count}\right)$
+\end_inset
+
+ ספיקה אך לא ספיקה במבנה בן-מנייה.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\varphi_{count}$
+\end_inset
+
+ ספיקה במבנה אינסופי אך לא ספיקה במבנה לא בן מנייה.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+אי חשיבות
+\end_layout
+
+\begin_layout Theorem
+תהא 
+\begin_inset Formula $S$
+\end_inset
+
+ קבוצת הפסוקים החוקיים בלוגיקה מסדר שני.
+ אזי 
+\begin_inset Formula $S\notin\mathcal{RE}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+נראה מספר הוכחות:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+קבוצת הפסוקים מסדר ראשון שתקפים מעל כל מבנה סופי היא לא כריעה.
+ נראה רדוקציה מהקבוצה הזאת ל-
+\begin_inset Formula $S$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\psi\mapsto\left(\varphi_{finite}\rightarrow\psi\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+בעיית הריצוף לא ב-
+\begin_inset Formula $\mathcal{RE}$
+\end_inset
+
+.
+ נראה רדוקצייה מבעיית הריצוף ל-
+\begin_inset Formula $S$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+אין תחשיב 
+\begin_inset Quotes eld
+\end_inset
+
+סביר
+\begin_inset Quotes erd
+\end_inset
+
+ ללוגיקה מסדר שני.
+\end_layout
+
+\begin_layout Definition
+נאמר כי תחשיב הוא סביר אם כללי ההיסק והאקסיומות שלו הם ב-
+\begin_inset Formula $\mathcal{RE}$
+\end_inset
+
+ או 
+\begin_inset Formula $\mathcal{R}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Remark
+עד כאן החומר למבחן.
 \end_layout
 
 \end_inset
