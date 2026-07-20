@@ -329,7 +329,7 @@ rongoldman3@mail.tau.ac.il
 \begin_layout Standard
 \begin_inset Branch lec1
 inverted 0
-status open
+status collapsed
 
 \begin_layout Chapter
 תורת הפסוקים
@@ -425,37 +425,7 @@ status open
 \end_inset
 
 ,
- כלומר לכל נוסחה מתקיימת ה
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\nospellcheck off
-\bar no
-\strikeout off
-\xout off
-\uuline off
-\uwave off
-\noun off
-\color none
-
-\backslash
-lnot,
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\nospellcheck default
-\bar default
-\strikeout default
-\xout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
-תכונה,
+ כלומר לכל נוסחה מתקיימת התכונה,
  מספיק להוכיח:
 \end_layout
 
@@ -2349,7 +2319,7 @@ status open
 \begin_inset Formula $\left|\Gamma\right|<\infty$
 \end_inset
 
-אזי 
+ אזי 
 \begin_inset Formula $\Gamma$
 \end_inset
 
@@ -4212,7 +4182,7 @@ status open
 \end_inset
 
  אזי 
-\begin_inset Formula $\Gamma\in A$
+\begin_inset Formula $A\in\Gamma$
 \end_inset
 
 .
@@ -9517,7 +9487,7 @@ name "thm:thmpcrc"
 \end_inset
 
 ,
- משום שאין בה משתנים אזי היא תקיפה,
+ משום שאין בה משתנים אזי היא נכונה,
  נגדיר סביבה 
 \begin_inset Formula $\rho$
 \end_inset
@@ -10208,12 +10178,12 @@ status open
 status open
 
 \begin_layout Plain Layout
-קומפקטיות
+קומפקטיות ללא שוויון
 \end_layout
 
 \end_inset
 
- יהי 
+ תהא 
 \begin_inset Formula $\Gamma$
 \end_inset
 
@@ -10603,11 +10573,11 @@ status open
 
 \begin_layout Claim
 אם 
-\begin_inset Formula $\Gamma\models_{\vali}\varphi$
+\begin_inset Formula $\Gamma\models_{\tru}\varphi$
 \end_inset
 
  אזי 
-\begin_inset Formula $\Gamma\models_{\tru}\varphi$
+\begin_inset Formula $\Gamma\models_{\vali}\varphi$
 \end_inset
 
 .
@@ -11506,11 +11476,11 @@ a\sim b\iff\forall i\in\left[k\right].\ a\in P^{M}_{i}\iff b\in P^{M}_{i}
 \end_layout
 
 \begin_layout Proof
-נגדיר מבנה מעל קבוצת המנה 
+נגדיר מבנה 
 \begin_inset Formula $\hat{M}$
 \end_inset
 
- עם 
+ מעל קבוצת המנה 
 \begin_inset Formula $\mathcal{D}^{\hat{M}}=\mathcal{D}^{M}/\sim$
 \end_inset
 
@@ -12891,7 +12861,7 @@ status open
 \begin_layout Standard
 \begin_inset Branch type_theory
 inverted 0
-status collapsed
+status open
 
 \begin_layout Chapter
 סוגי לוגיקה נוספים
