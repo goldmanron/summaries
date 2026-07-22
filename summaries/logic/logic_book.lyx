@@ -5809,7 +5809,7 @@ F, & \cc\left(v\right)\neq i
 \begin_layout Standard
 \begin_inset Branch first_order
 inverted 0
-status collapsed
+status open
 
 \begin_layout Chapter
 לוגיקה מסדר ראשון
@@ -6967,7 +6967,7 @@ status open
 \end_layout
 
 \begin_layout Subsection
-ערך אמת במבנה
+ערך במבנה
 \end_layout
 
 \begin_layout Standard
@@ -7001,7 +7001,7 @@ status open
 \begin_layout Definition
 
 \series bold
-ערך אמת של שם עצם 
+ערך של שם עצם 
 \series default
 בסביבה 
 \begin_inset Formula $\rho$
