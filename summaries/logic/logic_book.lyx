@@ -11603,7 +11603,7 @@ a\sim b\iff\forall i\in\left[k\right].\ a\in P^{M}_{i}\iff b\in P^{M}_{i}
 \begin_layout Standard
 \begin_inset Branch lec11
 inverted 0
-status collapsed
+status open
 
 \begin_layout Subsection
 תחשיב הילברט
@@ -11788,6 +11788,233 @@ status open
 
  אם ורק אם 
 \begin_inset Formula $\Gamma\vdash_{\hc}A$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+תהי 
+\begin_inset Formula $\Gamma\cup\{A\}\subseteq\wff_{\left\{ \lnot,\rightarrow\right\} }$
+\end_inset
+
+ קבוצת נוסחאות מעל המשתנים הפסוקיים 
+\begin_inset Formula $\left\{ x_{i}\right\} _{i\in\mathbb{N}}$
+\end_inset
+
+,
+ ויהיו 
+\begin_inset Formula $\left\{ A_{i}\right\} _{i\in\mathbb{N}}$
+\end_inset
+
+ נוסחאות בלוגיקה מסדר ראשון.
+\end_layout
+
+\begin_layout Theorem
+עבור כל נוסחה 
+\begin_inset Formula $\varphi\in\Gamma\cup\{A\}$
+\end_inset
+
+,
+ נגדיר את 
+\begin_inset Formula $\varphi^{*}$
+\end_inset
+
+ להיות הנוסחה המתקבלת מ-
+\begin_inset Formula $\varphi$
+\end_inset
+
+ על ידי החלפת כל מופע של המשתנה הפסוקי 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ בנוסחה 
+\begin_inset Formula $A_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem
+נגדיר את קבוצת הנוסחאות:
+\begin_inset Formula 
+\[
+\Gamma^{*}=\left\{ \varphi^{*}\mid\varphi\in\Gamma\right\} 
+\]
+
+\end_inset
+
+אזי,
+ אם 
+\begin_inset Formula $\Gamma\vdash_{\hpc}A$
+\end_inset
+
+,
+ מתקיים 
+\begin_inset Formula $\Gamma^{*}\vdash_{\hc}A^{*}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+דדוקציה ב-
+\shape italic
+\lang english
+HC
+\end_layout
+
+\end_inset
+
+ אם 
+\begin_inset Formula $\Gamma,A\vdash_{\hc}B$
+\end_inset
+
+ כאשר קיימת הוכחה שלא משתמשת ב-
+\begin_inset Formula $Gen$
+\end_inset
+
+ על משתנים חופשיים של 
+\begin_inset Formula $A$
+\end_inset
+
+,
+ אזי 
+\begin_inset Formula $\Gamma\vdash_{\hc}\left(A\rightarrow B\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+הוכחה לפי מקרים ב-
+\shape italic
+\lang english
+HC
+\end_layout
+
+\end_inset
+
+ אם 
+\begin_inset Formula $\Gamma\cup\left\{ A\right\} \vdash_{\hc}B$
+\end_inset
+
+ ו-
+\begin_inset Formula $\Gamma\cup\left\{ \lnot A\right\} \vdash_{\hc}B$
+\end_inset
+
+ כאשר קיימות הוכחות שלא משתמשות ב-
+\begin_inset Formula $Gen$
+\end_inset
+
+ על משתנים חופשיים של 
+\begin_inset Formula $A$
+\end_inset
+
+,
+ אז 
+\begin_inset Formula $\Gamma\vdash_{\hc}B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+נניח ש-
+\begin_inset Formula $c$
+\end_inset
+
+ קבוע שלא מופיע ב-
+\begin_inset Formula $\Gamma,A$
+\end_inset
+
+,
+ אם 
+\begin_inset Formula $\Gamma\vdash_{\hc}A\left\{ \frac{c}{x}\right\} $
+\end_inset
+
+ אזי 
+\begin_inset Formula $\Gamma\vdash_{\hc}\forall xA$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Formula $\Gamma\models_{\vali}A$
+\end_inset
+
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ 
+\begin_inset Formula $\Gamma^{\forall}\models_{\vali}A^{\forall}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Formula $\Gamma\vdash_{\hc}A$
+\end_inset
+
+ אמ
+\begin_inset Quotes erd
+\end_inset
+
+מ 
+\begin_inset Formula $\Gamma^{\forall}\vdash_{\hc}A^{\forall}$
 \end_inset
 
 .
@@ -12018,7 +12245,7 @@ HC
 
  קבוע חדש,
  אזי 
-\begin_inset Formula $\Gamma\cup\lnot\varphi\left\{ \frac{c}{x}\right\} $
+\begin_inset Formula $\Gamma\cup\left\{ \lnot\varphi\left\{ \frac{c}{x}\right\} \right\} $
 \end_inset
 
  עקבית.
@@ -12861,7 +13088,7 @@ status open
 \begin_layout Standard
 \begin_inset Branch type_theory
 inverted 0
-status open
+status collapsed
 
 \begin_layout Chapter
 סוגי לוגיקה נוספים
