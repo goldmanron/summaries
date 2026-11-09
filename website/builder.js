@@ -173,7 +173,6 @@ async function main() {
     const popupData = JSON.parse(fs.readFileSync(POPUP_DATA_PATH, "utf8"));
 
     // Apply injections
-    await lastCommitFetch(doc);
     await mainPopups(doc, popupData);
     createButtons(doc, pdfData);
     createGenericButtons(doc);
