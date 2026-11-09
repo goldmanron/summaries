@@ -1,0 +1,7602 @@
+#LyX 2.5 created this file. For more info see https://www.lyx.org/
+\lyxformat 643
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\begin_preamble
+\usepackage{circuitikz}
+\usepackage{pgfplots}
+% Necessary Commands:
+\usepackage{autobreak}
+\usepackage[T1]{fontenc}
+\usepackage{relsize}
+\usepackage{mathtools}
+\let\savedleft\left
+  \let\savedright\right
+  % Redefine \left and \right to insert the pairing-group hack
+  \renewcommand{\left}{\mathopen{}\mathclose\bgroup\savedleft}
+  \renewcommand{\right}{\aftergroup\egroup\savedright}
+\usepackage{enumitem}
+\setlist[itemize,1]{label={\fontfamily{cmr}\fontencoding{T1}\selectfont\textbullet}}
+\setlist[enumerate,3]{label=(\arabic*)}
+%\renewcommand{\labelenumi}{(\alph{enumi})}
+%\renewcommand{\theenumii}{\arabic{enumii}}
+%\renewcommand{\labelenumii}{(\theenumii)}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+% Convert the QED Symbol at the end of proofs to a solid black square (credit: Yakir Oz):
+\usepackage{amssymb}
+\renewcommand{\qedsymbol}{$\blacksquare$}
+% Correct the reversed parentheses in labels:
+\usepackage{polyglossia}
+\setmainlanguage{hebrew}
+\newfontfamily{\hebrewfont}{David}
+\makeatletter
+\def\maketag@@@#1{\hbox{\m@th\normalfont\LRE{#1}}}
+\def\tagform@#1{\maketag@@@{(\ignorespaces#1\unskip)}}
+\makeatother
+% Create disjoint union symbols:
+\makeatletter
+\def\moverlay{\mathpalette\mov@rlay}
+\def\mov@rlay#1#2{\leavevmode\vtop{%
+   \baselineskip\z@skip \lineskiplimit-\maxdimen
+   \ialign{\hfil$\m@th#1##$\hfil\cr#2\crcr}}}
+\newcommand{\charfusion}[3][\mathord]{
+    #1{\ifx#1\mathop\vphantom{#2}\fi
+        \mathpalette\mov@rlay{#2\cr#3}
+      }
+    \ifx#1\mathop\expandafter\displaylimits\fi}
+\makeatother
+\newcommand{\cupdot}{\charfusion[\mathbin]{\cup}{\cdot}}
+\newcommand{\bigcupdot}{\charfusion[\mathop]{\bigcup}{\cdot}}
+\newcommand{\kaliLargeLand}{\mathop{\mathlarger{\mathlarger{\mathlarger{\land}}}}}
+\newcommand{\hebtext}[1]{\mbox{\R{\#1}}}
+\end_preamble
+\options no-math
+\use_default_options true
+\begin_modules
+customHeadersFooters
+theorems-ams-chap-bytype
+theorems-ams-extended-chap-bytype
+\end_modules
+\maintain_unincluded_children no
+\language hebrew
+\language_package default
+\inputencoding auto-legacy
+\fontencoding auto
+\font_roman "default" "David CLM"
+\font_sans "default" "David CLM"
+\font_typewriter "default" "David CLM"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\float_alignment class
+\paperfontsize 11
+\spacing onehalf
+\use_hyperref true
+\pdf_author "Ron Goldman"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle true
+\pdf_quoted_options "linkcolor=blue, urlcolor=marineblue, citecolor=blue, pdfstartview={FitH}, hyperfootnotes=false, unicode=true"
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification default
+\crossref_package refstyle
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\backgroundcolor none
+\fontcolor none
+\notefontcolor lightgray
+\boxbgcolor red
+\table_border_color default
+\table_odd_row_color default
+\table_even_row_color default
+\table_alt_row_colors_start 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1cm
+\topmargin 2cm
+\rightmargin 1cm
+\bottommargin 3cm
+\headheight 0cm
+\headsep 1cm
+\footskip 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation 0bp
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\docbook_mathml_version 0
+\end_header
+
+\begin_body
+
+\begin_layout Title
+\paragraph_spacing double
+
+\series bold
+\size huge
+סיבוכיות (
+\numeric on
+0368-3168
+\numeric off
+)
+\end_layout
+
+\begin_layout Author
+רון גולדמן
+\begin_inset Newline newline
+\end_inset
+
+ע
+\begin_inset Quotes erd
+\end_inset
+
+פ הרצאות של פרופ' אמיר שפילקה
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\sset}[2]{\left\{  #1\middle|#2\right\}  }
+{\left\{ #1|#2\right\} }
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\sz}[1]{\mathsf{size}\left(#1\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\nc}{\mathsf{NC}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\nck}[1]{\nc^{#1}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\unc}{\mathsf{u}\nc}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\unck}[1]{\unc^{#1}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ac}{\mathsf{AC}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ack}[1]{\ac^{#1}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\uac}{\mathsf{u}\ac}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\uack}[1]{\uac^{#1}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\dtm}{\mathsf{DTIME}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ntm}{\mathsf{NTIME}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\P}{\mathsf{P}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\np}{\mathsf{NP}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\dsp}{\mathsf{DSPACE}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\nsp}{\mathsf{NSPACE}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\L}{\mathsf{L}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\psp}{\mathsf{PSPACE}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\sat}{\mathsf{SAT}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ksat}[1]{#1\text{-}\sat}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\nl}{\mathsf{NL}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\conl}{\mathsf{coNL}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\npsp}{\mathsf{NPSPACE}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\stcon}{\mathsf{STCONN}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ustcon}{\mathsf{USTCONN}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\tqbf}{\mathsf{TQBF}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\qbf}{\mathsf{QBF}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\imm}{\mathsf{IMM}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\reach}{\mathsf{Reach}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ph}{\mathsf{PH}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\SigmaP}[1]{\Sigma_{#1}^{\P}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\PiP}[1]{\Pi_{#1}^{\P}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\DeltaP}[1]{\Delta_{#1}^{\P}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\SigmaSat}[1]{\Sigma_{#1}\text{-}\sat}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\PiSat}[1]{\Pi_{#1}\text{-}\sat}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\SatSolver}{\sat\text{-}\mathsf{Solver}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\pit}[1][]{\mathsf{PIT}_{#1}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\rp}{\mathsf{RP}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\corp}{\mathsf{coRP}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\bpp}{\mathsf{BPP}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\rpa}[1]{\mathsf{RP}\left(#1\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\corpa}[1]{\mathsf{coRP}\left(#1\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\bppab}[2]{\mathsf{BPP}\left(#1,#2\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\zpp}{\mathsf{ZPP}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ppoly}{\mathsf{P/poly}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\poly}{\mathrm{poly}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\E}{\mathbb{E}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Var}{\mathrm{Var}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\conp}{\mathsf{coNP}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\exactis}{\mathsf{Exact\text{-}IS}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\mincirc}{\mathsf{MinCircuit}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\csat}{\mathsf{CSAT}}
+\end_inset
+
+
+\end_layout
+
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+\begin_layout Chapter
+מעגלים, אורקלים וסיבוכיות זכרון
+\end_layout
+
+
+\begin_layout Section
+חזרה
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+שאנון
+\end_layout
+
+\end_inset
+
+ תהא 
+\begin_inset Formula $F_{n}\subseteq\left\{ 0,1\right\} ^{n}\rightarrow\left\{ 0,1\right\} $
+\end_inset
+
+ קבוצת הפונקציות שחשיבות על ידי מעגל בגודל 
+\begin_inset Formula $o\left(\frac{2^{n}}{n}\right)$
+\end_inset
+
+.
+ אזי 
+\begin_inset Formula $\frac{\left|F_{n}\right|}{2^{2^{n}}}=2^{-\Omega\left(n\right)}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem
+מנגד,
+ כל פונ' 
+\begin_inset Formula $f:\left\{ 0,1\right\} ^{n}\rightarrow\left\{ 0,1\right\} $
+\end_inset
+
+ ניתנת לחישוב ע
+\begin_inset Quotes erd
+\end_inset
+
+י מעגל בגודל 
+\begin_inset Formula $O\left(\frac{2^{n}}{n}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+משפט ההיררכייה למעגלים
+\end_layout
+
+\begin_layout Theorem
+קיים קבוע 
+\begin_inset Formula $c>0$
+\end_inset
+
+ כך שלכל 
+\begin_inset Formula $1\leq s\leq\frac{2^{n}}{cn}$
+\end_inset
+
+ יש פונ' 
+\begin_inset Formula $f:\left\{ 0,1\right\} ^{n}\rightarrow\left\{ 0,1\right\} $
+\end_inset
+
+ כך ש–
+\begin_inset Formula 
+\[
+s<\sz f\leq s+2n.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+תהא 
+\begin_inset Formula $F:\left\{ 0,1\right\} ^{n}\rightarrow\left\{ 0,1\right\} $
+\end_inset
+
+ פונ' כך ש-
+\begin_inset Formula $\sz F\geq\frac{2^{n}}{cn}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+נגדיר את סדרת הפונ' הבאה:
+\begin_inset Formula 
+\begin{align*}
+F_{n} & \equiv0\\
+F_{2^{n}} & \equiv F\\
+F_{k}\left(x\right) & =\begin{cases}
+F\left(x\right), & 1+\sum^{n-1}_{i=1}x_{i}2^{i-1}\leq k\\
+0, & else
+\end{cases}
+\end{align*}
+
+\end_inset
+
+מתקיים כי 
+\begin_inset Formula $\sz{F_{0}}=1,\sz{F_{2^{n}}}\geq\frac{2^{n}}{cn}$
+\end_inset
+
+,
+ מתקיים כי לכל 
+\begin_inset Formula $k$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+\sz{F_{k+1}}-\sz{F_{k}}\leq2n,
+\]
+
+\end_inset
+
+משום ש-
+\begin_inset Formula 
+\[
+F_{k+1}\left(x\right)=\begin{cases}
+F_{k}\left(x\right), & 1+\sum^{n-1}_{i=1}x_{i}2^{i-1}\leq k\\
+1, & 1+\sum^{n-1}_{i=1}x_{i}2^{i-1}>k
+\end{cases}.
+\]
+
+\end_inset
+
+לכן עבור ה-
+\begin_inset Formula $k$
+\end_inset
+
+ הראשון כך ש-
+\begin_inset Formula $s<\sz{F_{k}}$
+\end_inset
+
+,
+ אזי 
+\begin_inset Formula $\sz{F_{k-1}}\leq s$
+\end_inset
+
+ ולכן 
+\begin_inset Formula $\sz{F_{k}}\leq s+2n$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Corollary
+תהינא 
+\begin_inset Formula $s,t:\mathbb{N}\rightarrow\mathbb{N}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $s=o\left(t\right),n\leq t\left(n\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Corollary
+אזי 
+\begin_inset Formula $\sz{s\left(n\right)}\subsetneq\sz{t\left(n\right)}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+כיוון ש-
+\begin_inset Formula $s=o\left(t\right),n\leq t\left(n\right)$
+\end_inset
+
+ אזי 
+\begin_inset Formula $s\left(n\right)+2n=O\left(t\right)$
+\end_inset
+
+.
+ השפה המפרידה תהיה 
+\begin_inset Formula $A$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $A_{n}=A\cap\left\{ 0,1\right\} ^{n}$
+\end_inset
+
+,
+ ו-
+\begin_inset Formula $\mathds{1}_{A_{n}}:\left\{ 0,1\right\} ^{n}\rightarrow\left\{ 0,1\right\} $
+\end_inset
+
+ זו פונקציה בסיבוכיות גדולה מ-
+\begin_inset Formula $s\left(n\right)$
+\end_inset
+
+ ולכל היותר 
+\begin_inset Formula $s\left(n\right)+2n$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+חישוב מקבילי לא יוניפורמי
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+NC
+\end_layout
+
+\end_inset
+
+ לכל 
+\begin_inset Formula $k\in\mathbb{N}$
+\end_inset
+
+ המחלקה 
+\begin_inset Formula $\nck k$
+\end_inset
+
+ מוגדרת להיות אוסף כל השפות שניתנות לחישוב ע
+\begin_inset Quotes erd
+\end_inset
+
+י מעגלים בגודל פולינומיאלי ועומק 
+\begin_inset Formula $O\left(\log^{k}n\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Remark
+סדרת פונקציות 
+\begin_inset Formula $f_{n}:\left\{ 0,1\right\} ^{n}\rightarrow\left\{ 0,1\right\} $
+\end_inset
+
+ מגדירה שפה
+\begin_inset Formula 
+\[
+A=\sset{x\in\left\{ 0,1\right\} ^{*}}{f_{\left|x\right|}\left(x\right)=1},A_{n}=A\cap\left\{ 0,1\right\} ^{n},f_{n}=\mathds{1}_{A_{n}}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+עבור 
+\begin_inset Formula $s:\mathbb{N}\rightarrow\mathbb{N}$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+\sz s=\sset{A\subseteq\left\{ 0,1\right\} ^{*}}{\forall n\in\mathbb{N}.\sz{\mathds{1}_{A\cap\left\{ 0,1\right\} ^{n}}}\leq s\left(n\right)}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+\begin_inset Formula $\mathsf{IMM}\left(x_{1},\ldots,x_{n}\right)=\left(x_{1}\cdots x_{n}\right)_{1,1}$
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+Iterated Matrix Multiplication
+\lang hebrew
+.
+\end_layout
+
+\begin_layout Claim
+\begin_inset Formula $\mathsf{IMM}\in\nck 2$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+קל לוודא שכל שתי מט' 
+\begin_inset Formula $n\times n$
+\end_inset
+
+ ניתן לחשב בעומק 
+\begin_inset Formula $O\left(\log n\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+כדי לכפול 
+\begin_inset Formula $n$
+\end_inset
+
+ מט' עם מעגל 
+\begin_inset Formula $C_{n}$
+\end_inset
+
+ נבנה מעגל ל-
+\begin_inset Formula $\frac{n}{2}$
+\end_inset
+
+ מט' 
+\begin_inset Formula $C_{\frac{n}{2}}$
+\end_inset
+
+ ומתקיים
+\begin_inset Formula 
+\[
+C_{n}\left(x_{1},\ldots,x_{n}\right)=C_{\frac{n}{2}}\left(x_{1},\ldots,x_{\frac{n}{2}}\right)\cdot C_{\frac{n}{2}}\left(x_{\frac{n}{2}+1},\ldots,x_{n}\right),
+\]
+
+\end_inset
+
+ולכן עבור העומק 
+\begin_inset Formula $D$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula 
+\[
+D\left(n\right)\leq D\left(\frac{n}{2}\right)+O\left(\log n\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Definition
+\begin_inset Formula ${\displaystyle \nc=\bigcup_{k\in\mathbb{N}}\nck k}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Claim
+\begin_inset Formula $f\in\nck 0$
+\end_inset
+
+ אם ורק אם 
+\begin_inset Formula $f$
+\end_inset
+
+ תלויה במספר קבוע של ביטים.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim
+תהא 
+\begin_inset Formula $f:\left\{ 0,1\right\} ^{*}\rightarrow\left\{ 0,1\right\} $
+\end_inset
+
+,
+ אזי הבאים שקולים:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $f\in\nck 1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+ל-
+\begin_inset Formula $f$
+\end_inset
+
+ יש מעגל פולינומי בעומק 
+\begin_inset Formula $O\left(\log n\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+קיימת נוסחה בוליאנית בגודל פולינומי המחשבת את 
+\begin_inset Formula $f$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+uNC
+\end_layout
+
+\end_inset
+
+ לכל 
+\begin_inset Formula $k\in\mathbb{N}$
+\end_inset
+
+ המחלקה 
+\begin_inset Formula $\unck k$
+\end_inset
+
+ מוגדרת להיות אוסף כל השפות 
+\begin_inset Formula $L\subseteq\left\{ 0,1\right\} ^{*}$
+\end_inset
+
+ עבורן קיימת מ
+\begin_inset Quotes erd
+\end_inset
+
+ט פולינומית 
+\begin_inset Formula $M$
+\end_inset
+
+ כך שלכל 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $M\left(1^{n}\right)$
+\end_inset
+
+ מדפיסה מעגל בגודל פולינומיאלי ועומק 
+\begin_inset Formula $O\left(\log^{k}n\right)$
+\end_inset
+
+ המחשב את 
+\begin_inset Formula $L\cap\left\{ 0,1\right\} ^{n}$
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+\unc=\bigcup_{k\in\mathbb{N}}\unck k
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+במעגל בוליאני דרגת הכניסה של כל שער 
+\begin_inset Formula $\land,\lor$
+\end_inset
+
+ היא 
+\begin_inset Formula $2$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+AC
+\end_layout
+
+\end_inset
+
+ לכל 
+\begin_inset Formula $k\in\mathbb{N}$
+\end_inset
+
+ המחלקה 
+\begin_inset Formula $\ack k$
+\end_inset
+
+ מוגדרת להיות אוסף כל השפות שניתנות לחישוב ע
+\begin_inset Quotes erd
+\end_inset
+
+י מעגלים בגודל פולינומיאלי ועומק 
+\begin_inset Formula $O\left(\log^{k}n\right)$
+\end_inset
+
+,
+ עבור שערים עם
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+fan-in
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+לא חסום.
+\end_layout
+
+\begin_layout Definition
+נגדיר גם 
+\begin_inset Formula $\uack k$
+\end_inset
+
+ באותו אופן.
+\end_layout
+
+\begin_layout Theorem
+לכל 
+\begin_inset Formula $k\in\mathbb{N}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\nck k\subseteq\ack k\subseteq\nck{k+1}$
+\end_inset
+
+,
+ ובפרט 
+\begin_inset Formula $\bigcup_{k\in\mathbb{N}}\ack k=\nc$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Claim
+אם ל-
+\begin_inset Formula $f:\left\{ 0,1\right\} ^{*}\rightarrow\left\{ 0,1\right\} $
+\end_inset
+
+ יש
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+DNF/CNF
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+בגודל פולינומיאלי אז 
+\begin_inset Formula $f\in\ack 0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Formula $\oplus_{n}\notin\ack 0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+אורקלים
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+רדוקצית קארפ
+\end_layout
+
+\end_inset
+
+ נאמר כי 
+\begin_inset Formula $A\leq^{M}B$
+\end_inset
+
+ אם קיימת 
+\begin_inset Formula $f$
+\end_inset
+
+ חשיבה כך ש-
+\begin_inset Formula $x\in A\iff f\left(x\right)\in B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+מכונות טיורינג עם אורקל
+\end_layout
+
+\end_inset
+
+ תהא 
+\begin_inset Formula $\mathcal{O}\subseteq\left\{ 0,1\right\} ^{*}$
+\end_inset
+
+ שפה.
+\end_layout
+
+\begin_layout Definition
+
+\series bold
+מכונת טיורינג עם אורקל 
+\series default
+לשפה 
+\begin_inset Formula $\mathcal{O}\subseteq\left\{ 0,1\right\} ^{*}$
+\end_inset
+
+ זו מ
+\begin_inset Quotes erd
+\end_inset
+
+ט 
+\begin_inset Formula $M^{\mathcal{O}}$
+\end_inset
+
+ עם סרט נוסף שנקרא 
+\emph on
+סרט האורקל 
+\emph default
+ושלושה מצבים מיוחדים 
+\begin_inset Formula $q_{\mathsf{query}},q_{\mathsf{yes}},q_{\mathsf{no}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+בריצה של מ
+\begin_inset Quotes erd
+\end_inset
+
+ט,
+ כאשר היא נכנסת למצב 
+\begin_inset Formula $q_{\mathsf{query}}$
+\end_inset
+
+ ו-
+\begin_inset Formula $w\in\left\{ 0,1\right\} ^{*}$
+\end_inset
+
+ רשומה על סרט האורקל,
+ המכונה תעבור למצב 
+\begin_inset Formula 
+\[
+q=\begin{cases}
+q_{\mathsf{yes}}, & w\in\mathcal{O}\\
+q_{\mathsf{no}}, & w\notin\mathcal{O}
+\end{cases}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+עבור פונקציה 
+\begin_inset Formula $t:\mathbb{N}\rightarrow\mathbb{N}$
+\end_inset
+
+ נגדיר את 
+\begin_inset Formula $\dtm{}^{\mathcal{O}}\left(t\right)$
+\end_inset
+
+ (
+\begin_inset Formula $\ntm^{\mathcal{O}}\left(t\right)$
+\end_inset
+
+) להיות כל השפות 
+\begin_inset Formula $L\subseteq\left\{ 0,1\right\} ^{*}$
+\end_inset
+
+ שניתנות להכרעה ע
+\begin_inset Quotes erd
+\end_inset
+
+י מכונות טיורינג דטרמיניסטית (לא דטרמיניסטית) 
+\begin_inset Formula $M^{\mathcal{O}}$
+\end_inset
+
+ שרצות בזמן 
+\begin_inset Formula $O\left(t\left(n\right)\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem
+יש שפות 
+\begin_inset Formula $A,B\subseteq\left\{ 0,1\right\} ^{*}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\P^{A}=\np^{A}$
+\end_inset
+
+ וְ-
+\begin_inset Formula $\P^{B}\neq\np^{B}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+הוכחה נקראת
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+relativizing
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+אם היא מתקיימת גם כשמרשים מ
+\begin_inset Quotes erd
+\end_inset
+
+ט עם אורקלים.
+\end_layout
+
+\begin_layout Example
+משפט היררכיית הזמן עובד גם עם אורקלים,
+ בפרט ההוכחה שלו היא
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+relativizing
+\lang hebrew
+.
+\end_layout
+
+\begin_layout Section
+סיבוכיות זכרון
+\end_layout
+
+\begin_layout Example
+חישוב כפל של מטריצות בוליאניות 
+\begin_inset Formula 
+\begin{align*}
+\left(X\times Y\right)_{ij} & =\bigoplus_{k}x_{ik}y_{kj}\\
+\left(X\cdot Y\right)_{ij} & =\bigvee_{k}x_{ik}\land y_{kj}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+זכרון
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+מכונת טיורינג מוגבלת זכרון 
+\series default
+היא מ
+\begin_inset Quotes erd
+\end_inset
+
+ט שלושה סרטים:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+סרט קלט:
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+read-only
+\lang hebrew
+.
+\end_layout
+
+\begin_layout Enumerate
+סרט פלט:
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+write-only
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ראש זז ימינה בלבד לאחר כל כתיבה.
+\end_layout
+
+\begin_layout Enumerate
+סרט עבודה:
+ סרט רגיל.
+\end_layout
+
+\end_deeper
+\begin_layout Definition
+אופן הריצה נשאר כרגיל.
+\end_layout
+
+\begin_layout Definition
+עבור פונקציה 
+\begin_inset Formula $s:\mathbb{N}\rightarrow\mathbb{N}$
+\end_inset
+
+ נאמר כי 
+\begin_inset Formula $A\subseteq\left\{ 0,1\right\} ^{*}$
+\end_inset
+
+ 
+\series bold
+ניתנת להכרעה בזכרון 
+\series default
+
+\begin_inset Formula $s$
+\end_inset
+
+ אם יש מ
+\begin_inset Quotes erd
+\end_inset
+
+ט מוגבלת זכרון המכריעה את 
+\begin_inset Formula $A$
+\end_inset
+
+,
+ כך שלכל 
+\begin_inset Formula $x\in\left\{ 0,1\right\} ^{*}$
+\end_inset
+
+ משתמשת בלכל היותר 
+\begin_inset Formula $s\left(\left|x\right|\right)$
+\end_inset
+
+ תאים בסרט העבודה (משתמשת - ראש העבודה היה בתא).
+\end_layout
+
+\begin_layout Example
+כפל מטריצות ניתן לחישוב בזכרון 
+\begin_inset Formula $O\left(\log n\right)$
+\end_inset
+
+,
+ בזכרון נחזיק תמיד שלשת אינדקסים 
+\begin_inset Formula $i,j,k$
+\end_inset
+
+,
+ כל אחד ניתן לייצג ב-
+\begin_inset Formula $O\left(\log n\right)$
+\end_inset
+
+,
+ וכן את תוצאת החישוב.
+\end_layout
+
+\begin_layout Exercise
+כל הרדוקציות של
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+NP
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+שלמות ניתנות לחישוב בזכרון לוגריתמי.
+\end_layout
+
+\begin_layout Definition
+עבור 
+\begin_inset Formula $s:\mathbb{N}\rightarrow\mathbb{N}$
+\end_inset
+
+ נאמר כי 
+\begin_inset Formula $\left(s\right)$
+\end_inset
+
+
+\begin_inset Formula $L\in\dsp$
+\end_inset
+
+ אם היא ניתנת להכרעה ע
+\begin_inset Quotes erd
+\end_inset
+
+י מ
+\begin_inset Quotes erd
+\end_inset
+
+ט מ
+\begin_inset Quotes erd
+\end_inset
+
+ז בזכרון 
+\begin_inset Formula $O\left(s\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Remark
+ניתן גם להגדיר 
+\begin_inset Formula $\left(s\right)$
+\end_inset
+
+
+\begin_inset Formula $\nsp$
+\end_inset
+
+ באופן דומה.
+\end_layout
+
+\begin_layout Definition
+\begin_inset Formula 
+\begin{align*}
+\L & =\dsp\left(\log n\right)\\
+\psp & =\bigcup_{c>0}\dsp\left(n^{c}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+פונ' 
+\begin_inset Formula $s:\mathbb{N}\rightarrow\mathbb{N}$
+\end_inset
+
+ היא
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+space constructible
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+אם יש מ
+\begin_inset Quotes erd
+\end_inset
+
+ט מ
+\begin_inset Quotes erd
+\end_inset
+
+ז שהינתן קלט 
+\begin_inset Formula $1^{n}$
+\end_inset
+
+ עוצרת במקום 
+\begin_inset Formula $s\left(n\right)$
+\end_inset
+
+ בסרט העבודה ומשתמשת לשם כך ב-
+\begin_inset Formula $O\left(s\left(n\right)\right)$
+\end_inset
+
+ זכרון.
+\end_layout
+
+\begin_layout Claim
+\begin_inset Formula $s$
+\end_inset
+
+ היא
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+space constructible
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+אם ורק אם ניתן לכתוב את 
+\begin_inset Formula $s\left(n\right)$
+\end_inset
+
+ בזכרון 
+\begin_inset Formula $O\left(s\left(n\right)\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+משפט ההיררכייה לזכרון
+\end_layout
+
+\begin_layout Theorem
+תהינא 
+\begin_inset Formula $s,S:\mathbb{N}\rightarrow\mathbb{N}$
+\end_inset
+
+
+\family roman
+\series medium
+\shape italic
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+space constructible
+\family roman
+\series medium
+\shape italic
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+כך ש-
+\begin_inset Formula $s=o\left(S\right)$
+\end_inset
+
+.
+ אזי
+\begin_inset Formula 
+\[
+\dsp\left(s\right)\subsetneq\dsp\left(S\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim
+אם 
+\begin_inset Formula $s\left(n\right)\geq\log n$
+\end_inset
+
+ אזי 
+\begin_inset Formula $\dsp\left(s\right)\subseteq\dtm\left(2^{O\left(s\right)}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+
+\series bold
+\bar under
+תזכורת:
+
+\series default
+\bar default
+ קונפיגורציה של מ
+\begin_inset Quotes erd
+\end_inset
+
+ט היא
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+snap-shot
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+של סרט הזכרון,
+ מיקום ראשים,
+ מצב פנימי.
+\end_layout
+
+\begin_layout Proof
+אם מ
+\begin_inset Quotes erd
+\end_inset
+
+ט משתמשת בלכל היותר 
+\begin_inset Formula $s$
+\end_inset
+
+ תאי זכרון,
+ אזי מס' הביטים הדרושים לתאר קונ' הוא 
+\begin_inset Formula 
+\[
+O\left(s\right)+\log s+\log n+O\left(1\right).
+\]
+
+\end_inset
+
+גרף הקונפ' של מ
+\begin_inset Quotes erd
+\end_inset
+
+ט כנ
+\begin_inset Quotes erd
+\end_inset
+
+ל מוגדר באופן הבא:
+\end_layout
+
+\begin_deeper
+\begin_layout Definition
+\begin_inset Formula $G_{M,x}=\left(V_{M,x},E_{M,x}\right)$
+\end_inset
+
+,
+ בהינתן קלט 
+\begin_inset Formula $x$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\left(c_{1},c_{2}\right)\in E_{M,x}$
+\end_inset
+
+ אם ניתן לעבור מקונ' 
+\begin_inset Formula $c_{1}$
+\end_inset
+
+ לקונ' 
+\begin_inset Formula $c_{2}$
+\end_inset
+
+ בצעד חישוב אחד.
+\end_layout
+
+\end_deeper
+\begin_layout Proof
+מתקיים כי 
+\begin_inset Formula $\left|V_{M,x}\right|\leq n2^{O\left(s\right)}$
+\end_inset
+
+.
+ אם ריצה מבקרת באותו קודקוד פעמיים אז היא תבקר בו 
+\begin_inset Formula $\infty$
+\end_inset
+
+ פעמים.
+\end_layout
+
+\begin_layout Proof
+לכן,
+ אם מ
+\begin_inset Quotes erd
+\end_inset
+
+ט מ
+\begin_inset Quotes erd
+\end_inset
+
+ז מכריעה שפה 
+\begin_inset Formula $A$
+\end_inset
+
+ כלשהי בזכרון 
+\begin_inset Formula $s$
+\end_inset
+
+,
+ אזי מספר צעדי החישוב שלה חסום ע
+\begin_inset Quotes erd
+\end_inset
+
+י 
+\begin_inset Formula $n2^{O\left(s\right)}$
+\end_inset
+
+ מעקרון שובך היונים.
+\end_layout
+
+\end_deeper
+\begin_layout Corollary
+\begin_inset Formula 
+\[
+\underbrace{\L\subseteq\P\subseteq\psp}_{\subsetneq}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+רדוקציות במקום לוגריתמי
+\end_layout
+
+\begin_layout Definition
+נאמר כי יש 
+\series bold
+רדוקציה במקום לוגריתמי
+\series default
+ 
+\begin_inset Formula $A\leq_{L}B$
+\end_inset
+
+ אם יש מ
+\begin_inset Quotes erd
+\end_inset
+
+ט מוגבלת זכרון,
+ שעל קלט 
+\begin_inset Formula $x$
+\end_inset
+
+ משתמשת ב-
+\begin_inset Formula $O\left(\log\left|x\right|\right)$
+\end_inset
+
+ תאים בסרט העבודה ומוציאה פלט 
+\begin_inset Formula $f\left(x\right)$
+\end_inset
+
+,
+ כך ש-
+\begin_inset Formula $x\in A\iff f\left(x\right)\in B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+קוק-לוין
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\ksat3$
+\end_inset
+
+ שלמה ל-
+\begin_inset Formula $\np$
+\end_inset
+
+ תחת 
+\begin_inset Formula $\leq_{L}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem
+כלומר,
+ לכל 
+\begin_inset Formula $L\in\np$
+\end_inset
+
+ מתקיים כי 
+\begin_inset Formula $L\leq_{L}\ksat3$
+\end_inset
+
+ וגם 
+\begin_inset Formula $\ksat3\in\np$
+\end_inset
+
+.
+\end_layout
+\begin_layout Chapter
+סיבוכיות זכרון
+\end_layout
+
+
+\begin_layout Section
+הרכבת מכונות טיורינג מוגבלות זכרון
+\end_layout
+
+\begin_layout Standard
+נניח כי 
+\begin_inset Formula $f_{1}$
+\end_inset
+
+ ניתנת לחישוב בזכרון 
+\begin_inset Formula $s_{1}$
+\end_inset
+
+ ובזמן 
+\begin_inset Formula $t_{1}$
+\end_inset
+
+,
+ ו-
+\begin_inset Formula $f_{2}$
+\end_inset
+
+ ניתנת לחישוב בזכרון 
+\begin_inset Formula $s_{2}$
+\end_inset
+
+ ובזמן 
+\begin_inset Formula $t_{2}$
+\end_inset
+
+.
+ נרצה לחשב את 
+\begin_inset Formula $f_{1}\left(f_{2}\left(x\right)\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+שיטה ראשונה:
+
+\series default
+ נחשב את 
+\begin_inset Formula $f_{2}\left(x\right)$
+\end_inset
+
+,
+ נכתוב אותו על סרט העבודה,
+ ואז נריץ את המכונה של 
+\begin_inset Formula $f_{1}$
+\end_inset
+
+ עליו.
+\begin_inset Newline newline
+\end_inset
+
+זכרון:
+ 
+\begin_inset Formula $O\left(s_{2}\left(\left|x\right|\right)+\left|f_{2}\left(x\right)\right|+s_{1}\left(\left|f_{2}\left(x\right)\right|\right)\right)$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+זמן:
+ 
+\begin_inset Formula $t_{2}\left(\left|x\right|\right)+t_{1}\left(\left|f_{2}\left(x\right)\right|\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+שיטה שנייה:
+
+\series default
+ נריץ את המכונה של 
+\begin_inset Formula $f_{1}$
+\end_inset
+
+ כאילו 
+\begin_inset Formula $f_{2}\left(x\right)$
+\end_inset
+
+ כתוב על סרט הקלט שלה.
+ בכל פעם שהיא צריכה לקרוא את הביט ה-
+\begin_inset Formula $i$
+\end_inset
+
+ של 
+\begin_inset Formula $f_{2}\left(x\right)$
+\end_inset
+
+,
+ נריץ מחדש (בחלק נפרד של סרט העבודה) את החישוב של 
+\begin_inset Formula $f_{2}\left(x\right)$
+\end_inset
+
+,
+ נספור את ביטי הפלט עד שנגיע לביט ה-
+\begin_inset Formula $i$
+\end_inset
+
+ ונחזיר אותו.
+\begin_inset Newline newline
+\end_inset
+
+זכרון:
+ 
+\begin_inset Formula $O\left(s_{1}\left(\left|f_{2}\left(x\right)\right|\right)+\log\left|f_{2}\left(x\right)\right|+s_{2}\left(\left|x\right|\right)\right)$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+זמן:
+ 
+\begin_inset Formula $O\left(t_{1}\left(\left|f_{2}\left(x\right)\right|\right)\cdot t_{2}\left(\left|x\right|\right)\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+כלומר בשיטה השנייה במקום לשמור את כל 
+\begin_inset Formula $f_{2}\left(x\right)$
+\end_inset
+
+ שומרים רק את האינדקס של הביט הנקרא,
+ אבל זמן הריצה מוכפל במקום להתחבר.
+\end_layout
+
+\begin_layout Corollary
+אם 
+\begin_inset Formula $s_{1},s_{2}=O\left(\log n\right)$
+\end_inset
+
+ אזי ניתן לחשב את 
+\begin_inset Formula $f_{1}\circ f_{2}$
+\end_inset
+
+ בזכרון 
+\begin_inset Formula $O\left(\log n\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+מכונה שרצה בזכרון 
+\begin_inset Formula $s_{2}$
+\end_inset
+
+ רצה בזמן 
+\begin_inset Formula $2^{O\left(s_{2}\right)}$
+\end_inset
+
+ (מההרצאה הקודמת),
+ ולכן 
+\begin_inset Formula 
+\[
+\left|f_{2}\left(x\right)\right|\leq t_{2}\left(\left|x\right|\right)\leq2^{O\left(\log\left|x\right|\right)}=\poly\left(\left|x\right|\right).
+\]
+
+\end_inset
+
+לכן בשיטה השנייה כל אחד משלושת המחוברים הוא 
+\begin_inset Formula $O\left(\log\left|x\right|\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Corollary
+רדוקציות במקום לוגריתמי הן טרנזיטיביות:
+ אם 
+\begin_inset Formula $A\leq_{L}B$
+\end_inset
+
+ ו-
+\begin_inset Formula $B\leq_{L}C$
+\end_inset
+
+ אז 
+\begin_inset Formula $A\leq_{L}C$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Corollary
+ניתן לחשב את 
+\begin_inset Formula $\imm$
+\end_inset
+
+ (מכפלת 
+\begin_inset Formula $n$
+\end_inset
+
+ מטריצות 
+\begin_inset Formula $n\times n$
+\end_inset
+
+) בזכרון 
+\begin_inset Formula $O\left(\log^{2}n\right)$
+\end_inset
+
+ ובזמן 
+\begin_inset Formula $n^{O\left(\log n\right)}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+מתקיים 
+\begin_inset Formula 
+\[
+\imm\left(A_{1},\ldots,A_{n}\right)=\imm\left(A_{1},\ldots,A_{n/2}\right)\cdot\imm\left(A_{n/2+1},\ldots,A_{n}\right),
+\]
+
+\end_inset
+
+כלומר זו הרכבה של מכונה לכפל שתי מטריצות (בזכרון 
+\begin_inset Formula $O\left(\log n\right)$
+\end_inset
+
+) עם שתי הפעלות של 
+\begin_inset Formula $\imm$
+\end_inset
+
+ על 
+\begin_inset Formula $n/2$
+\end_inset
+
+ מטריצות.
+ יש 
+\begin_inset Formula $\log n$
+\end_inset
+
+ רמות של הרכבה,
+ כל רמה מוסיפה 
+\begin_inset Formula $O\left(\log n\right)$
+\end_inset
+
+ לזכרון ומכפילה את הזמן בפולינום,
+ ולכן הזכרון הוא 
+\begin_inset Formula $O\left(\log^{2}n\right)$
+\end_inset
+
+ והזמן 
+\begin_inset Formula $\poly\left(n\right)^{\log n}=n^{O\left(\log n\right)}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Example
+עבור מטריצה 
+\begin_inset Formula $A$
+\end_inset
+
+ בגודל 
+\begin_inset Formula $n\times n$
+\end_inset
+
+,
+ ניתן לחשב את 
+\begin_inset Formula $A^{n}$
+\end_inset
+
+ בזכרון 
+\begin_inset Formula $O\left(\log^{2}n\right)$
+\end_inset
+
+:
+ זו הרכבה של 
+\begin_inset Formula $\log n$
+\end_inset
+
+ העלאות בריבוע,
+ 
+\begin_inset Formula $A^{n}=\left(\left(A^{2}\right)^{2}\cdots\right)^{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Exercise
+כפל מטריצות ניתן לרדוקציה להעלאת מטריצה בחזקה:
+ אם 
+\begin_inset Formula $M$
+\end_inset
+
+ היא מטריצת בלוקים שבה 
+\begin_inset Formula $A_{1},\ldots,A_{n}$
+\end_inset
+
+ נמצאות מעל האלכסון ושאר הבלוקים 
+\begin_inset Formula $0$
+\end_inset
+
+,
+ אז הבלוק הימני העליון של 
+\begin_inset Formula $M^{n}$
+\end_inset
+
+ הוא 
+\begin_inset Formula $A_{1}\cdots A_{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+כפל מטריצות בוליאני ו-
+\begin_inset Formula $\stcon$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+כפל מטריצות בוליאני
+\end_layout
+
+\end_inset
+
+יהיו 
+\begin_inset Formula $A\in\left\{ 0,1\right\} ^{n\times k}$
+\end_inset
+
+ ו-
+\begin_inset Formula $B\in\left\{ 0,1\right\} ^{k\times m}$
+\end_inset
+
+.
+ מכפלתן הבוליאנית היא 
+\begin_inset Formula 
+\[
+\left(A\odot B\right)_{ij}=\bigvee^{k}_{\ell=1}a_{i\ell}\land b_{\ell j},
+\]
+
+\end_inset
+
+בניגוד לכפל הרגיל 
+\begin_inset Formula $\left(AB\right)_{ij}=\sum^{k}_{\ell=1}a_{i\ell}b_{\ell j}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Remark
+נחשוב על 
+\begin_inset Formula $A$
+\end_inset
+
+ כגרף דו-צדדי בין 
+\begin_inset Formula $n$
+\end_inset
+
+ קודקודים ל-
+\begin_inset Formula $k$
+\end_inset
+
+ קודקודים (קשת 
+\begin_inset Formula $\left(i,\ell\right)$
+\end_inset
+
+ אם 
+\begin_inset Formula $a_{i\ell}=1$
+\end_inset
+
+),
+ ועל 
+\begin_inset Formula $B$
+\end_inset
+
+ כגרף בין 
+\begin_inset Formula $k$
+\end_inset
+
+ ל-
+\begin_inset Formula $m$
+\end_inset
+
+ קודקודים.
+ אזי 
+\begin_inset Formula $\left(A\odot B\right)_{ij}=1$
+\end_inset
+
+ אם ורק אם קיים מסלול באורך 
+\begin_inset Formula $2$
+\end_inset
+
+ מ-
+\begin_inset Formula $i$
+\end_inset
+
+ ל-
+\begin_inset Formula $j$
+\end_inset
+
+.
+ הכפל הבוליאני לא סופר מסלולים,
+ רק בודק אם קיים אחד.
+\end_layout
+
+\begin_layout Claim
+תהא 
+\begin_inset Formula $A$
+\end_inset
+
+ מטריצת השכנויות של גרף מכוון על 
+\begin_inset Formula $n$
+\end_inset
+
+ קודקודים.
+ אזי 
+\begin_inset Formula $\left(A^{\odot k}\right)_{ij}=1$
+\end_inset
+
+ אם ורק אם יש מסלול באורך 
+\begin_inset Formula $k$
+\end_inset
+
+ מ-
+\begin_inset Formula $i$
+\end_inset
+
+ ל-
+\begin_inset Formula $j$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+באינדוקציה על 
+\begin_inset Formula $k$
+\end_inset
+
+,
+ בדיוק כמו המקרה 
+\begin_inset Formula $k=2$
+\end_inset
+
+ שלעיל.
+\end_layout
+
+\end_deeper
+\begin_layout Corollary
+נסמן 
+\begin_inset Formula $A\lor I$
+\end_inset
+
+ את 
+\begin_inset Formula $A$
+\end_inset
+
+ בתוספת לולאות עצמיות.
+ אזי 
+\begin_inset Formula $\left(\left(A\lor I\right)^{\odot k}\right)_{ij}=1$
+\end_inset
+
+ אם ורק אם יש מסלול באורך לכל היותר 
+\begin_inset Formula $k$
+\end_inset
+
+ מ-
+\begin_inset Formula $i$
+\end_inset
+
+ ל-
+\begin_inset Formula $j$
+\end_inset
+
+.
+ אם יש מסלול,
+ יש גם מסלול בלי חזרה על קודקודים (מסירים מעגלים),
+ ולכן באורך קטן מ-
+\begin_inset Formula $n$
+\end_inset
+
+.
+ בפרט הגרף קשיר חזק אם ורק אם 
+\begin_inset Formula $\left(A\lor I\right)^{\odot n}$
+\end_inset
+
+ היא מטריצת האחדים.
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+ST-Connectivity
+\end_layout
+
+\end_inset
+
+הקלט הוא גרף מכוון 
+\begin_inset Formula $G$
+\end_inset
+
+ על 
+\begin_inset Formula $n$
+\end_inset
+
+ קודקודים ושני קודקודים מסומנים 
+\begin_inset Formula $s,t$
+\end_inset
+
+.
+ השפה 
+\begin_inset Formula $\stcon$
+\end_inset
+
+ היא אוסף השלשות 
+\begin_inset Formula $\left(G,s,t\right)$
+\end_inset
+
+ כך שיש ב-
+\begin_inset Formula $G$
+\end_inset
+
+ מסלול מכוון מ-
+\begin_inset Formula $s$
+\end_inset
+
+ ל-
+\begin_inset Formula $t$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Corollary
+\begin_inset Formula $\stcon\in\dsp\left(\log^{2}n\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+\begin_inset Formula $\left(G,s,t\right)\in\stcon$
+\end_inset
+
+ אם ורק אם 
+\begin_inset Formula $\left(\left(A\lor I\right)^{\odot n}\right)_{st}=1$
+\end_inset
+
+,
+ ואת החזקה ניתן לחשב בזכרון 
+\begin_inset Formula $O\left(\log^{2}n\right)$
+\end_inset
+
+ ע״י העלאות חוזרות בריבוע,
+ כמו בדוגמה לעיל.
+\end_layout
+
+\end_deeper
+\begin_layout Remark
+
+\series bold
+בעיה פתוחה:
+
+\series default
+ האם 
+\begin_inset Formula $\stcon\in\L$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+ריינגולד
+\end_layout
+
+\end_inset
+
+עבור גרפים לא מכוונים,
+ 
+\begin_inset Formula $\ustcon\in\L$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Remark
+אינטואיציה להבדל:
+ נניח ש-
+\begin_inset Formula $s$
+\end_inset
+
+ ו-
+\begin_inset Formula $t$
+\end_inset
+
+ בקצוות של מסלול ישר,
+ ומכל קודקוד יש קשת חזרה ל-
+\begin_inset Formula $s$
+\end_inset
+
+.
+ הליכה אקראית בגרף המכוון תחזור ל-
+\begin_inset Formula $s$
+\end_inset
+
+ כמעט תמיד,
+ וההסתברות להגיע ל-
+\begin_inset Formula $t$
+\end_inset
+
+ קטנה אקספוננציאלית.
+ בגרף לא מכוון כל קשת שמחזירה אחורה ניתן ללכת עליה גם קדימה,
+ ולכן קל יותר להגיע רחוק.
+\end_layout
+
+\begin_layout Remark
+הטענה 
+\begin_inset Formula $\stcon\in\dsp\left(\log^{2}n\right)$
+\end_inset
+
+ היא מקרה פרטי של משפט סביץ' שנראה בהמשך.
+\end_layout
+
+\begin_layout Section
+\begin_inset Formula $\tqbf$
+\end_inset
+
+ שלמה ל-
+\begin_inset Formula $\psp$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+QBF
+\end_layout
+
+\end_inset
+
+נוסחה בוליאנית מכומתת היא ביטוי מהצורה 
+\begin_inset Formula 
+\[
+\varphi=Q_{1}x_{1}Q_{2}x_{2}\cdots Q_{n}x_{n}\ \psi\left(x_{1},\ldots,x_{n}\right),
+\]
+
+\end_inset
+
+כאשר 
+\begin_inset Formula $Q_{i}\in\left\{ \exists,\forall\right\} $
+\end_inset
+
+ ו-
+\begin_inset Formula $\psi$
+\end_inset
+
+ נוסחה בוליאנית (עם 
+\begin_inset Formula $\land,\lor,\lnot$
+\end_inset
+
+).
+ כיוון שכל המשתנים מכומתים,
+ 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ היא נכונה או לא נכונה.
+\end_layout
+
+\begin_layout Definition
+\begin_inset Formula $\tqbf$
+\end_inset
+
+ היא אוסף כל נוסחאות ה-
+\begin_inset Formula $\qbf$
+\end_inset
+
+ שערך האמת שלהן הוא 
+\lang english
+true
+\lang hebrew
+.
+\end_layout
+
+\begin_layout Example
+\begin_inset Formula $\exists x_{1}\forall x_{2}\ x_{1}\lor x_{2}\in\tqbf$
+\end_inset
+
+ (נבחר 
+\begin_inset Formula $x_{1}=1$
+\end_inset
+
+),
+ אבל 
+\begin_inset Formula $\forall x_{1}\exists x_{2}\ x_{1}\land x_{2}\notin\tqbf$
+\end_inset
+
+ (עבור 
+\begin_inset Formula $x_{1}=0$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Remark
+\begin_inset Formula $\psp$
+\end_inset
+
+ היא המחלקה שבה ״חיים״ משחקים:
+ הטענה ״לשחקן הראשון יש אסטרטגיה מנצחת״ היא מהצורה ״קיים מסע,
+ כך שלכל מסע של היריב,
+ קיים מסע,
+ ...״,
+ כלומר נוסחה עם כמתים מתחלפים.
+ הכללות של משחקים ללוחות 
+\begin_inset Formula $n\times n$
+\end_inset
+
+ (למשל גו) הן 
+\begin_inset Formula $\psp$
+\end_inset
+
+-שלמות.
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Formula $\tqbf$
+\end_inset
+
+ היא 
+\begin_inset Formula $\psp$
+\end_inset
+
+-שלמה תחת 
+\begin_inset Formula $\leq_{L}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+
+\bar under
+שייכות:
+
+\bar default
+ נגדיר אלגוריתם רקורסיבי 
+\begin_inset Formula $\mathrm{Eval}\left(\varphi\right)$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+אם אין כמתים,
+ כל המשתנים קיבלו ערך 
+\begin_inset Formula $\alpha$
+\end_inset
+
+;
+ נחשב ונחזיר את 
+\begin_inset Formula $\psi\left(\alpha\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אחרת נציב 
+\begin_inset Formula $x_{1}=0$
+\end_inset
+
+,
+ נחשב רקורסיבית את 
+\begin_inset Formula $r_{0}$
+\end_inset
+
+ —
+ ערך האמת של שאר הנוסחה,
+ ונזכור אותו.
+\end_layout
+
+\begin_layout Enumerate
+נציב 
+\begin_inset Formula $x_{1}=1$
+\end_inset
+
+ ונחשב באותו מקום בזכרון את 
+\begin_inset Formula $r_{1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+נחזיר 
+\begin_inset Formula $r_{0}\lor r_{1}$
+\end_inset
+
+ אם 
+\begin_inset Formula $Q_{1}=\exists$
+\end_inset
+
+ ו-
+\begin_inset Formula $r_{0}\land r_{1}$
+\end_inset
+
+ אם 
+\begin_inset Formula $Q_{1}=\forall$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Proof
+מבחינת זכרון,
+ עבור 
+\begin_inset Formula $n$
+\end_inset
+
+ כמתים 
+\begin_inset Formula 
+\[
+S\left(n\right)=S\left(n-1\right)+O\left(1\right),
+\]
+
+\end_inset
+
+(ביט לערך של 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+ ושני ביטים לתוצאות),
+ ובמקרה הבסיס מחשבים את 
+\begin_inset Formula $\psi\left(\alpha\right)$
+\end_inset
+
+ בזכרון לינארי באורך הנוסחה (אפשר אפילו לוגריתמי,
+ ע״י איזון נוסחאות).
+ סה״כ 
+\begin_inset Formula $S\left(n\right)=O\left(\left|\varphi\right|\right)$
+\end_inset
+
+,
+ ולכן 
+\begin_inset Formula $\tqbf\in\psp$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+זה בדיוק האלגוריתם להערכת נוסחה בזכרון לינארי בעומק שלה:
+ הכמתים הם שערי 
+\begin_inset Formula $\lor$
+\end_inset
+
+/
+\begin_inset Formula $\land$
+\end_inset
+
+,
+ והעלים הם הערכים של 
+\begin_inset Formula $\psi$
+\end_inset
+
+ על כל ההשמות.
+\end_layout
+
+\begin_layout Proof
+
+\bar under
+קושי:
+
+\bar default
+ תהא 
+\begin_inset Formula $A\in\psp$
+\end_inset
+
+ ותהא 
+\begin_inset Formula $M$
+\end_inset
+
+ מ״ט המכריעה את 
+\begin_inset Formula $A$
+\end_inset
+
+ בזכרון 
+\begin_inset Formula $s\left(n\right)=\poly\left(n\right)$
+\end_inset
+
+.
+ בהינתן קלט 
+\begin_inset Formula $x$
+\end_inset
+
+ נוציא נוסחה 
+\begin_inset Formula $\varphi_{x}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $x\in A\iff\varphi_{x}\in\tqbf$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+גודל קונפיגורציה של 
+\begin_inset Formula $M$
+\end_inset
+
+ (תוכן הסרט,
+ מיקום הראשים ומצב פנימי) הוא 
+\begin_inset Formula $O\left(s\left(n\right)\right)$
+\end_inset
+
+ ביטים.
+ בלי הגבלת הכלליות יש קונפיגורציה מקבלת יחידה 
+\begin_inset Formula $c_{acc}$
+\end_inset
+
+ (לפני שמקבלים מוחקים את הסרט ומחזירים את הראשים להתחלה).
+ לכן 
+\begin_inset Formula $x\in A$
+\end_inset
+
+ אם ורק אם יש מסלול בגרף הקונפיגורציות 
+\begin_inset Formula $G_{M,x}$
+\end_inset
+
+ מהקונפיגורציה ההתחלתית 
+\begin_inset Formula $c_{0}$
+\end_inset
+
+ ל-
+\begin_inset Formula $c_{acc}$
+\end_inset
+
+.
+ למסלול כזה יש אורך לכל היותר מספר הקודקודים,
+ שהוא 
+\begin_inset Formula $2^{m}$
+\end_inset
+
+ עבור 
+\begin_inset Formula $m=O\left(s\left(n\right)\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+נגדיר פרדיקט 
+\begin_inset Formula $\reach\left(u,v,t\right)$
+\end_inset
+
+ —
+ יש מסלול מ-
+\begin_inset Formula $u$
+\end_inset
+
+ ל-
+\begin_inset Formula $v$
+\end_inset
+
+ באורך לכל היותר 
+\begin_inset Formula $2^{t}$
+\end_inset
+
+.
+ המטרה היא לכתוב את 
+\begin_inset Formula $\reach\left(c_{0},c_{acc},m\right)$
+\end_inset
+
+ כנוסחת 
+\begin_inset Formula $\qbf$
+\end_inset
+
+ בגודל פולינומי.
+\end_layout
+
+\begin_layout Proof
+
+\series bold
+ניסיון ראשון:
+\series default
+
+\begin_inset Formula 
+\[
+\reach\left(u,v,t\right)=\exists w\ \reach\left(u,w,t-1\right)\land\reach\left(w,v,t-1\right).
+\]
+
+\end_inset
+
+הבעיה:
+ כל רמה מכפילה את גודל הנוסחה,
+ ולכן הגודל הוא 
+\begin_inset Formula $2^{m}$
+\end_inset
+
+,
+ אקספוננציאלי (הגרף עצמו בגודל אקספוננציאלי).
+\end_layout
+
+\begin_layout Proof
+
+\series bold
+ניסיון שני:
+
+\series default
+ במקום שני עותקים של 
+\begin_inset Formula $\reach\left(\cdot,\cdot,t-1\right)$
+\end_inset
+
+ נשתמש בעותק אחד,
+ וביט 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ יבחר איזה חצי של המסלול בודקים:
+\begin_inset Formula 
+\[
+\reach\left(u,v,t\right)=\exists w\ \forall\sigma\ \exists a,b\ \left[\left(\sigma=0\rightarrow\left(a=u\land b=w\right)\right)\land\left(\sigma=1\rightarrow\left(a=w\land b=v\right)\right)\land\reach\left(a,b,t-1\right)\right].
+\]
+
+\end_inset
+
+כאן 
+\begin_inset Formula $w,a,b$
+\end_inset
+
+ הן קונפיגורציות,
+ כלומר בלוקים של 
+\begin_inset Formula $O\left(s\right)$
+\end_inset
+
+ משתנים בוליאניים,
+ ו-
+\begin_inset Formula $\sigma$
+\end_inset
+
+ הוא ביט.
+ כשוויון 
+\begin_inset Formula $\sigma=0$
+\end_inset
+
+ הנוסחה מחייבת 
+\begin_inset Formula $\reach\left(u,w,t-1\right)$
+\end_inset
+
+,
+ וכש-
+\begin_inset Formula $\sigma=1$
+\end_inset
+
+ היא מחייבת 
+\begin_inset Formula $\reach\left(w,v,t-1\right)$
+\end_inset
+
+.
+ שוויון קונפיגורציות הוא נוסחה בגודל 
+\begin_inset Formula $O\left(s\right)$
+\end_inset
+
+,
+ ולכן עבור הגודל 
+\begin_inset Formula $L\left(t\right)$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+L\left(t\right)=L\left(t-1\right)+O\left(s\right)\implies L\left(m\right)=O\left(s\cdot m\right)+L\left(0\right)=\poly\left(n\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+כיוון שכל רמה משתמשת במשתנים חדשים,
+ אפשר להוציא את כל הכמתים החוצה,
+ והנוסחה הסופית היא 
+\begin_inset Formula 
+\begin{align*}
+\varphi_{x}=\  & \exists w_{1}\forall\sigma_{1}\exists a_{1},b_{1}\ \cdots\ \exists w_{m}\forall\sigma_{m}\exists a_{m},b_{m}\\
+ & \bigwedge^{m}_{i=1}\left[\left(\sigma_{i}=0\rightarrow\left(a_{i}=a_{i-1}\land b_{i}=w_{i}\right)\right)\land\left(\sigma_{i}=1\rightarrow\left(a_{i}=w_{i}\land b_{i}=b_{i-1}\right)\right)\right]\land\reach\left(a_{m},b_{m},0\right),
+\end{align*}
+
+\end_inset
+
+כאשר 
+\begin_inset Formula $a_{0}=c_{0}$
+\end_inset
+
+ ו-
+\begin_inset Formula $b_{0}=c_{acc}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+
+\series bold
+מקרה הבסיס:
+
+\series default
+ 
+\begin_inset Formula $\reach\left(a,b,0\right)$
+\end_inset
+
+ אומר ש-
+\begin_inset Formula $a=b$
+\end_inset
+
+ או ש-
+\begin_inset Formula $M$
+\end_inset
+
+ עוברת מ-
+\begin_inset Formula $a$
+\end_inset
+
+ ל-
+\begin_inset Formula $b$
+\end_inset
+
+ בצעד אחד על קלט 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ זו בדיקה מקומית:
+ כל תא שאינו ליד הראש מועתק כמו שהוא,
+ התאים ליד הראש,
+ המצב הפנימי ומיקומי הראשים משתנים לפי פונקציית המעברים (ומיקום ראש הסרט עולה או יורד ב-
+\begin_inset Formula $1$
+\end_inset
+
+ או לא משתנה).
+ את כל זה אפשר לכתוב כנוסחה בגודל 
+\begin_inset Formula $\poly\left(s\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+
+\series bold
+הרדוקציה בזכרון לוגריתמי:
+
+\series default
+ המכונה מדפיסה את הכמתים,
+ אחריהם את 
+\begin_inset Formula $m$
+\end_inset
+
+ נוסחאות השוויון ולבסוף את 
+\begin_inset Formula $\reach\left(a_{m},b_{m},0\right)$
+\end_inset
+
+.
+ לשם כך היא צריכה רק מונים —
+ באיזו רמה 
+\begin_inset Formula $i\leq m$
+\end_inset
+
+ ובאיזה ביט של הקונפיגורציה היא נמצאת.
+ כיוון ש-
+\begin_inset Formula $m$
+\end_inset
+
+ ו-
+\begin_inset Formula $s$
+\end_inset
+
+ פולינומיים,
+ כל מונה הוא 
+\begin_inset Formula $O\left(\log n\right)$
+\end_inset
+
+ ביטים,
+ וכל הבדיקות בבסיס מקומיות.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+מחלקות זכרון לא דטרמיניסטיות
+\end_layout
+
+\begin_layout Definition
+
+\series bold
+מכונת טיורינג לא דטרמיניסטית מוגבלת זכרון
+\series default
+ מוגדרת כמו מכונה דטרמיניסטית מוגבלת זכרון,
+ אבל עם פונקציית מעברים לא חד-ערכית.
+ המכונה רצה בזכרון 
+\begin_inset Formula $s$
+\end_inset
+
+ אם על כל קלט 
+\begin_inset Formula $x$
+\end_inset
+
+ ו
+\series bold
+בכל ריצה
+\series default
+ היא משתמשת בלכל היותר 
+\begin_inset Formula $s\left(\left|x\right|\right)$
+\end_inset
+
+ תאים בסרט העבודה (כלומר הזכרון הוא המקסימום על פני כל הריצות).
+\end_layout
+
+\begin_layout Definition
+\begin_inset Formula $\nsp\left(s\right)$
+\end_inset
+
+ היא מחלקת השפות הניתנות להכרעה ע״י מ״ט לא דטרמיניסטית מוגבלת זכרון בזכרון 
+\begin_inset Formula $O\left(s\right)$
+\end_inset
+
+,
+ ו-
+\begin_inset Formula 
+\begin{align*}
+\nl & =\nsp\left(\log n\right)\\
+\npsp & =\bigcup_{c>0}\nsp\left(n^{c}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Formula $\stcon$
+\end_inset
+
+ היא 
+\begin_inset Formula $\nl$
+\end_inset
+
+-שלמה תחת 
+\begin_inset Formula $\leq_{L}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+
+\bar under
+שייכות:
+
+\bar default
+ ננחש מסלול מ-
+\begin_inset Formula $s$
+\end_inset
+
+ באורך לכל היותר 
+\begin_inset Formula $n$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $v\gets s$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\ell\gets0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $v=t$
+\end_inset
+
+ נקבל.
+ אם 
+\begin_inset Formula $\ell=n$
+\end_inset
+
+ נדחה.
+\end_layout
+
+\begin_layout Enumerate
+ננחש באופן לא דטרמיניסטי קודקוד 
+\begin_inset Formula $u$
+\end_inset
+
+.
+ אם 
+\begin_inset Formula $\left(v,u\right)\notin E$
+\end_inset
+
+ נדחה.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $v\gets u$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\ell\gets\ell+1$
+\end_inset
+
+ ונחזור לשלב 2.
+\end_layout
+
+\end_deeper
+\begin_layout Proof
+אם יש מסלול מ-
+\begin_inset Formula $s$
+\end_inset
+
+ ל-
+\begin_inset Formula $t$
+\end_inset
+
+ יש מסלול באורך פחות מ-
+\begin_inset Formula $n$
+\end_inset
+
+,
+ והריצה שמנחשת אותו מקבלת;
+ אם אין מסלול אף ריצה לא מקבלת.
+ המונה 
+\begin_inset Formula $\ell$
+\end_inset
+
+ מבטיח שהריצה סופית.
+ בזכרון שומרים שני קודקודים ואת 
+\begin_inset Formula $\ell$
+\end_inset
+
+,
+ כלומר 
+\begin_inset Formula $O\left(\log n\right)$
+\end_inset
+
+ ביטים.
+\end_layout
+
+\begin_layout Proof
+
+\bar under
+קושי:
+
+\bar default
+ תהא 
+\begin_inset Formula $A\in\nl$
+\end_inset
+
+ ותהא 
+\begin_inset Formula $M$
+\end_inset
+
+ מ״ט לא דטרמיניסטית המכריעה אותה בזכרון 
+\begin_inset Formula $O\left(\log n\right)$
+\end_inset
+
+,
+ בה״כ עם קונפיגורציה מקבלת יחידה.
+ גודל קונפיגורציה של 
+\begin_inset Formula $M$
+\end_inset
+
+ הוא 
+\begin_inset Formula $O\left(\log n\right)$
+\end_inset
+
+ ביטים.
+ בהינתן 
+\begin_inset Formula $x$
+\end_inset
+
+,
+ הרדוקציה מדפיסה את גרף הקונפיגורציות 
+\begin_inset Formula $G_{M,x}$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+לכל זוג קונפיגורציות 
+\begin_inset Formula $a,b$
+\end_inset
+
+ (שתי לולאות מקוננות):
+\end_layout
+
+\begin_layout Enumerate
+נסמלץ צעד אחד של 
+\begin_inset Formula $M$
+\end_inset
+
+ על 
+\begin_inset Formula $x$
+\end_inset
+
+ מ-
+\begin_inset Formula $a$
+\end_inset
+
+;
+ אם אפשר לעבור ל-
+\begin_inset Formula $b$
+\end_inset
+
+ נדפיס את הקשת 
+\begin_inset Formula $\left(a,b\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+לבסוף נדפיס 
+\begin_inset Formula $s=c_{0}$
+\end_inset
+
+ ו-
+\begin_inset Formula $t=c_{acc}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Proof
+שומרים רק שתי קונפיגורציות ומקום לסימולציה של צעד אחד,
+ כלומר 
+\begin_inset Formula $O\left(\log n\right)$
+\end_inset
+
+ ביטים,
+ והפלט נכתב לסרט הפלט ולא נשמר.
+ מתקיים 
+\begin_inset Formula $x\in A$
+\end_inset
+
+ אם ורק אם יש בגרף מסלול מ-
+\begin_inset Formula $c_{0}$
+\end_inset
+
+ ל-
+\begin_inset Formula $c_{acc}$
+\end_inset
+
+.
+ (בגרף יש גם קונפיגורציות שלא ניתן להגיע אליהן,
+ וזה לא משנה;
+ ומכל קודקוד יכולות לצאת כמה קשתות.)
+\end_layout
+
+\end_deeper
+\begin_layout Corollary
+\begin_inset Formula $\nl\subseteq\P$
+\end_inset
+
+ ו-
+\begin_inset Formula $\nl\subseteq\dsp\left(\log^{2}n\right)$
+\end_inset
+
+ (הרכבת הרדוקציה עם האלגוריתם ל-
+\begin_inset Formula $\stcon$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+סביץ'
+\end_layout
+
+\end_inset
+
+תהא 
+\begin_inset Formula $s\left(n\right)\geq\log n$
+\end_inset
+
+
+\lang english
+space constructible
+\lang hebrew
+.
+ אזי 
+\begin_inset Formula 
+\[
+\nsp\left(s\right)\subseteq\dsp\left(s^{2}\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+אותה רדוקציה בדיוק:
+ מ״ט בזכרון 
+\begin_inset Formula $s$
+\end_inset
+
+ מתורגמת בזכרון 
+\begin_inset Formula $O\left(s\right)$
+\end_inset
+
+ לבעיית 
+\begin_inset Formula $\stcon$
+\end_inset
+
+ על גרף הקונפיגורציות,
+ שיש בו 
+\begin_inset Formula $N=2^{O\left(s\right)}$
+\end_inset
+
+ קודקודים.
+ את 
+\begin_inset Formula $\stcon$
+\end_inset
+
+ על גרף כזה פותרים בזכרון 
+\begin_inset Formula $O\left(\log^{2}N\right)=O\left(s^{2}\right)$
+\end_inset
+
+,
+ ומהרכבת השתיים מקבלים זכרון 
+\begin_inset Formula $O\left(s^{2}\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Corollary
+\begin_inset Formula $\npsp=\psp$
+\end_inset
+
+.
+ לכן מבחינת זכרון אי-דטרמיניזם פחות חזק מאשר מבחינת זמן,
+ והשאלות המעניינות הן בזכרון קטן (כמו 
+\begin_inset Formula $\L$
+\end_inset
+
+ מול 
+\begin_inset Formula $\nl$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Section
+מחלקות משלימות
+\end_layout
+
+\begin_layout Definition
+עבור מחלקה 
+\begin_inset Formula $C$
+\end_inset
+
+ נגדיר 
+\begin_inset Formula 
+\[
+\mathbf{co}C=\sset A{\overline{A}\in C},\quad\overline{A}=\left\{ 0,1\right\} ^{*}\setminus A.
+\]
+
+\end_inset
+
+זה לא המשלים של אוסף השפות:
+ לכל שפה ב-
+\begin_inset Formula $C$
+\end_inset
+
+ לוקחים את השפה המשלימה לה.
+\end_layout
+
+\begin_layout Example
+השפה המשלימה של 
+\begin_inset Formula $\stcon$
+\end_inset
+
+ היא אוסף השלשות 
+\begin_inset Formula $\left(G,s,t\right)$
+\end_inset
+
+ שבהן אין מסלול מ-
+\begin_inset Formula $s$
+\end_inset
+
+ ל-
+\begin_inset Formula $t$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Claim
+אם 
+\begin_inset Formula $C_{1}\subseteq C_{2}$
+\end_inset
+
+ אז 
+\begin_inset Formula $\mathbf{co}C_{1}\subseteq\mathbf{co}C_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+\begin_inset Formula $A\in\mathbf{co}C_{1}\iff\overline{A}\in C_{1}\implies\overline{A}\in C_{2}\iff A\in\mathbf{co}C_{2}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Corollary
+כיוון ש-
+\begin_inset Formula $\mathbf{co}\mathbf{co}C=C$
+\end_inset
+
+,
+ אם 
+\begin_inset Formula $\mathbf{co}C\subseteq C$
+\end_inset
+
+ אז 
+\begin_inset Formula $C=\mathbf{co}C$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+נפעיל 
+\begin_inset Formula $\mathbf{co}$
+\end_inset
+
+ על שני הצדדים:
+ 
+\begin_inset Formula $C=\mathbf{co}\mathbf{co}C\subseteq\mathbf{co}C$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Claim
+אם 
+\begin_inset Formula $A$
+\end_inset
+
+ שלמה ל-
+\begin_inset Formula $C$
+\end_inset
+
+ אז 
+\begin_inset Formula $\overline{A}$
+\end_inset
+
+ שלמה ל-
+\begin_inset Formula $\mathbf{co}C$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+אותה רדוקציה:
+ 
+\begin_inset Formula $x\in B\iff f\left(x\right)\in A$
+\end_inset
+
+ שקול ל-
+\begin_inset Formula $x\notin B\iff f\left(x\right)\notin A$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+אימרמן–סלפצ'ני
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\nl=\conl$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Remark
+לפי הטענות לעיל מספיק להראות 
+\begin_inset Formula $\conl\subseteq\nl$
+\end_inset
+
+,
+ כלומר (כיוון ש-
+\begin_inset Formula $\overline{\stcon}$
+\end_inset
+
+ שלמה ל-
+\begin_inset Formula $\conl$
+\end_inset
+
+) שאפשר להוכיח באופן לא דטרמיניסטי בזכרון לוגריתמי ש
+\series bold
+אין
+\series default
+ מסלול מ-
+\begin_inset Formula $s$
+\end_inset
+
+ ל-
+\begin_inset Formula $t$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+אפס שגיאה
+\end_layout
+
+\end_inset
+
+
+\series bold
+מכונת טיורינג לא דטרמיניסטית באפס שגיאה
+\series default
+ היא מ״ט לא דטרמיניסטית שבכל ריצה מוציאה 
+\lang english
+accept
+\lang hebrew
+,
+ 
+\lang english
+reject
+\lang hebrew
+ או 
+\lang english
+quit
+\lang hebrew
+.
+ היא מכריעה שפה 
+\begin_inset Formula $A$
+\end_inset
+
+ אם:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+לכל 
+\begin_inset Formula $x\in A$
+\end_inset
+
+,
+ בכל ריצה היא מוציאה 
+\lang english
+accept
+\lang hebrew
+ או 
+\lang english
+quit
+\lang hebrew
+,
+ ולפחות ריצה אחת מקבלת.
+\end_layout
+
+\begin_layout Enumerate
+לכל 
+\begin_inset Formula $x\notin A$
+\end_inset
+
+,
+ בכל ריצה היא מוציאה 
+\lang english
+reject
+\lang hebrew
+ או 
+\lang english
+quit
+\lang hebrew
+,
+ ולפחות ריצה אחת דוחה.
+\end_layout
+
+\end_deeper
+\begin_layout Definition
+באופן דומה,
+ מכונה כזו מחשבת פונקציה 
+\begin_inset Formula $f$
+\end_inset
+
+ אם בכל ריצה היא מוציאה 
+\begin_inset Formula $f\left(x\right)$
+\end_inset
+
+ או 
+\lang english
+quit
+\lang hebrew
+,
+ ולפחות ריצה אחת מוציאה 
+\begin_inset Formula $f\left(x\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Exercise
+\begin_inset Formula $A\in\np\cap\mathbf{coNP}$
+\end_inset
+
+ אם ורק אם יש מ״ט לא דטרמיניסטית באפס שגיאה שרצה בזמן פולינומי ומכריעה את 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ (המכונה מנחשת הוכחה לשייכות או לאי-שייכות ובודקת אותה;
+ אם היא לא מוכיחה אף אחד מהשניים,
+ היא עושה 
+\lang english
+quit
+\lang hebrew
+.)
+\end_layout
+
+\begin_layout Remark
+אם ניתן להכריע את 
+\begin_inset Formula $A$
+\end_inset
+
+ באפס שגיאה,
+ אז ניתן להכריע את 
+\begin_inset Formula $\overline{A}$
+\end_inset
+
+ באפס שגיאה,
+ פשוט ע״י החלפת 
+\lang english
+accept
+\lang hebrew
+ ו-
+\lang english
+reject
+\lang hebrew
+.
+ זה לא עובד עבור מכונות לא דטרמיניסטיות רגילות.
+\end_layout
+\begin_layout Chapter
+משפט אימרמן–סלפצ'ני וההיררכיה הפולינומית
+\end_layout
+
+
+\begin_layout Section
+הוכחת משפט אימרמן–סלפצ'ני
+\end_layout
+
+\begin_layout Standard
+בסוף הפרק הקודם ניסחנו את המשפט 
+\begin_inset Formula $\nl=\conl$
+\end_inset
+
+, וראינו שמספיק להוכיח שאפשר להראות באופן לא דטרמיניסטי בזכרון לוגריתמי ש
+\begin_inset Quotes erd
+\end_inset
+
+אין״ מסלול מ-
+\begin_inset Formula $s$
+\end_inset
+
+ ל-
+\begin_inset Formula $t$
+\end_inset
+
+. שייכות קל להוכיח: מנחשים את המסלול צעד אחרי צעד. הקושי הוא להוכיח שאין מסלול. הרעיון הוא לספור: אם נדע כמה קודקודים ישיגים מ-
+\begin_inset Formula $s$
+\end_inset
+
+, נוכל לעבור על כל הקודקודים, לנחש מי מהם ישיג, לאמת כל ניחוש במסלול, ולבדוק שמצאנו את כולם. אם 
+\begin_inset Formula $t$
+\end_inset
+
+ לא ביניהם, הוכחנו שהוא לא ישיג.
+\end_layout
+
+\begin_layout Definition
+יהי 
+\begin_inset Formula $G=\left(V,E\right)$
+\end_inset
+
+ גרף מכוון עם 
+\begin_inset Formula $n$
+\end_inset
+
+ קודקודים ו-
+\begin_inset Formula $s\in V$
+\end_inset
+
+. לכל 
+\begin_inset Formula $k\geq0$
+\end_inset
+
+ נסמן 
+\begin_inset Formula 
+\[
+S_{k}=\sset{u\in V}{\mathrm{dist}\left(s,u\right)\leq k},\qquad C_{k}=\left|S_{k}\right|.
+\]
+\end_inset
+
+ כלומר 
+\begin_inset Formula $S_{k}$
+\end_inset
+
+ היא קבוצת הקודקודים שיש אליהם מסלול מ-
+\begin_inset Formula $s$
+\end_inset
+
+ באורך לכל היותר 
+\begin_inset Formula $k$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Remark
+\begin_inset Formula $S_{0}=\left\{ s\right\} $
+\end_inset
+
+, ולכן 
+\begin_inset Formula $C_{0}=1$
+\end_inset
+
+. אורך של מסלול קצר ביותר הוא לכל היותר 
+\begin_inset Formula $n-1$
+\end_inset
+
+, ולכן 
+\begin_inset Formula $t$
+\end_inset
+
+ ישיג מ-
+\begin_inset Formula $s$
+\end_inset
+
+ אם ורק אם 
+\begin_inset Formula $t\in S_{n-1}$
+\end_inset
+
+. נחשב את 
+\begin_inset Formula $C_{1},C_{2},\ldots,C_{n-1}$
+\end_inset
+
+ באינדוקציה, ובכל שלב נשמור על הסרט רק את 
+\begin_inset Formula $C_{k}$
+\end_inset
+
+ הנוכחי, שהוא מספר של 
+\begin_inset Formula $O\left(\log n\right)$
+\end_inset
+
+ ביטים.
+\end_layout
+
+\begin_layout Claim
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+שייכות ל-
+\begin_inset Formula $S_{k}$
+\end_inset
+\end_layout
+
+\end_inset
+
+בהינתן 
+\begin_inset Formula $C_{k}$
+\end_inset
+
+, יש פרוצדורה לא דטרמיניסטית בזכרון 
+\begin_inset Formula $O\left(\log n\right)$
+\end_inset
+
+ שמקבלת קודקוד 
+\begin_inset Formula $u$
+\end_inset
+
+ ובכל ריצה או עונה נכון האם 
+\begin_inset Formula $u\in S_{k}$
+\end_inset
+
+, או עושה 
+\lang english
+quit
+\lang hebrew
+, ויש ריצה שעונה.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+נעבור על כל הקודקודים 
+\begin_inset Formula $w\in V$
+\end_inset
+
+ לפי הסדר, ונחזיק מונה 
+\begin_inset Formula $c$
+\end_inset
+
+ שמתחיל ב-
+\begin_inset Formula $0$
+\end_inset
+
+. לכל 
+\begin_inset Formula $w$
+\end_inset
+
+ ננחש אם 
+\begin_inset Formula $w\in S_{k}$
+\end_inset
+
+. אם ניחשנו שכן, ננחש מסלול מ-
+\begin_inset Formula $s$
+\end_inset
+
+ ל-
+\begin_inset Formula $w$
+\end_inset
+
+ באורך לכל היותר 
+\begin_inset Formula $k$
+\end_inset
+
+: נחזיק את הקודקוד הנוכחי ואת המיקום במסלול (מונה בין 
+\begin_inset Formula $0$
+\end_inset
+
+ ל-
+\begin_inset Formula $k$
+\end_inset
+
+), ננחש את הקודקוד הבא, ונבדוק שיש קשת. אם המסלול לא מגיע ל-
+\begin_inset Formula $w$
+\end_inset
+
+, נעשה 
+\lang english
+quit
+\lang hebrew
+. אם הגענו, נגדיל את 
+\begin_inset Formula $c$
+\end_inset
+
+, ואם 
+\begin_inset Formula $w=u$
+\end_inset
+
+ נזכור שמצאנו את 
+\begin_inset Formula $u$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+בסוף, אם 
+\begin_inset Formula $c<C_{k}$
+\end_inset
+
+ נעשה 
+\lang english
+quit
+\lang hebrew
+: זה אומר שבריצה הזאת לא ניחשנו נכון את כל הקודקודים של 
+\begin_inset Formula $S_{k}$
+\end_inset
+
+. אחרת 
+\begin_inset Formula $c=C_{k}$
+\end_inset
+
+, כלומר מצאנו ואימתנו את כל 
+\begin_inset Formula $S_{k}$
+\end_inset
+
+, ונענה ״כן״ אם מצאנו את 
+\begin_inset Formula $u$
+\end_inset
+
+ ו
+\begin_inset Quotes erd
+\end_inset
+
+לא״ אחרת. ריצה שמנחשת נכון, עם מסלולים נכונים, מגיעה ל-
+\begin_inset Formula $c=C_{k}$
+\end_inset
+
+ ועונה. כל ריצה שעונה, עונה נכון.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+מעבר מ-
+\begin_inset Formula $C_{k}$
+\end_inset
+
+ ל-
+\begin_inset Formula $C_{k+1}$
+\end_inset
+\end_layout
+
+\end_inset
+
+בהינתן 
+\begin_inset Formula $C_{k}$
+\end_inset
+
+, יש פרוצדורה כזו שבודקת האם 
+\begin_inset Formula $u\in S_{k+1}$
+\end_inset
+
+. לכן אפשר לחשב את 
+\begin_inset Formula $C_{k+1}$
+\end_inset
+
+ באופן לא דטרמיניסטי בזכרון 
+\begin_inset Formula $O\left(\log n\right)$
+\end_inset
+
+: בכל ריצה מקבלים את 
+\begin_inset Formula $C_{k+1}$
+\end_inset
+
+ או 
+\lang english
+quit
+\lang hebrew
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+כמו קודם נעבור על כל 
+\begin_inset Formula $w\in V$
+\end_inset
+
+, ננחש ונאמת את אלה שב-
+\begin_inset Formula $S_{k}$
+\end_inset
+
+ ונספור אותם. עבור כל 
+\begin_inset Formula $w$
+\end_inset
+
+ שאומת נבדוק אם 
+\begin_inset Formula $w=u$
+\end_inset
+
+ או שיש קשת 
+\begin_inset Formula $\left(w,u\right)\in E$
+\end_inset
+
+. אם הספירה בסוף קטנה מ-
+\begin_inset Formula $C_{k}$
+\end_inset
+
+ נעשה 
+\lang english
+quit
+\lang hebrew
+. אחרת עברנו על כל 
+\begin_inset Formula $S_{k}$
+\end_inset
+
+, ולכן 
+\begin_inset Formula $u\in S_{k+1}$
+\end_inset
+
+ אם ורק אם מצאנו 
+\begin_inset Formula $w$
+\end_inset
+
+ כזה. כדי לחשב את 
+\begin_inset Formula $C_{k+1}$
+\end_inset
+
+ מריצים את הבדיקה הזו על כל 
+\begin_inset Formula $u\in V$
+\end_inset
+
+ ומונים כמה מהם ב-
+\begin_inset Formula $S_{k+1}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+זכרון: בכל רגע שמורים רק מספר קבוע של מספרים בין 
+\begin_inset Formula $0$
+\end_inset
+
+ ל-
+\begin_inset Formula $n$
+\end_inset
+
+: 
+\begin_inset Formula $C_{k}$
+\end_inset
+
+, המונה החדש, 
+\begin_inset Formula $u$
+\end_inset
+
+, 
+\begin_inset Formula $w$
+\end_inset
+
+, המונה 
+\begin_inset Formula $c$
+\end_inset
+
+, הקודקוד הנוכחי במסלול המנוחש והמיקום בו. לא צריך לזכור את כל המסלול, רק איפה אנחנו בו. לכן הזכרון הוא 
+\begin_inset Formula $O\left(\log n\right)$
+\end_inset
+
+ (כמה עותקים של 
+\begin_inset Formula $\log n$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Proof
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+הוכחת המשפט
+\end_layout
+
+\end_inset
+
+נחשב את 
+\begin_inset Formula $C_{n-1}$
+\end_inset
+
+ כך, ובשלב האחרון נבדוק באותה דרך האם 
+\begin_inset Formula $t\in S_{n-1}$
+\end_inset
+
+: נעבור על כל הקודקודים, ננחש ונאמת את אלה שב-
+\begin_inset Formula $S_{n-1}$
+\end_inset
+
+, ונוודא שספרנו 
+\begin_inset Formula $C_{n-1}$
+\end_inset
+
+ קודקודים ושאף אחד מהם אינו 
+\begin_inset Formula $t$
+\end_inset
+
+. כך הוכחנו בזכרון לוגריתמי שאין מסלול מ-
+\begin_inset Formula $s$
+\end_inset
+
+ ל-
+\begin_inset Formula $t$
+\end_inset
+
+, כלומר 
+\begin_inset Formula $\overline{\stcon}\in\nl$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+כיוון ש-
+\begin_inset Formula $\stcon$
+\end_inset
+
+ שלמה ל-
+\begin_inset Formula $\nl$
+\end_inset
+
+, לכל 
+\begin_inset Formula $L\in\nl$
+\end_inset
+
+ יש רדוקציה בזכרון לוגריתמי מ-
+\begin_inset Formula $L$
+\end_inset
+
+ ל-
+\begin_inset Formula $\stcon$
+\end_inset
+
+, והיא גם רדוקציה מ-
+\begin_inset Formula $\overline{L}$
+\end_inset
+
+ ל-
+\begin_inset Formula $\overline{\stcon}$
+\end_inset
+
+. לכן 
+\begin_inset Formula $\overline{L}\in\nl$
+\end_inset
+
+, כלומר 
+\begin_inset Formula $\conl\subseteq\nl$
+\end_inset
+
+, ולכן 
+\begin_inset Formula $\nl=\conl$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+ההיררכיה הפולינומית
+\end_layout
+
+\begin_layout Subsection
+נוסחאות עם כמתים
+\end_layout
+
+\begin_layout Standard
+ב-
+\begin_inset Formula $\tqbf$
+\end_inset
+
+ הקלט הוא נוסחה בוליאנית עם כמתים, ושואלים מה ערך האמת שלה. ב-
+\begin_inset Formula $\sat$
+\end_inset
+
+ יש רק כמת אחד, 
+\begin_inset Formula $\exists$
+\end_inset
+
+, על כל המשתנים. נסתכל על מה שבאמצע: נוסחאות עם מספר קבוע של החלפות כמתים. מבחינה אינטואיטיבית 
+\begin_inset Formula $\exists$
+\end_inset
+
+ הוא כמו ״או״ גדול ו-
+\begin_inset Formula $\forall$
+\end_inset
+
+ הוא כמו ״וגם״ גדול.
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Sigma_{k}\text{-}\mathsf{SAT}$
+\end_inset
+\end_layout
+
+\end_inset
+
+\begin_inset Formula $\SigmaSat k$
+\end_inset
+
+ היא קבוצת הנוסחאות (הכתובות כך תחבירית) מהצורה 
+\begin_inset Formula 
+\[
+\exists x_{1}\,\forall x_{2}\,\exists x_{3}\cdots Q_{k}x_{k}:\ \varphi\left(x_{1},\ldots,x_{k}\right)
+\]
+\end_inset
+
+ שהן אמת, כאשר כל 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ הוא בלוק של משתנים, 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ נוסחה בוליאנית בלי כמתים, והכמתים מתחלפים. 
+\begin_inset Formula $\PiSat k$
+\end_inset
+
+ מוגדרת באותו אופן כשהבלוק הראשון מכומת ב-
+\begin_inset Formula $\forall$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Remark
+\begin_inset Formula $\SigmaSat 1=\sat$
+\end_inset
+
+ ו-
+\begin_inset Formula $\PiSat 1$
+\end_inset
+
+ היא בעיית הטאוטולוגיה, שהיא 
+\begin_inset Formula $\conp$
+\end_inset
+
+-שלמה. 
+\begin_inset Formula $\SigmaSat 2$
+\end_inset
+
+ ו-
+\begin_inset Formula $\PiSat 2$
+\end_inset
+
+ חזקות לפחות כמו 
+\begin_inset Formula $\np$
+\end_inset
+
+ וגם כמו 
+\begin_inset Formula $\conp$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+ההיררכיה הפולינומית
+\end_layout
+
+\end_inset
+
+\begin_inset Formula $\SigmaP k$
+\end_inset
+
+ היא מחלקת השפות שיש להן רדוקציה במקום לוגריתמי ל-
+\begin_inset Formula $\SigmaSat k$
+\end_inset
+
+, ו-
+\begin_inset Formula $\PiP k$
+\end_inset
+
+ היא מחלקת השפות שיש להן רדוקציה במקום לוגריתמי ל-
+\begin_inset Formula $\PiSat k$
+\end_inset
+
+. ההיררכיה הפולינומית היא 
+\begin_inset Formula 
+\[
+\ph=\bigcup_{k}\SigmaP k=\bigcup_{k}\PiP k.
+\]
+\end_inset
+\end_layout
+
+\begin_layout Remark
+\begin_inset Formula $\SigmaP 1=\np$
+\end_inset
+
+, 
+\begin_inset Formula $\PiP 1=\conp$
+\end_inset
+
+, ו-
+\begin_inset Formula $\PiP k=\sset{\overline{L}}{L\in\SigmaP k}$
+\end_inset
+
+. בנוסף 
+\begin_inset Formula $\SigmaP k\cup\PiP k\subseteq\SigmaP{k+1}\cap\PiP{k+1}$
+\end_inset
+
+, וכל ההיררכיה מוכלת ב-
+\begin_inset Formula $\psp$
+\end_inset
+
+. מאמינים שכל ההכלות האלו ממש, כי אם שתי רמות היו שוות, כל ההיררכיה הייתה קורסת לרמה הזו (נראה את זה בהמשך).
+\end_layout
+
+\begin_layout Subsection
+דוגמאות
+\end_layout
+
+\begin_layout Example
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\exactis$
+\end_inset
+\end_layout
+
+\end_inset
+
+נתון גרף 
+\begin_inset Formula $G$
+\end_inset
+
+ ומספר 
+\begin_inset Formula $k$
+\end_inset
+
+, ושואלים האם גודל הקבוצה הבלתי תלויה המקסימלית ב-
+\begin_inset Formula $G$
+\end_inset
+
+ הוא בדיוק 
+\begin_inset Formula $k$
+\end_inset
+
+. צריך להגיד שיש קבוצה בלתי תלויה בגודל 
+\begin_inset Formula $k$
+\end_inset
+
+, וגם שכל קבוצה בגודל 
+\begin_inset Formula $k+1$
+\end_inset
+
+ אינה בלתי תלויה:
+\begin_inset Formula 
+\[
+\exists x_{1},\ldots,x_{k}\ \forall y_{1},\ldots,y_{k+1}:\ \psi_{1}\left(x\right)\land\psi_{2}\left(y\right),
+\]
+\end_inset
+
+ כאשר 
+\begin_inset Formula $\psi_{1}$
+\end_inset
+
+ אומרת שהקודקודים 
+\begin_inset Formula $x_{1},\ldots,x_{k}$
+\end_inset
+
+ שונים ואין קשת ביניהם, ו-
+\begin_inset Formula $\psi_{2}$
+\end_inset
+
+ אומרת שאם 
+\begin_inset Formula $y_{1},\ldots,y_{k+1}$
+\end_inset
+
+ שונים אז יש קשת בין שניים מהם. שני החלקים לא חולקים משתנים, ולכן אפשר לכתוב את הכמתים של שניהם בחזית: זו רדוקציה ל-
+\begin_inset Formula $\SigmaSat 2$
+\end_inset
+
+, כלומר 
+\begin_inset Formula $\exactis\in\SigmaP 2$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+מעגל מינימלי
+\end_layout
+
+\end_inset
+
+מעגל בוליאני 
+\begin_inset Formula $C$
+\end_inset
+
+ ״מינימלי״ אם אין מעגל קטן ממנו שמחשב את אותה פונקציה. כדי לדבר על ״קטן יותר״ מקודדים מעגלים בביטים ומשווים לפי גודל, ובגודל שווה לפי הקידוד (סדר לקסיקוגרפי). השפה 
+\begin_inset Formula $\mincirc$
+\end_inset
+
+ היא קבוצת המעגלים המינימליים, ו-
+\begin_inset Formula 
+\[
+C\in\mincirc\iff\forall C'<C\ \exists x:\ C'\left(x\right)\neq C\left(x\right).
+\]
+\end_inset
+
+ כדי לכתוב את זה כנוסחה צריך לבטא ״ערך המעגל על 
+\begin_inset Formula $x$
+\end_inset
+
+ ״ בנוסחה בוליאנית. עושים את זה כמו במשפט קוק-לוין (הרדוקציה מ-
+\begin_inset Formula $\csat$
+\end_inset
+
+ ל-
+\begin_inset Formula $\sat$
+\end_inset
+
+): לכל שער מוסיפים משתנה, וכותבים פסוקיות שאומרות שהמשתנה של כל שער שווה לפעולה שלו (וגם, או, לא) על המשתנים של הכניסות שלו. את המשתנים החדשים מכמתים ב-
+\begin_inset Formula $\exists$
+\end_inset
+
+ ומצרפים לבלוק האחרון. מקבלים 
+\begin_inset Formula $\mincirc\in\PiP 2$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Remark
+לא ידוע ש-
+\begin_inset Formula $\mincirc$
+\end_inset
+
+ שלמה ל-
+\begin_inset Formula $\PiP 2$
+\end_inset
+
+. לבעיות דומות, למשל ייצוג 
+\lang english
+DNF
+\lang hebrew
+ מינימלי של פונקציה, ידוע שהן שלמות לרמה השנייה.
+\end_layout
+
+\begin_layout Subsection
+הגדרות שקולות
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Formula $L\in\SigmaP k$
+\end_inset
+
+ אם ורק אם יש פולינום 
+\begin_inset Formula $p$
+\end_inset
+
+ ומ
+\begin_inset Quotes erd
+\end_inset
+
+ט דטרמיניסטית 
+\begin_inset Formula $M$
+\end_inset
+
+ שרצה בזמן פולינומי כך שלכל 
+\begin_inset Formula $x$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+x\in L\iff\exists y_{1}\,\forall y_{2}\cdots Q_{k}y_{k}:\ M\left(x,y_{1},\ldots,y_{k}\right)=1,
+\]
+\end_inset
+
+ כאשר 
+\begin_inset Formula $\left|y_{i}\right|\leq p\left(\left|x\right|\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+רעיון
+\end_layout
+
+\end_inset
+
+כיוון אחד: אם יש רדוקציה ל-
+\begin_inset Formula $\SigmaSat k$
+\end_inset
+
+, 
+\begin_inset Formula $M$
+\end_inset
+
+ מחשבת את הנוסחה 
+\begin_inset Formula $f\left(x\right)$
+\end_inset
+
+ ומציבה בה את ההשמות 
+\begin_inset Formula $y_{1},\ldots,y_{k}$
+\end_inset
+
+. בכיוון השני מתרגמים את החישוב של 
+\begin_inset Formula $M$
+\end_inset
+
+ על 
+\begin_inset Formula $x$
+\end_inset
+
+ קבוע למעגל, ואת המעגל לנוסחה כמו בדוגמה הקודמת. נוצרים הרבה משתנים חדשים, והם מצטרפים לבלוק האחרון. בהרצאה זה הוצג ברמת הרעיון, בלי הפרטים הפורמליים של קוק-לוין.
+\end_layout
+
+\end_deeper
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+אורקלים
+\end_layout
+
+\end_inset
+
+עבור שפה 
+\begin_inset Formula $A$
+\end_inset
+
+, 
+\begin_inset Formula $\np^{A}$
+\end_inset
+
+ היא מחלקת השפות שמכריעה מ
+\begin_inset Quotes erd
+\end_inset
+
+ט לא דטרמיניסטית פולינומית שיכולה לשאול את האורקל לשפה 
+\begin_inset Formula $A$
+\end_inset
+
+ ולקבל תשובה בצעד אחד. עבור מחלקה עם בעיה שלמה, 
+\begin_inset Formula $\np^{\SigmaP k}=\np^{\SigmaSat k}$
+\end_inset
+
+, ובאופן דומה 
+\begin_inset Formula $\conp^{A}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Formula $\SigmaP k=\np^{\SigmaP{k-1}}=\np^{\PiP{k-1}}$
+\end_inset
+
+ ו-
+\begin_inset Formula $\PiP k=\conp^{\SigmaP{k-1}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+אינטואיציה
+\end_layout
+
+\end_inset
+
+אורקל ל-
+\begin_inset Formula $\SigmaP{k-1}$
+\end_inset
+
+ ואורקל ל-
+\begin_inset Formula $\PiP{k-1}$
+\end_inset
+
+ שקולים: התשובה לשפה המשלימה היא ההפך. הכיוון 
+\begin_inset Formula $\SigmaP k\subseteq\np^{\PiP{k-1}}$
+\end_inset
+
+: מנחשים את 
+\begin_inset Formula $y_{1}$
+\end_inset
+
+, ואת השאר, 
+\begin_inset Formula $\forall y_{2}\cdots$
+\end_inset
+
+, שואלים את האורקל. בכיוון השני מנחשים בכמת הראשון גם את התשובות של האורקל, ומאמתים אותן בכמתים הבאים.
+\end_layout
+
+\end_deeper
+\begin_layout Corollary
+אם 
+\begin_inset Formula $\P=\np$
+\end_inset
+
+ אז 
+\begin_inset Formula $\ph=\P$
+\end_inset
+
+: באינדוקציה, 
+\begin_inset Formula $\SigmaP k=\np^{\SigmaP{k-1}}=\np^{\P}=\np=\P$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+מעגלים שפותרים את SAT
+\end_layout
+
+\begin_layout Example
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\SatSolver$
+\end_inset
+\end_layout
+
+\end_inset
+
+נגדיר את השפה 
+\begin_inset Formula $\SatSolver$
+\end_inset
+
+: מעגלים 
+\begin_inset Formula $C$
+\end_inset
+
+ עם 
+\begin_inset Formula $n$
+\end_inset
+
+ כניסות, שהקלט שלהם מתפרש כקידוד של נוסחה 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ (כל מחרוזת היא קידוד של נוסחה כלשהי), ושלכל נוסחה 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ באורך 
+\begin_inset Formula $n$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $C\left(\varphi\right)=1$
+\end_inset
+
+ אם ורק אם 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ ספיקה. השפה לא ריקה: לכל 
+\begin_inset Formula $n$
+\end_inset
+
+ יש מעגל כזה, למשל בגודל אקספוננציאלי. נכתוב את התנאי:
+\begin_inset Formula 
+\[
+\forall\varphi\left[\left(\exists x\,\varphi\left(x\right)\to C\left(\varphi\right)=1\right)\land\left(C\left(\varphi\right)=1\to\exists y\,\varphi\left(y\right)\right)\right].
+\]
+\end_inset
+
+ החלק הראשון שקול ל-
+\begin_inset Formula $\forall x\left(\neg\varphi\left(x\right)\lor C\left(\varphi\right)=1\right)$
+\end_inset
+
+, ולכן אפשר להוציא את הכמתים החוצה ולקבל 
+\begin_inset Formula $\forall\varphi\,\forall x\,\exists y$
+\end_inset
+
+ על נוסחה שבודקת את שני התנאים. לכן 
+\begin_inset Formula $\SatSolver\in\PiP 2$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Remark
+אם מוציאים את הכמתים בסדר לא נכון זה נראה כמו 
+\begin_inset Formula $\PiP 3$
+\end_inset
+
+, אבל זה רק מראה: הכמת 
+\begin_inset Formula $\exists x$
+\end_inset
+
+ בחלק הראשון מופיע מתחת ל
+\begin_inset Quotes erd
+\end_inset
+
+לא״, ולכן הוא בעצם 
+\begin_inset Formula $\forall$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Claim
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+מחיפוש להכרעה
+\end_layout
+
+\end_inset
+
+אם 
+\begin_inset Formula $C$
+\end_inset
+
+ פותר את 
+\begin_inset Formula $\sat$
+\end_inset
+
+ (מכריע אם נוסחה ספיקה), אז ממנו אפשר לבנות מעגל 
+\begin_inset Formula $D$
+\end_inset
+
+, גדול ממנו רק פי פולינום, שעל כל נוסחה ספיקה 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ מחזיר השמה מספקת.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+מציבים 
+\begin_inset Formula $x_{1}=1$
+\end_inset
+
+ ושואלים את 
+\begin_inset Formula $C$
+\end_inset
+
+ האם 
+\begin_inset Formula $\varphi|_{x_{1}=1}$
+\end_inset
+
+ ספיקה. אם כן, משאירים 
+\begin_inset Formula $x_{1}=1$
+\end_inset
+
+, ואחרת 
+\begin_inset Formula $x_{1}=0$
+\end_inset
+
+ (ואז 
+\begin_inset Formula $\varphi|_{x_{1}=0}$
+\end_inset
+
+ ספיקה). ממשיכים כך ל-
+\begin_inset Formula $x_{2},x_{3},\ldots$
+\end_inset
+
+, ובסוף הביטים שקבענו הם השמה מספקת. 
+\begin_inset Formula $D$
+\end_inset
+
+ מורכב מ-
+\begin_inset Formula $n$
+\end_inset
+
+ עותקים של 
+\begin_inset Formula $C$
+\end_inset
+
+ ומהמעגלים שעושים את ההצבות.
+\end_layout
+
+\end_deeper
+\begin_layout Remark
+את ההשמה ש-
+\begin_inset Formula $D$
+\end_inset
+
+ מחזיר אפשר לבדוק בזמן פולינומי: מציבים אותה ב-
+\begin_inset Formula $\varphi$
+\end_inset
+
+. לכן אם יש לנו מעגל שפותר את 
+\begin_inset Formula $\sat$
+\end_inset
+
+, אפשר להחליף את הטענה 
+\begin_inset Formula $\exists x\,\varphi\left(x\right)$
+\end_inset
+
+ בטענה הדטרמיניסטית 
+\begin_inset Formula $\varphi\left(D\left(\varphi\right)\right)=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+קריסה של ההיררכיה ומשפט קארפ–ליפטון
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+קריסה
+\end_layout
+
+\end_inset
+
+אם 
+\begin_inset Formula $\PiP k\subseteq\SigmaP k$
+\end_inset
+
+ אז 
+\begin_inset Formula $\ph=\SigmaP k$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+נראה ש-
+\begin_inset Formula $\SigmaP{k+1}=\SigmaP k$
+\end_inset
+
+, ובאינדוקציה זה נותן את כל ההיררכיה. נוסחת 
+\begin_inset Formula $\SigmaSat{k+1}$
+\end_inset
+
+ היא 
+\begin_inset Formula $\exists y_{1}\,\psi\left(y_{1}\right)$
+\end_inset
+
+, כאשר 
+\begin_inset Formula $\psi$
+\end_inset
+
+ היא נוסחת 
+\begin_inset Formula $\PiSat k$
+\end_inset
+
+ כשמציבים את 
+\begin_inset Formula $y_{1}$
+\end_inset
+
+. לפי ההנחה יש רדוקציה מ-
+\begin_inset Formula $\PiSat k$
+\end_inset
+
+ ל-
+\begin_inset Formula $\SigmaSat k$
+\end_inset
+
+, והקלט שלה הוא 
+\begin_inset Formula $\psi$
+\end_inset
+
+ כש-
+\begin_inset Formula $y_{1}$
+\end_inset
+
+ נשאר משתנה. מקבלים נוסחת 
+\begin_inset Formula $\SigmaSat k$
+\end_inset
+
+ שמתחילה ב-
+\begin_inset Formula $\exists$
+\end_inset
+
+, ואת 
+\begin_inset Formula $\exists y_{1}$
+\end_inset
+
+ מצרפים לבלוק הראשון שלה.
+\end_layout
+
+\end_deeper
+\begin_layout Definition
+\begin_inset Formula $\mathsf{SIZE}\left(\poly\right)$
+\end_inset
+
+ (
+\begin_inset Formula $=\ppoly$
+\end_inset
+
+) היא מחלקת השפות 
+\begin_inset Formula $L$
+\end_inset
+
+ שיש להן סדרת מעגלים 
+\begin_inset Formula $\left(C_{n}\right)$
+\end_inset
+
+ ופולינום 
+\begin_inset Formula $p$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\sz{C_{n}}\leq p\left(n\right)$
+\end_inset
+
+, ו-
+\begin_inset Formula $C_{n}$
+\end_inset
+
+ מכריע את 
+\begin_inset Formula $L$
+\end_inset
+
+ על קלטים באורך 
+\begin_inset Formula $n$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Remark
+זה מודל לא יוניפורמי: לכל אורך קלט יש מעגל אחר, ולא בהכרח יש אלגוריתם יעיל שמייצר אותו. לכן 
+\begin_inset Formula $\mathsf{SIZE}\left(\poly\right)$
+\end_inset
+
+ לא מוכלת ב-
+\begin_inset Formula $\P$
+\end_inset
+
+, וזה ״כוח״ שונה מהכוח של אלגוריתם פולינומי.
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+קארפ–ליפטון
+\end_layout
+
+\end_inset
+
+אם 
+\begin_inset Formula $\np\subseteq\mathsf{SIZE}\left(\poly\right)$
+\end_inset
+
+ אז 
+\begin_inset Formula $\ph=\SigmaP 2$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Remark
+אנחנו מאמינים שההיררכיה לא קורסת, ולכן מאמינים של-
+\begin_inset Formula $\np$
+\end_inset
+
+ אין מעגלים בגודל פולינומי. שימו לב לנקודה העדינה: מהנחה לא יוניפורמית מקבלים כאן מסקנה יוניפורמית, ולא תמיד ברור איך עושים מעבר כזה.
+\end_layout
+
+\begin_layout Proof
+לפי משפט הקריסה מספיק להראות 
+\begin_inset Formula $\PiP 2\subseteq\SigmaP 2$
+\end_inset
+
+, כלומר לתת רדוקציה מ-
+\begin_inset Formula $\PiSat 2$
+\end_inset
+
+ ל-
+\begin_inset Formula $\SigmaSat 2$
+\end_inset
+
+. תהי 
+\begin_inset Formula $\psi=\forall x\,\exists y:\ \varphi\left(x,y\right)$
+\end_inset
+
+. לכל 
+\begin_inset Formula $x$
+\end_inset
+
+ קבוע, 
+\begin_inset Formula $\varphi_{x}\left(y\right)=\varphi\left(x,y\right)$
+\end_inset
+
+ היא נוסחה, וכולן באותו אורך. לפי ההנחה ולפי המעבר מחיפוש להכרעה יש מעגל 
+\begin_inset Formula $D$
+\end_inset
+
+ בגודל פולינומי שמחזיר השמה מספקת לכל נוסחה ספיקה באורך הזה. נכתוב 
+\begin_inset Formula 
+\[
+\exists D\ \forall x:\ \varphi\left(x,D\left(\varphi_{x}\right)\right)=1.
+\]
+\end_inset
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $\psi$
+\end_inset
+
+ אמת, כל 
+\begin_inset Formula $\varphi_{x}$
+\end_inset
+
+ ספיקה, והמעגל 
+\begin_inset Formula $D$
+\end_inset
+
+ מחזיר לה השמה מספקת, ולכן הטענה אמת.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $\psi$
+\end_inset
+
+ שקר, יש 
+\begin_inset Formula $x$
+\end_inset
+
+ ש-
+\begin_inset Formula $\varphi_{x}$
+\end_inset
+
+ לא ספיקה, ואז לכל 
+\begin_inset Formula $D$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\varphi\left(x,D\left(\varphi_{x}\right)\right)=0$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Proof
+הכמת 
+\begin_inset Formula $\exists y$
+\end_inset
+
+ נעלם: במקומו מציבים את הפלט של 
+\begin_inset Formula $D$
+\end_inset
+
+, וזה חישוב דטרמיניסטי. את הבדיקה של הצבת 
+\begin_inset Formula $D$
+\end_inset
+
+ ב-
+\begin_inset Formula $\varphi$
+\end_inset
+
+ מתרגמים לנוסחה כמו קודם, ומשתני השערים מצטרפים לבלוק של 
+\begin_inset Formula $\forall$
+\end_inset
+
+. קיבלנו נוסחת 
+\begin_inset Formula $\SigmaSat 2$
+\end_inset
+
+. אפשר היה להוסיף בדיקה ש-
+\begin_inset Formula $D$
+\end_inset
+
+ באמת פותר את 
+\begin_inset Formula $\sat$
+\end_inset
+
+, אבל אין צורך: מעגל שגוי רק גורם לטענה להיכשל.
+\end_layout
+\begin_layout Chapter
+אלגוריתמים הסתברותיים
+\end_layout
+
+
+\begin_layout Section
+אלגוריתמים הסתברותיים
+\end_layout
+
+\begin_layout Standard
+עד עכשיו כל המודלים שראינו היו דטרמיניסטיים (או אי-דטרמיניסטיים, שזה לא מודל פיזיקלי). היום נוסיף למכונה גישה לביטים אקראיים, ונשאל מה זה קונה לנו. נתחיל בכמה דוגמאות, נגדיר את המחלקות, נפתח את הכלים ההסתברותיים שנצטרך, ובסוף נשאל איפה 
+\begin_inset Formula $\bpp$
+\end_inset
+
+ יושבת ביחס למחלקות שכבר ראינו.
+\end_layout
+
+\begin_layout Subsection
+דוגמאות ומחלקות הסתברותיות
+\end_layout
+
+\begin_layout Example
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+פריבלדס
+\end_layout
+
+\end_inset
+
+בדיקת כפל מטריצות. נתונות 
+\begin_inset Formula $A,B,C\in\mathbb{F}^{n\times n}$
+\end_inset
+
+, ורוצים לבדוק האם 
+\begin_inset Formula $AB=C$
+\end_inset
+
+. לחשב את 
+\begin_inset Formula $AB$
+\end_inset
+
+ לוקח 
+\begin_inset Formula $O\left(n^{3}\right)$
+\end_inset
+
+ (או 
+\begin_inset Formula $O\left(n^{\omega}\right)$
+\end_inset
+
+ עם אלגוריתמים חכמים יותר), אבל עם אקראיות אפשר ב-
+\begin_inset Formula $O\left(n^{2}\right)$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Algorithm
+נגריל 
+\begin_inset Formula $r\in\left\{ 0,1\right\} ^{n}$
+\end_inset
+
+ באופן אחיד.
+\end_layout
+
+\begin_layout Algorithm
+נקבל אם 
+\begin_inset Formula $A\left(Br\right)=Cr$
+\end_inset
+
+, ונדחה אחרת.
+\end_layout
+
+\begin_layout Standard
+זמן הריצה הוא 
+\begin_inset Formula $O\left(n^{2}\right)$
+\end_inset
+
+, כי מכפילים רק מטריצה בווקטור, שלוש פעמים. אם 
+\begin_inset Formula $AB=C$
+\end_inset
+
+ תמיד נקבל. אחרת 
+\begin_inset Formula $D=AB-C\neq0$
+\end_inset
+
+, ונטעה רק אם 
+\begin_inset Formula $r\in\ker D$
+\end_inset
+
+. נניח שהשורה ה-
+\begin_inset Formula $i$
+\end_inset
+
+ של 
+\begin_inset Formula $D$
+\end_inset
+
+ שונה מאפס, ושיש בה 
+\begin_inset Formula $D_{ij}\neq0$
+\end_inset
+
+. נקבע את כל הקואורדינטות של 
+\begin_inset Formula $r$
+\end_inset
+
+ חוץ מ-
+\begin_inset Formula $r_{j}$
+\end_inset
+
+; אז 
+\begin_inset Formula $\left(Dr\right)_{i}=D_{ij}r_{j}+c$
+\end_inset
+
+, וזה מתאפס לכל היותר לערך אחד של 
+\begin_inset Formula $r_{j}$
+\end_inset
+
+. לכן
+\begin_inset Formula 
+\[
+\Pr_{r}\left[Dr=0\right]\leq\Pr_{r}\left[\left(Dr\right)_{i}=0\right]\leq\frac{1}{2}.
+\]
+
+\end_inset
+
+חזרה 
+\begin_inset Formula $k$
+\end_inset
+
+ פעמים עם 
+\begin_inset Formula $r$
+\end_inset
+
+-ים בלתי תלויים מורידה את הטעות ל-
+\begin_inset Formula $2^{-k}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Definition
+
+\begin_inset Formula $\pit[\mathbb{F}]=\sset{\left\langle C\right\rangle }{C\left(x\right)\equiv0}$
+\end_inset
+
+, כאשר 
+\begin_inset Formula $C$
+\end_inset
+
+ מעגל אריתמטי מעל 
+\begin_inset Formula $\mathbb{F}$
+\end_inset
+
+, כלומר המעגל מחשב את פולינום האפס (כפולינום, לא רק כפונקציה).
+\end_layout
+
+\begin_layout Lemma
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+שוורץ-זיפל
+\end_layout
+
+\end_inset
+
+יהי 
+\begin_inset Formula $0\neq p\in\mathbb{F}\left[x_{1},\ldots,x_{n}\right]$
+\end_inset
+
+ פולינום מדרגה כוללת 
+\begin_inset Formula $d$
+\end_inset
+
+, ותהי 
+\begin_inset Formula $\emptyset\neq S\subseteq\mathbb{F}$
+\end_inset
+
+ סופית. אזי
+\begin_inset Formula 
+\[
+\Pr_{a\leftarrow S^{n}}\left[p\left(a\right)=0\right]\leq\frac{d}{\left|S\right|}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+האלגוריתם ל-
+\begin_inset Formula $\pit$
+\end_inset
+
+: נגריל 
+\begin_inset Formula $a\in S^{n}$
+\end_inset
+
+ עם 
+\begin_inset Formula $\left|S\right|\geq2d$
+\end_inset
+
+ ונקבל אם 
+\begin_inset Formula $C\left(a\right)=0$
+\end_inset
+
+. אם 
+\begin_inset Formula $C\equiv0$
+\end_inset
+
+ תמיד נקבל, ואחרת נדחה בהסתברות לפחות 
+\begin_inset Formula $\frac{1}{2}$
+\end_inset
+
+. שימו לב שגם בדיקת כפל מטריצות היא מקרה פרטי: 
+\begin_inset Formula $\left(Dr\right)_{i}$
+\end_inset
+
+ הוא פולינום לינארי ב-
+\begin_inset Formula $r$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+מכונת טיורינג הסתברותית היא מ
+\begin_inset Quotes erd
+\end_inset
+
+ט 
+\begin_inset Formula $M$
+\end_inset
+
+ עם סרט נוסף של ביטים אקראיים 
+\begin_inset Formula $r$
+\end_inset
+
+ (בלתי תלויים ואחידים). נסמן ב-
+\begin_inset Formula $M\left(x,r\right)$
+\end_inset
+
+ את הריצה על קלט 
+\begin_inset Formula $x$
+\end_inset
+
+ עם ביטים 
+\begin_inset Formula $r$
+\end_inset
+
+. נאמר ש-
+\begin_inset Formula $M$
+\end_inset
+
+ רצה בזמן 
+\begin_inset Formula $t\left(n\right)$
+\end_inset
+
+ אם היא עוצרת תוך 
+\begin_inset Formula $t\left(n\right)$
+\end_inset
+
+ צעדים לכל 
+\begin_inset Formula $x,r$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+שפה 
+\begin_inset Formula $L$
+\end_inset
+
+ נמצאת ב-
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\begin_inset Formula $\rp$
+\end_inset
+
+ אם קיימת מ
+\begin_inset Quotes erd
+\end_inset
+
+ט הסתברותית פולינומית 
+\begin_inset Formula $M$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $x\in L\Rightarrow\Pr_{r}\left[M\left(x,r\right)=1\right]\geq\frac{1}{2}$
+\end_inset
+
+ ו-
+\begin_inset Formula $x\notin L\Rightarrow\Pr_{r}\left[M\left(x,r\right)=1\right]=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+
+\begin_inset Formula $\corp$
+\end_inset
+
+ אם 
+\begin_inset Formula $\overline{L}\in\rp$
+\end_inset
+
+, כלומר על קלטים בשפה תמיד מקבלים, ועל קלטים שלא בשפה דוחים בהסתברות לפחות 
+\begin_inset Formula $\frac{1}{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+
+\begin_inset Formula $\bpp$
+\end_inset
+
+ אם קיימת מ
+\begin_inset Quotes erd
+\end_inset
+
+ט הסתברותית פולינומית 
+\begin_inset Formula $M$
+\end_inset
+
+ כך שלכל 
+\begin_inset Formula $x$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Pr_{r}\left[M\left(x,r\right)=L\left(x\right)\right]\geq\frac{2}{3}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Example
+
+\begin_inset Formula $\pit\in\corp$
+\end_inset
+
+ (לפי שוורץ-זיפל), וגם בדיקת כפל מטריצות היא 
+\begin_inset Formula $\corp$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+יהיו 
+\begin_inset Formula $0\leq\alpha<\beta\leq1$
+\end_inset
+
+ (שיכולים להיות תלויים ב-
+\begin_inset Formula $n$
+\end_inset
+
+). שפה 
+\begin_inset Formula $L$
+\end_inset
+
+ נמצאת ב-
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\begin_inset Formula $\bppab{\alpha}{\beta}$
+\end_inset
+
+ אם קיימת מ
+\begin_inset Quotes erd
+\end_inset
+
+ט הסתברותית פולינומית 
+\begin_inset Formula $M$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $x\in L\Rightarrow\Pr_{r}\left[M\left(x,r\right)=1\right]\geq\beta$
+\end_inset
+
+ ו-
+\begin_inset Formula $x\notin L\Rightarrow\Pr_{r}\left[M\left(x,r\right)=1\right]\leq\alpha$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+
+\begin_inset Formula $\rpa{\alpha}$
+\end_inset
+
+ אם קיימת כזו עם 
+\begin_inset Formula $x\in L\Rightarrow\Pr_{r}\left[M\left(x,r\right)=1\right]\geq\alpha$
+\end_inset
+
+ ו-
+\begin_inset Formula $x\notin L\Rightarrow\Pr_{r}\left[M\left(x,r\right)=1\right]=0$
+\end_inset
+
+, כלומר 
+\begin_inset Formula $\rpa{\alpha}=\bppab 0{\alpha}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+
+\begin_inset Formula $\corpa{\alpha}$
+\end_inset
+
+ אם 
+\begin_inset Formula $\overline{L}\in\rpa{\alpha}$
+\end_inset
+
+, כלומר 
+\begin_inset Formula $\corpa{\alpha}=\bppab{1-\alpha}1$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+בסימונים האלה 
+\begin_inset Formula $\rp=\rpa{\frac{1}{2}}$
+\end_inset
+
+, 
+\begin_inset Formula $\corp=\corpa{\frac{1}{2}}$
+\end_inset
+
+ ו-
+\begin_inset Formula $\bpp=\bppab{\frac{1}{3}}{\frac{2}{3}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Remark
+כמה עובדות בסיסיות:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\begin_inset Formula $\P\subseteq\rp\subseteq\np$
+\end_inset
+
+: אם 
+\begin_inset Formula $x\in L$
+\end_inset
+
+ יש 
+\begin_inset Formula $r$
+\end_inset
+
+ שמקבל, והוא העד. באותו אופן 
+\begin_inset Formula $\corp\subseteq\mathsf{coNP}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+
+\begin_inset Formula $\rp\cup\corp\subseteq\bpp$
+\end_inset
+
+: מריצים פעמיים ומקבלים את הטעות החד-צדדית ל-
+\begin_inset Formula $\frac{1}{4}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+הגברה ב-
+\begin_inset Formula $\rp$
+\end_inset
+
+: לכל פולינום 
+\begin_inset Formula $p$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+\rpa{\frac{1}{p\left(n\right)}}=\rp=\rpa{1-2^{-n}}.
+\]
+
+\end_inset
+
+מריצים 
+\begin_inset Formula $k$
+\end_inset
+
+ פעמים ומקבלים אם אחת הריצות קיבלה. הטעות יורדת מ-
+\begin_inset Formula $1-\alpha$
+\end_inset
+
+ ל-
+\begin_inset Formula $\left(1-\alpha\right)^{k}$
+\end_inset
+
+, ועם 
+\begin_inset Formula $\alpha=\frac{1}{p\left(n\right)}$
+\end_inset
+
+ מספיקות 
+\begin_inset Formula $k=n\cdot p\left(n\right)$
+\end_inset
+
+ חזרות. באותו אופן 
+\begin_inset Formula $\corpa{\frac{1}{p\left(n\right)}}=\corp=\corpa{1-2^{-n}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+הגברה ב-
+\begin_inset Formula $\bpp$
+\end_inset
+
+: מספיק פער פולינומי, כלומר לכל 
+\begin_inset Formula $\alpha\left(n\right)$
+\end_inset
+
+ (שניתן לחשב) ופולינום 
+\begin_inset Formula $p$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+\bppab{\alpha}{\alpha+\frac{1}{p\left(n\right)}}=\bpp=\bppab{2^{-n}}{1-2^{-n}}.
+\]
+
+\end_inset
+
+מריצים הרבה פעמים ומשווים את שיעור הקבלה לסף 
+\begin_inset Formula $\alpha+\frac{1}{2p}$
+\end_inset
+
+; צ'רנוף (בהמשך) נותן את ההגברה.
+\end_layout
+
+\begin_layout Enumerate
+
+\begin_inset Formula $\bpp$
+\end_inset
+
+ סגורה למשלים, וההשערה המקובלת היא 
+\begin_inset Formula $\bpp=\P$
+\end_inset
+
+. אבל אפילו ל-
+\begin_inset Formula $\pit$
+\end_inset
+
+ לא ידוע אלגוריתם דטרמיניסטי פולינומי.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+אי-שוויוני ריכוז
+\end_layout
+
+\begin_layout Standard
+השאלה המרכזית: כמה רחוק יכול משתנה מקרי להיות מהתוחלת שלו? ככל שנדע יותר על המשתנה (אי-שליליות, שונות, אי-תלות מלאה), נקבל חסם חזק יותר.
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+אי-שוויון מרקוב
+\end_layout
+
+\end_inset
+
+יהי 
+\begin_inset Formula $X$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ כך ש-
+\begin_inset Formula $X\geq0$
+\end_inset
+
+ כמעט תמיד. אזי לכל 
+\begin_inset Formula $\lambda>0$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+\Pr\left[X\geq\lambda\right]\leq\frac{\E X}{\lambda}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+אי-שוויון צ'בישב
+\end_layout
+
+\end_inset
+
+יהי 
+\begin_inset Formula $X$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ עם שונות סופית. אזי לכל 
+\begin_inset Formula $\lambda>0$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+\Pr\left[\left|X-\E X\right|\geq\lambda\right]\leq\frac{\Var\left(X\right)}{\lambda^{2}}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+מרקוב על המשתנה האי-שלילי 
+\begin_inset Formula $\left(X-\E X\right)^{2}$
+\end_inset
+
+ עם 
+\begin_inset Formula $\lambda^{2}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Example
+יהי 
+\begin_inset Formula $X=\sum_{i=1}^{n}X_{i}$
+\end_inset
+
+ כאשר 
+\begin_inset Formula $\left\{ X_{i}\right\} $
+\end_inset
+
+ ב
+\begin_inset Quotes erd
+\end_inset
+
+ת בזוגות, כלומר 
+\begin_inset Formula $\E X_{i}X_{j}=\E X_{i}\E X_{j}$
+\end_inset
+
+ לכל 
+\begin_inset Formula $i\neq j$
+\end_inset
+
+. אז האיברים המעורבים בשונות מתבטלים, ו-
+\begin_inset Formula 
+\[
+\Var\left(X\right)=\sum_{i=1}^{n}\Var\left(X_{i}\right).
+\]
+
+\end_inset
+
+למשל, אם כל 
+\begin_inset Formula $X_{i}\sim\mathcal{U}\left(\left\{ 0,1\right\} \right)$
+\end_inset
+
+ אז 
+\begin_inset Formula $\E X_{i}=\frac{1}{2}$
+\end_inset
+
+ ו-
+\begin_inset Formula $\Var\left(X_{i}\right)=\frac{1}{4}$
+\end_inset
+
+, ולכן 
+\begin_inset Formula $\E X=\frac{n}{2}$
+\end_inset
+
+, 
+\begin_inset Formula $\Var\left(X\right)=\frac{n}{4}$
+\end_inset
+
+, וצ'בישב נותן
+\begin_inset Formula 
+\[
+\Pr\left[\left|X-\frac{n}{2}\right|\geq\alpha\sqrt{n}\right]\leq\frac{1}{4\alpha^{2}}.
+\]
+
+\end_inset
+
+כלומר הסכום מרוכז בחלון ברוחב 
+\begin_inset Formula $O\left(\sqrt{n}\right)$
+\end_inset
+
+ סביב התוחלת, אבל ההסתברות לצאת ממנו דועכת רק פולינומית.
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+צ'רנוף
+\end_layout
+
+\end_inset
+
+יהיו 
+\begin_inset Formula $X_{1},\ldots,X_{n}$
+\end_inset
+
+ מ
+\begin_inset Quotes erd
+\end_inset
+
+מ ב
+\begin_inset Quotes erd
+\end_inset
+
+ת עם 
+\begin_inset Formula $\mathrm{Supp}\left(X_{i}\right)\subseteq\left\{ 0,1\right\} $
+\end_inset
+
+ ו-
+\begin_inset Formula $\Pr\left[X_{i}=1\right]=p_{i}$
+\end_inset
+
+. נסמן 
+\begin_inset Formula $X=\sum_{i=1}^{n}X_{i}$
+\end_inset
+
+ ו-
+\begin_inset Formula $\mu=\E X=\sum_{i=1}^{n}p_{i}$
+\end_inset
+
+. אזי:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+לכל 
+\begin_inset Formula $\delta>0$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+\Pr\left[X\geq\left(1+\delta\right)\mu\right]\leq\left(\frac{e^{\delta}}{\left(1+\delta\right)^{1+\delta}}\right)^{\mu}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+בפרט, לכל 
+\begin_inset Formula $\delta\in\left(0,1\right]$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+\Pr\left[X\geq\left(1+\delta\right)\mu\right]\leq e^{-\frac{\delta^{2}}{3}\mu}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+לכל 
+\begin_inset Formula $\delta\in\left(0,1\right)$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+\Pr\left[X\leq\left(1-\delta\right)\mu\right]\leq\left(\frac{e^{-\delta}}{\left(1-\delta\right)^{1-\delta}}\right)^{\mu}\leq e^{-\frac{\delta^{2}}{2}\mu},
+\]
+
+\end_inset
+
+ולכן
+\begin_inset Formula 
+\[
+\Pr\left[\left|X-\mu\right|\geq\delta\mu\right]\leq2e^{-\frac{\delta^{2}}{3}\mu}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+הרעיון: מרקוב עובד על כל פונקציה מונוטונית של 
+\begin_inset Formula $X$
+\end_inset
+
+. צ'בישב השתמש בריבוע; כאן נשתמש ב-
+\begin_inset Formula $e^{tX}$
+\end_inset
+
+, שמכיל את כל החזקות בבת אחת, ונבחר את 
+\begin_inset Formula $t$
+\end_inset
+
+ בסוף.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+לכל 
+\begin_inset Formula $t>0$
+\end_inset
+
+,
+\begin_inset Formula 
+\begin{align*}
+\Pr\left[X\geq\left(1+\delta\right)\mu\right] & =\Pr\left[e^{tX}\geq e^{t\left(1+\delta\right)\mu}\right]\overset{\text{Markov}}{\leq}\frac{\E\left[e^{tX}\right]}{e^{t\left(1+\delta\right)\mu}}.
+\end{align*}
+
+\end_inset
+
+מאי-התלות התוחלת מתפרקת למכפלה, ובעזרת 
+\begin_inset Formula $1+y\leq e^{y}$
+\end_inset
+
+,
+\begin_inset Formula 
+\begin{align*}
+\E\left[e^{tX}\right] & =\prod_{i=1}^{n}\E\left[e^{tX_{i}}\right]=\prod_{i=1}^{n}\left(1+p_{i}\left(e^{t}-1\right)\right)\\
+ & \leq\prod_{i=1}^{n}e^{p_{i}\left(e^{t}-1\right)}=e^{\mu\left(e^{t}-1\right)}.
+\end{align*}
+
+\end_inset
+
+לכן 
+\begin_inset Formula $\Pr\left[X\geq\left(1+\delta\right)\mu\right]\leq e^{\mu\left(e^{t}-1\right)-t\left(1+\delta\right)\mu}$
+\end_inset
+
+, ובחירה של 
+\begin_inset Formula $t=\ln\left(1+\delta\right)>0$
+\end_inset
+
+ (שממזערת את המעריך) נותנת את החסם.
+\end_layout
+
+\begin_layout Enumerate
+תרגיל בחדו
+\begin_inset Quotes erd
+\end_inset
+
+א.
+\end_layout
+
+\begin_layout Enumerate
+אותו דבר עם 
+\begin_inset Formula $t<0$
+\end_inset
+
+: 
+\begin_inset Formula $\Pr\left[X\leq\left(1-\delta\right)\mu\right]=\Pr\left[e^{tX}\geq e^{t\left(1-\delta\right)\mu}\right]$
+\end_inset
+
+, ובחירה של 
+\begin_inset Formula $t=\ln\left(1-\delta\right)$
+\end_inset
+
+ נותנת את החסם הראשון. את השני מקבלים בחדו
+\begin_inset Quotes erd
+\end_inset
+
+א כמו בסעיף הקודם. לבסוף, איחוד של שני הזנבות:
+\begin_inset Formula 
+\[
+\Pr\left[\left|X-\mu\right|\geq\delta\mu\right]\leq e^{-\frac{\delta^{2}}{2}\mu}+e^{-\frac{\delta^{2}}{3}\mu}\leq2e^{-\frac{\delta^{2}}{3}\mu}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Example
+השוואה. נניח 
+\begin_inset Formula $X_{i}\overset{iid}{\sim}\mathcal{U}\left(\left\{ 0,1\right\} \right)$
+\end_inset
+
+, כך ש-
+\begin_inset Formula $\mu=\frac{n}{2}$
+\end_inset
+
+. ההסתברות ש-
+\begin_inset Formula $\sum_{i}X_{i}\geq\left(1+\delta\right)\frac{n}{2}$
+\end_inset
+
+ חסומה על ידי:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+מרקוב: 
+\begin_inset Formula $\frac{1}{1+\delta}$
+\end_inset
+
+, כלומר קבוע, לא תלוי ב-
+\begin_inset Formula $n$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+צ'בישב: 
+\begin_inset Formula $\frac{n/4}{\delta^{2}n^{2}/4}=\frac{1}{\delta^{2}n}$
+\end_inset
+
+, דעיכה פולינומית.
+\end_layout
+
+\begin_layout Itemize
+צ'רנוף: 
+\begin_inset Formula $e^{-\frac{\delta^{2}}{6}n}$
+\end_inset
+
+, דעיכה אקספוננציאלית.
+\end_layout
+
+\begin_layout Standard
+עבור 
+\begin_inset Formula $\delta=\frac{c}{\sqrt{n}}$
+\end_inset
+
+ (סטייה בגודל 
+\begin_inset Formula $c\sqrt{n}$
+\end_inset
+
+), צ'בישב נותן 
+\begin_inset Formula $\frac{1}{c^{2}}$
+\end_inset
+
+ וצ'רנוף נותן 
+\begin_inset Formula $e^{-c^{2}/6}$
+\end_inset
+
+. ככל שההנחות חזקות יותר (אי-שליליות, אי-תלות בזוגות, אי-תלות מלאה) הריכוז חזק יותר.
+\end_layout
+
+\end_deeper
+\begin_layout Remark
+הגברה ב-
+\begin_inset Formula $\bpp$
+\end_inset
+
+. אם 
+\begin_inset Formula $M$
+\end_inset
+
+ טועה בהסתברות לכל היותר 
+\begin_inset Formula $\frac{1}{3}$
+\end_inset
+
+, נריץ אותה 
+\begin_inset Formula $k$
+\end_inset
+
+ פעמים ונענה לפי הרוב. אז ההסתברות לטעות היא לכל היותר 
+\begin_inset Formula $e^{-k/48}$
+\end_inset
+
+, ובפרט עם 
+\begin_inset Formula $k=O\left(n\right)$
+\end_inset
+
+ חזרות הטעות היא 
+\begin_inset Formula $2^{-n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+אלגוריתמי לאס וגאס ומונטה קרלו
+\end_layout
+
+\begin_layout Definition
+אלגוריתם 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ הוא 
+\emph on
+לאס וגאס
+\emph default
+ אם הוא אף פעם לא טועה, אבל זמן הריצה שלו הוא מ
+\begin_inset Quotes erd
+\end_inset
+
+מ עם תוחלת פולינומית.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+אלגוריתם 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ הוא 
+\emph on
+מונטה קרלו
+\emph default
+ אם הוא תמיד עוצר בזמן פולינומי, אבל הוא עלול לטעות (בהסתברות חסומה).
+\end_layout
+
+\begin_layout Example
+מציאת ראשוני בן 
+\begin_inset Formula $n$
+\end_inset
+
+ ביטים. רוצים ראשוני בטווח 
+\begin_inset Formula $\left(N,2N\right]$
+\end_inset
+
+ עבור 
+\begin_inset Formula $N=2^{n}$
+\end_inset
+
+. דטרמיניסטית, הדבר הטוב ביותר שידוע הוא בערך לעבור על המספרים אחד אחד ולבדוק ראשוניות, וזה לוקח זמן אקספוננציאלי ב-
+\begin_inset Formula $n$
+\end_inset
+
+ במקרה הגרוע. עם אקראיות:
+\end_layout
+
+\begin_deeper
+\begin_layout Algorithm
+נגריל מספר 
+\begin_inset Formula $X\in\left(N,2N\right]$
+\end_inset
+
+ באופן אחיד, ונבדוק אם הוא ראשוני (ניתן לבצע ב-
+\begin_inset Formula $\P$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Algorithm
+אם כן נחזיר אותו, ואם לא נחזור לשלב הראשון.
+\end_layout
+
+\end_deeper
+\begin_layout Claim
+האלגוריתם הוא לאס וגאס: הוא תמיד מחזיר ראשוני, ותוחלת מספר ההגרלות היא 
+\begin_inset Formula $\Theta\left(n\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+לפי משפט המספרים הראשוניים, מספר הראשוניים בטווח הוא
+\begin_inset Formula 
+\[
+\frac{2N}{\ln2N}-\frac{N}{\ln N}\pm o\left(\frac{N}{\log N}\right)=\Theta\left(\frac{N}{\log N}\right),
+\]
+
+\end_inset
+
+ולכן כל הגרלה מצליחה בהסתברות 
+\begin_inset Formula $p=\Theta\left(\frac{1}{n}\right)$
+\end_inset
+
+, באופן בלתי תלוי.
+\end_layout
+
+\begin_layout Proof
+נסמן ב-
+\begin_inset Formula $I$
+\end_inset
+
+ את מספר ההגרלות. אז 
+\begin_inset Formula $\Pr\left[I=t\right]=\left(1-p\right)^{t-1}p$
+\end_inset
+
+ (התפלגות גאומטרית), ונגזור את הטור 
+\begin_inset Formula $\sum_{t\geq0}y^{t}=\frac{1}{1-y}$
+\end_inset
+
+ כדי לקבל
+\begin_inset Formula 
+\[
+\E I=\sum_{t\geq1}t\left(1-p\right)^{t-1}p=p\cdot\frac{1}{\left(1-\left(1-p\right)\right)^{2}}=\frac{1}{p}=\Theta\left(n\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+גרסת מונטה קרלו: עוצרים אחרי 
+\begin_inset Formula $n^{2}$
+\end_inset
+
+ הגרלות. ההסתברות שכולן נכשלו היא 
+\begin_inset Formula $\left(1-p\right)^{n^{2}}\leq e^{-pn^{2}}=e^{-\Theta\left(n\right)}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+אלגוריתם הסתברותי ל-
+\begin_inset Formula $2\text{-}\mathsf{SAT}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+כמובן 
+\begin_inset Formula $\ksat 2\in\P$
+\end_inset
+
+, אבל האלגוריתם הבא פשוט מאוד, והניתוח שלו הוא הבסיס לאלגוריתם ל-
+\begin_inset Formula $\ksat 3$
+\end_inset
+
+ בהמשך.
+\end_layout
+
+\begin_layout Algorithm
+תהי 
+\begin_inset Formula $\rho$
+\end_inset
+
+ השמה כלשהי לנוסחת 2-
+\lang english
+CNF
+\lang hebrew
+ 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ על 
+\begin_inset Formula $n$
+\end_inset
+
+ משתנים.
+\end_layout
+
+\begin_layout Algorithm
+כל עוד 
+\begin_inset Formula $\rho\not\models\varphi$
+\end_inset
+
+ (ולכל היותר 
+\begin_inset Formula $2n^{2}$
+\end_inset
+
+ צעדים): נבחר פסוקית לא מסופקת, נבחר אחד משני הליטרלים בה באקראי, ונהפוך את ערכו.
+\end_layout
+
+\begin_layout Algorithm
+אם 
+\begin_inset Formula $\rho\models\varphi$
+\end_inset
+
+ נקבל, ואחרת נדחה.
+\end_layout
+
+\begin_layout Standard
+אם 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ לא ספיקה תמיד נדחה, אז הטעות היא חד-צדדית. נותר להראות שאם 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ ספיקה, נמצא השמה מספקת בהסתברות לפחות 
+\begin_inset Formula $\frac{1}{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+נקבע השמה מספקת 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, ונסמן 
+\begin_inset Formula $d_{H}\left(\rho,\alpha\right)=\left|\sset i{\rho_{i}\neq\alpha_{i}}\right|$
+\end_inset
+
+. יהי 
+\begin_inset Formula $d_{i}=d_{H}\left(\rho_{i},\alpha\right)$
+\end_inset
+
+ המרחק אחרי הצעד ה-
+\begin_inset Formula $i$
+\end_inset
+
+. אם 
+\begin_inset Formula $d_{i}=0$
+\end_inset
+
+ אז 
+\begin_inset Formula $\rho_{i}=\alpha$
+\end_inset
+
+ וסיימנו (ייתכן שנעצור עוד קודם, על השמה מספקת אחרת).
+\end_layout
+
+\begin_layout Claim
+המרחק משתנה ב-
+\begin_inset Formula $\pm1$
+\end_inset
+
+ בכל צעד, ו:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $d_{i}=n$
+\end_inset
+
+ אז 
+\begin_inset Formula $d_{i+1}=n-1$
+\end_inset
+
+ בוודאות.
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $0<d_{i}<n$
+\end_inset
+
+ אז 
+\begin_inset Formula $\Pr\left[d_{i+1}=d_{i}-1\right]\geq\frac{1}{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+הפסוקית שבחרנו לא מסופקת ע
+\begin_inset Quotes erd
+\end_inset
+
+י 
+\begin_inset Formula $\rho_{i}$
+\end_inset
+
+ אבל מסופקת ע
+\begin_inset Quotes erd
+\end_inset
+
+י 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, לכן לפחות אחד משני המשתנים בה מקבל ב-
+\begin_inset Formula $\rho_{i}$
+\end_inset
+
+ ערך שונה מאשר ב-
+\begin_inset Formula $\alpha$
+\end_inset
+
+. בהסתברות לפחות 
+\begin_inset Formula $\frac{1}{2}$
+\end_inset
+
+ נבחר בו, ואז המרחק קטן ב-1 (ואם שניהם שונים, המרחק קטן בוודאות).
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+נשווה ל
+\emph on
+הילוך שיכור
+\emph default
+ 
+\begin_inset Formula $Y_{i}$
+\end_inset
+
+ על 
+\begin_inset Formula $\left\{ 0,\ldots,n\right\} $
+\end_inset
+
+ עם קיר ב-
+\begin_inset Formula $n$
+\end_inset
+
+: מ-
+\begin_inset Formula $n$
+\end_inset
+
+ הוא זז ל-
+\begin_inset Formula $n-1$
+\end_inset
+
+, ומכל נקודה אחרת הוא זז ימינה או שמאלה בהסתברות 
+\begin_inset Formula $\frac{1}{2}$
+\end_inset
+
+. המרחק 
+\begin_inset Formula $d_{i}$
+\end_inset
+
+ מתנהג לפחות טוב כמו 
+\begin_inset Formula $Y_{i}$
+\end_inset
+
+: נצמד את שני ההילוכים בעזרת אותו מספר אקראי 
+\begin_inset Formula $U_{i}\in\left[0,1\right]$
+\end_inset
+
+ בכל צעד, כך שכל אחד זז שמאלה אם 
+\begin_inset Formula $U_{i}$
+\end_inset
+
+ קטן מהסתברות הצעד שמאלה שלו. כשהם באותה נקודה, 
+\begin_inset Formula $d$
+\end_inset
+
+ לא יכול לזוז ימינה בזמן ש-
+\begin_inset Formula $Y$
+\end_inset
+
+ זז שמאלה (כי ההסתברות של 
+\begin_inset Formula $d$
+\end_inset
+
+ לזוז שמאלה גדולה יותר). כשהם בנקודות שונות, ההפרש ביניהם זוגי (שניהם זזים ב-
+\begin_inset Formula $\pm1$
+\end_inset
+
+ בכל צעד ומתחילים באותה נקודה), ולכן צעד אחד לא יכול להפוך את הסדר. לכן תמיד 
+\begin_inset Formula $d_{i}\leq Y_{i}$
+\end_inset
+
+, עד שהאלגוריתם מצליח. לכן מספיק לחסום את הזמן שלוקח לשיכור להגיע הביתה, לאפס.
+\end_layout
+
+\begin_layout Claim
+יהי 
+\begin_inset Formula $h_{j}$
+\end_inset
+
+ תוחלת מספר הצעדים של 
+\begin_inset Formula $Y$
+\end_inset
+
+ עד שהוא מגיע ל-0, כשמתחילים ב-
+\begin_inset Formula $j$
+\end_inset
+
+. אז 
+\begin_inset Formula $h_{j}=2nj-j^{2}\leq n^{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+לפי תוחלת מותנית בצעד הראשון,
+\begin_inset Formula 
+\[
+h_{0}=0,\qquad h_{n}=1+h_{n-1},\qquad h_{j}=1+\frac{h_{j-1}+h_{j+1}}{2}\quad\left(0<j<n\right).
+\]
+
+\end_inset
+
+נסמן 
+\begin_inset Formula $\Delta_{j}=h_{j}-h_{j-1}$
+\end_inset
+
+. המשוואה האמצעית שקולה ל-
+\begin_inset Formula $\Delta_{j+1}=\Delta_{j}-2$
+\end_inset
+
+, ותנאי הקיר נותן 
+\begin_inset Formula $\Delta_{n}=1$
+\end_inset
+
+. לכן 
+\begin_inset Formula $\Delta_{j}=2\left(n-j\right)+1$
+\end_inset
+
+, ו-
+\begin_inset Formula 
+\[
+h_{j}=\sum_{i=1}^{j}\Delta_{i}=\sum_{i=1}^{j}\left(2\left(n-i\right)+1\right)=j\left(2n-j\right)\leq n^{2}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Corollary
+אם 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ ספיקה, תוחלת מספר הצעדים עד שהאלגוריתם מוצא השמה מספקת היא לכל היותר 
+\begin_inset Formula $n^{2}$
+\end_inset
+
+, ולכן לפי מרקוב, אחרי 
+\begin_inset Formula $2n^{2}$
+\end_inset
+
+ צעדים לא סיימנו בהסתברות לכל היותר 
+\begin_inset Formula $\frac{1}{2}$
+\end_inset
+
+. כלומר 
+\begin_inset Formula $\ksat 2\in\rp$
+\end_inset
+
+ באמצעות האלגוריתם הזה.
+\end_layout
+
+\begin_layout Subsection
+האלגוריתם של שונינג ל-
+\begin_inset Formula $3\text{-}\mathsf{SAT}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+ננסה את אותו רעיון ל-
+\begin_inset Formula $\ksat 3$
+\end_inset
+
+. עכשיו בפסוקית יש שלושה ליטרלים, ורק אחד מהם בהכרח מתקן, אז נתקרב ל-
+\begin_inset Formula $\alpha$
+\end_inset
+
+ רק בהסתברות 
+\begin_inset Formula $\geq\frac{1}{3}$
+\end_inset
+
+. להילוך עם סחף החוצה מהבית לוקח זמן אקספוננציאלי להגיע הביתה, ולכן הרעיון הוא לא להתעקש: מתחילים מהשמה אקראית, עושים מעט צעדים, ואם לא הצלחנו מתחילים מחדש.
+\end_layout
+
+\begin_layout Algorithm
+חוזרים 
+\begin_inset Formula $T$
+\end_inset
+
+ פעמים:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+נגריל השמה 
+\begin_inset Formula $\rho$
+\end_inset
+
+ באופן אחיד.
+\end_layout
+
+\begin_layout Enumerate
+נבצע 
+\begin_inset Formula $3n$
+\end_inset
+
+ צעדים: נבחר פסוקית לא מסופקת, נבחר אחד משלושת הליטרלים בה באקראי ונהפוך אותו.
+\end_layout
+
+\begin_layout Enumerate
+אם בשלב כלשהו 
+\begin_inset Formula $\rho\models\varphi$
+\end_inset
+
+ נקבל.
+\end_layout
+
+\end_deeper
+\begin_layout Algorithm
+אם אף ניסיון לא הצליח, נדחה.
+\end_layout
+
+\begin_layout Claim
+אם 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ ספיקה, כל ניסיון מצליח בהסתברות לפחות 
+\begin_inset Formula $\left(\frac{3}{4}\right)^{n}\cdot\frac{1}{\poly\left(n\right)}$
+\end_inset
+
+. לכן 
+\begin_inset Formula $T=\left(\frac{4}{3}\right)^{n}\poly\left(n\right)$
+\end_inset
+
+ ניסיונות מספיקים, וזמן הריצה הוא 
+\begin_inset Formula $\left(\frac{4}{3}\right)^{n}\poly\left(n\right)\approx1.334^{n}$
+\end_inset
+
+, לעומת 
+\begin_inset Formula $2^{n}$
+\end_inset
+
+ בחיפוש נאיבי.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+נקבע השמה מספקת 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, ונניח שהתחלנו במרחק 
+\begin_inset Formula $k$
+\end_inset
+
+. כל צעד מקטין את המרחק בהסתברות לפחות 
+\begin_inset Formula $\frac{1}{3}$
+\end_inset
+
+. אחת הדרכים להגיע ל-0 היא שבתוך 
+\begin_inset Formula $3k$
+\end_inset
+
+ צעדים יהיו בדיוק 
+\begin_inset Formula $k$
+\end_inset
+
+ צעדים 
+\begin_inset Quotes erd
+\end_inset
+
+רעים
+\begin_inset Quotes erd
+\end_inset
+
+ ו-
+\begin_inset Formula $2k$
+\end_inset
+
+ צעדים 
+\begin_inset Quotes erd
+\end_inset
+
+טובים
+\begin_inset Quotes erd
+\end_inset
+
+ (ואם הגענו ל-0 קודם, סיימנו עוד קודם). לכן
+\begin_inset Formula 
+\[
+q_{k}\geq\binom{3k}{k}\left(\frac{2}{3}\right)^{k}\left(\frac{1}{3}\right)^{2k}.
+\]
+
+\end_inset
+
+לפי סטירלינג 
+\begin_inset Formula $\binom{3k}{k}=\Theta\left(\frac{1}{\sqrt{k}}\right)\cdot\frac{27^{k}}{4^{k}}$
+\end_inset
+
+, ולכן 
+\begin_inset Formula $q_{k}\geq\frac{1}{\poly\left(n\right)}\cdot\frac{27^{k}}{4^{k}}\cdot\frac{2^{k}}{27^{k}}=\frac{2^{-k}}{\poly\left(n\right)}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+עכשיו נמצע על נקודת ההתחלה: 
+\begin_inset Formula $d_{H}\left(\rho,\alpha\right)\sim\mathrm{Bin}\left(n,\frac{1}{2}\right)$
+\end_inset
+
+, כלומר 
+\begin_inset Formula $\Pr\left[d_{H}=k\right]=\binom{n}{k}2^{-n}$
+\end_inset
+
+. לכן
+\begin_inset Formula 
+\[
+\Pr\left[\text{success}\right]\geq\sum_{k=0}^{n}\binom{n}{k}2^{-n}\cdot\frac{2^{-k}}{\poly\left(n\right)}=\frac{2^{-n}}{\poly\left(n\right)}\left(1+\frac{1}{2}\right)^{n}=\frac{1}{\poly\left(n\right)}\left(\frac{3}{4}\right)^{n}.
+\]
+
+\end_inset
+
+עם 
+\begin_inset Formula $T=\left(\frac{4}{3}\right)^{n}\poly\left(n\right)$
+\end_inset
+
+ ניסיונות בלתי תלויים, ההסתברות שכולם נכשלו היא קבועה קטנה.
+\end_layout
+
+\end_deeper
+\begin_layout Remark
+הקבוע 
+\begin_inset Formula $\frac{4}{3}$
+\end_inset
+
+ שופר מאז כמה פעמים (בהרצאה הוזכר שעד לאחרונה הטוב ביותר היה בערך 
+\begin_inset Formula $1.32^{n}$
+\end_inset
+
+), ולאחרונה גם בתוצאה חדשה מאוד. ההשערה 
+\lang english
+ETH
+\lang hebrew
+ (
+\lang english
+Exponential Time Hypothesis
+\lang hebrew
+) אומרת שקיים 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\ksat 3$
+\end_inset
+
+ לא ניתנת לפתרון בזמן 
+\begin_inset Formula $2^{\varepsilon n}$
+\end_inset
+
+. סביב השערות כאלה נבנה תחום שלם, 
+\lang english
+fine-grained complexity
+\lang hebrew
+, שבו מראים בעזרת רדוקציות עדינות שאם אפשר לשפר אלגוריתם מסוים (למשל מ-
+\begin_inset Formula $n^{3}$
+\end_inset
+
+ ל-
+\begin_inset Formula $n^{2.99}$
+\end_inset
+
+) אז אפשר לשפר גם את 
+\begin_inset Formula $\ksat 3$
+\end_inset
+
+. שיפור של קבוע הבסיס לא סותר את 
+\lang english
+ETH
+\lang hebrew
+, אבל מראה כמה מעט אנחנו יודעים על הקושי המדויק של בעיות כאלה.
+\end_layout
+
+\begin_layout Subsection
+איפה 
+\begin_inset Formula $\mathsf{BPP}$
+\end_inset
+
+ נמצאת?
+\end_layout
+
+\begin_layout Standard
+ראינו 
+\begin_inset Formula $\P\subseteq\bpp\subseteq\psp$
+\end_inset
+
+ (מריצים על כל 
+\begin_inset Formula $r$
+\end_inset
+
+ וסופרים). מה עוד אפשר להגיד?
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+אדלמן
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\bpp\subseteq\ppoly$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+יהי 
+\begin_inset Formula $L\in\bpp$
+\end_inset
+
+. לפי ההגברה יש מ
+\begin_inset Quotes erd
+\end_inset
+
+ט הסתברותית פולינומית 
+\begin_inset Formula $M$
+\end_inset
+
+ שמשתמשת ב-
+\begin_inset Formula $m=\poly\left(n\right)$
+\end_inset
+
+ ביטים אקראיים וטועה בהסתברות קטנה מ-
+\begin_inset Formula $2^{-n}$
+\end_inset
+
+ על כל קלט באורך 
+\begin_inset Formula $n$
+\end_inset
+
+. לכל 
+\begin_inset Formula $x\in\left\{ 0,1\right\} ^{n}$
+\end_inset
+
+ נסמן 
+\begin_inset Formula $B_{x}=\sset{r\in\left\{ 0,1\right\} ^{m}}{M\left(x,r\right)\neq L\left(x\right)}$
+\end_inset
+
+, אז 
+\begin_inset Formula $\left|B_{x}\right|<2^{-n}\cdot2^{m}$
+\end_inset
+
+. מחסם האיחוד
+\begin_inset Formula 
+\[
+\left|\bigcup_{x\in\left\{ 0,1\right\} ^{n}}B_{x}\right|<2^{n}\cdot2^{-n}\cdot2^{m}=2^{m},
+\]
+
+\end_inset
+
+ולכן קיים 
+\begin_inset Formula $r_{n}$
+\end_inset
+
+ שאינו רע לאף קלט באורך 
+\begin_inset Formula $n$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+כמו שראינו בהרצאה הקודמת, את 
+\begin_inset Formula $M\left(\cdot,r_{n}\right)$
+\end_inset
+
+ אפשר לממש במעגל בגודל פולינומי, כאשר 
+\begin_inset Formula $r_{n}$
+\end_inset
+
+ מקודד בתוך המעגל. זה מעגל שמכריע את 
+\begin_inset Formula $L$
+\end_inset
+
+ על כל הקלטים באורך 
+\begin_inset Formula $n$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Remark
+המעגלים לא אחידים: לכל 
+\begin_inset Formula $n$
+\end_inset
+
+ יש 
+\begin_inset Formula $r_{n}$
+\end_inset
+
+ משלו, ואנחנו לא יודעים איך למצוא אותו ביעילות. במונחים של עצה (מתרגיל הבית): 
+\begin_inset Formula $r_{n}$
+\end_inset
+
+ הוא עצה טובה, אחת לכל אורך קלט.
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+סיפסר-גאץ', לאוטמן
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\bpp\subseteq\SigmaP 2\cap\PiP 2$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+מספיק להראות 
+\begin_inset Formula $\bpp\subseteq\SigmaP 2$
+\end_inset
+
+, כי 
+\begin_inset Formula $\bpp$
+\end_inset
+
+ סגורה למשלים. יהי 
+\begin_inset Formula $L\in\bpp$
+\end_inset
+
+ עם מכונה 
+\begin_inset Formula $M$
+\end_inset
+
+ שטועה בהסתברות לכל היותר 
+\begin_inset Formula $2^{-n}$
+\end_inset
+
+ ומשתמשת ב-
+\begin_inset Formula $m$
+\end_inset
+
+ ביטים אקראיים, כאשר 
+\begin_inset Formula $m<2^{n}$
+\end_inset
+
+. נסמן 
+\begin_inset Formula $A_{x}=\sset r{M\left(x,r\right)=1}$
+\end_inset
+
+. הרעיון: אם 
+\begin_inset Formula $x\in L$
+\end_inset
+
+ אז 
+\begin_inset Formula $A_{x}$
+\end_inset
+
+ כמעט כל המרחב, ולכן 
+\begin_inset Formula $m$
+\end_inset
+
+ הזזות שלו מכסות את כל 
+\begin_inset Formula $\left\{ 0,1\right\} ^{m}$
+\end_inset
+
+. אם 
+\begin_inset Formula $x\notin L$
+\end_inset
+
+ אז 
+\begin_inset Formula $A_{x}$
+\end_inset
+
+ זעירה, ושום 
+\begin_inset Formula $m$
+\end_inset
+
+ הזזות לא מכסות. נראה ש-
+\begin_inset Formula 
+\[
+x\in L\iff\exists s_{1},\ldots,s_{m}\in\left\{ 0,1\right\} ^{m}\ \forall y\in\left\{ 0,1\right\} ^{m}\ \bigvee_{i=1}^{m}M\left(x,y\oplus s_{i}\right)=1,
+\]
+
+\end_inset
+
+וזה ביטוי 
+\begin_inset Formula $\SigmaP 2$
+\end_inset
+
+ כי הבדיקה הפנימית פולינומית.
+\end_layout
+
+\end_deeper
+\begin_layout Remark
+לסיכום, 
+\begin_inset Formula $\bpp$
+\end_inset
+
+ נמצאת די נמוך בהיררכיה הפולינומית, אבל זה הכי טוב שאנחנו יודעים להוכיח. ההשערה היא 
+\begin_inset Formula $\bpp=\P$
+\end_inset
+
+.
+\end_layout
+\end_body
+\end_document

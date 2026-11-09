@@ -103,6 +103,24 @@
             }
         }
     },
+    "computational_complexity": {
+        "display_name": "סיבוכיות",
+        "URL": "summaries/complexity/complexity_book.pdf",
+        "button_color": "gradient-red-computational_complexity",
+        "pdf_info": {
+            "under_construction": {
+                "": "בבנייה",
+                "image": "icon/construction.png"
+            },
+            "course_info": {
+                "שם קורס מלא": "סיבוכיות",
+                "מספר קורס": "0368-3168",
+                "שנה וסמסמטר": "2027א",
+                "מרצה": ["פרופ' אמיר שפילקה"],
+                "image": "icon/info.png"
+            }
+        }
+    },
     "topics_in_cryptography": {
         "display_name": "נושאים בקריפטוגרפיה",
         "URL": "summaries/topics_crypto/topics_crypto.pdf",
