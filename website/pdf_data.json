@@ -107,6 +107,20 @@
             }
         }
     },
+    "topics_in_cryptography": {
+        "display_name": "נושאים בקריפטוגרפיה",
+        "URL": "summaries/topics_crypto/topics_crypto.pdf",
+        "button_color": "gradient-red-topics_in_cryptography",
+        "pdf_info": {
+            "course_info": {
+                "שם קורס מלא": "נושאים בקריפטוגרפיה: קריפטוגרפיה אינפורמציה-תיאורטית",
+                "מספר קורס": "0510-7400",
+                "שנה וסמסמטר": "2026ב",
+                "מרצה": ["פרופ' בני אפלבאום", "ד\"ר עומר פנת"],
+                "image": "icon/info.png"
+            }
+        }
+    },
     "signals_and_systems": {
         "display_name": "אותות ומערכות",
         "URL": "summaries/signals/Signals_summary.pdf",

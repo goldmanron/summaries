@@ -1,5 +1,5 @@
-#LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 620
+#LyX 2.5 created this file. For more info see https://www.lyx.org/
+\lyxformat 643
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -8,41 +8,29 @@
 \begin_preamble
 % --- Load amsthm package for theorem styles ---
 \usepackage{amsthm}
-
-
-
 % Allows fancy stuff in the page header
 \usepackage{fancyhdr}
 \pagestyle{fancy}
-
 \usepackage{enumitem}
 \setlist[itemize,1]{label={\fontfamily{cmr}\fontencoding{T1}\selectfont\textbullet}}
-
 %Allows circuit drawing
 \usepackage{circuitikz}
-
 %Allows plotting graphs
 \usepackage{pgfplots}
-
 \usetikzlibrary{svg.path,decorations.pathmorphing, backgrounds,decorations.pathreplacing, automata, shapes.geometric, arrows.meta, positioning, calc}
-
 \usepackage{mathtools}
 \let\savedleft\left
   \let\savedright\right
-
   % Redefine \left and \right to insert the pairing-group hack
   \renewcommand{\left}{\mathopen{}\mathclose\bgroup\savedleft}
   \renewcommand{\right}{\aftergroup\egroup\savedright}
-
 % Necessary Commands:
 \usepackage{autobreak}
 \usepackage[T1]{fontenc}
 \usepackage{relsize}
-
 % Convert the QED Symbol at the end of proofs to a solid black square (credit: Yakir Oz):
 \usepackage{amssymb}
 \renewcommand{\qedsymbol}{$\blacksquare$}
-
 % Correct the reversed parentheses in labels:
 \usepackage{polyglossia}
 \setmainlanguage{hebrew}
@@ -51,7 +39,6 @@
 \def\maketag@@@#1{\hbox{\m@th\normalfont\LRE{#1}}}
 \def\tagform@#1{\maketag@@@{(\ignorespaces#1\unskip)}}
 \makeatother
-
 % Create disjoint union symbols:
 \makeatletter
 \def\moverlay{\mathpalette\mov@rlay}
@@ -66,8 +53,6 @@
 \makeatother
 \newcommand{\cupdot}{\charfusion[\mathbin]{\cup}{\cdot}}
 \newcommand{\bigcupdot}{\charfusion[\mathop]{\bigcup}{\cdot}}
-
-
 \newcommand{\kaliLargeLand}{\mathop{\mathlarger{\mathlarger{\mathlarger{\land}}}}}
 \newcommand{\hebtext}[1]{\mbox{\R{\#1}}}
 \end_preamble
@@ -140,18 +125,26 @@ enumitem
 \use_indices false
 \paperorientation portrait
 \suppress_date false
-\justification true
-\use_refstyle 1
+\justification default
+\crossref_package refstyle
 \use_formatted_ref 0
 \use_minted 0
 \use_lineno 0
+\backgroundcolor none
+\fontcolor none
+\notefontcolor lightgray
+\boxbgcolor red
+\table_border_color default
+\table_odd_row_color default
+\table_even_row_color default
+\table_alt_row_colors_start 1
 \branch mathematical foundations
 \selected 1
 \filename_suffix 0
 \color background background
 \end_branch
 \branch linear algebra
-\selected 0
+\selected 1
 \filename_suffix 0
 \color background background
 \end_branch
@@ -192,6 +185,7 @@ enumitem
 \html_be_strict false
 \docbook_table_output 0
 \docbook_mathml_prefix 1
+\docbook_mathml_version 0
 \end_header
 
 \begin_body
@@ -266,7 +260,7 @@ status open
 \begin_layout Standard
 \begin_inset Branch linear algebra
 inverted 0
-status collapsed
+status open
 
 \begin_layout Chapter
 אלגברה לינארית במימד בן מנייה
@@ -552,7 +546,7 @@ nolink "false"
 \end_inset
 
  אם קיימת קבוצה 
-\begin_inset Formula $\left\{ \left|i\right\rangle \right\} _{i=1}^{n}\subseteq V$
+\begin_inset Formula $\left\{ \left|i\right\rangle \right\} ^{n}_{i=1}\subseteq V$
 \end_inset
 
  בלתי תלויה לינארית כך שלכל 
@@ -564,7 +558,7 @@ nolink "false"
 \end_inset
 
  
-\begin_inset Formula $\left|\alpha\right\rangle =\sum_{i=1}^{n}a_{i}\left|i\right\rangle $
+\begin_inset Formula $\left|\alpha\right\rangle =\sum^{n}_{i=1}a_{i}\left|i\right\rangle $
 \end_inset
 
 .
@@ -588,7 +582,7 @@ nolink "false"
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $a=\left\{ a_{i}\right\} _{i=1}^{n}$
+\begin_inset Formula $a=\left\{ a_{i}\right\} ^{n}_{i=1}$
 \end_inset
 
  הם הרכיבים של 
@@ -855,7 +849,7 @@ c\left|\alpha\right\rangle  & =\sum_{i}ca_{i}\left|i\right\rangle
  אזי:
 \begin_inset Formula 
 \[
-\braket{\alpha}{\beta}=\sum_{i}\sum_{j}a_{i}^{*}b_{j}\braket ij=\sum_{i}a_{i}^{*}b_{i}
+\braket{\alpha}{\beta}=\sum_{i}\sum_{j}a^{*}_{i}b_{j}\braket ij=\sum_{i}a^{*}_{i}b_{i}
 \]
 
 \end_inset
@@ -942,7 +936,7 @@ status open
  באופן יחיד עם איזומורפיזם הקואורדינטות
 \begin_inset Formula 
 \begin{align*}
-\left|\alpha\right\rangle =\sum_{i=1}^{n}a_{i}\left|i\right\rangle \mapsto\begin{pmatrix}a_{1}\\
+\left|\alpha\right\rangle =\sum^{n}_{i=1}a_{i}\left|i\right\rangle \mapsto\begin{pmatrix}a_{1}\\
 \vdots\\
 a_{n}
 \end{pmatrix} & , & V\cong\mathbb{F}^{n}
@@ -955,7 +949,7 @@ a_{n}
 
 \begin_layout Definition
 עבור 
-\begin_inset Formula $\left|\alpha\right\rangle =\sum_{i=1}^{n}a_{i}\left|i\right\rangle \in V$
+\begin_inset Formula $\left|\alpha\right\rangle =\sum^{n}_{i=1}a_{i}\left|i\right\rangle \in V$
 \end_inset
 
 :
@@ -1085,7 +1079,7 @@ ket
 \end_inset
 
  אזי 
-\begin_inset Formula $\left\langle \alpha\right|=\sum_{i}a_{i}^{*}\left\langle i\right|$
+\begin_inset Formula $\left\langle \alpha\right|=\sum_{i}a^{*}_{i}\left\langle i\right|$
 \end_inset
 
 .
