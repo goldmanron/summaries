@@ -1,0 +1,34 @@
+% Conditional disclosure of secrets: syntax and the f-channel view (2036 x 1019 px)
+\figsetup{2036}{1019}%
+\begin{tikzpicture}[fig]
+\figbbox
+\node[at base] at (262,97) {\fs{62}\fit{638}{$f\colon\{0,1\}^n\times\{0,1\}^n\to\{0,1\}$}};
+\filldraw[fill=sbox, draw=black, px=5] (235.5,198.5) rectangle (364.5,327.5);
+\node at (300,266) {\fs{55}A};
+\filldraw[fill=sbox, draw=black, px=5] (799.5,198.5) rectangle (927.5,327.5);
+\node at (864,266) {\fs{55}B};
+\node[at base] at (162,280) {\fs{62}$x$};
+\node[at base] at (975,280) {\fs{62}$y$};
+\draw[px=4, dash pattern=on 25*\fu off 12*\fu] (385,263) -- (780,263);
+\node[at base] at (430,228) {\fs{45}\fit{265}{Randomness $r$}};
+\node[at base] at (490,328) {\fs{45}\fit{145}{Secret $S$}};
+\draw[arr={3}{18}{14}] (300,354) -- (497,653);
+\draw[arr={3}{18}{14}] (864,354) -- (667,653);
+\node[at base] at (297,532) {\fs{62}\fit{73}{$m_A$}};
+\node[at base] at (806,532) {\fs{62}\fit{74}{$m_B$}};
+\filldraw[fill=black!15, draw=black, px=5] (517.5,681.5) rectangle (645.5,810.5);
+\node at (582,747) {\fs{55}C};
+\node[at base] at (540,865) {\fs{62}\fit{85}{$x,y$}};
+\node[at base] at (15,985) {\fs{60}\fit{1145}{\sbf{Goal: Charlie learns secret if and only if f(x,y)=1}}};
+\node[at base] at (1660,68) {\fs{58}\fit{225}{\sbf{f-channel}}};
+\fill[spink] (1703,132) rectangle (1796,221); \node at (1749,180) {\fs{50}s};
+\node[at base] at (1517,255) {\fs{50}x};
+\node[at base] at (1957,258) {\fs{50}y};
+\filldraw[fill=sbox, draw=sboxedge, px=3] (1698,265) -- (1799,265) -- (1799,540) -- (1850,540) -- (1748,641) -- (1646,540) -- (1698,540) -- cycle;
+\node[white] at (1748,428) {\fs{50}\sbf{f}};
+\fill[sbox] (1526,664) rectangle (1961,753); \node at (1744,710) {\fs{55}message};
+\node[at base] at (1300,865) {\fs{55}\fit{222}{If f(x,y)=1}};
+\fill[spink] (1703,800) rectangle (1796,889); \node at (1749,848) {\fs{50}s};
+\node[at base] at (1300,997) {\fs{55}\fit{225}{If f(x,y)=0}};
+\fill[black!10] (1703,932) rectangle (1796,1019); \node at (1745,975) {\fs{45}$\perp$};
+\end{tikzpicture}%

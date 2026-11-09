@@ -1,0 +1,18 @@
+% Yao: a garbled AND gate as four double-locked boxes (1241 x 739 px)
+\figsetup{1241}{739}%
+\begin{tikzpicture}[fig]
+\figbbox
+% the gate
+\draw[px=3] (111,266) -- (111,336) (77,392) -- (77,467) (150,392) -- (150,467);
+\filldraw[fill=orange!60!yellow, draw=black!70, px=2] (49,392) -- (180,392) arc[start angle=0, end angle=-180, x radius=65.5, y radius=56];
+\node[at base, blue!70!black] at (101,245) {\fs{50}c};
+\node[at base, blue!70!black] at (69,535) {\fs{50}a};
+\node[at base, blue!70!black] at (139,535) {\fs{50}b};
+% four rows: lock box, keys a and b, key c, label
+\foreach \y/\ca/\cb/\cc/\tp/\bl in {91/kgreen/kgreen/kgreen/19/163, 266/kgreen/kblue/kblue/202/327, 454/kblue/kgreen/kgreen/383/495, 625/kblue/kblue/kgreen/564/661} {
+  \icon{572}{\tp}{842}{\tp+178}{\pclockbox}
+  \pxkey{398}{\y+8}{34}{\ca}{a}
+  \pxkey{464}{\y+8}{34}{\cb}{b}
+  \pxkey{656}{\y+4}{34}{\cc}{c}
+  \node[at base] at (919,\bl) {\fs{48}\fit{178}{\sbf{E\textsubscript{\textcolor{\ca}{a}}(E\textsubscript{\textcolor{\cb}{b}}(\textcolor{\cc}{c}))}}};}
+\end{tikzpicture}%

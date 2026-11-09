@@ -1,0 +1,20 @@
+% Error correction / detection: encode, tamper with up to delta of the symbols, decode (1908 x 556 px)
+\figsetup{1908}{556}%
+\begin{tikzpicture}[fig]
+\figbbox
+\node[at base, sblue] at (0,141) {\fs{57}\fit{363}{$M=(M_1,\ldots,M_k)$}};
+\draw[blkh={14}{20}{31}] (303,170) -- (354,170);
+\filldraw[fill=sbox, draw=sboxedge, px=3] (390.5,111.5) rectangle (700.5,240.5);
+\node[white] at (546,178) {\fs{50}Encode};
+\node[at base, sred] at (881,84) {\fs{50}\fit{209}{Codeword}};
+\node[at base, sred] at (820,148) {\fs{57}\fit{331}{$C=(C_1,\ldots,C_N)$}};
+\draw[blkh={18}{18}{37}] (763,181) -- (1101,181);
+\filldraw[fill=sbox, draw=sboxedge, px=3] (1229.5,120.5) rectangle (1539.5,249.5);
+\node[white] at (1385,187) {\fs{50}Decode};
+\draw[blkh={14}{20}{31}] (1617,192) -- (1668,192);
+\node[at base, sblue] at (1806,209) {\fs{50}$M$};
+\node[at base, sblue] at (1792,313) {\fs{46}\fit{85}{or $\perp$}};
+\node[at base] at (173,433) {\fs{55}\fit{583}{\sbf{Can tamper (erase/corrupt)}}};
+\node[at base] at (174,510) {\fs{55}\fit{573}{\sbf{up to $\boldsymbol{\delta}$-fraction of symbols}}};
+\icon{854}{337}{1111}{579}{\pcdevil}
+\end{tikzpicture}%

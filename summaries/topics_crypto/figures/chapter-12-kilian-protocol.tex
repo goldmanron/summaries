@@ -1,0 +1,21 @@
+% Kilian's succinct argument: commit to the PCP with a Merkle tree (1958 x 788 px)
+\figsetup{1958}{788}%
+\begin{tikzpicture}[fig, kb/.style={draw=black, px=3}]
+\figbbox
+\node[at base] at (129,93) {\fs{55}\fit{270}{$P(1^n,x,w)$}};
+\node[at base] at (1700,93) {\fs{55}\fit{206}{$V(1^n,x)$}};
+\draw[px=2] (565,240) -- (394,333) (565,240) -- (742,333) (394,392) -- (304,482) (394,392) -- (482,482) (742,392) -- (654,482) (742,392) -- (830,482);
+\draw[kb] (520,185) rectangle (611,240); \node at (565,213) {\fs{50}$\mathit{rt}$};
+\draw[kb] (350,333) rectangle (438,392) (698,333) rectangle (786,392);
+\foreach \c in {304,482,654,830} {\draw[kb] (\c-44,482) rectangle (\c+44,538);
+  \draw[arr={2}{16}{12}] (\c-38,634) -- (\c-6,541); \draw[arr={2}{16}{12}] (\c+38,634) -- (\c+6,541);}
+\draw[kb] (216,634) rectangle (920,713); \node at (568,674) {\fs{55}$\pi\leftarrow P_{PCP}(x,w)$};
+\draw[blue!40!black, arr={3}{22}{14}] (1728,260) -- (1120,260);
+\draw[arr={3}{22}{14}] (1119,401) -- (1728,401);
+\draw[arr={3}{22}{14}] (1728,541) -- (1119,541);
+\draw[arr={3}{22}{14}] (1119,682) -- (1728,682);
+\node[at base] at (1404,211) {\fs{55}$h$};
+\node[at base] at (1394,353) {\fs{55}rt};
+\node[at base] at (1172,492) {\fs{55}\fit{520}{$q_1,\ldots,q_m\leftarrow V_{PCP}(x)$}};
+\node[at base] at (1133,616) {\fs{55}\fit{520}{$\{a_i=\pi[q_i],\mathrm{path}_i\}_{i\in[m]}$}};
+\end{tikzpicture}%

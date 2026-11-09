@@ -1,0 +1,23 @@
+% CDS for formulas: recursion over the formula tree (2268 x 942 px)
+\figsetup{2268}{942}%
+\begin{tikzpicture}[fig, nd/.style={fill=spink, draw=red!60!black, px=3}]
+\figbbox
+\filldraw[fill=sbox, draw=blue!40!black, px=2] plot[smooth cycle, tension=0.6] coordinates {(1293,158) (1400,172) (1470,230)
+  (1560,278) (1625,335) (1690,405) (1705,500) (1705,600) (1688,655) (1645,705) (1580,750) (1500,805) (1440,862) (1370,910)
+  (1180,940) (760,940) (690,910) (652,845) (628,745) (655,672) (720,600) (805,515) (875,458) (950,382) (1060,312)
+  (1160,250) (1252,202) (1287,178)};
+\filldraw[fill=orange!80!red!90, draw=brown!60!black, px=2] plot[smooth cycle, tension=0.6] coordinates {(1822,248) (1890,188)
+  (2050,180) (2105,205) (2145,265) (2210,322) (2242,405) (2255,500) (2248,580) (2215,635) (2170,672) (2080,690)
+  (1980,690) (1850,686) (1762,660) (1720,600) (1712,500) (1760,402) (1795,318)};
+\foreach \a/\b/\c/\d in {882/760/1048/605, 1307/737/1172/605, 1176/487/1343/332, 1601/463/1466/332,
+    1463/218/1650/133, 1907/218/1775/133, 1803/463/1906/333, 2139/463/2030/333}
+  {\draw[arr={3.5}{16}{13}] (\a,\b) -- (\c,\d);}
+\foreach \x/\y/\t in {1712/77/AND, 1404/273/AND, 1968/274/OR, 1115/542/OR}
+  {\filldraw[nd] (\x,\y) ellipse (85 and 78); \node at (\x,\y+2) {\fs{45}\sbf{\t}};}
+\foreach \x/\y/\t in {1601/542/x_3, 1805/542/\overline{x_1}, 2139/542/x_4, 821/815/x_1, 1307/815/x_2}
+  {\filldraw[nd] (\x,\y) ellipse (85 and 78); \node at (\x,\y+3) {\fs{50}$\boldsymbol{\t}$};}
+\node[at base, blue!45!black] at (1425,148) {\fs{65}G};
+\node[at base, brown!70!black] at (1918,148) {\fs{65}H};
+\node[at base] at (35,105) {\fs{62}\fit{1043}{\sbf{Proof: Handle larger formulas via recursion}}};
+\node[at base, sgray] at (2088,912) {\fs{28}34};
+\end{tikzpicture}%

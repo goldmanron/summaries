@@ -1,0 +1,43 @@
+% Two-server PIR with the database as a sqrt(N) x sqrt(N) matrix (1721 x 1081 px)
+\figsetup{1721}{1081}%
+\begin{tikzpicture}[fig, tnr/.style={font=\rmfamily\bfseries\itshape}]
+\figbbox
+% database matrix
+\fill[black!20] (667,98) rectangle (1022,414);
+\foreach \x in {731,788,846,903,961} \draw[px=2] (\x,100) -- (\x,412);
+\foreach \y in {140,178,216,255,293,332,370} \draw[px=2] (669,\y) -- (1020,\y);
+\fill[black!8] (799,197) rectangle (894,292);
+\draw[black!65, px=5] (731,100) -- (731,412) (788,100) -- (788,412);
+\fill[cyan!85] (733,295) rectangle (786,330);
+\draw[blue!50!black, px=5] (669.5,100.5) rectangle (1019.5,411.5);
+\node[at base, red!55!black] at (820,280) {\fs{70}\rmfamily\bfseries\itshape X};
+\draw[dotted, darr={2}{10}{8}] (670,63) -- (1022,63);
+\node[at base, blue] at (813,47) {\fs{34}\fit{58}{\rmfamily\bfseries\itshape N\textsuperscript{1/2}}};
+\draw[dotted, darr={2}{10}{8}] (1066,107) -- (1066,412);
+\node[at base, blue] at (1082,278) {\fs{34}\fit{57}{\rmfamily\bfseries\itshape N\textsuperscript{1/2}}};
+\draw[black!70, arr={4}{12}{12}] (760,470) -- (760,425);
+\node[at base, teal] at (748,526) {\fs{52}\rmfamily\bfseries\itshape i};
+% servers
+\icon{171}{189}{333}{401}{\pcserver}
+\icon{1362}{189}{1524}{401}{\pcserver}
+\node[at base, green!50!black] at (414,327) {\fs{86}\fit{72}{\rmfamily\bfseries S\textsubscript{1}}};
+\node[at base, green!50!black] at (1232,327) {\fs{86}\fit{73}{\rmfamily\bfseries S\textsubscript{2}}};
+% queries and answers
+\draw[blue!50!black, arr={11}{34}{36}] (415,437) -- (593,850);
+\draw[red, arr={11}{34}{36}] (662,828) -- (490,413);
+\draw[red, arr={11}{34}{36}] (950,818) -- (1209,436);
+\draw[blue!50!black, arr={11}{34}{36}] (1252,481) -- (996,855);
+\node[at base, red, tnr] at (603,618) {\fs{58}\fit{109}{q\textsubscript{1}=r}};
+\node[at base, red, tnr] at (886,615) {\fs{58}\fit{195}{q\textsubscript{2}=r+e\textsubscript{i}}};
+\node[at base, blue, tnr] at (289,690) {\fs{58}\fit{188}{a\textsubscript{1}=X$\cdot$q\textsubscript{1}}};
+\node[at base, blue, tnr] at (1180,693) {\fs{58}\fit{189}{a\textsubscript{2}=X$\cdot$q\textsubscript{2}}};
+\node[at base, red!55!black] at (387,978) {\fs{58}\fit{234}{$r\in_{\boldsymbol{R}}\mathbb{Z}_{\boldsymbol{2}}^{\sqrt{N}}$}};
+% client and thought bubble
+\filldraw[fill=black!22, draw=red, px=4, rounded corners=12*\fu] (739,907) rectangle (886,994);
+\node[at base] at (797,979) {\fs{80}\rmfamily\bfseries\itshape i};
+\filldraw[fill=cyan!80!blue!60, draw=blue!50!black, px=2] (895,970) circle (5) (948,961) circle (11) (1012,951) circle (16);
+\node[cloud, cloud puffs=15, cloud puff arc=110, aspect=3.7, fill=cyan!80!blue!60, draw=blue!50!black, px=3,
+      minimum width=690*\fu, minimum height=180*\fu] at (1368,895) {};
+\node[at base, blue!30!black, tnr] at (1100,900) {\fs{58}\fit{550}{a\textsubscript{1}+a\textsubscript{2}=X$\cdot$(q\textsubscript{1} +q\textsubscript{2})=X$\cdot$e\textsubscript{i}}};
+\node[at base] at (1460,1020) {\fs{50}\fit{248}{\rmfamily\bfseries i-th column}};
+\end{tikzpicture}%

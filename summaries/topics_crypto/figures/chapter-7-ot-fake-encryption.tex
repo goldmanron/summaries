@@ -1,0 +1,26 @@
+% OT from encryption with fake keys (1786 x 688 px)
+\figsetup{1786}{688}%
+\begin{tikzpicture}[fig, lb/.style={fill=cyan!20, draw=black, px=2}]
+\figbbox
+\path[lb] (153,45) rectangle (441,134); \node at (297,92) {\fs{45}X\textsubscript{0}};
+\path[lb] (153,169) rectangle (441,258); \node at (297,216) {\fs{45}X\textsubscript{1}};
+\path[lb] (1291,177) rectangle (1429,266); \node at (1360,224) {\fs{45}b};
+\node[at base] at (196,331) {\fs{66}\fit{172}{\sbf{Alice}}};
+\icon{166}{349}{349}{659}{\pcalice}
+\node[at base] at (1289,343) {\fs{66}\fit{144}{\sbf{Bob}}};
+\icon{1221}{363}{1429}{667}{\pcbob}
+\node[at base] at (717,219) {\fs{45}\fit{113}{\sbf{b=0}}};
+\node[at base] at (910,219) {\fs{45}\fit{129}{\sbf{b=1}}};
+\node[at base] at (616,324) {\fs{45}K\textsubscript{0}};
+\node[at base, sgreen] at (716,329) {\fs{45}\fit{113}{\sbf{Real}}};
+\node[at base, red] at (910,329) {\fs{45}\fit{129}{\sbf{Fake}}};
+\node[at base] at (616,430) {\fs{45}K\textsubscript{1}};
+\node[at base, red] at (716,432) {\fs{45}\fit{129}{\sbf{Fake}}};
+\node[at base, sgreen] at (910,432) {\fs{45}\fit{113}{\sbf{Real}}};
+\draw[green!40!black, arr={3}{24}{22}] (1202,364) -- (582,364);
+\node[at base] at (588,564) {\fs{45}\fit{347}{C\textsubscript{0}=Enc\textsubscript{K0}(X\textsubscript{0})}};
+\draw[green!40!black, arr={3}{24}{22}] (584,600) -- (1204,600);
+\node[at base] at (588,658) {\fs{45}\fit{347}{C\textsubscript{1}=Enc\textsubscript{K1}(X\textsubscript{1})}};
+\draw[blkh={11}{30}{44}] (1443,544) -- (1567,544);
+\node[at base] at (1504,512) {\fs{45}\fit{254}{Dec\textsubscript{Kb}(C\textsubscript{b})}};
+\end{tikzpicture}%

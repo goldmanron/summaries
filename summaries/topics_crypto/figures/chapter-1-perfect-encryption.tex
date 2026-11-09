@@ -1,0 +1,49 @@
+% Perfect encryption: secrecy requirement over the encryption/decryption pipeline (2284 x 1107 px)
+\figsetup{2284}{1107}%
+\begin{tikzpicture}[fig]
+\figbbox
+\node[at base] at (157,119) {\fs{65}\textbf{Secrecy}:};
+\node[at base] at (410,119) {\fs{65}For every};
+\node[at base, sblue] at (680,118) {\fs{63}$X,$};
+\node[at base, sblue] at (755,118) {\fs{63}$Y$};
+\node[at base, sblue] at (818,118) {\fs{63}$\in$};
+\node[at base, sblue] at (878,118) {\fs{63}$\{0,1\}^n$};
+\node[at base] at (510,216) {\fs{65}where};
+\node[at base, sblue] at (702,216) {\fs{63}$K$};
+\node[at base, sblue] at (774,216) {\fs{63}$\in_R$};
+\node[at base, sblue] at (870,216) {\fs{63}$\boldsymbol{K}$};
+\node[at base, sred] at (1393,118) {\fs{63}$\mathrm{E}_{\textcolor{sblue}{\mathrm{K}}}$};
+\node[at base, sred] at (1473,118) {\fs{63}$(X)$};
+\node[at base, sred] at (1588,118) {\fs{63}$\equiv$};
+\node[at base, sred] at (1662,118) {\fs{63}$\mathrm{E}_{\textcolor{sblue}{\mathrm{K}}}$};
+\node[at base, sred] at (1742,118) {\fs{63}$(Y)$};
+% pipeline
+\node[at base, sblue] at (37,617) {\fs{57}$M$};
+\node[at base, sblue] at (106,617) {\fs{57}$\in$};
+\node[at base, sblue] at (158,617) {\fs{57}$\{0,1\}^n$};
+\draw[blkh={16}{24}{34}] (339,600) -- (398,600);
+\filldraw[fill=sbox, draw=sboxedge, px=3] (439,532) rectangle (794,681);
+\node[white] at (616,610) {\fs{62}Encryption};
+\node[at base, sred] at (852,562) {\fs{55}Ciphertext};
+\node[at base, sred] at (1115,562) {\fs{55}$\mathrm{E}_{\mathrm{K}}$};
+\node[at base, sred] at (1183,562) {\fs{55}$(M)$};
+\filldraw[fill=red, draw=red!70!black, px=2] (865,604) -- (1230,604) -- (1230,593) -- (1249,613) -- (1230,633) -- (1230,622) -- (865,622) -- cycle;
+\filldraw[fill=sbox, draw=sboxedge, px=3] (1396,543) rectangle (1751,692);
+\node[white] at (1573,621) {\fs{62}Decryption};
+\draw[blkh={16}{24}{34}] (1839,625) -- (1897,625);
+\node[at base, sblue] at (1942,645) {\fs{57}$M$};
+\node[at base, sblue] at (2012,645) {\fs{57}$\in$};
+\node[at base, sblue] at (2063,645) {\fs{57}$\{0,1\}^n$};
+\draw[blkh={16}{24}{34}] (607,758) -- (607,700);
+\draw[blkh={16}{24}{34}] (1574,768) -- (1574,710);
+\node[at base, sblue] at (331,830) {\fs{52}Private key};
+\node[at base, sblue] at (601,830) {\fs{55}$K$};
+\node[at base, sblue] at (662,830) {\fs{55}$\in$};
+\node[at base, sblue] at (713,830) {\fs{55}$\boldsymbol{K}$};
+\node[at base, sblue] at (1361,842) {\fs{52}Private key};
+\node[at base, sblue] at (1631,842) {\fs{55}$K$};
+\node[at base, sblue] at (1692,842) {\fs{55}$\in$};
+\node[at base, sblue] at (1743,842) {\fs{55}$\boldsymbol{K}$};
+\icon{969}{791}{1261}{1067}{\pcdevil}
+\node[at base, sgray] at (2127,1075) {\fs{25}22};
+\end{tikzpicture}%

@@ -1,0 +1,49 @@
+% CDS from linear two-server PIR (2044 x 861 px)
+\figsetup{2044}{861}%
+\begin{tikzpicture}[fig, gb/.style={fill=black!18}, pb/.style={fill=spink}, bb/.style={fill=sbox}]
+\figbbox
+\newcommand{\bx}[6]{\fill[#1] (#2,#3) rectangle (#4,#5); \node at ({(#2+#4)/2},{(#3+#5)/2+2}) {\fs{50}\fitin{#4-#2-14}{#6}};}
+\newcommand{\bits}[5]{\filldraw[fill=spink, draw=#5, px=3] (#1,#2) rectangle (#3,#4);
+  \node at ({(#1+#3)/2},{(#2+#4)/2+2}) {\fs{40}\fit{380}{1\,1\,1\,1\,0\,0\,0\,0\,1\,1\,1\,1\,0\,1}};}
+\newcommand{\s}{\textcolor{red!55!black}{\boldsymbol{s}}}
+% left: CDS view
+\node[at base] at (115,82) {\fs{55}$x$};
+\bx{gb}{344}{5}{405}{70}{\fs{55}$r$}
+\bits{436}{54}{860}{95}{red!50!black}
+\filldraw[fill=sbox, draw=black, px=4] (71,128) rectangle (184,241); \node at (128,186) {\fs{50}A};
+\filldraw[fill=spink, draw=red!50!black, px=4] (565,128) rectangle (678,241); \node at (622,186) {\fs{50}B};
+\draw[px=4, dash pattern=on 25*\fu off 12*\fu] (203,185) -- (547,185);
+\draw[arr={3}{18}{14}] (128,265) -- (300,526);
+\draw[arr={3}{18}{14}] (622,265) -- (452,526);
+\bx{gb}{18}{385}{237}{452}{\fs{50}$r+\s\cdot u_x$}
+\bx{pb}{554}{385}{707}{453}{\fs{50}$H_D(r)$}
+\filldraw[fill=black!15, draw=black, px=4] (318,551) rectangle (431,665); \node at (375,609) {\fs{50}C};
+\node[at base] at (338,715) {\fs{55}\fit{110}{$x,\mathrm{DB}$}};
+\bx{gb}{83}{789}{388}{856}{\fs{50}$H_D(r+\s\cdot u_x)$}
+\node at (405,822) {\fs{50}-};
+\bx{pb}{450}{789}{601}{856}{\fs{50}$H_D(r)$}
+\node at (633,822) {\fs{50}$=$};
+\bx{bb}{677}{787}{853}{854}{\fs{50}$D(x)\cdot\s$}
+% right: the PIR view
+\bits{1134}{89}{1558}{130}{black!50}
+\bits{1624}{88}{2043}{129}{red!50!black}
+\icon{1143}{159}{1240}{285}{\pcserver}
+\icon{1916}{151}{2013}{278}{\pcserver}
+\draw[arr={5}{24}{20}] (1160,333) -- (1432,566);
+\draw[arr={5}{24}{20}] (1448,548) -- (1175,310);
+\draw[arr={5}{24}{20}] (1505,548) -- (1838,295);
+\draw[arr={5}{24}{20}] (1866,308) -- (1535,560);
+\bx{gb}{1309}{343}{1467}{410}{\fs{50}$r+u_x$}
+\bx{gb}{1633}{343}{1692}{410}{\fs{50}$r$}
+\bx{pb}{965}{386}{1216}{455}{\fs{50}$H_D(r+u_x)$}
+\bx{pb}{1784}{386}{1938}{453}{\fs{50}$H_D(r)$}
+\icon{1408}{567}{1534}{767}{\pcspy}
+\bx{bb}{1562}{659}{1624}{726}{\fs{50}$x$}
+\draw[arr={3}{14}{12}] (1645,697) -- (1720,697);
+\bx{gb}{1738}{660}{1822}{727}{\fs{50}$u_x$}
+\bx{pb}{1213}{785}{1464}{852}{\fs{50}$H_D(r+u_x)$}
+\node at (1525,818) {\fs{50}-};
+\bx{pb}{1569}{785}{1721}{852}{\fs{50}$H_D(r)$}
+\node at (1793,818) {\fs{50}$=$};
+\bx{bb}{1836}{783}{1965}{849}{\fs{50}$D(x)$}
+\end{tikzpicture}%

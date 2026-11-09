@@ -1,0 +1,32 @@
+% Function secret sharing / DPF abstraction (942 x 652 px)
+\figsetup{942}{652}%
+\begin{tikzpicture}[fig,
+  gb/.style={top color=green!8!yellow!10, bottom color=green!35!yellow!35, draw=green!50!black!60, px=2},
+  bb/.style={top color=white, bottom color=blue!30!cyan!35, draw=blue!50!black!70, px=2},
+  rb/.style={top color=red!10, bottom color=red!35, draw=red!60!black!80, px=2},
+  oa/.style={fill=orange!45, draw=orange!80, px=2}]
+\figbbox
+\newcommand{\bx}[6]{\path[#1] (#2,#3) rectangle (#4,#5); \node at ({(#2+#4)/2},{(#3+#5)/2}) {#6};}
+\bx{gb}{430}{7}{525}{60}{\fs{32}P(x)}
+\bx{bb}{400}{95}{557}{163}{\fs{45}$\oplus$}
+\bx{rb}{317}{207}{425}{259}{\fs{32}[P(x)]\textsubscript{1}}
+\bx{rb}{564}{207}{670}{259}{\fs{32}[P(x)]\textsubscript{2}}
+\bx{bb}{276}{290}{433}{357}{\fs{45}Eval}
+\bx{bb}{524}{290}{682}{357}{\fs{45}Eval}
+\bx{gb}{101}{284}{236}{350}{\fs{40}x}
+\bx{gb}{721}{284}{855}{350}{\fs{40}x}
+\bx{rb}{123}{384}{390}{437}{\fs{32}[P]\textsubscript{1}}
+\bx{rb}{589}{384}{840}{437}{\fs{32}[P]\textsubscript{2}}
+\bx{bb}{400}{472}{557}{540}{\fs{45}Share}
+\bx{gb}{311}{573}{635}{634}{\fs{32}P}
+% small hollow arrows: \oarr{x}{y}{angle} (tail at x,y), 30 long
+\newcommand{\oarr}[3]{\path[oa, rotate around={#3:(#1,#2)}] (#1,#2-5) -- (#1+16,#2-5) -- (#1+16,#2-12) -- (#1+30,#2) -- (#1+16,#2+12) -- (#1+16,#2+5) -- (#1,#2+5) -- cycle;}
+\oarr{477}{92}{90} \oarr{352}{288}{90} \oarr{601}{288}{90}
+\oarr{332}{385}{90} \oarr{630}{385}{90} \oarr{475}{572}{90}
+\oarr{241}{324}{0} \oarr{716}{324}{180}
+\path[oa, rotate around={35:(386,204)}] (386,199) -- (432,199) -- (432,190) -- (452,204) -- (432,218) -- (432,209) -- (386,209) -- cycle;
+\path[oa, rotate around={145:(581,186)}] (581,181) -- (618,181) -- (618,172) -- (638,186) -- (618,200) -- (618,191) -- (581,191) -- cycle;
+\path[oa, rotate around={147:(426,466)}] (426,461) -- (472,461) -- (472,452) -- (492,466) -- (472,480) -- (472,471) -- (426,471) -- cycle;
+\path[oa, rotate around={33:(533,466)}] (533,461) -- (579,461) -- (579,452) -- (599,466) -- (579,480) -- (579,471) -- (533,471) -- cycle;
+\draw[blue!50!cyan!60!black, px=13, dash pattern=on 40*\fu off 11*\fu] (475,217) -- (474,444);
+\end{tikzpicture}%

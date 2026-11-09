@@ -1,0 +1,23 @@
+% A general two-party interactive protocol (2001 x 557 px)
+\figsetup{2001}{557}%
+\begin{tikzpicture}[fig, lb/.style={fill=cyan!20, draw=black, px=2}, gb/.style={fill=green!55!yellow!70!black!80, draw=black!60, px=2}]
+\figbbox
+\path[lb] (244,29) rectangle (532,118); \node at (388,76) {\fs{45}X\textsubscript{A}};
+\path[lb] (1314,29) rectangle (1603,118); \node at (1458,76) {\fs{45}X\textsubscript{B}};
+\path[gb] (19,288) rectangle (135,377); \node at (77,335) {\fs{45}R\textsubscript{A}};
+\path[gb] (1861,223) rectangle (1977,312); \node at (1919,270) {\fs{45}R\textsubscript{B}};
+\node[at base] at (287,218) {\fs{66}\fit{172}{\sbf{Alice}}};
+\icon{257}{236}{440}{546}{\pcalice}
+\node[at base] at (1380,230) {\fs{66}\fit{144}{\sbf{Bob}}};
+\icon{1312}{250}{1520}{554}{\pcbob}
+\draw[green!40!black, arr={3}{24}{22}] (673,250) -- (1292,250);
+\draw[green!40!black, arr={3}{24}{22}] (1293,333) -- (673,333);
+\draw[green!40!black, arr={3}{24}{22}] (673,515) -- (1292,515);
+\node[at base, blue!50!purple] at (837,213) {\fs{40}\fit{335}{$a_1=A_1(x_A,R_A)$}};
+\node[at base, green!50!black] at (811,303) {\fs{40}\fit{353}{$b_1=B_1(x_B,R_B,a_1)$}};
+\node[at base] at (945,403) {\fs{40}\ldots.};
+\node[at base, blue!50!purple] at (798,482) {\fs{40}\fit{461}{$a_t=A_t(x_A,R_A,b_1,\ldots,b_t)$}};
+\node[at base, green!50!black] at (1527,377) {\fs{40}\fit{400}{$\mathit{Dec}(x_B,R_B,a_1,\ldots,a_t)$}};
+\draw[blkh={11}{30}{44}] (1534,431) -- (1658,431);
+\node[at base] at (1698,442) {\fs{45}\fit{185}{f(x\textsubscript{A},x\textsubscript{B})}};
+\end{tikzpicture}%

@@ -1,0 +1,29 @@
+% Distributed storage, coding setting: active corruption of servers (1827 x 936 px)
+\figsetup{1827}{936}%
+\begin{tikzpicture}[fig]
+\figbbox
+\node[at base] at (10,87) {\fs{62}\fit{366}{\sbf{Coding setting:}}};
+\node[at base] at (9,174) {\fs{62}\fit{859}{Adv.\ actively corrupts/erase servers}};
+\node[at base, sblue] at (13,385) {\fs{57}\fit{176}{Message}};
+\node[at base, sblue] at (205,385) {\fs{57}$M$};
+\node[at base, sblue] at (263,385) {\fs{57}$=$};
+\node[at base, sblue] at (320,385) {\fs{57}\fit{249}{$(M_1,\ldots,M_k)$}};
+\icon{68}{453}{398}{637}{\pccomputer}
+\node[at base] at (158,734) {\fs{55}\fit{101}{\sbf{Alice}}};
+\node[at base, sblue] at (605,452) {\fs{58}\fit{202}{\rmfamily Encoding}};
+\draw[blkh={18}{18}{37}] (525,489) -- (863,489);
+\foreach \y in {52,213,387,579,720} {\icon{985}{\y}{1150}{\y+96}{\pccomputer}}
+\draw[sred, px=5] (979.5,44.5) rectangle (1157.5,158.5);
+\draw[sred, px=5] (977.5,379.5) rectangle (1155.5,493.5);
+\node[at base] at (1033,879) {\fs{50}\fit{123}{\sbf{Bob N}}};
+\node[at base, sblue] at (1238,103) {\fs{55}$C_1$};
+\node[at base, sblue] at (1240,440) {\fs{55}$C_i$};
+\node[at base, sblue] at (1244,790) {\fs{55}$C_N$};
+\draw[px=3] (1308,81) .. controls (1340,81) and (1348,84) .. (1348,100) -- (1348,472)
+  .. controls (1348,484) and (1352,488) .. (1364,489) .. controls (1352,490) and (1348,494) .. (1348,506)
+  -- (1348,878) .. controls (1348,894) and (1340,897) .. (1308,897);
+\node[at base, sblue] at (1452,452) {\fs{58}\fit{203}{\rmfamily Decoding}};
+\draw[blkh={18}{18}{37}] (1372,489) -- (1710,489);
+\node[at base, sblue] at (1772,500) {\fs{55}$M$};
+\icon{725}{728}{949}{970}{\pcdevil}
+\end{tikzpicture}%

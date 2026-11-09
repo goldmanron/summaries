@@ -1,0 +1,40 @@
+% One-time pad: encryption / decryption with the adversary in the middle (2047 x 534 px)
+\figsetup{2047}{534}%
+\begin{tikzpicture}[fig]
+\figbbox
+\node[at base, sblue] at (33,71) {\fs{46}Message};
+\node[at base, smath] at (30,133) {\fs{48}$M$};
+\node[at base, smath] at (91,133) {\fs{48}$\in$};
+\node[at base] at (176,134) {\fs{48}$\boldsymbol{G}$};
+\draw[blk=14] (299,104) -- (350,104);
+\filldraw[fill=sbox, draw=sboxedge, px=3] (386,45) rectangle (697,175);
+\node[white] at (541,112) {\fs{50}Encryption};
+\node[at base, sred] at (783,69) {\fs{49}$\mathrm{E}_{\mathrm{K}}$};
+\node[at base, sred] at (843,69) {\fs{49}$(M)$};
+\node[at base, sred] at (942,69) {\fs{49}$=$};
+\node[at base, smath] at (996,69) {\fs{49}$K$};
+\node[at base] at (1051,69) {\fs{49}$+$};
+\node[at base, smath] at (1107,69) {\fs{49}$M$};
+\draw[blk=18] (759,115) -- (1097,115);
+\filldraw[fill=sbox, draw=sboxedge, px=3] (1225,54) rectangle (1536,184);
+\node[white] at (1380,121) {\fs{50}Decryption};
+\draw[blk=14] (1613,126) -- (1664,126);
+\node[at base, smath] at (1691,138) {\fs{49}$\mathrm{D}_{\mathrm{K}}$};
+\node[at base, smath] at (1754,138) {\fs{49}$(\textcolor{sred}{C})$};
+\node[at base, sred] at (1840,138) {\fs{49}$=$};
+\node[at base, sred] at (1896,138) {\fs{49}$C$};
+\node[at base] at (1955,138) {\fs{49}$-$};
+\node[at base, smath] at (2007,138) {\fs{46}$K$};
+\draw[blk=14] (533,242) -- (533,191);
+\draw[blk=14] (1381,251) -- (1381,200);
+\node[at base, sblue] at (267,309) {\fs{45}Private key};
+\node[at base, smath] at (503,309) {\fs{48}$K$};
+\node[at base, smath] at (557,309) {\fs{48}$\in_R$};
+\node[at base] at (644,309) {\fs{48}$\boldsymbol{G}$};
+\node[at base, sblue] at (1205,323) {\fs{45}Private key};
+\node[at base, smath] at (1441,323) {\fs{48}$K$};
+\node[at base, smath] at (1495,323) {\fs{48}$\in_R$};
+\node[at base] at (1613,318) {\fs{48}$\boldsymbol{G}$};
+\icon{850}{271}{1107}{513}{\pcdevil}
+\node[at base, sgray] at (1865,520) {\fs{22}27};
+\end{tikzpicture}%

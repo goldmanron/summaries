@@ -1,0 +1,18 @@
+% Private simultaneous messages: syntax (1140 x 848 px)
+\figsetup{1140}{848}%
+\begin{tikzpicture}[fig]
+\figbbox
+\fill[green!40] (482,97) rectangle (858,167); \node at (670,132) {\fs{55}r};
+\filldraw[fill=cyan!12, draw=black, px=2] (281,203) rectangle (581,296); \node at (431,252) {\fs{55}x\textsubscript{A}};
+\filldraw[fill=cyan!12, draw=black, px=2] (772,196) rectangle (1072,288); \node at (922,245) {\fs{55}x\textsubscript{B}};
+\node[at base] at (372,367) {\fs{58}\fit{130}{\rmfamily\bfseries Alice}};
+\node[at base] at (863,365) {\fs{58}\fit{100}{\rmfamily\bfseries Bob}};
+\node[at base, blue!70!black] at (290,502) {\fs{55}\fit{197}{g\textsubscript{A}(x\textsubscript{A},r)}};
+\node[at base, blue!70!black] at (867,502) {\fs{55}\fit{198}{g\textsubscript{B}(x\textsubscript{B},r)}};
+\draw[red, arr={11}{40}{38}] (463,393) -- (598,542);
+\draw[red, arr={11}{40}{38}] (878,393) -- (743,542);
+\node[at base] at (603,609) {\fs{58}\fit{147}{\rmfamily\bfseries Carol}};
+\draw[arr={12}{38}{45}] (684,643) -- (684,743);
+\node[at base] at (19,808) {\fs{58}\fit{471}{Should learn only}};
+\node[at base] at (582,810) {\fs{58}\fit{190}{f(x\textsubscript{A},x\textsubscript{B})}};
+\end{tikzpicture}%

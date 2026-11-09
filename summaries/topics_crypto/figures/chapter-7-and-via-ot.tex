@@ -1,0 +1,22 @@
+% Computing AND with one OT (1558 x 517 px)
+\figsetup{1558}{517}%
+\begin{tikzpicture}[fig, lb/.style={fill=cyan!20, draw=black, px=2}]
+\figbbox
+\node[at base] at (99,125) {\fs{66}\fit{172}{\sbf{Alice}}};
+\icon{69}{143}{252}{453}{\pcalice}
+\node[at base] at (1372,138) {\fs{66}\fit{144}{\sbf{Bob}}};
+\icon{1304}{157}{1512}{461}{\pcbob}
+\path[lb] (396,158) rectangle (505,228); \node at (450,195) {\fs{45}0};
+\path[lb] (397,271) rectangle (504,341); \node at (450,308) {\fs{45}X\textsubscript{A}};
+\path[lb] (1033,147) rectangle (1132,218); \node at (1082,184) {\fs{45}X\textsubscript{B}};
+\node[at base] at (974,107) {\fs{42}\fit{240}{Selection bit}};
+\filldraw[fill=magenta!20, draw=black, px=6] (751,200) rectangle (853,308); \node at (802,255) {\fs{55}\sbf{OT}};
+\draw[arr={3}{18}{14}] (611,213) -- (693,213);
+\draw[arr={3}{18}{14}] (611,289) -- (693,289);
+\draw[arr={3}{18}{14}] (998,213) -- (912,213);
+\draw[arr={3}{18}{14}] (912,289) -- (998,289);
+\draw[px=2] (1030,230) -- (1022,230) -- (1022,305) -- (1012,309) -- (1022,313) -- (1022,388) -- (1030,388);
+\node[at base] at (1066,299) {\fs{42}\fit{199}{X\textsubscript{A}\enspace if X\textsubscript{B}=1}};
+\node[at base] at (1066,344) {\fs{42}\fit{199}{\enspace0\quad if X\textsubscript{B}=0}};
+\node[at base] at (1025,461) {\fs{42}\fit{240}{=X\textsubscript{A} \sbf{AND} X\textsubscript{B}}};
+\end{tikzpicture}%

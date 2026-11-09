@@ -1,0 +1,39 @@
+% Four-server hypercube PIR (1817 x 1208 px)
+\figsetup{1817}{1208}%
+\begin{tikzpicture}[fig]
+\figbbox
+\fill[black!15] (0,47) rectangle (550,157);
+\node[at base] at (126,140) {\fs{70}\fit{209}{$f_x\bigl(\vec a,\vec b\,\bigr)$}};
+\node[at base] at (131,236) {\fs{70}\fit{287}{$=\vec a^{\,T}\cdot X\cdot\vec b$}};
+% matrix
+\fill[black!20] (762,70) rectangle (993,282);
+\foreach \x in {878,915,952} \draw[px=2] (\x,72) -- (\x,280);
+\foreach \y in {101,128,154,180,207,233,259} \draw[px=2] (764,\y) -- (991,\y);
+\draw[black!65, px=5] (804,72) -- (804,280) (841,72) -- (841,280);
+\fill[cyan!85] (806,205) rectangle (839,228);
+\fill[orange!40!yellow] (841,223) rectangle (960,280);
+\draw[blue!50!black, px=5] (764.5,72.5) rectangle (990.5,279.5);
+\node[at base, red!55!black] at (852,187) {\fs{70}\rmfamily\bfseries\itshape X};
+\draw[dotted, darr={2}{10}{8}] (765,47) -- (993,47);
+\node[at base, blue] at (844,45) {\fs{28}\fit{47}{\rmfamily\bfseries\itshape N\textsuperscript{1/2}}};
+\draw[dotted, darr={2}{10}{8}] (1021,78) -- (1021,282);
+\node[at base, blue] at (1015,200) {\fs{28}\fit{49}{\rmfamily\bfseries\itshape N\textsuperscript{1/2}}};
+\foreach \x in {369,704,1040,1375} {\icon{\x}{315}{\x+163}{528}{\pcserver}}
+\node[at base, red] at (74,680) {\fs{57}\fit{228}{$q_{\mathbf 1}=(a,b)$}};
+\node[at base, red] at (457,674) {\fs{57}\fit{329}{$q_{\mathbf 2}=(a+e_i,b)$}};
+\node[at base, red] at (969,685) {\fs{57}\fit{329}{$q_{\mathbf 3}=(a,b+e_j)$}};
+\node[at base, red] at (1389,687) {\fs{57}\fit{428}{$q_{\mathbf 4}=(a+e_i,b+e_j)$}};
+\node[at base, sblue] at (50,765) {\fs{57}\fit{245}{$A_1=f_x(q_1)$}};
+\node[at base, sblue] at (470,754) {\fs{57}\fit{253}{$A_2=f_x(q_2)$}};
+\node[at base, sblue] at (985,759) {\fs{57}\fit{253}{$A_3=f_x(q_3)$}};
+\node[at base, sblue] at (1465,761) {\fs{57}\fit{252}{$A_4=f_x(q_4)$}};
+\fill[yellow] (881,889) rectangle (959,969);
+\node[at base] at (902,950) {\fs{50}\fit{35}{\rmfamily i,j}};
+\filldraw[fill=brown!60!orange!70, draw=brown!60!black, px=2] (1012,940) circle (28) (1050,970) circle (30);
+\node[at base, red] at (1162,975) {\fs{55}\fit{300}{a,b$\in_R\{0,1\}^{\sqrt N}$}};
+\icon{817}{985}{969}{1207}{\pcspy}
+\node[at base, sblue] at (57,1048) {\fs{57}\fit{655}{$A_1+A_2+A_3+A_4=e_i\cdot X\cdot e_j$}};
+\node[at base] at (1004,1093) {\fs{48}\fit{694}{Upstream communication: O(N\textsuperscript{1/2} )}};
+\node[at base] at (1005,1147) {\fs{48}\fit{264}{1-bit answers}};
+\node[at base] at (102,1165) {\fs{36}\fit{34}{10}};
+\end{tikzpicture}%

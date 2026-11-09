@@ -1,0 +1,20 @@
+% Oblivious transfer as a channel (1599 x 477 px)
+\figsetup{1599}{477}%
+\begin{tikzpicture}[fig, lb/.style={fill=cyan!20, draw=black, px=2}]
+\figbbox
+\node[at base] at (110,96) {\fs{66}\fit{172}{\sbf{Alice}}};
+\icon{80}{114}{263}{424}{\pcalice}
+\node[at base] at (1383,109) {\fs{66}\fit{144}{\sbf{Bob}}};
+\icon{1315}{128}{1523}{432}{\pcbob}
+\path[lb] (344,129) rectangle (593,199); \node at (468,166) {\fs{45}a\textsubscript{0}};
+\path[lb] (344,268) rectangle (593,338); \node at (468,305) {\fs{45}a\textsubscript{1}};
+\node[at base] at (406,248) {\fs{42}\fit{130}{Strings}};
+\path[lb] (1038,129) rectangle (1134,217); \node at (1086,174) {\fs{50}b};
+\path[lb] (1024,240) rectangle (1273,310); \node at (1148,277) {\fs{45}a\textsubscript{b}};
+\node[at base] at (985,76) {\fs{42}\fit{240}{Selection bit}};
+\filldraw[fill=magenta!20, draw=black, px=6] (762,171) rectangle (864,279); \node at (813,226) {\fs{55}\sbf{OT}};
+\draw[arr={3}{18}{14}] (627,179) -- (711,179);
+\draw[arr={3}{18}{14}] (627,259) -- (711,259);
+\draw[arr={3}{18}{14}] (1020,185) -- (930,185);
+\draw[arr={3}{18}{14}] (926,259) -- (1010,259);
+\end{tikzpicture}%

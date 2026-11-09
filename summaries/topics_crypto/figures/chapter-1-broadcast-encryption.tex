@@ -1,0 +1,26 @@
+% Broadcast encryption: Alice sends to a subset S of the receivers (2015 x 903 px)
+\figsetup{2015}{903}%
+\begin{tikzpicture}[fig]
+\figbbox
+\node[at base, sblue] at (1425,51) {\fs{52}\fit{128}{key $K_1$}};
+\icon{1394}{75}{1558}{171}{\pccomputer}
+\node[at base] at (1426,213) {\fs{50}\fit{104}{\sbf{Bob1}}};
+\node[at base] at (1453,318) {\fs{50}\fit{30}{\sbf{\ldots}}};
+\node[at base, sblue] at (1421,390) {\fs{52}\fit{122}{key $K_i$}};
+\icon{1392}{410}{1557}{506}{\pccomputer}
+\node[at base] at (1429,543) {\fs{50}\fit{112}{\sbf{Bob $\boldsymbol{i}$}}};
+\node[at base] at (1462,650) {\fs{50}\fit{31}{\sbf{\ldots}}};
+\node[at base, sblue] at (1425,714) {\fs{52}\fit{137}{key $K_N$}};
+\icon{1392}{743}{1557}{839}{\pccomputer}
+\node[at base] at (1442,902) {\fs{50}\fit{123}{\sbf{Bob N}}};
+\node[at base, sblue] at (24,408) {\fs{57}\fit{401}{Message $M\in\{0,1\}$}};
+\node[at base, sblue] at (21,469) {\fs{57}\fit{176}{Subset $S$}};
+\icon{281}{476}{611}{660}{\pccomputer}
+\node[at base] at (330,758) {\fs{50}\fit{101}{\sbf{Alice}}};
+\node[at base, sred] at (881,403) {\fs{57}\fit{186}{$\mathrm{E}_{\mathrm{K}}(M,S)$}};
+\node[at base, sblue] at (892,473) {\fs{55}\fit{178}{\rmfamily Subset S}};
+\draw[blkh={18}{18}{37}] (800,512) -- (1138,512);
+\node[at base] at (1644,462) {\fs{55}\fit{311}{\sbf{Can decrypt iff}}};
+\node[at base] at (1749,525) {\fs{55}\fit{104}{$\boldsymbol{i\in S}$}};
+\node[at base, sblue] at (24,883) {\fs{57}\fit{299}{Keys $K_1,\ldots,K_N$}};
+\end{tikzpicture}%

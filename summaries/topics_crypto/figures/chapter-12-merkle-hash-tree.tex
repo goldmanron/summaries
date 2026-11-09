@@ -1,0 +1,18 @@
+% Merkle hash tree with an authentication path (2198 x 1002 px)
+\figsetup{2198}{1002}%
+\begin{tikzpicture}[fig, rb/.style={draw=red, px=5}, kb/.style={draw=black, px=3}]
+\figbbox
+\foreach \a/\b/\c/\d in {634/824/721/697, 830/824/745/697, 1027/824/1114/697, 1224/824/1138/697,
+    1420/824/1507/697, 1617/824/1531/697, 1813/824/1901/697, 2010/824/1925/697,
+    733/575/918/414, 1126/575/942/414, 1519/575/1704/414, 1913/575/1728/414, 930/292/1311/130, 1716/292/1335/130}
+  {\draw[arr={9}{28}{30}] (\a,\b) -- (\c,\d);}
+\foreach \x in {535,732,928,1125,1322,1518,1715,1911} {\draw[kb] (\x,824) rectangle ++(197,122);}
+\draw[rb] (928,824) rectangle (1125,946) (1125,824) rectangle (1322,946);
+\foreach \x [count=\i] in {535,732,928,1125,1322,1518,1715,1911} {\node at (\x+98,890) {\fs{55}$x_{\i}$};}
+\draw[rb] (1223,9) rectangle (1423,130); \node at (1323,70) {\fs{50}rt};
+\draw[rb] (830,292) rectangle (1029,414) (1617,292) rectangle (1816,414) (633,575) rectangle (833,697) (1027,575) rectangle (1226,697);
+\draw[kb] (1420,575) rectangle (1619,697) (1813,575) rectangle (2013,697);
+\node[at base] at (136,182) {\fs{50}\fit{723}{Let $H=\{h\colon\{0,1\}^{2n}\to\{0,1\}^n\}$}};
+\node[at base] at (136,249) {\fs{50}\fit{460}{be a family of CRH}};
+\node[at base, red] at (1674,130) {\fs{50}\fit{475}{Authentication path}};
+\end{tikzpicture}%

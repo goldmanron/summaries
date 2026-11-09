@@ -1,0 +1,35 @@
+% Yao: Boolean circuit -> garbled circuit and input keys (1124 x 843 px)
+\figsetup{1124}{843}%
+\begin{tikzpicture}[fig, lab/.style={fill=orange!30!yellow!25!red!20}]
+\figbbox
+\fill[lab] (33,46) rectangle (345,106); \node at (189,77) {\fs{36}Boolean circuit f};
+\fill[lab] (672,44) rectangle (992,104); \node at (832,75) {\fs{36}Garbled circuit g};
+\fill[lab] (666,535) rectangle (986,595); \node at (826,566) {\fs{36}Pairs of short keys};
+% the circuit: \gate{x left}{y bottom}{width}{height}
+\newcommand{\gate}[4]{\filldraw[fill=cyan!15, draw=black, px=2] (#1,#2) -- (#1+#3,#2) arc[start angle=0, end angle=-180, x radius=#3/2, y radius=#4];
+  \filldraw[fill=white, draw=black, px=2] (#1+#3/2,#2-#4-5) circle (5);}
+\draw[px=2] (115,342) -- (115,328) -- (160,328) -- (160,302);
+\draw[px=2] (266,342) -- (266,325) -- (215,325) -- (215,302);
+\draw[px=2] (188,246) -- (188,236) -- (279,236) -- (279,211);
+\draw[px=2] (338,211) -- (338,322) -- (240,322);
+\draw[px=2] (85,396) -- (85,440) (145,396) -- (145,440) (232,396) -- (232,440) (300,396) -- (300,440);
+\draw[arr={2}{10}{8}] (309,157) -- (309,127);
+\gate{67}{396}{96}{40} \gate{214}{396}{96}{40} \gate{136}{300}{104}{40} \gate{259}{211}{99}{40}
+\foreach \x/\i in {72/1,135/2,239/3,298/4} {\node[at base, red] at (\x,462) {\fs{28}$x_{\i}$};}
+\foreach \a/\b in {57/103,107/202,207/252,257/302} {\fill[orange!30!yellow!35] (\a,480) rectangle (\b,528);}
+\node at (178,506) {\fs{36}Input\enspace X};
+\filldraw[fill=purple!45!magenta!60, draw=purple!50!black, px=2] (493,295) -- (560,295) -- (560,271) -- (605,318) -- (560,366) -- (560,342) -- (493,342) -- cycle;
+\filldraw[fill=blue!35!purple!35, draw=black!80, px=2] (630,117) rectangle (1018,416);
+\node at (824,268) {\fs{70}g\textsubscript{0}(r)};
+\fill[green!50] (653,429) rectangle (715,467) (903,429) rectangle (962,467) (739,478) rectangle (796,521) (818,478) rectangle (876,521);
+\foreach \x/\i in {641/1,737/2,822/3,889/4} {
+  \node[at base, purple!80!black] at (\x,458) {\fs{32}$K_{\i,0}$};
+  \node[at base, purple!80!black] at (\x,510) {\fs{32}$K_{\i,1}$};}
+\draw[arr={2}{14}{10}] (359,499) -- (639,499);
+\node[at base] at (118,766) {\fs{50}\sbf{f(x)}};
+\filldraw[fill=yellow!85, draw=orange!60!black, px=2] (389,668) -- (556,668) -- (556,651) -- (619,700) -- (556,749) -- (556,732) -- (389,732) -- cycle;
+\node at (500,700) {\fs{36}Simulator};
+\filldraw[fill=yellow!85, draw=orange!60!black, px=2] (592,752) -- (420,752) -- (420,735) -- (357,784) -- (420,832) -- (420,816) -- (592,816) -- cycle;
+\node at (484,784) {\fs{36}Decoder};
+\node[at base] at (669,758) {\fs{50}\fit{420}{\sbf{g\textsubscript{0}(r), g\textsubscript{i}(x\textsubscript{i},r)=K\textsubscript{i,Xi}}}};
+\end{tikzpicture}%

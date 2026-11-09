@@ -1,0 +1,12 @@
+% Private sum among five parties on a complete graph (994 x 696 px)
+\figsetup{994}{696}%
+\begin{tikzpicture}[fig]
+\figbbox
+\coordinate (P1) at (533,90); \coordinate (P2) at (807,283); \coordinate (P3) at (681,547);
+\coordinate (P4) at (386,547); \coordinate (P5) at (258,281);
+\foreach \a/\b in {P1/P2,P1/P3,P1/P4,P1/P5,P2/P3,P2/P4,P2/P5,P3/P4,P3/P5,P4/P5} {\draw[black!75, px=2] (\a) -- (\b);}
+\foreach \p/\c in {P1/blue!60!black, P2/green!60!black, P3/red!70!black, P4/brown!80!black, P5/yellow!80!orange}
+  {\filldraw[fill=\c, draw=black, px=2] (\p) circle (20);}
+\foreach \x/\y/\i in {451/50/1, 836/382/2, 638/650/3, 275/646/4, 71/344/5}
+  {\node[at base] at (\x,\y) {\fs{55}\fit{122}{\textcolor{green!50!black}{r\textsubscript{\i}},\,\textcolor{red}{x\textsubscript{\i}}}};}
+\end{tikzpicture}%

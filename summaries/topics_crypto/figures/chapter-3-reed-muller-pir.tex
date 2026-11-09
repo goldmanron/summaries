@@ -1,0 +1,26 @@
+% Three-server Reed-Muller PIR: Shamir shares of the query (1671 x 596 px)
+\figsetup{1671}{596}%
+\begin{tikzpicture}[fig]
+\figbbox
+\icon{240}{115}{402}{327}{\pcserver}
+\icon{743}{117}{905}{329}{\pcserver}
+\icon{1246}{119}{1408}{331}{\pcserver}
+% database as a symmetric matrix: lower triangle stored
+\filldraw[fill=cyan!25!blue!8!white, draw=black, px=2] (1443,10) -- (1662,13) -- (1657,218) -- cycle;
+\begin{scope}
+\clip (1432,10) -- (1443,10) -- (1655,218) -- (1432,218) -- cycle;
+\fill[black!22] (1432,10) rectangle (1660,218);
+\foreach \x in {1470,1507,1545,1581,1619} \draw[px=2.5] (\x,10) -- (\x,218);
+\foreach \y in {39,62,88,114,141,165,191} \draw[px=2.5] (1432,\y) -- (1660,\y);
+\end{scope}
+\draw[px=2] (1443,10) -- (1655,218);
+\draw[blue!50!black, px=6] (1433,10) -- (1433,216) -- (1657,216);
+\node[at base, red!55!black] at (1554,107) {\fs{64}\fit{60}{\rmfamily\bfseries\itshape X}};
+\node[at base] at (582,393) {\fs{48}\fit{249}{Shamir's SS}};
+\node[at base, red] at (111,484) {\fs{57}\fit{327}{$q_{\mathbf 1}=r\cdot 1+e_{i,j}$}};
+\node[at base, red] at (650,478) {\fs{57}\fit{327}{$q_{\mathbf 2}=r\cdot 2+e_{i,j}$}};
+\node[at base, red] at (1162,484) {\fs{57}\fit{327}{$q_{\mathbf 3}=r\cdot 3+e_{i,j}$}};
+\node[at base, sblue] at (136,568) {\fs{57}\fit{244}{$a_1=f_x(q_1)$}};
+\node[at base, sblue] at (667,557) {\fs{57}\fit{246}{$a_2=f_x(q_2)$}};
+\node[at base, sblue] at (1182,562) {\fs{57}\fit{246}{$a_3=f_x(q_3)$}};
+\end{tikzpicture}%

@@ -1,0 +1,31 @@
+% CDS for Index with balancing: sqrt(N) blocks (2095 x 909 px)
+\figsetup{2095}{909}%
+\begin{tikzpicture}[fig, lb/.style={fill=blue!20!cyan!15!white}, gb/.style={fill=black!18},
+  db/.style={fill=spink, draw=red!50!black, px=4}]
+\figbbox
+\node[at base] at (638,125) {\fs{62}\fit{690}{$\mathit{Index}\colon[N]\times\{0,1\}^N\to\{0,1\}$}};
+\fill[lb] (418,248) rectangle (605,336);
+\node[at base] at (445,315) {\fs{62}\fit{132}{$(x,y)$}};
+\filldraw[fill=sbox, draw=black, px=5] (609.5,229.5) rectangle (735.5,355.5); \node at (672,294) {\fs{55}A};
+\filldraw[db] (1172,228) rectangle (1300,356); \node at (1236,294) {\fs{55}B};
+\filldraw[db] (1460,188) rectangle (1621,344); \draw[red!50!black, px=4] (1460,230) -- (1621,230) (1460,302) -- (1621,302);
+\node[at base] at (1505,225) {\fs{45}\fit{70}{DB1}};
+\node[at base] at (1480,340) {\fs{45}\fit{118}{DB $\sqrt{N}$}};
+\draw[arr={3}{14}{12}] (1490,148) -- (1458,148); \draw[arr={3}{14}{12}] (1602,148) -- (1634,148);
+\node[at base] at (1510,165) {\fs{55}\fit{65}{$\sqrt{N}$}};
+\draw[arr={3}{14}{12}] (1725,218) -- (1725,184); \draw[arr={3}{14}{12}] (1725,300) -- (1725,363);
+\node[at base] at (1690,278) {\fs{55}\fit{65}{$\sqrt{N}$}};
+\draw[arr={3}{18}{14}] (487,338) -- (845,488);
+% \grp{y box x}{y top}{s x}{s top}{DB x}{DB top}{DB text}{arrow x}{arrow top}{arrow fill}{out x}
+\newcommand{\grp}[9]{%
+  \fill[lb] (#1,#2) rectangle ++(83,89); \node at (#1+41,#2+46) {\fs{62}$y$};
+  \fill[gb] (#3,#4) rectangle ++(77,89); \node at (#3+38,#4+44) {\fs{62}$s$};
+  \filldraw[fill=spink, draw=red!50!black, px=3] (#5,#6) rectangle ++(166,44); \node at (#5+83,#6+24) {\fs{45}#7};
+  \filldraw[fill=#9, draw=black, px=2] (#8+52,560) -- (#8+158,560) -- (#8+158,737) -- (#8+212,737) -- (#8+105,843) -- (#8-1,737) -- (#8+52,737) -- cycle;
+  \node at (#8+106,678) {\fs{50}\sbf{Ind}};}
+\grp{112}{455}{226}{441}{321}{487}{DB1}{165}{black!18}
+\grp{884}{458}{983}{433}{1111}{489}{DB $i$}{920}{orange!50!yellow}
+\grp{1650}{460}{1750}{434}{1876}{490}{DB $\sqrt{N}$}{1686}{black!18}
+\fill[spink] (360,811) rectangle (417,878) (1165,811) rectangle (1222,878) (1930,811) rectangle (1987,878);
+\fill[lb] (730,811) rectangle (912,878);
+\end{tikzpicture}%

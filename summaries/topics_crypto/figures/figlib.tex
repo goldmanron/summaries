@@ -1,0 +1,261 @@
+% figlib.tex -- shared setup for the TikZ recreations of the course-slide figures.
+% Every figure is drawn in the pixel coordinates of the slide image it replaces
+% (x to the right, y down) and scaled to 0.72\textwidth, the width the image had.
+%   \figsetup{<image width px>}{<image height px>}  then  \begin{tikzpicture}[fig] ... \figbbox
+%   \fs{<px>}  font size in image pixels;  \lw{<px>}  a line width in pixels.
+\newlength{\fu}\def\figwidth{0.72\textwidth}% width the image had; \linewidth for the LyX graphics insets
+\newcommand{\figsetup}[2]{%
+  \setlength{\fu}{\dimexpr \figwidth / #1\relax}%
+  \def\figW{#1}\def\figH{#2}%
+  \pgfmathsetmacro\fuval{\fu/1pt}}
+% Figure text uses private families that scale the CM Sans / CM Roman Type 1 fonts to any
+% size, so the document's own (fixed-size) cmss/cmr setup is never touched.
+\DeclareFontFamily{T1}{figss}{}
+\DeclareFontShape{T1}{figss}{m}{n}{<->ecss1000}{}
+\DeclareFontShape{T1}{figss}{m}{it}{<->ecsi1000}{}
+\DeclareFontShape{T1}{figss}{m}{sl}{<->ssub*figss/m/it}{}
+\DeclareFontShape{T1}{figss}{bx}{n}{<->ecsx1000}{}
+\DeclareFontShape{T1}{figss}{b}{n}{<->ssub*figss/bx/n}{}
+\DeclareFontShape{T1}{figss}{sbc}{n}{<->ssub*figss/bx/n}{}
+\DeclareFontShape{T1}{figss}{bx}{it}{<->ssub*figss/bx/n}{}
+\DeclareFontShape{T1}{figss}{b}{it}{<->ssub*figss/bx/n}{}
+\DeclareFontFamily{T1}{figrm}{}
+\DeclareFontShape{T1}{figrm}{m}{n}{<->ecrm1000}{}
+\DeclareFontShape{T1}{figrm}{m}{it}{<->ecti1000}{}
+\DeclareFontShape{T1}{figrm}{bx}{n}{<->ecbx1000}{}
+\DeclareFontShape{T1}{figrm}{bx}{it}{<->ecbi1000}{}
+\DeclareFontShape{T1}{figrm}{b}{n}{<->ssub*figrm/bx/n}{}
+\DeclareFontShape{T1}{figrm}{b}{it}{<->ssub*figrm/bx/it}{}
+\newcommand{\fs}[1]{\pgfmathsetmacro\fsz{#1*\fuval}%
+  \renewcommand\rmdefault{figrm}\renewcommand\sfdefault{figss}\renewcommand\familydefault{figss}%
+  \fontfamily{figss}\fontsize{\fsz}{\fsz}\selectfont}
+% \fit{<px>}{text}: the text squeezed/stretched horizontally to the width it has in the
+% image (keeps the layout exact although CM Sans is wider than the slides' Calibri)
+\newsavebox{\fitbox}
+\newcommand{\fit}[2]{\sbox{\fitbox}{#2}%
+  \pgfmathsetmacro\fitr{(#1*\fuval)/max(0.01,\wd\fitbox/1pt)}\scalebox{\fitr}[1]{\usebox{\fitbox}}}
+% \fitin{<px>}{text}: squeeze only if the text is wider than <px>
+\newcommand{\fitin}[2]{\sbox{\fitbox}{#2}%
+  \pgfmathsetmacro\fitr{min(1,(#1*\fuval)/max(0.01,\wd\fitbox/1pt))}\scalebox{\fitr}[1]{\usebox{\fitbox}}}
+% bold for slide text: CM Sans semibold condensed (closest to Calibri bold)
+\newcommand{\sbf}[1]{{\fontseries{sbc}\selectfont #1}}
+\newcommand{\figbbox}{\useasboundingbox (0,0) rectangle (\figW,\figH);\clip (0,0) rectangle (\figW,\figH);}
+\tikzset{
+  fig/.style={x=\fu, y=-\fu, every node/.style={inner sep=0pt, outer sep=0pt}},
+  px/.style={line width=#1*\fu},
+  % text fragment placed by its left end and baseline, as measured in the image
+  at base/.style={anchor=base west},
+  % block arrow from the slides: shaft width #1 px, head length/width in px as optional
+  % keys: blk=<shaft>, or blkh={<shaft>}{<head length>}{<head width>}
+  blk/.code={\figarrow{#1}{#1*1.5}{#1*2.6}},
+  blkh/.code n args={3}{\figarrow{#1}{#2}{#3}},
+  % thin arrow: line #1 px, head #2 px long and #3 px wide
+  arr/.code n args={3}{\figarrow{#1}{#2}{#3}},
+  % same with heads at both ends
+  darr/.code n args={3}{\figarrow{#1}{#2}{#3}\edef\figarrtmp{\noexpand\tikzset{{Triangle[length=\figarrL, width=\figarrW]}-{Triangle[length=\figarrL, width=\figarrW]}}}\figarrtmp},
+}
+\newcommand{\figarrow}[3]{%
+  \pgfmathsetlengthmacro\figarrL{(#2)*\fuval}\pgfmathsetlengthmacro\figarrW{(#3)*\fuval}%
+  \pgfmathsetlengthmacro\figarrS{(#1)*\fuval}%
+  \edef\figarrtmp{\noexpand\tikzset{line width=\figarrS, -{Triangle[length=\figarrL, width=\figarrW]}}}%
+  \figarrtmp}
+% slide palette (Office defaults)
+\definecolor{sblue}{HTML}{0070C0}     % blue text
+\definecolor{smath}{HTML}{4472C4}     % blue math
+\definecolor{sred}{HTML}{C00000}      % red text
+\definecolor{sbox}{HTML}{5B9BD5}      % blue boxes
+\definecolor{sboxedge}{HTML}{41719C}
+\definecolor{sgray}{HTML}{7F7F7F}
+\definecolor{sgreen}{HTML}{00B050}
+\definecolor{slight}{HTML}{DEEBF7}
+\definecolor{spink}{HTML}{E6B9B8}
+
+% ------------------------------------------- chapter 1 secrecy slides (shared layout)
+% header, grey box "E_K(X) <rel> E_K(Y)" and the two histograms, in the coordinates of
+% chapter-1-perfect-secrecy-distributions (the other two are shifted copies)
+\newcommand{\secrecyslide}[1]{%
+  \node[at base] at (90,95) {\fs{65}\textbf{Secrecy}:};
+  \node[at base] at (343,95) {\fs{65}For every};
+  \node[at base, sblue] at (613,94) {\fs{63}$X,$};
+  \node[at base, sblue] at (688,94) {\fs{63}$Y$};
+  \node[at base, sblue] at (751,94) {\fs{63}$\in$};
+  \node[at base, sblue] at (811,94) {\fs{63}$\{0,1\}^n$};
+  \node[at base] at (443,192) {\fs{65}where};
+  \node[at base, sblue] at (635,192) {\fs{63}$K$};
+  \node[at base, sblue] at (707,192) {\fs{63}$\in_R$};
+  \node[at base, sblue] at (803,192) {\fs{63}$\boldsymbol{K}$};
+  \filldraw[fill=black!14, draw=black!50, px=3, rounded corners=20*\fu] (1208.5,15.5) rectangle (1891.5,139.5);
+  \node[at base, sred] at (1326,94) {\fs{63}$\mathrm{E}_{\textcolor{sblue}{\mathrm{K}}}$};
+  \node[at base, sred] at (1406,94) {\fs{63}$(X)$};
+  \node[at base, sred] at (1522,94) {\fs{63}$#1$};
+  \node[at base, sred] at (1595,94) {\fs{63}$\mathrm{E}_{\textcolor{sblue}{\mathrm{K}}}$};
+  \node[at base, sred] at (1675,94) {\fs{63}$(Y)$};
+  \secrecyhist{0}{0}{856,771,600,585,800,871}{X}{430}{553}
+  \secrecyhist{1117}{4}{860,775,604,590,803,875}{Y}{1548}{557}}
+% one histogram: \secrecyhist{dx}{dy}{six bar tops}{X|Y}{label x}{label baseline}
+\newcommand{\secrecyhist}[6]{%
+  \begin{scope}[shift={(#1,#2)}]
+  \foreach \gy in {572,643,715,786,857} \draw[black!15, px=2] (107,\gy) -- (838,\gy);
+  \end{scope}
+  \foreach \t [count=\i from 0] in {#3} {
+    \pgfmathsetmacro\xa{#1+106.5+\i*121.9}\pgfmathsetmacro\xb{\xa+121.9}
+    \filldraw[fill=red!45!black!25!white, draw=red!50!black, px=5] (\xa,#2+929.5) rectangle (\xb,\t-1);}
+  \node[at base, sred] at (#5,#6) {\fs{39}$\mathsf{E}_{\mathsf{K}}(\mathsf{#4})$};}
+
+% ------------------------------------- chapter 1 distributed-storage slides (shared)
+% Alice's computer, the five servers (1st and i-th framed), the two arrows and the
+% devil, in the coordinates of chapter-1-distributed-storage-coding
+\newcommand{\storagescene}{%
+  \icon{68}{453}{398}{637}{\pccomputer}
+  \draw[blkh={18}{18}{37}] (525,489) -- (863,489);
+  \foreach \y in {52,213,387,579,720} {\icon{985}{\y}{1150}{\y+96}{\pccomputer}}
+  \draw[sred, px=5] (979.5,44.5) rectangle (1157.5,158.5);
+  \draw[sred, px=5] (977.5,379.5) rectangle (1155.5,493.5);
+  \draw[blkh={18}{18}{37}] (1372,489) -- (1710,489);
+  \icon{725}{728}{949}{970}{\pcdevil}}
+
+% ------------------------------------- chapter 4 conditional-correction slides
+% \ccpair{x seed}{x bit}{y top}{fill options}: seed (60x35) and correction bit (30x35)
+\newcommand{\ccpair}[4]{%
+  \filldraw[#4, px=2, rounded corners=3*\fu] (#1,#3) rectangle ++(59,34) (#2,#3) rectangle ++(29,34);}
+\tikzset{ccorange/.style={fill=orange!80!red, draw=orange!60!black},
+  ccpink/.style={fill=red!45!white, draw=red!50!black!60},
+  ccgreen/.style={fill=green!45!black!45!white, draw=green!35!black},
+  ccblue/.style={fill=cyan!70!blue, draw=blue!60!black},
+  ccnavy/.style={fill=blue!45!black, draw=blue!30!black},
+  ccyellow/.style={fill=yellow!70, draw=orange!70!black},
+  cchatch/.style={pattern=north east lines, pattern color=black!80, draw=black!70},
+  cccheck/.style={pattern=checkerboard light gray, draw=purple!60!black},
+  ccredcheck/.style={pattern=crosshatch dots, pattern color=red!60!black, draw=red!60!black}}
+% equal sign / not-equal sign in a 76 x 35 (49 with the slash) box at top-left (x,y)
+\newcommand{\cceq}[2]{\fill (#1,#2) rectangle ++(75,15) (#1,#2+19) rectangle ++(75,15);}
+\newcommand{\ccneq}[2]{\cceq{#1}{#2+7}\draw[px=6] (#1+50,#2) -- (#1+26,#2+49);}
+% big blue down arrow in a 144 x 132 box
+\newcommand{\ccarrow}[2]{\shade[top color=blue!35!cyan!40, bottom color=blue!55!cyan!70]
+  (#1+36,#2) -- (#1+108,#2) -- (#1+108,#2+62) -- (#1+144,#2+62) -- (#1+72,#2+132) -- (#1,#2+62) -- (#1+36,#2+62) -- cycle;}
+
+% ------------------------------------- chapter 4 compressed unit vector (shared)
+% coordinates of chapter-4-compressed-unit-vector-additive; #1 top box label, #2 middle
+% box label, #3 callout label (math)
+\tikzset{cuvlight/.style={fill=blue!8, draw=blue!45!black!50, px=2, rounded corners=8*\fu},
+  cuvy/.style={fill=yellow, draw=blue!45!black!50, px=2, rounded corners=8*\fu},
+  cuvg/.style={fill=green!55!black!35!yellow!70, draw=blue!45!black!50, px=2, rounded corners=8*\fu},
+  cuvo/.style={fill=orange!85!red!90, draw=blue!45!black!50, px=2, rounded corners=8*\fu},
+  cuvb/.style={fill=blue!45!cyan!60!black!60!white, draw=blue!45!black!50, px=2, rounded corners=8*\fu}}
+\newcommand{\cuvserver}[2]{% server stack in a cloud, top-left (x,y), 107 x 97
+  \fill[white!85!blue, draw=blue!20!black!30, px=1] (#1+20,#2+75) circle (22) (#1+50,#2+70) circle (28) (#1+85,#2+76) circle (22);
+  \fill[black!75, rounded corners=3*\fu] (#1+14,#2) rectangle (#1+88,#2+62);
+  \foreach \k in {0,1,2,3} \fill[blue!40!cyan!70] (#1+22,#2+6+\k*14) rectangle (#1+80,#2+14+\k*14);}
+\newcommand{\cuvarrow}[2]{\draw[purple!60!blue!70, px=5, fill=white] (#1+2,#2+22) -- (#1+30,#2+22) -- (#1+30,#2+2) -- (#1+61,#2+39) -- (#1+30,#2+76) -- (#1+30,#2+56) -- (#1+2,#2+56) -- cycle;}
+\newcommand{\cuvcircle}[3]{\fill[black!15] (#1+30,#2+30) circle (30);\fill[purple!60!blue!70] (#1+27,#2+27) circle (27);\node[white] at (#1+27,#2+27) {\fs{28}#3};}
+\newcommand{\cuvscene}[3]{%
+  \filldraw[fill=black!15, draw=blue!40!black!50, px=2, rounded corners=8*\fu] (137,14) rectangle (369,73);
+  \node at (253,44) {\fs{42}#1};
+  \filldraw[fill=black!15, draw=blue!40!black!50, px=2, rounded corners=8*\fu] (137,278) rectangle (362,337);
+  \node at (250,308) {\fs{42}#2};
+  \cuvserver{25}{120} \cuvserver{19}{367}
+  \foreach \x/\s in {186/cuvlight,226/cuvy,268/cuvg,309/cuvb} {\path[\s] (\x,140) rectangle ++(31,60);}
+  \foreach \x/\s in {186/cuvlight,226/cuvy,267/cuvo,309/cuvb} {\path[\s] (\x,369) rectangle ++(31,60);}
+  \cuvarrow{392}{129} \cuvarrow{392}{362}
+  \path[cuvlight] (495,142) rectangle (731,201); \path[cuvy] (744,142) rectangle (969,201);
+  \path[cuvg] (982,142) rectangle (1206,201); \path[cuvb] (1216,142) rectangle (1439,201);
+  \path[cuvlight] (494,376) rectangle (730,435); \path[cuvy] (743,376) rectangle (968,435);
+  \path[cuvo] (980,376) rectangle (1205,435); \path[cuvb] (1214,376) rectangle (1438,435);
+  \cuvcircle{917}{250}{$+$} \cuvcircle{911}{448}{$=$}
+  \filldraw[top color=orange!15, bottom color=orange!45, draw=orange!70, px=2, rounded corners=8*\fu]
+    (1101,443) -- (1460,443) -- (1460,500) -- (1180,500) -- (1110,513) -- (1140,500) -- (1101,500) -- cycle;
+  \node at (1280,472) {\fs{48}#3};
+  \foreach \y in {529,590} \filldraw[fill=purple!8, draw=blue!40!black!50, px=2, rounded corners=8*\fu] (491,\y) rectangle (1439,\y+59);
+  \filldraw[fill=purple!25, draw=purple!50!black, px=2] (961,529) rectangle (1209,588);
+  \filldraw[fill=purple!25, draw=purple!50!black, px=2] (1088,590) rectangle (1126,649);
+  \foreach \x in {740,960,1210} \draw[blue!50!black!70, px=5] (\x,529) -- (\x,649);
+  \node[at base] at (510,569) {\fs{30}\fit{226}{000000000000000}};
+  \node[at base] at (745,569) {\fs{30}\fit{210}{000000000000000}};
+  \node[at base] at (982,567) {\fs{30}\fit{204}{00111001001010}};
+  \node[at base] at (1215,569) {\fs{30}\fit{199}{000000000000000}};
+  \node[at base] at (510,628) {\fs{30}\fit{226}{000000000000000}};
+  \node[at base] at (745,628) {\fs{30}\fit{335}{0000000000000000000000}};
+  \node[at base] at (1102,628) {\fs{30}1};
+  \node[at base] at (1137,628) {\fs{30}\fit{276}{000000000000000000}};}
+
+% ---------------------------------------------------------------- icons
+% \icon{x1}{y1}{x2}{y2}{drawing}: the drawing uses the unit box [0,1]x[0,1] (y down),
+% stretched onto the pixel box (x1,y1)-(x2,y2).
+\newcommand{\icon}[5]{%
+  \pgfmathsetlengthmacro\iconw{(#3-#1)*\fuval}%
+  \pgfmathsetlengthmacro\iconh{(#4-#2)*\fuval}%
+  \begin{scope}[shift={(#1,#2)}, x=\iconw, y=-\iconh]#5\end{scope}}
+% desktop computer (monitor, tower, keyboard)
+\newcommand{\pccomputer}{%
+  \fill[black!85, rounded corners=0.3pt] (0.14,0.0) rectangle (0.70,0.60);
+  \fill[left color=cyan!55!blue, right color=blue!65!black] (0.17,0.04) rectangle (0.67,0.55);
+  \fill[black!70] (0.38,0.60) rectangle (0.47,0.70);
+  \fill[black!75] (0.30,0.70) rectangle (0.55,0.74);
+  \fill[black!85, rounded corners=0.3pt] (0.72,0.02) rectangle (0.96,0.75);
+  \fill[black!50] (0.75,0.08) rectangle (0.93,0.12);
+  \fill[black!65] (0.04,0.82) -- (0.70,0.82) -- (0.72,0.97) -- (0.02,0.97) -- cycle;
+  \fill[black!60] (0.86,0.91) ellipse (0.055 and 0.05);}
+% server tower in perspective (side face on the left, front on the right, plinth)
+\newcommand{\pcserver}{%
+  \fill[black!75] (0.02,0.80) -- (0.50,0.90) -- (1.0,0.88) -- (1.0,0.97) -- (0.50,1.0) -- (0.0,0.86) -- cycle;
+  \fill[black!62] (0.06,0.04) -- (0.50,0.0) -- (0.50,0.92) -- (0.06,0.82) -- cycle;
+  \fill[black!78] (0.50,0.0) -- (0.96,0.02) -- (0.96,0.90) -- (0.50,0.92) -- cycle;
+  \fill[black!45] (0.58,0.16) rectangle (0.90,0.22);
+  \fill[black!55] (0.58,0.27) rectangle (0.90,0.33) (0.58,0.37) rectangle (0.90,0.43);
+  \foreach \xx in {0.60,0.64,...,0.89} \draw[black!40, line width=0.2pt] (\xx,0.62) -- (\xx,0.86);
+  \draw[black!45, line width=0.3pt] (0.58,0.58) -- (0.90,0.58);}
+% the slides' red devil computer (adversary)
+\newcommand{\pcdevil}{%
+  \fill[red!85!black] (0.16,0.10) .. controls (0.02,0.0) and (0.0,0.16) .. (0.10,0.24) -- (0.20,0.20) -- cycle;
+  \fill[red!85!black] (0.66,0.10) .. controls (0.80,0.0) and (0.82,0.16) .. (0.72,0.24) -- (0.62,0.20) -- cycle;
+  \fill[red!90!black, rounded corners=1pt] (0.08,0.08) rectangle (0.74,0.72);
+  \fill[black!8, rounded corners=0.6pt] (0.18,0.15) rectangle (0.62,0.62);
+  \draw[black, line width=0.35pt] (0.27,0.30) -- (0.38,0.35) (0.53,0.30) -- (0.42,0.35);
+  \fill[cyan!70!black] (0.33,0.37) circle (0.03 and 0.03) (0.47,0.37) circle (0.03 and 0.03);
+  \draw[black, line width=0.35pt] (0.29,0.50) .. controls (0.40,0.44) .. (0.51,0.50);
+  \fill[red!90!black, rounded corners=1pt] (0.10,0.76) rectangle (0.76,1.0);
+  \fill[black!10] (0.18,0.82) rectangle (0.30,0.87) (0.50,0.82) rectangle (0.64,0.87);
+  \draw[red!90!black, line width=1.0pt] (0.74,0.80) .. controls (0.98,0.74) and (0.86,0.40) .. (0.95,0.22);
+  \fill[red!90!black] (0.95,0.15) -- (0.90,0.27) -- (1.0,0.26) -- cycle;}
+% Lego-style figures standing in for the photos of Alice and Bob
+\newcommand{\pcalice}{%
+  \fill[black!8] (0,0) rectangle (1,1);
+  \fill[yellow!80!orange] (0.40,0.08) rectangle (0.60,0.24);
+  \fill[orange!70!brown] (0.36,0.04) rectangle (0.64,0.12) (0.36,0.04) rectangle (0.42,0.30) (0.58,0.04) rectangle (0.64,0.30);
+  \fill[blue!65] (0.36,0.26) rectangle (0.64,0.44);
+  \fill[blue!60!cyan] (0.24,0.44) -- (0.76,0.44) -- (0.82,0.86) -- (0.18,0.86) -- cycle;
+  \fill[black!80] (0.30,0.88) rectangle (0.70,0.94);}
+\newcommand{\pcbob}{%
+  \fill[yellow!85!orange] (0.40,0.0) rectangle (0.62,0.20);
+  \fill[black] (0.46,0.08) circle (0.015 and 0.012) (0.56,0.08) circle (0.015 and 0.012);
+  \fill[red!85!black] (0.30,0.21) -- (0.72,0.21) -- (0.76,0.56) -- (0.26,0.56) -- cycle;
+  \fill[red!85!black] (0.30,0.24) -- (0.12,0.42) -- (0.18,0.48) -- (0.34,0.34) -- cycle;
+  \fill[yellow!85!orange] (0.10,0.40) circle (0.06 and 0.05);
+  \fill[red!85!black] (0.70,0.24) -- (0.86,0.44) -- (0.80,0.50) -- (0.66,0.36) -- cycle;
+  \fill[yellow!85!orange] (0.84,0.50) circle (0.06 and 0.05);
+  \fill[blue!75!black] (0.30,0.56) rectangle (0.72,0.66) (0.30,0.66) rectangle (0.49,0.98) (0.53,0.66) rectangle (0.72,0.98);}
+% key with a letter on its bow: \pckey{colour}{letter}
+\newcommand{\pckey}[2]{%
+  \fill[#1, draw=black!70, line width=0.3pt] (0.27,0.27) circle (0.25 and 0.25);
+  \fill[#1, draw=black!70, line width=0.3pt, rotate around={-45:(0.27,0.27)}] (0.45,0.20) rectangle (1.15,0.34);
+  \node[font=\bfseries] at (0.27,0.27) {#2};}
+% key in pixel units: \pxkey{bow centre x}{y}{bow radius}{colour}{letter}; shaft runs down-right
+\newcommand{\pxkey}[5]{\begin{scope}[shift={(#1,#2)}, rotate=-32]
+  \filldraw[fill=#4, draw=black, px=3] (#3*0.7,-#3*0.28) -- (#3*3.9,-#3*0.28) -- (#3*3.9,#3*0.28) -- (#3*3.6,#3*0.28)
+    -- (#3*3.6,#3*0.7) -- (#3*3.3,#3*0.7) -- (#3*3.3,#3*0.28) -- (#3*3.0,#3*0.28) -- (#3*3.0,#3*0.6) -- (#3*2.7,#3*0.6)
+    -- (#3*2.7,#3*0.28) -- (#3*0.7,#3*0.28) -- cycle;
+  \filldraw[fill=#4, draw=black, px=3] (0,0) circle (#3);
+  \end{scope}\node at (#1,#2) {\fs{#3*1.1}#5};}
+\colorlet{kgreen}{green!70!black}\colorlet{kblue}{blue!45!cyan!80!black}
+% detective / eavesdropper
+\newcommand{\pcspy}{%
+  \fill[black!80] (0.10,0.24) -- (0.90,0.24) -- (0.76,0.18) -- (0.70,0.0) -- (0.30,0.0) -- (0.24,0.18) -- cycle;
+  \fill[orange!40!brown!60] (0.32,0.24) rectangle (0.68,0.46);
+  \fill[black!75] (0.20,0.46) -- (0.80,0.46) -- (0.92,1.0) -- (0.08,1.0) -- cycle;
+  \fill[red!60!black] (0.46,0.48) rectangle (0.54,0.70);}
+% safe / lock box
+\newcommand{\pclockbox}{%
+  \fill[black!65, rounded corners=0.6pt] (0,0.12) rectangle (1,1);
+  \fill[black!50] (0.06,0.18) rectangle (0.94,0.94);
+  \draw[black!70, line width=1pt] (0.30,0.12) -- (0.30,0.0) -- (0.70,0.0) -- (0.70,0.12);
+  \node[white, font=\bfseries] at (0.5,0.56) {\fontsize{3}{3}\selectfont LOCK BOX};}

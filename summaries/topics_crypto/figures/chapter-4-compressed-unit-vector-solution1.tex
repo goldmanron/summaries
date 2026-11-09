@@ -1,0 +1,15 @@
+% Compressing a unit vector, multiplicative solution (1505 x 765 px)
+\figsetup{1505}{765}%
+\begin{tikzpicture}[fig]
+\figbbox
+\begin{scope}[shift={(11,12)}]
+\cuvscene{$\beta=e_j\alpha^{-1}$}{$\beta$}{$\alpha\in\mathbb{F}$}
+\end{scope}
+\foreach \x in {560,813,1051,1285} {
+  \node[at base] at (\x,128) {\fs{55}\fit{61}{$\beta\,\times$}};
+  \node[at base] at (\x+8,380) {\fs{55}\fit{61}{$\beta\,\times$}};}
+\node[at base, sblue] at (186,258) {\fs{36}\fit{220}{$s_1,\ldots s_i,\ldots,s_L$}};
+\node[at base, sblue] at (175,490) {\fs{36}\fit{232}{$s_1,\ldots s'_i,\ldots,s_L$}};
+\node[at base] at (1062,718) {\fs{28}i-th block};
+\node[at base] at (1062,748) {\fs{28}j-th entry};
+\end{tikzpicture}%

@@ -1,0 +1,30 @@
+% Inner product via n OTs (1832 x 1102 px)
+\figsetup{1832}{1102}%
+\begin{tikzpicture}[fig, lb/.style={fill=cyan!20, draw=black, px=2}]
+\figbbox
+\newcommand{\g}[1]{\textcolor{green!40!black}{\textbf{#1}}}
+\path[lb] (105,23) rectangle (687,112); \node at (396,70) {\fs{45}x=x\textsubscript{1},..,x\textsubscript{n}};
+\path[lb] (1118,23) rectangle (1700,112); \node at (1409,70) {\fs{45}y=y\textsubscript{1},\ldots,y\textsubscript{n}};
+\filldraw[fill=green!55!yellow!70!black!80, draw=black!60, px=2] (105,148) rectangle (687,237); \node at (396,195) {\fs{45}r=r\textsubscript{1},..,r\textsubscript{n-1}};
+\node[at base] at (218,448) {\fs{66}\fit{172}{\sbf{Alice}}};
+\icon{188}{484}{371}{776}{\pcalice}
+\node[at base] at (1491,461) {\fs{66}\fit{144}{\sbf{Bob}}};
+\icon{1423}{480}{1631}{784}{\pcbob}
+\foreach \t in {306,702} {\filldraw[fill=magenta!20, draw=black, px=6] (850,\t+3) rectangle (952,\t+111); \node at (901,\t+58) {\fs{50}\sbf{OT}};}
+\foreach \y in {316,405,710,800} {\draw[arr={3}{16}{14}] (767,\y) -- (832,\y);}
+\draw[arr={3}{16}{14}] (1037,316) -- (976,316); \draw[arr={3}{16}{14}] (1037,710) -- (976,710);
+\draw[arr={3}{16}{14}] (976,405) -- (1037,405); \draw[arr={3}{16}{14}] (976,800) -- (1037,800);
+\node[at base] at (694,333) {\fs{45}\g{r\textsubscript{1}}};
+\node[at base] at (1053,333) {\fs{45}y\textsubscript{1}};
+\node[at base] at (634,422) {\fs{45}\fit{122}{x\textsubscript{1}+\g{r\textsubscript{1}}}};
+\node[at base] at (1053,422) {\fs{45}\fit{177}{x\textsubscript{1}y\textsubscript{1}+\g{r\textsubscript{1}}}};
+\node[at base] at (880,560) {\fs{45}\ldots};
+\node[at base] at (663,723) {\fs{45}\fit{93}{-$\Sigma$\g{r\textsubscript{i}}}};
+\node[at base] at (1053,723) {\fs{45}y\textsubscript{n}};
+\node[at base] at (622,815) {\fs{45}\fit{135}{x\textsubscript{n}-$\Sigma$\g{r\textsubscript{i}}}};
+\node[at base] at (1053,815) {\fs{45}\fit{205}{x\textsubscript{n}y\textsubscript{n}-$\Sigma$\g{r\textsubscript{i}}}};
+\draw[blkh={11}{30}{44}] (1562,786) -- (1562,868);
+\node[at base] at (1097,931) {\fs{45}\fit{692}{x\textsubscript{1}y\textsubscript{1}+\g{r\textsubscript{1}}, x\textsubscript{2}y\textsubscript{2}+\g{r\textsubscript{2}},\ldots, x\textsubscript{n}y\textsubscript{n}-$\Sigma$\g{r\textsubscript{i}}}};
+\draw[blkh={11}{24}{36}] (1548,987) -- (1548,1035); \draw[blkh={11}{24}{36}] (1548,987) -- (1548,939);
+\node[at base] at (1198,1080) {\fs{45}\fit{562}{x\textsubscript{1}y\textsubscript{1}+\ldots+x\textsubscript{n}y\textsubscript{n}\enspace(mod 2)}};
+\end{tikzpicture}%

@@ -1,0 +1,30 @@
+% DPF: the two shares' GGM-style trees, differing only on the path to the point (1491 x 618 px)
+\figsetup{1491}{618}%
+\begin{tikzpicture}[fig]
+\figbbox
+% \np{x}{y}{fill}: a node's seed (39 x 30) and bit (20 x 30)
+\newcommand{\np}[3]{\filldraw[fill=#3, draw=black!80, px=1.5, rounded corners=4*\fu] (#1,#2) rectangle ++(38,29) (#1+40,#2) rectangle ++(19,29);}
+% \dpftree{node colour}{path colour}
+\newcommand{\dpftree}[2]{%
+  \foreach \a/\b/\c/\d in {353/190/216/288, 216/288/143/377, 216/288/290/377, 497/290/573/379,
+      143/377/99/467, 143/377/185/467, 290/377/247/467, 290/377/332/467, 426/379/382/467,
+      573/379/530/467, 573/379/615/467}
+    {\draw[black!65, px=3] (\a,\b) -- (\c,\d);}
+  \foreach \x in {99,185,247,332,382,468,530,615}
+    {\draw[black!65, px=3] (\x,467) -- (\x-17,546) (\x,467) -- (\x+18,546);
+     \fill (\x,467) circle (5) (\x-17,546) circle (5) (\x+18,546) circle (5);}
+  \fill (216,288) circle (5) (143,377) circle (5) (290,377) circle (5) (573,379) circle (5);
+  \draw[#2, px=6] (353,190) -- (497,290) -- (426,379) -- (468,467) -- (450,546);
+  \fill[#2] (353,190) circle (8) (497,290) circle (7) (426,379) circle (7) (468,467) circle (7) (450,546) circle (7);
+  \np{323}{145}{#1}
+  \np{207}{248}{black!50} \np{451}{242}{#1}
+  \np{93}{332}{black!50} \np{251}{332}{black!50} \np{418}{332}{#1} \np{534}{332}{black!50}
+  \foreach \x in {67,149,218,287,355,499,582} {\np{\x}{426}{black!50}} \np{427}{426}{#1}
+  \foreach \x in {12,92,161,551,622} {\np{\x}{563}{black!50}} \np{415}{563}{#1}
+  \node[at base] at (340,590) {\fs{50}\sbf{\ldots}};}
+\dpftree{blue!45!cyan!50!black!80}{blue}
+\begin{scope}[shift={(760,-6)}]\dpftree{red!75!black}{red!50!black}\end{scope}
+\fill[black!50] (743,34) rectangle (748,554);
+\node[at base] at (298,112) {\fs{58}\fit{151}{\itshape share\textsubscript{1}}};
+\node[at base] at (1045,116) {\fs{58}\fit{154}{\itshape share\textsubscript{2}}};
+\end{tikzpicture}%

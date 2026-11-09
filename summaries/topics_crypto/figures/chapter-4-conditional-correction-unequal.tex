@@ -1,0 +1,14 @@
+% Conditional correction, unequal inputs (1354 x 513 px)
+\figsetup{1354}{513}%
+\begin{tikzpicture}[fig]
+\figbbox
+\node[at base] at (137,60) {\fs{30}\fit{276}{\sbf{Seed + correction bit}}};
+\node[at base] at (941,64) {\fs{30}\fit{276}{\sbf{Seed + correction bit}}};
+\ccpair{212}{292}{94}{ccorange} \ccpair{1012}{1092}{99}{cccheck}
+\ccneq{649}{98}
+\fill[black!45] (685,163) rectangle (691,512);
+\ccarrow{197}{177} \ccarrow{999}{177}
+\ccpair{55}{130}{356}{ccpink} \ccpair{380}{448}{360}{ccgreen}
+\ccpair{855}{929}{360}{ccpink} \ccpair{1180}{1248}{364}{ccredcheck}
+\cceq{61}{434} \ccneq{385}{429} \cceq{865}{437} \ccneq{1194}{434}
+\end{tikzpicture}%

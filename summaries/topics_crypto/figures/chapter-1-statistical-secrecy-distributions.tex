@@ -1,0 +1,30 @@
+% Statistical secrecy: ciphertext distributions are delta-close (2037 x 971 px)
+\figsetup{2037}{971}%
+\begin{tikzpicture}[fig]
+\figbbox
+\begin{scope}[shift={(-2,-12)}]\secrecyslide{\approx}\end{scope}
+\begin{scope}[every node/.append style={at base}]
+\node at (79,377) {\fs{63}$\forall$};
+\node at (139,377) {\fs{63}\rmfamily set of ciphertexts};
+\node at (654,377) {\fs{63}$S,$};
+\draw[px=5] (727.5,330) -- (727.5,391);
+\node at (742,377) {\fs{63}$\mathrm{Pr}$};
+\node at (813,377) {\fs{63}$[$};
+\node[sred] at (831,377) {\fs{63}$E_{\textcolor{sblue}{K}}$};
+\node[sred] at (915,377) {\fs{63}$(X)$};
+\node at (1035,377) {\fs{63}$\in$};
+\node at (1093,377) {\fs{63}$S]$};
+\node at (1176,377) {\fs{63}$-$};
+\node at (1239,377) {\fs{63}$\mathrm{Pr}$};
+\node at (1311,377) {\fs{63}$[$};
+\node[sred] at (1329,377) {\fs{63}$E_{\textcolor{sblue}{K}}$};
+\node[sred] at (1413,377) {\fs{63}$(Y)$};
+\node at (1530,377) {\fs{63}$\in$};
+\node at (1588,377) {\fs{63}$S]$};
+\draw[px=5] (1671.5,330) -- (1671.5,391);
+\node at (1706,377) {\fs{63}$\leq$};
+\node at (1775,377) {\fs{63}$\delta$};
+\node[sblue] at (744,433) {\fs{63}$K$};
+\node[sblue] at (1253,418) {\fs{63}$K$};
+\end{scope}
+\end{tikzpicture}%

@@ -148,7 +148,13 @@
 \end{figure}%
 }
 
-\title{Topics in Cryptography\\[0.4em]
+% TikZ recreations of the slide figures: \imageplaceholder{images/X.png} draws figures/X.tex
+% (falls back to the PNG when there is no recreation)
+\usetikzlibrary{shapes.arrows,shapes.symbols,shapes.misc,patterns}
+\input{figures/figlib}
+\def\figfromimage#1{\figfromimageaux#1\relax}
+\def\figfromimageaux images/#1.png\relax{\IfFileExists{figures/#1.tex}{\input{figures/#1}}{\includegraphics[width=0.72\textwidth]{images/#1.png}}}
+\RenewDocumentCommand{\imageplaceholder}{m O{htbp} m}{\begin{figure}[#2]\centering\figfromimage{#1}\end{figure}}\title{Topics in Cryptography\\[0.4em]
 \large Course Notes}
 \author{Ron Goldman\\Tel-Aviv University}
 \date{Spring Semester, 2026}
@@ -8434,7 +8440,7 @@ status collapsed
 
 \end_inset
 
-images/chapter-4-conditional-correction-equal.png
+figures/chapter-4-conditional-correction-equal.tex
 \begin_inset ERT
 status collapsed
 
@@ -8455,9 +8461,20 @@ status collapsed
 \end_inset
 
 
-\begin_inset Graphics 
-	filename images/chapter-4-conditional-correction-equal.png
-	width 100line%
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\backslash
+def
+\backslash
+figwidth{
+\backslash
+linewidth}
+\backslash
+input{figures/chapter-4-conditional-correction-equal}}
+\end_layout
 
 \end_inset
 
@@ -8598,7 +8615,7 @@ status collapsed
 
 \end_inset
 
-images/chapter-4-conditional-correction-unequal.png
+figures/chapter-4-conditional-correction-unequal.tex
 \begin_inset ERT
 status collapsed
 
@@ -8619,9 +8636,20 @@ status collapsed
 \end_inset
 
 
-\begin_inset Graphics 
-	filename images/chapter-4-conditional-correction-unequal.png
-	width 100line%
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\backslash
+def
+\backslash
+figwidth{
+\backslash
+linewidth}
+\backslash
+input{figures/chapter-4-conditional-correction-unequal}}
+\end_layout
 
 \end_inset
 
@@ -12203,7 +12231,7 @@ status collapsed
 
 \end_inset
 
-images/chapter-6-yao-circuit.png
+figures/chapter-6-yao-circuit.tex
 \begin_inset ERT
 status collapsed
 
@@ -12224,9 +12252,20 @@ status collapsed
 \end_inset
 
 
-\begin_inset Graphics 
-	filename images/chapter-6-yao-circuit.png
-	width 100line%
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\backslash
+def
+\backslash
+figwidth{
+\backslash
+linewidth}
+\backslash
+input{figures/chapter-6-yao-circuit}}
+\end_layout
 
 \end_inset
 
@@ -12363,7 +12402,7 @@ status collapsed
 
 \end_inset
 
-images/chapter-6-yao-wire-keys.png
+figures/chapter-6-yao-wire-keys.tex
 \begin_inset ERT
 status collapsed
 
@@ -12384,9 +12423,20 @@ status collapsed
 \end_inset
 
 
-\begin_inset Graphics 
-	filename images/chapter-6-yao-wire-keys.png
-	width 100line%
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\backslash
+def
+\backslash
+figwidth{
+\backslash
+linewidth}
+\backslash
+input{figures/chapter-6-yao-wire-keys}}
+\end_layout
 
 \end_inset
 
@@ -12523,7 +12573,7 @@ status collapsed
 
 \end_inset
 
-images/chapter-6-yao-garbled-gate.png
+figures/chapter-6-yao-garbled-gate.tex
 \begin_inset ERT
 status collapsed
 
@@ -12544,9 +12594,20 @@ status collapsed
 \end_inset
 
 
-\begin_inset Graphics 
-	filename images/chapter-6-yao-garbled-gate.png
-	width 100line%
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\backslash
+def
+\backslash
+figwidth{
+\backslash
+linewidth}
+\backslash
+input{figures/chapter-6-yao-garbled-gate}}
+\end_layout
 
 \end_inset
 

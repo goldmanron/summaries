@@ -1,0 +1,45 @@
+% Conditional correction with a public correction word (1532 x 798 px)
+\figsetup{1532}{798}%
+\begin{tikzpicture}[fig]
+\figbbox
+\fill[black!12] (0,565) rectangle (1531,760);
+\draw[blue!40!black!50, px=2] (0,565) -- (1531,565);
+\draw[blue!50!cyan!60!black, px=3] (0,761.5) -- (1531,761.5);
+\fill[black!45] (763,385) rectangle (768,757);
+\node[at base] at (728,62) {\fs{34}\fit{90}{\sbf{Public}}};
+\node[at base] at (657,97) {\fs{34}\fit{240}{\sbf{Correction word:}}};
+\ccpair{633}{707}{127}{cchatch} \ccpair{787}{862}{127}{cchatch}
+\node[at base] at (213,285) {\fs{38}\fit{297}{\sbf{Seed + correction bit}}};
+\node[at base] at (1017,289) {\fs{38}\fit{296}{\sbf{Seed + correction bit}}};
+\ccpair{289}{369}{316}{ccorange} \ccpair{1089}{1169}{321}{cccheck}
+\ccneq{726}{320}
+\foreach \a/\b/\c/\d in {278/360/242/399, 354/363/391/401, 1078/364/1041/403, 1154/367/1190/405}
+  {\draw[black!55, arr={12}{22}{30}] (\a,\b) -- (\c,\d);}
+\node[at base] at (288,390) {\fs{40}\fit{64}{\sbf{PRG}}};
+\node[at base] at (1088,395) {\fs{40}\fit{64}{\sbf{PRG}}};
+\ccpair{128}{208}{414}{ccblue} \ccpair{452}{529}{416}{ccnavy}
+\ccpair{928}{1007}{418}{ccredcheck} \ccpair{1251}{1329}{421}{ccyellow}
+\node at (318,466) {\fs{44}$+$}; \node at (1117,471) {\fs{44}$+$};
+\node at (330,551) {\fs{44}$=$}; \node at (1128,556) {\fs{44}$=$};
+% second row: bit x (correction word)
+\filldraw[ccorange, px=2, rounded corners=3*\fu] (23,486) rectangle ++(29,34);
+\filldraw[cccheck, px=2, rounded corners=3*\fu] (823,491) rectangle ++(28,34);
+\node at (72,502) {\fs{44}$\times$}; \node at (872,507) {\fs{44}$\times$};
+\node at (104,502) {\fs{48}$($}; \node at (904,507) {\fs{48}$($};
+\node at (598,502) {\fs{48}$)$}; \node at (1397,507) {\fs{48}$)$};
+\filldraw[cchatch, draw=red!65!black, px=6, rounded corners=4*\fu] (130,487) rectangle (188,520) (208,487) rectangle (236,519);
+\filldraw[cchatch, px=2, rounded corners=3*\fu] (454,486) rectangle ++(59,34);
+\filldraw[cchatch, draw=red!65!black, px=6, rounded corners=4*\fu] (530,487) rectangle (558,519);
+\filldraw[cchatch, draw=red!65!black, px=6, rounded corners=4*\fu] (930,491) rectangle (988,524);
+\ccpair{1254}{1329}{491}{cchatch}
+\filldraw[cchatch, px=2, rounded corners=3*\fu] (1007,491) rectangle ++(29,34);
+% outcome (faded)
+\begin{scope}[opacity=0.45]
+\ccpair{133}{207}{578}{ccpink} \ccpair{458}{526}{582}{ccgreen}
+\ccpair{932}{1006}{583}{ccpink} \ccpair{1257}{1325}{587}{ccredcheck}
+\cceq{138}{656} \ccneq{462}{651} \cceq{942}{659} \ccneq{1271}{656}
+\end{scope}
+% curved arrows from the seed to the correction-bit multiplier
+\draw[arr={4}{18}{14}] (360,310) .. controls (335,170) and (250,143) .. (175,143) .. controls (60,145) and (-15,300) .. (28,447);
+\draw[arr={4}{18}{14}] (1172,317) .. controls (1145,190) and (1070,165) .. (1000,165) .. controls (870,170) and (790,330) .. (848,469);
+\end{tikzpicture}%

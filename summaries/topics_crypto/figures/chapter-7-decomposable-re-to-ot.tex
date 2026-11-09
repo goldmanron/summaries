@@ -1,0 +1,35 @@
+% From a decomposable randomized encoding to OT-based secure computation (2057 x 1117 px)
+\figsetup{2057}{1117}%
+\begin{tikzpicture}[fig, lb/.style={fill=cyan!20, draw=black, px=2}, gr/.style={fill=black!10}]
+\figbbox
+\newcommand{\pu}[1]{\textcolor{purple!75!black}{#1}}
+\newcommand{\gb}[5]{\fill[gr] (#1,#2) rectangle (#3,#4); \node at ({(#1+#3)/2},{(#2+#4)/2+2}) {\fs{52}\fitin{#3-#1-12}{\pu{#5}}};}
+\filldraw[fill=green!55!yellow!70!black!80, draw=black!60, px=2] (321,47) rectangle (612,136); \node at (466,93) {\fs{55}r};
+\path[lb] (307,200) rectangle (612,289); \node at (460,246) {\fs{55}x\textsubscript{1},..,x\textsubscript{10}};
+\path[lb] (1570,307) rectangle (1903,396); \node at (1736,353) {\fs{55}x\textsubscript{11},\ldots,x\textsubscript{20}};
+\node[at base] at (433,455) {\fs{55}\fit{162}{\sbf{Alice}}};
+\icon{404}{497}{587}{789}{\pcalice}
+\node[at base] at (1707,473) {\fs{55}\fit{140}{\sbf{Bob}}};
+\icon{1640}{494}{1847}{797}{\pcbob}
+\gb{1277}{89}{1989}{176}{(g\textsubscript{0}(r),g\textsubscript{1}(x\textsubscript{1},r),\ldots,g\textsubscript{10}(x\textsubscript{10},r))}
+\foreach \t in {301,698} {\filldraw[fill=magenta!20, draw=black, px=6] (1011,\t+3) rectangle (1099,\t+99); \node at (1055,\t+51) {\fs{40}\sbf{OT}};}
+\gb{717}{271}{942}{347}{g\textsubscript{11}(0, r)} \gb{717}{357}{942}{433}{g\textsubscript{11}(1, r)}
+\gb{1202}{352}{1434}{422}{g\textsubscript{11}(x\textsubscript{11}, r)}
+\gb{717}{658}{942}{733}{g\textsubscript{20}(0, r)} \gb{717}{758}{942}{834}{g\textsubscript{20}(1, r)}
+\gb{1183}{758}{1429}{828}{g\textsubscript{20}(x\textsubscript{20}, r)}
+\foreach \y in {309,395,690,796} {\draw[arr={3}{14}{12}] (953,\y) -- (1005,\y);}
+\draw[arr={3}{14}{12}] (1191,300) -- (1131,300); \draw[arr={3}{14}{12}] (1191,690) -- (1131,690);
+\draw[arr={3}{14}{12}] (1131,392) -- (1191,392); \draw[arr={3}{14}{12}] (1131,796) -- (1191,796);
+\node[at base] at (1207,309) {\fs{46}x\textsubscript{11}};
+\node[at base] at (1207,706) {\fs{46}x\textsubscript{20}};
+\node[at base] at (1031,541) {\fs{45}\ldots};
+\fill[gr] (1267,901) rectangle (2030,1104);
+\node[at base] at (1286,977) {\fs{45}\fit{715}{\pu{(g\textsubscript{0}(r),g\textsubscript{1}(x\textsubscript{1},r),\ldots,g\textsubscript{10}(x\textsubscript{10},r),}}};
+\node[at base] at (1286,1072) {\fs{45}\fit{560}{\pu{g\textsubscript{11}(x\textsubscript{11},r),\ldots,g\textsubscript{10}(x\textsubscript{20},r))}}};
+\draw[blkh={11}{30}{44}] (1778,803) -- (1778,885);
+\draw[blkh={11}{30}{44}] (1223,1024) -- (1140,1024);
+\node[at base] at (996,1031) {\fs{45}\fit{87}{f(x)}};
+\node[at base] at (60,893) {\fs{46}\sbf{Remark}:};
+\foreach \y/\t in {942/Single round, 993/Generalizes to multiparty setting} {\node[at base] at (60,\y) {\fs{46}$\bullet$}; \node[at base] at (114,\y) {\fs{46}\t};}
+\node[at base, red] at (60,1047) {\fs{46}$\bullet$}; \node[at base, red] at (114,1047) {\fs{46}Easy Ex: Describe the simulators};
+\end{tikzpicture}%

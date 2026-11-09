@@ -1,0 +1,9 @@
+% Compressing a unit vector with additive shares (1476 x 661 px)
+\figsetup{1476}{661}%
+\begin{tikzpicture}[fig]
+\figbbox
+\cuvscene{$\Delta=e_j-\alpha$}{$\Delta$}{$\alpha\in\{0,1\}^m$}
+\foreach \x/\i in {522/1,775/2,1018/3,1263/4} {
+  \node[at base] at (\x,117) {\fs{55}\fit{138}{$b_{\i}^{0}\cdot\Delta+$}};
+  \node[at base] at (\x-4,345) {\fs{55}\fit{137}{$b_{\i}^{1}\cdot\Delta+$}};}
+\end{tikzpicture}%
