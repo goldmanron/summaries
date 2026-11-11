@@ -1,0 +1,3307 @@
+#LyX 2.5 created this file. For more info see https://www.lyx.org/
+\lyxformat 643
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{circuitikz}
+\usepackage{pgfplots}
+% Necessary Commands:
+\usepackage{autobreak}
+\usepackage[T1]{fontenc}
+\usepackage{relsize}
+\usepackage{mathtools}
+\let\savedleft\left
+  \let\savedright\right
+  % Redefine \left and \right to insert the pairing-group hack
+  \renewcommand{\left}{\mathopen{}\mathclose\bgroup\savedleft}
+  \renewcommand{\right}{\aftergroup\egroup\savedright}
+\usepackage{enumitem}
+\setlist[itemize,1]{label={\fontfamily{cmr}\fontencoding{T1}\selectfont\textbullet}}
+\setlist[enumerate,3]{label=(\arabic*)}
+%\renewcommand{\labelenumi}{(\alph{enumi})}
+%\renewcommand{\theenumii}{\arabic{enumii}}
+%\renewcommand{\labelenumii}{(\theenumii)}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+% Convert the QED Symbol at the end of proofs to a solid black square (credit: Yakir Oz):
+\usepackage{amssymb}
+\renewcommand{\qedsymbol}{$\blacksquare$}
+% Create disjoint union symbols:
+\makeatletter
+\def\moverlay{\mathpalette\mov@rlay}
+\def\mov@rlay#1#2{\leavevmode\vtop{%
+   \baselineskip\z@skip \lineskiplimit-\maxdimen
+   \ialign{\hfil$\m@th#1##$\hfil\cr#2\crcr}}}
+\newcommand{\charfusion}[3][\mathord]{
+    #1{\ifx#1\mathop\vphantom{#2}\fi
+        \mathpalette\mov@rlay{#2\cr#3}
+      }
+    \ifx#1\mathop\expandafter\displaylimits\fi}
+\makeatother
+\newcommand{\cupdot}{\charfusion[\mathbin]{\cup}{\cdot}}
+\newcommand{\bigcupdot}{\charfusion[\mathop]{\bigcup}{\cdot}}
+\newcommand{\kaliLargeLand}{\mathop{\mathlarger{\mathlarger{\mathlarger{\land}}}}}
+\end_preamble
+\options no-math
+\use_default_options true
+\begin_modules
+customHeadersFooters
+theorems-ams-chap-bytype
+theorems-ams-extended-chap-bytype
+\end_modules
+\maintain_unincluded_children no
+\language english
+\language_package default
+\inputencoding auto-legacy
+\fontencoding auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\float_alignment class
+\paperfontsize 11
+\spacing onehalf
+\use_hyperref true
+\pdf_author "Ron Goldman"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle true
+\pdf_quoted_options "linkcolor=blue, urlcolor=marineblue, citecolor=blue, pdfstartview={FitH}, hyperfootnotes=false, unicode=true"
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification default
+\crossref_package refstyle
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\backgroundcolor none
+\fontcolor none
+\notefontcolor lightgray
+\boxbgcolor red
+\table_border_color default
+\table_odd_row_color default
+\table_even_row_color default
+\table_alt_row_colors_start 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1cm
+\topmargin 2cm
+\rightmargin 1cm
+\bottommargin 3cm
+\headheight 0cm
+\headsep 1cm
+\footskip 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation 0bp
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\docbook_mathml_version 0
+\end_header
+
+\begin_body
+\begin_layout Title
+Advanced Topics in Algorithms
+\begin_inset Newline newline
+\end_inset
+
+Lectures 1-3: Negative-Weight Shortest Paths
+\end_layout
+
+\begin_layout Author
+Ron Goldman
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\sset}[2]{\left\{  #1\middle|#2\right\}  }
+{\left\{ #1|#2\right\} }
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Negative-weight single-source shortest paths
+\end_layout
+
+\begin_layout Standard
+We are given a directed graph 
+\begin_inset Formula $G=(V,E,w)$
+\end_inset
+
+ with integer edge weights, possibly negative, and a source 
+\begin_inset Formula $s$
+\end_inset
+
+. Two recent results:
+\end_layout
+
+\begin_layout Itemize
+Bernstein, Nanongkai, Wulff-Nilsen: Negative-weight single-source shortest paths in near-linear time (FOCS 2022, JACM 2025).
+\end_layout
+
+\begin_layout Itemize
+Bringmann, Cassis, Fischer: Negative-weight single-source shortest paths in near-linear time: now faster! (FOCS 2023).
+\end_layout
+
+\begin_layout Itemize
+There are further follow-ups by now, also deterministic ones.
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Bringmann et al.
+\end_layout
+
+\end_inset
+
+There is a Las Vegas algorithm which, given a directed graph 
+\begin_inset Formula $G$
+\end_inset
+
+ with integer weights 
+\begin_inset Formula $w(e)\geq-3W$
+\end_inset
+
+ and a source 
+\begin_inset Formula $s$
+\end_inset
+
+, either computes a shortest path tree from 
+\begin_inset Formula $s$
+\end_inset
+
+ or finds a negative cycle in 
+\begin_inset Formula $G$
+\end_inset
+
+, in expected time 
+\begin_inset Formula $O(\mathrm{Dijkstra}(G)\cdot\log^{2}n\cdot\log(nW))$
+\end_inset
+
+, where 
+\begin_inset Formula $\mathrm{Dijkstra}(G)=O(m+n\log n)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In these lectures we prove a slightly weaker version. The presentation follows Fischer et al., "A simple parallel algorithm with near-linear work for negative-weight single-source shortest paths" (SOSA 2025).
+\end_layout
+
+\begin_layout Theorem
+There is a Las Vegas algorithm which, given a directed graph 
+\begin_inset Formula $G$
+\end_inset
+
+ without negative cycles, with integer weights 
+\begin_inset Formula $w(e)\geq-3W$
+\end_inset
+
+, and a source 
+\begin_inset Formula $s$
+\end_inset
+
+, computes a shortest path tree from 
+\begin_inset Formula $s$
+\end_inset
+
+ in expected time 
+\begin_inset Formula $O(\mathrm{Dijkstra}(G)\cdot\log^{5}n\cdot\log(nW))$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+The classical algorithms
+\end_layout
+
+\begin_layout Itemize
+Dijkstra: only for nonnegative weights; 
+\begin_inset Formula $O(m+n\log n)$
+\end_inset
+
+ with Fibonacci heaps.
+\end_layout
+
+\begin_layout Itemize
+Bellman-Ford: general weights, detects a negative cycle; 
+\begin_inset Formula $O(mn)$
+\end_inset
+
+. It can stop early if the shortest paths contain few edges.
+\end_layout
+
+\begin_layout Algorithm
+Dijkstra
+\begin_inset Formula $(G,s)$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\begin_inset Formula $d_{v}\leftarrow\infty$
+\end_inset
+
+ for all 
+\begin_inset Formula $v\in V$
+\end_inset
+
+, 
+\begin_inset Formula $d_{s}\leftarrow0$
+\end_inset
+
+, 
+\begin_inset Formula $Q\leftarrow\mathrm{PriorityQueue}(\{d_{s}:s\})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+While 
+\begin_inset Formula $Q\neq\emptyset$
+\end_inset
+
+: pop 
+\begin_inset Formula $u\in Q$
+\end_inset
+
+ with minimal 
+\begin_inset Formula $d_{u}$
+\end_inset
+
+; for each 
+\begin_inset Formula $(u,v)\in E$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+if 
+\begin_inset Formula $d_{u}+w(u,v)<d_{v}$
+\end_inset
+
+: 
+\begin_inset Formula $d_{v}\leftarrow d_{u}+w(u,v)$
+\end_inset
+
+ and add/update 
+\begin_inset Formula $(d_{v}:v)$
+\end_inset
+
+ in 
+\begin_inset Formula $Q$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Algorithm
+Bellman-Ford
+\begin_inset Formula $(G,s)$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\begin_inset Formula $d_{v}\leftarrow\infty$
+\end_inset
+
+ for all 
+\begin_inset Formula $v\in V$
+\end_inset
+
+, 
+\begin_inset Formula $d_{s}\leftarrow0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+For 
+\begin_inset Formula $i=1,\ldots,n-1$
+\end_inset
+
+: for each 
+\begin_inset Formula $(u,v)\in E$
+\end_inset
+
+: if 
+\begin_inset Formula $d_{u}+w(u,v)<d_{v}$
+\end_inset
+
+ then 
+\begin_inset Formula $d_{v}\leftarrow d_{u}+w(u,v)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Combining Bellman-Ford and Dijkstra
+\end_layout
+
+\begin_layout Standard
+The algorithm alternates a Dijkstra phase on the nonnegative edges with a Bellman-Ford phase on the negative edges.
+\end_layout
+
+\begin_layout Algorithm
+Bellman-Ford-Dijkstra
+\begin_inset Formula $(G,s)$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\begin_inset Formula $d_{v}\leftarrow\infty$
+\end_inset
+
+ for all 
+\begin_inset Formula $v\in V$
+\end_inset
+
+, 
+\begin_inset Formula $d_{s}\leftarrow0$
+\end_inset
+
+, 
+\begin_inset Formula $Q\leftarrow\mathrm{PriorityQueue}(\{d_{s}:s\})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+While 
+\begin_inset Formula $Q\neq\emptyset$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\begin_inset Formula $A\leftarrow\emptyset$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Dijkstra phase on the nonnegative edges: while 
+\begin_inset Formula $Q\neq\emptyset$
+\end_inset
+
+, pop 
+\begin_inset Formula $u\in Q$
+\end_inset
+
+ with minimal 
+\begin_inset Formula $d_{u}$
+\end_inset
+
+, set 
+\begin_inset Formula $A\leftarrow A\cup\{u\}$
+\end_inset
+
+, and for each 
+\begin_inset Formula $(u,v)\in E$
+\end_inset
+
+ with 
+\begin_inset Formula $w(u,v)\geq0$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+if 
+\begin_inset Formula $d_{u}+w(u,v)<d_{v}$
+\end_inset
+
+: 
+\begin_inset Formula $d_{v}\leftarrow d_{u}+w(u,v)$
+\end_inset
+
+ and add/update 
+\begin_inset Formula $(d_{v}:v)$
+\end_inset
+
+ in 
+\begin_inset Formula $Q$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Bellman-Ford phase on the negative edges: for each 
+\begin_inset Formula $v\in A$
+\end_inset
+
+ and edge 
+\begin_inset Formula $(v,x)$
+\end_inset
+
+ with 
+\begin_inset Formula $w(v,x)<0$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+if 
+\begin_inset Formula $d_{v}+w(v,x)<d_{x}$
+\end_inset
+
+: 
+\begin_inset Formula $d_{x}\leftarrow d_{v}+w(v,x)$
+\end_inset
+
+ and add 
+\begin_inset Formula $(d_{x}:x)$
+\end_inset
+
+ to 
+\begin_inset Formula $Q$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Standard
+To analyze it, let 
+\begin_inset Formula $d_{i}(v)$
+\end_inset
+
+ be the length of a shortest path to 
+\begin_inset Formula $v$
+\end_inset
+
+ with at most 
+\begin_inset Formula $i$
+\end_inset
+
+ negative edges, and 
+\begin_inset Formula $d_{i}^{+1}(v)$
+\end_inset
+
+ the length of a shortest path with at most 
+\begin_inset Formula $i$
+\end_inset
+
+ negative edges followed possibly by one last negative edge.
+\end_layout
+
+\begin_layout Claim
+Invariants, by induction on the iteration 
+\begin_inset Formula $i$
+\end_inset
+
+ of the outer loop:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+At the end of the Dijkstra phase of iteration 
+\begin_inset Formula $i$
+\end_inset
+
+: 
+\begin_inset Formula $d_{v}=d_{i}(v)$
+\end_inset
+
+, and 
+\begin_inset Formula $A=\sset v{d_{i}(v)<d_{i-1}(v)}$
+\end_inset
+
+ (for 
+\begin_inset Formula $i=0$
+\end_inset
+
+: 
+\begin_inset Formula $A=\sset v{d_{0}(v)<\infty}$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+At the end of the Bellman-Ford phase of iteration 
+\begin_inset Formula $i$
+\end_inset
+
+: 
+\begin_inset Formula $d_{v}=d_{i}^{+1}(v)$
+\end_inset
+
+, and 
+\begin_inset Formula $Q=\sset v{d_{i}^{+1}(v)<d_{i}(v)}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+running time
+\end_layout
+
+\end_inset
+
+Let 
+\begin_inset Formula $A_{i}$
+\end_inset
+
+ be the set 
+\begin_inset Formula $A$
+\end_inset
+
+ at the end of iteration 
+\begin_inset Formula $i$
+\end_inset
+
+, and let 
+\begin_inset Formula $\eta(v)$
+\end_inset
+
+ be the minimum number of negative edges on a shortest path to 
+\begin_inset Formula $v$
+\end_inset
+
+. Iteration 
+\begin_inset Formula $i$
+\end_inset
+
+ takes 
+\begin_inset Formula $\sum_{v\in A_{i}}(\deg(v)+\log n)$
+\end_inset
+
+ time, so the total running time is 
+\begin_inset Formula 
+\[
+O\Big(\sum_{i}\sum_{v\in A_{i}}(\deg(v)+\log n)\Big)=O\Big(\sum_{v}(\deg(v)+\log n)(\eta(v)+1)\Big).
+\]
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A vertex enters 
+\begin_inset Formula $A_{i}$
+\end_inset
+
+ only if its distance improves in iteration 
+\begin_inset Formula $i$
+\end_inset
+
+, which happens at most 
+\begin_inset Formula $\eta(v)+1$
+\end_inset
+
+ times.
+\end_layout
+
+\begin_layout Standard
+We will use the algorithm with early stopping: 
+\begin_inset Formula $\mathrm{BFD}(G,V,t)$
+\end_inset
+
+ starts with 
+\begin_inset Formula $d_{v}\leftarrow0$
+\end_inset
+
+ for all 
+\begin_inset Formula $v$
+\end_inset
+
+ (all vertices in 
+\begin_inset Formula $Q$
+\end_inset
+
+, as from a super-source) and runs the outer loop at most 
+\begin_inset Formula $t$
+\end_inset
+
+ times (
+\begin_inset Formula $j\leftarrow0$
+\end_inset
+
+; while 
+\begin_inset Formula $Q\neq\emptyset$
+\end_inset
+
+ and 
+\begin_inset Formula $j\leq t$
+\end_inset
+
+; 
+\begin_inset Formula $j\leftarrow j+1$
+\end_inset
+
+). Its running time is 
+\begin_inset Formula $O(\mathrm{Dijkstra}(G)\cdot t)=O\big((m+n\log n)\cdot t\big)$
+\end_inset
+
+, and it computes correctly every distance realized by a path with at most 
+\begin_inset Formula $t$
+\end_inset
+
+ negative edges.
+\end_layout
+
+\begin_layout Subsection
+Potentials
+\end_layout
+
+\begin_layout Standard
+For 
+\begin_inset Formula $\phi:V\to\mathbb{R}$
+\end_inset
+
+ let 
+\begin_inset Formula $w_{\phi}(u,v)=w(u,v)+\phi(u)-\phi(v)$
+\end_inset
+
+. On every path from 
+\begin_inset Formula $a$
+\end_inset
+
+ to 
+\begin_inset Formula $b$
+\end_inset
+
+ the weight changes by exactly 
+\begin_inset Formula $\phi(a)-\phi(b)$
+\end_inset
+
+, so shortest paths are the same under 
+\begin_inset Formula $w$
+\end_inset
+
+ and 
+\begin_inset Formula $w_{\phi}$
+\end_inset
+
+, and cycles keep their weight.
+\end_layout
+
+\begin_layout Itemize
+There is 
+\begin_inset Formula $\phi$
+\end_inset
+
+ with 
+\begin_inset Formula $w_{\phi}(e)\geq0$
+\end_inset
+
+ for all 
+\begin_inset Formula $e$
+\end_inset
+
+ iff there is no negative cycle (that is, iff shortest paths are well defined).
+\end_layout
+
+\begin_layout Itemize
+Given such 
+\begin_inset Formula $\phi$
+\end_inset
+
+, we can run Dijkstra on 
+\begin_inset Formula $w_{\phi}$
+\end_inset
+
+ and compute the shortest paths.
+\end_layout
+
+\begin_layout Itemize
+Given 
+\begin_inset Formula $\mathrm{dist}(s,\cdot)$
+\end_inset
+
+ from a super-source, 
+\begin_inset Formula $\phi(v)=\mathrm{dist}(s,v)$
+\end_inset
+
+ satisfies 
+\begin_inset Formula $w_{\phi}(u,v)=w(u,v)+\phi(u)-\phi(v)\geq0$
+\end_inset
+
+ (triangle inequality).
+\end_layout
+
+\begin_layout Standard
+So computing a valid potential is equivalent to computing SSSP, up to one run of Dijkstra.
+\end_layout
+
+\begin_layout Subsection
+Restricted graphs
+\end_layout
+
+\begin_layout Definition
+A graph is restricted if its weights are integers 
+\begin_inset Formula $\geq-1$
+\end_inset
+
+ and every cycle has mean weight at least 
+\begin_inset Formula $1$
+\end_inset
+
+, that is, 
+\begin_inset Formula $w(C)\geq|C|$
+\end_inset
+
+ for every cycle 
+\begin_inset Formula $C$
+\end_inset
+
+. In a restricted graph we may assume all weights are 
+\begin_inset Formula $<n-1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Restricted SSSP
+\end_layout
+
+\end_inset
+
+In a restricted graph 
+\begin_inset Formula $G$
+\end_inset
+
+ we can compute a potential 
+\begin_inset Formula $\phi$
+\end_inset
+
+ with 
+\begin_inset Formula $w_{\phi}(u,v)\geq0$
+\end_inset
+
+ for all 
+\begin_inset Formula $(u,v)\in E$
+\end_inset
+
+ in expected time 
+\begin_inset Formula $T_{r}(m,n)=O(\mathrm{Dijkstra}(G)\cdot\log^{5}n)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Scaling: from the general case to restricted graphs
+\end_layout
+
+\begin_layout Standard
+Assume now that 
+\begin_inset Formula $G$
+\end_inset
+
+ has no negative cycles and 
+\begin_inset Formula $w(e)>-3W$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Lemma
+There is an algorithm 
+\begin_inset Formula $\mathrm{Scale}(G)$
+\end_inset
+
+ that computes a potential 
+\begin_inset Formula $\phi$
+\end_inset
+
+ such that in 
+\begin_inset Formula $G_{\phi}$
+\end_inset
+
+, 
+\begin_inset Formula $w(e)>-2W$
+\end_inset
+
+. It runs in expected time 
+\begin_inset Formula $O(T_{r}(m,n))$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Construct 
+\begin_inset Formula $H$
+\end_inset
+
+ on the same vertices and edges with 
+\begin_inset Formula $w_{H}(e)=\left\lceil w_{G}(e)/W\right\rceil +1$
+\end_inset
+
+. 
+\begin_inset Formula $H$
+\end_inset
+
+ is restricted: every weight is an integer and 
+\begin_inset Formula $w_{H}(e)\geq\left\lceil (-3W+1)/W\right\rceil +1\geq-1$
+\end_inset
+
+; and for every cycle 
+\begin_inset Formula $C$
+\end_inset
+
+ (which is nonnegative in 
+\begin_inset Formula $G$
+\end_inset
+
+),
+\end_layout
+
+\begin_layout Proof
+
+\begin_inset Formula 
+\[
+\sum_{e\in C}\left(\left\lceil \frac{w(e)}{W}\right\rceil +1\right)\geq|C|+\sum_{e\in C}\frac{w(e)}{W}\geq|C|.
+\]
+\end_inset
+
+The 
+\begin_inset Formula $+1$
+\end_inset
+
+ buys the cycle slack. Compute (Restricted SSSP) a potential 
+\begin_inset Formula $\phi_{H}$
+\end_inset
+
+ with 
+\begin_inset Formula $w_{H}(u,v)+\phi_{H}(u)-\phi_{H}(v)\geq0$
+\end_inset
+
+ and return 
+\begin_inset Formula $\phi(v)=W\cdot\phi_{H}(v)$
+\end_inset
+
+. Since 
+\begin_inset Formula $w_{H}(e)<\frac{w_{G}(e)}{W}+2$
+\end_inset
+
+ we have 
+\begin_inset Formula $w_{G}(e)>W\cdot(w_{H}(e)-2)$
+\end_inset
+
+, hence
+\end_layout
+
+\begin_layout Proof
+
+\begin_inset Formula 
+\[
+w_{G_{\phi}}(u,v)=w_{G}(u,v)+W\phi_{H}(u)-W\phi_{H}(v)>-2W+W\big(w_{H}(u,v)+\phi_{H}(u)-\phi_{H}(v)\big)\geq-2W.
+\]
+\end_inset
+
+
+\end_layout
+
+\begin_layout Algorithm
+
+\begin_inset Formula $\mathrm{SSSP}(G)$
+\end_inset
+
+, for 
+\begin_inset Formula $G$
+\end_inset
+
+ without negative cycles and 
+\begin_inset Formula $w(e)>-3W$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Multiply all weights by 
+\begin_inset Formula $4n$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+
+\begin_inset Formula $L=O(\log nW)$
+\end_inset
+
+, 
+\begin_inset Formula $G_{0}\leftarrow G$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+For 
+\begin_inset Formula $i=0$
+\end_inset
+
+ to 
+\begin_inset Formula $L-1$
+\end_inset
+
+: 
+\begin_inset Formula $\phi\leftarrow\mathrm{Scale}(G_{i})$
+\end_inset
+
+, 
+\begin_inset Formula $G_{i+1}\leftarrow(G_{i})_{\phi}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Round up to 
+\begin_inset Formula $0$
+\end_inset
+
+ all negative weights in 
+\begin_inset Formula $G_{L}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Run Dijkstra on 
+\begin_inset Formula $G_{L}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Claim
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+correctness
+\end_layout
+
+\end_inset
+
+The algorithm is correct.
+\end_layout
+
+\begin_layout Proof
+Each call to 
+\begin_inset Formula $\mathrm{Scale}$
+\end_inset
+
+ reduces 
+\begin_inset Formula $W$
+\end_inset
+
+ (initially 
+\begin_inset Formula $O(nW)$
+\end_inset
+
+ after the multiplication) by a factor of about 
+\begin_inset Formula $\frac{2}{3}$
+\end_inset
+
+ (
+\begin_inset Formula $-2W\geq-3W^{\prime}$
+\end_inset
+
+ for 
+\begin_inset Formula $W^{\prime}\approx\frac{2}{3}W$
+\end_inset
+
+), until 
+\begin_inset Formula $W=2$
+\end_inset
+
+, i.e. all weights are 
+\begin_inset Formula $>-6$
+\end_inset
+
+; the last iteration makes the weights 
+\begin_inset Formula $>-4$
+\end_inset
+
+ (but 
+\begin_inset Formula $W$
+\end_inset
+
+ stays 2). Shortest paths in 
+\begin_inset Formula $G_{L}$
+\end_inset
+
+ are the same as in 
+\begin_inset Formula $G$
+\end_inset
+
+. Zeroing out the negative weights can increase the weight of a non-shortest path by at most 
+\begin_inset Formula $3n$
+\end_inset
+
+, but after multiplying by 
+\begin_inset Formula $4n$
+\end_inset
+
+ the difference between the shortest and the second-shortest path is at least 
+\begin_inset Formula $4n$
+\end_inset
+
+. So a shortest path in the rounded graph is a shortest path in 
+\begin_inset Formula $G$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Running time: 
+\begin_inset Formula $O(T_{r}(m,n)\log nW)=O(\mathrm{Dijkstra}(G)\cdot\log^{5}n\cdot\log nW)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Directed low-diameter decomposition
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+LDD
+\end_layout
+
+\end_inset
+
+Let 
+\begin_inset Formula $G=(V,E,w)$
+\end_inset
+
+, 
+\begin_inset Formula $w:E\to\mathbb{Z}_{\geq0}$
+\end_inset
+
+, be a directed nonnegatively-weighted graph. There is a randomized algorithm that computes a set of edges 
+\begin_inset Formula $E^{-}$
+\end_inset
+
+ such that
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+every strongly connected component of 
+\begin_inset Formula $G\setminus E^{-}$
+\end_inset
+
+ has weak diameter 
+\begin_inset Formula $\leq d$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+
+\begin_inset Formula $e\in E^{-}$
+\end_inset
+
+ with probability at most 
+\begin_inset Formula $O\left(\log^{2}n\cdot\frac{w(e)}{d}+\frac{1}{n^{8}}\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Weak diameter means distances are measured in all of 
+\begin_inset Formula $G$
+\end_inset
+
+ (paths may leave the component); strong diameter would measure them inside the component, which is larger, so weak diameter is the easier requirement. The point of the second property is that short edges are rarely cut, and long edges are cut with probability proportional to their weight. LDD in undirected graphs was known before; the twist of these algorithms is a directed version, and its use for restricted graphs.
+\end_layout
+
+\begin_layout Section
+Restricted SSSP
+\end_layout
+
+\begin_layout Standard
+Topologically sort the strongly connected components 
+\begin_inset Formula $(S_{1},\ldots,S_{k})$
+\end_inset
+
+ of 
+\begin_inset Formula $(V,E\setminus E^{-},w)$
+\end_inset
+
+. We may assume that the edges 
+\begin_inset Formula $(u,v)\in E^{-}$
+\end_inset
+
+ go backwards: 
+\begin_inset Formula $u\in S_{j}$
+\end_inset
+
+, 
+\begin_inset Formula $v\in S_{i}$
+\end_inset
+
+ with 
+\begin_inset Formula $j>i$
+\end_inset
+
+ (edges between components that go forward are not cut).
+\end_layout
+
+\begin_layout Standard
+Notation: 
+\begin_inset Formula $G_{\geq0}$
+\end_inset
+
+ is 
+\begin_inset Formula $G$
+\end_inset
+
+ with negative weights replaced by 
+\begin_inset Formula $0$
+\end_inset
+
+, 
+\begin_inset Formula $G[S]$
+\end_inset
+
+ is the subgraph induced by 
+\begin_inset Formula $S$
+\end_inset
+
+, and 
+\begin_inset Formula $E_{\ell,r}^{-}$
+\end_inset
+
+ is the set of edges between different components of 
+\begin_inset Formula $\mathcal{S}_{\ell,r}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Algorithm
+
+\begin_inset Formula $\mathrm{RestrictedSSSP}(G)$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\begin_inset Formula $L\leftarrow\lceil\log2n^{2}\rceil$
+\end_inset
+
+, 
+\begin_inset Formula $R\leftarrow(2+c)\log n$
+\end_inset
+
+, 
+\begin_inset Formula $t\leftarrow4C\log^{2}n+1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\begin_inset Formula $\Phi_{0}=\{0\}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+For 
+\begin_inset Formula $\ell\leftarrow1,\ldots,L$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+for 
+\begin_inset Formula $r\leftarrow1,\ldots,R$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\begin_inset Formula $\mathcal{S}_{\ell,r}\leftarrow(S_{1},\ldots,S_{k})=\mathrm{LDD}(G_{\geq0},2^{\ell})$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+for 
+\begin_inset Formula $i\in[k]$
+\end_inset
+
+ and 
+\begin_inset Formula $\phi\in\Phi_{\ell-1}$
+\end_inset
+
+: 
+\begin_inset Formula $d_{\phi}=\mathrm{BFD}(G_{\phi}[S_{i}],S_{i},t)$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+let 
+\begin_inset Formula $\phi^{i}(v)\leftarrow\min_{\phi\in\Phi_{\ell-1}}d_{\phi}(v)$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+let 
+\begin_inset Formula $\phi_{\ell,r}(v)\leftarrow\phi^{i}(v)-i\cdot n$
+\end_inset
+
+ for 
+\begin_inset Formula $v\in S_{i}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\begin_inset Formula $\Phi_{\ell}\leftarrow\sset{\phi_{\ell,r}}{r\in[R]}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Return 
+\begin_inset Formula $\phi_{L,1}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Think of a table with rows 
+\begin_inset Formula $\ell=1,\ldots,L$
+\end_inset
+
+ and columns 
+\begin_inset Formula $r=1,\ldots,R$
+\end_inset
+
+; each cell stores one LDD 
+\begin_inset Formula $\mathcal{S}_{\ell,r}$
+\end_inset
+
+ and one potential 
+\begin_inset Formula $\phi_{\ell,r}$
+\end_inset
+
+. Within a row the repetitions are independent, and the rows are computed bottom-up: cell 
+\begin_inset Formula $(\ell,r)$
+\end_inset
+
+ runs BFD inside its components with every potential of row 
+\begin_inset Formula $\ell-1$
+\end_inset
+
+, and takes the pointwise minimum.
+\end_layout
+
+\begin_layout Subsection
+The crucial property of the LDD
+\end_layout
+
+\begin_layout Claim
+Let 
+\begin_inset Formula $S$
+\end_inset
+
+ be a component of 
+\begin_inset Formula $\mathrm{LDD}(G_{\geq0},d)$
+\end_inset
+
+ and let 
+\begin_inset Formula $P$
+\end_inset
+
+ be a shortest path realizing 
+\begin_inset Formula $d(S,v)$
+\end_inset
+
+ in 
+\begin_inset Formula $G[S]$
+\end_inset
+
+ (from the super-source of 
+\begin_inset Formula $S$
+\end_inset
+
+). Then 
+\begin_inset Formula $|P|\leq d$
+\end_inset
+
+ and 
+\begin_inset Formula $w_{\geq0}(P)\leq d$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Since 
+\begin_inset Formula $S$
+\end_inset
+
+ has weak diameter 
+\begin_inset Formula $\leq d$
+\end_inset
+
+ in 
+\begin_inset Formula $G_{\geq0}$
+\end_inset
+
+, there is a return path 
+\begin_inset Formula $Q$
+\end_inset
+
+ (from the end of 
+\begin_inset Formula $P$
+\end_inset
+
+ back to its start) with 
+\begin_inset Formula $w_{\geq0}(Q)\leq d$
+\end_inset
+
+. Then 
+\begin_inset Formula $w(P+Q)\leq d$
+\end_inset
+
+, since 
+\begin_inset Formula $w(P)\leq0$
+\end_inset
+
+. By the cycle condition of restricted graphs, 
+\begin_inset Formula $|P|+|Q|\leq w(P+Q)\leq d$
+\end_inset
+
+. Finally, since 
+\begin_inset Formula $w(e)\geq-1$
+\end_inset
+
+, 
+\begin_inset Formula $w_{\geq0}(P)\leq w(P)+|P|\leq|P|\leq d$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Correctness
+\end_layout
+
+\begin_layout Claim
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+main invariant
+\end_layout
+
+\end_inset
+
+For all 
+\begin_inset Formula $\ell,r$
+\end_inset
+
+ and 
+\begin_inset Formula $e\in E\setminus E_{\ell,r}^{-}$
+\end_inset
+
+: 
+\begin_inset Formula $w_{\phi_{\ell,r}}(e)\geq0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Since 
+\begin_inset Formula $L=\lceil\log2n^{2}\rceil$
+\end_inset
+
+, 
+\begin_inset Formula $2^{L}\geq2n^{2}\geq(n-1)(n-2)$
+\end_inset
+
+, so 
+\begin_inset Formula $E_{L,1}^{-}=\emptyset$
+\end_inset
+
+, and the invariant gives that 
+\begin_inset Formula $\phi_{L,1}$
+\end_inset
+
+ is a valid potential: the algorithm is correct.
+\end_layout
+
+\begin_layout Standard
+The bad event 
+\begin_inset Formula $B_{\ell,r,v}$
+\end_inset
+
+ (for level 
+\begin_inset Formula $\ell$
+\end_inset
+
+, repetition 
+\begin_inset Formula $r$
+\end_inset
+
+ and vertex 
+\begin_inset Formula $v$
+\end_inset
+
+): fix 
+\begin_inset Formula $\ell$
+\end_inset
+
+, 
+\begin_inset Formula $r$
+\end_inset
+
+ and a vertex 
+\begin_inset Formula $v$
+\end_inset
+
+, let 
+\begin_inset Formula $S$
+\end_inset
+
+ be the component of 
+\begin_inset Formula $\mathcal{S}_{\ell,r}=\mathrm{LDD}(G_{\geq0},2^{\ell})$
+\end_inset
+
+ containing 
+\begin_inset Formula $v$
+\end_inset
+
+, and let 
+\begin_inset Formula $P$
+\end_inset
+
+ realize 
+\begin_inset Formula $d(S,v)$
+\end_inset
+
+ in 
+\begin_inset Formula $G[S]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+By the crucial property, 
+\begin_inset Formula $w_{\geq0}(P)\leq2^{\ell}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Fix some 
+\begin_inset Formula $\mathcal{S}_{\ell-1,r^{\prime}}$
+\end_inset
+
+. An edge 
+\begin_inset Formula $e\in P$
+\end_inset
+
+ is in 
+\begin_inset Formula $E_{\ell-1,r^{\prime}}^{-}$
+\end_inset
+
+ with probability 
+\begin_inset Formula $\leq C\log^{2}n\cdot\frac{w_{\geq0}(e)}{2^{\ell-1}}+O\left(\frac{1}{n^{8}}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+So the expected number of edges of 
+\begin_inset Formula $P$
+\end_inset
+
+ in 
+\begin_inset Formula $E_{\ell-1,r^{\prime}}^{-}$
+\end_inset
+
+ is 
+\begin_inset Formula $\leq C\log^{2}n\cdot\frac{w_{\geq0}(P)}{2^{\ell-1}}+O\left(\frac{1}{n^{7}}\right)\leq2C\log^{2}n+O\left(\frac{1}{n^{7}}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+By Markov, with probability 
+\begin_inset Formula $\leq\frac{1}{2}$
+\end_inset
+
+ the number of edges of 
+\begin_inset Formula $P$
+\end_inset
+
+ in 
+\begin_inset Formula $E_{\ell-1,r^{\prime}}^{-}$
+\end_inset
+
+ is 
+\begin_inset Formula $\geq t=4C\log^{2}n+1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+The repetitions are independent, so with probability 
+\begin_inset Formula $\leq\left(\frac{1}{2}\right)^{R}$
+\end_inset
+
+ this happens for all 
+\begin_inset Formula $r^{\prime}\in[R]$
+\end_inset
+
+. This is the bad event 
+\begin_inset Formula $B_{\ell,r,v}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Union bound over all 
+\begin_inset Formula $\ell,r,v$
+\end_inset
+
+: some 
+\begin_inset Formula $B_{\ell,r,v}$
+\end_inset
+
+ happens with probability 
+\begin_inset Formula $\leq n\log^{2}n\left(\frac{1}{2}\right)^{R}\leq\frac{1}{n^{c}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Assume from now on that no bad event happens. We prove the main invariant by induction, via the two statements
+\end_layout
+
+\begin_layout Definition
+
+\begin_inset Formula 
+\[
+A(\ell):\ \forall r,S_{i}\in\mathcal{S}_{\ell,r},v\in S_{i}:\quad\phi^{i}(v)\ \Big(=\min_{\phi\in\Phi_{\ell-1}}d_{\phi}(v)\Big)=d_{G[S_{i}]}(S_{i},v),
+\]
+\end_inset
+
+
+\begin_inset Formula 
+\[
+B(\ell):\ \forall r,e\in E\setminus E_{\ell,r}^{-}:\quad w_{\phi_{\ell,r}}(e)\geq0.
+\]
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+base case
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $A(1)$
+\end_inset
+
+ holds.
+\end_layout
+
+\begin_layout Proof
+Let 
+\begin_inset Formula $P$
+\end_inset
+
+ be the path realizing 
+\begin_inset Formula $d_{G[S_{i}]}(S_{i},v)$
+\end_inset
+
+. In level 1 the components have weak diameter 
+\begin_inset Formula $\leq2$
+\end_inset
+
+, so by the crucial property 
+\begin_inset Formula $|P|\leq2$
+\end_inset
+
+, and 
+\begin_inset Formula $d_{\phi}=\mathrm{BFD}(G_{\phi}[S_{i}],S_{i},t)$
+\end_inset
+
+ with 
+\begin_inset Formula $\phi=0$
+\end_inset
+
+ finds it. Hence 
+\begin_inset Formula $\phi^{i}(v)=d_{\phi}(v)=d_{G[S_{i}]}(S_{i},v)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Claim
+
+\begin_inset Formula $A(\ell)\Rightarrow B(\ell)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Fix 
+\begin_inset Formula $r$
+\end_inset
+
+ and an edge 
+\begin_inset Formula $(u,v)\in E\setminus E_{\ell,r}^{-}$
+\end_inset
+
+. If 
+\begin_inset Formula $u$
+\end_inset
+
+ and 
+\begin_inset Formula $v$
+\end_inset
+
+ are in the same 
+\begin_inset Formula $S_{i}\in\mathcal{S}_{\ell,r}$
+\end_inset
+
+, this follows from 
+\begin_inset Formula $A(\ell)$
+\end_inset
+
+ (distances satisfy the triangle inequality, and the shift by 
+\begin_inset Formula $-i\cdot n$
+\end_inset
+
+ is the same for 
+\begin_inset Formula $u$
+\end_inset
+
+ and 
+\begin_inset Formula $v$
+\end_inset
+
+). Otherwise 
+\begin_inset Formula $u\in S_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $v\in S_{j}$
+\end_inset
+
+ with 
+\begin_inset Formula $i<j$
+\end_inset
+
+ (the edge is not cut, so it goes forward), and
+\end_layout
+
+\begin_layout Proof
+
+\begin_inset Formula 
+\[
+w_{\phi_{\ell,r}}(e)=w(e)+\phi^{i}(u)-i\cdot n-\big(\phi^{j}(v)-j\cdot n\big)\geq-1-(n-1)+0+(j-i)\cdot n\geq0,
+\]
+\end_inset
+
+using 
+\begin_inset Formula $A(\ell)$
+\end_inset
+
+: 
+\begin_inset Formula $\phi^{i}(u)=d_{G[S_{i}]}(S_{i},u)\geq-(n-1)$
+\end_inset
+
+ and 
+\begin_inset Formula $\phi^{j}(v)=d_{G[S_{j}]}(S_{j},v)\leq0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Claim
+
+\begin_inset Formula $B(\ell)\Rightarrow A(\ell+1)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Fix 
+\begin_inset Formula $S_{i}\in\mathcal{S}_{\ell+1,r}$
+\end_inset
+
+ and 
+\begin_inset Formula $v\in S_{i}$
+\end_inset
+
+, and let 
+\begin_inset Formula $P$
+\end_inset
+
+ be the path realizing 
+\begin_inset Formula $d_{G[S_{i}]}(S_{i},v)$
+\end_inset
+
+. Since 
+\begin_inset Formula $B_{\ell+1,r,v}$
+\end_inset
+
+ does not happen, there is 
+\begin_inset Formula $r^{\prime}$
+\end_inset
+
+ such that 
+\begin_inset Formula $P$
+\end_inset
+
+ has 
+\begin_inset Formula $\leq t=4C\log^{2}n+1$
+\end_inset
+
+ edges of 
+\begin_inset Formula $E_{\ell,r^{\prime}}^{-}$
+\end_inset
+
+. By 
+\begin_inset Formula $B(\ell)$
+\end_inset
+
+, under 
+\begin_inset Formula $\phi_{\ell,r^{\prime}}\in\Phi_{\ell}$
+\end_inset
+
+ all other edges of 
+\begin_inset Formula $P$
+\end_inset
+
+ are nonnegative, so 
+\begin_inset Formula $P$
+\end_inset
+
+ has at most 
+\begin_inset Formula $t$
+\end_inset
+
+ negative edges in 
+\begin_inset Formula $G_{\phi_{\ell,r^{\prime}}}$
+\end_inset
+
+ and 
+\begin_inset Formula $d_{\phi}=\mathrm{BFD}(G_{\phi_{\ell,r^{\prime}}}[S_{i}],S_{i},t)$
+\end_inset
+
+ finds it: 
+\begin_inset Formula $d_{\phi}(v)=d_{G[S_{i}]}(S_{i},v)$
+\end_inset
+
+. The minimum over 
+\begin_inset Formula $\Phi_{\ell}$
+\end_inset
+
+ can only be smaller, and it is never below the true distance.
+\end_layout
+
+\begin_layout Subsection
+Running time and Las Vegas
+\end_layout
+
+\begin_layout Itemize
+Each BFD takes 
+\begin_inset Formula $O((m_{i}+n_{i}\log n_{i})\log^{2}n)$
+\end_inset
+
+ time.
+\end_layout
+
+\begin_layout Itemize
+For fixed 
+\begin_inset Formula $\ell,r$
+\end_inset
+
+: 
+\begin_inset Formula $\sum m_{i}\leq m$
+\end_inset
+
+ and 
+\begin_inset Formula $\sum n_{i}\leq n$
+\end_inset
+
+, so one BFD for 
+\begin_inset Formula $\ell,r$
+\end_inset
+
+ (over all components) takes 
+\begin_inset Formula $O((m+n\log n)\log^{2}n)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+We do 
+\begin_inset Formula $|\Phi_{\ell-1}|=\log n$
+\end_inset
+
+ of these for each 
+\begin_inset Formula $\ell,r$
+\end_inset
+
+, in total 
+\begin_inset Formula $O((m+n\log n)\log^{3}n)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+There are 
+\begin_inset Formula $\log^{2}n$
+\end_inset
+
+ pairs 
+\begin_inset Formula $\ell,r$
+\end_inset
+
+, so 
+\begin_inset Formula $O((m+n\log n)\log^{5}n)$
+\end_inset
+
+ time.
+\end_layout
+
+\begin_layout Itemize
+Each LDD takes 
+\begin_inset Formula $O(m\log^{2}n)$
+\end_inset
+
+, so the total LDD time is 
+\begin_inset Formula $O(m\log^{4}n)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We showed an algorithm that succeeds with high probability. Testing whether a potential is valid takes 
+\begin_inset Formula $O(m)$
+\end_inset
+
+ time, so under the assumption that there is no negative cycle we can easily turn it into a Las Vegas algorithm: check the result and repeat if it fails.
+\end_layout
+
+\begin_layout Section
+Low-diameter decomposition
+\end_layout
+
+\begin_layout Subsection
+Undirected graphs
+\end_layout
+
+\begin_layout Algorithm
+Undirected LDD
+\begin_inset Formula $(G,d)$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\begin_inset Formula $E^{-}\leftarrow\emptyset$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+While 
+\begin_inset Formula $G$
+\end_inset
+
+ is not empty:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+pick an arbitrary vertex 
+\begin_inset Formula $v$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+sample 
+\begin_inset Formula $R_{v}\sim\mathrm{Geo}(p)$
+\end_inset
+
+ for 
+\begin_inset Formula $p\leftarrow\min\left\{ 1,\frac{20\ln n}{d}\right\}$
+\end_inset
+
+; if 
+\begin_inset Formula $R_{v}>\frac{d}{2}$
+\end_inset
+
+ set 
+\begin_inset Formula $R_{v}\leftarrow\frac{d}{2}$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+
+\begin_inset Formula $E^{-}\leftarrow E^{-}\cup\partial B(v,R_{v})$
+\end_inset
+
+ (this makes the ball 
+\begin_inset Formula $B(v,R_{v})$
+\end_inset
+
+ a connected component);
+\end_layout
+
+\begin_layout Itemize
+
+\begin_inset Formula $G\leftarrow G\setminus B(v,R_{v})$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Return 
+\begin_inset Formula $E^{-}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Every component is a ball of radius 
+\begin_inset Formula $\leq\frac{d}{2}$
+\end_inset
+
+, so its diameter is 
+\begin_inset Formula $\leq d$
+\end_inset
+
+. In the lecture we ran it on a grid with 
+\begin_inset Formula $n=48$
+\end_inset
+
+, 
+\begin_inset Formula $d=100$
+\end_inset
+
+: each round grows a random ball, removes it with its boundary edges, and continues on what is left.
+\end_layout
+
+\begin_layout Claim
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+second property
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\Pr(e\in E^{-})=O\left(\frac{w(e)\cdot\log n}{d}+\frac{1}{n^{9}}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Consider an edge 
+\begin_inset Formula $e=(u,v)$
+\end_inset
+
+ of weight 
+\begin_inset Formula $w(e)$
+\end_inset
+
+ and the first ball that reaches 
+\begin_inset Formula $u$
+\end_inset
+
+ or 
+\begin_inset Formula $v$
+\end_inset
+
+, say w.l.o.g. 
+\begin_inset Formula $u$
+\end_inset
+
+. The geometric distribution is memoryless, so the probability that the ball stops within the next 
+\begin_inset Formula $w(e)$
+\end_inset
+
+ coin tosses (and cuts 
+\begin_inset Formula $e$
+\end_inset
+
+) is 
+\begin_inset Formula $1-(1-p)^{w(e)}\leq w(e)\cdot p=O\left(\frac{w(e)\log n}{d}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+It could also be that we truncate a radius to 
+\begin_inset Formula $\frac{d}{2}$
+\end_inset
+
+ (and cut the edge). But 
+\begin_inset Formula $\Pr\left(\mathrm{Geo}(p)>\frac{d}{2}\right)\leq(1-p)^{d/2}\leq e^{-pd/2}=e^{-10\ln n}=\frac{1}{n^{10}}$
+\end_inset
+
+, so by a union bound 
+\begin_inset Formula $\Pr(\text{some ball is truncated})\leq\frac{1}{n^{9}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Directed graphs
+\end_layout
+
+\begin_layout Standard
+Now 
+\begin_inset Formula $G$
+\end_inset
+
+ is directed with nonnegative weights, and we need strongly connected components of weak diameter 
+\begin_inset Formula $\leq d$
+\end_inset
+
+. 
+\begin_inset Formula $B_{in}(v,r)$
+\end_inset
+
+ and 
+\begin_inset Formula $B_{out}(v,r)$
+\end_inset
+
+ are the in- and out-balls (vertices at distance 
+\begin_inset Formula $\leq r$
+\end_inset
+
+ to 
+\begin_inset Formula $v$
+\end_inset
+
+, from 
+\begin_inset Formula $v$
+\end_inset
+
+), and 
+\begin_inset Formula $\partial B_{in}$
+\end_inset
+
+, 
+\begin_inset Formula $\partial B_{out}$
+\end_inset
+
+ are the edges entering, resp. leaving, the ball.
+\end_layout
+
+\begin_layout Algorithm
+Directed LDD
+\begin_inset Formula $(G,d)$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\begin_inset Formula $E^{-}\leftarrow\emptyset$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Mark 
+\begin_inset Formula $v$
+\end_inset
+
+ in-light if 
+\begin_inset Formula $\left|B_{in}\left(v,\frac{d}{2}\right)\right|\leq\frac{n}{2}$
+\end_inset
+
+, and out-light if 
+\begin_inset Formula $\left|B_{out}\left(v,\frac{d}{2}\right)\right|\leq\frac{n}{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+While 
+\begin_inset Formula $G$
+\end_inset
+
+ contains a vertex 
+\begin_inset Formula $v$
+\end_inset
+
+ marked in/out-light:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+sample 
+\begin_inset Formula $R_{v}\sim\mathrm{Geo}(p)$
+\end_inset
+
+ for 
+\begin_inset Formula $p\leftarrow\min\left\{ 1,\frac{20\ln n}{d}\right\}$
+\end_inset
+
+; if 
+\begin_inset Formula $R_{v}>\frac{d}{2}$
+\end_inset
+
+ set 
+\begin_inset Formula $R_{v}\leftarrow\frac{d}{2}$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+
+\begin_inset Formula $E^{-}\leftarrow E^{-}\cup\partial B_{in/out}(v,R_{v})\cup\mathrm{LDD}\big(B_{in/out}(v,R_{v})\big)$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+
+\begin_inset Formula $G\leftarrow G\setminus B(v,R_{v})$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Return 
+\begin_inset Formula $E^{-}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+We may assume the graph is strongly connected (otherwise work on each component separately).
+\end_layout
+
+\begin_layout Itemize
+The main differences from the undirected case: separation into in- and out-balls, and carving only balls of light vertices, using recursion.
+\end_layout
+
+\begin_layout Itemize
+Since a carved ball has at most 
+\begin_inset Formula $\frac{n}{2}$
+\end_inset
+
+ vertices, the depth of the recursion is 
+\begin_inset Formula $\log n$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In the example from the lecture (
+\begin_inset Formula $d=100$
+\end_inset
+
+, so 
+\begin_inset Formula $p=\frac{20\ln28}{100}\approx\frac{2}{3}$
+\end_inset
+
+) the graph has a heavy core 
+\begin_inset Formula $H$
+\end_inset
+
+ and two light parts: the out-ball 
+\begin_inset Formula $B_{out}(B0,2)$
+\end_inset
+
+ is exactly the 8 vertices of 
+\begin_inset Formula $A\cup B$
+\end_inset
+
+ and its leaving edges are cut, then 
+\begin_inset Formula $B_{in}(Q0,1)$
+\end_inset
+
+ is carved, and the recursive call on 
+\begin_inset Formula $A\cup B$
+\end_inset
+
+ carves an in-ball around 
+\begin_inset Formula $B2$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Claim
+The heavy vertices that remain have weak diameter 
+\begin_inset Formula $\leq d$
+\end_inset
+
+, and are strongly connected.
+\end_layout
+
+\begin_layout Proof
+Let 
+\begin_inset Formula $u$
+\end_inset
+
+ and 
+\begin_inset Formula $v$
+\end_inset
+
+ be heavy. Then 
+\begin_inset Formula $\left|B_{out}\left(u,\frac{d}{2}\right)\right|>\frac{n}{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $\left|B_{in}\left(v,\frac{d}{2}\right)\right|>\frac{n}{2}$
+\end_inset
+
+, so 
+\begin_inset Formula $B_{out}(u)\cap B_{in}(v)\neq\emptyset$
+\end_inset
+
+: there is 
+\begin_inset Formula $w$
+\end_inset
+
+ in both, and a path 
+\begin_inset Formula $u\to w\to v$
+\end_inset
+
+ of weight 
+\begin_inset Formula $\leq d$
+\end_inset
+
+ (note that 
+\begin_inset Formula $w$
+\end_inset
+
+ itself may be light). A strongly connected component in a recursive call is also strongly connected at the top level, so all components have weak diameter 
+\begin_inset Formula $\leq d$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Claim
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+cutting probability
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\Pr(e\in E^{-})=O\left(\frac{w(e)\log^{2}n}{d}+\frac{1}{n^{8}}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+In a single LDD the same analysis as in the undirected case gives 
+\begin_inset Formula $O\left(\frac{w(e)\log n}{d}+\frac{1}{n^{9}}\right)$
+\end_inset
+
+. But now an edge participates in 
+\begin_inset Formula $\log n$
+\end_inset
+
+ LDDs (the recursion depth), and a union bound gives the claim.
+\end_layout
+
+\begin_layout Subsection
+Running time and heavy-light classification
+\end_layout
+
+\begin_layout Standard
+Carving out the balls takes 
+\begin_inset Formula $O(m+n\log n)$
+\end_inset
+
+, since each edge is scanned by at most two Dijkstra computations. The bottleneck is classifying the vertices into heavy and light, which we do by sampling.
+\end_layout
+
+\begin_layout Algorithm
+Heavy-light classification:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Sample 
+\begin_inset Formula $v_{1},\ldots,v_{\ell}$
+\end_inset
+
+, 
+\begin_inset Formula $\ell=c\log n$
+\end_inset
+
+, and compute 
+\begin_inset Formula $B_{in}\left(v_{i},\frac{d}{2}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $B_{out}\left(v_{i},\frac{d}{2}\right)$
+\end_inset
+
+ for 
+\begin_inset Formula $i=1,\ldots,\ell$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+For a vertex 
+\begin_inset Formula $x$
+\end_inset
+
+ and the sample 
+\begin_inset Formula $S$
+\end_inset
+
+: 
+\begin_inset Formula $\left|B_{out}\left(x,\frac{d}{2}\right)\cap S\right|=\left|\sset{i\in[\ell]}{x\in B_{in}\left(v_{i},\frac{d}{2}\right)}\right|$
+\end_inset
+
+, and symmetrically for 
+\begin_inset Formula $B_{in}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $\frac{1}{\ell}\left|B_{out}\left(x,\frac{d}{2}\right)\cap S\right|\leq0.6$
+\end_inset
+
+, 
+\begin_inset Formula $x$
+\end_inset
+
+ is out-light; if 
+\begin_inset Formula $\frac{1}{\ell}\left|B_{in}\left(x,\frac{d}{2}\right)\cap S\right|\leq0.6$
+\end_inset
+
+, 
+\begin_inset Formula $x$
+\end_inset
+
+ is in-light.
+\end_layout
+
+\end_deeper
+\begin_layout Proof
+Let 
+\begin_inset Formula $X_{i}=1$
+\end_inset
+
+ if 
+\begin_inset Formula $v_{i}\in B_{out}\left(x,\frac{d}{2}\right)\cap S$
+\end_inset
+
+ and 
+\begin_inset Formula $0$
+\end_inset
+
+ otherwise, so 
+\begin_inset Formula $\Pr(X_{i}=1)=\frac{|B_{out}(x,d/2)|}{n}$
+\end_inset
+
+. Let 
+\begin_inset Formula $X_{avg}=\frac{1}{\ell}\sum X_{i}$
+\end_inset
+
+; then 
+\begin_inset Formula $E[X_{avg}]=\frac{|B_{out}(x,d/2)|}{n}$
+\end_inset
+
+, and by Hoeffding 
+\begin_inset Formula $\Pr(|X_{avg}-E[X_{avg}]|\geq\epsilon)\leq2e^{-2\ell\epsilon^{2}}$
+\end_inset
+
+. With 
+\begin_inset Formula $\epsilon=0.1$
+\end_inset
+
+: 
+\begin_inset Formula $\leq2e^{-0.02\ell}\leq\frac{1}{n^{10}}$
+\end_inset
+
+ for 
+\begin_inset Formula $\ell=c\log n$
+\end_inset
+
+ and 
+\begin_inset Formula $c$
+\end_inset
+
+ large enough, so with probability 
+\begin_inset Formula $1-O\left(\frac{1}{n^{9}}\right)$
+\end_inset
+
+ this bad event does not happen for any ball. Assume it does not:
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $x$
+\end_inset
+
+ is neither out-light nor in-light, both ratios are 
+\begin_inset Formula $>0.6$
+\end_inset
+
+, hence 
+\begin_inset Formula $\frac{|B_{in}(x,d/2)|}{n}>0.5$
+\end_inset
+
+ and 
+\begin_inset Formula $\frac{|B_{out}(x,d/2)|}{n}>0.5$
+\end_inset
+
+, which is what we need for the heavy vertices to be strongly connected.
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $x$
+\end_inset
+
+ is (say) in-light, the ratio is 
+\begin_inset Formula $\leq0.6$
+\end_inset
+
+, hence 
+\begin_inset Formula $\frac{|B_{in}(x,d/2)|}{n}<0.7$
+\end_inset
+
+. So the recursion is still on components that are a constant fraction smaller, and the depth is still 
+\begin_inset Formula $O(\log n)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Running time: 2 Dijkstra runs per sampled vertex, 
+\begin_inset Formula $O((m+n\log n)\log n)$
+\end_inset
+
+ per level; there are 
+\begin_inset Formula $O(\log n)$
+\end_inset
+
+ recursive levels and the problems in each level are disjoint, so the total is 
+\begin_inset Formula $O((m+n\log n)\log^{2}n)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+A strongly polynomial algorithm for dense graphs (LLRZ)
+\end_layout
+
+\begin_layout Standard
+Li, Li, Rao and Zhang (STOC 2026), "Shortcutting for negative-weight shortest paths", give an 
+\begin_inset Formula $O(n^{2.5})$
+\end_inset
+
+-type strongly polynomial algorithm (no dependence on the weights). This part continues next lecture; these notes cover it up to the balancing of the searches.
+\end_layout
+
+\begin_layout Subsection
+Setup and main idea
+\end_layout
+
+\begin_layout Standard
+We may assume every vertex has at most one negative outgoing edge: replace the negative edges 
+\begin_inset Formula $(u,v_{1}),(u,v_{2})$
+\end_inset
+
+ of weights 
+\begin_inset Formula $-6,-2$
+\end_inset
+
+ by an edge 
+\begin_inset Formula $(u,u^{\prime})$
+\end_inset
+
+ of weight 
+\begin_inset Formula $-6$
+\end_inset
+
+ and edges 
+\begin_inset Formula $(u^{\prime},v_{1}),(u^{\prime},v_{2})$
+\end_inset
+
+ of weights 
+\begin_inset Formula $0$
+\end_inset
+
+ and 
+\begin_inset Formula $4$
+\end_inset
+
+. A vertex is negative (
+\begin_inset Formula $\in N$
+\end_inset
+
+) if it has a negative outgoing edge; denote by 
+\begin_inset Formula $k=|N|$
+\end_inset
+
+ the number of negative vertices.
+\end_layout
+
+\begin_layout Itemize
+Reduce the number of negative edges on a shortest path by a constant factor.
+\end_layout
+
+\begin_layout Itemize
+If we can do it in subcubic time, then after 
+\begin_inset Formula $O(\log k)$
+\end_inset
+
+ iterations we can finish with BFD.
+\end_layout
+
+\begin_layout Itemize
+LLRZ obtain a faster algorithm by controlling the number of vertices added and using recursion.
+\end_layout
+
+\begin_layout Standard
+Naive ambition: turn two negative hops into one. For negative edges 
+\begin_inset Formula $(u,u^{\prime})$
+\end_inset
+
+ and 
+\begin_inset Formula $(r,r^{\prime})$
+\end_inset
+
+ add the shortcut 
+\begin_inset Formula $w(u,r^{\prime})=w(u,u^{\prime})+d^{0}(u^{\prime},r)+w(r,r^{\prime})$
+\end_inset
+
+, where 
+\begin_inset Formula $d^{0}$
+\end_inset
+
+ is the distance using nonnegative edges only. There are at most 
+\begin_inset Formula $k^{2}$
+\end_inset
+
+ candidate shortcuts, but computing their weights requires nonnegative-path distances: Dijkstra from each of the 
+\begin_inset Formula $k$
+\end_inset
+
+ negative-edge heads, 
+\begin_inset Formula $O(k\cdot(m+n\log n))=\Omega(n^{3})$
+\end_inset
+
+ for dense graphs.
+\end_layout
+
+\begin_layout Subsection
+3-to-2 shortcutting
+\end_layout
+
+\begin_layout Standard
+LLRZ use a weaker goal: replace three consecutive negative edges 
+\begin_inset Formula $(u,u^{\prime}),(r,r^{\prime}),(v,v^{\prime})$
+\end_inset
+
+ on a shortest path by two, with either a backward direct shortcut 
+\begin_inset Formula $(u,r^{\prime})$
+\end_inset
+
+ of weight 
+\begin_inset Formula $w(u,u^{\prime})+d^{0}(u^{\prime},r)+w(r,r^{\prime})$
+\end_inset
+
+ or a forward direct shortcut 
+\begin_inset Formula $(r,v^{\prime})$
+\end_inset
+
+ of weight 
+\begin_inset Formula $d^{-}(r,v)+w(v,v^{\prime})$
+\end_inset
+
+, where 
+\begin_inset Formula $d^{-}(r,\cdot)$
+\end_inset
+
+ is the distance from 
+\begin_inset Formula $r$
+\end_inset
+
+ starting with the negative edge 
+\begin_inset Formula $(r,r^{\prime})$
+\end_inset
+
+ and continuing with nonnegative edges. Computing all of these is too expensive, so we truncate the searches.
+\end_layout
+
+\begin_layout Definition
+For each 
+\begin_inset Formula $r\in N$
+\end_inset
+
+ with negative edge 
+\begin_inset Formula $(r,r^{\prime})$
+\end_inset
+
+ we compute a threshold 
+\begin_inset Formula $\Delta_{r}$
+\end_inset
+
+ and sets 
+\begin_inset Formula $V_{in}(r),V_{out}(r)$
+\end_inset
+
+ such that
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\begin_inset Formula $v\in V_{in}(r)\Rightarrow d^{0}(v,r)\leq\Delta_{r}$
+\end_inset
+
+, and 
+\begin_inset Formula $v\notin V_{in}(r)\Rightarrow d^{0}(v,r)\geq\Delta_{r}$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+
+\begin_inset Formula $v\in V_{out}(r)\Rightarrow d^{-}(r,v)\leq-\Delta_{r}$
+\end_inset
+
+, and 
+\begin_inset Formula $v\notin V_{out}(r)\Rightarrow d^{-}(r,v)\geq-\Delta_{r}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+The direct shortcuts:
+\end_layout
+
+\begin_layout Itemize
+add a direct forward shortcut 
+\begin_inset Formula $(r,v^{\prime})$
+\end_inset
+
+ for 
+\begin_inset Formula $v\in V_{out}(r)$
+\end_inset
+
+ such that 
+\begin_inset Formula $(v,v^{\prime})$
+\end_inset
+
+ is negative;
+\end_layout
+
+\begin_layout Itemize
+add a direct backward shortcut 
+\begin_inset Formula $(u,r^{\prime})$
+\end_inset
+
+ for 
+\begin_inset Formula $u^{\prime}\in V_{in}(r)\cup\{r\}$
+\end_inset
+
+ such that 
+\begin_inset Formula $(u,u^{\prime})$
+\end_inset
+
+ is negative.
+\end_layout
+
+\begin_layout Standard
+The direct shortcuts are not sufficient: the path may enter 
+\begin_inset Formula $V_{in}(r)$
+\end_inset
+
+ and leave 
+\begin_inset Formula $V_{out}(r)$
+\end_inset
+
+ in the middle of its nonnegative parts. So we add a Steiner node 
+\begin_inset Formula $\tilde{r}$
+\end_inset
+
+ and Steiner shortcuts:
+\end_layout
+
+\begin_layout Itemize
+for all 
+\begin_inset Formula $x_{1}\in V_{in}(r)\cup\{r\}$
+\end_inset
+
+ and edges 
+\begin_inset Formula $(y_{1},x_{1})$
+\end_inset
+
+: if 
+\begin_inset Formula $w(y_{1},x_{1})+d^{0}(x_{1},r)-\Delta_{r}\geq0$
+\end_inset
+
+, add 
+\begin_inset Formula $w(y_{1},\tilde{r})=w(y_{1},x_{1})+d^{0}(x_{1},r)-\Delta_{r}$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+for all 
+\begin_inset Formula $x_{2}\in V_{out}(r)\cup\{r\}$
+\end_inset
+
+ and edges 
+\begin_inset Formula $(x_{2},y_{2})$
+\end_inset
+
+: if 
+\begin_inset Formula $d^{-}(r,x_{2})+w(x_{2},y_{2})+\Delta_{r}\geq0$
+\end_inset
+
+, add 
+\begin_inset Formula $w(\tilde{r},y_{2})=d^{-}(r,x_{2})+w(x_{2},y_{2})+\Delta_{r}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Claim
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+correctness
+\end_layout
+
+\end_inset
+
+A shortest path with 
+\begin_inset Formula $h$
+\end_inset
+
+ negative edges becomes a path with 
+\begin_inset Formula $h-\lfloor h/3\rfloor$
+\end_inset
+
+ negative edges.
+\end_layout
+
+\begin_layout Proof
+Look at three consecutive negative edges 
+\begin_inset Formula $(u,u^{\prime}),(r,r^{\prime}),(v,v^{\prime})$
+\end_inset
+
+ on a shortest path. If 
+\begin_inset Formula $u^{\prime}\in V_{in}(r)\cup\{r\}$
+\end_inset
+
+, use the direct backward shortcut. If 
+\begin_inset Formula $v\in V_{out}(r)$
+\end_inset
+
+, use the direct forward shortcut. Otherwise let 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+ be the first vertex of the path in 
+\begin_inset Formula $V_{in}(r)\cup\{r\}$
+\end_inset
+
+ and 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+ the last vertex in 
+\begin_inset Formula $V_{out}(r)\cup\{r\}$
+\end_inset
+
+, with 
+\begin_inset Formula $y_{1}$
+\end_inset
+
+ the vertex before 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $y_{2}$
+\end_inset
+
+ the vertex after 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+; we added 
+\begin_inset Formula $(y_{1},\tilde{r})$
+\end_inset
+
+ and 
+\begin_inset Formula $(\tilde{r},y_{2})$
+\end_inset
+
+, both nonnegative. In every case the three negative edges are replaced by two.
+\end_layout
+
+\begin_layout Subsection
+How many shortcuts do we add?
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $a_{r}=|V_{in}(r)|$
+\end_inset
+
+ and 
+\begin_inset Formula $b_{r}=|V_{out}(r)|$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Direct shortcuts: 
+\begin_inset Formula $\leq a_{r}+b_{r}+1=O(a_{r}+b_{r}+1)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Steiner shortcuts: 
+\begin_inset Formula $O(n(a_{r}+b_{r}+1))$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Time to find these shortcuts: 
+\begin_inset Formula $O(n(a_{r}+b_{r}+1)+(a_{r}+b_{r}+1)\log n)=O(n(a_{r}+b_{r}+1))$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+So we want to minimize 
+\begin_inset Formula $O\left(nk+n\sum_{r\in N}(a_{r}+b_{r})\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+A large 
+\begin_inset Formula $\Delta_{r}$
+\end_inset
+
+ makes 
+\begin_inset Formula $V_{in}(r)$
+\end_inset
+
+ large and 
+\begin_inset Formula $V_{out}(r)$
+\end_inset
+
+ small, and a small 
+\begin_inset Formula $\Delta_{r}$
+\end_inset
+
+ the opposite. We will pick 
+\begin_inset Formula $\Delta_{r}$
+\end_inset
+
+ so that
+\end_layout
+
+\begin_layout Itemize
+
+\begin_inset Formula $|a_{r}-b_{r}|\leq1$
+\end_inset
+
+, and
+\end_layout
+
+\begin_layout Itemize
+for all 
+\begin_inset Formula $u\in V_{in}(r)$
+\end_inset
+
+ and 
+\begin_inset Formula $v\in V_{out}(r)$
+\end_inset
+
+: 
+\begin_inset Formula $d^{0}(u,r)+d^{-}(r,v)<0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Betweenness reduction: we will bound 
+\begin_inset Formula $\sum_{r\in N}a_{r}b_{r}\leq\frac{kn^{2}}{b}$
+\end_inset
+
+. This suffices, since 
+\begin_inset Formula $(a_{r}+b_{r})^{2}=(a_{r}-b_{r})^{2}+4a_{r}b_{r}\leq1+4a_{r}b_{r}$
+\end_inset
+
+, so
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula 
+\[
+\sum_{r\in N}(a_{r}+b_{r})^{2}\leq k+4\sum_{r\in N}a_{r}b_{r}=O\left(\frac{kn^{2}}{b}\right),\qquad\sum_{r\in N}(a_{r}+b_{r})\leq\sqrt{k\sum_{r\in N}(a_{r}+b_{r})^{2}}=O\left(\frac{kn}{\sqrt{b}}\right),
+\]
+\end_inset
+
+and in total 
+\begin_inset Formula $O\left(nk+n\sum_{r\in N}(a_{r}+b_{r})\right)=O\left(\frac{kn^{2}}{\sqrt{b}}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Two things remain: how to guarantee 
+\begin_inset Formula $\sum_{r\in N}a_{r}b_{r}\leq\frac{kn^{2}}{b}$
+\end_inset
+
+ (betweenness reduction), and how to balance the forward and backward searches to satisfy the two conditions above.
+\end_layout
+
+\begin_layout Subsection
+Balancing the searches
+\end_layout
+
+\begin_layout Standard
+Run in tandem a backward search from 
+\begin_inset Formula $r$
+\end_inset
+
+ in the nonnegative subgraph, and a forward search from 
+\begin_inset Formula $r$
+\end_inset
+
+ starting with the negative edge 
+\begin_inset Formula $(r,r^{\prime})$
+\end_inset
+
+ and continuing in the nonnegative subgraph, with two separate priority queues. Let 
+\begin_inset Formula $\beta$
+\end_inset
+
+ be the minimum unsettled backward key and 
+\begin_inset Formula $f$
+\end_inset
+
+ the minimum unsettled forward key; initially 
+\begin_inset Formula $\beta=0$
+\end_inset
+
+ and 
+\begin_inset Formula $f=w(r,r^{\prime})$
+\end_inset
+
+ (the keys of 
+\begin_inset Formula $r$
+\end_inset
+
+ and 
+\begin_inset Formula $r^{\prime}$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Algorithm
+Repeat:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+if 
+\begin_inset Formula $\beta+f\geq0$
+\end_inset
+
+, stop; otherwise settle a vertex in the backward search;
+\end_layout
+
+\begin_layout Itemize
+if 
+\begin_inset Formula $\beta+f\geq0$
+\end_inset
+
+, stop; otherwise settle a vertex in the forward search.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Setting 
+\begin_inset Formula $\Delta_{r}$
+\end_inset
+
+: if we stop after a forward step, set 
+\begin_inset Formula $\Delta_{r}=\beta$
+\end_inset
+
+; if we stop after a backward step, set 
+\begin_inset Formula $\Delta_{r}=-f$
+\end_inset
+
+. The settled vertices form 
+\begin_inset Formula $V_{in}(r)$
+\end_inset
+
+ and 
+\begin_inset Formula $V_{out}(r)$
+\end_inset
+
+. The proof that these choices satisfy the two guarantees, and the betweenness reduction, are left for the next lecture.
+\end_layout
+
+\end_body
+\end_document

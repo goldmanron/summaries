@@ -121,6 +121,22 @@
             }
         }
     },
+    "advanced_algorithms": {
+        "display_name": "נושאים מתקדמים באלגוריתמים",
+        "URL": "summaries/advanced_algorithms/ata_lec1-3.pdf",
+        "button_color": "gradient-red-advanced_algorithms",
+        "pdf_info": {
+            "under_construction": {
+                "": "בבנייה",
+                "image": "icon/construction.png"
+            },
+            "course_info": {
+                "שם קורס מלא": "נושאים מתקדמים באלגוריתמים",
+                "שנה וסמסמטר": "2027א",
+                "image": "icon/info.png"
+            }
+        }
+    },
     "topics_in_cryptography": {
         "display_name": "נושאים בקריפטוגרפיה",
         "URL": "summaries/topics_crypto/topics_crypto.pdf",
