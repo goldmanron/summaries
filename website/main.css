@@ -470,10 +470,6 @@ ul {
     background: linear-gradient(45deg, #ff83bd, #ff2af4);
 }
 
-.gradient-red-advanced_algorithms {
-    background: linear-gradient(45deg, #ff7a59, #d6336c);
-}
-
 .gradient-red-topics_in_cryptography {
     background: linear-gradient(45deg, #c77dff, #7b2cff);
 }
@@ -559,7 +555,7 @@ ul {
     background: linear-gradient(-45deg, #008080, #00CED1, #40E0D0, #21cec5);
 }
 
-.gradient-teal4 { /* Not in use */
+.gradient-teal4 {
     background: linear-gradient(45deg, #005f73, #0a9396, #94d2bd, #2a9d8f);
 }
 
