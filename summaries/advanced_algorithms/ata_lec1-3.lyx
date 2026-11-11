@@ -25,7 +25,7 @@
 %\renewcommand{\theenumii}{\arabic{enumii}}
 %\renewcommand{\labelenumii}{(\theenumii)}
 \usepackage{algorithm}
-\usepackage{algorithmic}
+\usepackage{algpseudocode}
 % Convert the QED Symbol at the end of proofs to a solid black square (credit: Yakir Oz):
 \usepackage{amssymb}
 \renewcommand{\qedsymbol}{$\blacksquare$}
@@ -162,14 +162,15 @@ theorems-ams-extended-chap-bytype
 \begin_body
 \begin_layout Title
 Advanced Topics in Algorithms
-\begin_inset Newline newline
-\end_inset
-
-Lectures 1-3: Negative-Weight Shortest Paths
 \end_layout
 
 \begin_layout Author
-Ron Goldman
+written by Ron Goldman
+\begin_inset Newline newline
+\end_inset
+
+based on lectures given by Prof.
+ Haim Kaplan
 \end_layout
 
 \begin_layout Standard
@@ -307,131 +308,246 @@ Bellman-Ford: general weights, detects a negative cycle;
 . It can stop early if the shortest paths contain few edges.
 \end_layout
 
-\begin_layout Algorithm
-Dijkstra
-\begin_inset Formula $(G,s)$
-\end_inset
-
-:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\begin_inset Formula $d_{v}\leftarrow\infty$
-\end_inset
-
- for all 
-\begin_inset Formula $v\in V$
-\end_inset
-
-, 
-\begin_inset Formula $d_{s}\leftarrow0$
-\end_inset
-
-, 
-\begin_inset Formula $Q\leftarrow\mathrm{PriorityQueue}(\{d_{s}:s\})$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Itemize
-While 
-\begin_inset Formula $Q\neq\emptyset$
-\end_inset
-
-: pop 
-\begin_inset Formula $u\in Q$
-\end_inset
-
- with minimal 
-\begin_inset Formula $d_{u}$
-\end_inset
-
-; for each 
-\begin_inset Formula $(u,v)\in E$
-\end_inset
-
-:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-if 
-\begin_inset Formula $d_{u}+w(u,v)<d_{v}$
-\end_inset
-
-: 
-\begin_inset Formula $d_{v}\leftarrow d_{u}+w(u,v)$
-\end_inset
-
- and add/update 
-\begin_inset Formula $(d_{v}:v)$
-\end_inset
-
- in 
-\begin_inset Formula $Q$
-\end_inset
-
-.
-\end_layout
-
-\end_deeper
-\end_deeper
 \begin_layout Standard
-\begin_inset Separator plain
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\backslash
+begin{algorithm}[H]
+\end_layout
+
+\begin_layout Plain Layout
+
+\backslash
+caption{Dijkstra}
+\end_layout
+
+\begin_layout Plain Layout
+
+\backslash
+begin{algorithmic}[1]
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+Function{Dijkstra}{$G,s$}
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+State $d_{v}
+\backslash
+gets
+\backslash
+infty$ for all $v
+\backslash
+in V$; $d_{s}
+\backslash
+gets0$
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+State $Q
+\backslash
+gets
+\backslash
+mathrm{PriorityQueue}(
+\backslash
+{d_{s}:s
+\backslash
+})$
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+While{$Q
+\backslash
+neq
+\backslash
+emptyset$}
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+State pop $u
+\backslash
+in Q$ with minimal $d_{u}$
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+For{each $(u,v)
+\backslash
+in E$}
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+If{$d_{u}+w(u,v)<d_{v}$}
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+State $d_{v}
+\backslash
+gets d_{u}+w(u,v)$; add/update $(d_{v}:v)$ in $Q$
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+EndIf
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+EndFor
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+EndWhile
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+EndFunction
+\end_layout
+
+\begin_layout Plain Layout
+
+\backslash
+end{algorithmic}
+\end_layout
+
+\begin_layout Plain Layout
+
+\backslash
+end{algorithm}
+\end_layout
+
 \end_inset
 
 
 \end_layout
 
-\begin_layout Algorithm
-Bellman-Ford
-\begin_inset Formula $(G,s)$
-\end_inset
+\begin_layout Standard
+\begin_inset ERT
+status open
 
-:
+\begin_layout Plain Layout
+
+\backslash
+begin{algorithm}[H]
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
+\begin_layout Plain Layout
 
-\begin_inset Formula $d_{v}\leftarrow\infty$
-\end_inset
-
- for all 
-\begin_inset Formula $v\in V$
-\end_inset
-
-, 
-\begin_inset Formula $d_{s}\leftarrow0$
-\end_inset
-
-.
+\backslash
+caption{Bellman-Ford}
 \end_layout
 
-\begin_layout Itemize
-For 
-\begin_inset Formula $i=1,\ldots,n-1$
-\end_inset
+\begin_layout Plain Layout
 
-: for each 
-\begin_inset Formula $(u,v)\in E$
-\end_inset
-
-: if 
-\begin_inset Formula $d_{u}+w(u,v)<d_{v}$
-\end_inset
-
- then 
-\begin_inset Formula $d_{v}\leftarrow d_{u}+w(u,v)$
-\end_inset
-
-.
+\backslash
+begin{algorithmic}[1]
 \end_layout
 
-\end_deeper
+\begin_layout Plain Layout
+  
+\backslash
+Function{Bellman-Ford}{$G,s$}
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+State $d_{v}
+\backslash
+gets
+\backslash
+infty$ for all $v
+\backslash
+in V$; $d_{s}
+\backslash
+gets0$
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+For{$i=1,
+\backslash
+ldots,n-1$}
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+For{each $(u,v)
+\backslash
+in E$}
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+If{$d_{u}+w(u,v)<d_{v}$} $d_{v}
+\backslash
+gets d_{u}+w(u,v)$ 
+\backslash
+EndIf
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+EndFor
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+EndFor
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+EndFunction
+\end_layout
+
+\begin_layout Plain Layout
+
+\backslash
+end{algorithmic}
+\end_layout
+
+\begin_layout Plain Layout
+
+\backslash
+end{algorithm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Combining Bellman-Ford and Dijkstra
 \end_layout
@@ -440,142 +556,233 @@ Combining Bellman-Ford and Dijkstra
 The algorithm alternates a Dijkstra phase on the nonnegative edges with a Bellman-Ford phase on the negative edges.
 \end_layout
 
-\begin_layout Algorithm
-Bellman-Ford-Dijkstra
-\begin_inset Formula $(G,s)$
-\end_inset
+\begin_layout Standard
+\begin_inset ERT
+status open
 
-:
+\begin_layout Plain Layout
+
+\backslash
+begin{algorithm}[H]
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
+\begin_layout Plain Layout
 
-\begin_inset Formula $d_{v}\leftarrow\infty$
-\end_inset
-
- for all 
-\begin_inset Formula $v\in V$
-\end_inset
-
-, 
-\begin_inset Formula $d_{s}\leftarrow0$
-\end_inset
-
-, 
-\begin_inset Formula $Q\leftarrow\mathrm{PriorityQueue}(\{d_{s}:s\})$
-\end_inset
-
-.
+\backslash
+caption{Bellman-Ford-Dijkstra}
 \end_layout
 
-\begin_layout Itemize
-While 
-\begin_inset Formula $Q\neq\emptyset$
-\end_inset
+\begin_layout Plain Layout
 
-:
+\backslash
+begin{algorithmic}[1]
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
-
-\begin_inset Formula $A\leftarrow\emptyset$
-\end_inset
-
-.
+\begin_layout Plain Layout
+  
+\backslash
+Function{Bellman-Ford-Dijkstra}{$G,s$}
 \end_layout
 
-\begin_layout Itemize
-Dijkstra phase on the nonnegative edges: while 
-\begin_inset Formula $Q\neq\emptyset$
-\end_inset
-
-, pop 
-\begin_inset Formula $u\in Q$
-\end_inset
-
- with minimal 
-\begin_inset Formula $d_{u}$
-\end_inset
-
-, set 
-\begin_inset Formula $A\leftarrow A\cup\{u\}$
-\end_inset
-
-, and for each 
-\begin_inset Formula $(u,v)\in E$
-\end_inset
-
- with 
-\begin_inset Formula $w(u,v)\geq0$
-\end_inset
-
-:
+\begin_layout Plain Layout
+  
+\backslash
+State $d_{v}
+\backslash
+gets
+\backslash
+infty$ for all $v
+\backslash
+in V$; $d_{s}
+\backslash
+gets0$
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
-if 
-\begin_inset Formula $d_{u}+w(u,v)<d_{v}$
-\end_inset
-
-: 
-\begin_inset Formula $d_{v}\leftarrow d_{u}+w(u,v)$
-\end_inset
-
- and add/update 
-\begin_inset Formula $(d_{v}:v)$
-\end_inset
-
- in 
-\begin_inset Formula $Q$
-\end_inset
-
-.
+\begin_layout Plain Layout
+  
+\backslash
+State $Q
+\backslash
+gets
+\backslash
+mathrm{PriorityQueue}(
+\backslash
+{d_{s}:s
+\backslash
+})$
 \end_layout
 
-\end_deeper
-\begin_layout Itemize
-Bellman-Ford phase on the negative edges: for each 
-\begin_inset Formula $v\in A$
-\end_inset
-
- and edge 
-\begin_inset Formula $(v,x)$
-\end_inset
-
- with 
-\begin_inset Formula $w(v,x)<0$
-\end_inset
-
-:
+\begin_layout Plain Layout
+  
+\backslash
+While{$Q
+\backslash
+neq
+\backslash
+emptyset$}
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
-if 
-\begin_inset Formula $d_{v}+w(v,x)<d_{x}$
-\end_inset
-
-: 
-\begin_inset Formula $d_{x}\leftarrow d_{v}+w(v,x)$
-\end_inset
-
- and add 
-\begin_inset Formula $(d_{x}:x)$
-\end_inset
-
- to 
-\begin_inset Formula $Q$
-\end_inset
-
-.
+\begin_layout Plain Layout
+  
+\backslash
+State $A
+\backslash
+gets
+\backslash
+emptyset$
 \end_layout
 
-\end_deeper
-\end_deeper
-\end_deeper
+\begin_layout Plain Layout
+  
+\backslash
+Statex 
+\backslash
+quad
+\backslash
+textit{// Dijkstra phase on the nonnegative edges}
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+While{$Q
+\backslash
+neq
+\backslash
+emptyset$}
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+State pop $u
+\backslash
+in Q$ with minimal $d_{u}$; $A
+\backslash
+gets A
+\backslash
+cup
+\backslash
+{u
+\backslash
+}$
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+For{each $(u,v)
+\backslash
+in E$ with $w(u,v)
+\backslash
+geq0$}
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+If{$d_{u}+w(u,v)<d_{v}$}
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+State $d_{v}
+\backslash
+gets d_{u}+w(u,v)$; add/update $(d_{v}:v)$ in $Q$
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+EndIf
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+EndFor
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+EndWhile
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+Statex 
+\backslash
+quad
+\backslash
+textit{// Bellman-Ford phase on the negative edges}
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+For{each $v
+\backslash
+in A$ and edge $(v,x)$ with $w(v,x)<0$}
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+If{$d_{v}+w(v,x)<d_{x}$}
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+State $d_{x}
+\backslash
+gets d_{v}+w(v,x)$; add $(d_{x}:x)$ to $Q$
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+EndIf
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+EndFor
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+EndWhile
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+EndFunction
+\end_layout
+
+\begin_layout Plain Layout
+
+\backslash
+end{algorithmic}
+\end_layout
+
+\begin_layout Plain Layout
+
+\backslash
+end{algorithm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 To analyze it, let 
 \begin_inset Formula $d_{i}(v)$
@@ -1028,84 +1235,115 @@ w_{G_{\phi}}(u,v)=w_{G}(u,v)+W\phi_{H}(u)-W\phi_{H}(v)>-2W+W\big(w_{H}(u,v)+\phi
 
 \end_layout
 
-\begin_layout Algorithm
+\begin_layout Standard
+\begin_inset ERT
+status open
 
-\begin_inset Formula $\mathrm{SSSP}(G)$
-\end_inset
+\begin_layout Plain Layout
 
-, for 
-\begin_inset Formula $G$
-\end_inset
-
- without negative cycles and 
-\begin_inset Formula $w(e)>-3W$
-\end_inset
-
-:
+\backslash
+begin{algorithm}[H]
 \end_layout
 
-\begin_deeper
-\begin_layout Enumerate
-Multiply all weights by 
-\begin_inset Formula $4n$
-\end_inset
+\begin_layout Plain Layout
 
-.
+\backslash
+caption{SSSP for $G$ without negative cycles, $w(e)>-3W$}
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout Plain Layout
 
-\begin_inset Formula $L=O(\log nW)$
-\end_inset
-
-, 
-\begin_inset Formula $G_{0}\leftarrow G$
-\end_inset
-
-.
+\backslash
+begin{algorithmic}[1]
 \end_layout
 
-\begin_layout Enumerate
-For 
-\begin_inset Formula $i=0$
-\end_inset
-
- to 
-\begin_inset Formula $L-1$
-\end_inset
-
-: 
-\begin_inset Formula $\phi\leftarrow\mathrm{Scale}(G_{i})$
-\end_inset
-
-, 
-\begin_inset Formula $G_{i+1}\leftarrow(G_{i})_{\phi}$
-\end_inset
-
-.
+\begin_layout Plain Layout
+  
+\backslash
+Function{SSSP}{$G$}
 \end_layout
 
-\begin_layout Enumerate
-Round up to 
-\begin_inset Formula $0$
-\end_inset
-
- all negative weights in 
-\begin_inset Formula $G_{L}$
-\end_inset
-
-.
+\begin_layout Plain Layout
+  
+\backslash
+State multiply all weights by $4n$
 \end_layout
 
-\begin_layout Enumerate
-Run Dijkstra on 
-\begin_inset Formula $G_{L}$
-\end_inset
-
-.
+\begin_layout Plain Layout
+  
+\backslash
+State $L
+\backslash
+gets O(
+\backslash
+log nW)$; $G_{0}
+\backslash
+gets G$
 \end_layout
 
-\end_deeper
+\begin_layout Plain Layout
+  
+\backslash
+For{$i=0$ to $L-1$}
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+State $
+\backslash
+phi
+\backslash
+gets
+\backslash
+Call{Scale}{G_{i}}$; $G_{i+1}
+\backslash
+gets(G_{i})_{
+\backslash
+phi}$
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+EndFor
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+State round up to $0$ all negative weights in $G_{L}$
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+State run Dijkstra on $G_{L}$
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+EndFunction
+\end_layout
+
+\begin_layout Plain Layout
+
+\backslash
+end{algorithmic}
+\end_layout
+
+\begin_layout Plain Layout
+
+\backslash
+end{algorithm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Claim
 \begin_inset Argument 1
 status open
@@ -1322,120 +1560,259 @@ Notation:
 .
 \end_layout
 
-\begin_layout Algorithm
+\begin_layout Standard
+\begin_inset ERT
+status open
 
-\begin_inset Formula $\mathrm{RestrictedSSSP}(G)$
-\end_inset
+\begin_layout Plain Layout
 
-:
+\backslash
+begin{algorithm}[H]
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
+\begin_layout Plain Layout
 
-\begin_inset Formula $L\leftarrow\lceil\log2n^{2}\rceil$
-\end_inset
-
-, 
-\begin_inset Formula $R\leftarrow(2+c)\log n$
-\end_inset
-
-, 
-\begin_inset Formula $t\leftarrow4C\log^{2}n+1$
-\end_inset
-
-.
+\backslash
+caption{Restricted SSSP}
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Plain Layout
 
-\begin_inset Formula $\Phi_{0}=\{0\}$
-\end_inset
-
-.
+\backslash
+begin{algorithmic}[1]
 \end_layout
 
-\begin_layout Itemize
-For 
-\begin_inset Formula $\ell\leftarrow1,\ldots,L$
-\end_inset
-
-:
+\begin_layout Plain Layout
+  
+\backslash
+Function{RestrictedSSSP}{$G$}
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
-for 
-\begin_inset Formula $r\leftarrow1,\ldots,R$
-\end_inset
-
-:
+\begin_layout Plain Layout
+  
+\backslash
+State $L
+\backslash
+gets
+\backslash
+lceil
+\backslash
+log2n^{2}
+\backslash
+rceil$, $R
+\backslash
+gets(2+c)
+\backslash
+log n$, $t
+\backslash
+gets4C
+\backslash
+log^{2}n+1$
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
-
-\begin_inset Formula $\mathcal{S}_{\ell,r}\leftarrow(S_{1},\ldots,S_{k})=\mathrm{LDD}(G_{\geq0},2^{\ell})$
-\end_inset
-
-;
+\begin_layout Plain Layout
+  
+\backslash
+State $
+\backslash
+Phi_{0}
+\backslash
+gets
+\backslash
+{0
+\backslash
+}$
 \end_layout
 
-\begin_layout Itemize
-for 
-\begin_inset Formula $i\in[k]$
-\end_inset
-
- and 
-\begin_inset Formula $\phi\in\Phi_{\ell-1}$
-\end_inset
-
-: 
-\begin_inset Formula $d_{\phi}=\mathrm{BFD}(G_{\phi}[S_{i}],S_{i},t)$
-\end_inset
-
-;
+\begin_layout Plain Layout
+  
+\backslash
+For{$
+\backslash
+ell
+\backslash
+gets1,
+\backslash
+ldots,L$}
 \end_layout
 
-\begin_layout Itemize
-let 
-\begin_inset Formula $\phi^{i}(v)\leftarrow\min_{\phi\in\Phi_{\ell-1}}d_{\phi}(v)$
-\end_inset
-
-;
+\begin_layout Plain Layout
+  
+\backslash
+For{$r
+\backslash
+gets1,
+\backslash
+ldots,R$}
 \end_layout
 
-\begin_layout Itemize
-let 
-\begin_inset Formula $\phi_{\ell,r}(v)\leftarrow\phi^{i}(v)-i\cdot n$
-\end_inset
-
- for 
-\begin_inset Formula $v\in S_{i}$
-\end_inset
-
-.
+\begin_layout Plain Layout
+  
+\backslash
+State $
+\backslash
+mathcal{S}_{
+\backslash
+ell,r}
+\backslash
+gets(S_{1},
+\backslash
+ldots,S_{k})=
+\backslash
+Call{LDD}{G_{
+\backslash
+geq0},2^{
+\backslash
+ell}}$
 \end_layout
 
-\end_deeper
-\begin_layout Itemize
-
-\begin_inset Formula $\Phi_{\ell}\leftarrow\sset{\phi_{\ell,r}}{r\in[R]}$
-\end_inset
-
-.
+\begin_layout Plain Layout
+  
+\backslash
+For{$i
+\backslash
+in[k]$ and $
+\backslash
+phi
+\backslash
+in
+\backslash
+Phi_{
+\backslash
+ell-1}$}
 \end_layout
 
-\end_deeper
-\begin_layout Itemize
-Return 
-\begin_inset Formula $\phi_{L,1}$
-\end_inset
-
-.
+\begin_layout Plain Layout
+  
+\backslash
+State $d_{
+\backslash
+phi}
+\backslash
+gets
+\backslash
+Call{BFD}{G_{
+\backslash
+phi}[S_{i}],S_{i},t}$
 \end_layout
 
-\end_deeper
+\begin_layout Plain Layout
+  
+\backslash
+EndFor
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+State $
+\backslash
+phi^{i}(v)
+\backslash
+gets
+\backslash
+min_{
+\backslash
+phi
+\backslash
+in
+\backslash
+Phi_{
+\backslash
+ell-1}}d_{
+\backslash
+phi}(v)$ for $v
+\backslash
+in S_{i}$
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+State $
+\backslash
+phi_{
+\backslash
+ell,r}(v)
+\backslash
+gets
+\backslash
+phi^{i}(v)-i
+\backslash
+cdot n$ for $v
+\backslash
+in S_{i}$
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+EndFor
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+State $
+\backslash
+Phi_{
+\backslash
+ell}
+\backslash
+gets
+\backslash
+{
+\backslash
+phi_{
+\backslash
+ell,r}
+\backslash
+mid r
+\backslash
+in[R]
+\backslash
+}$
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+EndFor
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+State 
+\backslash
+Return $
+\backslash
+phi_{L,1}$
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+EndFunction
+\end_layout
+
+\begin_layout Plain Layout
+
+\backslash
+end{algorithmic}
+\end_layout
+
+\begin_layout Plain Layout
+
+\backslash
+end{algorithm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 Think of a table with rows 
 \begin_inset Formula $\ell=1,\ldots,L$
@@ -2087,90 +2464,157 @@ Low-diameter decomposition
 Undirected graphs
 \end_layout
 
-\begin_layout Algorithm
-Undirected LDD
-\begin_inset Formula $(G,d)$
-\end_inset
+\begin_layout Standard
+\begin_inset ERT
+status open
 
-:
+\begin_layout Plain Layout
+
+\backslash
+begin{algorithm}[H]
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
+\begin_layout Plain Layout
 
-\begin_inset Formula $E^{-}\leftarrow\emptyset$
-\end_inset
-
-.
+\backslash
+caption{Undirected LDD}
 \end_layout
 
-\begin_layout Itemize
-While 
-\begin_inset Formula $G$
-\end_inset
+\begin_layout Plain Layout
 
- is not empty:
+\backslash
+begin{algorithmic}[1]
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
-pick an arbitrary vertex 
-\begin_inset Formula $v$
-\end_inset
-
-;
+\begin_layout Plain Layout
+  
+\backslash
+Function{LDD}{$G,d$}
 \end_layout
 
-\begin_layout Itemize
-sample 
-\begin_inset Formula $R_{v}\sim\mathrm{Geo}(p)$
-\end_inset
-
- for 
-\begin_inset Formula $p\leftarrow\min\left\{ 1,\frac{20\ln n}{d}\right\}$
-\end_inset
-
-; if 
-\begin_inset Formula $R_{v}>\frac{d}{2}$
-\end_inset
-
- set 
-\begin_inset Formula $R_{v}\leftarrow\frac{d}{2}$
-\end_inset
-
-;
+\begin_layout Plain Layout
+  
+\backslash
+State $E^{-}
+\backslash
+gets
+\backslash
+emptyset$
 \end_layout
 
-\begin_layout Itemize
-
-\begin_inset Formula $E^{-}\leftarrow E^{-}\cup\partial B(v,R_{v})$
-\end_inset
-
- (this makes the ball 
-\begin_inset Formula $B(v,R_{v})$
-\end_inset
-
- a connected component);
+\begin_layout Plain Layout
+  
+\backslash
+While{$G$ is not empty}
 \end_layout
 
-\begin_layout Itemize
-
-\begin_inset Formula $G\leftarrow G\setminus B(v,R_{v})$
-\end_inset
-
-.
+\begin_layout Plain Layout
+  
+\backslash
+State pick an arbitrary vertex $v$
 \end_layout
 
-\end_deeper
-\begin_layout Itemize
-Return 
-\begin_inset Formula $E^{-}$
-\end_inset
-
-.
+\begin_layout Plain Layout
+  
+\backslash
+State sample $R_{v}
+\backslash
+sim
+\backslash
+mathrm{Geo}(p)$ for $p
+\backslash
+gets
+\backslash
+min
+\backslash
+left
+\backslash
+{ 1,
+\backslash
+frac{20
+\backslash
+ln n}{d}
+\backslash
+right
+\backslash
+}$
 \end_layout
 
-\end_deeper
+\begin_layout Plain Layout
+  
+\backslash
+If{$R_{v}>
+\backslash
+frac{d}{2}$} $R_{v}
+\backslash
+gets
+\backslash
+frac{d}{2}$ 
+\backslash
+EndIf
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+State $E^{-}
+\backslash
+gets E^{-}
+\backslash
+cup
+\backslash
+partial B(v,R_{v})$ 
+\backslash
+Comment{makes $B(v,R_{v})$ a connected component}
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+State $G
+\backslash
+gets G
+\backslash
+setminus B(v,R_{v})$
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+EndWhile
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+State 
+\backslash
+Return $E^{-}$
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+EndFunction
+\end_layout
+
+\begin_layout Plain Layout
+
+\backslash
+end{algorithmic}
+\end_layout
+
+\begin_layout Plain Layout
+
+\backslash
+end{algorithm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 Every component is a ball of radius 
 \begin_inset Formula $\leq\frac{d}{2}$
@@ -2304,98 +2748,171 @@ Now
  are the edges entering, resp. leaving, the ball.
 \end_layout
 
-\begin_layout Algorithm
-Directed LDD
-\begin_inset Formula $(G,d)$
-\end_inset
+\begin_layout Standard
+\begin_inset ERT
+status open
 
-:
+\begin_layout Plain Layout
+
+\backslash
+begin{algorithm}[H]
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
+\begin_layout Plain Layout
 
-\begin_inset Formula $E^{-}\leftarrow\emptyset$
-\end_inset
-
-.
+\backslash
+caption{Directed LDD}
 \end_layout
 
-\begin_layout Itemize
-Mark 
-\begin_inset Formula $v$
-\end_inset
+\begin_layout Plain Layout
 
- in-light if 
-\begin_inset Formula $\left|B_{in}\left(v,\frac{d}{2}\right)\right|\leq\frac{n}{2}$
-\end_inset
-
-, and out-light if 
-\begin_inset Formula $\left|B_{out}\left(v,\frac{d}{2}\right)\right|\leq\frac{n}{2}$
-\end_inset
-
-.
+\backslash
+begin{algorithmic}[1]
 \end_layout
 
-\begin_layout Itemize
-While 
-\begin_inset Formula $G$
-\end_inset
-
- contains a vertex 
-\begin_inset Formula $v$
-\end_inset
-
- marked in/out-light:
+\begin_layout Plain Layout
+  
+\backslash
+Function{LDD}{$G,d$}
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
-sample 
-\begin_inset Formula $R_{v}\sim\mathrm{Geo}(p)$
-\end_inset
-
- for 
-\begin_inset Formula $p\leftarrow\min\left\{ 1,\frac{20\ln n}{d}\right\}$
-\end_inset
-
-; if 
-\begin_inset Formula $R_{v}>\frac{d}{2}$
-\end_inset
-
- set 
-\begin_inset Formula $R_{v}\leftarrow\frac{d}{2}$
-\end_inset
-
-;
+\begin_layout Plain Layout
+  
+\backslash
+State $E^{-}
+\backslash
+gets
+\backslash
+emptyset$
 \end_layout
 
-\begin_layout Itemize
-
-\begin_inset Formula $E^{-}\leftarrow E^{-}\cup\partial B_{in/out}(v,R_{v})\cup\mathrm{LDD}\big(B_{in/out}(v,R_{v})\big)$
-\end_inset
-
-;
+\begin_layout Plain Layout
+  
+\backslash
+State mark $v$ in-light if $|B_{in}(v,
+\backslash
+frac{d}{2})|
+\backslash
+leq
+\backslash
+frac{n}{2}$, and out-light if $|B_{out}(v,
+\backslash
+frac{d}{2})|
+\backslash
+leq
+\backslash
+frac{n}{2}$
 \end_layout
 
-\begin_layout Itemize
-
-\begin_inset Formula $G\leftarrow G\setminus B(v,R_{v})$
-\end_inset
-
-.
+\begin_layout Plain Layout
+  
+\backslash
+While{$G$ contains a vertex $v$ marked in/out-light}
 \end_layout
 
-\end_deeper
-\begin_layout Itemize
-Return 
-\begin_inset Formula $E^{-}$
-\end_inset
-
-.
+\begin_layout Plain Layout
+  
+\backslash
+State sample $R_{v}
+\backslash
+sim
+\backslash
+mathrm{Geo}(p)$ for $p
+\backslash
+gets
+\backslash
+min
+\backslash
+left
+\backslash
+{ 1,
+\backslash
+frac{20
+\backslash
+ln n}{d}
+\backslash
+right
+\backslash
+}$
 \end_layout
 
-\end_deeper
+\begin_layout Plain Layout
+  
+\backslash
+If{$R_{v}>
+\backslash
+frac{d}{2}$} $R_{v}
+\backslash
+gets
+\backslash
+frac{d}{2}$ 
+\backslash
+EndIf
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+State $E^{-}
+\backslash
+gets E^{-}
+\backslash
+cup
+\backslash
+partial B_{in/out}(v,R_{v})
+\backslash
+cup
+\backslash
+Call{LDD}{B_{in/out}(v,R_{v}),d}$
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+State $G
+\backslash
+gets G
+\backslash
+setminus B(v,R_{v})$
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+EndWhile
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+State 
+\backslash
+Return $E^{-}$
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+EndFunction
+\end_layout
+
+\begin_layout Plain Layout
+
+\backslash
+end{algorithmic}
+\end_layout
+
+\begin_layout Plain Layout
+
+\backslash
+end{algorithm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Itemize
 We may assume the graph is strongly connected (otherwise work on each component separately).
 \end_layout
@@ -2545,76 +3062,161 @@ Carving out the balls takes
 , since each edge is scanned by at most two Dijkstra computations. The bottleneck is classifying the vertices into heavy and light, which we do by sampling.
 \end_layout
 
-\begin_layout Algorithm
-Heavy-light classification:
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\backslash
+begin{algorithm}[H]
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
-Sample 
-\begin_inset Formula $v_{1},\ldots,v_{\ell}$
-\end_inset
+\begin_layout Plain Layout
 
-, 
-\begin_inset Formula $\ell=c\log n$
-\end_inset
-
-, and compute 
-\begin_inset Formula $B_{in}\left(v_{i},\frac{d}{2}\right)$
-\end_inset
-
- and 
-\begin_inset Formula $B_{out}\left(v_{i},\frac{d}{2}\right)$
-\end_inset
-
- for 
-\begin_inset Formula $i=1,\ldots,\ell$
-\end_inset
-
-.
+\backslash
+caption{Heavy-light classification}
 \end_layout
 
-\begin_layout Itemize
-For a vertex 
-\begin_inset Formula $x$
-\end_inset
+\begin_layout Plain Layout
 
- and the sample 
-\begin_inset Formula $S$
-\end_inset
-
-: 
-\begin_inset Formula $\left|B_{out}\left(x,\frac{d}{2}\right)\cap S\right|=\left|\sset{i\in[\ell]}{x\in B_{in}\left(v_{i},\frac{d}{2}\right)}\right|$
-\end_inset
-
-, and symmetrically for 
-\begin_inset Formula $B_{in}$
-\end_inset
-
-.
+\backslash
+begin{algorithmic}[1]
 \end_layout
 
-\begin_layout Itemize
-If 
-\begin_inset Formula $\frac{1}{\ell}\left|B_{out}\left(x,\frac{d}{2}\right)\cap S\right|\leq0.6$
-\end_inset
-
-, 
-\begin_inset Formula $x$
-\end_inset
-
- is out-light; if 
-\begin_inset Formula $\frac{1}{\ell}\left|B_{in}\left(x,\frac{d}{2}\right)\cap S\right|\leq0.6$
-\end_inset
-
-, 
-\begin_inset Formula $x$
-\end_inset
-
- is in-light.
+\begin_layout Plain Layout
+  
+\backslash
+State sample $v_{1},
+\backslash
+ldots,v_{
+\backslash
+ell}$, $
+\backslash
+ell=c
+\backslash
+log n$ 
+\backslash
+Comment{the sample $S$}
 \end_layout
 
-\end_deeper
+\begin_layout Plain Layout
+  
+\backslash
+For{$i=1,
+\backslash
+ldots,
+\backslash
+ell$}
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+State compute $B_{in}(v_{i},
+\backslash
+frac{d}{2})$ and $B_{out}(v_{i},
+\backslash
+frac{d}{2})$
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+EndFor
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+For{each vertex $x$}
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+State $|B_{out}(x,
+\backslash
+frac{d}{2})
+\backslash
+cap S|
+\backslash
+gets|
+\backslash
+{i
+\backslash
+in[
+\backslash
+ell]
+\backslash
+mid x
+\backslash
+in B_{in}(v_{i},
+\backslash
+frac{d}{2})
+\backslash
+}|$, and symmetrically for $B_{in}$
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+If{$
+\backslash
+frac{1}{
+\backslash
+ell}|B_{out}(x,
+\backslash
+frac{d}{2})
+\backslash
+cap S|
+\backslash
+leq0.6$} mark $x$ out-light 
+\backslash
+EndIf
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+If{$
+\backslash
+frac{1}{
+\backslash
+ell}|B_{in}(x,
+\backslash
+frac{d}{2})
+\backslash
+cap S|
+\backslash
+leq0.6$} mark $x$ in-light 
+\backslash
+EndIf
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+EndFor
+\end_layout
+
+\begin_layout Plain Layout
+
+\backslash
+end{algorithmic}
+\end_layout
+
+\begin_layout Plain Layout
+
+\backslash
+end{algorithm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Proof
 Let 
 \begin_inset Formula $X_{i}=1$
@@ -3257,28 +3859,107 @@ Run in tandem a backward search from
 ).
 \end_layout
 
-\begin_layout Algorithm
-Repeat:
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\backslash
+begin{algorithm}[H]
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
-if 
-\begin_inset Formula $\beta+f\geq0$
+\begin_layout Plain Layout
+
+\backslash
+caption{Balancing the searches from $r$}
+\end_layout
+
+\begin_layout Plain Layout
+
+\backslash
+begin{algorithmic}[1]
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+State $
+\backslash
+beta
+\backslash
+gets0$; $f
+\backslash
+gets w(r,r^{
+\backslash
+prime})$
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+Loop
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+If{$
+\backslash
+beta+f
+\backslash
+geq0$} stop 
+\backslash
+EndIf
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+State settle a vertex in the backward search
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+If{$
+\backslash
+beta+f
+\backslash
+geq0$} stop 
+\backslash
+EndIf
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+State settle a vertex in the forward search
+\end_layout
+
+\begin_layout Plain Layout
+  
+\backslash
+EndLoop
+\end_layout
+
+\begin_layout Plain Layout
+
+\backslash
+end{algorithmic}
+\end_layout
+
+\begin_layout Plain Layout
+
+\backslash
+end{algorithm}
+\end_layout
+
 \end_inset
 
-, stop; otherwise settle a vertex in the backward search;
+
 \end_layout
 
-\begin_layout Itemize
-if 
-\begin_inset Formula $\beta+f\geq0$
-\end_inset
-
-, stop; otherwise settle a vertex in the forward search.
-\end_layout
-
-\end_deeper
 \begin_layout Standard
 Setting 
 \begin_inset Formula $\Delta_{r}$
