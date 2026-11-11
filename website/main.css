@@ -555,7 +555,7 @@ ul {
     background: linear-gradient(-45deg, #008080, #00CED1, #40E0D0, #21cec5);
 }
 
-.gradient-teal4 {
+.gradient-teal4 { /* Not in use */
     background: linear-gradient(45deg, #005f73, #0a9396, #94d2bd, #2a9d8f);
 }
 
