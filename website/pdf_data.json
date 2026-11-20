@@ -288,6 +288,10 @@
                 {
                     "title": "Week 3: Demand paging and page replacement",
                     "from": "C:/University/Semester 7/Operating Systems/lecs/os_week3/os_week3.pdf"
+                },
+                {
+                    "title": "Week 4: Scheduling and I/O devices",
+                    "from": "C:/University/Semester 7/Operating Systems/lecs/os_week4/os_week4.pdf"
                 }
             ]
         },
@@ -303,6 +307,10 @@
             {
                 "title": "Week 3: Demand paging and page replacement",
                 "URL": "summaries/operating_systems/by_lecture/3.pdf"
+            },
+            {
+                "title": "Week 4: Scheduling and I/O devices",
+                "URL": "summaries/operating_systems/by_lecture/4.pdf"
             }
         ]
     },
