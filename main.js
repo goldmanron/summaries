@@ -48,6 +48,10 @@ function initSections(){
         tile.type = 'button';
         tile.className = 'section-tile';
         tile.textContent = s.title;
+        // color the tile like its section's first course button (e.g. gradient-teal1)
+        const first = s.container.querySelector('.pdf-button-container');
+        const gradient = first && [...first.classList].find((c) => c.startsWith('gradient-'));
+        if (gradient) tile.classList.add(gradient);
         tile.addEventListener('click', () => show(current === s.title ? null : s.title));
         tiles.appendChild(tile);
         s.tile = tile;
