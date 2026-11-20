@@ -110,9 +110,9 @@ function parseAttribute(dict) {
 const LECTURES_PREFIX = "lectures_";
 let lecturePopups = "";
 
-function getLecturesToggle(pdf_name) {
+function getLecturesToggle(pdf_name, label) {
     return `
-        <button class="lectures-toggle" title="לפי הרצאות" onclick="openPopup('${LECTURES_PREFIX}${pdf_name}')">לפי הרצאות</button>`;
+        <button class="lectures-toggle" title="${label}" onclick="openPopup('${LECTURES_PREFIX}${pdf_name}')">${label}</button>`;
 }
 
 function getLecturesPopup(pdf_name, dict) {
@@ -126,7 +126,7 @@ function getLecturesPopup(pdf_name, dict) {
     return `
         <div class="popup-overlay" id="${LECTURES_PREFIX}${pdf_name}" onclick="closePopup(event, '${LECTURES_PREFIX}${pdf_name}')">
             <div class="popup-content lectures-popup" onclick="event.stopPropagation()">
-                <h2>${dict.display_name}: לפי הרצאות</h2>
+                <h2>${dict.display_name}: ${dict.lectures_button || "לפי הרצאות"}</h2>
                 ${items}
                 <button class="popup-close-button" onclick="closePopup(null, '${LECTURES_PREFIX}${pdf_name}')">Close</button>
             </div>
@@ -139,7 +139,7 @@ function getButtonCode(dict, pdf_name) {
         <div class="pdf-button-container ${dict.button_color}">
             <a class="pdf-button" href="${dict.URL}" target="_blank">${dict.display_name}</a>`;
     if (Array.isArray(dict.lectures) && dict.lectures.length > 0) {
-        prefix += getLecturesToggle(pdf_name);
+        prefix += getLecturesToggle(pdf_name, dict.lectures_button || "לפי הרצאות");
         lecturePopups += getLecturesPopup(pdf_name, dict);
     }
     let postfix = `

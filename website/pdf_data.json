@@ -254,6 +254,58 @@
             }
         ]
     },
+    "operating_systems": {
+        "display_name": "מערכות הפעלה",
+        "URL": "summaries/operating_systems/os_weeks.pdf",
+        "button_color": "gradient-orange1",
+        "pdf_info": {
+            "under_construction": {
+                "": "בבנייה",
+                "image": "icon/construction.png"
+            },
+            "course_info": {
+                "שם קורס מלא": "מערכות הפעלה",
+                "מספר קורס": "0368-2162",
+                "תואר": "מדעי המחשב",
+                "שנה וסמסמטר": "2027א",
+                "מרצה": [
+                    "פרופ' אדם מוריסון"
+                ],
+                "image": "icon/info.png"
+            }
+        },
+        "lectures_button": "לפי שבועות",
+        "by_lecture": {
+            "pdfs": [
+                {
+                    "title": "Week 1: Processes and time-sharing",
+                    "from": "C:/University/Semester 7/Operating Systems/lecs/os_week1/os_week1.pdf"
+                },
+                {
+                    "title": "Week 2: Virtual memory and paging",
+                    "from": "C:/University/Semester 7/Operating Systems/lecs/os_week2/os_week2.pdf"
+                },
+                {
+                    "title": "Week 3: Demand paging and page replacement",
+                    "from": "C:/University/Semester 7/Operating Systems/lecs/os_week3/os_week3.pdf"
+                }
+            ]
+        },
+        "lectures": [
+            {
+                "title": "Week 1: Processes and time-sharing",
+                "URL": "summaries/operating_systems/by_lecture/1.pdf"
+            },
+            {
+                "title": "Week 2: Virtual memory and paging",
+                "URL": "summaries/operating_systems/by_lecture/2.pdf"
+            },
+            {
+                "title": "Week 3: Demand paging and page replacement",
+                "URL": "summaries/operating_systems/by_lecture/3.pdf"
+            }
+        ]
+    },
     "topics_in_cryptography": {
         "display_name": "נושאים בקריפטוגרפיה",
         "URL": "summaries/topics_crypto/topics_crypto.pdf",
