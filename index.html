@@ -7,9 +7,9 @@
     <meta name="author" content="Ron Goldman">
     <meta name="google-site-verification" content="Qb-kq5sFlAFjPWGVKGtbtelsocrIRPMlqavcFAdwm_k">
 
-    <link rel="stylesheet" href="main.css?v=4">
+    <link rel="stylesheet" href="main.css?v=5">
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
-    <script src="main.js?v=4"></script>
+    <script src="main.js?v=5"></script>
 
 
     <!--- Make MD files dark/light mode --->
@@ -288,6 +288,32 @@
 
     <div class="container">
       <h2>
+          מערכות מחשב
+      </h2>
+      <p>
+          קורסים במערכות מחשב ובמערכות הפעלה לתואר ראשון באוניברסיטת תל אביב.
+      </p>
+
+      <br>
+      
+        <div class="pdf-button-container gradient-orange1">
+            <a class="pdf-button" href="summaries/operating_systems/os_weeks.pdf" target="_blank">מערכות הפעלה</a>
+        <button class="lectures-toggle" title="לפי שבועות" onclick="openPopup('lectures_operating_systems')">לפי שבועות</button>
+        <div class="tooltip">
+            <img src="icon/construction.png">
+            <span class="tooltiptext">בבנייה.<br></span>
+        </div>
+        
+        <div class="tooltip">
+            <img src="icon/info.png">
+            <span class="tooltiptext"><b>שם קורס מלא</b>: מערכות הפעלה.<br><b>מספר קורס</b>: 0368-2162.<br><b>תואר</b>: מדעי המחשב.<br><b>שנה וסמסמטר</b>: 2027א.<br><b>מרצה</b>: פרופ' אדם מוריסון.<br></span>
+        </div>
+        
+        </div>
+    
+    </div>
+    <div class="container">
+      <h2>
           קריפטוגרפיה
       </h2>
       <p>
@@ -420,6 +446,23 @@
                     <a class="pdf-button" href="summaries/network_algorithms/by_lecture/3.pdf" target="_blank">Lecture 3: König and Hall</a>
                 </div><br>
                 <button class="popup-close-button" onclick="closePopup(null, 'lectures_network_algorithms')">Close</button>
+            </div>
+        </div>
+    
+        <div class="popup-overlay" id="lectures_operating_systems" onclick="closePopup(event, 'lectures_operating_systems')">
+            <div class="popup-content lectures-popup" onclick="event.stopPropagation()">
+                <h2>מערכות הפעלה: לפי שבועות</h2>
+                
+                <div class="pdf-button-container gradient-orange1">
+                    <a class="pdf-button" href="summaries/operating_systems/by_lecture/1.pdf" target="_blank">Week 1: Processes and time-sharing</a>
+                </div><br>
+                <div class="pdf-button-container gradient-orange1">
+                    <a class="pdf-button" href="summaries/operating_systems/by_lecture/2.pdf" target="_blank">Week 2: Virtual memory and paging</a>
+                </div><br>
+                <div class="pdf-button-container gradient-orange1">
+                    <a class="pdf-button" href="summaries/operating_systems/by_lecture/3.pdf" target="_blank">Week 3: Demand paging and page replacement</a>
+                </div><br>
+                <button class="popup-close-button" onclick="closePopup(null, 'lectures_operating_systems')">Close</button>
             </div>
         </div>
     </body></html>
