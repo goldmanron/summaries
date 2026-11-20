@@ -591,3 +591,35 @@ ul {
     max-width: min(90vw, 640px);
 }
 
+/* Section tiles: the subject sections side by side; the chosen one opens under them */
+.section-tiles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+}
+
+.section-tile {
+    font: inherit;
+    font-size: 17px;
+    padding: 10px 16px;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    background: var(--container-color);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.section-tile:hover {
+    border-color: var(--text-color);
+}
+
+.section-tile.active {
+    background: var(--primary-color);
+    border-color: var(--text-color);
+}
+
+.section-panel {
+    margin-top: 12px;
+}
