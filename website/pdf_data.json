@@ -8,41 +8,14 @@
                 "שם קורס מלא": "מתמטיקה בדידה 1",
                 "מספר קורס": "0368-1118",
                 "שנה וסמסמטר": "2025א",
-                "מרצה": ["ד\"ר מיכל קליינבורט", "פרופ' אמיר שפילקה"],
-                "image": "icon/info.png"
-                }
-            }
-        },
-        "complex_functions1": {
-    },
-    "discrete_math_2": {
-        "display_name": "בדידה 2",
-        "URL": "summaries/bdida2/summary.pdf",
-        "button_color": "gradient-red-discrete_math_2",
-        "pdf_info": {
-            "course_info": {
-                "שם קורס מלא": "מתמטיקה בדידה 2",
-                "מספר קורס": "0368-1119",
-                "שנה וסמסמטר": "2025א",
-                "מרצה": ["פרופ' גיל כהן"],
+                "מרצה": [
+                    "ד\"ר מיכל קליינבורט",
+                    "פרופ' אמיר שפילקה"
+                ],
                 "image": "icon/info.png"
             }
         }
     },
-    "logic_cs":{
-        "display_name": "לוגיקה",
-        "URL": "summaries/logic/logic_book.pdf",
-        "button_color": "gradient-red-logic_for_computer_science",
-        "pdf_info": {
-            "course_info": {
-                "שם קורס מלא": "לוגיקה למדעי המחשב",
-                "מספר קורס": "0368-2170",
-                "שנה וסמסמטר": "2026ב",
-                "מרצה": ["פרופ' אלכסנדר רבינוביץ'"],
-                "image": "icon/info.png"
-            }
-    }
-},
     "complex_functions1": {
         "display_name": "מרוכבות 1",
         "URL": "summaries/complex/lectures.pdf",
@@ -53,6 +26,38 @@
                 "מספר קורס": "0366-2123",
                 "שנה וסמסמטר": "2025ב",
                 "מרצה": "פרופ' אסף נחמיאס",
+                "image": "icon/info.png"
+            }
+        }
+    },
+    "discrete_math_2": {
+        "display_name": "בדידה 2",
+        "URL": "summaries/bdida2/summary.pdf",
+        "button_color": "gradient-red-discrete_math_2",
+        "pdf_info": {
+            "course_info": {
+                "שם קורס מלא": "מתמטיקה בדידה 2",
+                "מספר קורס": "0368-1119",
+                "שנה וסמסמטר": "2025א",
+                "מרצה": [
+                    "פרופ' גיל כהן"
+                ],
+                "image": "icon/info.png"
+            }
+        }
+    },
+    "logic_cs": {
+        "display_name": "לוגיקה",
+        "URL": "summaries/logic/logic_book.pdf",
+        "button_color": "gradient-red-logic_for_computer_science",
+        "pdf_info": {
+            "course_info": {
+                "שם קורס מלא": "לוגיקה למדעי המחשב",
+                "מספר קורס": "0368-2170",
+                "שנה וסמסמטר": "2026ב",
+                "מרצה": [
+                    "פרופ' אלכסנדר רבינוביץ'"
+                ],
                 "image": "icon/info.png"
             }
         }
@@ -80,7 +85,9 @@
                 "שם קורס מלא": "מודלים חישוביים",
                 "מספר קורס": "0368-2200",
                 "שנה וסמסמטר": "2025ב",
-                "מרצה": ["ד\"ר אורי שטמר"],
+                "מרצה": [
+                    "ד\"ר אורי שטמר"
+                ],
                 "image": "icon/info.png"
             }
         }
@@ -98,7 +105,9 @@
                 "שם קורס מלא": "מבוא לקריפטוגרפיה מודרנית",
                 "מספר קורס": "0368-3049",
                 "שנה וסמסמטר": "2026א",
-                "מרצה": ["פרופ' בני אפלבאום"],
+                "מרצה": [
+                    "פרופ' בני אפלבאום"
+                ],
                 "image": "icon/info.png"
             }
         }
@@ -116,10 +125,33 @@
                 "שם קורס מלא": "סיבוכיות",
                 "מספר קורס": "0368-3168",
                 "שנה וסמסמטר": "2027א",
-                "מרצה": ["פרופ' אמיר שפילקה"],
+                "מרצה": [
+                    "פרופ' אמיר שפילקה"
+                ],
                 "image": "icon/info.png"
             }
-        }
+        },
+        "by_lecture": {
+            "label": "הרצאה"
+        },
+        "lectures": [
+            {
+                "title": "הרצאה 1: מעגלים, אורקלים וסיבוכיות זכרון",
+                "URL": "summaries/complexity/by_lecture/1.pdf"
+            },
+            {
+                "title": "הרצאה 2: סיבוכיות זכרון",
+                "URL": "summaries/complexity/by_lecture/2.pdf"
+            },
+            {
+                "title": "הרצאה 3: משפט אימרמן–סלפצ'ני וההיררכיה הפולינומית",
+                "URL": "summaries/complexity/by_lecture/3.pdf"
+            },
+            {
+                "title": "הרצאה 4: אלגוריתמים הסתברותיים",
+                "URL": "summaries/complexity/by_lecture/4.pdf"
+            }
+        ]
     },
     "advanced_algorithms": {
         "display_name": "נושאים מתקדמים באלגוריתמים",
@@ -133,10 +165,66 @@
             "course_info": {
                 "שם קורס מלא": "נושאים מתקדמים באלגוריתמים",
                 "שנה וסמסמטר": "2027א",
-                "מרצה": ["פרופ' חיים קפלן"],
+                "מרצה": [
+                    "פרופ' חיים קפלן"
+                ],
                 "image": "icon/info.png"
             }
-        }
+        },
+        "by_lecture": {
+            "label": "",
+            "source": "summaries/advanced_algorithms/ata_lectures.pdf"
+        },
+        "lectures": [
+            {
+                "title": "Lecture 1: SSSP by scaling",
+                "URL": "summaries/advanced_algorithms/by_lecture/1.pdf"
+            },
+            {
+                "title": "Lecture 2: Restricted SSSP",
+                "URL": "summaries/advanced_algorithms/by_lecture/2.pdf"
+            },
+            {
+                "title": "Lecture 3: LDD and LLRZ",
+                "URL": "summaries/advanced_algorithms/by_lecture/3.pdf"
+            }
+        ]
+    },
+    "network_algorithms": {
+        "display_name": "אלגוריתמים ברשתות",
+        "URL": "summaries/network_algorithms/na_summary.pdf",
+        "button_color": "gradient-teal2",
+        "pdf_info": {
+            "under_construction": {
+                "": "בבנייה",
+                "image": "icon/construction.png"
+            },
+            "course_info": {
+                "שם קורס מלא": "אלגוריתמים ברשתות",
+                "שנה וסמסמטר": "2027א",
+                "מרצה": [
+                    "פרופ' שי סולומון"
+                ],
+                "image": "icon/info.png"
+            }
+        },
+        "by_lecture": {
+            "label": ""
+        },
+        "lectures": [
+            {
+                "title": "Lecture 1: Set Cover",
+                "URL": "summaries/network_algorithms/by_lecture/1.pdf"
+            },
+            {
+                "title": "Lecture 2: Matching and flow",
+                "URL": "summaries/network_algorithms/by_lecture/2.pdf"
+            },
+            {
+                "title": "Lecture 3: König and Hall",
+                "URL": "summaries/network_algorithms/by_lecture/3.pdf"
+            }
+        ]
     },
     "topics_in_cryptography": {
         "display_name": "נושאים בקריפטוגרפיה",
@@ -147,7 +235,10 @@
                 "שם קורס מלא": "נושאים בקריפטוגרפיה: קריפטוגרפיה אינפורמציה-תיאורטית",
                 "מספר קורס": "0510-7400",
                 "שנה וסמסמטר": "2026ב",
-                "מרצה": ["פרופ' בני אפלבאום", "פרופ' עומר פנת"],
+                "מרצה": [
+                    "פרופ' בני אפלבאום",
+                    "פרופ' עומר פנת"
+                ],
                 "image": "icon/info.png"
             }
         }
@@ -161,7 +252,10 @@
                 "שם קורס מלא": "אותות ומערכות",
                 "מספר קורס": "0512-2835",
                 "שנה וסמסמטר": "2025ב",
-                "מרצה": ["ד\"ר ברכה לאופר", "פרופ' תמיר בן-דורי"],
+                "מרצה": [
+                    "ד\"ר ברכה לאופר",
+                    "פרופ' תמיר בן-דורי"
+                ],
                 "image": "icon/info.png"
             }
         }
@@ -175,7 +269,10 @@
                 "שם קורס מלא": "אותות אקראיים ורעש",
                 "מספר קורס": "0512-2532",
                 "שנה וסמסמטר": "2026א",
-                "מרצה": ["ד\"ר אנטולי חינה", "פרופ' אורי ארז"],
+                "מרצה": [
+                    "ד\"ר אנטולי חינה",
+                    "פרופ' אורי ארז"
+                ],
                 "image": "icon/info.png"
             }
         }
@@ -189,7 +286,9 @@
                 "שם קורס מלא": "אלגוריתמים",
                 "מספר קורס": "0368-2160",
                 "שנה וסמסמטר": "2026א",
-                "מרצה": ["ד\"ר רני הוד"],
+                "מרצה": [
+                    "ד\"ר רני הוד"
+                ],
                 "image": "icon/info.png"
             }
         }
@@ -198,7 +297,7 @@
         "display_name": "למידה חישובית",
         "URL": "summaries/ml/ml_summary.pdf",
         "button_color": "gradient-teal2",
-         "pdf_info": {
+        "pdf_info": {
             "under_construction": {
                 "": "בבנייה",
                 "image": "icon/construction.png"
@@ -207,10 +306,11 @@
                 "שם קורס מלא": "מבוא ללמידה חישובית",
                 "מספר קורס": "0368-3235",
                 "שנה וסמסמטר": "2026א",
-                "מרצה": ["פרופ' נדב כהן"],
+                "מרצה": [
+                    "פרופ' נדב כהן"
+                ],
                 "image": "icon/info.png"
             }
         }
     }
-
 }

@@ -547,7 +547,7 @@ ul {
     background: linear-gradient(45deg, #006666, #33cccc, #66ffff, #99ffff);
 }
 
-.gradient-teal2 { /* Not in use */
+.gradient-teal2 { /* network_algorithms */
     background: linear-gradient(45deg, #008080, #00CED1, #40E0D0, #20B2AA);
 }
 
@@ -570,3 +570,24 @@ ul {
 .gradient-teal7 { /* Not in use */
     background: linear-gradient(-45deg, #008b8b, #00CED1, #00768d);
 }
+/* "By lecture" button inside a course button (opens a popup with one PDF per lecture) */
+.lectures-toggle {
+    font-size: 13px;
+    padding: 4px 8px;
+    margin: 6px 4px;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.35);
+    color: #333;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.lectures-toggle:hover {
+    background: rgba(255, 255, 255, 0.6);
+}
+.popup-content.lectures-popup {
+    width: auto;
+    max-width: min(90vw, 640px);
+}
+

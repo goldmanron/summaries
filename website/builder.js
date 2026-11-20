@@ -106,10 +106,42 @@ function parseAttribute(dict) {
     return [image, text];
 }
 
-function getButtonCode(dict) {
+// "By lecture": a small button next to the course that opens a popup with one PDF per lecture
+const LECTURES_PREFIX = "lectures_";
+let lecturePopups = "";
+
+function getLecturesToggle(pdf_name) {
+    return `
+        <button class="lectures-toggle" title="לפי הרצאות" onclick="openPopup('${LECTURES_PREFIX}${pdf_name}')">לפי הרצאות</button>`;
+}
+
+function getLecturesPopup(pdf_name, dict) {
+    let items = "";
+    for (let lec of dict.lectures) {
+        items += `
+                <div class="pdf-button-container ${dict.button_color}">
+                    <a class="pdf-button" href="${lec.URL}" target="_blank">${lec.title}</a>
+                </div><br>`;
+    }
+    return `
+        <div class="popup-overlay" id="${LECTURES_PREFIX}${pdf_name}" onclick="closePopup(event, '${LECTURES_PREFIX}${pdf_name}')">
+            <div class="popup-content lectures-popup" onclick="event.stopPropagation()">
+                <h2>${dict.display_name}: לפי הרצאות</h2>
+                ${items}
+                <button class="popup-close-button" onclick="closePopup(null, '${LECTURES_PREFIX}${pdf_name}')">Close</button>
+            </div>
+        </div>
+    `;
+}
+
+function getButtonCode(dict, pdf_name) {
     let prefix = `
         <div class="pdf-button-container ${dict.button_color}">
             <a class="pdf-button" href="${dict.URL}" target="_blank">${dict.display_name}</a>`;
+    if (Array.isArray(dict.lectures) && dict.lectures.length > 0) {
+        prefix += getLecturesToggle(pdf_name);
+        lecturePopups += getLecturesPopup(pdf_name, dict);
+    }
     let postfix = `
         </div>
     `
@@ -132,7 +164,7 @@ function createButtons(doc, pdfData) {
     for (let pdf_name in pdfData) {
         const elem = doc.querySelector(`[title="${pdf_name}"]`);
         if (elem) {
-            const frag = JSDOM.fragment(getButtonCode(pdfData[pdf_name]));
+            const frag = JSDOM.fragment(getButtonCode(pdfData[pdf_name], pdf_name));
             elem.replaceWith(frag);
         }
         else {
@@ -175,6 +207,7 @@ async function main() {
     // Apply injections
     await mainPopups(doc, popupData);
     createButtons(doc, pdfData);
+    if (lecturePopups) doc.body.appendChild(JSDOM.fragment(lecturePopups));
     createGenericButtons(doc);
 
     // Prepare output dir
