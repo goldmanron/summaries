@@ -226,6 +226,7 @@
       
         <div class="pdf-button-container gradient-red-computational_complexity">
             <a class="pdf-button" href="summaries/complexity/complexity_book.pdf" target="_blank">סיבוכיות</a>
+        <button class="lectures-toggle" title="לפי הרצאות" onclick="openPopup('lectures_computational_complexity')">לפי הרצאות</button>
         <div class="tooltip">
             <img src="icon/construction.png">
             <span class="tooltiptext">בבנייה.<br></span>
@@ -262,6 +263,7 @@
       
         <div class="pdf-button-container gradient-teal3">
             <a class="pdf-button" href="summaries/advanced_algorithms/ata_lec1-3.pdf" target="_blank">נושאים מתקדמים באלגוריתמים</a>
+        <button class="lectures-toggle" title="לפי הרצאות" onclick="openPopup('lectures_advanced_algorithms')">לפי הרצאות</button>
         <div class="tooltip">
             <img src="icon/construction.png">
             <span class="tooltiptext">בבנייה.<br></span>
@@ -270,6 +272,22 @@
         <div class="tooltip">
             <img src="icon/info.png">
             <span class="tooltiptext"><b>שם קורס מלא</b>: נושאים מתקדמים באלגוריתמים.<br><b>שנה וסמסמטר</b>: 2027א.<br><b>מרצה</b>: פרופ' חיים קפלן.<br></span>
+        </div>
+        
+        </div>
+    
+      
+        <div class="pdf-button-container gradient-teal2">
+            <a class="pdf-button" href="summaries/network_algorithms/na_summary.pdf" target="_blank">אלגוריתמים ברשתות</a>
+        <button class="lectures-toggle" title="לפי הרצאות" onclick="openPopup('lectures_network_algorithms')">לפי הרצאות</button>
+        <div class="tooltip">
+            <img src="icon/construction.png">
+            <span class="tooltiptext">בבנייה.<br></span>
+        </div>
+        
+        <div class="tooltip">
+            <img src="icon/info.png">
+            <span class="tooltiptext"><b>שם קורס מלא</b>: אלגוריתמים ברשתות.<br><b>שנה וסמסמטר</b>: 2027א.<br><b>מרצה</b>: פרופ' שי סולומון.<br></span>
         </div>
         
         </div>
@@ -358,4 +376,58 @@
     
 
 
-</body></html>
+
+        <div class="popup-overlay" id="lectures_computational_complexity" onclick="closePopup(event, 'lectures_computational_complexity')">
+            <div class="popup-content lectures-popup" onclick="event.stopPropagation()">
+                <h2>סיבוכיות: לפי הרצאות</h2>
+                
+                <div class="pdf-button-container gradient-red-computational_complexity">
+                    <a class="pdf-button" href="summaries/complexity/by_lecture/1.pdf" target="_blank">הרצאה 1: מעגלים, אורקלים וסיבוכיות זכרון</a>
+                </div><br>
+                <div class="pdf-button-container gradient-red-computational_complexity">
+                    <a class="pdf-button" href="summaries/complexity/by_lecture/2.pdf" target="_blank">הרצאה 2: סיבוכיות זכרון</a>
+                </div><br>
+                <div class="pdf-button-container gradient-red-computational_complexity">
+                    <a class="pdf-button" href="summaries/complexity/by_lecture/3.pdf" target="_blank">הרצאה 3: משפט אימרמן–סלפצ'ני וההיררכיה הפולינומית</a>
+                </div><br>
+                <div class="pdf-button-container gradient-red-computational_complexity">
+                    <a class="pdf-button" href="summaries/complexity/by_lecture/4.pdf" target="_blank">הרצאה 4: אלגוריתמים הסתברותיים</a>
+                </div><br>
+                <button class="popup-close-button" onclick="closePopup(null, 'lectures_computational_complexity')">Close</button>
+            </div>
+        </div>
+    
+        <div class="popup-overlay" id="lectures_advanced_algorithms" onclick="closePopup(event, 'lectures_advanced_algorithms')">
+            <div class="popup-content lectures-popup" onclick="event.stopPropagation()">
+                <h2>נושאים מתקדמים באלגוריתמים: לפי הרצאות</h2>
+                
+                <div class="pdf-button-container gradient-teal3">
+                    <a class="pdf-button" href="summaries/advanced_algorithms/by_lecture/1.pdf" target="_blank">Lecture 1: SSSP by scaling</a>
+                </div><br>
+                <div class="pdf-button-container gradient-teal3">
+                    <a class="pdf-button" href="summaries/advanced_algorithms/by_lecture/2.pdf" target="_blank">Lecture 2: Restricted SSSP</a>
+                </div><br>
+                <div class="pdf-button-container gradient-teal3">
+                    <a class="pdf-button" href="summaries/advanced_algorithms/by_lecture/3.pdf" target="_blank">Lecture 3: LDD and LLRZ</a>
+                </div><br>
+                <button class="popup-close-button" onclick="closePopup(null, 'lectures_advanced_algorithms')">Close</button>
+            </div>
+        </div>
+    
+        <div class="popup-overlay" id="lectures_network_algorithms" onclick="closePopup(event, 'lectures_network_algorithms')">
+            <div class="popup-content lectures-popup" onclick="event.stopPropagation()">
+                <h2>אלגוריתמים ברשתות: לפי הרצאות</h2>
+                
+                <div class="pdf-button-container gradient-teal2">
+                    <a class="pdf-button" href="summaries/network_algorithms/by_lecture/1.pdf" target="_blank">Lecture 1: Set Cover</a>
+                </div><br>
+                <div class="pdf-button-container gradient-teal2">
+                    <a class="pdf-button" href="summaries/network_algorithms/by_lecture/2.pdf" target="_blank">Lecture 2: Matching and flow</a>
+                </div><br>
+                <div class="pdf-button-container gradient-teal2">
+                    <a class="pdf-button" href="summaries/network_algorithms/by_lecture/3.pdf" target="_blank">Lecture 3: König and Hall</a>
+                </div><br>
+                <button class="popup-close-button" onclick="closePopup(null, 'lectures_network_algorithms')">Close</button>
+            </div>
+        </div>
+    </body></html>
