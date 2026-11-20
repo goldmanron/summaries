@@ -140,7 +140,24 @@
             }
         },
         "by_lecture": {
-            "label": "הרצאה"
+            "pdfs": [
+                {
+                    "title": "הרצאה 1: מעגלים, אורקלים וסיבוכיות זכרון",
+                    "from": "C:/University/Semester 7/Computational Complexity/lecs/cc_lec1.pdf"
+                },
+                {
+                    "title": "הרצאה 2: סיבוכיות זכרון",
+                    "from": "C:/University/Semester 7/Computational Complexity/lecs/cc_lec2.pdf"
+                },
+                {
+                    "title": "הרצאה 3: משפט אימרמן–סלפצ'ני וההיררכיה הפולינומית",
+                    "from": "C:/University/Semester 7/Computational Complexity/lecs/cc_lec3.pdf"
+                },
+                {
+                    "title": "הרצאה 4: אלגוריתמים הסתברותיים",
+                    "from": "C:/University/Semester 7/Computational Complexity/lecs/cc_lec4.pdf"
+                }
+            ]
         },
         "lectures": [
             {
@@ -182,8 +199,7 @@
             }
         },
         "by_lecture": {
-            "label": "",
-            "source": "summaries/advanced_algorithms/ata_lectures.pdf"
+            "parts": "C:/University/Semester 7/Advanced Topics in Algorithms/lecs/_work/ata_lec1-3_gemini_parts/parts.json"
         },
         "lectures": [
             {
@@ -221,7 +237,7 @@
             }
         },
         "by_lecture": {
-            "label": "Lecture"
+            "parts": "C:/University/Semester 7/Network Algorithms/lecs/na_lec1-3_summary_parts/parts.json"
         },
         "lectures": [
             {
