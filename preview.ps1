@@ -38,6 +38,24 @@ Get-ChildItem $root -Recurse -Filter *.pdf -File |
     }
 Write-Host "Copied $n PDFs."
 
+# PDFs open in a pdf.js viewer page (preview only; the deployed site is untouched),
+# so they show even in browsers without a PDF viewer, e.g. the Claude app's browser pane
+Copy-Item preview_viewer.html (Join-Path $out 'viewer.html')
+$hook = @'
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  for (const a of document.querySelectorAll('a[href$=".pdf"]')) {
+    if (/^https?:/.test(a.getAttribute('href'))) continue;
+    a.href = 'viewer.html?file=' + encodeURIComponent(a.getAttribute('href'));
+    a.removeAttribute('target');
+  }
+});
+</script>
+'@
+$index = Join-Path $out 'index.html'
+$html = [IO.File]::ReadAllText($index).Replace('</body>', "$hook</body>")
+[IO.File]::WriteAllText($index, $html, (New-Object Text.UTF8Encoding $false))
+
 $url = "http://localhost:$Port/"
 Write-Host "Serving $url  (Ctrl+C to stop)"
 if (-not $NoOpen) { Start-Process $url }

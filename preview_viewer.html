@@ -1,0 +1,70 @@
+<!doctype html>
+<!-- Local preview only (copied into out/ by preview.ps1): renders a PDF with pdf.js,
+     so PDFs open inside browsers that have no built-in PDF viewer. -->
+<html lang="he">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PDF</title>
+<style>
+  :root { --bg: #1e1e24; --bar: #111116; --fg: #eee; --btn: #33333d; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font-family: Arial, sans-serif; }
+  #bar { position: sticky; top: 0; z-index: 1; display: flex; gap: 8px; align-items: center;
+         padding: 8px 12px; background: var(--bar); direction: ltr; }
+  #bar a, #bar button { color: var(--fg); background: var(--btn); border: 0; border-radius: 6px;
+         padding: 6px 10px; font-size: 14px; text-decoration: none; cursor: pointer; }
+  #name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 14px; }
+  #pages { display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 12px; }
+  canvas { background: #fff; box-shadow: 0 2px 8px #0008; max-width: 100%; }
+  #msg { padding: 24px; text-align: center; }
+</style>
+</head>
+<body>
+<div id="bar">
+  <a href="./">&larr; Back</a>
+  <button id="out">&minus;</button><button id="in">+</button>
+  <span id="name"></span>
+  <span id="count"></span>
+  <a id="raw" download>Download</a>
+</div>
+<div id="msg">Loading…</div>
+<div id="pages"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>
+  const file = new URLSearchParams(location.search).get('file') || '';
+  document.getElementById('name').textContent = decodeURIComponent(file);
+  document.title = file.split('/').pop();
+  document.getElementById('raw').href = file;
+  pdfjsLib.GlobalWorkerOptions.workerSrc =
+    'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+  let pdf, zoom = 1;
+  const pagesEl = document.getElementById('pages');
+
+  async function render() {
+    pagesEl.innerHTML = '';
+    const width = Math.min(pagesEl.clientWidth - 24, 1000) * zoom;
+    for (let n = 1; n <= pdf.numPages; n++) {
+      const page = await pdf.getPage(n);
+      const base = page.getViewport({ scale: 1 });
+      const vp = page.getViewport({ scale: width / base.width * devicePixelRatio });
+      const c = document.createElement('canvas');
+      c.width = vp.width; c.height = vp.height;
+      c.style.width = (vp.width / devicePixelRatio) + 'px';
+      pagesEl.appendChild(c);
+      await page.render({ canvasContext: c.getContext('2d'), viewport: vp }).promise;
+    }
+  }
+
+  pdfjsLib.getDocument(file).promise.then(d => {
+    pdf = d;
+    document.getElementById('msg').remove();
+    document.getElementById('count').textContent = pdf.numPages + ' pages';
+    render();
+  }).catch(e => { document.getElementById('msg').textContent = 'Could not open ' + file + ': ' + e.message; });
+
+  document.getElementById('in').onclick = () => { zoom *= 1.25; render(); };
+  document.getElementById('out').onclick = () => { zoom /= 1.25; render(); };
+</script>
+</body>
+</html>
