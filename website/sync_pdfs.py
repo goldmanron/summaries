@@ -1,7 +1,7 @@
 """Per-lecture PDFs for the site's "by lecture" option: each lecture is its own complete document
 (own title page and table of contents), never pages cut out of the united PDF.
 
-    py website/split_lectures.py          (run from the repo root, before committing)
+    py website/sync_pdfs.py          (run from the repo root, before committing)
 
 For every entry in website/pdf_data.json with "by_lecture", the standalone lecture PDFs are copied
 into summaries/<dir>/by_lecture/<n>.pdf and the entry's "lectures" list is rewritten. Sources:

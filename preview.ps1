@@ -1,7 +1,7 @@
 # preview.ps1 - the site, live, at http://localhost:8000
 # Mirrors .github/workflows/main.yml, but takes the PDFs from the working tree, so uncommitted changes
 # show up too. It keeps itself up to date: newly APPROVED notes are pulled into the site
-# (website/split_lectures.py; drafts never are), and when anything changes (notes, PDFs, website files)
+# (website/sync_pdfs.py; drafts never are), and when anything changes (notes, PDFs, website files)
 # the site is rebuilt and the open page reloads by itself. Ctrl+C stops it.
 # Usage: .\preview.ps1 [-Port 8000] [-NoOpen] [-Once]   (-Once: build and serve, no watching)
 param([int]$Port = 8000, [switch]$NoOpen, [switch]$Once)
@@ -44,8 +44,8 @@ setInterval(async () => {
 
 function Build-Site {
     # 1. approved notes -> the site's PDFs (drafts are skipped and the site keeps the older copy)
-    py -X utf8 website/split_lectures.py | Out-Null
-    if ($LASTEXITCODE -ne 0) { Write-Host 'split_lectures.py failed; building with the PDFs as they are' -ForegroundColor Yellow }
+    py -X utf8 website/sync_pdfs.py | Out-Null
+    if ($LASTEXITCODE -ne 0) { Write-Host 'sync_pdfs.py failed; building with the PDFs as they are' -ForegroundColor Yellow }
     # 2. the page (builder.js recreates ./out)
     node website/builder.js | Out-Null
     if ($LASTEXITCODE -ne 0) { Write-Host 'builder.js failed' -ForegroundColor Red; return }
