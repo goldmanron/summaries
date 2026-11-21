@@ -217,8 +217,8 @@
     
       
         <div class="pdf-button-container gradient-red-computational_complexity">
-            <a class="pdf-button" href="summaries/complexity/complexity_book.pdf" target="_blank">סיבוכיות</a>
-        <button class="lectures-toggle" title="לפי הרצאות" onclick="openPopup('lectures_computational_complexity')">לפי הרצאות</button>
+            <a class="pdf-button" href="summaries/complexity/complexity_weeks.pdf" target="_blank">סיבוכיות</a>
+        <button class="lectures-toggle" title="לפי שבועות" onclick="openPopup('lectures_computational_complexity')">לפי שבועות</button>
         <div class="tooltip">
             <img src="icon/construction.png">
             <span class="tooltiptext">בבנייה.<br></span>
@@ -311,6 +311,22 @@
         
         </div>
     
+      
+        <div class="pdf-button-container gradient-orange2">
+            <a class="pdf-button" href="summaries/computer_organization/co_lectures.pdf" target="_blank">מבנה המחשב</a>
+        <button class="lectures-toggle" title="לפי הרצאות" onclick="openPopup('lectures_computer_organization')">לפי הרצאות</button>
+        <div class="tooltip">
+            <img src="icon/construction.png">
+            <span class="tooltiptext">בבנייה.<br></span>
+        </div>
+        
+        <div class="tooltip">
+            <img src="icon/info.png">
+            <span class="tooltiptext"><b>שם קורס מלא</b>: מבנה המחשב.<br><b>מספר קורס</b>: 0512-4400.<br><b>תואר</b>: הנדסת חשמל.<br><b>שנה וסמסמטר</b>: 2027א.<br><b>מרצה</b>: פרופ' שי אבידן.<br></span>
+        </div>
+        
+        </div>
+    
     </div>
     <div class="container">
       <h2>
@@ -397,19 +413,22 @@
 
         <div class="popup-overlay" id="lectures_computational_complexity" onclick="closePopup(event, 'lectures_computational_complexity')">
             <div class="popup-content lectures-popup" onclick="event.stopPropagation()">
-                <h2>סיבוכיות: לפי הרצאות</h2>
+                <h2>סיבוכיות: לפי שבועות</h2>
                 
                 <div class="pdf-button-container gradient-red-computational_complexity">
-                    <a class="pdf-button" href="summaries/complexity/by_lecture/1.pdf" target="_blank">הרצאה 1: מעגלים, אורקלים וסיבוכיות זכרון</a>
+                    <a class="pdf-button" href="summaries/complexity/by_lecture/1.pdf" target="_blank">שבוע 1: מעגלים, אורקלים וסיבוכיות זכרון</a>
                 </div><br>
                 <div class="pdf-button-container gradient-red-computational_complexity">
-                    <a class="pdf-button" href="summaries/complexity/by_lecture/2.pdf" target="_blank">הרצאה 2: סיבוכיות זכרון</a>
+                    <a class="pdf-button" href="summaries/complexity/by_lecture/2.pdf" target="_blank">שבוע 2: סיבוכיות זכרון</a>
                 </div><br>
                 <div class="pdf-button-container gradient-red-computational_complexity">
-                    <a class="pdf-button" href="summaries/complexity/by_lecture/3.pdf" target="_blank">הרצאה 3: משפט אימרמן–סלפצ'ני וההיררכיה הפולינומית</a>
+                    <a class="pdf-button" href="summaries/complexity/by_lecture/3.pdf" target="_blank">שבוע 3: משפט אימרמן–סלפצ'ני וההיררכיה הפולינומית</a>
                 </div><br>
                 <div class="pdf-button-container gradient-red-computational_complexity">
-                    <a class="pdf-button" href="summaries/complexity/by_lecture/4.pdf" target="_blank">הרצאה 4: אלגוריתמים הסתברותיים</a>
+                    <a class="pdf-button" href="summaries/complexity/by_lecture/4.pdf" target="_blank">שבוע 4: אלגוריתמים הסתברותיים</a>
+                </div><br>
+                <div class="pdf-button-container gradient-red-computational_complexity">
+                    <a class="pdf-button" href="summaries/complexity/by_lecture/5.pdf" target="_blank">שבוע 5: משפט סיפסר והוכחות אינטראקטיביות</a>
                 </div><br>
                 <button class="popup-close-button" onclick="closePopup(null, 'lectures_computational_complexity')">Close</button>
             </div>
@@ -427,6 +446,12 @@
                 </div><br>
                 <div class="pdf-button-container gradient-teal3">
                     <a class="pdf-button" href="summaries/advanced_algorithms/by_lecture/3.pdf" target="_blank">Lecture 3: LDD and LLRZ</a>
+                </div><br>
+                <div class="pdf-button-container gradient-teal3">
+                    <a class="pdf-button" href="summaries/advanced_algorithms/by_lecture/4.pdf" target="_blank">Lecture 4: LLRZ and conductance</a>
+                </div><br>
+                <div class="pdf-button-container gradient-teal3">
+                    <a class="pdf-button" href="summaries/advanced_algorithms/by_lecture/5.pdf" target="_blank">Lecture 5: Bourgain, flows and the flow-cut gap</a>
                 </div><br>
                 <button class="popup-close-button" onclick="closePopup(null, 'lectures_advanced_algorithms')">Close</button>
             </div>
@@ -469,6 +494,26 @@
                     <a class="pdf-button" href="summaries/operating_systems/by_lecture/5.pdf" target="_blank">Week 5: File systems</a>
                 </div><br>
                 <button class="popup-close-button" onclick="closePopup(null, 'lectures_operating_systems')">Close</button>
+            </div>
+        </div>
+    
+        <div class="popup-overlay" id="lectures_computer_organization" onclick="closePopup(event, 'lectures_computer_organization')">
+            <div class="popup-content lectures-popup" onclick="event.stopPropagation()">
+                <h2>מבנה המחשב: לפי הרצאות</h2>
+                
+                <div class="pdf-button-container gradient-orange2">
+                    <a class="pdf-button" href="summaries/computer_organization/by_lecture/1.pdf" target="_blank">Lecture 1: Levels of code and the ISA</a>
+                </div><br>
+                <div class="pdf-button-container gradient-orange2">
+                    <a class="pdf-button" href="summaries/computer_organization/by_lecture/2.pdf" target="_blank">Lecture 2: The MIPS ISA and instruction encoding</a>
+                </div><br>
+                <div class="pdf-button-container gradient-orange2">
+                    <a class="pdf-button" href="summaries/computer_organization/by_lecture/3.pdf" target="_blank">Lecture 3: Procedures and calling conventions</a>
+                </div><br>
+                <div class="pdf-button-container gradient-orange2">
+                    <a class="pdf-button" href="summaries/computer_organization/by_lecture/4.pdf" target="_blank">Lecture 4: Computer arithmetic</a>
+                </div><br>
+                <button class="popup-close-button" onclick="closePopup(null, 'lectures_computer_organization')">Close</button>
             </div>
         </div>
     </body></html>
