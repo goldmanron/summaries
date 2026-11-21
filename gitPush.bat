@@ -23,13 +23,21 @@ if %errorlevel% neq 0 (
     exit /b %errorlevel%
 )
 
-:: Commit with current date and time
+:: Commit with current date and time, only when something changed
+:: (with nothing new, still push: commits made by the notes tools are already there)
+git diff --cached --quiet
+if %errorlevel% equ 0 (
+    echo Nothing new to commit; pushing the existing commits.
+    goto push
+)
 git commit -m "%commit_message%"
 if %errorlevel% neq 0 (
     echo Commit failed. Exiting.
 	pause
     exit /b %errorlevel%
 )
+
+:push
 
 :: Push changes
 git push
