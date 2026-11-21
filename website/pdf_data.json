@@ -121,7 +121,7 @@
     },
     "computational_complexity": {
         "display_name": "סיבוכיות",
-        "URL": "summaries/complexity/complexity_weeks.pdf",
+        "URL": "summaries/complexity/complexity.pdf",
         "button_color": "gradient-red-computational_complexity",
         "pdf_info": {
             "under_construction": {
@@ -190,7 +190,7 @@
     },
     "advanced_algorithms": {
         "display_name": "נושאים מתקדמים באלגוריתמים",
-        "URL": "summaries/advanced_algorithms/ata_lec1-3.pdf",
+        "URL": "summaries/advanced_algorithms/advanced_algorithms.pdf",
         "button_color": "gradient-teal3",
         "pdf_info": {
             "under_construction": {
@@ -258,7 +258,7 @@
     },
     "network_algorithms": {
         "display_name": "אלגוריתמים ברשתות",
-        "URL": "summaries/network_algorithms/na_summary.pdf",
+        "URL": "summaries/network_algorithms/network_algorithms.pdf",
         "button_color": "gradient-teal2",
         "pdf_info": {
             "under_construction": {
@@ -310,7 +310,7 @@
     },
     "operating_systems": {
         "display_name": "מערכות הפעלה",
-        "URL": "summaries/operating_systems/os_weeks.pdf",
+        "URL": "summaries/operating_systems/operating_systems.pdf",
         "button_color": "gradient-orange1",
         "pdf_info": {
             "under_construction": {
@@ -379,7 +379,7 @@
     },
     "computer_organization": {
         "display_name": "מבנה המחשב",
-        "URL": "summaries/computer_organization/co_lectures.pdf",
+        "URL": "summaries/computer_organization/computer_organization.pdf",
         "button_color": "gradient-orange2",
         "pdf_info": {
             "under_construction": {
