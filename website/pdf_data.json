@@ -225,6 +225,10 @@
                 {
                     "title": "Lecture 4: LLRZ and conductance",
                     "from": "C:/University/Semester 7/Advanced Topics in Algorithms/lecs/ata_lec4/ata_lec4.pdf"
+                },
+                {
+                    "title": "Lecture 5: Bourgain, flows and the flow-cut gap",
+                    "from": "C:/University/Semester 7/Advanced Topics in Algorithms/lecs/ata_lec5/ata_lec5.pdf"
                 }
             ]
         },
@@ -244,6 +248,10 @@
             {
                 "title": "Lecture 4: LLRZ and conductance",
                 "URL": "summaries/advanced_algorithms/by_lecture/4.pdf"
+            },
+            {
+                "title": "Lecture 5: Bourgain, flows and the flow-cut gap",
+                "URL": "summaries/advanced_algorithms/by_lecture/5.pdf"
             }
         ],
         "URL_from": "C:/University/Semester 7/Advanced Topics in Algorithms/lecs/ata_merged/ata_merged.pdf"
