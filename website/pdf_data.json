@@ -277,7 +277,20 @@
             }
         },
         "by_lecture": {
-            "parts": "C:/University/Semester 7/Network Algorithms/lecs/na_lec1-3_summary_parts/parts.json"
+            "pdfs": [
+                {
+                    "title": "Lecture 1: Set Cover",
+                    "from": "C:/University/Semester 7/Network Algorithms/lecs/na_week1/na_week1.pdf"
+                },
+                {
+                    "title": "Lecture 2: Matching and flow",
+                    "from": "C:/University/Semester 7/Network Algorithms/lecs/na_week2/na_week2.pdf"
+                },
+                {
+                    "title": "Lecture 3: König and Hall",
+                    "from": "C:/University/Semester 7/Network Algorithms/lecs/na_week3/na_week3.pdf"
+                }
+            ]
         },
         "lectures": [
             {
@@ -332,11 +345,11 @@
                 },
                 {
                     "title": "Week 4: Scheduling and I/O devices",
-                    "from": "C:/University/Semester 7/Operating Systems/lecs/_backups/os_week4_approved_20261120/os_week4.pdf"
+                    "from": "C:/University/Semester 7/Operating Systems/lecs/os_week4/os_week4.pdf"
                 },
                 {
                     "title": "Week 5: File systems",
-                    "from": "C:/University/Semester 7/Operating Systems/lecs/_backups/os_week5_approved_20261120/os_week5.pdf"
+                    "from": "C:/University/Semester 7/Operating Systems/lecs/os_week5/os_week5.pdf"
                 }
             ]
         },
