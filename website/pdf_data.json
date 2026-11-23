@@ -225,6 +225,10 @@
                 {
                     "title": "Lecture 4: LLRZ and conductance",
                     "from": "C:/University/Semester 7/Advanced Topics in Algorithms/lecs/ata_lec4/ata_lec4.pdf"
+                },
+                {
+                    "title": "Lecture 5: cut metrics, Bourgain, flows and cut-matching",
+                    "from": "C:/University/Semester 7/Advanced Topics in Algorithms/lecs/ata_lec5/ata_lec5.pdf"
                 }
             ]
         },
@@ -244,10 +248,13 @@
             {
                 "title": "Lecture 4: LLRZ and conductance",
                 "URL": "summaries/advanced_algorithms/by_lecture/4.pdf"
+            },
+            {
+                "title": "Lecture 5: cut metrics, Bourgain, flows and cut-matching",
+                "URL": "summaries/advanced_algorithms/by_lecture/5.pdf"
             }
         ],
-        "URL_from": "C:/University/Semester 7/Advanced Topics in Algorithms/lecs/ata_merged/ata_merged.pdf",
-        "hide_main": true
+        "URL_from": "C:/University/Semester 7/Advanced Topics in Algorithms/lecs/ata_merged/ata_merged.pdf"
     },
     "network_algorithms": {
         "display_name": "אלגוריתמים ברשתות",
