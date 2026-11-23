@@ -135,9 +135,13 @@ function getLecturesPopup(pdf_name, dict) {
 }
 
 function getButtonCode(dict, pdf_name) {
+    // "hide_main": the course's main PDF is pulled (a draft); the button opens the lecture list instead
+    let main = dict.hide_main
+        ? `<a class="pdf-button" href="#" onclick="openPopup('${LECTURES_PREFIX}${pdf_name}'); return false;">${dict.display_name}</a>`
+        : `<a class="pdf-button" href="${dict.URL}" target="_blank">${dict.display_name}</a>`;
     let prefix = `
         <div class="pdf-button-container ${dict.button_color}">
-            <a class="pdf-button" href="${dict.URL}" target="_blank">${dict.display_name}</a>`;
+            ${main}`;
     if (Array.isArray(dict.lectures) && dict.lectures.length > 0) {
         prefix += getLecturesToggle(pdf_name, dict.lectures_button || "לפי הרצאות");
         lecturePopups += getLecturesPopup(pdf_name, dict);

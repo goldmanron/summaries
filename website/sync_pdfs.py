@@ -72,7 +72,11 @@ def build(entry):
 def main():
     data = json.load(open(DATA, encoding='utf-8'))
     for key, entry in data.items():
-        if entry.get('URL_from'):
+        if entry.get('URL_from') and entry.get('hide_main'):  # main PDF pulled from the site (a draft)
+            if os.path.isfile(entry['URL']):
+                os.remove(entry['URL'])
+                print('  main PDF pulled (hide_main): %s' % entry['URL'])
+        elif entry.get('URL_from'):
             print(key)
             os.makedirs(os.path.dirname(entry['URL']), exist_ok=True)
             sync(entry['URL_from'], entry['URL'])

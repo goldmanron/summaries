@@ -246,7 +246,8 @@
                 "URL": "summaries/advanced_algorithms/by_lecture/4.pdf"
             }
         ],
-        "URL_from": "C:/University/Semester 7/Advanced Topics in Algorithms/lecs/ata_merged/ata_merged.pdf"
+        "URL_from": "C:/University/Semester 7/Advanced Topics in Algorithms/lecs/ata_merged/ata_merged.pdf",
+        "hide_main": true
     },
     "network_algorithms": {
         "display_name": "אלגוריתמים ברשתות",
