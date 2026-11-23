@@ -160,6 +160,10 @@
                 {
                     "title": "שבוע 5: משפט סיפסר והוכחות אינטראקטיביות",
                     "from": "C:/University/Semester 7/Computational Complexity/lecs/cc_week5/cc_week5.pdf"
+                },
+                {
+                    "title": "שבוע 6: IP = PSPACE ואלגוריתמי קירוב",
+                    "from": "C:/University/Semester 7/Computational Complexity/lecs/cc_week6/cc_week6.pdf"
                 }
             ]
         },
@@ -183,6 +187,10 @@
             {
                 "title": "שבוע 5: משפט סיפסר והוכחות אינטראקטיביות",
                 "URL": "summaries/complexity/by_lecture/5.pdf"
+            },
+            {
+                "title": "שבוע 6: IP = PSPACE ואלגוריתמי קירוב",
+                "URL": "summaries/complexity/by_lecture/6.pdf"
             }
         ],
         "lectures_button": "לפי שבועות",
